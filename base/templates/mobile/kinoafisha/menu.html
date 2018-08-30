@@ -1,0 +1,206 @@
+{% load base_tags static %}
+{% get_static_prefix as STATIC_URL %}
+
+<div class="art-posttree-width">
+    <noindex>
+    <h5 class="method-category" id="{{ user_id }}_section{{ k }}"><p>Мой профиль</p></h5>
+    <div class="method-list">
+        <ul>
+            <li>
+                {% if request.acc_list.acc %}
+                <a href="{% url profile %}" id="user_full_name" rel="nofollow">{{ request.fio }}</a>
+                {% else %}
+                <a href="{% url login %}" rel="nofollow">Авторизоваться</a>
+                {% endif %}
+            </li>
+            <li>
+                <a class="select_mycity">
+                {{ request.current_user_city }}
+                </a>
+            </li>
+            <li>
+                <a href="{% url profile %}" target="_blank" rel="nofollow">
+                На Вашем счету {{ request.mymoney }} руб.
+                </a>
+            </li>
+            <li>
+                <div id="show_modal">
+                <a class="feedback" id="modal" href="#in_modal" rel="nofollow">
+                Обратная связь
+                </a>
+                </div>
+                <div id="in_modal"></div>
+            </li>
+        </ul>
+    </div>
+    </noindex>
+    
+    {% if menu_state.kinoafisha_menu_section01_s00 %}
+    <h5 class="method-category"><p>В кинотеатрах</p></h5>
+    <div class="method-list">
+    <ul>
+        {% if menu_state.kinoafisha_menu_section01_s01 %}
+        <li>
+            <a href="{% url kinoafisha_main %}">Выходят на этой неделе</a>
+        </li>
+        {% endif %}
+        {% if menu_state.kinoafisha_menu_section01_s02 %}
+        <li>
+            <a href="{% url kinoafisha_past %}">Вышли на прошлой неделе</a>
+        </li>
+        {% endif %}
+        {% if menu_state.kinoafisha_menu_section01_s03 %}
+        <li>
+            <a href="{% url kinoafisha_schedules %}">Сеансы</a>
+        </li>
+        {% endif %}
+
+    </ul>
+    </div>
+    {% endif %}
+
+
+
+    {% if menu_state.kinoafisha_menu_section02_s00 %}
+    <h5 class="method-category" id="kinoafisha_menu_section02"><p>Скоро</p></h5>
+    <div class="method-list">
+    <ul>
+        {% if menu_state.kinoafisha_menu_section02_s01 %}
+        <li>
+            <a href="{% url kinoafisha_soon %}">Скоро на экранах России</a>
+        </li>
+        {% endif %}
+        {% if menu_state.kinoafisha_menu_section02_s02 %}
+        <li>
+            <a href="{% url kinoafisha_soon_fr %}">Скоро на экранах Франции</a>
+        </li>
+        {% endif %}
+
+    </ul>
+    </div>
+    {% endif %}
+
+
+
+    {% if menu_state.kinoafisha_menu_section03_s00 %}
+    <h5 class="method-category" id="kinoafisha_menu_section03"><p>Рекомендации</p></h5>
+    <div class="method-list">
+    <ul>
+        {% if menu_state.kinoafisha_menu_section03_s01 %}
+        <li>
+            <a href="{% url best_schedules %}">Лучшее сегодня в кинотеатрах</a>
+        </li>
+        {% endif %}
+        {% if menu_state.kinoafisha_menu_section03_s02 %}
+        <li>
+            <a href="{% url best_top250 %}">Топ 250 лучших фильмов по версии IMDb</a>
+        </li>
+        {% endif %}
+
+    </ul>
+    </div>
+    {% endif %}
+
+
+    {% if menu_state.kinoafisha_menu_section04_s00 %}
+    <h5 class="method-category" id="kinoafisha_menu_section04"><p>Бокс-офис</p></h5>
+    <div class="method-list">
+    <ul>
+        {% if menu_state.kinoafisha_menu_section04_s01 %}
+        <li>
+            <a href="{% url boxoffice 'russia' %}">Россия</a>
+        </li>
+        {% endif %}
+        {% if menu_state.kinoafisha_menu_section04_s02 %}
+        <li>
+            <a href="{% url boxoffice 'usa' %}">США</a>
+        </li>
+        {% endif %}
+    </ul>
+    </div>
+    {% endif %}
+
+
+
+    {% if menu_state.kinoafisha_menu_section05_s00 %}
+    <h5 class="method-category" id="kinoafisha_menu_section05"><p>Кино он-лайн</p></h5>
+    <div class="method-list">
+    <ul>
+        {% if menu_state.kinoafisha_menu_section05_s01 %}
+        <li>
+            <a href="{% url online %}">Пять случайных фильмов</a>
+        </li>
+        {% endif %}
+
+        {% if menu_state.kinoafisha_menu_section05_s02 %}
+        <li>
+            <a href="{% url show_film_list %}">Все доступные фильмы</a>
+        </li>
+        {% endif %}
+
+    </ul>
+    </div>
+    {% endif %}
+
+
+    {% if menu_state.kinoafisha_menu_section06_s00 %}    
+    <h5 class="method-category" id="kinoafisha_menu_section06"><p>Обзоры, мнения и комментарии</p></h5>
+    <div class="method-list">
+    <ul>
+        {% if menu_state.kinoafisha_menu_section06_s01 %}
+        <li>
+            <a href="{% url kinoafisha_reviews %}">Темы и обзоры</a>
+        </li>
+        {% endif %}
+
+        {% if menu_state.kinoafisha_menu_section06_s02 %}
+        <li>
+            <a href="{% url kinoafisha_opinions %}">Отзывы на фильмы</a>
+        </li>
+        {% endif %}
+
+    </ul>
+    </div>
+    {% endif %}
+
+
+    {% if menu_state.kinoafisha_menu_section07_s00 %}
+    <h5 class="method-category" id="kinoafisha_menu_section07"><p>Новости</p></h5>
+    <div class="method-list">
+    <ul>
+        {% if menu_state.kinoafisha_menu_section07_s01 %}
+        <li>
+            <a href="{% url kinoafisha_news %}">Архив Киноафиши</a>
+        </li>
+        {% endif %}
+        {% if menu_state.kinoafisha_menu_section07_s02 %}
+        <li>
+            <a href="{% url kinoafisha_world_news %}">Новости мирового кино</a>
+        </li>
+        {% endif %}
+        {% if menu_state.kinoafisha_menu_section07_s03 %}
+        <li>
+            <a href="{% url kinoafisha_russia_news %}">Новости российского кинопоказа</a>
+        </li>
+        {% endif %}
+
+    </ul>
+    </div>
+    {% endif %}
+
+
+    {% if menu_state.kinoafisha_menu_section08_s00 %}
+    <h5 class="method-category" id="kinoafisha_menu_section08"><p>Мегакритик</p></h5>
+    <div class="method-list">
+    <ul>
+        {% if menu_state.kinoafisha_menu_section08_s01 %}
+        <li>
+            <a href="https://www.megacritic.ru/" target="_blank">Перейти на агрегатор кинокритики</a>
+        </li>
+        {% endif %}
+    </ul>
+    </div>
+    {% endif %}
+
+</div>
+

@@ -1,0 +1,356 @@
+{% extends "base_forums.html" %}
+{% block title %}Женский форум КХВ{% endblock %}
+{% block script %}
+
+{% if user.is_superuser %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+{% endif %}
+
+<script type="text/javascript">
+
+{% if user.is_superuser %}
+tinyMCE.init({"elements": "id_note", "language": "ru", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "link, unlink, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": false, "directionality": "ltr", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact"});
+{% endif %}
+
+
+    var wf_search_query = "{{ search_query }}"
+    
+    $(document).ready(function(){
+        $(".fancybox").fancybox({'openEffect': 'none', 'closeEffect': 'none'});
+        /* 95 55 */
+        var wfhvalue = {% if request.bg_img %}95{% else %}55{% endif %}
+
+
+        $(window).resize(function () {
+            $('.art-posttree-width').css('height', $(window).height() - wfhvalue + 'px')
+            $('.art-postcontent-width').css('height', $(window).height() - (wfhvalue + 10) + 'px')
+        })
+    
+        $('.art-posttree-width').css('height', $(window).height() - wfhvalue + 'px')
+        $('.art-postcontent-width').css('height', $(window).height() - (wfhvalue + 10) + 'px')
+
+        {% if not topic %}
+            {% if first_load %}
+                get_forum_topic({{ first_load }}, "{{ first_title }}", {{ first_load }})
+            {% endif %}
+        {% else %}
+            {% if topic %}
+                get_forum_topic({{ topic }}, "{{ first_title }}", {{ topic }})
+                {% if newmsg and not wf_msg_open %}
+                    Dajaxice.forums.forum_get_msg(forum_get_msg_callback, {'id': {{ newmsg }}})
+                {% endif %}
+            {% endif %}
+        {% endif %}
+        
+        {% if search_query %}
+            $('.left_categories_tbl .tlink').highlight(wf_search_query);
+        {% endif %}
+        
+    });
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+<div class="art-posttree-width">
+    <div class="slide_menu" id="sm_left" title="Свернуть меню"></div>
+    
+    <input type="hidden" value="{% if topic %}{{ topic }}{% else %}{{ first_load }}{% endif %}" class="topic_id"/>
+    <input type="hidden" value="{{ first_cat_id }}" class="category_id"/>
+    <input type="hidden" value="0" class="parent_id"/>
+    <input type="hidden" value="{{ newmsg }}" class="newmsg"/>
+    <input type="hidden" value="{{ level }}" class="ignore_current_lvl"/>
+    <input type="hidden" value="{{ next_level }}" class="ignore_nxt_lvl"/>
+    
+    <div class="left_title">
+        Женский форум КХВ{% if request.user.is_superuser %} <span style="font-size: 12px; font-weight: normal;">[Gen: {{ timer }}]</span>{% endif %} 
+        <div class="mobile_version"><a href="/women/m/{% if topic %}topic/{{ topic }}/{% endif %}" class="full_website" id="fw_type_1" title="Мобильная версия">Мобильная версия</a></div>
+    </div>
+
+    
+    <div class="left_settings">
+    
+        <div class="tbl_item">
+            <div class="tlink">
+                <form action="" method="POST">{% csrf_token %}
+                    <input type="submit" value="Обновить" name="refresh" />
+                </form>
+            </div>
+            <div class="tbl_info">
+                <input type="button" value="Настройки" name="settings" onclick="$.fancybox($('.settings_block').show());"/>
+            </div>
+        </div>
+        
+        <span class="wf_searching_err">Слишком короткий запрос</span>
+        <div class="tbl_item">
+            <form action="" method="GET" id="wf_search_form">
+                <div class="tlink">
+                    <input type="text" value="{{ search_query }}" name="q" class="wf_searching" />
+                </div>
+                <div class="tbl_info">
+                    <input type="button" value="Искать" class="wf_search" />
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <div class="left_categories">
+        <div class="left_categories_tbl">
+        {% for i in data %}
+            <div class="tbl_item" id="item_{{ i.id }}">
+                <h3>{{ i.subject }}</h3>
+                <div class="tbl_info"><input type="button" value="Начать тему" onclick="wf_msg(1, {{ i.id }})" /></div>
+            </div>
+            {% for t in i.topics %}
+            {% if user.is_superuser %}
+                {% if t.del %}
+                <div class="wf_reuse item_ho" id="wfd_{{ t.id }}" title="Восстановить всю ветку"></div>
+                {% else %}
+                <div class="wf_del item_ho" id="wfd_{{ t.id }}" title="Удалить всю ветку"></div>
+                {% endif %}
+            {% endif %}
+            <a href="javascript:void(0)" id="{{ i.id }}__{{ t.id }}" class="topic_link">
+            <div class="tbl_item item_ho"{% if user.is_superuser %} style="margin-left: 35px;"{% endif %}>
+                <div class="tlink" title="{{ t.author }}">{{ t.subject|safe }}</div>
+                <div class="tbl_info">
+                    <div id="lm_time_{{ t.id }}" title="Дата и время последнего сообщения">{{ t.date|date:"d.m" }}<span>{{ t.date|date:"H:i" }}</span></div>
+                    <div id="comm_count_{{ t.id }}" class="mc" title="Всего сообщений">({{ t.count }}{% if t.no_readed %}/<b>{{ t.no_readed }}</b>{% endif %})</div>
+                </div>
+            </div>
+            </a>
+            {% endfor %}
+            <div class="tdbr"></div>
+        {% endfor %}
+        </div>
+        
+            <div class="footer">
+                <div class="footer__content-main__text">
+                    <!--LiveInternet counter--><script type="text/javascript"><!--
+                    document.write("<a href='//www.liveinternet.ru/click' "+
+                    "target=_blank><img src='//counter.yadro.ru/hit?t26.1;r"+
+                    escape(document.referrer)+((typeof(screen)=="undefined")?"":
+                    ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+                    screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+                    ";"+Math.random()+
+                    "' alt='' title='LiveInternet: показано число посетителей за"+
+                    " сегодня' "+
+                    "border='0' width='88' height='15'><\/a>")
+                    //--></script><!--/LiveInternet-->
+                </div>
+            </div>
+        
+    </div>
+    
+
+</div>
+    
+<div class="art-postcontent-width">
+
+    <div class="right-top">
+        <div class="settings_block">
+            <noindex>
+            <form action="{% url women_forum_settings %}" method="POST">{% csrf_token %}
+                <h3>Настройки</h3>
+                <input type="hidden" name="next" value="{% if topic %}{{ topic }}{% endif %}" />
+                <fieldset class="settings_block_main">
+                
+                    <div>
+                        Схема оформления: <br />
+                        <ul class="wf_colors">
+                            {% for i in FORUM_SH_STYLE %}
+                            <li>
+                            <input type="radio" name="sh_style" value="{{ i.id }}" {% if i.val == wf_style %}checked{% endif %} />
+                            <div class="wf_color" style="background: {{ i.val }};"></div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                    
+                    
+                    <table>
+                        <tr>
+                            <td>Показывать темы за последние: </td>
+                            <td>
+                            <select name="show_topic">
+                                {% for i in FORUM_SHOW_TOPIC %}
+                                <option value="{{ i.id }}" {% if i.val == wf_topic %}selected{% endif %}>{{ i.title }}</option>
+                                {% endfor %}
+                            </select>
+                            </td>
+                            <td style="padding-left: 50px;">Показывать последние: </td>
+                            <td>
+                            <select name="show_last">
+                                {% for i in FORUM_SHOW_LAST %}
+                                <option value="{{ i.id }}" {% if i.val == wf_last %}selected{% endif %}>{{ i.title }}</option>
+                                {% endfor %}
+                            </select>
+                            </td>
+                        </tr>
+                        
+                    </table>
+
+                </fieldset>
+                
+                <br />
+                
+                <fieldset>
+                    <legend>Показывать темы:</legend>
+                    <div>
+                    <ul>
+                    {% for i in categories %}
+                        <li><input type="checkbox" value="{{ i.obj.id }}"{% if i.set %} checked{% endif %} name="checker" /> {{ i.obj.subject }}</li>
+                    {% endfor %}
+                    </ul>
+                    </div>
+                    <input type="checkbox" name="checker_all" /> Отметить все
+                </fieldset>
+                
+                <div class="settings_btns">
+                    <input type="submit" value="Принять" />
+                    <input type="button" value="Закрыть" onclick="$.fancybox.close();" />
+                </div>
+                </noindex>
+            </form>
+        </div>
+
+        <div style="width: 100%; height: 90px; margin: 0 auto; background: #fff; margin-bottom: 10px;">
+        <!-- BEGIN admelon http://forums.vsetiinter.net/women/ (728x90) -->
+        <script type="text/javascript">
+        (function() {
+            var placeId = 1665, frameId = '_adm_' + placeId + '_iframe', src = document.location.protocol + '//engine.admelon.ru/c?pid=' + placeId + '&rid=' + Math.floor(Math.random() * 1000000000);
+            document.write('<div id="_adm_' + placeId + '_div"></div>');
+            document.write('<div style="visibility:hidden;position:absolute;"><iframe id="'+ frameId + '" width="1" height="1" marginwidth="0" marginheight="0" scrolling="no" style="border:0;"></iframe></div>');
+            var tryCount=0,fn=function(){var a;if(10>tryCount){try{document.all&&!/opera/i.test(navigator.userAgent)?a=window.frames[frameId].document:document.getElementById&&(a=document.getElementById(frameId).contentDocument)}catch(b){}a?a.write(unescape('%3Cscript src="'+src+'" type="text/javascript"%3E%3C/script%3E')):(tryCount++,setTimeout(fn,100))}};fn();})();
+        </script>
+        <!-- END admelon -->
+        </div>
+
+        <div class="branches">
+            <div class="branch_title"></div>
+            <table class="branch_data" width="100%">
+            </table>
+            
+            {% if user.is_superuser %}
+            <div class="bl_branding_banner_edit">
+                <br />
+                <form action="{% url women_forum_banner %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    <input type="file" name="banner" />
+                    <br /><br />
+                    <input type="submit" name="save" value="Сохранить" />
+                    <input type="submit" name="delete" value="Удалить" />
+                </form>
+            </div>
+            
+            <div class="bl_branding_string_edit">
+                <br />
+                <form action="{% url women_forum_string %}" method="POST">{% csrf_token %}
+                    <textarea style="width: 370px; " rows="10" cols="56" name="text" id="id_note">{{ request.advert_url }}</textarea>
+                    <br />
+                    <input type="submit" name="save" value="Сохранить" />
+                </form>
+            </div>
+            {% endif %}
+        </div>
+
+    </div>
+
+    <div class="rb-sh"><div class="halfscreen_btn" title="Раскрыть сообщения"></div></div>
+    
+    <div class="right-bottom">
+        
+        <div class="rb-data"></div>
+
+        <div class="rb-msg">
+            <input type="hidden" value="{{ nickname }}" class="unick" />
+            <input type="hidden" value="" class="msg_type" />
+            <input type="hidden" value="0" class="msg_edit" id="edt__0" />
+            <div class="rb-msg-title"></div>
+            <table class="rb-msg-editor">
+                <tr>
+                    <td class="rbe_name"></td>
+                    <td colspan="4" class="uname_error"></td>
+                </tr>
+                <tr>
+                    <td class="rbe_name">Имя: </td>
+                    <td class="rbe_field1"><input type="text" value="{{ nickname }}" class="rbe_uname" {% if nickname %}style="background: #F0F0F0;" disabled{% endif %} maxlength="25"/></td>
+                    <td>{% if nickname %}<input type="checkbox" class="rbe_anonim" /> Анонимно{% endif %}</td>
+                    <td rowspan="6" style="text-align: center;">
+                        <input type="button" value="Просмотреть" class="rbe_preview rbe_btn" onclick="rbe_send(true);"/><br />
+                        <input type="button" value="Отменить" class="rbe_cancel rbe_btn"/><br />
+                        <input type="button" value="Отправить" class="rbe_send rbe_btn" onclick="rbe_send(false);"/>
+                    </td>
+                    <td rowspan="7">
+                        
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rbe_name"></td>
+                    <td class="email_error"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="rbe_name"></td>
+                    <td class="file_error"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="rbe_name">Email:</td>
+                    <td class="rbe_field1"><input type="text" value="" class="rbe_email" {% if nickname %}style="background: #F0F0F0;" disabled{% endif %} maxlength="50" /></td>
+                    <td>
+                        {% if nickname %}
+                        <form action="{% url women_forum_addfile %}" method="POST" id="wf_upload_form" enctype="multipart/form-data">{% csrf_token %}
+                            <div class="wf_upload" title="Прикрепить файл">
+                                <input type="file" name="file" class="wf_up" /> 
+                            </div>
+                            <span class="wf_upload_stat" style="display: none;">
+                                <div class="check-mark" ></div>
+                                <a class="wf_upload_cancel" style="text-decoration: underline;">отменить</a>
+                            </span>
+                            <input type="hidden" value="" name="new_msg_id" class="rbe_new_msg_id" />
+                            <input type="hidden" value="" name="fnext" class="rbe_fnext" />
+                        </form>
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="rbe_name"></td>
+                    <td colspan="3" class="subject_text_error"></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="rbe_name">Тема:</td>
+                    <td colspan="3" class="rbe_field2"><input type="text" value="" class="rbe_subject" maxlength="128" /></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td class="rbe_name">Текст:</td>
+                    <td colspan="3" class="rbe_field2"><textarea class="rbe_text"></textarea></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td colspan="3"><div class="emo-show">Смайлы</div>
+                        <ul class="rb-msg-emo">
+                            {% for i in FORUM_SMILES %}
+                            <li class="emo-{{ i.id }}" title="{{ i.val }}"></li>
+                            {% endfor %}
+                        </ul></td>
+                </tr>
+            </table>
+            
+        </div>
+        <div class="rb-preview">
+            <div class="rb-preview-data"></div>
+            <div class="rb-preview-btns">
+                <input type="button" value="Редактировать" class="rbe_edit rbe_btn" />
+                <input type="button" value="Отмена" class="rbe_prev_cancel rbe_btn" />
+                <input type="button" value="Отправить" class="rbe_send rbe_btn" onclick="rbe_send(false);"/>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+
+<div class="clear"></div>
+{% endblock %}

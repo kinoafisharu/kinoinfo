@@ -1,0 +1,150 @@
+{% extends "base.html" %}
+{% load linkexchange_tags %}
+{% block title %}Листинг {{ source.source }}{% endblock %}
+{% load base_tags %}
+
+{% block script %}
+<style>
+#film_info{
+    margin-bottom: 10px; padding: 5px;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+	<b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+     <span style="font-size: 17px;">Листинг {{ source.source }}</span>
+     <span style="font-size: 12px; font-weight: normal;">(выполнился {% if parser_time.date == today or parser_time.date == yesterday %}{% if parser_time.date == today %}сегодня{% else %}вчера{% endif %}{% else %}{{ parser_time|date:"j E Y" }}{% endif %} в {{ parser_time|date:"H:i"}})</span>
+</h1>
+
+
+{% torrents_menu %}
+
+
+<div class="art-postcontent-width">
+    <form action="" method="post" style="margin-bottom: 10px; display: inline-block;">{% csrf_token %}
+        <b style="vertical-align: top; line-height: 22px;">Фильтры: </b>
+        <select name="release" onchange="this.form.submit();">
+            {% for i in release_filter %}
+            <option value="{{ i.id }}" {% if i.id == release %} selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <form action="" method="post" style="margin-bottom: 10px; display: inline-block;">{% csrf_token %}
+        <select name="new" onchange="this.form.submit();">
+            {% for i in new_filter %}
+            <option value="{{ i.id }}" {% if i.id == new %} selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+    <form action="" method="post" style="margin-bottom: 10px; display: inline-block;">{% csrf_token %}
+        <select name="rate" onchange="this.form.submit();">
+            {% for i in rate_filter %}
+            <option value="{{ i }}" {% if i == rate %} selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+    </form>
+
+    <input type="submit" value="Игнорировать" name="ignore" style="float: right;" form="f1" />
+               
+    
+
+
+    {% spaceless %}
+    <div class="art-postcontent">
+        <div class="scroll_list" style="padding-right: 10px;">
+            <form action="" method="post" id="f1">{% csrf_token %}
+
+                {% for i in data %}
+
+                <div id="film_info" style="background: {% if not i.new %}{% if forloop.counter|divisibleby:'2' %}#EBEBEB;{% else %}#F2F2F2;{% endif %}{% else %}#d6f5d6;{% endif %}">
+                    <div class="film_info-schedules">
+                        
+                        <ul>
+                            <li style="vertical-align: middle;">
+                                <input type="checkbox" name="checker" value="{{ i.source_id }}" />
+                            </li>
+                            <li class="film_info-sch">
+                                <div style="font-size: 14px;">
+                                    {% if i.release_date.year != 3000 %}
+                                        {{ i.release_date|date:"j E Y" }}
+                                    {% else %}
+                                        Нет
+                                    {% endif %}
+                                </div>
+                                <span><a href="{{ i.source_url }}" target="_blank">источник</a></span>
+                            </li>
+                            <li class="film_info-img">
+                                <a href="{% url get_film i.id %}" target="_blank"><div class="film_info-data-img" id="poster" style="width: 50px;">{% if i.posters %}<img src="{{ i.posters }}" style="width: 50px;"/>{% endif %}</div></a>
+                            </li>
+                            <li class="film_info-data">
+                                <div>
+                                    <h2 id="film_name"><a href="{% url get_film i.id %}" target="_blank">{{ i.name_ru }}</a></h2>
+                                    <div id="film_details">
+                                        <em>{% for v in i.countries %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},</em>
+                                        <em>{% for v in i.genres %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},</em>
+                                        <em>{% if i.runtime %}{{ i.runtime }} мин.{% endif %}</em>
+                                    </div>
+                                    <div id="film_info-description">{{ i.descript_cut }}</div>
+                                </div>
+                            </li>
+                            <li class="film_info-rate">
+                                <div class="rate_color_{{ i.rate }}">
+                                    <div class="pen_rate"><b title="Репутация фильма:{% if i.rating.show_imdb %} IMDb - {{ i.rating.show_imdb }}{% endif %}{% if i.rating.rotten %} / RottenTomatoes - {{ i.rating.rotten }}{% endif %}{% if i.rating.show_ir %} / Киномэтры - {{ i.rating.show_ir }}{% endif %}{% if not i.rating.show_imdb and not i.rating.rotten and not i.rating.show_ir %} нет{% endif %}">{% if i.rate %}{{ i.rate }}{% else %}?{% endif %}</b></div>
+                                </div>
+                                <span>{{ i.limit }}</span>
+                            </li>
+                            <li class="film_info-torrents">
+                                <div>
+                                    {% if i.torrent.0 %}
+                                    <span style="color: green;">П</span>
+                                    {% else %}
+                                    <a href="{% url get_film_download i.id %}?q=0" style="color: red;" target="_blank">П</a>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    {% if i.torrent.1 %}
+                                    <span style="color: green;">Х</span>
+                                    {% else %}
+                                    <a href="{% url get_film_download i.id %}?q=1" style="color: red;" target="_blank">Х</a>
+                                    {% endif %}
+                                </div>
+                                <div>
+                                    {% if i.torrent.2 %}
+                                    <span style="color: green;">HD</span>
+                                    {% else %}
+                                    <a href="{% url get_film_download i.id %}?q=2" style="color: red;" target="_blank">HD</a>
+                                    {% endif %}
+                                </div>
+                            </li>
+                        </ul> 
+                        
+                    </div>
+                    <div class="clear"></div>
+                </div>
+                {% endfor %}
+
+            </form>
+
+            <div class="more_news" style="margin: 0 auto;">
+                {% if page == 1 and p.has_next %}
+                <a href="?page={{ p.next_page_number }}" class="more_news__link">Далее</a>
+                {% endif %}
+                {% if page > 1 %}
+                    <a href="?page={{ p.previous_page_number }}" class="more_news__link">&#8592; Назад</a>
+                    {% if p.has_next %}
+                    <a href="?page={{ p.next_page_number }}" class="more_news__link">Далее &#8594;</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+    {% endspaceless %}
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,132 @@
+{% extends "base.html" %}
+{% block title %}
+{% load base_tags %}
+{% if city_name and flag %}
+Киноафиша города {{ city_name }}
+{% else %}
+Киноафиша Вашего города
+{% endif %}
+{% endblock %}
+{% block script %}
+    <script id="kh_script" type="text/javascript" src="http://kinohod.ru/static/js/widget/v2.1/boxoffice.js?apikey={{ kinohod_key }}&base_uri=http%3a%2f%2fkinohod.ru%2fapi%2fwidget"></script>
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+        $("#descript").fancybox();
+        {% if first_load_film %}
+            get_film({{ first_load_film }});
+            get_film_schedule({{ first_load_film }}, {{ cinema }});
+        {% else %}
+            $('#film_info').hide()
+            {% if not city_name %}
+            var obj = "города"
+            {% else %}
+            {% if not cinema_name %}
+            var obj = "кинотеатра"
+            {% endif %}
+            {% endif %}
+            $('#loader').html("К сожалению, для этого " + obj + " нет ни одного сеанса, выберите другой.")
+        {% endif %}
+        {% if alert %}
+            if(confirm("Запомнить выбор города?")){
+                save_city_choice({{ alert }});
+            }
+        {% endif %}
+    });
+    </script>
+{% endblock %}
+{% block content %}
+
+
+<h1 class="content-header">
+	<b id="navigation_bar">
+        <a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a>
+        {% if city_name %}  
+            <span  id="cities2" title="{% if city_name %}{{ city_name }}{% endif %}"> Киноафиша {{ city_name }} </span>
+        {% else %}
+            <span id="cities2" style="color: #D63333"> - Выберите город</span>
+        {% endif %}
+    </b>
+     
+    <div id="cities_inline">
+        <div style="padding: 8px;">
+            {% for i in cities %}
+            {% if i.id == city %}
+                <div class="cities_list" title="{{ i.name }}" style="color: #333333;">
+                {{ i.name|slice:":17" }}
+                </div>
+            {% else %}
+                <a href="{% url schedule_ajax i.id %}">
+                    <div class="cities_list" title="{{ i.name }}">
+                    {{ i.name|slice:":17" }}
+                    </div>
+                </a>
+            {% endif %}
+            {% endfor %}
+        </div>
+    </div>  
+
+    <b id="navigation_bar">{% if city_name %} - <span id="cinemas2" title="{% if cinema_name %}{{ cinema_name|safe }}{% endif %}"> кинотеатр {{ cinema_name|safe }} </span> {% endif %}</b>
+
+     <div id="cinemas_inline">
+         <div style="padding: 8px;">
+         {% for i in cities %}
+         {% if i.id == city %}
+             {% for j in i.cinema|dictsort:"name" %}
+             {% if j.id == cinema %}
+             <div class="cinemas_list" title="{{ j.name|safe }}" style="color: #333333;">
+             {{ j.name|safe }}
+             </div>
+             {% else %}
+             <a href="{% url schedule_ajax i.id j.id %}">
+             <div class="cinemas_list" title="{{ j.name|safe }}">
+             {{ j.name|safe }}
+             </div>
+             </a>
+            {% endif %}
+            {% endfor %}
+         {% endif %}
+         {% endfor %}
+         </div>
+     </div>    
+</h1>
+
+<div class="art-posttree-width">
+    <div class="release-list">
+        {% for r in data %}
+            {% for i in r.data|dictsort:"name" %}
+            <div onclick="get_film({{ i.kid }}); get_film_schedule({{ i.kid }}, {{ cinema }});" id="release_film_id_{{ i.kid }}" class="release_film">
+
+                {% if r.rate == 0 %}
+                <b class="release_film_rate rate_0" >?</b> 
+                <b class="release_film_rate_angle angle_0"></b>
+
+                {% else %}
+                <b class="release_film_rate rate_{{ r.rate }}" title="Репутация фильма:{% if i.show_imdb %} IMDb - {{ i.show_imdb }}{% endif %}{% if i.rotten %} / RottenTomatoes - {{ i.rotten }}{% endif %}{% if i.show_ir %} / Киномэтры - {{ i.show_ir }}{% endif %}{% if not i.show_imdb and not i.rotten and not i.show_ir %} нет{% endif %}" >{{ r.rate }}</b> 
+                <b class="release_film_rate_angle angle_{{ r.rate }}"></b>
+
+                {% endif %}
+                <b id="release_film_name" class="release_film_name">{{ i.name|safe }}</b>
+                {% comment %}
+                <span id="release_film_genre" class="release_film_genre">
+                ({% for g in i.genres %}{{ g|slice:":8" }}.{% if not forloop.last %}, {% endif %}{% endfor %})
+                </span>
+                {% endcomment %}
+            </div>
+            {% endfor %}
+        {% endfor %}
+
+        {% if user.is_superuser %}
+            <a href="{% url kinoafisha_admin_main %}">Панель</a>
+        {% endif %}
+
+    </div>
+</div>
+
+
+<div class="art-postcontent-width">
+    {% film_data 'schedule' %}
+</div>
+
+{% endblock %}

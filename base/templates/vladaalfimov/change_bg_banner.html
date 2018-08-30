@@ -1,0 +1,65 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% block title %}Change background{% endblock %}
+
+{% load i18n %}
+
+
+{% block content %}
+
+{% vlada_top_menu %}
+{% vlada_tools_menu %}
+
+<div class="art-postcontent-width" style="margin-left: 10px;">
+    <form class="change_background" action="{% url change_background %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <table class="panel_list fat">
+            <tr>
+                <td style="width: 100px;"><div>{{ form.url.label }}</div></td>
+                <td style="width: 100px;"><div>{{ form.url }}</div></td>
+                <td><div>{{ form.url.errors }}</div></td>
+            </tr>
+            <tr>
+                <td><div>{{ form.image.label }}</div></td>
+                <td><div>{{ form.image }}</div></td>
+                <td><div>{{ form.image.errors }}</div></td>
+            </tr>
+            <tr>
+                <td><div>{{ form.country.label }}</div></td>
+                <td><div>{{ form.country }}</div></td>
+                <td><div>{{ form.country.errors }}</div></td>
+            </tr>
+            <tr>
+                <td><div>{{ form.city.label }}</div></td>
+                <td><div>{{ form.city }}</div></td>
+                <td><div>{{ form.city.errors }}</div></td>
+            </tr>
+        </table>
+        <br />
+        <input type="submit" value="{% trans 'Сохранить' %}" />
+    </form>
+    
+    {% if current_site == 'vladaalfimovdesign.com.au' %}
+    <br /><div class="separator_line"></div>
+    <b>Change links on main page</b>
+    <br />
+    <table class="panel_list fat">
+    <tr>
+        <td><input type="text" value="{{ links.1 }}" id="mlink__1" style="width: 92%; margin: 10px;" /></td>
+        <td><input type="text" value="{{ links.2 }}" id="mlink__2" style="width: 92%; margin: 10px;" /></td>
+    </tr>
+    <tr>
+        <td><input type="text" value="{{ links.3 }}" id="mlink__3" style="width: 92%; margin: 10px;" /></td>
+        <td><input type="text" value="{{ links.4 }}" id="mlink__4" style="width: 92%; margin: 10px;" /></td>
+    </tr>
+    </table>
+    <br />
+    <input type="submit" value="{% trans 'Сохранить' %}" class="links_main_page" /> <span id="links_main_page_msg"></span>
+    {% endif %}
+</div>
+<div class="clear"></div>
+
+{% endblock %}
+
+

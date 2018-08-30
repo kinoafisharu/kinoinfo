@@ -1,0 +1,10 @@
+<form action="{% url lj_auth_send %}" method="post">{% csrf_token %}
+    <div class="lj_button">
+        <p>Ваш логин</p>
+        <div class="hidden_input">
+            <input type="text" name="lj_auth" />.livejournal.com 
+            <br />
+            <input type="submit" value="Авторизоваться" />
+        </div>
+    </div>
+</form>

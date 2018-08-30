@@ -1,0 +1,81 @@
+{% load base_tags %}
+
+<div class="art-posttree-width">
+    <div id="accordion">
+        <h5 class="method-category" id="letsget_org_section01"><p>My Offers</p></h5>
+        <div class="method-list">
+            <ul>
+            {% for i in offers_tags %}
+                <li><a href="{% url org_offers org_id i.id %}">{{ i.organizationtags.name }}</a></li>
+            {% endfor %}
+            </ul>
+            
+            {% if request.user.is_superuser or request.is_admin or is_editor %}
+                <a class="org_add_menu"><b>add page</b></a>
+            {% endif %}
+        </div>
+
+        <h5 class="method-category" id="letsget_org_section02"><p>I'm Looking For</p></h5>
+        <div class="method-list">
+            <ul>
+            {% for i in advert_tags %}
+                <li><a href="{% url org_seek org_id i.id %}">{{ i.organizationtags.name }}</a></li>
+            {% endfor %}
+            </ul>   
+
+            {% if request.user.is_superuser or request.is_admin or is_editor %}
+                <a class="org_add_menu_needs"><b>add page</b></a>
+            {% endif %}
+        </div>
+
+        <h5 class="method-category" id="letsget_org_section03"><p>About Us</p></h5>
+        <div class="method-list">
+            <ul>
+                <li><a href="{% url orgs org_id %}">About Us</a></li>
+            </ul>
+            
+        </div>
+
+    </div>
+    
+    {% if request.user.is_superuser or request.is_admin or is_editor %}
+    
+    <form action="{% url organization_offers_and_advert org_id %}" method="post">{% csrf_token %}
+            <div class="organization_menu_fields org_fields">
+            <b>My Offers:</b>
+            <br /><br />
+            {% for i in offers_tags %}
+            <input type="text" value="{{ i.organizationtags.name }}" size="30" name="organization_menu_field" class="organization_menu_field" id="{{ i.organizationtags.id }}" />
+            {% empty %}
+            <input type="text" value="" size="30" name="organization_menu_field" class="organization_menu_field" id="0" />
+            {% endfor %}
+            
+            <span class="menu_new" title="Add More"></span>
+            <br />
+            <input type="button" value="Save" class="organization_menu_accept_btn" />
+            <input type="button" value="Cancel" class="organization_menu_cancel_btn" />
+            <input type="hidden" value="3" name="status" />
+            </div>
+        </form>
+    
+    <form action="{% url organization_offers_and_advert org_id %}" method="post">{% csrf_token %}
+        <div class="organization_menu_needs_fields org_fields">
+        <b>I'm Looking For:</b>
+        <br /><br />
+        {% for i in advert_tags %}
+        <input type="text" value="{{ i.organizationtags.name }}" size="30" name="organization_menu_field" class="organization_menu_field" id="{{ i.organizationtags.id }}" />
+        {% empty %}
+        <input type="text" value="" size="30" name="organization_menu_field" class="organization_menu_field" id="0" />
+        {% endfor %}
+        
+        <span class="menu_new" title="Add More"></span>
+        <br />
+        <input type="button" value="Save" class="organization_menu_accept_btn" />
+        <input type="button" value="Cancel" class="organization_menu_needs_cancel_btn" />
+        <input type="hidden" value="4" name="status" />
+        </div>
+    </form>
+    {% endif %}
+    
+</div>
+

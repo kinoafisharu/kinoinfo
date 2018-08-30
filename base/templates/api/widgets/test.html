@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}test widget{% endblock %}
+{% block content %}
+{% load base_tags %}
+
+<h1 class="content-header">test widget</h1>
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        <iframe width="340" height="400" src="http://kinoinfo.ru/api/widget/schedule/?city=киев" frameborder="0"></iframe>
+        
+        <iframe width="274" height="400" src="http://kinoinfo.ru/api/widget/schedule/?city=ялта&style=small" frameborder="0"></iframe>
+        
+     </div>   
+</div>
+
+
+
+{% endblock %}

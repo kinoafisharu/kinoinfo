@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{% if org.ownership %}{{ org.get_ownership_display }} {% endif %}{{ org.name }} - сотрудники{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header"><a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a> 
+{% if request.current_site.domain != 'kinoinfo.ru' %}
+<span id="cities2">{% for i in DOMAIN_CITIES %}{% if i.sub == request.subdomain %}{{ i.name }}{% endif %}{% endfor %}</span> - <a href="{% url organization_list 'а' %}">
+{% endif %}
+{% if org.ownership %}{{ org.get_ownership_display }} {% endif %}{{ org.name }}
+{% if request.current_site.domain != 'kinoinfo.ru' %}
+</a>
+{% endif %} - сотрудники</h1>
+
+{% if request.current_site.domain != 'kinoinfo.ru' %}
+<div id="cities_inline">
+    <div style="padding: 8px;">
+        {% for i in DOMAIN_CITIES %}
+            {% if i.sub == request.subdomain %}
+                <div class="cities_list" style="color: #333;">
+                {{ i.name }}
+                </div>
+            {% else %}
+                <a href="http://{{ i.sub }}.vsetiinter.net/">
+                    <div class="cities_list">
+                    {{ i.name }}
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+{% organization_menu org.uni_slug offers_tags advert_tags is_editor branding %}
+
+
+<div class="art-postcontent-width">
+        {% if user.is_superuser or is_editor or request.is_admin %}
+            <input type="hidden" class="organization_id" id="{{ org.id }}" />
+        {% endif %}
+
+        {% if user.is_superuser or is_editor or request.is_admin %}
+            <a id="staff" class="organization_people org_hover" title="Редактировать">Управление сотрудниками</a>
+            <br />
+            <br />
+            
+            <div class="organization_staff_fields" style="display: none;">
+                Поиск сотрудников:
+                <input type="text" class="search_staff" value="" size="70" />
+                <input type="button" class="search_people_btn" id="staff" value="Поиск" />
+                <div class="search_people_result staff_result">
+                {% if users %}
+                Редакторы:<br />
+                {% endif %}
+                {% for i in staff %}
+                    <input type="checkbox" id="checker_staff" value="{{ i.id }}" id="default" checked/> 
+                    <a href="http://ya.vsetiinter.net/user/profile/{{ i.id }}/" target="_blank" rel="nofollow">{{ i.acc }} &#8226; <b>{{ i.city }}</b></a>
+                    <br />
+                {% endfor %} 
+                </div>
+                <input type="button" class="search_appoint" id="staff_app" {% if not staff %}style="display: none;"{% endif %} value="Сохранить" />
+            </div>
+
+        {% endif %}
+    
+    
+    <div class="scroll_list">
+    {% for i in staff %}
+        <div class="profile-account">
+            <div class="profile-account-avatar">
+                {% if i.avatar %}
+                    <img src="/upload/avatars/{{ i.avatar }}" />
+                {% else %}
+                    <img src="{{ STATIC_URL }}base/images/noavatar-64.png" />
+                {% endif %}
+            </div>
+            <div class="profile-account-info">
+                {% if i.show == '1' %}
+                <p><a href="http://ya.vsetiinter.net/user/profile/{{ i.id }}/" target="_blank" rel="nofollow">{{ i.short_name }}</a></p>
+                {% endif %}
+                {% if i.show == '2' %}
+                <p>{{ i.short_name }}</p>
+                {% endif %}
+            </div>
+
+        </div>
+    {% endfor %}
+    </div>
+        
+</div>
+
+{% endblock %}

@@ -1,0 +1,359 @@
+{% load base_tags static %}
+{% get_static_prefix as STATIC_URL %}
+<div class="art-posttree-width">
+    <div id="accordion">
+
+        <h5 class="method-category" id="section01"><p>Sessions</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'schedule' %}">Schedule</a>
+                {% if acc  %}
+                    <em>{{ content.schedule.modify }}</em>
+                    {% if content.schedule.del %}
+                        <a class="download-dump" href="{% url download 'schedule' %}"></a>
+                    {% endif %}   
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_schedule %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'schedule_v2' %}">Schedule v.2</a>
+                {% if acc  %}
+                    <em>{{ content.schedule_v2.modify }}</em>
+                    {% if content.schedule_v2.del %}
+                        <a class="download-dump" href="{% url download 'schedule_v2' %}"></a>
+                    {% endif %}   
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_schedule_v2 %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="section02"><p>Films</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url get_details 'film' %}">Film</a>
+                <select name="films">
+                    {% for i in films_dumps %}
+                        <option value="{{ i.alt }}">{{ i.alt }}</option>
+                    {% endfor %}
+                </select>
+                
+                <div id="total">
+                    {% for i in films_dumps %}
+                    <div id="film{{ i.alt }}" class="dump-buttons" {% if forloop.first %}style="display: block;"{% endif %}>
+                        {% if acc  %}
+                            <em>{{ i.modify }}</em>
+                            {% if i.del %}
+                                <a class="download-dump" href="{% url download 'film' i.name %}"></a>
+                            {% endif %}
+                            {% if context.user.is_superuser %}
+                                <a class="create-dump" href="{% url dump_film i.name %}"></a>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    {% endfor %}
+                </div>
+
+            </li>
+
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'genre_dir' %}">Genre_dir</a>
+                {% if acc  %}
+                    <em>{{ content.genre_dir.modify }}</em>
+                    {% if content.genre_dir.del %}
+                        <a class="download-dump" href="{% url download 'genre_dir' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_genre_dir %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'films_name' %}">Films_name</a>
+                {% if acc %}
+                    <em>{{ content.films_name.modify }}</em>
+                    {% if content.films_name.del %}
+                        <a class="download-dump" href="{% url download 'films_name' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_films_name %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'imdb_rate' %}">Films_IMDB_rate</a>
+                {% if acc  %}
+                    <em>{{ content.imdb_rate.modify }}</em>
+                    {% if content.imdb_rate.del %}
+                        <a class="download-dump" href="{% url download 'imdb_rate' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_imdb_rate %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'movie_reviews' %}">Films_reviews</a>
+                {% if acc  %}
+                    <em>{{ content.movie_reviews.modify }}</em>
+                    {% if content.movie_reviews.del %}
+                        <a class="download-dump" href="{% url download 'movie_reviews' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_movie_reviews %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'film_posters' %}">Films_posters</a>
+                {% if acc  %}
+                    <em>{{ content.film_posters.modify }}</em>
+                    {% if content.film_posters.del %}
+                        <a class="download-dump" href="{% url download 'film_posters' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_film_posters %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'film_trailers' %}">Films_trailers</a>
+                {% if acc  %}
+                    <em>{{ content.film_trailers.modify }}</em>
+                    {% if content.film_trailers.del %}
+                        <a class="download-dump" href="{% url download 'film_trailers' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_film_trailers %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+        </ul>
+        </div>
+
+        <h5 class="method-category" id="section03"><p>Persons</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+            <div class="dump-buttons">
+            <a href="{% url get_details 'persons' %}">Persons</a>
+            {% if acc  %}
+                <em>{{ content.persons.modify }}</em>
+                {% if content.persons.del %}
+                    <a class="download-dump" href="{% url download 'persons' %}"></a>
+                {% endif %}
+                {% if context.user.is_superuser %}
+                    <a class="create-dump" href="{% url dump_persons %}"></a>
+                {% endif %}
+            {% endif %}
+            </div>
+            </li>
+        </ul>
+        </div>
+
+        <h5 class="method-category" id="section04"><p>Cinema</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'cinema' %}">Cinema</a>
+                {% if acc  %}
+                    <em>{{ content.cinema.modify }}</em>
+                    {% if content.cinema.del %}
+                        <a class="download-dump" href="{% url download 'cinema' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_cinema %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'hall' %}">Hall</a>
+                {% if acc  %}
+                    <em>{{ content.hall.modify }}</em>
+                    {% if content.hall.del %}
+                        <a class="download-dump" href="{% url download 'hall' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_hall %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'hall_dir' %}">Hall_dir</a>
+                {% if acc  %}
+                    <em>{{ content.hall_dir.modify }}</em>
+                    {% if content.hall_dir.del %}
+                        <a class="download-dump" href="{% url download 'hall_dir' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_hall_dir %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+        </ul>
+        </div>
+        <h5 class="method-category" id="section05"><p>City</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'city_dir' %}">City</a>
+                {% if acc  %}
+                    <em>{{ content.city_dir.modify }}</em>
+                    {% if content.city_dir.del %}
+                        <a class="download-dump" href="{% url download 'city_dir' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_city_dir %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'metro_dir' %}">Metro</a>
+                {% if acc  %}
+                    <em>{{ content.metro_dir.modify }}</em>
+                    {% if content.metro_dir.del %}
+                        <a class="download-dump" href="{% url download 'metro_dir' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_metro_dir %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+        </ul>
+        </div>
+        <h5 class="method-category" id="section06"><p>Special</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'screens' %}">Screens</a>
+                {% if acc  %}
+                    <em>{{ content.screens.modify }}</em>
+                    {% if content.screens.del %}
+                        <a class="download-dump" href="{% url download 'screens' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_screens %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'screens_v2' %}">Screens v.2</a>
+                {% if acc  %}
+                    <em>{{ content.screens_v2.modify }}</em>
+                    {% if content.screens_v2.del %}
+                        <a class="download-dump" href="{% url download 'screens_v2' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_screens_v2 %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'imovie' %}">Imovie</a>
+                {% if acc  %}
+                    <em>{{ content.imovie.modify }}</em>
+                    {% if content.imovie.del %}
+                        <a class="download-dump" href="{% url download 'imovie' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_imovie %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'theater' %}">Theater</a>
+                {% if acc  %}
+                    <em>{{ content.theater.modify }}</em>
+                    {% if content.theater.del %}
+                        <a class="download-dump" href="{% url download 'theater' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_theater %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+            <li>
+                <div class="dump-buttons">
+                <a href="{% url get_details 'releases_ua' %}">Releases UA</a>
+                {% if acc  %}
+                    <em>{{ content.releases_ua.modify }}</em>
+                    {% if content.releases_ua.del %}
+                        <a class="download-dump" href="{% url download 'releases_ua' %}"></a>
+                    {% endif %}
+                    {% if context.user.is_superuser %}
+                        <a class="create-dump" href="{% url dump_releases_ua %}"></a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </li>
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="section07"><p>Widgets</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url get_details 'widgets' %}">Sessions</a>
+            </li>
+            <li>
+                <a href="{% url get_details 'button' %}">IMDB button</a>
+            </li>
+        </ul>
+        </div>
+
+        {% if context.user.is_superuser %}
+        <h5 class="method-category" id="section08"><p><_Settings_></p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url set_api_cron %}">API cron settings</a>
+            </li>
+        </ul>
+        </div>
+        {% endif %}
+
+    </div>
+<h4 style="    margin-top: 70px; background-color: #dce4e4"><a href="{% url api_dev %}">for Developers</a></h4>
+
+</div>
+

@@ -1,0 +1,25 @@
+
+<times>
+    <showtime>
+        <movie_name>
+            Пираты: Банда неудачников
+        </movie_name>
+        <movie_id>
+            1430626
+        </movie_id>
+        <theater_id>
+            251
+        </theater_id>
+        <show_date date="20120521">
+        <showtimes>
+        10:40 AM, 0:20 PM, 5:45 PM
+        </showtimes>
+        <show_attributes/>
+        <show_passes/>
+        <show_festival/>
+        <show_with/>
+        <show_sound/>
+        <show_comments/>
+        </show_date>
+    </showtime>
+</times>

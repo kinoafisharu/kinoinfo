@@ -1,0 +1,71 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block script %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+        $("#descript").fancybox();
+        $('#film_info').hide()
+
+    });
+
+    </script>
+{% endblock %}
+
+{% block info %}
+
+    {% if not p_data %}
+        <p>Нет фильмов для идентификации, запустите функцию считывания всех записей из <a href="{% url parse_data_file %}">дампа</a></p>
+        <br />
+    {% else %}
+
+        <div id ="ident_menu">
+            <p>Список неидентифицированных фильмов ({{ count }}):</p>
+            <br />
+        </div>
+
+        <select class="modal-select"   id="ident_select" name="selectEmail">
+        {% for key, value in p_data.items %}
+            <option value="{{ key }}"> {{ value }} </option>
+        {% endfor %}
+        </select>
+        
+        <input id="ident_button" class="button rounded-button button-gray" type="button" value="Идентифицировать все">
+
+    {% endif %}
+    
+    <br/>
+    <br/>
+    <hr/>
+    <br/>
+    <div id="info"></div>
+    <br/>
+
+    <div class="art-postcontent-width">
+        <span id="loader"></span>
+        <div id="film_info">
+            <div id="film_text">
+                   <h2 id="film_name"></h2>
+                   <div id="kid" style="display: none;"></div>
+                   <b id="film_details"></b>
+                   <div class="separator_line"></div>
+                   <!--<div id="film_description"></div>-->
+                
+                   <div id="in_descript"></div>
+                   {% autoescape off %}
+
+                   <div id="player"></div>	 
+
+                   {% endautoescape %}
+                   <div id="film_slides"></div>
+              
+             </div>
+             <div id="film_poster_admin">
+                  <div id="poster"></div>
+             </div>
+        </div>
+    </div>
+{% endblock %}

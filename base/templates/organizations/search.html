@@ -1,0 +1,65 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{% trans 'Поиск' %}{% endblock %}
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".art-search__title-search").click();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+{% if request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+    <h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">Vlada Alfimov Design</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Search {{ element }}</span></b>
+    </h1>
+    
+{% else %}
+    <h1 class="content-header">{% trans 'Поиск' %} {{ element }}</h1>
+{% endif %}
+
+
+<div class="art-postcontent-width">
+    {% if query %}
+        {% if count %}
+        <h3>{% trans 'Найдено' %} {{ count }} {% trans 'по запросу' %} "{{ query|striptags }}"</h3>
+        <br />
+        <div class="scroll_list">
+        {% for i in objs %}
+            {% if category == '1' %}
+            <a href="{% url organization_show_new i.uni_slug %}">{{ i.name|safe|striptags }}</a>
+            {% endif %}
+            {% if category == '2' %}
+            <a href="{% url news i.id %}">{{ i.title|safe|striptags }}</a>
+            {% endif %}
+            {% if category == '3' %}
+            {% for acc in i.acc %}
+            <a href="http://ya.vsetiinter.net/user/profile/{{ i.id }}/" target="_blank">{{ acc|striptags }}{% if not forloop.last %} / {% endif %}</a>
+            {% endfor %}
+            {% endif %}
+            <br /> 
+        {% endfor %}
+        </div>
+        {% else %}
+        <h3>{% trans 'Ничего нет по запросу' %} - "{{ query|striptags }}". {{ msg }}</h3>
+        {% endif %}
+    {% else %}
+        <h3>{% trans 'Вы ничего не указали в строке поиска' %}!</h3>
+    {% endif %}
+    <br />
+    
+    
+    
+    <br />
+    <a href="{% url main %}">{% trans 'Главная' %}</a>
+    <br />
+    
+    
+</div>
+
+
+
+{% endblock %}

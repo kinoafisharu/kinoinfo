@@ -1,0 +1,82 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block script %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+tinyMCE.init({ 
+    mode: "textareas",
+    theme: "simple",
+});
+</script>
+{% endblock %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader">Добавить организацию</h3>
+<div class="clear"></div>
+
+
+    <form action="" method='post'>{% csrf_token %}
+        <table style="color: #555; font-size: 12px; border-collapse: collapse;" border=1>
+            <tr style="background: #E1E1E1;">
+                <td rowspan=2><b>Организация</b></td>
+                <td>{{ form.ownership.errors }}{{ form.ownership.label }}</td>
+                <td>{{ form.name.errors }}{{ form.name.label }}</td>
+                <td colspan=3>{{ form.tags.errors }}{{ form.tags.label }}</td>
+            </tr>
+            <tr style="background: #E1E1E1;">
+                <td>{{ form.ownership }}</td>
+                <td>{{ form.name }}</td>
+                <td colspan=3>{{ form.tags }}</td>
+            </tr>
+
+            <tr style="background: #EDEDED;">
+                <td rowspan=2><b>Адрес</b></td>
+                <td>{{ form.street_type.errors }}{{ form.street_type.label }}</td>
+                <td>{{ form.street.errors }}{{ form.street.label }}</td>
+                <td>{{ form.buildings.errors }}{{ form.buildings.label }}</td>
+                <td>{{ form.room_type.errors }}{{ form.room_type.label }}</td>
+                <td>{{ form.room_num.errors }}{{ form.room_num.label }}</td>
+            </tr>
+            <tr style="background: #EDEDED;">
+                <td>{{ form.street_type }}</td>
+                <td>{{ form.street }}</td>
+                <td>{{ form.buildings }}</td>
+                <td>{{ form.room_type }}</td>
+                <td>{{ form.room_num }}</td>
+            </tr>
+
+            <tr style="background: #E1E1E1;">
+                <td rowspan=6><b>Контакты</b></td>
+                <td>{{ form.site.errors }}{{ form.site.label }}</td>
+                <td colspan=6>{{ form.note.errors }}{{ form.note.label }}</td>
+            </tr>
+
+            <tr style="background: #E1E1E1;">
+                <td>{{ form.site }}</td>
+                <td rowspan=5 colspan=5>{{ form.note }}</td>
+            </tr>
+
+            <tr style="background: #E1E1E1;">
+                <td>{{ form.email.errors }}{{ form.email.label }}</td>
+            </tr>
+            <tr style="background: #E1E1E1;">
+                <td>{{ form.email }}</td>
+            </tr>
+                
+            <tr style="background: #E1E1E1;">
+                <td>Телефоны</td>
+            </tr>
+            <tr style="background: #E1E1E1;">
+                <td>
+                {% for k, v in phones.items %}
+                    <input type="text" value="{{ v }}" name="phone_{{ k }}" /><br />
+                {% endfor %}
+                </td>
+            </tr>
+            
+            
+        </table>
+        <input type="submit" name="save" value="Сохранить">
+    </form>
+
+
+{% endblock %}

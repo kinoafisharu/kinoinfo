@@ -1,0 +1,45 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader" style="float: left;">Подписчики RSS (всего: {{ all_users }})</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+<div style="clear: both;"></div>
+
+<div class="filter_panel">
+<div class="filter">
+    <form action="" method="post">{% csrf_token %}
+        <p>Каналы:</p>
+        <select name="feed" onchange="this.form.submit();">
+            {% for i in feeds %}
+            <option value="{{ i.type }}" {% if i.type == feed %}selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+<div class="filter">
+    <form action="" class="subr_date" method="post">{% csrf_token %}
+        <p>Диапазон (дд-мм-гггг):</p>
+        <input type="text" name="subr_date_from" value="{{ date_from }}" size="10">
+        <input type="text" name="subr_date_to" value="{{ date_to }}" size="10">
+        <input type="submit" name="date_btn" value="OK">
+    </form>
+</div>
+</div>
+
+<table class="panel_list">
+    <th>User</th><th>Time</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td><div><a href="{% url profile i.user_id %}" target="_blank">{{ i.user_id }}</a></div></td>
+            <td><div>{{ i.dtime }}</div></td>
+        </tr>
+    {% empty %}
+        <br />пусто<br />
+    {% endfor %}
+</table>
+
+
+{% endblock %}

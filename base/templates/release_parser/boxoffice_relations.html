@@ -1,0 +1,45 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Кассовые сборы. Редактор связей с дистрибьюторами</h3>
+
+    <br /><br />
+    <form action="" method='post' id="boxoffice_form">{% csrf_token %}
+        <div style="clear: both;"></div>
+
+        Фильм: <a href="http://www.kinoafisha.ru/?status=1&id1={{ obj.kid }}">{{ obj.name }}</a>
+
+        <table class="panel_list">
+            <th></th>
+            <th>Дистрибьютор</th>
+            {% for i in obj.distributor.all %}
+                {% for n in i.name.all %}
+                    {% if n.status == 1 %}
+                    <tr>
+                    <td><div><input class="radio_checker" type="radio" name="object" value="{{ i.id }}" id="" /></div></td>
+                    <td><div>{{ n.name }}</div></td>
+                    </tr>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </table>
+        
+        <br />
+        <input type="submit" id="ignore" name="del_relations" value="Разорвать связь" />
+        <a href="{{ next }}">Вернуться в boxoffice</a>
+        <input type="hidden" name="film" value="{{ obj.kid }}" />
+        
+        <br /><br />
+        <select name="distributor">
+            {% for i in distributors %}
+                <option value="{{ i.id }}">{{ i.name|safe }}</option>
+            {% endfor %}
+        </select>
+        
+
+        <input type="submit" name="create_relations" value="Связать с выбранным" />
+        
+        
+    </form>
+
+{% endblock %}

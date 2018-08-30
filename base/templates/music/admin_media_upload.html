@@ -1,0 +1,145 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Админ Панель - Загрузка медиафайлов{% endblock %}
+{% block script %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.form.js"></script>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url admin_main %}">Админ Панель</a></b> - 
+    <b id="navigation_bar">Загрузка медиафайлов</b>
+</h1>
+
+{% music_admin_menu %}
+
+<div class="art-postcontent-width">
+    {% comment %}
+    <form action="" method="post" enctype="multipart/form-data" >{% csrf_token %}
+    <label for="id_files">MP3 файлы:</label> <input type="file" name="files" multiple id="id_files" />
+    <input type="submit" value="Загрузить" name="mediafiles_upload_btn" />
+    </form>
+    {% endcomment %}
+
+    {% comment %}
+    <br />
+    <form id="track_upload_form" action="{% url track_upload %}" method="post" enctype="multipart/form-data" onchange="track_rel_set();">{% csrf_token %}
+        <label for="fileInput">MP3 файлы:</label>
+        <input id="fileInput" class="input-file" name="upload" type="file" multiple />
+        <input type="submit" value="Загрузить" class="track_upload_btn" />
+        <span class="track_upload_progress"></span>
+    </form>
+    {% endcomment %}
+
+    
+    
+    <a href="#" onclick="$.fancybox($('.art_filter').show());">Фильтры</a>
+    
+    <div class="art_filter" style="font-size: 14px; display: none; width: 450px;">
+        <form action="" method="post" style="display: inline-block;">{% csrf_token %}
+            <table>
+                <tr>
+                    <td>Буква исполнителя: </td>
+                    <td>
+                        <select name="artist_char">
+                        {% for i in artist_alphabet %}
+                            <option value="{{ i }}" {% if artist_char == i %}selected{% endif %}>{{ i }}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Исполнитель: </td>
+                    <td>
+                        <select name="artist_select">
+                        {% for i in artists %}
+                            <option value="{{ i.id }}" {% if artist_select == i %}selected{% endif %}>{{ i.name__name }}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+                
+                <tr>
+                    <td>Буква композиции: </td>
+                    <td>
+                        <select name="char">
+                        {% for i in alphabet_filter %}
+                            <option value="{{ i }}" {% if char == i %}selected{% endif %}>{{ i }}</option>
+                        {% endfor %}
+                        </select>
+                    </td>
+                </tr>
+            </table>
+
+            <br />
+            <input type="submit" value="Применить фильтр" />
+        </form>
+    </div>
+    
+    <input type="button" value="Загрузить выбранные" class="tracks_upload_btn" style="float: right;" />
+    
+    <br /><br />
+    
+    <div class="scroll_list">
+        <table class="modern_tbl">
+            <th>Название композиции</th>
+            <th>Файл</th>
+            <th>Тип</th>
+            <th></th>
+            {% for i in data %}
+            <tr>
+                <td>
+                    <div><a href="{% url composition i.pid i.cid %}" target="_blank">{{ i.title }}</a></div>
+                </td>
+                <td>
+                    <div>
+                        <form class="track_upload_form" action="{% url track_upload %}" method="post" enctype="multipart/form-data" id="form_{{ i.cid }}">{% csrf_token %}
+                            <input id="fileInput_{{ i.cid }}" class="input-file" name="upload" type="file" size="5" />
+                            <input type="hidden" value="{{ i.cid }}" name="tr_id" />
+                            <input type="submit" name="tr_upld_{{ i.cid }}" class="track_upload_btn" value="" style="display: none;"/>
+                        </form>
+                    </div>
+                </td>
+                <td>
+                    <select name="tr_type" form="form_{{ i.cid }}">
+                        {% for mt in mtype %}
+                        <option value="{{ mt.0 }}">{{ mt.1 }}</option>
+                        {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <div><span id="track_upload_progress_{{ i.cid }}"></span></div>
+                </td>
+                
+                
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    
+    
+    <br />
+    
+    <div class="scroll_list">
+    {% if mp3.bad %}
+        <b style="color: red;">Не являются MP3 файлами:</b><br />
+        {% for i in mp3.bad %}
+            {{ i }}<br />
+        {% endfor %}
+        <br />
+    {% endif %}
+    
+    {% if mp3.good %}
+        <b>Успешно загружены:</b><br />
+        {% for i in mp3.good %}
+            {{ i }}<br />
+        {% endfor %}
+        <br />
+    {% endif %}
+    </div>
+    
+</div>
+
+{% endblock %}

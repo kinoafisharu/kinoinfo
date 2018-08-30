@@ -1,0 +1,352 @@
+{% load base_tags static %}
+{% get_static_prefix as STATIC_URL %}
+
+<div class="art-posttree-width" style="overflow: auto;">
+    {% spaceless %}
+    <div id="accordion">
+
+{% if request.user.is_superuser %}
+        <h5 class="method-category" id="kinoafisha_menu_section01">
+        <p>{% if menu_state.kinoafisha_menu_section01_s00 %}В кинотеатрах{% else %}<del>В кинотеатрах</del>{% endif %}</p> 
+        </h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url kinoafisha_main %}">Выходят на этой неделе</a>
+                <a class="{% if menu_state.kinoafisha_menu_section01_s01 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section01' 's01' %}"></a>
+            </li>
+            <li>
+                <a href="{% url kinoafisha_past %}">Вышли на прошлой неделе</a>
+                <a class="{% if menu_state.kinoafisha_menu_section01_s02 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section01' 's02' %}"></a>
+
+            </li>
+            <li>
+                <a href="{% url kinoafisha_schedules %}">Сеансы</a>
+                <a class="{% if menu_state.kinoafisha_menu_section01_s03 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section01' 's03' %}"></a>
+
+            </li>
+        </ul>
+        </div>
+{% else %}
+    {% if menu_state.kinoafisha_menu_section01_s00 %}
+        <h5 class="method-category" id="kinoafisha_menu_section01"><p>В кинотеатрах</p> </h5>
+        <div class="method-list">
+        <ul>
+            {% if menu_state.kinoafisha_menu_section01_s01 %}
+            <li>
+                <a href="{% url kinoafisha_main %}">Выходят на этой неделе</a>
+            </li>
+            {% endif %}
+            {% if menu_state.kinoafisha_menu_section01_s02 %}
+            <li>
+                <a href="{% url kinoafisha_past %}">Вышли на прошлой неделе</a>
+            </li>
+            {% endif %}
+            {% if menu_state.kinoafisha_menu_section01_s03 %}
+            <li>
+                <a href="{% url kinoafisha_schedules %}">Сеансы</a>
+            </li>
+            {% endif %}
+        </ul>
+        </div>
+    {% endif %}
+{% endif %}
+
+
+{% if request.user.is_superuser %}
+        <h5 class="method-category" id="kinoafisha_menu_section02">
+        <p>{% if menu_state.kinoafisha_menu_section02_s00 %}Скоро{% else %}<del>Скоро</del>{% endif %}</p>
+        </h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url kinoafisha_soon %}">Скоро на экранах России</a>
+                <a class="{% if menu_state.kinoafisha_menu_section02_s01 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section02' 's01' %}"></a>
+
+            </li>
+            <li>
+                <a href="{% url kinoafisha_soon_fr %}">Скоро на экранах Франции</a>
+                <a class="{% if menu_state.kinoafisha_menu_section02_s02 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section02' 's02' %}"></a>
+            </li>
+        </ul>
+        </div>
+{% else %}
+    {% if menu_state.kinoafisha_menu_section02_s00 %}
+        <h5 class="method-category" id="kinoafisha_menu_section02"><p>Скоро</p></h5>
+        <div class="method-list">
+        <ul>
+            {% if menu_state.kinoafisha_menu_section02_s01 %}
+            <li>
+                <a href="{% url kinoafisha_soon %}">Скоро на экранах России</a>
+            </li>
+            {% endif %}
+
+            {% if menu_state.kinoafisha_menu_section02_s02 %}
+            <li>
+                <a href="{% url kinoafisha_soon_fr %}">Скоро на экранах Франции</a>
+            </li>
+            {% endif %}
+        </ul>
+        </div>
+    {% endif %}    
+{% endif %}
+
+{% if request.user.is_superuser %}
+        <h5 class="method-category" id="kinoafisha_menu_section03">
+        <p>{% if menu_state.kinoafisha_menu_section03_s00 %}Рекомендации{% else %}<del>Рекомендации</del>{% endif %}</p>
+        </h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url best_schedules %}">Лучшее сегодня в кинотеатрах</a>
+                <a class="{% if menu_state.kinoafisha_menu_section03_s01 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section03' 's01' %}"></a>
+
+            </li>
+            <li>
+                <a href="{% url best_top250 %}">Топ 250 лучших фильмов по версии IMDb</a>
+                <a class="{% if menu_state.kinoafisha_menu_section03_s02 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section03' 's02' %}"></a>
+
+            </li>
+        </ul>
+        </div>
+{% else %}
+    {% if menu_state.kinoafisha_menu_section03_s00 %}
+        <h5 class="method-category" id="kinoafisha_menu_section03"><p>Рекомендации</p></h5>
+        <div class="method-list">
+        <ul>
+            {% if menu_state.kinoafisha_menu_section03_s01 %}
+            <li>
+                <a href="{% url best_schedules %}">Лучшее сегодня в кинотеатрах</a>
+            </li>
+            {% endif %}
+            {% if menu_state.kinoafisha_menu_section03_s02 %}
+            <li>
+                <a href="{% url best_top250 %}">Топ 250 лучших фильмов по версии IMDb</a>
+            </li>
+            {% endif %}
+        </ul>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% if request.user.is_superuser %}
+        <h5 class="method-category" id="kinoafisha_menu_section04">
+        <p>{% if menu_state.kinoafisha_menu_section04_s00 %}Бокс-офис{% else %}<del>Бокс-офис</del>{% endif %}</p>
+        </h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url boxoffice 'russia' %}">Россия</a>
+                <a class="{% if menu_state.kinoafisha_menu_section04_s01 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section04' 's01' %}"></a>
+            </li>
+            <li>
+                <a href="{% url boxoffice 'usa' %}">США</a>
+                <a class="{% if menu_state.kinoafisha_menu_section04_s02 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section04' 's02' %}"></a>
+            </li>
+        </ul>
+        </div>
+{% else %}
+    {% if menu_state.kinoafisha_menu_section04_s00 %}
+        <h5 class="method-category" id="kinoafisha_menu_section04"><p>Бокс-офис</p></h5>
+        <div class="method-list">
+        <ul>
+            {% if menu_state.kinoafisha_menu_section04_s01 %}
+            <li>
+                <a href="{% url boxoffice 'russia' %}">Россия</a>
+            </li>
+            {% endif %}
+            {% if menu_state.kinoafisha_menu_section04_s02 %}
+            <li>
+                <a href="{% url boxoffice 'usa' %}">США</a>
+            </li>
+            {% endif %}
+        </ul>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% if request.user.is_superuser %}
+        <h5 class="method-category" id="kinoafisha_menu_section05">
+        <p>{% if menu_state.kinoafisha_menu_section05_s00 %}Кино он-лайн{% else %}<del>Кино он-лайн</del>{% endif %}</p>
+        </h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url online %}">Пять случайных фильмов</a>
+                <a class="{% if menu_state.kinoafisha_menu_section05_s01 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section05' 's01' %}"></a>
+
+            </li>
+            <li>
+                <a href="{% url show_film_list %}">Все доступные фильмы</a>
+                <a class="{% if menu_state.kinoafisha_menu_section05_s02 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section05' 's02' %}"></a>
+
+            </li>
+        </ul>
+        </div>
+{% else %}    
+    {% if menu_state.kinoafisha_menu_section05_s00 %}
+        <h5 class="method-category" id="kinoafisha_menu_section05"><p>Кино он-лайн</p></h5>
+        <div class="method-list">
+        <ul>
+            {% if menu_state.kinoafisha_menu_section05_s01 %}
+            <li>
+                <a href="{% url online %}">Пять случайных фильмов</a>
+            </li>
+            {% endif %}
+            {% if menu_state.kinoafisha_menu_section05_s02 %}
+            <li>
+                <a href="{% url show_film_list %}">Все доступные фильмы</a>
+            </li>
+            {% endif %}
+        </ul>
+        </div>
+    {% endif %}
+{% endif %}
+
+{% if request.user.is_superuser %}
+        <h5 class="method-category" id="kinoafisha_menu_section06">
+        <p>{% if menu_state.kinoafisha_menu_section06_s00 %}Обзоры, мнения и комментарии{% else %}<del>Обзоры, мнения и комментарии</del>{% endif %}</p>
+        </h5>        
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url kinoafisha_reviews %}">Темы и обзоры</a>
+                <a class="{% if menu_state.kinoafisha_menu_section06_s01 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section06' 's01' %}"></a>
+            </li>
+            <li>
+                <a href="{% url kinoafisha_opinions %}">Отзывы на фильмы</a>
+                <a class="{% if menu_state.kinoafisha_menu_section06_s02 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section06' 's02' %}"></a>
+            </li>
+        </ul>
+        </div>
+{% else %}
+    {% if menu_state.kinoafisha_menu_section06_s00 %}
+        <h5 class="method-category" id="kinoafisha_menu_section06"><p>Обзоры, мнения и комментарии</p> </h5>        
+        <div class="method-list">
+        <ul>
+            {% if menu_state.kinoafisha_menu_section06_s01 %}
+            <li>
+                <a href="{% url kinoafisha_reviews %}">Темы и обзоры</a>
+            </li>
+            {% endif %}
+            {% if menu_state.kinoafisha_menu_section06_s02 %}
+            <li>
+                <a href="{% url kinoafisha_opinions %}">Отзывы на фильмы</a>
+            </li>
+            {% endif %}
+        </ul>
+        </div>
+    {% endif %}
+{% endif %}
+
+
+
+{% if request.user.is_superuser %}
+        <h5 class="method-category" id="kinoafisha_menu_section07">
+        <p>{% if menu_state.kinoafisha_menu_section07_s00 %}Новости{% else %}<del>Новости</del>{% endif %}</p>
+        </h5>        
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url kinoafisha_news %}">Архив Киноафиши</a>
+                <a class="{% if menu_state.kinoafisha_menu_section07_s01 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section07' 's01' %}"></a>
+            </li>
+            <li>
+                <a href="{% url kinoafisha_world_news %}">Новости мирового кино</a>
+                <a class="{% if menu_state.kinoafisha_menu_section07_s02 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section07' 's02' %}"></a>
+
+            </li>
+            <li>
+                <a href="{% url kinoafisha_russia_news %}">Новости российского кинопоказа</a>
+                <a class="{% if menu_state.kinoafisha_menu_section07_s03 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section07' 's03' %}"></a>
+
+            </li>
+        </ul>
+        </div>
+{% else %}
+    {% if menu_state.kinoafisha_menu_section07_s00 %}
+        <h5 class="method-category" id="kinoafisha_menu_section07"><p>Новости</p></h5>        
+        <div class="method-list">
+        <ul>
+            {% if menu_state.kinoafisha_menu_section07_s01 %}
+            <li>
+                <a href="{% url kinoafisha_news %}">Архив Киноафиши</a>
+            </li>
+            {% endif %}
+            {% if menu_state.kinoafisha_menu_section07_s02 %}
+            <li>
+                <a href="{% url kinoafisha_world_news %}">Новости мирового кино</a>
+            </li>
+            {% endif %}
+            {% if menu_state.kinoafisha_menu_section07_s03 %}
+            <li>
+                <a href="{% url kinoafisha_russia_news %}">Новости российского кинопоказа</a>
+            </li>
+            {% endif %}
+        </ul>
+        </div>
+    {% endif %}
+{% endif %}
+
+
+{% if request.user.is_superuser %}
+        <h5 class="method-category" id="kinoafisha_menu_section08">
+        <p>{% if menu_state.kinoafisha_menu_section08_s00 %}Мегакритик{% else %}<del>Мегакритик</del>{% endif %}</p>
+        </h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="https://www.megacritic.ru/" target="_blank">Перейти на агрегатор кинокритики</a>
+                <a class="{% if menu_state.kinoafisha_menu_section08_s01 %}enable-menu{%else%}disable-menu{% endif %}" href="{% url menu_visible 'kinoafisha_menu_section08' 's01' %}"></a>
+
+            </li>
+        </ul>
+        </div>
+{% else %}
+    {% if menu_state.kinoafisha_menu_section08_s00 %}
+        <h5 class="method-category" id="kinoafisha_menu_section08"><p>Мегакритик</p></h5>
+        <div class="method-list">
+        <ul>
+            {% if menu_state.kinoafisha_menu_section08_s01 %}
+            <li>
+                <a href="https://www.megacritic.ru/" target="_blank">Перейти на агрегатор кинокритики</a>
+            </li>
+            {% endif %}
+        </ul>
+        </div>
+    {% endif %}
+{% endif %}
+
+
+        
+    </div>
+
+    {% endspaceless %}
+    
+    {% left_banner %}
+    
+    {% seo_tags %}
+
+    {% if request.current_site.domain == 'kinoafisha.ru' %}
+    <div style="font-size: 10px; color: #888; margin-top: 15px;">
+     Качественная <a href="http://www.tipograf.info/" target="_blank">оперативная полиграфия в типографии Москвы</a>, большой выбор полиграфической продукции.
+    <div class="separator_line"></div>
+    Профессиональное <a href="http://www.elenara.ru" target="_blank">рекламное агентство</a>, полный цикл рекламных услуг.
+    <div class="separator_line"></div>
+    Оперативность, конфеденциальность и кaчеcтво услуг: <a href="http://www.eastunion.ru/" target="_blank">аренда самолета</a> деловой авиации в Москве и регионах, зарубежом. 
+    <div class="separator_line"></div>
+    </div>
+    
+    {% endif %}
+    <div class="clear"></div>
+
+<!---
+<script>
+        $('.enable-menu').click(function(){
+      window.location.replace("/kinoafisha/menu_visible/" + this.parentNode.id + "/s00");
+        });
+</script>
+--->
+
+</div>
+

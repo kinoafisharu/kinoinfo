@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+{% block script %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        var scroll_h = ($(window).height() / 100) * 60
+        $('.scroll_list').css('height', scroll_h + 'px')
+        
+    });
+</script>
+{% endblock %}
+
+
+{% block content %}
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ site_name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">{{ title }}</span></b>
+</h1>
+
+{% if user.is_superuser or request.is_admin %}
+<span class="add_photos in_h1">Add Files</span>
+{% endif %}
+
+{% if current_site.domain == 'vladaalfimovdesign.com.au' %}
+    {% vlada_menu slug %}
+{% endif %}
+{% if current_site.domain == 'letsgetrhythm.com.au' or current_site.domain == 'vsetiinter.net' %}
+    {% letsget_menu slug %}
+{% endif %}
+ 
+<div class="art-postcontent-width">
+    {% if user.is_superuser or request.is_admin %}
+    <div class="organization_slides org_fields">
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <label for="id_files">File:</label> <input type="file" name="files" id="id_files" multiple />
+        <br /><br />
+        <input type="submit" value="Save" class="organization_slides_accept_btn" name="file_add" />
+        <input type="button" value="Cancel" class="organization_slides_cancel_btn" />
+        </form>
+    </div>
+    {% endif %}
+    
+    
+    
+    <div class="scroll_list" id="org_slides">
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <table class="panel_list">
+            <th></th><th>File Name</th>
+            {% for i in files %}
+            <tr>
+                <td><div><input type="checkbox" value="{{ forloop.counter0 }}" name="checker" /></div></td>
+                <td><div><a href="/upload/{{ current_site.domain }}/private/{{ i.1 }}">{{ i.1 }}</a></div></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% if files %}
+        <br />
+        <input type="submit" value="Delete Selected" name="delfile" />
+        {% endif %}
+        </form>
+    </div>
+</div>
+
+{% endblock %}

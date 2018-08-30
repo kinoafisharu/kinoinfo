@@ -1,0 +1,789 @@
+# encoding: utf-8
+import datetime
+from south.db import db
+from south.v2 import SchemaMigration
+from django.db import models
+
+class Migration(SchemaMigration):
+
+    def forwards(self, orm):
+        
+        # Deleting model 'Source'
+        db.delete_table('base_source')
+
+        # Deleting model 'CopyFilm'
+        db.delete_table('base_copyfilm')
+
+        # Removing M2M table for field aboutfilm on 'CopyFilm'
+        db.delete_table('base_copyfilm_aboutfilm')
+
+        # Deleting model 'AboutFilm'
+        db.delete_table('base_aboutfilm')
+
+        # Removing M2M table for field name on 'AboutFilm'
+        db.delete_table('base_aboutfilm_name')
+
+        # Removing M2M table for field country on 'AboutFilm'
+        db.delete_table('base_aboutfilm_country')
+
+        # Removing M2M table for field genre on 'AboutFilm'
+        db.delete_table('base_aboutfilm_genre')
+
+        # Deleting model 'Note'
+        db.delete_table('base_note')
+
+        # Deleting model 'NameFilm'
+        db.delete_table('base_namefilm')
+
+        # Deleting model 'Section'
+        db.delete_table('base_section')
+
+        # Deleting model 'AlterHallName'
+        db.delete_table('base_alterhallname')
+
+        # Deleting model 'Topick'
+        db.delete_table('base_topick')
+
+        # Deleting model 'Carrier'
+        db.delete_table('base_carrier')
+
+        # Deleting model 'Constant'
+        db.delete_table('base_constant')
+
+        # Deleting model 'AlterFilmName'
+        db.delete_table('base_alterfilmname')
+
+        # Deleting model 'AlterCityName'
+        db.delete_table('base_altercityname')
+
+        # Deleting model 'AlterCinemaName'
+        db.delete_table('base_altercinemaname')
+
+        # Deleting model 'Test'
+        db.delete_table('base_test')
+
+        # Deleting model 'Currency'
+        db.delete_table('base_currency')
+
+        # Deleting model 'AlterNames'
+        db.delete_table('base_alternames')
+
+        # Adding model 'LanguageCountry'
+        db.create_table('base_languagecountry', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('language', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Language'])),
+            ('country', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Country'])),
+        ))
+        db.send_create_signal('base', ['LanguageCountry'])
+
+        # Adding model 'Demonstration'
+        db.create_table('base_demonstration', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=256)),
+            ('time', self.gf('django.db.models.fields.DateTimeField')()),
+            ('place', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Hall'])),
+        ))
+        db.send_create_signal('base', ['Demonstration'])
+
+        # Adding model 'HallsSources'
+        db.create_table('base_hallssources', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('id_hall', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Hall'])),
+            ('source', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.ImportSources'])),
+            ('url_hall_sources', self.gf('django.db.models.fields.URLField')(max_length=256)),
+        ))
+        db.send_create_signal('base', ['HallsSources'])
+
+        # Adding model 'FilmsSources'
+        db.create_table('base_filmssources', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('id_films', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Films'])),
+            ('source', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.ImportSources'])),
+            ('id_films_sources', self.gf('django.db.models.fields.BigIntegerField')()),
+        ))
+        db.send_create_signal('base', ['FilmsSources'])
+
+        # Adding model 'Runtime'
+        db.create_table('base_runtime', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('runtime', self.gf('django.db.models.fields.IntegerField')()),
+            ('runtime_note', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
+        ))
+        db.send_create_signal('base', ['Runtime'])
+
+        # Adding model 'ImageParameter'
+        db.create_table('base_imageparameter', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('dimension', self.gf('django.db.models.fields.CharField')(max_length=1)),
+            ('color', self.gf('django.db.models.fields.CharField')(max_length=1)),
+            ('aspect_ratio', self.gf('django.db.models.fields.CharField')(max_length=1)),
+        ))
+        db.send_create_signal('base', ['ImageParameter'])
+
+        # Adding model 'IMDB'
+        db.create_table('base_imdb', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('id_imdb', self.gf('django.db.models.fields.BigIntegerField')()),
+            ('rating', self.gf('django.db.models.fields.FloatField')(null=True, blank=True)),
+        ))
+        db.send_create_signal('base', ['IMDB'])
+
+        # Adding model 'SoundParameter'
+        db.create_table('base_soundparameter', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('sound', self.gf('django.db.models.fields.CharField')(max_length=1)),
+            ('soundsystem', self.gf('django.db.models.fields.CharField')(max_length=1)),
+        ))
+        db.send_create_signal('base', ['SoundParameter'])
+
+        # Adding model 'NameProduct'
+        db.create_table('base_nameproduct', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('status', self.gf('django.db.models.fields.IntegerField')()),
+            ('language', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Language'], null=True, blank=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=256)),
+        ))
+        db.send_create_signal('base', ['NameProduct'])
+
+        # Adding model 'Logger'
+        db.create_table('base_logger', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('text', self.gf('django.db.models.fields.CharField')(max_length=256)),
+            ('url', self.gf('django.db.models.fields.URLField')(max_length=256, null=True, blank=True)),
+            ('code', self.gf('django.db.models.fields.IntegerField')()),
+        ))
+        db.send_create_signal('base', ['Logger'])
+
+        # Adding model 'Films'
+        db.create_table('base_films', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('release_start', self.gf('django.db.models.fields.DateField')(null=True, blank=True)),
+            ('release_end', self.gf('django.db.models.fields.DateField')(db_index=True, null=True, blank=True)),
+            ('note', self.gf('django.db.models.fields.TextField')(null=True, blank=True)),
+            ('film_type', self.gf('django.db.models.fields.CharField')(max_length=1, null=True, blank=True)),
+            ('runtime', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='runtime_films', null=True, to=orm['base.Runtime'])),
+            ('rated', self.gf('django.db.models.fields.CharField')(max_length=5, null=True, blank=True)),
+            ('budget', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='budget_films', null=True, to=orm['base.Budget'])),
+            ('image_parameter', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='image_films', null=True, to=orm['base.ImageParameter'])),
+            ('sound_parameter', self.gf('django.db.models.fields.related.ForeignKey')(blank=True, related_name='sound_films', null=True, to=orm['base.SoundParameter'])),
+        ))
+        db.send_create_signal('base', ['Films'])
+
+        # Adding M2M table for field name on 'Films'
+        db.create_table('base_films_name', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('films', models.ForeignKey(orm['base.films'], null=False)),
+            ('nameproduct', models.ForeignKey(orm['base.nameproduct'], null=False))
+        ))
+        db.create_unique('base_films_name', ['films_id', 'nameproduct_id'])
+
+        # Adding M2M table for field countrys on 'Films'
+        db.create_table('base_films_countrys', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('films', models.ForeignKey(orm['base.films'], null=False)),
+            ('country', models.ForeignKey(orm['base.country'], null=False))
+        ))
+        db.create_unique('base_films_countrys', ['films_id', 'country_id'])
+
+        # Adding M2M table for field genre on 'Films'
+        db.create_table('base_films_genre', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('films', models.ForeignKey(orm['base.films'], null=False)),
+            ('genre', models.ForeignKey(orm['base.genre'], null=False))
+        ))
+        db.create_unique('base_films_genre', ['films_id', 'genre_id'])
+
+        # Adding field 'NamePerson.status'
+        db.add_column('base_nameperson', 'status', self.gf('django.db.models.fields.IntegerField')(default=''), keep_default=False)
+
+        # Deleting field 'ImportSources.city'
+        db.delete_column('base_importsources', 'city_id')
+
+        # Deleting field 'ImportSources.cinema'
+        db.delete_column('base_importsources', 'cinema_id')
+
+        # Changing field 'ImportSources.url'
+        db.alter_column('base_importsources', 'url', self.gf('django.db.models.fields.URLField')(max_length=256))
+
+        # Renaming column for 'ImportSources.source' to match new field type.
+        db.rename_column('base_importsources', 'source_id', 'source')
+        # Changing field 'ImportSources.source'
+        db.alter_column('base_importsources', 'source', self.gf('django.db.models.fields.CharField')(max_length=64))
+
+        # Removing index on 'ImportSources', fields ['source']
+        db.delete_index('base_importsources', ['source_id'])
+
+        # Renaming column for 'Budget.currency' to match new field type.
+        db.rename_column('base_budget', 'currency_id', 'currency')
+        # Changing field 'Budget.currency'
+        db.alter_column('base_budget', 'currency', self.gf('django.db.models.fields.CharField')(max_length=1))
+
+        # Removing index on 'Budget', fields ['currency']
+        db.delete_index('base_budget', ['currency_id'])
+
+        # Deleting field 'RelationFP.aboutfilm'
+        db.delete_column('base_relationfp', 'aboutfilm_id')
+
+        # Adding field 'RelationFP.product'
+        db.add_column('base_relationfp', 'product', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['base.Films']), keep_default=False)
+
+        # Deleting field 'Session.place'
+        db.delete_column('base_session', 'place_id')
+
+        # Deleting field 'Session.time'
+        db.delete_column('base_session', 'time')
+
+        # Adding field 'Session.demonstration'
+        db.add_column('base_session', 'demonstration', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['base.Demonstration']), keep_default=False)
+
+        # Adding field 'Session.number'
+        db.add_column('base_session', 'number', self.gf('django.db.models.fields.PositiveIntegerField')(default=''), keep_default=False)
+
+
+    def backwards(self, orm):
+        
+        # Adding index on 'Budget', fields ['currency']
+        db.create_index('base_budget', ['currency_id'])
+
+        # Adding index on 'ImportSources', fields ['source']
+        db.create_index('base_importsources', ['source_id'])
+
+        # Adding model 'Source'
+        db.create_table('base_source', (
+            ('status', self.gf('django.db.models.fields.IntegerField')()),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=64)),
+            ('url', self.gf('django.db.models.fields.CharField')(max_length=64)),
+            ('top', self.gf('django.db.models.fields.IntegerField')()),
+            ('url_template', self.gf('django.db.models.fields.CharField')(max_length=64)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+        ))
+        db.send_create_signal('base', ['Source'])
+
+        # Adding model 'CopyFilm'
+        db.create_table('base_copyfilm', (
+            ('format', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.CopyFilmFormat'])),
+            ('carrier', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Carrier'])),
+            ('addvalue', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.CopyFilmAddValue'])),
+            ('type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.CopyFilmType'])),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+        ))
+        db.send_create_signal('base', ['CopyFilm'])
+
+        # Adding M2M table for field aboutfilm on 'CopyFilm'
+        db.create_table('base_copyfilm_aboutfilm', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('copyfilm', models.ForeignKey(orm['base.copyfilm'], null=False)),
+            ('aboutfilm', models.ForeignKey(orm['base.aboutfilm'], null=False))
+        ))
+        db.create_unique('base_copyfilm_aboutfilm', ['copyfilm_id', 'aboutfilm_id'])
+
+        # Adding model 'AboutFilm'
+        db.create_table('base_aboutfilm', (
+            ('rating', self.gf('django.db.models.fields.FloatField')(null=True, blank=True)),
+            ('votes', self.gf('django.db.models.fields.BigIntegerField')(null=True, blank=True)),
+            ('runtime', self.gf('django.db.models.fields.TimeField')(null=True, blank=True)),
+            ('time', self.gf('django.db.models.fields.DateTimeField')(db_index=True)),
+            ('year', self.gf('django.db.models.fields.IntegerField')(blank=True, null=True, db_index=True)),
+            ('budget', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['base.Budget'], unique=True, null=True, blank=True)),
+            ('note', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['base.Note'], unique=True, null=True, blank=True)),
+            ('source', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Source'])),
+            ('version', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Version'], null=True, blank=True)),
+            ('fid', self.gf('django.db.models.fields.BigIntegerField')(db_index=True)),
+            ('sid', self.gf('django.db.models.fields.BigIntegerField')(blank=True, null=True, db_index=True)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+        ))
+        db.send_create_signal('base', ['AboutFilm'])
+
+        # Adding M2M table for field name on 'AboutFilm'
+        db.create_table('base_aboutfilm_name', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('aboutfilm', models.ForeignKey(orm['base.aboutfilm'], null=False)),
+            ('namefilm', models.ForeignKey(orm['base.namefilm'], null=False))
+        ))
+        db.create_unique('base_aboutfilm_name', ['aboutfilm_id', 'namefilm_id'])
+
+        # Adding M2M table for field country on 'AboutFilm'
+        db.create_table('base_aboutfilm_country', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('aboutfilm', models.ForeignKey(orm['base.aboutfilm'], null=False)),
+            ('country', models.ForeignKey(orm['base.country'], null=False))
+        ))
+        db.create_unique('base_aboutfilm_country', ['aboutfilm_id', 'country_id'])
+
+        # Adding M2M table for field genre on 'AboutFilm'
+        db.create_table('base_aboutfilm_genre', (
+            ('id', models.AutoField(verbose_name='ID', primary_key=True, auto_created=True)),
+            ('aboutfilm', models.ForeignKey(orm['base.aboutfilm'], null=False)),
+            ('genre', models.ForeignKey(orm['base.genre'], null=False))
+        ))
+        db.create_unique('base_aboutfilm_genre', ['aboutfilm_id', 'genre_id'])
+
+        # Adding model 'Note'
+        db.create_table('base_note', (
+            ('note', self.gf('django.db.models.fields.TextField')()),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+        ))
+        db.send_create_signal('base', ['Note'])
+
+        # Adding model 'NameFilm'
+        db.create_table('base_namefilm', (
+            ('status', self.gf('django.db.models.fields.IntegerField')()),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('language', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Language'])),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=256)),
+        ))
+        db.send_create_signal('base', ['NameFilm'])
+
+        # Adding model 'Section'
+        db.create_table('base_section', (
+            ('status', self.gf('django.db.models.fields.IntegerField')()),
+            ('text', self.gf('django.db.models.fields.CharField')(max_length=128)),
+            ('section', self.gf('django.db.models.fields.IntegerField')()),
+            ('fresh', self.gf('django.db.models.fields.DateTimeField')(db_index=True)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+        ))
+        db.send_create_signal('base', ['Section'])
+
+        # Adding model 'AlterHallName'
+        db.create_table('base_alterhallname', (
+            ('obj', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Hall'])),
+            ('alternames_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['base.AlterNames'], unique=True, primary_key=True)),
+        ))
+        db.send_create_signal('base', ['AlterHallName'])
+
+        # Adding model 'Topick'
+        db.create_table('base_topick', (
+            ('status', self.gf('django.db.models.fields.IntegerField')(blank=True, null=True, db_index=True)),
+            ('text', self.gf('django.db.models.fields.CharField')(max_length=512)),
+            ('p_year', self.gf('django.db.models.fields.IntegerField')(blank=True, null=True, db_index=True)),
+            ('kinoafisha', self.gf('django.db.models.fields.BigIntegerField')(blank=True, null=True, db_index=True)),
+            ('topick', self.gf('django.db.models.fields.BigIntegerField')(db_index=True)),
+            ('imdb', self.gf('django.db.models.fields.BigIntegerField')(blank=True, null=True, db_index=True)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('size', self.gf('django.db.models.fields.BigIntegerField')(null=True, blank=True)),
+            ('p_quality', self.gf('django.db.models.fields.CharField')(max_length=32, null=True, blank=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=64)),
+            ('section', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Section'], null=True, blank=True)),
+            ('time', self.gf('django.db.models.fields.DateTimeField')(db_index=True)),
+            ('fresh', self.gf('django.db.models.fields.DateTimeField')(db_index=True)),
+        ))
+        db.send_create_signal('base', ['Topick'])
+
+        # Adding model 'Carrier'
+        db.create_table('base_carrier', (
+            ('layer', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.CarrierLayer'])),
+            ('tapecategorie', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.CarrierTapeCategorie'])),
+            ('riptype', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.CarrierRipType'])),
+            ('type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.CarrierType'])),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('size', self.gf('django.db.models.fields.IntegerField')()),
+        ))
+        db.send_create_signal('base', ['Carrier'])
+
+        # Adding model 'Constant'
+        db.create_table('base_constant', (
+            ('text', self.gf('django.db.models.fields.CharField')(max_length=64)),
+            ('name_1', self.gf('django.db.models.fields.CharField')(max_length=256)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=28)),
+        ))
+        db.send_create_signal('base', ['Constant'])
+
+        # Adding model 'AlterFilmName'
+        db.create_table('base_alterfilmname', (
+            ('obj', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.AboutFilm'])),
+            ('alternames_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['base.AlterNames'], unique=True, primary_key=True)),
+        ))
+        db.send_create_signal('base', ['AlterFilmName'])
+
+        # Adding model 'AlterCityName'
+        db.create_table('base_altercityname', (
+            ('obj', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.City'])),
+            ('alternames_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['base.AlterNames'], unique=True, primary_key=True)),
+        ))
+        db.send_create_signal('base', ['AlterCityName'])
+
+        # Adding model 'AlterCinemaName'
+        db.create_table('base_altercinemaname', (
+            ('obj', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Cinema'])),
+            ('alternames_ptr', self.gf('django.db.models.fields.related.OneToOneField')(to=orm['base.AlterNames'], unique=True, primary_key=True)),
+        ))
+        db.send_create_signal('base', ['AlterCinemaName'])
+
+        # Adding model 'Test'
+        db.create_table('base_test', (
+            ('text', self.gf('django.db.models.fields.CharField')(max_length=64)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=32)),
+        ))
+        db.send_create_signal('base', ['Test'])
+
+        # Adding model 'Currency'
+        db.create_table('base_currency', (
+            ('shot_name', self.gf('django.db.models.fields.CharField')(max_length=32)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('name', self.gf('django.db.models.fields.CharField')(max_length=64)),
+        ))
+        db.send_create_signal('base', ['Currency'])
+
+        # Adding model 'AlterNames'
+        db.create_table('base_alternames', (
+            ('sid', self.gf('django.db.models.fields.BigIntegerField')()),
+            ('alt_name', self.gf('django.db.models.fields.CharField')(max_length=256)),
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+        ))
+        db.send_create_signal('base', ['AlterNames'])
+
+        # Deleting model 'LanguageCountry'
+        db.delete_table('base_languagecountry')
+
+        # Deleting model 'Demonstration'
+        db.delete_table('base_demonstration')
+
+        # Deleting model 'HallsSources'
+        db.delete_table('base_hallssources')
+
+        # Deleting model 'FilmsSources'
+        db.delete_table('base_filmssources')
+
+        # Deleting model 'Runtime'
+        db.delete_table('base_runtime')
+
+        # Deleting model 'ImageParameter'
+        db.delete_table('base_imageparameter')
+
+        # Deleting model 'IMDB'
+        db.delete_table('base_imdb')
+
+        # Deleting model 'SoundParameter'
+        db.delete_table('base_soundparameter')
+
+        # Deleting model 'NameProduct'
+        db.delete_table('base_nameproduct')
+
+        # Deleting model 'Logger'
+        db.delete_table('base_logger')
+
+        # Deleting model 'Films'
+        db.delete_table('base_films')
+
+        # Removing M2M table for field name on 'Films'
+        db.delete_table('base_films_name')
+
+        # Removing M2M table for field countrys on 'Films'
+        db.delete_table('base_films_countrys')
+
+        # Removing M2M table for field genre on 'Films'
+        db.delete_table('base_films_genre')
+
+        # Deleting field 'NamePerson.status'
+        db.delete_column('base_nameperson', 'status')
+
+        # Adding field 'ImportSources.city'
+        db.add_column('base_importsources', 'city', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['base.City']), keep_default=False)
+
+        # Adding field 'ImportSources.cinema'
+        db.add_column('base_importsources', 'cinema', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['base.Cinema']), keep_default=False)
+
+        # Changing field 'ImportSources.url'
+        db.alter_column('base_importsources', 'url', self.gf('django.db.models.fields.CharField')(max_length=256))
+
+        # Renaming column for 'ImportSources.source' to match new field type.
+        db.rename_column('base_importsources', 'source', 'source_id')
+        # Changing field 'ImportSources.source'
+        db.alter_column('base_importsources', 'source_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Source']))
+
+        # Renaming column for 'Budget.currency' to match new field type.
+        db.rename_column('base_budget', 'currency', 'currency_id')
+        # Changing field 'Budget.currency'
+        db.alter_column('base_budget', 'currency_id', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Currency']))
+
+        # Adding field 'RelationFP.aboutfilm'
+        db.add_column('base_relationfp', 'aboutfilm', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['base.AboutFilm']), keep_default=False)
+
+        # Deleting field 'RelationFP.product'
+        db.delete_column('base_relationfp', 'product_id')
+
+        # Adding field 'Session.place'
+        db.add_column('base_session', 'place', self.gf('django.db.models.fields.related.ForeignKey')(default='', to=orm['base.Hall']), keep_default=False)
+
+        # Adding field 'Session.time'
+        db.add_column('base_session', 'time', self.gf('django.db.models.fields.DateTimeField')(default=''), keep_default=False)
+
+        # Deleting field 'Session.demonstration'
+        db.delete_column('base_session', 'demonstration_id')
+
+        # Deleting field 'Session.number'
+        db.delete_column('base_session', 'number')
+
+
+    models = {
+        'base.action': {
+            'Meta': {'object_name': 'Action'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.alterstreettype': {
+            'Meta': {'object_name': 'AlterStreetType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256', 'null': 'True', 'blank': 'True'}),
+            'value': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.StreetType']"})
+        },
+        'base.budget': {
+            'Meta': {'object_name': 'Budget'},
+            'budget': ('django.db.models.fields.BigIntegerField', [], {}),
+            'currency': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+        },
+        'base.carrierlayer': {
+            'Meta': {'object_name': 'CarrierLayer'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.carrierriptype': {
+            'Meta': {'object_name': 'CarrierRipType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.carriertapecategorie': {
+            'Meta': {'object_name': 'CarrierTapeCategorie'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.carriertype': {
+            'Meta': {'object_name': 'CarrierType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.cinema': {
+            'Meta': {'object_name': 'Cinema'},
+            'cinema_circuit': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.CinemaCircuit']", 'null': 'True'}),
+            'city': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.City']"}),
+            'code': ('django.db.models.fields.IntegerField', [], {'db_index': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'letter_housing': ('django.db.models.fields.CharField', [], {'max_length': '1', 'null': 'True', 'blank': 'True'}),
+            'metro': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.Metro']", 'null': 'True', 'symmetrical': 'False'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'}),
+            'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'number_hous': ('django.db.models.fields.CharField', [], {'max_length': '16', 'null': 'True', 'blank': 'True'}),
+            'number_housing': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'opening': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'phone': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.Phone']", 'null': 'True', 'symmetrical': 'False'}),
+            'site': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.Site']", 'null': 'True', 'symmetrical': 'False'}),
+            'street_name': ('django.db.models.fields.CharField', [], {'max_length': '64', 'null': 'True', 'blank': 'True'}),
+            'street_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.StreetType']", 'null': 'True'}),
+            'zip': ('django.db.models.fields.CharField', [], {'max_length': '6', 'null': 'True', 'blank': 'True'})
+        },
+        'base.cinemacircuit': {
+            'Meta': {'object_name': 'CinemaCircuit'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.city': {
+            'Meta': {'object_name': 'City'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'}),
+            'phone_code': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
+        },
+        'base.copyfilmaddvalue': {
+            'Meta': {'object_name': 'CopyFilmAddValue'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.copyfilmformat': {
+            'Meta': {'object_name': 'CopyFilmFormat'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.copyfilmtype': {
+            'Meta': {'object_name': 'CopyFilmType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.country': {
+            'Meta': {'object_name': 'Country'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.demonstration': {
+            'Meta': {'object_name': 'Demonstration'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'place': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Hall']"}),
+            'time': ('django.db.models.fields.DateTimeField', [], {})
+        },
+        'base.films': {
+            'Meta': {'object_name': 'Films'},
+            'budget': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'budget_films'", 'null': 'True', 'to': "orm['base.Budget']"}),
+            'countrys': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'countrys_films'", 'null': 'True', 'symmetrical': 'False', 'to': "orm['base.Country']"}),
+            'film_type': ('django.db.models.fields.CharField', [], {'max_length': '1', 'null': 'True', 'blank': 'True'}),
+            'genre': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'genre_films'", 'null': 'True', 'symmetrical': 'False', 'to': "orm['base.Genre']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image_parameter': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'image_films'", 'null': 'True', 'to': "orm['base.ImageParameter']"}),
+            'key_creators': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'key_creators_films'", 'to': "orm['base.Person']", 'through': "orm['base.RelationFP']", 'blank': 'True', 'symmetrical': 'False', 'null': 'True'}),
+            'name': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'name_films'", 'null': 'True', 'symmetrical': 'False', 'to': "orm['base.NameProduct']"}),
+            'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'rated': ('django.db.models.fields.CharField', [], {'max_length': '5', 'null': 'True', 'blank': 'True'}),
+            'release_end': ('django.db.models.fields.DateField', [], {'db_index': 'True', 'null': 'True', 'blank': 'True'}),
+            'release_start': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
+            'runtime': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'runtime_films'", 'null': 'True', 'to': "orm['base.Runtime']"}),
+            'sound_parameter': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'sound_films'", 'null': 'True', 'to': "orm['base.SoundParameter']"})
+        },
+        'base.filmssources': {
+            'Meta': {'object_name': 'FilmsSources'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'id_films': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Films']"}),
+            'id_films_sources': ('django.db.models.fields.BigIntegerField', [], {}),
+            'source': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.ImportSources']"})
+        },
+        'base.genre': {
+            'Meta': {'object_name': 'Genre'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.hall': {
+            'Meta': {'object_name': 'Hall'},
+            'cinema': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Cinema']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image_format': ('django.db.models.fields.CharField', [], {'max_length': '1', 'blank': 'True'}),
+            'max_price': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'min_price': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64', 'null': 'True', 'blank': 'True'}),
+            'number': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'screen_size_h': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'screen_size_w': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'seats': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'sound_format': ('django.db.models.fields.CharField', [], {'max_length': '1', 'blank': 'True'})
+        },
+        'base.hallssources': {
+            'Meta': {'object_name': 'HallsSources'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'id_hall': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Hall']"}),
+            'source': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.ImportSources']"}),
+            'url_hall_sources': ('django.db.models.fields.URLField', [], {'max_length': '256'})
+        },
+        'base.imageparameter': {
+            'Meta': {'object_name': 'ImageParameter'},
+            'aspect_ratio': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'color': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'dimension': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+        },
+        'base.imdb': {
+            'Meta': {'object_name': 'IMDB'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'id_imdb': ('django.db.models.fields.BigIntegerField', [], {}),
+            'rating': ('django.db.models.fields.FloatField', [], {'null': 'True', 'blank': 'True'})
+        },
+        'base.importsources': {
+            'Meta': {'object_name': 'ImportSources'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'source': ('django.db.models.fields.CharField', [], {'max_length': '64'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '256'})
+        },
+        'base.language': {
+            'Meta': {'object_name': 'Language'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.languagecountry': {
+            'Meta': {'object_name': 'LanguageCountry'},
+            'country': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Country']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Language']"})
+        },
+        'base.logger': {
+            'Meta': {'object_name': 'Logger'},
+            'code': ('django.db.models.fields.IntegerField', [], {}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'text': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '256', 'null': 'True', 'blank': 'True'})
+        },
+        'base.metro': {
+            'Meta': {'object_name': 'Metro'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.nameperson': {
+            'Meta': {'object_name': 'NamePerson'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Language']"}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'status': ('django.db.models.fields.IntegerField', [], {})
+        },
+        'base.nameproduct': {
+            'Meta': {'object_name': 'NameProduct'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Language']", 'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'status': ('django.db.models.fields.IntegerField', [], {})
+        },
+        'base.person': {
+            'Meta': {'object_name': 'Person'},
+            'born': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
+            'country': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Country']", 'null': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'iid': ('django.db.models.fields.BigIntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'kid': ('django.db.models.fields.BigIntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'male': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.NamePerson']", 'symmetrical': 'False'})
+        },
+        'base.phone': {
+            'Meta': {'object_name': 'Phone'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'phone': ('django.db.models.fields.CharField', [], {'max_length': '64', 'blank': 'True'}),
+            'phone_type': ('django.db.models.fields.CharField', [], {'max_length': '1', 'blank': 'True'})
+        },
+        'base.relationfp': {
+            'Meta': {'object_name': 'RelationFP'},
+            'action': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Action']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'person': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Person']"}),
+            'product': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Films']"}),
+            'status_act': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.StatusAct']"})
+        },
+        'base.runtime': {
+            'Meta': {'object_name': 'Runtime'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'runtime': ('django.db.models.fields.IntegerField', [], {}),
+            'runtime_note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'})
+        },
+        'base.session': {
+            'Meta': {'object_name': 'Session'},
+            'average_price': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'demonstration': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Demonstration']"}),
+            'film': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.Films']", 'symmetrical': 'False'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'number': ('django.db.models.fields.PositiveIntegerField', [], {}),
+            'number_people': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
+        },
+        'base.site': {
+            'Meta': {'object_name': 'Site'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'site_type': ('django.db.models.fields.CharField', [], {'max_length': '1', 'blank': 'True'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'})
+        },
+        'base.soundparameter': {
+            'Meta': {'object_name': 'SoundParameter'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'sound': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'soundsystem': ('django.db.models.fields.CharField', [], {'max_length': '1'})
+        },
+        'base.statusact': {
+            'Meta': {'object_name': 'StatusAct'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.streettype': {
+            'Meta': {'object_name': 'StreetType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.version': {
+            'Meta': {'object_name': 'Version'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        }
+    }
+
+    complete_apps = ['base']

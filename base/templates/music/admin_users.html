@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load base_tags %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url admin_main %}">Админ Панель</a></b> - 
+    <b id="navigation_bar">Управление пользователями</a></b>
+</h1>
+
+{% music_admin_menu %}
+
+<div class="art-postcontent-width">
+
+
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+<div style="clear: both;"></div>
+
+    <form action="{% url api_users %}" method="POST" id="form">{% csrf_token %}
+        <select name="user_group" onchange="this.form.submit();">
+        {% for i in groups %}
+            <option value="{{ i.id }}"{% if i.id == group %} selected{% endif %}>{{ i.name }}</option>
+        {% endfor %}
+        </select>
+
+        <input type="text" name='user_search' value="{% if search %}{{ search }}{% endif %}" />
+        <input type="submit" value="Поиск" name="search_btn" /> Поиск юзера (login, email, nickname, fullname)
+        
+    </form>
+    
+    <a class="merge_list" style="float: right;">В списке слияния <b>{{ mlist_count }}</b> акк.</a>
+    
+    <div class="scroll_list">
+    <table class="modern_tbl">
+        <th>Adm</th><th>API</th><th>User</th><th></th><th></th><th></th>
+        {% for i in users_x %}
+            <tr>
+                <td><div><input type="checkbox" id="1_{{ i.user.user.id }}" {% if i.user.user.is_superuser %}checked="checked"{% endif %} /></div></td>
+                <td><div><input type="checkbox" id="2_{{ i.user.user.id }}" {% for g in i.user.user.groups.all %}{% if g.name == 'API' %}checked="checked"{% endif %}{% endfor %} /></div></td>
+                <td><div><a href="{% url profile i.user.user.id %}" target="_blank">
+                {% for j in i.acc %}
+                    {{ j }}{% if not forloop.last %} / {% endif %}
+                {% empty %}
+                User_{{ i.user.user.id }}
+                {% endfor %}
+                </a></div></td>
+                <td><div><input type="button" value="Сохранить" onclick="api_panel({{ i.user.user.id }});"></div></td>
+                <td><div><span id="api_panel_status_{{ i.user.user.id }}"></span></div></td>
+                <td><div><a title="Добавить аккаунт в список слияния" id="merge__{{ i.user.user.id }}" class="add_to_merge_list">Слияние</a></div></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+        {% if group == '4' %}
+            <br />
+            От <input type="text" name='date_from' value="{{ date_past|date:'d-m-Y' }}" size="10" form="form" />
+            до <input type="text" name='date_to' value="{{ date_now|date:'d-m-Y' }}" size="10" form="form" />
+            <input type="submit" value="ОК" name="date_btn" form="form" /> Фильтровать по дате регистрации (дд-мм-гггг)
+            
+        {% endif %}
+
+
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% load base_tags static %}
+{% get_static_prefix as STATIC_URL %}
+
+<div class="art-posttree-width">
+    {% spaceless %}
+    <div id="accordion">
+        <h5 class="method-category" id="kinoinfo_torrents_section01"><p>Выборки</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url new_torrents %}">Кинопрокат</a>
+            </li>
+            <li>
+                <a href="#">Лучшие новинки, кроме кинопроката</a>
+            </li>
+        </ul>
+        </div>
+    </div>
+    {% endspaceless %}
+
+    {% left_banner %}
+    
+    <div class="clear"></div>
+</div>

@@ -1,0 +1,164 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}{% trans 'Проект' %} "{{ obj.name }}" - {% trans 'Бюджет' %}{% endblock %}
+
+{% block script %}
+<link rel="stylesheet" href="{{ STATIC_URL }}base/css/datepicker.css" type="text/css" media="screen" />
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[name="start_date"], input[name="end_date"]').datepicker({
+            altFormat: "yy-mm-dd",
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+
+    {% vlada_top_menu %}
+    {% vlada_left_menu vid %}
+
+
+<div class="art-postcontent-width">
+
+    <div class="bdgt-top">
+        <div class="bdgt-top-left">
+            <table>
+                <th colspan="3">{% trans 'Дней' %}</th>
+                <tr>
+                    <td>{% trans 'Всего' %}</td>
+                    <td rowspan="2" class="bdgt-top-percent">{{ fact_days_percent }}%</td>
+                    <td>{% trans 'Факт' %}</td>
+                </tr>
+                <tr>
+                    <td>{{ days }}</td>
+                    <td>{{ fact_days }}</td>
+                </tr>
+            </table>
+        </div>
+        
+        <div class="bdgt-top-center">
+            <span>{% trans 'Проект' %}</span>
+            <div>{% if obj.url %}<a href="{{ obj.url }}" target="_blank">{% endif %}{{ obj.name }}{% if obj.url %}</a>{% endif %}</div>
+        </div>
+        
+        <div class="bdgt-top-right">
+            <table>
+                <th colspan="3">{% trans 'Бюджет' %}</th>
+                <tr>
+                    <td>{% trans 'Всего' %}</td>
+                    <td rowspan="2" class="bdgt-top-percent">{{ fact_budget_percent }}%</td>
+                    <td>{% trans 'Факт' %}</td>
+                </tr>
+                <tr>
+                    <td>{{ budget }}</td>
+                    <td>{{ fact_budget }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    
+    <div class="stages_list">
+        <table class="modern_tbl">
+            <th {% if not request.user.is_superuser %}style="display: none;"{% endif %}><input type="checkbox" name="checker_all" /></th>
+            <th>{% trans 'Этап' %}</th>
+            <th>{% trans 'Старт' %}</th>
+            <th>{% trans 'Конец' %}</th>
+            <th>{% trans 'Участники' %}</th>
+            <th>{% trans 'Лимит' %}</th>
+            <th>{% trans 'Использ.' %}</th>
+            <th>{% trans 'Оплачено' %}</th>
+            <th style="display: none;">{% trans 'Не оплачено' %}</th>
+            {% for i in stages %}
+            <tr>
+                <td {% if not request.user.is_superuser %}style="display: none;"{% endif %}><div><input type="checkbox" name="checker" value="{{ i.id }}" form="f1"/></div></td>
+                <td><div>{% if request.user.is_superuser %}<a class="stage_edit">{% endif %}{{ i.obj.name }}{% if request.user.is_superuser %}</a>{% endif %}</div></td>
+                <td><div class="stage_start" id='{{ i.obj.start_date|date:"Y-m-d" }}'>{{ i.obj.start_date }}</div></td>
+                <td><div class="stage_end" id='{{ i.obj.end_date|date:"Y-m-d" }}'>{{ i.obj.end_date }}</div></td>
+                <td><div class="stage_members">{% for j in project_members %}<a class="budget_open" id="{{ j.id }}" title="{% trans 'Показать подробнее' %}">{{ j.name }}</a>{% if not forloop.last %}, {% endif %}{% endfor %}</div></td>
+                <td><div class="stage_budget_plan" id="{{ i.obj.budget }}">{{ i.obj.budget }} {{ obj.get_currency_display }}</div></td>
+                <td><div class="stage_budget">{{ i.main_sum }} {{ obj.get_currency_display }}</div></td>
+                <td><div class="stage_paid">{% if request.user.is_superuser %}<a class="stage_show_unpaid">{% endif %}{{ i.paid }}%{% if request.user.is_superuser %}</a>{% endif %}</div></td>
+                <td style="display: none;"><div class="stage_unpaid">{{ i.unpaid }}</div></td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    {% if request.user.is_superuser %}
+    <form action="{% url imiagroup_stage_edit %}" method="post" id="stage_add_frm">{% csrf_token %}
+        <div class="new_stage_fields org_fields">
+            
+            <div>
+                <b>{% trans 'Название этапа' %}:</b><br />
+                <input type="text" value="" name="stage_name" size="40" maxlength="128" />
+            </div>
+
+            <div style="display: inline-block; margin-right: 20px;">
+                <b>{% trans 'Дата начала' %}:</b><br />
+                <input type="text" value="" name="start_date" size="13" />
+            </div>
+            
+            <div style="display: inline-block; margin-right: 20px;">
+                <b>{% trans 'Дата окончания' %}:</b><br />
+                <input type="text" value="" name="end_date" size="13" />
+            </div>
+            
+            <div>
+                <b>{% trans 'Ограничение бюджета для этапа' %}:</b><br />
+                <input type="text" value="" name="stage_budget" size="8" />
+            </div>
+
+            <br />
+            <input type="hidden" value="0" name="edit" />
+            <input type="hidden" value="{{ obj.id }}" name="proj_id" />
+            <input type="button" value="{% trans 'Сохранить' %}" name="create" onclick="stage_add_valid();" />
+            <input type="button" value="{% trans 'Отмена' %}" class="new_stage_cancel_btn" />
+            
+        </div>
+    </form>
+    
+    <br />
+    <input type="button" value="{% trans 'Создать новый этап' %}" class="create_new_stage" />
+    <input type="button" value="{% trans 'Удалить отмеченные' %}" onclick="if(confirm('{% trans 'Вы действительно хотите удалить этап' %}You really want to delete the stage?')){$('#f1').submit();}" style="float: right;" />
+    
+    <form action="{% url imiagroup_stage_del %}" method="post" id="f1">{% csrf_token %}
+        <input type="hidden" value="{{ obj.id }}" name="proj_id" />
+    </form>
+    
+    <form action="{% url invoice_gen %}" method="post" id="iig" style="display: none; min-width: 350px;">{% csrf_token %}
+        {% trans 'Неоплаченная сумма' %}: 
+        <input type="text" value="" name="out_amount" size="7" />
+        <br /><br />
+        {% trans 'Заметка' %}:<br />
+        <textarea name="proj_invoice_note" style="width: 90%; min-height: 70px;"></textarea>
+        <br /><br />
+        {% trans 'Номер инвойса' %}: 
+        <input type="text" value="" name="invoice_num" size="7" />
+        <br /><br />
+        {% trans 'Директоры' %}: <br />
+        <select name="director">
+            {% for i in project_directors %}
+            <option value="{{ i.id }}">{{ i.name }}</option> 
+            {% endfor %}
+        </select> <a href="#" class="proj_director_name_edit">{% trans 'ред.имя' %}</a>
+        <br /><br />
+        <div class="proj_director_name_edit_bl" style="display: none;">
+            {% trans 'Новое имя директора' %} ({% trans 'инвойс кому' %}:)<br />
+            <input type="text" value="" name="director_name" size="30" />
+            <input type="button" value="{% trans 'Отмена' %}" id="proj_director_name_edit_cancel" />
+            <br /><br />
+        </div>
+        <input type="hidden" value="{{ obj.id }}" name="proj_id" />
+        <input type="hidden" value="" name="stage_id" />
+        <input type="submit" value="{% trans 'Создать инвойс' %}" />
+    </form>
+    {% endif %}
+
+    <div class="clear"></div>
+{% endblock %}

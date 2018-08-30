@@ -1,0 +1,98 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+    {% if result.status == 'user_api' %}
+        <form action="" method="POST">{% csrf_token %}
+            Поиск юзера (login, email, nickname, fullname)<br />
+            <input type="text" name='user' value="" />
+            <input type="submit" value="Поиск" />
+            <a href="{% url user_list %}">Список всех пользователей</a>
+        </form>
+        {% if result.content %}
+        <table class="api_calls_log">
+            <tr>
+                <th>Админ</th>
+                <th>Клиент</th>
+                <th>ID</th>
+                <th>Актив.</th>
+                <th>Login</th>
+                <th>Nickname</th>
+                <th>E-Mail</th>
+                <th>Fullname</th>
+            </tr>    
+            {% for k, i in result.content.items %}
+            <tr>
+                <td><input type="checkbox" id="1_{{ i.user.id }}" {% if i.user.is_superuser %}checked="checked"{% endif %} /></td>
+                <td><input type="checkbox" id="2_{{ i.user.id }}" {% for g in i.user.groups.all %}{% if g.name == 'API' %}checked="checked"{% endif %}{% endfor %} /></td>
+                <td>{{ i.user.id }}</td>
+                <td>{% if i.user.get_profile.auth_status %}да{% else %}нет{% endif %}</td>
+                <td>{{ i.acc.login }}</td>
+                <td>{{ i.acc.nickname }}</td>
+                <td>{{ i.acc.email }}</td>
+                <td>{{ i.acc.fullname}}</td>
+                <td><input type="button" value="Сохранить" onclick="api_panel({{ i.user.id }});"></td>
+                <td><span id="api_panel_status_{{ i.user.id }}"></span></td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% endif %}
+    {% endif %}
+
+    {% if result.status == 'user_list' %}
+        <form action="{% url api_users %}" method="POST">{% csrf_token %}
+            Поиск юзера (login, email, nickname, fullname)<br />
+            <input type="text" name='user' value="" />
+            <input type="submit" value="Поиск" />
+        </form>
+        <table class="api_calls_log">
+            <tr>
+                <th>Админ</th>
+                <th>Клиент</th>
+                <th>ID</th>
+                <th>Актив.</th>
+                <th>Login</th>
+                <th>Nickname</th>
+                <th>E-Mail</th>
+                <th>Fullname</th>
+            </tr>
+            {% for i in p.object_list %}              
+            <tr>
+                <td><input type="checkbox" id="1_{{ i.user.id }}" {% if i.user.is_superuser %}checked="checked"{% endif %} /></td>
+                <td><input type="checkbox" id="2_{{ i.user.id }}" {% for g in i.user.groups.all %}{% if g.name == 'API' %}checked="checked"{% endif %}{% endfor %} /></td>
+                <td>{{ i.user.id }}</td>
+                <td>{% if i.auth_status %}да{% else %}нет{% endif %}</td>
+                {% for j in i.accounts.all %}
+                    {% if forloop.first %}
+                        <td>{{ j.login }}</td>
+                        <td>{{ j.nickname }}</td>
+                        <td>{{ j.email }}</td>
+                        <td>{{ j.fullname}}</td> 
+                        <td><input type="button" value="Сохранить" onclick="api_panel({{ i.user.id }});"></td>
+                        <td><span id="api_panel_status_{{ i.user.id }}"></span></td>
+                    {% else %}
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td></td>
+                        <td>{{ j.login }}</td>
+                        <td>{{ j.nickname }}</td>
+                        <td>{{ j.email }}</td>
+                        <td>{{ j.fullname}}</td> 
+                        <td><input type="button" value="Сохранить" disabled></td>
+                    {% endif %}
+                {% empty %}
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td>
+                        <td>-</td> 
+                        <td><input type="button" value="Сохранить" onclick="api_panel({{ i.user.id }});"></td>
+                        <td><span id="api_panel_status_{{ i.user.id }}"></span></td>
+                {% endfor %}
+                </tr>
+                {% endfor %}
+            </table>
+            <form action="{% url user_list %}" method="post">{% csrf_token %}
+            {% base_pagination p page %}
+            </form>
+    {% endif %}
+{% endblock %}

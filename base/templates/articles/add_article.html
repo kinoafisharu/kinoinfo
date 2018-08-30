@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% block title %}{% if add %}Добавление статьи{% else %}Редактирование статьи{% endif %}{% endblock %}
+{% block script %}<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>{% endblock %}
+{% block content %}
+{% load base_tags %}
+
+<h1 class="content-header">{% if add %}Добавление статьи{% else %}Редактирование статьи{% endif %}</h1>
+
+{% articles_menu %}
+
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        <form action="" method="POST">{% csrf_token %}
+            {{ form.title.label }}{{ form.title.errors }}
+            <br />
+            {{ form.title }}
+            <br />
+            {{ form.text.label }}{{ form.text.errors }}
+            <br />
+            {{ form.text }}
+            <br />
+            <input type="submit" value="Сохранить" />
+        </form>
+        
+        <br />
+        
+        {% if add %}{% else %}
+        <form action="{% url delete_article id %}" method="POST">{% csrf_token %}
+            <input type="submit" value="Удалить" />
+        </form>
+        {% endif %}
+        
+        
+    </div>
+</div>
+
+{% endblock %}

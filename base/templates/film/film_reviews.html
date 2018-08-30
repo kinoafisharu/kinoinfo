@@ -1,0 +1,253 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - рецензии экспертов - {{ request.current_site.name }}{% endblock %}
+{% block script %}
+
+<script type="text/javascript">
+    var maxLength = $('.comments_block-new textarea').attr('maxlength')
+    $('.comments_block-new textarea').keyup(function(){
+        var curLength = $('.comments_block-new textarea').val().length
+        if($(this).val().length >= maxLength){
+            $(this).val($(this).val().substr(0, maxLength))
+        }
+        var remaning = maxLength - curLength
+        if(remaning < 0){
+            remaning = 0
+        }
+        $('#char_count').html('(осталось символов: ' + remaning + ')')
+    });
+</script>
+
+
+<style type="text/css">
+.fancybox-skin{
+    background: #FFF5EB;
+}
+</style>
+{% if first_load %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.descr_id_' + {{ first_load }}).click();
+    });
+</script>
+{% endif %}
+{% if film_editor %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_note", "language": "ru", "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, image, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": false, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "wordcount, paste", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">фильм</span> <a href="{% url get_film id %}">{{ name_ru|safe }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">рецензии экспертов</span></b>
+</h1>
+
+{% if request.user.is_superuser or request.is_admin %}
+    <span class="review_new">Добавить рецензию</span>
+{% endif %}
+
+{% film_menu id menu film_editor %}
+
+<div class="art-postcontent-width">
+
+    <div class="scroll_list" style="padding-right: 10px; position: relative;">
+        {% if request.user.is_superuser or request.is_admin %}
+        <div class="organization_txt org_fields" style="z-index: 1000;">
+            <form action="{% url add_film_review id %}" method="post">{% csrf_token %}
+                Заголовок: <input type="text" value="" name="title" size="80" id="new_review_title" />
+                <br />
+                <textarea style="width: 600px; height: 200px;" name="note" id="id_note"></textarea>
+                
+                <div id="author_names">
+                    <table style="text-align: left;">
+                        <th style="width: 150px;">Для глаз и ушей:</th>
+                        <th style="width: 150px;">Для ума:</th>
+                        <th style="width: 150px;">Для сердца:</th>
+                        <tr>
+                            <td><input type="radio" name="eye" id="eye_3" value="3" checked /> Супер</td>
+                            <td><input type="radio" name="mind" id="mind_3" value="3" checked /> Сильно</td>
+                            <td><input type="radio" name="heart" id="heart_3" value="3" checked /> Трогает</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="eye" id="eye_2" value="2" /> Хорошо</td>
+                            <td><input type="radio" name="mind" id="mind_2" value="2" /> Занятно</td>
+                            <td><input type="radio" name="heart" id="heart_2" value="2" /> Так себе</td>
+                        </tr>
+                        <tr>
+                            <td><input type="radio" name="eye" id="eye_1" value="1" /> Скучно</td>
+                            <td><input type="radio" name="mind"  id="mind_1" value="1" /> Глупо</td>
+                            <td><input type="radio" name="heart" id="heart_1" value="1" /> Раздражает</td>
+                        </tr>
+                    </table>
+                    
+                
+                    <div class="nick_bl">
+                        Подпись автора:<br />
+                        <input type="radio" name="author_nick" value="0" checked /> {% if request.fio %}{{ request.fio }}{% else %}{{ request.acc_list.short_name }}{% endif %}
+                        <br />
+                        <input type="radio" name="author_nick" value="1"{% if not user.first_name %} disabled{% endif %}/> Псевдоним{% if user.first_name %} - {{ user.first_name }}{% endif %} (<a href="{% url user_details user.id %}" target="_blank">{% if user.first_name %}Изменить{% else %}Добавить{% endif %}</a>)
+                        <br />
+                        <input type="radio" name="author_nick" value="2"/> Не показывать подись
+                        <br />
+                        {% if not request.profile.kid %}
+                            <br />
+                            <b>У Вас нет прав для размещения рецензии на kinoafisha.ru (опубликуется только на kinoinfo.ru)</b>
+                            <br />Для получения прав <a href="{% url login %}">авторизуйтесь</a> через Киноафишу.
+                            <br />
+                        {% endif %}
+                    </div>
+                </div>
+                    
+                <br />
+                <input type="hidden" value="" name="profile_id" />
+                <input type="hidden" value="{{ id }}" name="film_id" />
+                <input type="hidden" value="" name="review_id" id="review_id" />
+                <input type="hidden" value="14" name="type" />
+                <input type="submit" value="Сохранить" class="organization_txt_accept_btn" />
+                <input type="button" value="Отмена" class="organization_txt_cancel_btn" />
+                
+            </form>
+        </div>
+        {% endif %}
+    
+        <div style="float: left; margin-right: 270px;">
+            {% if reviews_count > 1 %}
+                <div class="txt_wrapper">
+                    <p style="margin-bottom: 10px;">Быстрая навигация по рецензиям:</p>
+                {% for i in data %}
+                    <h3 style="color: #555; margin-bottom: 10px;"><a href="#r{{ i.id }}">{{ i.title|safe }}</a></h3>
+                {% endfor %}
+                </div>
+            {% endif %}
+
+            {% for i in data %}
+            <div class="txt_wrapper">
+                {% if film_editor and i.kinoinfo %}
+                <form action="{% url delete_film_review i.id %}" method="post" style="margin-bottom: 20px;">{% csrf_token %}
+                    <input type="button" class="review_edit" id="{{ i.id }}" value="редактировать" />
+                    <input type="hidden" name="type" value="14" />
+                    <input type="hidden" name="author_rate_{{ i.id }}" value="eye_{{ i.rate.r1 }}__mind_{{ i.rate.r2 }}__heart_{{ i.rate.r3 }}" />
+                    <input type="hidden" value="{{ i.rate.user_id }}" name="author_id__{{ i.id }}" />
+                    <input type="button" value="удалить" onclick="if(confirm('Вы уверены, что хотите удалить?')){$(this).parents('form').submit();}" />
+                </form>
+                {% endif %}
+            
+                <h2 id="title__{{ i.id }}"><a name="r{{ i.id }}">{{ i.title|safe }}</a></h2>
+
+                <div id="text__{{ i.id }}">
+                    {{ i.txt|safe }}
+                </div>
+
+                <div class="review_bottom">
+                    <span>
+                        <div class="review_rate_details">
+                            Для глаз и ушей: 
+                            {% if i.rate.r1 == 1 %}Скучно{% else %}{% if i.rate.r1 == 2 %}Хорошо{% else %}Супер{% endif %}{% endif %}
+                            <br />
+                            Для ума: {% if i.rate.r2 == 1 %}Глупо{% else %}{% if i.rate.r2 == 2 %}Занятно{% else %}Сильно{% endif %}{% endif %}
+                            <br />
+                            Для сердца: {% if i.rate.r3 == 1 %}Раздражает{% else %}{% if i.rate.r3 == 2 %}Так себе{% else %}Трогает{% endif %}{% endif %}
+                        </div>
+
+                        <div class="review_avatar">
+                            {% if i.avatar %}
+                                <img src="{{ i.avatar }}" />
+                            {% endif %}
+                        </div>
+
+                        {% if i.kinoinfo %}
+                            <a style="font-size: 14px;" href="{% url profile i.uid %}">{% if i.user.fio %}{{ i.user.fio }}{% else %}{{ i.user.short_name }}{% endif %}</a>
+                        {% else %}
+                            {{ i.user }}
+                        {% endif %}
+
+                        <br />
+                        Оценка: <a class="review_rate_details_show nolink">{{ i.rate.sum }} / 9</a> ({{ i.rate.rate_txt }})
+                    </span>
+
+                    <span style="float: right; font-weight: normal;">
+                        {{ i.date|date:"d.m.Y" }}
+                    </span>
+                </div>
+
+                <div class="clear"></div>
+
+                <div class="share_me">
+                    <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+                    <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8" async="async"></script>
+                    <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,twitter,gplus,moimir" data-counter="" data-title="Киноафиша России: рецензия на фильм - {{ name_ru|safe }} ({% if i.kinoinfo %}{% if i.user.fio %}{{ i.user.fio }}{% else %}{{ i.user.short_name }}{% endif %}{% else %}{{ i.user }}{% endif %})" data-image="{{ poster_path }}" ></div>
+                </div>
+
+                <div class="clear"></div>
+                <a href="{% url get_film id %}">Перейти на страницу фильма</a>
+                {% if reviews_back_link %}
+                <br />
+                <a href="{{ original_ref }}">Вернуться к списку рецензий</a>
+                {% endif %}
+            </div>
+
+                
+            <noindex>
+            <div class="comments_block" id="cmb_{{ i.id }}" style="margin-bottom: 40px;">
+                <div><b>Комментарии:</b><a class="comments_block-add_link" onclick="comments_add(this);">Добавить</a></div>
+                <div class="comments_block-content">
+                    {% if i.comments %}{{ i.comments|safe }}{% else %}Нет{% endif %}
+                </div>
+                <div class="comments_block-new">
+                    Новый комментарий: <span id="char_count"></span><br />
+                    <textarea maxlength="1000"></textarea>
+                    <br />
+
+                    <div{% if i.comments_subscribed %} style="display: none;"{% endif %}>
+                        <input type="checkbox" class="comments_subscribe" checked="checked" /> Уведомлять об ответах на комментарий
+                        <div class="comments_subscribe-bl" {% if email_exist %}style="display: none;"{% endif %}>
+                            E-Mail <input type="text" value="" placeholder="Введите Ваш E-Mail" id="comments_subscribe_form-email" {% if email_exist %}email-exist="1"{% else %}email-exist="0"{% endif %} /> <span id="comments_subscribe-msg"></span>
+                        </div>
+                        <br />
+                    </div>
+
+                    <br />
+                    <input type="hidden" value="{{ i.id }}" class="comments_block-id"/>
+                    <input type="hidden" value="0" class="comments_block-new-answer"/>
+                    <input type="button" value="Отправить" class="comments_block-new-btn"/>
+                    <input type="button" value="Отмена" class="comments_block-new-cancel"/>
+                    <div class="loader"></div>
+                </div>
+            </div>
+            </noindex>
+            {% empty %}
+            Нет рецензий
+            {% endfor %}
+        </div>
+
+        <div style="position: absolute; top: 0; right: 10px; width: 250px; border 1px solid;">
+            <img src="{{ poster_path }}" width="250" height="375" />
+
+            {% for i in trailers %}
+            <div id="film_trailers">
+                <div class="trailer">
+                    <div class="youtube_wrapper">
+                        <img src="{{ i.img }}" width="250" height="150" id="yt_{{ i.id }}">
+                        <div></div>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+
+            {% for i in slides %}
+            <img src="{{ i.0 }}" width="250" style="margin-top: 5px;"/>
+            {% endfor %}
+
+        </div>
+
+    </div>
+
+</div>
+
+
+{% endblock %}

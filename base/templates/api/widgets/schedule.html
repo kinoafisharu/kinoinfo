@@ -1,0 +1,69 @@
+{% extends "api/widgets/main.html" %}
+{% block title %}Афиша {{ city_name }}{% endblock %}
+{% block content %}
+
+
+{% if style = 'small' %}
+<style>
+*{
+  font-size: 12px;
+}
+.widget_schedule{
+    width: 300px;
+    border: 0px;
+    background: none;
+}
+.widget_schedule__content{
+    margin-top: 7px; 
+    height: {{ height }}px;
+}
+.widget_schedule__content__poster{
+    width: 70px; 
+}
+.widget_schedule__content__poster img{
+    width: 70px; 
+    height: 100px;
+}
+.widget_schedule__content__data span{
+    font-size: 10px;
+}
+.widget_schedule__content__data{
+    width: 190px; 
+    height: {{ height }}px;
+    border: 0px;
+}
+</style>
+{% endif %}
+
+
+
+<div class="widget_schedule">
+    <input type="hidden" class="widget_schedule__height" value="{{ height }}" />
+    <div class="widget_schedule__title">Афиша {{ city_name }}</div>
+    {% for i in films %}
+    <p id="innerElement">
+    <div class="widget_schedule__content">
+        <div class="widget_schedule__content__poster"><img src="{{ i.poster }}" /></div>
+        
+        <div class="widget_schedule__content__data">
+            <a href="http://kinoinfo.ru/film/{{ i.id }}/" target="_blank">{{ i.name }}</a>
+            <br />
+            <div>
+            {% for j in i.sessions %}
+                <span{% if j.past %} class="past"{% endif %}>{{ j.time }}</span>{% if not forloop.last %}, {% endif %}
+            {% empty %}
+                нет сеансов
+            {% endfor %}
+            </div>
+        </div>
+        
+    </div>
+    </p>
+    {% empty %}
+        Нет сеансов
+    {% endfor %}
+    
+</div>
+
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "base_vlada.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{{ site_name }}{% endblock %}
+
+{% block script %}
+<style type="text/css">
+    .content-main{
+        box-shadow: none;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+
+    <div class="main_block">
+        <ul class="table-row">
+            <li>
+                <a href="{{ links.1 }}">
+                    <div class="main_widget">
+                        <img src="/static/base/images/vlada/1button.png">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ links.2 }}">
+                    <div class="main_widget">
+                        <img src="/static/base/images/vlada/2button.png">
+                    </div>
+                </a>
+            </li>
+        </ul>
+        
+        <ul class="table-row">
+            <li>
+                <a href="{{ links.3 }}">
+                    <div class="main_widget">
+                        <img src="/static/base/images/vlada/3button.png">
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="{{ links.4 }}">
+                    <div class="main_widget">
+                        <img src="/static/base/images/vlada/4button.png">
+                    </div>
+                </a>
+            </li>
+        </ul>
+
+    </div>
+    <div class="clear"></div>
+
+
+
+{% endblock %}

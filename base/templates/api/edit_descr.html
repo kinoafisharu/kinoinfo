@@ -1,0 +1,8 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block script %}<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>{% endblock %}
+{% block info %}
+    <form action="{% url edit_api_description %}" method="POST">{% csrf_token %}
+        {{ form.text }}
+        <input type="submit" value="Сохранить" />
+    </form>
+{% endblock %}

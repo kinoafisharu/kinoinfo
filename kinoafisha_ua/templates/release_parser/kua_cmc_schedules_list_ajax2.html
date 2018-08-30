@@ -1,0 +1,181 @@
+{% extends "kua_base.html" %}
+{% load i18n %}
+{% block title %}
+{% if city_name and flag %}
+{% trans "Киноафиша города" %} {{ city_name }}
+{% else %}
+{% trans "Киноафиша Вашего города" %}
+{% endif %}
+{% endblock %}
+{% block script %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+        $("#descript").fancybox();
+        {% if first_load_film %}
+            get_film({{ first_load_film }});
+            get_film_schedule({{ first_load_film }}, {{ cinema }});
+        {% else %}
+            $('#film_info').hide()
+            {% if not city_name %}
+            var obj = "{% trans 'города' %}"
+            {% else %}
+            {% if not cinema_name %}
+            var obj = "{% trans 'кинотеатра' %}"
+            {% endif %}
+            {% endif %}
+            $('#loader').html("{% trans 'К сожалению, для этого' %} " + obj + " {% trans 'нет ни одного сеанса, выберите другой' %}.")
+        {% endif %}
+        {% if alert %}
+            if(confirm("{% trans 'Запомнить выбор города' %}?")){
+                save_city_choice({{ alert }});
+            }
+        {% endif %}
+    });
+    </script>
+{% endblock %}
+{% block content %}
+
+
+<h1 class="content-header">
+{% if city_name and flag %}
+{% trans "Киноафиша города" %} {{ city_name }}
+{% else %}
+{% trans "Киноафиша Вашего города" %}
+{% endif %}
+</h1>
+
+<div class="art-posttree-width">
+    <div class="release-list">
+
+        <div class="filter_nav">
+            {% if city_name %}
+                <span id="cities" title="{% if city_name %}{{ city_name }}{% endif %}">{{ city_name }}</span>
+            {% else %}
+                <span id="cities" style="color: #D63333">{% trans "Выберите город" %}</span>
+            {% endif %}
+            
+            <div id="cities_inline">
+                <div style="padding: 8px;">
+                {% for i in cities %}
+                    {% if i.id == city %}
+                        <div class="cities_list" title="{{ i.name }}" style="color: #333333;">
+                            {{ i.name|slice:":17" }}
+                        </div>
+                    {% else %}
+                        <a href="{% url schedule_ajax i.id %}">
+                        <div class="cities_list" title="{{ i.name }}">
+                            {{ i.name|slice:":17" }}
+                        </div>
+                        </a>
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+
+            
+            {% if city_name %}
+                {% if cinema_name %}
+                    <span id="cinemas" title="{% if cinema_name %}{{ cinema_name|safe }}{% endif %}">{{ cinema_name|safe }}</span>
+                {% else %}
+                    <span id="cinemas" style="color: #D63333">{% trans "Выберите кинотеатр" %}</span>
+                {% endif %}
+            {% endif %}
+            
+            <div id="cinemas_inline">
+                <div style="padding: 8px;">
+                {% for i in cities %}
+                    {% if i.id == city %}
+                        {% for j in i.cinema|dictsort:"name" %}
+                            {% if j.id == cinema %}
+                            <div class="cinemas_list" title="{{ j.name|safe }}" style="color: #333333;">
+                                {{ j.name|safe }}
+                            </div>
+                            {% else %}
+                            <a href="{% url schedule_ajax i.id j.id %}">
+                            <div class="cinemas_list" title="{{ j.name|safe }}">
+                                {{ j.name|safe }}
+                            </div>
+                            </a>
+                            {% endif %}
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        
+        {% for r in data %}
+            {% for i in r.data|dictsort:"name" %}
+                <div onclick="get_film({{ i.kid }}); get_film_schedule({{ i.kid }}, {{ cinema }});" id="release_film_id_{{ i.kid }}" class="release_film">
+                    {% if r.rate == 0 %}
+                    <b class="release_film_rate rate_0">_</b> 
+                    <b class="release_film_rate_angle angle_0"></b>
+                    {% else %}
+                    <b class="release_film_rate rate_{{ r.rate }}">{{ r.rate }}</b> 
+                    <b class="release_film_rate_angle angle_{{ r.rate }}"></b>
+                    {% endif %}
+                    <b id="release_film_name" class="release_film_name">{{ i.name|safe }}</b>
+                    <span id="release_film_genre" class="release_film_genre">
+                    ({% for g in i.genres %}{{ g|slice:":8" }}.{% if not forloop.last %}, {% endif %}{% endfor %})
+                    </span>
+                </div>
+            {% endfor %}
+        {% endfor %}
+
+
+    {% if user.is_superuser %}
+        <a href="{% url kinoafisha_admin_main %}">Панель</a>
+    {% endif %}
+        <br />
+        <a href="{% url main %}">{% trans "На главную" %}</a>
+    </div>
+    
+</div>
+
+
+<div class="art-postcontent-width">
+    <span id="loader"></span>
+    <div id="film_info">
+        <div id="film_text">
+            <h2 id="film_name"></h2>
+            <div id="kid" style="display: none;"></div>
+            <b id="film_details"></b>
+            <div class="separator_line"></div>
+            <div id="film_description"></div>
+            <div id="in_descript"></div>
+            <div id="schedules"></div>
+            <div id="film_trailers"></div>
+            <div id="film_slides"></div>
+        </div>
+        <div id="film_poster">
+            <div id="subscribe_info">
+                <div class="pen"></div>
+            </div>
+            <div class="triangle"></div>
+            <div class="like_list">
+                <div class="like_list__options" title="Хочу смотреть в кинотеатре"><div class="like_in_cinema"></div><div class="likes_cinema"></div></div>
+                <div class="like_list__options" title="Хочу посмотреть дома"><div class="like_in_home"></div><div class="likes_home"></div></div>
+                <div class="like_list__options" title="Смотрел - рекомендую"><div class="like_and_recommend"></div><div class="likes_recommend"></div></div>
+            </div>
+            <div class="dislike_list">
+                <div class="dislike_list__options" title="Не буду смотреть"><div class="dislike_not_be_see"></div><div class="dislikes_seen"></div></div>
+                <div class="dislike_list__options" title="Смотрел - не рекомендую"><div class="dislike_and_not_recommend"></div><div class="dislikes_recommend"></div></div>
+            </div>
+            <div class="poster_label">
+                <div class="rating"></div>
+                <div class="evaluation">
+                    <div class="likes"><div class="like"></div><div class="count_likes"></div></div>
+                    <div class="dislikes"><div class="dislike"></div><div class="count_dislikes"></div></div>
+                </div>
+                <div id="age_limit"></div>
+            </div>
+            <div id="poster"></div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,3 @@
+{% if request.user.is_superuser %}
+<div class="sys_info"><div id="slider" class="sys_hide"></div><span>{% if timer %}Gen: {{ timer }}{% if cached_page != '' %} | Cache: {{ cached_page }} | <a href="?cache=refresh">refresh cache</a>{% endif %}{% else %}No Data{% endif %}</span></div>
+{% endif %}

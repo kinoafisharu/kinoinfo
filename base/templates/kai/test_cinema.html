@@ -1,0 +1,85 @@
+{% extends "list_2.html" %}
+{% block content %}
+<div class="art-postcontent-width">
+    <h2 class="art-postheader">Кинотеатры, залы</h2>
+    {% for i in cinema %}
+    <div class="test_list">
+        <div class="test_list_1">
+        <span>Название</span><br />
+        {% for n in i.name.all %}
+            {% if n.status == 1 %}
+                {{ n.name }}
+            {% endif %}
+        {% endfor %}
+        </div>
+        <div class="test_list_2">
+        <span>Город</span><br />
+        {% for n in i.city.name.all %}
+            {% if n.status == 1 %}
+                {{ n.name }}
+            {% endif %}
+        {% endfor %}
+        </div>
+        <div class="test_list_2">
+        <span>Сеть</span><br />
+        {{ i.cinema_circuit }}
+        </div>
+        <div class="test_list_3">
+        <span>Метро</span><br />
+        {% for j in i.metro.all %}
+            {{ j }}<br />
+        {% endfor %}
+        </div>
+        <div class="test_list_2">
+        <span>ID Киноафиша</span><br />
+        {{ i.code }}<br />
+        </div>
+        <div class="test_list_5"></div>
+        <div class="test_list_1"><br />
+        <span>Адрес</span><br />
+        тип: {{ i.street_type }}<br />
+        назв.: {{ i.street_name }}<br />
+        корпус: {{ i.number_housing }}<br />
+        номер: {{ i.number_hous }}<br />
+        буква: {{ i.letter_housing }}<br />
+        индекс: {{ i.zip }}<br />
+        </div>
+        <div class="test_list_2"><br />
+        <span>Телефоны</span><br />
+        {% for p in i.phone.all %}
+            {{ p.get_phone_type_display }}:<br />
+            {{ p.phone }}<br />
+        {% endfor %}
+        </div>
+        <div class="test_list_2"><br />
+        <span>Сайты</span><br />
+        {% for s in i.site.all %}
+            {{ s.get_site_type_display }}:<br />
+            {{ s.url }}<br />
+        {% endfor %}
+        </div>
+        <div class="test_list_3"><br />
+        <span>Открытие</span><br />
+        {{ i.opening }}
+        </div>
+        <div class="test_list_4"><br />
+        <span>Примечания</span><br />
+        {{ i.note }}<br />
+        </div>
+        <div class="test_list_5"></div>
+        <div>
+        <span>Залы</span><br />
+        {% for h in halls %}
+            {% if h.cinema_id == i.id %}
+                {% for n in h.name.all %}
+                    {% if n.status == 1 %}
+                        название: {{ n.name }} номер: {{ h.number }} мест: {{ h.seats }}<br />
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

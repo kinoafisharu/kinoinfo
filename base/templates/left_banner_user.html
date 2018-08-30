@@ -1,0 +1,26 @@
+{% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru'  %}
+<noindex>
+<div class="left_banner">
+    {% if not simple %}
+    <div class="left_banner_title">Реклама</div>
+    {% endif %}
+
+    {% if adv_type == 'adv' %}
+    <a class="flb_adv_link" id="flb_id_{{ banner_id }}" href="{{ banner_url }}" target="_blank" rel="nofollow">
+        <div class="left_adv_content {{ adv_style }}">
+            {{ swf_object|safe }}
+        </div>
+    </a>
+    {% else %}
+        {% if adv_type == 'code' %}
+            <div style="width: 240px; margin: 0 auto;">{{ swf_object|safe }}</div>
+        {% else %}
+        <div class="left_banner_content">
+            {{ swf_object|safe }}
+        </div>
+        {% endif %}
+    {% endif %}
+
+</div>
+</noindex>
+{% endif %}

@@ -1,0 +1,125 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{% if org.ownership %}{{ org.get_ownership_display }} {% endif %}{{ org.name }} - Расписание сеансов{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".fancybox").fancybox();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h1 class="content-header"><a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a>
+{% if request.current_site.domain != 'kinoinfo.ru' and request.current_site.domain != 'kinoafisha.ru' %}
+ <span id="cities2">{% for i in DOMAIN_CITIES %}{% if i.sub == request.subdomain %}{{ i.name }}{% endif %}{% endfor %}</span> - <a href="{% url organization_list 'а' %}">
+{% endif %}
+{% if org.ownership %}{{ org.get_ownership_display }} {% endif %}{{ org.name }}
+{% if request.current_site.domain != 'kinoinfo.ru' %}
+</a>
+{% endif %} - Расписание сеансов</h1>
+
+{% if request.current_site.domain != 'kinoinfo.ru' and request.current_site.domain != 'kinoafisha.ru' %}
+<div id="cities_inline">
+    <div style="padding: 8px;">
+        {% for i in DOMAIN_CITIES %}
+            {% if i.sub == request.subdomain %}
+                <div class="cities_list" style="color: #333;">
+                {{ i.name }}
+                </div>
+            {% else %}
+                <a href="http://{{ i.sub }}.vsetiinter.net/">
+                    <div class="cities_list">
+                    {{ i.name }}
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+
+{% organization_menu org.uni_slug offers_tags advert_tags is_editor branding %}
+
+
+<div class="art-postcontent-width">
+    
+    <div class="scroll_list" style="padding-right: 10px;">
+
+    {% for i in data.values %}
+        <div id="film_info" style="min-height: 260px; margin-bottom: 20px; padding: 5px 5px 10px 10px; background: {% if forloop.counter|divisibleby:'2' %}#EBEBEB;{% else %}#F2F2F2;{% endif %}">
+            <div id="film_text" class="small_film_txt">
+                
+                <h2 id="film_name"><a href="{% url get_film i.data.id %}">{% if i.data.name_ru %}{{ i.data.name_ru|safe }}{% else %}{{ i.data.name_en|safe }}{% endif %}</a></h2>
+
+                <b id="film_details">
+                <span>
+                {% for v in i.data.countries %}{{ v }}{% if not forloop.last %} / {% endif %}{% endfor %},
+                </span>
+                <span>
+                {% for v in i.data.genres %}{{ v }}{% if not forloop.last %} / {% endif %}{% endfor %},
+                </span>
+                <span>
+                {% if i.data.runtime %}{{ i.data.runtime }} мин.{% endif %}
+                </span>
+                </b>
+
+                <div class="separator_line"></div>
+
+                <div id="film_description">
+                {% if i.data.descript %}
+                    {% if i.data.descript_cut %}
+                        {{ i.data.descript_cut|safe }}
+                        <a id="descript" href="#in_descript" onclick="$.fancybox.open($(this).next());">[подробнее]</a>
+                        <div id="in_descript">
+                            <div style="padding-right: 15px;">
+                            {{ i.data.descript|safe }}
+                            </div>
+                        </div>
+                        
+                    {% else %}
+                        {{ i.data.descript|safe }}
+                    {% endif %}
+                {% else %}
+                Нет описания
+                {% endif %}
+                </div>
+                
+                <div id="film_sch">
+                {% for dt in i.dtime %}
+                    {% ifchanged dt.date %}
+                        {% if not forloop.first %}<br />{% endif %}
+                        <b>{{ dt.date|date:"j E" }}: </b>
+                    {% endifchanged %}
+                    {{ dt|date:"H:i" }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </div>
+                
+                <div id="film_trailers">
+                    <div class="trailer"{% if online %} style="height: 230px;"{% endif %}>{% if i.data.trailer %}{{ i.data.trailer|safe }}{% else %}Нет трейлера{% endif %}</div>
+                </div>
+
+                {% if not online %}
+                <div id="film_slides" style="margin-bottom: 10px;">
+                {% for s in i.data.slides %}
+                    <div class="slide">{% if s.0 %}<a class="fancybox" rel="group_{{ i.data.id }}" href="{{ s.0 }}"><img class="fancy_slide" src="{{ s.1 }}" /></a>{% else %}Нет слайда{% endif %}</div>
+                {% endfor %}
+                </div>
+                {% endif %}
+
+            </div>
+            
+            {% poster_with_likes i.data.id i.data.rating.rate i.data.rating.show_imdb i.data.rating.rotten i.data.rating.show_ir i.data.likes.likes_cinema i.data.likes.likes_home i.data.likes.likes_recommend i.data.likes.dislikes_seen i.data.likes.dislikes_recommend i.data.likes.count_likes i.data.likes.count_dislikes i.data.limit i.data.posters 'small_pstr' %}
+
+        </div>
+    {% endfor %}
+    
+    </div>
+    
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,22 @@
+{% load base_tags %}
+{% load i18n %}
+<div class="art-posttree-width">
+    <h5 class="method-category" id="section_tools"><p>{% trans 'Мои инструменты' %}</p></h5>
+    <div class="method-list">
+        <ul>
+            <li><a href="{% url letsget_calendar %}">{% trans 'Календарь' %}</a></li>
+            <li><a href="{% url letsget_clients %}">{% trans 'Список клиентов' %}</a></li>
+            <li><a href="{% url letsget_invite_template %}">{% trans 'Шаблон пригласительного' %}</a></li>
+            <li><a href="{% url letsget_upload_images %}">{% trans 'Загрузка изображений' %}</a></li>
+            {% if request.current_site.domain == 'vladaalfimovdesign.com.au' %}<li><a href="{% url set_social_icons %}">Social Icons</a></li>{% endif %}
+            <li><a href="#" onclick="org_addmenu_bl();">{% trans 'Добавить верхнее меню' %}</a></li>
+        </ul>
+        <div class="org_addmenu_bl_fields org_fields">
+            <input type="text" id="{{ slug }}" class="org_addmenu_title" size="35"/>
+            <input type="button" class="org_addmenu" id="" value="{% trans 'Принять' %}"/>
+            <input type="button" value="{% trans 'Отмена' %}" class="org_addmenu_bl_cancel_btn" onclick="obj_cancel(this);"/>
+        </div>
+    </div>
+    
+    {% social_icons %}
+</div>

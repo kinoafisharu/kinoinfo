@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{% trans 'Авторизация' %}{% endblock %}
+{% block content %}
+    <h1 class="content-header">{% trans 'Авторизация' %}</h1>
+    <div class="block-auth-through-openid">
+        {% base_user_openid message %}
+        {% base_user_email %}
+        {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' %}
+        {% base_user_lj %}
+        {% base_user_kinoafisha %}
+        {% endif %}
+    </div>
+<div class="clear"></div>
+<br />
+<a href="{% url main %}">{% trans 'На главную' %}</a>
+{% endblock %}

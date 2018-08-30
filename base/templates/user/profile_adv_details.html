@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Профиль пользователя' %}{% endblock %}
+{% load base_tags %}
+
+
+{% block page_bg %}style="background-image: url('{% if user_bg %}{{ user_bg.file }}{% else %}{{ request.bg_img }}{% endif %}');"{% endblock %}
+{% block br_url %}{% if user_bg %}{{ user_bg.url }}{% else %}{{ request.advert_url }}{% endif %}{% endblock %}
+{% block adv_id %}{% if user_bg %}{{ user_bg.id }}{% else %}{{ request.advert_id }}{% endif %}{% endblock %}
+
+
+
+{% block content %}
+
+    <h1 class="content-header">
+        <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+        <b id="navigation_bar"><a href="{% url profile card.profile.user_id %}">{{ card.name|safe|striptags }}</a></b> -
+        <b id="navigation_bar"><a href="{% url profile_adv card.profile.user_id %}">Управление рекламой</a></b> -
+        <b id="navigation_bar"><span class="small_film_name">Статистика</span></b>
+    </h1>
+
+    {% profile_menu card %}
+    
+    <div class="art-postcontent-width">
+        <div class="scroll_list">
+            <div class="txt_wrapper" style="position: relative; margin-bottom: 10px;">
+                <form action="" method="post">{% csrf_token %}
+                    Тип
+                    <select name="type">
+                        <option value="1" {% if data_type == 1 %}selected{% endif %}>Клики</option>
+                        <option value="2" {% if data_type == 2 %}selected{% endif %}>Просмотры</option>
+                    </select>
+                    Города
+                    <select name="city">
+                        {% for i in cities %}
+                        <option value="{{ i.city }}" {% if city == i.city %}selected{% endif %}>{{ i.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" value="GO" />
+                    
+                    {% if data %}
+                    <a href="{% url profile_adv_report_budget card.profile.user_id adv_id %}" style="position: absolute; top: 10px; right: 90px;">Отчет №1</a>
+                    <a href="{% url profile_adv_report_users card.profile.user_id adv_id %}" style="position: absolute; top: 10px; right: 10px;">Отчет №2</a>
+                    {% endif %}
+                    
+                </form>
+            </div>
+
+            <div class="txt_wrapper">
+                <table class="modern_tbl">
+                    <tr>
+                        <th>Дата</th>
+                        <th>Пользователь</th>
+                        <th>Стоимость</th>
+                    </tr>
+                    <tr>
+                        <td><b>{{ from_date|date:"d b" }} - {{ to_date|date:"d b" }}</b></td>
+                        <td><b>{{ user_count }}</b></td>
+                        <td><b>{{ spent }} руб.</b></td>
+                    </tr>
+                    {% for key_date, value_list in data.items %}
+                    <tr id="my_adv_{{ banner.id }}">
+                        <td style="vertical-align: top;"><div>{{ key_date }}</div></td>
+                        <td>
+                            <div>
+                            {% for i in value_list.data %}
+                                {% if i.profile_obj %}
+                                    <div{% if i.returned %} style="background: #d6f5d6;"{% endif %}><a href="/user/profile/{{ i.profile_obj.id }}/" target="_blank">{{ i.profile_obj.name }} ({{ i.profile_obj.city }})</a></div>
+                                {% else %}
+                                    <div>Не найден</div>
+                                {% endif %}
+                            {% endfor %}
+                            </div>
+                        </td>
+                        <td style="vertical-align: top;"><div>{{ value_list.spent }} руб.</div></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

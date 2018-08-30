@@ -1,0 +1,115 @@
+{% load base_tags static %}
+{% get_static_prefix as STATIC_URL %}
+
+<div class="art-posttree-width">
+    <div id="accordion">
+        <h5 class="method-category" id="kinoafisha_admin_section01"><p>Cron</p></h5>
+        <div class="method-list">
+        <ul>
+            <li><a href="{% url admin_parsers_info 'xml' %}">Парсинг XML / JSON</a></li>
+            <li><a href="{% url admin_parsers_info 'html' %}">Парсинг HTML</a></li>
+            <li><a href="{% url admin_parsers_info 'export' %}">Экспорт в Киноафишу</a></li>
+            <li><a href="{% url admin_parsers_info 'import' %}">Импорт из Киноафишы</a></li>
+            <li><a href="{% url admin_parsers_info 'api' %}">API дампы</a></li>
+
+        </ul>
+        </div>
+
+        <h5 class="method-category" id="kinoafisha_admin_section02"><p>Идентификация</p></h5>
+        <div class="method-list">
+        <ul>
+            <li><a href="{% url admin_identification_info 'country' %}" {% if obj_error.country %}style="color: #CC0000;"{% endif %}>Страны</a></li>
+            <li><a href="{% url admin_identification_info 'city' %}" {% if obj_error.city %}style="color: #CC0000;"{% endif %}>Города</a></li>
+            <li><a href="{% url admin_identification_info 'cinema' %}" {% if obj_error.cinema %}style="color: #CC0000;"{% endif %}>Кинотеатры</a></li>
+            <li><a href="{% url admin_identification_info 'hall' %}" {% if obj_error.hall %}style="color: #CC0000;"{% endif %}>Залы</a></li>
+            <li><a href="{% url admin_identification_info 'film' %}" {% if obj_error.film %}style="color: #CC0000;"{% endif %}>Фильмы</a></li>
+            <li><a href="{% url admin_film_doubles_sources_list %}">Фильмы Дубли</a></li>
+            <li><a href="{% url admin_identification_info 'distributor' %}" {% if obj_error.distributor %}style="color: #CC0000;"{% endif %}>Дистрибьюторы</a></li>
+            <li><a href="{% url admin_identification_info 'person' %}" {% if obj_error.person %}style="color: #CC0000;"{% endif %}>Персоны</a></li>
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="kinoafisha_admin_section03"><p>Запись</p></h5>
+        <div class="method-list">
+        <ul>
+            <li><a href="{% url admin_kinoinfo_import_info %}">Киноинфо</a></li>
+            <li><a href="{% url admin_kinoafisha_import_info %}">Киноафиша</a></li>
+            {% if request.current_site.domain == 'kinoinfo.ru' %}
+            <li><a href="{% url admin_api_import_info %}">API</a></li>
+            {% endif %}
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="kinoafisha_admin_section04"><p>Редактирование</p></h5>
+        <div class="method-list">
+        <ul>
+            <li><a href="{% url edit_city_names_relations %}">Связи названий и городов</a></li>
+            <li><a href="{% url edit_cinema_relations %}">Связи названий и кинотеатров</a></li>
+            <li><a href="{% url edit_cinema_relations_alter_names %}">Связи кинотеатров установленные вручную</a></li>
+            <li><a href="{% url edit_films_relations_alter_names %}">Связи фильмов установленные вручную</a></li>
+            <li><a href="{% url edit_releases_relations %}">Связи Кинометро с фильмами</a></li>
+            <li><a href="{% url edit_source_films_relations %}">Идентифицированные фильмы источников</a></li>
+            <li><a href="{% url source_cinemas_relations %}">Идентифицированные кинотеатры источников</a></li>
+            <li><a href="{% url admin_sources_editor %}">Редактор источников</a></li>
+            <li><a href="{% url org_invite_text %}">Приглашение редактора организации</a></li>
+            <li><a href="{% url persons_parental_names %}">Имена режиссеров</a></li>
+            <li><a href="{% url source_opinions_set_rate %}">Отзывы источников на фильмы</a></li>
+            <li><a href="{% url admin_generated_films %}">Фильмы созданные кнопкой rutracker</a></li>
+            <li><a href="{% url admin_image_optimizer %}">Оптимизировать изображения на Киноафише</a></li>
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="kinoafisha_admin_section05"><p>Статистика</p></h5>
+        <div class="method-list">
+        <ul>
+            <li><a href="{% url admin_city_statistics %}">Города</a></li>
+            <li><a href="{% url admin_cinemas_statistics %}">Кинотеатры</a></li>
+            <li><a href="{% url admin_source_releases_show %}">Релизы okino.ua</a></li>
+            <li><a href="{% url distributor_list 2 %}">Список дистрибьюторов</a></li>
+            <li><a href="{% url kinometro_films_pages_log %}">Лог парсера всех релизов кинометро</a></li>
+            <li><a href="{% url get_subscriptions_users %}">Подписки E-mail</a></li>
+            <li><a href="{% url subscriptions_feeds %}">Подписки RSS</a></li>
+            <li><a href="{% url admin_buy_ticket_statistics %}">Покупка билетов</a></li>
+            <li><a href="{% url boxoffice_admin 'russia' %}">Кассовые сборы Россия</a></li>
+            <li><a href="{% url boxoffice_admin 'usa' %}">Кассовые сборы США</a></li>
+            <li><a href="{% url actions_pricelist %}">Оплачиваемые действия</a></li>
+            <li><a href="{% url admin_actions %}">Все действия пользователей</a></li>
+            <li><a href="{% url organizations %}">Организации</a></li>
+            <li><a href="{% url rutracker_topics %}">RuTracker топики</a></li>
+            <li><a href="{% url reviews_list_without_rate %}">Фильмы без оценки рецензента</a></li>
+            <li><a href="{% url admin_adv_statistics %}">Статистика по рекламным компаниям</a></li>
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="kinoafisha_admin_section06"><p>API Панель</p></h5>
+        <div class="method-list">
+        <ul>
+            <li><a href="{% url api_users %}">Управление пользователями</a></li>
+            {% if request.current_site.domain == 'kinoinfo.ru' %}
+            <li><a href="{% url edit_api_description %}">Изменить описание API</a></li>
+            <li><a href="{% url get_user_request_list %}">Обращения к API</a></li>
+            <li><a href="{% url daniya_films %}">Добавить фильмы для Дании</a></li>
+
+            {% endif %}
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="kinoafisha_admin_section07"><p>Все объекты</p></h5>
+        <div class="method-list">
+        <ul>
+            <li><a href='{% url get_film_list 2015 %}'>Все фильмы</a></li>
+            <li><a href="{% url get_person_list %}">Все персоны</a></li>
+            <li><a href="{% url  organization_cinema_list 1 %}">Все кинотеатры</a></li>
+        </ul>
+        </div>
+
+        <h5 class="method-category" id="kinoafisha_admin_section08"><p>SEO</p></h5>
+        <div class="method-list">
+        <ul>
+            <li><a href="{% url admin_seo_mainpage %}">Главная страница</a></li>
+        </ul>
+        </div>
+
+    </div>
+</div>
+

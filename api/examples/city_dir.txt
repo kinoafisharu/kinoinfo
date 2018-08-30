@@ -1,0 +1,13 @@
+
+<data>
+    <city id="1" name="Москва"/>
+    <city id="2" name="Зеленоград"/>
+    <city id="3" name="Химки"/>
+    <city id="4" name="Санкт-Петербург"/>
+    <city id="5" name="Нижний Новгород"/>
+    <city id="6" name="Екатеринбург"/>
+    <city id="7" name="Владивосток"/>
+    <city id="8" name="Архангельск"/>
+    <city id="9" name="Челябинск"/>
+    <city id="10" name="Новодвинск"/>
+</data>

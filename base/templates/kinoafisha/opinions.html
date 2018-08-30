@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Отзывы на фильмы - {{ request|get_site_name2018 }}{% endblock %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar">
+        <a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a></b>
+    Киноафиша <a class="select_mycity">{{ request|get_city_name_3 }}</a> - Отзывы на фильмы
+</h1>
+
+{% kinoafisha_main_menu %}
+
+
+<div class="art-postcontent-width">
+    <div class="scroll_list" style="padding-right: 10px;">
+        <div class="opinions_list" style="margin-top: 10px;">
+            {% for i in opinions %}
+            <div class="opinion_bl" style="background: {% if forloop.counter|divisibleby:'2' %}#EBEBEB;{% else %}#F2F2F2;{% endif %}">
+            <b style="color: #333;">{{ i.nick }}</b>, отзыв на <a href="http://kinoinfo.ru/film/{{ i.film.id }}/">{{ i.film.name_ru }}</a>
+            {% if user.is_superuser %}
+            {% if i.spam %}<div class="op_exclamation" title="Похоже на спам"></div>{% endif %}
+            <div class="delete_btn op_remove" onclick="opinion_remove({{ i.id }});" title="Удалить"></div>
+            {% endif %}
+            <p style="color: #888;">{{ i.date|date:"H:i, d E Y года" }}</p>
+            {% if i.rate %}
+            <div class="opinion_rate" title="Оценка">{{ i.rate }}</div>
+            {% endif %}
+            
+            {{ i.full_txt|safe }}
+            {% if i.source %}<em style="color: #888;">Источник: <a href="{{ i.source }}" target="_blank" {% if i.source_name == 'kino.ru' %}class="organization_url"{% endif %}>{{ i.source_name }}</a></em>{% endif %}
+
+            <br />
+            </div>
+            {% empty %}
+                <p id="opinions_empty">Отзывов нет</p>
+            {% endfor %}
+        </div>
+
+        <div class="more_news" style="margin: 0 auto;">
+            {% if page == 1 and p.has_next %}
+            <a href="?page={{ p.next_page_number }}" class="more_news__link">Ещё отзывы</a>
+            {% endif %}
+            {% if page > 1 %}
+                <a href="?page={{ p.previous_page_number }}" class="more_news__link">&#8592; Отзывы новее</a>
+                {% if p.has_next %}
+                <a href="?page={{ p.next_page_number }}" class="more_news__link">Ещё отзывы &#8594;</a>
+                {% endif %}
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,46 @@
+{% extends "api/api_main.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Пользователи API</h3>
+
+
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+<div style="clear: both;"></div>
+  
+    
+    <table class="panel_list lighting">
+        <th style="text-align: center;">User</th>
+        {% if request.user.is_superuser %}<th style="text-align: center;">API-key</th>{% endif %}
+        {% if request.user.is_superuser %}<th style="text-align: center;">Активен</th>{% endif %}
+        {% if request.user.is_superuser %}<th style="text-align: center;">Запрос</th>{% else %}<th style="text-align: center;">Последнее обращение</th>{% endif %}
+        {% if request.user.is_superuser %}<th style="text-align: center;">Управление</th>{% endif %}
+        {% for i in users_x %}
+            <tr>
+
+                <td><div><a style="margin-left: 5px;" href="{% url profile i.id %}" target="_blank">{{ i.name }}</a></div></td>
+        {% if request.user.is_superuser %}
+                <td><div><span>{{i.key}}</span></div></td>
+                <td><div style="text-align: center;"><span>{% if i.is_active %}+{% endif %}</span></div></td>
+        {% endif %}
+          <!--      <td><div><span id="api_status_{{ i.id }}"></span></div></td>                                -->
+        {% if request.user.is_superuser %}
+                <td><a style="margin-left: 5px;" href="{% url get_one_user_request_list i.id %}" target="_blank">{{ i.last }}</a></td>
+                <td style="text-align: center;" ><a href="{% url unblock_api_user i.id %}">Изменить</a></td>
+
+        {% else %}
+                <td>{{ i.last }}</td>
+
+        {% endif %}
+          <!--      <td><div><span id="api_panel_status_{{ i.id }}"></span></div></td>
+                    <input type="text" value = '255.255.255.255' name='api_key' />                          -->
+            </tr>
+        {% endfor %}
+    </table>
+
+
+ <!--   <h1 style="color:red; text-align: center;"> - - В разработке - - </h1> -->
+
+{% endblock %}

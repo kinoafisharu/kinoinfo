@@ -1,0 +1,21 @@
+<data>
+    <api_title>
+        Schedule v.2
+    </api_title>
+
+    <api_decription>
+        Метод возвращает все сеансы на заданную дату (или текущую)
+    </api_decription>
+    
+    <api_example>schedule/v2/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/schedule/v2/?cinemas=1789+1094+1633 (макс.число кинотеатров = 5)<br />
+        http://kinoinfo.ru/api/schedule/v2/?date=25-01-2014<br />
+        http://kinoinfo.ru/api/schedule/v2/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>нет</api_response_details>
+
+    <!--<api_response>schedule.txt</api_response>-->
+</data>

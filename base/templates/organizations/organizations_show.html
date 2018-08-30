@@ -1,0 +1,16 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Организации (всего: {{ count }})</h3>
+
+<div style="clear: both;"></div>
+
+    <a href="http://yalta.vsetiinter.net/organizations/list/а/">Организации Ялты</a>
+    <br />
+    <a href="http://orsk.vsetiinter.net/organizations/list/а/">Организации Орска</a>
+    <br />
+    <br />
+    <a href="{% url admin_organization_actions %}">Все действия над организациями</a> | <a href="{% url admin_organization_notes %}">Постмодерация описаний организаций</a>
+    | <a href="{% url organizations_name_handler %}">Обработчик названий</a>
+
+{% endblock %}

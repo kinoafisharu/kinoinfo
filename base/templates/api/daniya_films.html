@@ -1,0 +1,27 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+        <form action="" method='post'>{% csrf_token %}
+            <input type="text" name="url" size="50"/>
+            <input type="submit" name="add_url" value="Добавить URL" />
+            <br /><br />
+            <table class="panel_list">  
+                <th></th><th>url</th>
+                {% for i in p.object_list %}
+                    <tr>
+                        <td><div>
+                            <input type="checkbox" name="checker" value="{{ i.id }}" />
+                        </div></td>
+                        <td><div>{{ i.url }}</div></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <br />
+            <input type="submit" name="del_url" value="Удалить URL" />
+        </form>
+
+{% endblock %}

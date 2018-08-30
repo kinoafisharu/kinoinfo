@@ -1,0 +1,78 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Профиль пользователя' %}{% endblock %}
+{% load base_tags %}
+
+
+{% block page_bg %}style="background-image: url('{% if user_bg %}{{ user_bg.file }}{% else %}{{ request.bg_img }}{% endif %}');"{% endblock %}
+{% block br_url %}{% if user_bg %}{{ user_bg.url }}{% else %}{{ request.advert_url }}{% endif %}{% endblock %}
+{% block adv_id %}{% if user_bg %}{{ user_bg.id }}{% else %}{{ request.advert_id }}{% endif %}{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url profile card.profile.user_id %}">{{ card.name|safe|striptags }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Фон</span></b>
+</h1>
+
+
+    {% profile_menu is_my_profile card.profile.user_id %}
+    
+    <div class="art-postcontent-width">
+        <div class="scroll_list">
+            <div class="txt_wrapper">
+                <b>Фон сайта:</b><br />
+                <div style="height: 100px; overflow: hidden; background: #003153;">
+                    {% if adv.img %}
+                    <img src="{{ adv.img }}" style="width: 100%;">
+                    {% else %}
+                    <div style="color: #FFF; padding: 10px;">На сайте не установлено фоновое изображение</div>
+                    {% endif %}
+                </div>
+                <br />
+                <div style="width: 230px; float: left;">
+                    <a onclick="get_background_adv();">Убрать рекламу (фон) за 1 руб/сутки</a>
+                </div>
+                {% if user.is_superuser %}
+                <div style="width: 230px; float: right; text-align: right;">
+                    <a onclick="background_adm();">Админ управление фоном</a>
+                </div>
+                {% endif %}
+            </div>
+
+            <div class="txt_wrapper">
+                <b>Фон моей страницы:</b><br />
+                {% if user_bg %}
+                    <div style="height: 100px; overflow: hidden;">
+                        <img src="{{ user_bg.file }}" style="width: 100%;">
+                    </div>
+                {% else %}
+                    Не установлен
+                {% endif %}
+                <br />
+
+                {% if user_bg %}
+                <div style="width: 230px; float: right; text-align: right;">
+                    Показов: {{ user_bg.views }}, Кликов: {{ clicks }}
+                </div>
+                {% endif %}
+                
+                {% if user.is_superuser %}
+                    <a class="person_page_bg org_hover" onclick="obj_edit(this);">Загрузить{% if user_bg %} другой{% endif %}</a>
+                    <div class="person_page_bg_fields org_fields">
+                        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                        <span style="color: red;"></span>
+                        URL:<input type="text" name="person_page_bg_url" value="" size="30" placeholder="http://"/><br />
+                        File: <input type="file" name="person_page_bg_file" size="20" />
+                        <br /><br />
+                        <input type="button" value="{% trans 'Сохранить' %}" class="person_page_bg_accept_btn" />
+                        <input type="button" value="{% trans 'Отмена' %}" class="person_page_bg_cancel_btn" onclick="obj_cancel(this);" />
+                        </form>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

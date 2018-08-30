@@ -1,0 +1,21 @@
+# encoding: utf-8
+import datetime
+from south.db import db
+from south.v2 import SchemaMigration
+from django.db import models
+
+class Migration(SchemaMigration):
+
+    def forwards(self, orm):
+        
+        # Adding model 'Person'
+        db.delete_table('base_person')
+
+
+    def backwards(self, orm):
+        
+        # Deleting model 'Person'
+        db.delete_table('base_person')
+
+
+    complete_apps = ['base']

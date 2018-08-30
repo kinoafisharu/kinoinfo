@@ -1,0 +1,17 @@
+{% extends "umrunet_base.html" %}
+{% block title %}Главная{% endblock %}
+{% block content %}
+{% load umrunet_tags %}
+
+<h1 class="content-header">Panel</h1>
+
+{% umrunet_panel_menu %}
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        {% block info %}
+
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock %}

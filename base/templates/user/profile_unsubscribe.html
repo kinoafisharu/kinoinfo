@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Отписка от уведомлений{% endblock %}
+{% load base_tags %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - Отписка от уведомлений
+</h1>
+
+
+
+<div class="art-postcontent-width art-wide-width">
+    <br />
+
+    <div class="unsubscribe_form">
+    {% if unsubscribe_success %}
+        <b>Вы успешно отписались от новых уведомлений</b>
+    {% else %}
+    
+    <form action="" method="post">{% csrf_token %}
+        <h2>{{ obj_type }} {% if obj_name %}"{{ obj_name }}"{% endif %}</h2>
+        <br />
+        <b>Вы хотите отписаться от новых уведомлений?</b><br /><br />
+        <input type="submit" name="un" value="Да" /> <input type="submit" name="cancel" value="Нет" />
+    </form>
+
+    {% endif %}
+    </div>
+
+</div>
+
+{% endblock %}

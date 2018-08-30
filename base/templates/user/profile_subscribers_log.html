@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Лог уведомлений подписчиков{% endblock %}
+{% load base_tags %}
+
+
+{% block page_bg %}style="background-image: url('{% if user_bg %}{{ user_bg.file }}{% else %}{{ request.bg_img }}{% endif %}');"{% endblock %}
+{% block br_url %}{% if user_bg %}{{ user_bg.url }}{% else %}{{ request.advert_url }}{% endif %}{% endblock %}
+{% block adv_id %}{% if user_bg %}{{ user_bg.id }}{% else %}{{ request.advert_id }}{% endif %}{% endblock %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url profile card.profile.user_id %}">{{ card.name|safe|striptags }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url profile_view card.profile.user_id vid %}">{{ blog.name }}</a></b> -
+    <b id="navigation_bar"><span class="small_film_name">лог уведомлений подписчиков</span></b>
+</h1>
+
+
+    {% profile_menu card %}
+    
+    <div class="art-postcontent-width">
+        
+        <div class="scroll_list">
+        {% if data %}
+        <table class="modern_tbl">
+        {% for i in data %}
+            {% ifchanged i.obj.dtime|date:"d-b-Y" %}
+            <th>Подписчик</th><th>Уведомлен</th><th>Ошибка</th>
+            {% endifchanged %}
+            <tr>
+                <td>
+                    <div>
+                        {% if i.profile %}
+                        <a href="{% url profile i.profile.id %}" target="_blank">{{ i.profile.name }}</a>
+                        {% else %}
+                        отписался
+                        {% endif %}
+                    </div>
+                </td>
+                <td>
+                    <div>{{ i.obj.dtime|date:"d b Y в H:i" }}</div>
+                </td>
+                <td>
+                    <div>{% if i.obj.error %}{{ i.obj.error }}{% endif %}</div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        Здесь пока пусто
+        {% endif %}
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,79 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+{% block script %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var scroll_h = ($(window).height() / 100) * 60
+        $('.scroll_list').css('height', scroll_h + 'px')
+        
+        var fullsc = $.cookie("fullscreen")
+        if(fullsc && fullsc != 'null'){
+            fullscreen('.scroll_list')
+        }
+    });
+
+</script>
+{% endblock %}
+
+
+{% block content %}
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ site_name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">{{ title }}</span></b>
+</h1>
+
+{% if current_site.domain == 'vladaalfimovdesign.com.au' %}
+    {% vlada_menu slug %}
+{% endif %}
+{% if current_site.domain == 'letsgetrhythm.com.au' or current_site.domain == 'vsetiinter.net' %}
+    {% letsget_menu slug %}
+{% endif %}
+ 
+<div class="art-postcontent-width">
+    <div class="scroll_list">
+        <form action="" method="POST" id="invoice_form">{% csrf_token %}
+            <table>
+                <tr><td><b>Name: </b></td><td><input type="text" value="{{ data.name }}" name="name" size="40" style="width: 260px;"/></td></tr>
+                <tr><td><b>Company: </b></td><td><input type="text" value="{{ data.company }}" name="company" size="40" style="width: 260px;"/></td></tr>
+                <tr><td><b>ABN: </b></td><td><input type="text" value="{{ data.abn }}" name="abn" size="40" style="width: 260px;"/></td></tr>
+                <tr><td><b>Address: </b></td><td><input type="text" value="{{ data.address1 }}" name="address1" size="40" style="width: 260px;"/></td></tr>
+                <tr><td><b>Address Details: </b></td><td><input type="text" value="{{ data.address2 }}" name="address2" size="40" style="width: 260px;"/></td></tr>
+                <tr><td><b>Phone: </b></td><td><input type="text" value="{{ data.tel }}" name="tel" size="40" style="width: 260px;"/></td></tr>
+                <tr><td><b>E-mail: </b></td><td><input type="text" value="{{ data.email }}" name="email" size="40" style="width: 260px;"/></td></tr>
+                <tr>
+                    <td><b>BSB | Account Number: </b></td>
+                    <td>
+                        <select name="bank" style="width: 270px;">
+                            {% for i in banks %}
+                            <option value="{{ i.id }}">{{ i.name }} | {{ i.account }}</option>
+                            {% endfor %}
+                        </select>
+                    </td>
+                    <td><a href="#" onclick="invoice_bank_edit(false);">Add</a> | <a href="#" onclick="invoice_bank_edit(true);">Edit</a> | <a href="#" onclick="if(confirm('Are you sure?')){$('#invoice_form').submit();}">Delete</a></td>
+                </tr>
+            </table>
+            <br />
+            
+            {% if bank_warning %}
+            <span style="color: red;">{{ bank_warning }}</span>
+            <br /><br />
+            {% endif %}
+            
+            <input type="submit" value="Save" name="save" />
+        </form>
+        
+        <div class="fullscreen_btn" onclick="fullscreen('.scroll_list')"></div>
+    </div>
+    
+    <div class="invoice_add_bl" style="display: none;">
+        <b>BSB: </b><br /> <input type="text" value="" name="bank_name" style="width: 260px;"/><br />
+        <b>Account Number: </b><br /> <input type="text" value="" name="bank_acc" style="width: 260px;" /><br /><br />
+        <input type="hidden" value="" name="invoice_id" />
+        <input type="button" value="Save" class="invoice_bank_add" /> <span></span>
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,8 @@
+<p><span style="font-size: large;"><strong>The API of the Russian Cinema website is designed to provide customers with information about films that are made in cinemas in Russia.</strong></span></p>
+<p>Information should be used for the operation of user applications and services.</p>
+<p>The default information format is xml. To obtain data in JSON format, you need to add a parameter to the query, for example:</p>
+<p><a href="../../api/city_dir/?format=json" target="_blank">http:/kinoinfo.ru/api/city_dir/?format=json</a> or get a dump, for example:&nbsp;<a href="../../api/download/city_dir/?format=json" target="_blank">http://kinoinfo.ru/api/download/city_dir/?format=json</a></p>
+<p>Users who do not have API client status can view detailed information about all API methods, but in a limited number (10 entries).</p>
+<p>To become an API client to receive any amount of data, you need to send it to the mail&nbsp;<a href="mailto:kinoafisharu@gmail.com" target="_blank">kinoafisharu@gmail.com</a>&nbsp;a description of the project or application in which the data will be used. Data will be provided for the payment agreed with you (from $ 50 per year).</p>
+<p>All comments, opinions, comments and suggestions write on the mail <a href="mailto:kinoafisharu@gmail.com" target="_blank">kinoafisharu@gmail.com</a>.&nbsp;</p>
+<p>&nbsp;</p>

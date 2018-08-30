@@ -1,0 +1,59 @@
+*{
+  margin: 0;
+  padding: 0;
+  font-family: Arial, Helvetica, Sans-Serif;
+  font-size: 14px;
+}
+.widget_schedule{
+    border: 1px solid #DBDBDB; 
+    background: #F0F0F0; 
+    padding: 5px; 
+    width: 316px; 
+}
+.widget_schedule__title{
+    text-transform: uppercase; 
+    background: #3A599A; 
+    color: #FFF; 
+    text-align: center; 
+    padding: 5px; 
+    font-weight: bold;
+}
+.widget_schedule__content{
+    margin-top: 10px; 
+    height: 143px;
+    position: relative;
+}
+.widget_schedule__content__poster{
+    width: 100px; 
+    float: left;
+}
+.widget_schedule__content__poster img{
+    width: 100px; 
+    height: 143px;
+}
+.widget_schedule__content__data{
+    float: left; 
+    width: 198px; 
+    height: 143px; 
+    padding: 0 4px 0 4px;
+    margin: 0 4px 0 4px;
+    overflow: hidden;
+    z-index: 999;
+    border: 1px solid #F0F0F0;
+}
+.widget_schedule__content__data a{
+    text-decoration: none;
+    color: #3A599A;
+    font-weight: bold;
+}
+.widget_schedule__content__data a:hover{
+    text-decoration: underline;
+}
+.widget_schedule__content__data span{
+    margin-top: 5px;
+    font-size: 13px;
+}
+.widget_schedule__content__data .past{
+    color: #888;
+}
+

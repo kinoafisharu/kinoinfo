@@ -1,0 +1,111 @@
+{% extends "kua_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Скоро в кинотеатрах" %}{% endblock %}
+{% block script %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+        $("#various1").fancybox();
+        $("#various2").fancybox();
+        $("#descript").fancybox();
+        get_film({{ first_load_film }});
+    });
+    </script>
+{% endblock %}
+{% block content %}
+
+
+<h1 class="content-header">{% trans "Скоро в кинотеатрах" %}</h1>
+
+<div class="art-posttree-width">
+    <div class="release-list">
+
+        <form action="" method="post">{% csrf_token %}
+            <select name="release" class="release_date" onchange="this.form.submit();">
+                {% for i in dmonth %}
+                    <option value="{{ i.month|date:'Y-m'}}" {% if f_value|date:'Y-m' == i.month|date:'Y-m' %}selected{% endif %}>
+                    {{ i.month|date:'F Y' }}
+                    </option>
+                {% endfor %}
+            </select>
+            <select name="release_week" class="release_week" onchange="this.form.submit();">
+                {% for k, v in month_weeks.items %}
+                    <option value="{{ k }}/{{ f_value|date:'Y-m' }}" {% if k == active_week %}selected{% endif %}>
+                    {{ v.range }} {{ v.date|date:'b'}}
+                    </option>
+                {% endfor %}
+            </select>
+        </form>
+        
+        {% for i in p %}
+            <div onclick="get_film({{ i.kid }});" id="release_film_id_{{ i.kid }}" class="release_film">
+                <b class="release_film_rate"></b> 
+                <b class="release_film_rate_angle"></b>
+                <b id="release_film_name" class="release_film_name">{{ i.name|safe }}</b>
+            </div>
+        {% endfor %}
+
+        <br />
+
+    {% if user.is_superuser %}
+        <a href="{% url kinoafisha_admin_main %}">Панель</a>
+    {% endif %}
+        <br />
+        <a href="{% url main %}">{% trans "На главную" %}</a>
+    </div>
+    
+</div>
+
+
+<div class="art-postcontent-width">
+    <span id="loader"></span>
+    <div id="film_info">
+        <div id="film_text">
+            <h2 id="film_name"></h2>
+            <div id="kid" style="display: none;"></div>
+            <b id="film_details"></b>
+            <div class="separator_line"></div>
+            <div id="film_description"></div>
+            <div id="in_descript"></div>
+            <div class="subs"></div>
+            <div id="film_trailers"></div>
+            <div id="film_slides"></div>
+            <a id="various3" href="#inline3"></a>
+            <div id="inline3">
+                <form action="{% url email_auth_send %}" method="post" id="sub_e">{% csrf_token %}
+                </form>
+            </div>
+            
+            <br />
+
+            
+        </div>
+        <div id="film_poster">
+            <div id="subscribe_info">
+                <div class="pen"></div>
+            </div>
+            <div class="triangle"></div>
+            <div class="like_list">
+                <div class="like_list__options" title="Хочу смотреть в кинотеатре"><div class="like_in_cinema"></div><div class="likes_cinema"></div></div>
+                <div class="like_list__options" title="Хочу посмотреть дома"><div class="like_in_home"></div><div class="likes_home"></div></div>
+                <div class="like_list__options" title="Смотрел - рекомендую"><div class="like_and_recommend"></div><div class="likes_recommend"></div></div>
+            </div>
+            <div class="dislike_list">
+                <div class="dislike_list__options" title="Не буду смотреть"><div class="dislike_not_be_see"></div><div class="dislikes_seen"></div></div>
+                <div class="dislike_list__options" title="Смотрел - не рекомендую"><div class="dislike_and_not_recommend"></div><div class="dislikes_recommend"></div></div>
+            </div>
+            <div class="poster_label">
+                <div class="rating"></div>
+                <div class="evaluation">
+                    <div class="likes"><div class="like"></div><div class="count_likes"></div></div>
+                    <div class="dislikes"><div class="dislike"></div><div class="count_dislikes"></div></div>
+                </div>
+                <div id="age_limit"></div>
+            </div>
+            <div id="poster"></div>
+        </div>
+    </div>
+</div>
+{% endblock %}

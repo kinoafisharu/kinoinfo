@@ -1,0 +1,110 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">
+Ненайденные 
+{% if method == 'country' %}страны: {{ count }}{% endif %}
+{% if method == 'city' %}города: {{ count }}{% endif %}
+{% if method == 'cinema' %}кинотеатры: {{ count }}{% endif %}
+{% if method == 'hall' %}залы: {{ count }}{% endif %}
+</h3>
+
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+<div style="clear: both;"></div>
+
+{% if method == 'hall' %}
+<form action="{% url admin_hall_nof method dump %}" method='post'>
+{% else %}
+<form action="{% url admin_city_cinema_nof2 method dump %}" method='post'>
+{% endif %}
+    {% csrf_token %}
+    
+    <table class="panel_list">
+        <th></th><th>Название</th><th>Инфо</th>
+        {% for i in p.object_list %}
+            <tr>
+            <td><div><input class="radio_checker" type="radio" name="nof_data" value="{{ i.key }}" id="{{ i.value }}" /></div></td>
+            <td><div>{{ i.value }}</div></td>
+            <td><div>{{ i.info }}</div></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+    <br />
+    <input type="text" id="get_data_name" value="">
+    <input type="button" onclick="get_data('{{ method }}')" value="Найти">
+    {% if method == 'hall' or method == 'cinema' %}
+    <input type="checkbox" id="check_all_data" />все
+    {% endif %}
+    <select name="data" id="data_select">
+        <option value="">пусто</option>
+    </select>
+    <br /><br />
+    <input type="submit" id="rel" name="rel" value="Добавить название в альтернативные">
+    
+    {% if method == 'cinema' %}
+    <input type="submit" id="kid_sid" name="kid_sid" value="Связать кинотеатры" />
+    <input type="submit" id="ignore" name="ignore" value="Игнорировать" /> | 
+    <input type="button" id="newcinema" value="Добавить выбранный как новый" class="nof_newcinema" disabled />
+
+    <div class="organization_new org_fields">{% csrf_token %}
+        <b>Проверьте обязательные поля</b><br /><br />
+        Название организации:<br />
+        <input type="text" value="" size="70" name="organization_name" class="organization_n" /><br /><br />
+        Укажите <b>одну</b> метку/тег:<br />
+        <input type="text" value="" name="tag" class="organization_t" onkeyup="get_names_auto(this, 'tags');" size="35" /><br /><br />
+
+        Укажите город:<br />
+        <select id="id_country" class="country_in_card_alt" name="org_country">
+        {% for i in countries %}
+            <option value="{{ i.id }}" {% if i.id == 2 %} selected{% endif %}>
+            {{ i.name }}
+            </option>
+        {% endfor %}
+        </select>
+        
+        <select id="id_city" class="city_in_card_alt" name="org_city">
+        {% for i in cities_names %}
+            <option value="{{ i.id }}" id="c{{ i.city__kid }}">
+            {{ i.name }}
+            </option>
+        {% endfor %}
+        </select>
+
+        <br /><br />
+        <input type="button" value="Создать" class="nof_newcinema_btn" />
+    </div>
+    {% endif %}
+
+
+    {% if method == 'hall' %}
+    <input type="button" id="newcinema" value="Добавить выбранный как новый" class="nof_newhall" disabled />
+
+    <div class="hall_new org_fields">{% csrf_token %}
+        <b>Проверьте обязательные поля</b>
+        <br /><br />
+        Название зала:<br />
+        <input type="text" value="" size="70" name="organization_name" class="hall_n" />
+        <br /><br />
+        Кинотеатр:<br />
+        <select class="cinemas_names">
+        {% for i in cinemas %}
+            <option value="{{ i.id }}" id="c{{ i.id }}">
+            {{ i.name|safe }} [{{ i.city }}]
+            </option>
+        {% endfor %}
+        </select>
+
+        <br /><br />
+        <input type="button" value="Создать" class="nof_newhall_btn" />
+    </div>
+    {% endif %}
+    
+</form>
+    
+
+
+{% endblock %}

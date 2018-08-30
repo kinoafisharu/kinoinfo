@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% block title %}Генератор кнопки для Rutracker - {{ request.current_site.name }}{% endblock %}
+{% load base_tags %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+	<b id="navigation_bar">
+        <a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a></b>
+     {{ request.current_site.name }} - <a class="select_mycity">{{ request.current_user_city }}</a> - <span style="font-size: 17px;">Генератор кнопки для Rutracker</span>
+    
+</h1>
+
+<div class="art-postcontent-width ">
+    <div class="art-postcontent">
+        <br />
+Функция создания кнопки "Рейтинг IMDb" теперь  <a href="http://kinoinfo.ru/api/details/button/">ЗДЕСЬ</a>
+{% comment %}
+        <form action="" method="post">{% csrf_token %}
+            Введите URL на страницу фильма на IMDb или на Kinoafisha.ru<br /><br />
+            <input type="input" value="" name="url" size="50" />
+            <input type="button" value="Создать кнопку" name="create" onclick="$(this).prop('disabled', true);$(this).after('Секундочку...');$(this).parent().submit();"/> <span style="color: red;">{{ warning }}</span>
+            <br />
+            <br />
+            
+            <div class="example_bl">
+                <b>Пример:</b><br />
+                http://www.imdb.com/title/tt1219342/<br />
+                <span>или</span><br />
+                http://kinoafisha.ru/?id1=5313&status=1<br />
+                <span>или</span><br />
+                http://kinoafisha.ru/film/5313/<br />
+            </div>
+        </form>
+{% endcomment %}        
+        {% if not warning and img %}
+        <br />
+        <div>
+            <img src="{{ img.path }}" style="float: left;" />
+            <textarea style="margin-left: 10px; height: 35px; width: 500px; font-size: 12px;" onclick="$(this).focus(); $(this).select();">{{ img.code }}</textarea>
+        </div>
+        {% endif %}
+        
+    </div>
+</div>
+
+{% endblock %}

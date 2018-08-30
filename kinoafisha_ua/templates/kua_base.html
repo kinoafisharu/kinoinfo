@@ -1,0 +1,186 @@
+{% load base_tags kua_tags static %}
+{% load dajaxice_templatetags %}
+{% load i18n %}
+{% get_static_prefix as STATIC_URL %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{% block title %}Главная{% endblock %}</title>
+    {% dajaxice_js_import %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/style.css" type="text/css" media="screen" />
+    <!--[if IE 6]><link rel="stylesheet" href="{{ STATIC_URL }}base/css/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="{{ STATIC_URL }}base/css/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+    <link rel="shortcut icon" href="{{ STATIC_URL }}base/images/favicon.ico" type="/media/image/x-icon" />
+    <link rel="alternate" type="application/rss+xml" href="http://kinoafisha.ru/rss" title="Новости Киноафиши.ру" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-ui-1.9.1.custom.min.js"></script>
+    <!-- подключаем fancybox -->
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/script.js"></script>
+    {% if user.is_superuser %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/adm.js"></script>
+    {% endif %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/jquery.gridster.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.gridster.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/share42.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.cookie.js"></script>
+    {% block script %}{% endblock %}
+    
+    {% if noob %}
+    <script type="text/javascript">
+        Dajaxice.user_registration.user_reg(false, {
+            'app_name': navigator.appName,
+            'platform': navigator.platform,
+            'display': screen.width+"x"+screen.height
+        })
+    </script>
+    {% endif %}
+   
+</head>
+<body class="body" style="background-image: url('{{ bg_img }}');">
+    <div class="art-main">
+        <!--полоса администратора-->
+        <div class="upper-menu">
+            <div class="upper-menu__control-links">
+            
+                {% if acc_list.acc %}
+                    <!-- Users messenger -->
+                    {% if user.is_superuser %}
+                        <span class="messenger upper-menu__control-links__autorization">Написать сообщение</span>
+
+                        <form action="{% url messenger %}" method="post" class="msend_form org_fields">{% csrf_token %}
+                            <br />
+                            Введите id пользователя<br />
+                            <input type="text" value="" name="u_id" class="u_id"  size="10"/><br /><br />
+                            Заголовок:<br />
+                            <input type="text" value="" name="mess_title" class="mess_title"  size="70" /><br /><br />
+                            Текст:<br />
+                            <textarea type="text" value="" name="mess_text" class="mess_text"  size="170"> </textarea> <br /><br />
+
+                            <input type="button" value="Отправить" class="messendger_send_btn" />
+                        </form>
+                        
+
+
+                        <div class="messenger_pre_show upper-menu__control-links__autorization" title="Проcмотреть входящие сообщения ({{messenger_count}})">
+                        <b>({{messenger_count}})</b>
+                        </div>
+
+                        <div class="mess_pre_show org_fields">
+
+
+                        {% for i in messenger_data %}
+                            Заголовок: {{ i.title }}<br />
+                            Содержание: {{ i.text }}<br />
+                            Отправитель: {{ i.author }}<br />
+                            <hr />
+                        {% endfor %}
+
+
+                        </div>
+                    {% endif %}
+
+                    <!--конец users messenger -->
+                    
+                    <a class="upper-menu__control-links__autorization" href="{% if request.domain == 'vsetiinter.net' %}http://ya.vsetiinter.net/user/profile/{% else %}{% url profile %}{% endif %}" target="_blank">{{ acc_list.short_name }}</a>
+
+                {% else %}
+                    <a href="{% if request.domain == 'vsetiinter.net' %}http://ya.vsetiinter.net/user/login/{% else %}{% url login %}{% endif %}" target="_blank">
+                        <div class="upper-menu__control-links__autorization">
+                            Авторизоваться
+                        </div>
+                    </a>
+                {% endif %}
+                
+                
+                {% if user.is_superuser %}
+                <div>
+                    <form action="/i18n/setlang/" method="POST">
+	                    {% csrf_token %}
+                        <select name="language" onchange="this.form.submit();">
+                            {% get_language_info_list for LANGUAGES as languages %}
+                            {% for language in languages %}
+                            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                                {{ language.name_local }} ({{ language.code }})
+                            </option>
+                            {% endfor %}
+                        </select>
+                    </form>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <!--конец полосы администратора-->
+        <!--центральный баннер для шапки-->
+        {% block header %}{% endblock %}
+        <center>
+            <a href="{{ advert_url }}" target="_blank">
+                <img src="{{ STATIC_URL }}base/images/space.png" border="0" width="100%" height="30%"  alt="" />
+            </a>
+        </center>
+        <!--конец центрального баннера для шапки-->
+        <div class="content-main">
+            <!--блок контента-->
+            <div class="art-content">
+                {% block content %}{% endblock %}
+            </div>
+            <!--конец блока контента-->
+        </div>
+        
+        
+        <!-- Обратная Обратная связь -->
+
+        <div id="show_modal">
+            <a class="feedback" id="modal" href="#in_modal">Обратная связь</a>
+        </div>
+        <div id="in_modal"></div>
+        
+        <!--конец Обратной связи-->
+        
+        <div class="footer">
+            <!--блок поиска-->
+            {% if user.is_superuser %}
+                <div class="art-search__title-search">{% trans "ИСКАТЬ" %}</div>
+            {% endif %}
+            <!--конец блока поиска-->
+            <!--блок метрики-->
+            <div class="footer__content-main">
+                <div class="footer__border"></div>
+                <div class="art-search">
+                    <input class="search-field" type="text" />
+                    <input class="search-button" type="submit" value="GO" />
+                </div>
+                <div class="art-menu">
+                    <ul>
+                        {% menu %}
+                    </ul>
+                </div>
+                <div class="footer__content-main__items">
+                    <div class="footer-icons share share42init" data-path="{{ STATIC_URL }}base/images/"></div>
+                        {% load linkexchange_tags %}
+                        {{ linkexchange_blocks.0|safe }}
+                        {{ linkexchange_blocks.1|safe }}
+                    <p class="footer-icons copy">Сделано в ООО "Яумён", а именно: концепция - <a href="https://plus.google.com/u/0/112583972897815812222/posts">Михаил Иванов</a>, программирование - <a href="https://plus.google.com/u/0/110631826052054330418/">Юрий Данилевский</a>, интерфейс - <a href="https://plus.google.com/u/0/110162576318268593569/posts?tab=XX">Илья Земляков</a></p>
+                    {% block sape_links %}{% endblock %}
+                    <div class="footer-icons metric">
+                    {% liveinternet_counter %}
+                    </div>
+                </div>
+                <div class="footer__content-main__text">
+                    <p>А вашему сайту нужно API? Сделаем недорого, обращайтесь <a href="mailto:kinoafisharu@gmail.com">kinoafisharu@gmail.com</a>. Думаете, куда выгодно вложить деньги? Гарантируем от 25% годовых. Хотите программировать с удовольствием? Примем в команду разработчиков Python/Django: <a href="mailto:kinoafisharu@gmail.com">kinoafisharu@gmail.com</a></p>
+                </div>
+            </div>
+            <!--конец блок метрики-->
+            <!--блок меню-->
+            {% if user.is_superuser %}
+                <div class="art-menu__title-menu">МЕНЮ</div>
+            {% endif %}
+            <!--конец блока меню-->
+        </div>
+        </div>
+    </div>
+</body>
+</html>

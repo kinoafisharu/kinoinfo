@@ -1,0 +1,73 @@
+{% extends "mobile/base.html" %}
+{% block title %}{{ request.current_site.name }}: {{ page_title }}
+    {% if id %}
+        -
+        {% if news_data.0.title %}
+            {{ news_data.0.title }}
+        {% else %}
+            {{ title }}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+{% load base_tags %}
+{% load i18n %}
+{% block script %}
+
+{% endblock %}
+
+
+{% block content %}
+
+{% mobile_header %}
+
+{% kinoafisha_main_menu_mobile %}
+
+<div class="art-postcontent-width">
+
+    <h1>
+        {% if id %}
+            {% if ntype == '17' or not ntype  %}<a href="{% url kinoafisha_news %}">{{ page_title }}</a>{% endif %}
+            {% if ntype == '18' %}<a href="{% url kinoafisha_world_news %}">{{ page_title }}</a>{% endif %}
+            {% if ntype == '19' %}<a href="{% url kinoafisha_russia_news %}">{{ page_title }}</a>{% endif %}
+        {% else %}
+            {{ page_title }}
+        {% endif %}
+    </h1>
+
+    <div class="article">
+        {% if id %}
+            {% if news_data.0.title %}
+            <h3>{{ news_data.0.title|safe }}</h3>
+            {% endif %}
+            {{ news_data.0.text|safe }}
+        {% else %}
+        
+            {% for i in news_data %}
+            <div class="short_news"{% if not i.obj.visible %} style="background-color: rgba(255,250,205,0.7);"{% endif %}>
+                {% if ntype == '17' or ntype == '20' %}<h2><a href="{% url kinoafisha_news i.obj.id %}">{% if i.title %}{{ i.title }}{% else %}{{ title }}{% endif %}</a></h2>{% endif %}
+                {% if ntype == '18' %}<h2><a href="{% url kinoafisha_world_news i.obj.id %}">{% if i.title %}{{ i.title }}{% else %}{{ title }}{% endif %}</a></h2>{% endif %}
+                {% if ntype == '19' %}<h2><a href="{% url kinoafisha_russia_news i.obj.id %}">{% if i.title %}{{ i.title }}{% else %}{{ title }}{% endif %}</a></h2>{% endif %}
+                
+                {{ i.description }}
+
+                <span>{% if not i.obj.visible %}<font style="color: red;">{% trans "Не отображается" %}</font> {% endif %}{{ i.obj.dtime|date:"j E" }}</span>
+            </div>
+            {% endfor %}
+        
+            <div class="more_news" style="margin: 0 auto;">
+                {% if page == 1 and p.has_next %}
+                <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Ещё новости</a>
+                {% endif %}
+                {% if page > 1 %}
+                    <a href="?page={{ p.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">&#8592; Новости новее</a>
+                    {% if p.has_next %}
+                    <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Ещё новости &#8594;</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+    </div>
+    
+</div>
+
+{% endblock %}

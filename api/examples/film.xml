@@ -1,0 +1,26 @@
+<data>
+    <api_title>
+        Film
+    </api_title>
+
+    <api_decription>
+        Метод возвращает все фильмы
+    </api_decription>
+    
+    <api_example>film/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/film/?id=7<br />
+        http://kinoinfo.ru/api/film/?year=2013<br />
+        http://kinoinfo.ru/api/film/?imdb=2023541<br />
+        http://kinoinfo.ru/api/film/?name=Облачный атлас<br />
+        http://kinoinfo.ru/api/film/?release=14-02-2013<br />
+        http://kinoinfo.ru/api/film/?format=json<br />
+        Возможные сочетания параметров:<br />
+        imdb&release, year&release&name, year&release, year&name
+    ]]></api_param>
+
+    <api_response_details>нет</api_response_details>
+
+    <!--<api_response>film.txt</api_response>-->
+</data>

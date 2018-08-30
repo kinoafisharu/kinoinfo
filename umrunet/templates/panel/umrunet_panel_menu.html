@@ -1,0 +1,94 @@
+
+<div class="art-posttree-width">
+    <div id="accordion">
+        <h5 class="method-category" id="umrunet_section01"><p>Блок 1</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url articles_main %}">Статьи</a>
+            </li>
+            <li>
+                <a href="">Ссылка 2</a>
+            </li>
+            <li>
+                <a href="">Ссылка 3</a>
+            </li>
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="umrunet_section02"><p>Блок 2</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="">Ссылка 1</a>
+            </li>
+            <li>
+                <a href="">Ссылка 2</a>
+            </li>
+            <li>
+                <a href="">Ссылка 3</a>
+            </li>
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="umrunet_section03"><p>Блок 3</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="">Ссылка 1</a>
+            </li>
+            <li>
+                <a href="">Ссылка 2</a>
+            </li>
+            <li>
+                <a href="">Ссылка 3</a>
+            </li>
+        </ul>
+        </div>
+
+        <h5 class="method-category" id="umrunet_section04"><p>Блок 4</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="">Ссылка 1</a>
+            </li>
+            <li>
+                <a href="">Ссылка 2</a>
+            </li>
+            <li>
+                <a href="">Ссылка 3</a>
+            </li>
+        </ul>
+        </div>
+        
+        <h5 class="method-category" id="umrunet_section05"><p>Блок 5</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="">Ссылка 1</a>
+            </li>
+            <li>
+                <a href="">Ссылка 2</a>
+            </li>
+            <li>
+                <a href="">Ссылка 3</a>
+            </li>
+        </ul>
+        </div>
+        
+        {% if user.is_superuser %}
+        <h5 class="method-category" id="umrunet_section06"><p>Админ Панель</p></h5>
+        <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url api_users %}">Управление пользователями</a>
+            </li>
+            <li>
+                <a href="{% url change_background %}">Изменить фоновый баннер</a>
+            </li>
+        </ul>
+        </div>
+        {% endif %}
+    </div>
+</div>
+

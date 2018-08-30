@@ -1,0 +1,94 @@
+{% extends extends %}
+
+{% block title %}{% if request.current_site.domain == 'vladaalfimovdesign.com.au' or request.current_site.domain == 'letsgetrhythm.com.au' %}Change background{% else %}Изменить фоновый баннер{% endif %}{% endblock %}
+
+{% load i18n %}
+
+
+
+    
+{% if bl == 'info' %}
+{% block info %}
+    <form class="change_background" action="{% url change_background %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div>
+            {{ form.url.errors }} <b>{{ form.url.label }}</b>: {{ form.url }}
+        </div>
+        <div>
+            {{ form.image.errors }} <b>{{ form.image.label }}</b>: {{ form.image }}
+        </div>
+        <div>
+            {{ form.country.errors }} <b>{{ form.country.label }}</b>: {{ form.country }}
+            {{ form.city.errors }} <b>{{ form.city.label }}</b>: {{ form.city }}
+            <input type="submit" value="{% trans 'Сохранить' %}" />
+        </div>
+        
+    </form>
+
+{% endblock %}
+{% else %}
+
+{% block content %}
+    
+    <h1 class="content-header">
+    {% if request.current_site.domain == 'vladaalfimovdesign.com.au' or request.current_site.domain == 'letsgetrhythm.com.au' %}
+        {% if request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+        <b id="navigation_bar"><a href="{% url main %}">Vlada Alfimov Design</a></b> - 
+        {% else %}
+        <b id="navigation_bar"><a href="{% url main %}">Lets Get Rhythm</a></b> - 
+        {% endif %}
+        <b id="navigation_bar"><span class="small_film_name">Change Background</span></b>
+    {% else %}
+    Изменить фоновый баннер
+    {% endif %}
+    </h1>
+
+    <form class="change_background" action="{% url change_background %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+        <table class="panel_list fat">
+            <tr>
+                <td style="width: 100px;"><div>{{ form.url.label }}</div></td>
+                <td style="width: 100px;"><div>{{ form.url }}</div></td>
+                <td><div>{{ form.url.errors }}</div></td>
+            </tr>
+            <tr>
+                <td><div>{{ form.image.label }}</div></td>
+                <td><div>{{ form.image }}</div></td>
+                <td><div>{{ form.image.errors }}</div></td>
+            </tr>
+            <tr>
+                <td><div>{{ form.country.label }}</div></td>
+                <td><div>{{ form.country }}</div></td>
+                <td><div>{{ form.country.errors }}</div></td>
+            </tr>
+            <tr>
+                <td><div>{{ form.city.label }}</div></td>
+                <td><div>{{ form.city }}</div></td>
+                <td><div>{{ form.city.errors }}</div></td>
+            </tr>
+        </table>
+        <br />
+        <input type="submit" value="{% trans 'Сохранить' %}" />
+    </form>
+    
+    {% if current_site == 'vladaalfimovdesign.com.au' %}
+    <br /><div class="separator_line"></div>
+    <b>Change links on main page</b>
+    <br />
+    <table class="panel_list fat">
+    <tr>
+        <td><input type="text" value="{{ links.1 }}" id="mlink__1" style="width: 92%; margin: 10px;" /></td>
+        <td><input type="text" value="{{ links.2 }}" id="mlink__2" style="width: 92%; margin: 10px;" /></td>
+    </tr>
+    <tr>
+        <td><input type="text" value="{{ links.3 }}" id="mlink__3" style="width: 92%; margin: 10px;" /></td>
+        <td><input type="text" value="{{ links.4 }}" id="mlink__4" style="width: 92%; margin: 10px;" /></td>
+    </tr>
+    </table>
+    <br />
+    <input type="submit" value="{% trans 'Сохранить' %}" class="links_main_page" /> <span id="links_main_page_msg"></span>
+    {% endif %}
+{% endblock %}
+
+{% endif %}

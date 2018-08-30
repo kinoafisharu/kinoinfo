@@ -1,0 +1,15 @@
+
+<data>
+    <source url="http://212.113.124.238/afisha/public_html.aspx?group=zarya.alp">
+        <cinema id="1159" name="Заря"/>
+        <city id="416" name="Алапаевск"/>
+    </source>
+    <source url="http://212.113.124.238/afisha/public_html.aspx?group=poljarniy.andr">
+        <cinema id="721" name="Полярный"/>
+        <city id="166" name="Анадырь"/>
+    </source>
+    <source url="http://212.113.124.238/afisha/public_html.aspx?group=mirkino.anapa">
+        <cinema id="165" name="Мир кино (Октябрь)"/>
+        <city id="13" name="Анапа"/>
+    </source>
+</data>

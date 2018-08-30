@@ -1,0 +1,122 @@
+{% load base_tags %}
+
+<div class="art-posttree-width">
+    <div id="accordion">
+
+        <h5 class="method-category" id="film_section02"><p>Узнать о фильме</p></h5>
+        <div class="method-list">
+            <ul>
+                <li>
+                    <a href="{% url get_film film_id %}">Визитка</a>
+                </li>
+                <li>
+                    <a href="{% url get_film_rating film_id %}">Оценки зрителей</a>
+                </li>
+                <li>
+                    <a href="{% url get_film_reviews film_id %}">Рецензии экспертов</a>
+                </li>
+                <li>
+                    <a href="{% url get_film_opinions film_id %}">Отзывы зрителей</a>
+                </li>
+                <li>
+                    {% if menu.awards %}
+                    <a href="#">Награды фестивалей и премии</a>
+                    {% else %}
+                    <span style="color: #666;">Награды фестивалей и премии</span>
+                    {% endif %}
+                </li>
+                <li>
+                    <a href="{% url get_film_boxoffice film_id %}">Экономика фильма</a>
+                </li>
+                <li>
+                    
+                    <a href="{% url get_film_relations film_id %}">Источники информации и связи</a>
+                    
+                </li>
+            </ul>
+        </div>
+
+        <h5 class="method-category" id="film_section03"><p>Посмотреть, купить</p></h5>
+        <div class="method-list">
+            <ul>
+                <li>
+                    <a href="{% url get_film_schedule film_id %}">В кинотеатрах города</a>
+                </li>
+                <li>
+                    <a href="{% url get_film_web film_id %}">В сети</a>
+                </li>
+                <li>
+                    {% if menu.buy %}
+                    <a href="#">Купить</a>
+                    {% else %}
+                    <span style="color: #666;">Купить</span>
+                    {% endif %}
+                </li>
+                {% if request.current_site.domain != 'kinoafisha.ru' %}
+                <li>
+                    {% if menu.download %}
+                    <a href="{% url get_film_download film_id %}">Скачать</a>
+                    {% else %}
+                    <span style="color: #666;">Скачать</span>
+                    {% endif %}
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+        
+        {% if film_editor %}
+        <h5 class="method-category" id="film_section04"><p>Работать с фильмом</p></h5>
+        <div class="method-list">
+            <ul>
+                {% if user.is_superuser %}
+                <li>
+                    <a href="#">Редактировать данные</a>
+                </li>
+                <li>
+                    <a href="#">Расписать фильм</a>
+                </li>
+                {% endif %}
+                <li>
+                    <a href="{% url film_create_rel film_id %}">Создать связи</a>
+                </li>
+                <li>
+                    <a href="{% url film_create film_id %}">Создать новый фильм</a>
+                </li>
+                {% if user.is_superuser %}
+                <li>
+                    <a href="{% url film_persons film_id %}">Персоны</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+        {% endif %}
+    </div>
+    
+    {% if film_editor %}
+    <div class="film_new_form" style="display: none;">
+        <form action="{% url film_create_new %}" method="post" class="film_new_form_data" />{% csrf_token %}
+            Название:<br /><input type="text" value="" name="new_name" size="50" />
+            <select name="new_lang">
+                <option value="1">анг.</option>
+                <option value="2">рус.</option>
+            </select>
+            <br />
+            Год:<br /><input type="text" value="" name="new_year" size="10" /><br /><br />
+            <input type="button" value="Создать" class="new_film_create_btn" />
+            <span class="new_film_msg"></span>
+        </form>
+    </div>
+    {% endif %}
+    
+    
+    {% left_banner %}
+    
+    {% if request.current_site.domain == 'kinoinfo.ru' %}
+        {% seo_tags %}
+    {% endif %}
+
+    
+    
+</div>
+

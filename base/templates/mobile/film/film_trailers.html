@@ -1,0 +1,28 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - трейлеры{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+
+    {% film_menu_mobile id menu film_editor %}
+
+<div class="art-postcontent-width">
+    <h1><a href="{% url get_film id %}">{{ name_ru|safe }}</a> - Трейлеры</h1>
+
+    <div class="film_trailers_list">
+    {% for i in trailers %}
+        
+        <div id="film_trailers">
+            <div class="trailer">{% if i.code %}{{ i.code|safe }}{% else %}Нет трейлера{% endif %}</div>
+        </div>
+    {% endfor %}
+
+   
+    </div>
+    
+</div>
+
+
+
+{% endblock %}

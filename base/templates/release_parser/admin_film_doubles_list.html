@@ -1,0 +1,44 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        var scroll_h = ($(window).height() / 100) * 50
+        $('.scroll_list').css('height', scroll_h + 'px')
+    });
+</script>
+{% endblock %}
+
+
+{% block info %}
+<h3 class="art-postheader">Дубли {{ source.source }}</h3>
+
+<form action="" method='post'>{% csrf_token %}
+    <div class="scroll_list">
+        <table class="panel_list lighting">
+            <th></th><th>Название</th><th>Источник</th>
+            {% for i in data %}
+                <tr>
+                    <td><div><input class="radio_checker" type="radio" name="nof_data" value="{{ i.id }}" id="{{ i.name }}" /></div></td>
+                    <td><div>{{ i.name }}</div></td>
+                    <td><div>{% if i.url %}<a href="{{ i.url }}" target="_blank">источник</a>{% endif %}</div></td>
+                </tr>
+            {% empty %}
+                <br />пусто<br />
+            {% endfor %}
+        </table>
+    </div>
+
+    <br />
+    <input type="text" id="get_data_name" value="" />
+    <input type="button" onclick="get_data('film')" value="Найти" />
+    <select name="film" id="data_select">
+        <option value="">пусто</option>
+    </select>
+    <br /><br />
+
+    <input type="submit" id="kid_sid" name="kid_sid" value="Связать фильм источника с фильмом на киноафише" />
+    <input type="submit" id="ignore" name="ignore" value="Игнорировать" />
+    <input type="hidden" name="source" value="{{ source.id }}" />
+</form>
+{% endblock %}

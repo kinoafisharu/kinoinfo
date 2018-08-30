@@ -1,0 +1,82 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block script %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+    });
+    </script>
+{% endblock %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Статистика для городов:</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+    <form action="" method='post'>{% csrf_token %}
+        <div style="clear: both;">
+            {% for k, v in amount.items %}
+                {{ v.name }}: {{ v.count }}{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            <table>
+                <tr style="color: #454545; font-size: 12px;"><td>Источник</td><td>Страна</td><td>Город</td><td></td></tr>
+                <tr>
+                <td>
+                    <select name="source">
+                    <option value="all">Все</option>
+                    {% for k, v in sources.items %}
+                        <option value="{{ k }}" {% if k == source %}selected{% endif %}>{{ v.source }}</option>
+                    {% endfor %}
+                    <option value="no" {% if source == 'no' %}selected{% endif %}>Нет</option>
+                    </select>
+                </td> 
+                <td>
+                    <select name="country">
+                    <option value="all">Все</option>
+                    {% for k, v in afisha.items %}
+                        <option value="{{ k }}" {% if k == country %}selected{% endif %}>{{ v.name }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <select name="char">
+                    <option value="all">Все</option>
+                    {% for i in alphabet_filter %}
+                        <option value="{{ i }}" {% if i == char %}selected{% endif %}>{{ i }}</option>
+                    {% endfor %}
+                    </select>
+                </td>
+                <td>
+                    <input type="submit" name="filter" value=" OK " />
+                </td>
+                </tr>
+            </table>
+        </div>
+        
+        <table class="panel_list">  
+            <th>Страна</th><th>Город</th><th>У источника</th>
+            {% for i in p.object_list %}
+                <tr>
+                    <td><div>{{ i.country__name }}</div></td>
+                    <td><div>{{ i.name }}</div></td>
+                    <td><div>
+                    {{ i.equals }}
+
+                    {% if i.not_equals_cities %} + 
+                        <a id="{{ i.id }}" href="#inline{{ i.id }}" title="" onclick="$('#'+{{ i.id }}).fancybox();">{{ i.not_equals }}</a>
+                        <div id="inline{{ i.id }}">
+                            {% for j in i.not_equals_cities %}
+                                {{ j.name }} <span style="color: #80B280;">({{ j.source }})</span><br /> 
+                            {% endfor %}
+                        </div>
+                    {% endif %}
+                    </div></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+    </form>
+
+{% endblock %}

@@ -1,0 +1,20 @@
+<data>
+    <api_title>
+        IMDB rate
+    </api_title>
+
+    <api_decription>
+        The method returns information about the imdb rating for movies
+    </api_decription>
+    
+    <api_example>imdb_rate/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/imdb_rate/?imdb=120828<br/>
+        http://kinoinfo.ru/api/imdb_rate/?format=json<br/>
+    ]]></api_param>
+
+    <api_response_details>no</api_response_details>
+
+    <!--<api_response>imdb_rate.txt</api_response>-->
+</data>

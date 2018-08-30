@@ -1,0 +1,22 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block script %}
+<script type="text/javascript" src="{{ STATIC_URL }}base/js/swfobject.js"></script>
+{% endblock %}
+
+{% block info %}
+<h3 class="art-postheader">Тест онлайн плеера</h3>
+
+<br />
+
+<div id="uppod_player"></div>
+<script type="text/javascript">
+    var flashvars = {'m':'audio', 'st': '/upload/player/st/audio197-390.txt', 'pl': '/upload/player/pl/playlist_audio197-179.txt'}; 
+    var params = {bgcolor:"#ffffff", wmode:"window", allowFullScreen:"true", allowScriptAccess:"always"}; 
+    swfobject.embedSWF("{{ STATIC_URL }}base/js/player/uppod.swf", "uppod_player", "320", "212", "10.0.0.0", false, flashvars, params); 
+</script>
+
+
+
+{% endblock %}

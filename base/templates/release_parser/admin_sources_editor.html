@@ -1,0 +1,58 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Упарвление источниками</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+    <form action="" method='post'>{% csrf_token %}
+
+        <table class="panel_list">  
+            <th></th><th>ID</th><th>Код</th><th>Название</th><th>Название дампа</th><th>URL</th>
+            {% for i in p.object_list %}
+                <tr>
+                    <td><div><input type="radio" name="source_id" value="{{ i.id }}" onchange="this.form.submit();" {% if i.id == source_id %}checked{% endif %} /></div></td>
+                    <td><div>{{ i.id }}</div></td>
+                    <td><div>{{ i.code }}</div></td>
+                    <td><div>{{ i.source }}</div></td>
+                    <td><div>{% if i.dump %}{{ i.dump }}{% endif %}</div></td>
+                    <td><div>{{ i.url }}</div></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <table>
+            <tr>
+                <td>{{ form.source.errors }}</td>
+                <td>{{ form.dump.errors }}</td>
+                <td>{{ form.url.errors }}</td>
+                <td>{{ form.code.errors }}</td>
+                <td></td>
+            </tr>
+            <tr>
+                <td><b>Название</b></td>
+                <td><b>Назв. дампа</b></td>
+                <td><b>URL</b></td>
+                <td><b>Код</b></td>
+                <td></td>
+            </tr>
+            <tr>
+                <td>{{ form.source }}</td>
+                <td>{{ form.dump }}</td>
+                <td>{{ form.url }}</td>
+                <td>{{ form.code }}</td>
+                <td>
+                    <input type="submit" value="Сделать новым" name="create" />
+                    <input type="submit" value="Сохранить изменения" name="save" {% if not source_id %}disabled{% endif %} />
+                    <input type="submit" value="Удалить" name="delete" {% if not source_id %}disabled{% endif %} />
+                </td>
+            </tr>
+        </table>
+
+
+        
+        
+        
+    </form>
+
+{% endblock %}

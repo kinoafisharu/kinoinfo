@@ -1,0 +1,356 @@
+{% extends "base.html" %}
+{% block title %}Киноинфо - открытая база данных о кино и платформа для приложений{% endblock %}
+
+{% block keywords %}{{ request.seo_data.keywords }}{% endblock %}
+{% block description %}{{ request.seo_data.description }}{% endblock %}
+
+{% block content %}
+
+<div class="main_block">
+    <h1 class="content-header">Киноинфо - открытая база данных о кино и платформа для приложений</h1>
+    <div class="left_blocks">
+
+        <div class="main_widget">
+            <div class="main_widget__header">
+
+               <div class="main_widget__header__interface_cheker" id="1_txt_interface" title="Текстовый интерфейс">
+                    {% if not user_block_type1 %}
+                    <img style="cursor: pointer;" src="{{ STATIC_URL }}base/images/txt_interface.jpg" height="20px" width= "20px" />
+                    {% else %}<img  src="{{ STATIC_URL }}base/images/txt_interface.jpg" height="20px" width= "20px" />{% endif %}
+               </div>
+
+                <div class="main_widget__header__interface_cheker" id="1_graph_interface" title="Графический интерфейс">
+                    {% if user_block_type1 %}
+                    <img style="cursor: pointer;" src="{{ STATIC_URL }}base/images/graph_interface.jpg"  height="20px" width= "20px" />
+                    {% else %}<img src="{{ STATIC_URL }}base/images/graph_interface.jpg"  height="20px" width= "20px" />{% endif %}
+                </div>
+
+                {% comment %}
+                {% if city_id %}
+                    <a href="{% url rss city_id %}" title="Подписаться">
+                        <div class="main_widget__header__rss"></div>
+                    </a>
+                    <a href="http://kinoafisha.ru/schedules/" target="_blank">
+                        <h2 class="main_widget__header__title" title="Кликни для перехода на Киноафишу города">Сеансы сегодня в городе: {% if city_name %}{{ city_name }}{% endif %}</h2>
+                    </a>
+                {% else %}
+                    <div class="main_widget__header__rss"></div>
+                    <a href="http://kinoafisha.ru/schedules/" target="_blank">
+                        <h2 class="main_widget__header__title" title="Кликни для перехода на Киноафишу города">Сеансы сегодня в городе: {% if city_name %}{{ city_name }}{% endif %}</h2>
+                    </a>
+                {% endif %}
+                {% endcomment %}
+
+
+                <a href="{% url rss city_id %}" title="Подписаться">
+                    <div class="main_widget__header__rss"></div>
+                </a>
+                <a href="http://kinoafisha.ru/schedules/" target="_blank">
+                    <h2 class="main_widget__header__title" title="Кликни для перехода на Киноафишу города">Сеансы сегодня в городе: {% if city_name %}{{ city_name }}{% endif %}</h2>
+                </a>
+
+            </div>
+
+
+            <div class="main_widget__details"><h3>Пять лучших фильмов</h3></div>
+
+            <div class="main_widget__content">
+
+                {% if user_block_type1 %}
+                    {% for i in schedules %}
+                        <div class="little_poster">
+                            {% if i.poster %}
+                            <img src="{{ i.poster }}" width="15px"/>
+                            {% endif %}
+                        </div>
+                        <div title="{% for k, v in i.film_info.items %} {{ v }} {% endfor %}">
+                            <a href="http://kinoafisha.ru/schedules/" target="_blank"><b>{{ i.name }}</b>:</a>
+                            <div class="main_widget__content__details" title="{% if i.times2 %} {{ i.times2 }} {% endif %}">
+                            <p>{{ i.times }}</p>
+                            </div>
+                        </div>
+                    {% empty %}
+                        <div class="main_widget__content__times no_times">На сегодня сеансов нет</div>
+                    {% endfor %}
+                {% else %}
+                    {% for i in schedules %}
+                    <a href="http://kinoafisha.ru/schedules/" target="_blank">
+                        <div class="block_poster" title="{% for k, v in i.film_info.items %} {{ v }} {% endfor %}">
+                            <div id="subscribe_small" class="rate_color_small_{{ i.rating }}">
+                                <div class="pen_rate_small">
+                                    <b title="Репутация фильма:{% if i.show_imdb %} IMDb - {{ i.show_imdb }}{% endif %}{% if i.rotten %} / RottenTomatoes - {{ i.rotten }}{% endif %}{% if i.show_ir %} / Киномэтры - {{ i.show_ir }}{% endif %}{% if not i.show_imdb and not i.rotten and not i.show_ir %} нет{% endif %}" >{% if i.rating %}{{ i.rating }}{% else %}?{% endif %}</b>
+                                </div>
+                            </div>
+                            <div class="triangle_small"
+                            {% if i.rating == 5 %}style="border-left: 10px solid rgba(60, 179, 113, 0.7);" {% endif %}
+                            {% if i.rating == 4 %}style="border-left: 10px solid rgba(126, 192, 238, 0.7);"{% endif %}
+                            {% if i.rating == 3 %}style="border-left: 10px solid rgba(255, 218, 185, 0.7);"{% endif %}
+                            {% if i.rating == 2 %}style="border-left: 10px solid rgba(238, 130, 238, 0.7);"{% endif %}
+                            ></div>
+
+                            {% if i.poster %}
+                            <img src="{{ i.poster }}" width="80px" height="120px"/>
+                            {% endif %}
+
+                            <div class="block_times">
+                                {{ i.times_grafic_interface }}
+                                <br />
+                                {{ i.times_grafic_interface2 }}
+                            </div>
+                        </div>
+                    </a>
+
+                {% empty %}
+                    <div class="main_widget__content__times no_times">На сегодня сеансов нет</div>
+                {% endfor %}
+                {% endif %}
+            </div>
+        </div>
+
+
+
+        <div class="main_widget">
+            <div class="main_widget__header">
+
+                    <div  class="main_widget__header__interface_cheker" id="3_txt_interface" title="Текстовый интерфейс">
+                        {% if not user_block_type3 %}
+                        <img style="cursor: pointer;" src="{{ STATIC_URL }}base/images/txt_interface.jpg" height="20px" width= "20px" />
+                        {% else %}<img src="{{ STATIC_URL }}base/images/txt_interface.jpg" height="20px" width= "20px" />{% endif %}
+                   </div>
+
+                    <div  class="main_widget__header__interface_cheker" id="3_graph_interface" title="Графический интерфейс">
+                        {% if user_block_type3 %}
+                        <img style="cursor: pointer;" src="{{ STATIC_URL }}base/images/graph_interface.jpg"  height="20px" width= "20px" />
+                        {% else %}<img src="{{ STATIC_URL }}base/images/graph_interface.jpg"  height="20px" width= "20px" />{% endif %}
+                    </div>
+
+
+                <div class="main_widget__header__rss"></div>
+                <a href="{% url show_film_list %}">
+                    <h2 class="main_widget__header__title">Смотреть он-лайн</h2>
+                </a>
+            </div>
+
+            <div class="main_widget__details"><h3>Пять случайных фильмов</h3></div>
+            <div class="main_widget__content">
+
+            {% if user_block_type3 %}
+            {% for i in online_films %}
+                <div>
+                      <div class="little_poster">
+                      {% if i.poster %}
+                      <img src="{{ i.poster }}" width="15px"/>
+                      {% endif %}
+                      </div>
+                    <b >
+                    <a href="{% url show_film_list i.kid %}" title="{% for k, v in i.film_info.items %} {{ v }} {% endfor %}">
+                    {{ i.title }} ({{ i.year }})
+                    </a>
+                    </b>
+                    <div class="main_widget__content__details" title="">
+                    {{ i.genres }}
+                    </div>
+                </div>
+            {% endfor %}
+	    {% else %}
+	    {% for i in online_films %}
+
+                        <a href="{% url show_film_list i.kid %}">
+                        <div class="block_poster" title="{% for k, v in i.film_info.items %} {{ v }} {% endfor %}">
+                        <div id="subscribe_small" class="rate_color_small_{{ i.rating }}">
+                        <div class="pen_rate_small">
+                        <b title="Репутация фильма:{% if i.show_imdb %} IMDb - {{ i.show_imdb }}{% endif %}{% if i.rotten %} / RottenTomatoes - {{ i.rotten }}{% endif %}{% if i.show_ir %} / Киномэтры - {{ i.show_ir }}{% endif %}{% if not i.show_imdb and not i.rotten and not i.show_ir %} нет{% endif %}" >
+                        {% if i.rating %}{{ i.rating }}{% else %}?{% endif %}</b>
+                        </div>
+                        </div>
+                        <div class="triangle_small"
+                        {% if i.rating == 5 %}style="border-left: 10px solid rgba(60, 179, 113, 0.7);" {% endif %}
+                        {% if i.rating == 4 %}style="border-left: 10px solid rgba(126, 192, 238, 0.7);"{% endif %}
+                        {% if i.rating == 3 %}style="border-left: 10px solid rgba(255, 218, 185, 0.7);"{% endif %}
+                        {% if i.rating == 2 %}style="border-left: 10px solid rgba(238, 130, 238, 0.7);"{% endif %}
+                        ></div>
+
+                        {% if i.poster %}
+                        <img src="{{ i.poster }}" width="80px" height="120px"/>
+                        {% endif %}
+
+                        <div class="block_times">
+                        {{ i.name }}
+                        </div>
+
+                    </div>
+                    </a>
+            {% endfor %}
+
+    {% endif %}
+            </div>
+        </div>
+     </div>
+
+
+     <div class="right_blocks">
+        <div class="main_widget">
+            <div class="main_widget__header">
+
+               <div  class="main_widget__header__interface_cheker" id="2_txt_interface" title="Текстовый интерфейс">
+                    {% if not user_block_type2 %}
+                    <img style="cursor: pointer;" src="{{ STATIC_URL }}base/images/txt_interface.jpg" height="20px" width= "20px" />
+                    {% else %}<img src="{{ STATIC_URL }}base/images/txt_interface.jpg" height="20px" width= "20px" />{% endif %}
+               </div>
+
+                <div  class="main_widget__header__interface_cheker" id="2_graph_interface" title="Графический интерфейс">
+                    {% if user_block_type2 %}
+                    <img style="cursor: pointer;" src="{{ STATIC_URL }}base/images/graph_interface.jpg"  height="20px" width= "20px" />
+                    {% else %}<img src="{{ STATIC_URL }}base/images/graph_interface.jpg"  height="20px" width= "20px" />{% endif %}
+                </div>
+
+
+                <a href="{% url rss_releases %}" title="Подписаться">
+                    <div class="main_widget__header__rss"></div>
+                </a>
+                <a href="{% url releases_ajax %}">
+                    <h2 class="main_widget__header__title">Скоро в кино</h2>
+                </a>
+            </div>
+            <div class="main_widget__details"><h3>Ближайшие релизы</h3></div>
+
+            <div class="main_widget__content">
+
+
+	    {% if user_block_type2 %}
+            {% for i in releases %}
+
+                <a href="{% url releases_ajax i.kid %}">
+                <div class="little_poster">
+                {% if i.poster %}
+                <img src="{{ i.poster }}" width="15px"/>
+                {% endif %}
+                </div>
+                <div><b id="releases_block_date" >{{ i.release|date:"d b" }}</b></div>
+                <div class="" style="display: inline;" title="{% for k, v in i.film_info.items %} {{ v }} {% endfor %}">{{ i.name }}</div>
+		<br />
+		<br />
+		</a>
+            {% endfor %}
+	    {% else %}
+   	    {% for i in releases %}
+                        <a href="{% url releases_ajax i.kid %}">
+                        <div class="block_poster" title="{% for k, v in i.film_info.items %} {{ v }} {% endfor %}">
+                        <div id="subscribe_small" class="rate_color_small_{{ i.rating }}">
+                        <div class="pen_rate_small">
+                        <b title="Рейтинг: IMDb = {{ i.show_imdb }} {% if i.show_ir %} / Оценка киномэтров = {{ i.show_ir }}{% endif %}" >
+                        {% if i.rating %}{{ i.rating }}{% else %}?{% endif %}</b>
+                        </div>
+                        </div>
+                        <div class="triangle_small"
+                        {% if i.rating == 5 %}style="border-left: 10px solid rgba(60, 179, 113, 0.7);" {% endif %}
+                        {% if i.rating == 4 %}style="border-left: 10px solid rgba(126, 192, 238, 0.7);"{% endif %}
+                        {% if i.rating == 3 %}style="border-left: 10px solid rgba(255, 218, 185, 0.7);"{% endif %}
+                        {% if i.rating == 2 %}style="border-left: 10px solid rgba(238, 130, 238, 0.7);"{% endif %}
+                        ></div>
+
+                        {% if i.poster %}
+                        <img src="{{ i.poster }}" width="80px" height="120px"/>
+                        {% endif %}
+
+
+                        {% comment %}
+                            </br>
+                            <b>{{ i.name }}</b>:
+                        {% endcomment %}
+
+                        <div class="block_times">
+                        {{ i.release|date:"d/m/Y" }}
+                        </div>
+
+                    </div>
+                    </a>
+            {% endfor %}
+	    {% endif %}
+
+
+
+            </div>
+
+        </div>
+{% comment %}
+        <div class="main_widget">
+            <div class="main_widget__header">
+                <a href="{% url rss_articles %}" title="Подписаться">
+                    <div class="main_widget__header__rss"></div>
+                </a>
+                <a href="{% url articles_main %}">
+                    <h2 class="main_widget__header__title">Рецензии, обзоры, статьи</h2>
+                </a>
+            </div>
+            <div class="main_widget__details"><h3>Пять последних публикаций</h3></div>
+            <div class="main_widget__content">
+            {% for i in articles_list %}
+                <div>
+                    <b><a href="{% url articles_main i.id %}">{{ i.title }}</a></b>:
+                    <div class="main_widget__content__details" title="">
+                    {{ i.text }}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+{% endcomment %}
+
+        <div class="main_widget">
+            <div class="main_widget__header">
+                <div  class="main_widget__header__interface_cheker" id="4_txt_interface" title="Текстовый интерфейс">
+                    {% if not user_block_type4 %}
+                    <img style="cursor: pointer;" src="{{ STATIC_URL }}base/images/txt_interface.jpg" height="20px" width= "20px" />
+                    {% else %}<img  src="{{ STATIC_URL }}base/images/txt_interface.jpg" height="20px" width= "20px" />{% endif %}
+                </div>
+
+                <div  class="main_widget__header__interface_cheker" id="4_graph_interface" title="Графический интерфейс">
+                    {% if user_block_type4 %}
+                    <img style="cursor: pointer;" src="{{ STATIC_URL }}base/images/graph_interface.jpg"  height="20px" width= "20px" />
+                    {% else %}<img src="{{ STATIC_URL }}base/images/graph_interface.jpg"  height="20px" width= "20px" />{% endif %}
+                </div>
+
+                <div class="main_widget__header__rss"></div>
+                <a href="{% url new_torrents %}"><h2 class="main_widget__header__title">Новинки кино на торрент-трекерах</h2></a>
+            </div>
+
+            <div class="main_widget__details"><h3>Пять последних релизов</h3></div>
+                <div class="main_widget__content">
+                
+                    {% for i in rutracker_films %}
+                        <a href="{% url new_torrents %}">
+                            <div class="block_poster">
+                                <div id="subscribe_small" class="rate_color_small_{{ i.rate }}">
+                                    <div class="pen_rate_small">
+                                        <b title="Репутация фильма:{% if i.rating.show_imdb %} IMDb - {{ i.rating.show_imdb }}{% endif %}{% if i.rating.rotten %} / RottenTomatoes - {{ i.rating.rotten }}{% endif %}{% if i.rating.show_ir %} / Киномэтры - {{ i.rating.show_ir }}{% endif %}{% if not i.rating.show_imdb and not i.rating.rotten and not i.rating.show_ir %} нет{% endif %}" >
+                                    {% if i.rate %}{{ i.rate }}{% else %}?{% endif %}</b>
+                                    </div>
+                                </div>
+                                <div class="triangle_small"
+                                {% if i.rate == 5 %}style="border-left: 10px solid rgba(60, 179, 113, 0.7);" {% endif %}
+                                {% if i.rate == 4 %}style="border-left: 10px solid rgba(126, 192, 238, 0.7);"{% endif %}
+                                {% if i.rate == 3 %}style="border-left: 10px solid rgba(255, 218, 185, 0.7);"{% endif %}
+                                {% if i.rate == 2 %}style="border-left: 10px solid rgba(238, 130, 238, 0.7);"{% endif %}
+                                ></div>
+
+                                {% if i.posters %}
+                                <img src="{{ i.posters }}" width="80px" height="120px"/>
+                                {% endif %}
+
+                                <div class="block_times">
+                                
+                                </div>
+                            </div>
+                        </a>
+                    {% endfor %}
+               </div>
+           </div>
+
+
+
+
+    </div>
+</div>
+
+{% endblock %}

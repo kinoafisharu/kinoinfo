@@ -1,0 +1,20 @@
+<data>
+    <api_title>
+        Movie Reviews
+    </api_title>
+
+    <api_decription>
+        Метод возвращает рецензии о фильмах
+    </api_decription>
+    
+    <api_example>movie_reviews/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/movie_reviews/?id=162<br/>
+        http://kinoinfo.ru/api/movie_reviews/?format=json<br/>
+    ]]></api_param>
+
+    <api_response_details>нет</api_response_details>
+
+    <!--<api_response>movie_reviews.txt</api_response>-->
+</data>

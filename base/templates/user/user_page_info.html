@@ -1,0 +1,74 @@
+{% extends "base.html" %}
+{% block title %}Профиль пользователя {{ id }}{% endblock %}
+
+{% block content %}
+    <h1 class="content-header"><a href="{% url profile %}">Профиль пользователя {{ id }}</a></h1>
+    
+        {% if p_accounts %}
+        <div class="user_card">
+            <div class="user_card_details">
+                <b>ФИО:</b>
+                {% if card.name %}{{ card.name }}{% else %}Нет{% endif %}
+                <b>Пол:</b>
+                {% if card.sex %}
+                    {% if card.sex == 1 %}М{% else %}Ж{% endif %}
+                {% else %}
+                    Нет
+                {% endif %}
+                <b>Дата рожд.:</b>
+                {% if card.born %}{{ card.born|date:"d.m.Y" }}{% else %}Нет{% endif %}
+                <b>E-mail:</b>
+                {% if card.email %}{{ card.email }}{% else %}Нет{% endif %}
+                <b>Страна:</b>
+                {% if card.country %}{{ card.country.name }}{% else %}Нет{% endif %}
+                <b>Город:</b>
+                {% if card.city %}{{ card.city.name }}{% else %}Нет{% endif %}
+                <span>
+                    <b>Счет:</b>
+                    {{ card.money }} грн.
+                </span>
+            </div>
+        </div>
+        {% else %}
+        <div class="user_card">
+            <div class="user_card_details">
+            Для визитки нет данных
+            </div>
+        </div>
+        {% endif %}
+
+        
+        <div class="profile">
+        <h3>Подключенные аккаунты</h3>
+        {% for i in p_accounts %}
+            <div class="profile-account">
+                <div class="profile-account-avatar">
+                    {% if i.obj.avatar %}
+                        <img src="/upload/profiles/{{ folder }}/{{ i.obj.avatar }}" />
+                    {% else %}
+                        <span>нет аватара</span>
+                    {% endif %}
+                </div>
+                <div class="profile-account-info">
+                    <p>{{ i.obj.login }}</p>
+                    {% if i.obj.validation_code %}
+                        <span style="color: red;">Не подтвержден!</span>
+                        <br />
+                        Для подтверждения адреса необходимо пройти по ссылке указанной в письме.
+                    {% else %}
+                        {% if i.obj.nickname %}<p>{{ i.obj.nickname }}</p>{% endif %}
+                        {% if i.obj.fullname %}<p>{{ i.obj.fullname }}</p>{% endif %}
+                        {% if i.obj.born %}<p>{{ i.obj.born }}</p>{% endif %}
+                        {% if i.obj.male %}
+                        <p>{% if i.obj.male == 1 %}М{% endif %}{% if i.obj.male == 2 %}Ж{% endif %}</p>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+        {% empty %}
+            Нет подключенных аккаунтов!
+        {% endfor %}
+        </div>
+
+    
+{% endblock %}

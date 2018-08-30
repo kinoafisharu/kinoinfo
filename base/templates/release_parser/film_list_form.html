@@ -1,0 +1,102 @@
+{% extends "release_parser/release_main.html" %}
+{% load base_tags %}
+{% block info %}
+
+<h1 class="art-postheader">График кинорелизов</h1>
+
+<div class="filter_panel">
+
+<div class="filter">
+    <form action="" method="post">{% csrf_token %}
+        <p>Дистрибьюторы</p>
+        <select name="distr" onchange="this.form.submit();">
+            <option value="0">------</option>
+            {% for i in distr %}
+                <option value="{{ i.id }}" {% if fil.name == 'distr' and fil.value == i.id %}selected{% endif %}>
+                {% for j in i.name.all %}
+                    {% if j.status == 1%}
+                        {{ j.name }}
+                    {% endif %}
+                {% endfor %}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+<div class="filter">
+    <form action="" method="post">{% csrf_token %}
+        <p>Найдены/Ненайдены</p>
+
+    <input type="radio" name="found" value="1" {% if fil.name == 'found' and fil.value == 1 %}checked{% endif %} onchange="this.form.submit();"> Да
+    <input type="radio" name="found" value="2" {% if fil.name == 'found' and fil.value == 2 %}checked{% endif %} onchange="this.form.submit();"> Нет
+    </form>
+
+    
+</div>
+<div class="filter">
+    <form action="" method="post">{% csrf_token %}
+        <p>Источники</p>
+        <select name="source" onchange="this.form.submit();">
+            <option value="0">------</option>
+            {% for i in sources %}
+                <option value="{{ i.source }}" {% if fil.name == 'source' and fil.value == i.source %}selected{% endif %}>
+                {{ i.source }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+<div class="filter">
+    <form action="" method="post">{% csrf_token %}
+        <p>Дата релиза</p>
+        
+        <select name="release" onchange="this.form.submit();">
+            <option value="">------</option>
+            {% for i in date_release %}
+                <option value="{{ i|date:'Y-m-d' }}" {% if fil.name == 'release' and fil.value|date:'Y-m-d' == i|date:'Y-m-d' %}selected{% endif %}>
+                {{ i|date:"d M Y" }}
+                </option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+</div>
+<div class="filtered_content">
+
+    <form action="" method='post'>{% csrf_token %}
+        <table class="panel_list">
+        <th></th><th>Названия</th><th>Релиз</th><th>Дистр.</th><th>Копии</th><th>Хрон.</th><th>Огр.</th><th>Название</th><th>Дистр.</th><th>Хрон.</th>
+        {% for i in p.object_list %}
+            <tr>
+            <td><div><input type="checkbox" /></div></td>
+
+            <td><div><a href="{{ i.url }}" target="_blank">{{ i.name2 }}</a></div></td>
+            <td><div>{{ i.release|date:'d-m-Y' }}</div></td>
+            <td><div>{{ i.distr }}</div></td>
+            <td><div>{{ i.copies }}</div></td>
+            <td><div>{{ i.run }}</div></td>
+            <td><div>{{ i.rated }}</div></td>
+            <td><div>
+                {% if i.k_obj %}
+                <a href="http://www.kinoafisha.ru/index.php3?status=1&id1={{ i.k_obj.id }}" target="_blank">
+                {% for n in i.k_obj.filmsname_set.all %}
+                    {% if n.status == 1 %}
+                        {{ n.name|safe }} /
+                    {% endif %}
+                {% endfor %}
+                </a>
+                {% endif %}
+            </div></td>
+            <td><div>{% if i.k_obj.prokat1 %}{{ i.k_obj.prokat1.name|safe }}{% endif %}</div></td>
+            <td><div>{{ i.k_obj.runtime }}</div></td>
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+
+    <br />
+    
+{% base_pagination p page %}
+
+</div>
+{% endblock %}

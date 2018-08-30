@@ -1,0 +1,27 @@
+
+<data>
+    <persons id="1" name="Барри Зонненфельд" name_en="Barry Sonnenfeld">
+        <birth_year value="0"/>
+        <birth_month value="0"/>
+        <birth_day value="0"/>
+        <male value="1"/>
+        <imdb id="1756"/>
+        <country id="0" name="None"/>
+    </persons>
+    <persons id="2" name="Уилл Смит" name_en="Will Smith">
+        <birth_year value="1968"/>
+        <birth_month value="9"/>
+        <birth_day value="25"/>
+        <male value="1"/>
+        <imdb id="226"/>
+        <country id="1" name="США"/>
+    </persons>
+    <persons id="3" name="Кевин Кляйн" name_en="Kevin Kline">
+        <birth_year value="0"/>
+        <birth_month value="0"/>
+        <birth_day value="0"/>
+        <male value="1"/>
+        <imdb id="177"/>
+        <country id="0" name="None"/>
+    </persons>
+</data>

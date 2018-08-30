@@ -1,0 +1,393 @@
+# encoding: utf-8
+import datetime
+from south.db import db
+from south.v2 import SchemaMigration
+from django.db import models
+
+class Migration(SchemaMigration):
+
+    def forwards(self, orm):
+        
+        # Adding model 'RelationFP'
+        db.create_table('base_relationfp', (
+            ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
+            ('person', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Person'])),
+            ('status_act', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.StatusAct'])),
+            ('action', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Action'])),
+            ('product', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['base.Films'])),
+        ))
+        db.send_create_signal('base', ['RelationFP'])
+                
+    def backwards(self, orm):
+        
+        # Deleting model 'Profile'
+        db.delete_table('base_profile')
+
+        # Deleting model 'Interface'
+        db.delete_table('base_interface')
+        
+        # Deleting model 'PersonInterface'
+        db.delete_table('base_personinterface')
+        
+    models = {
+        'auth.group': {
+            'Meta': {'object_name': 'Group'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
+            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
+        },
+        'auth.permission': {
+            'Meta': {'ordering': "('content_type__app_label', 'content_type__model', 'codename')", 'unique_together': "(('content_type', 'codename'),)", 'object_name': 'Permission'},
+            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
+        },
+        'auth.user': {
+            'Meta': {'object_name': 'User'},
+            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
+            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
+            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
+            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
+            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
+            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
+            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
+        },
+        'base.action': {
+            'Meta': {'object_name': 'Action'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.alterstreettype': {
+            'Meta': {'object_name': 'AlterStreetType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256', 'null': 'True', 'blank': 'True'}),
+            'value': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.StreetType']"})
+        },
+        'base.budget': {
+            'Meta': {'object_name': 'Budget'},
+            'budget': ('django.db.models.fields.BigIntegerField', [], {}),
+            'currency': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+        },
+        'base.carrierlayer': {
+            'Meta': {'object_name': 'CarrierLayer'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.carrierriptype': {
+            'Meta': {'object_name': 'CarrierRipType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.carriertapecategorie': {
+            'Meta': {'object_name': 'CarrierTapeCategorie'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.carriertype': {
+            'Meta': {'object_name': 'CarrierType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.cinema': {
+            'Meta': {'object_name': 'Cinema'},
+            'cinema_circuit': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.CinemaCircuit']", 'null': 'True'}),
+            'city': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.City']"}),
+            'code': ('django.db.models.fields.IntegerField', [], {'db_index': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'letter_housing': ('django.db.models.fields.CharField', [], {'max_length': '1', 'null': 'True', 'blank': 'True'}),
+            'metro': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.Metro']", 'null': 'True', 'symmetrical': 'False'}),
+            'name': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['base.NameCinema']", 'null': 'True', 'blank': 'True'}),
+            'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'number_hous': ('django.db.models.fields.CharField', [], {'max_length': '16', 'null': 'True', 'blank': 'True'}),
+            'number_housing': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'opening': ('django.db.models.fields.DateTimeField', [], {'null': 'True', 'blank': 'True'}),
+            'phone': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.Phone']", 'null': 'True', 'symmetrical': 'False'}),
+            'site': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.Site']", 'null': 'True', 'symmetrical': 'False'}),
+            'street_name': ('django.db.models.fields.CharField', [], {'max_length': '64', 'null': 'True', 'blank': 'True'}),
+            'street_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.StreetType']", 'null': 'True'}),
+            'zip': ('django.db.models.fields.CharField', [], {'max_length': '6', 'null': 'True', 'blank': 'True'})
+        },
+        'base.cinemacircuit': {
+            'Meta': {'object_name': 'CinemaCircuit'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.city': {
+            'Meta': {'object_name': 'City'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['base.NameCity']", 'null': 'True', 'blank': 'True'}),
+            'phone_code': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
+        },
+        'base.copyfilmaddvalue': {
+            'Meta': {'object_name': 'CopyFilmAddValue'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.copyfilmformat': {
+            'Meta': {'object_name': 'CopyFilmFormat'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.copyfilmtype': {
+            'Meta': {'object_name': 'CopyFilmType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.country': {
+            'Meta': {'object_name': 'Country'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.demonstration': {
+            'Meta': {'object_name': 'Demonstration'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'place': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Hall']"}),
+            'time': ('django.db.models.fields.DateTimeField', [], {})
+        },
+        'base.films': {
+            'Meta': {'object_name': 'Films'},
+            'budget': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'budget_films'", 'null': 'True', 'to': "orm['base.Budget']"}),
+            'countrys': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'countrys_films'", 'null': 'True', 'symmetrical': 'False', 'to': "orm['base.Country']"}),
+            'film_type': ('django.db.models.fields.CharField', [], {'max_length': '1', 'null': 'True', 'blank': 'True'}),
+            'genre': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'genre_films'", 'null': 'True', 'symmetrical': 'False', 'to': "orm['base.Genre']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image_parameter': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'image_films'", 'null': 'True', 'to': "orm['base.ImageParameter']"}),
+            'key_creators': ('django.db.models.fields.related.ManyToManyField', [], {'related_name': "'key_creators_films'", 'to': "orm['base.Person']", 'through': "orm['base.RelationFP']", 'blank': 'True', 'symmetrical': 'False', 'null': 'True'}),
+            'name': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'name_films'", 'null': 'True', 'symmetrical': 'False', 'to': "orm['base.NameProduct']"}),
+            'note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'rated': ('django.db.models.fields.CharField', [], {'max_length': '5', 'null': 'True', 'blank': 'True'}),
+            'release_end': ('django.db.models.fields.DateField', [], {'db_index': 'True', 'null': 'True', 'blank': 'True'}),
+            'release_start': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
+            'runtime': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'runtime_films'", 'null': 'True', 'to': "orm['base.Runtime']"}),
+            'sound_parameter': ('django.db.models.fields.related.ForeignKey', [], {'blank': 'True', 'related_name': "'sound_films'", 'null': 'True', 'to': "orm['base.SoundParameter']"})
+        },
+        'base.filmssources': {
+            'Meta': {'object_name': 'FilmsSources'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'id_films': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Films']"}),
+            'id_films_sources': ('django.db.models.fields.BigIntegerField', [], {}),
+            'source': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.ImportSources']"})
+        },
+        'base.genre': {
+            'Meta': {'object_name': 'Genre'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.hall': {
+            'Meta': {'object_name': 'Hall'},
+            'cinema': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Cinema']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'image_format': ('django.db.models.fields.CharField', [], {'max_length': '1', 'blank': 'True'}),
+            'max_price': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'min_price': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['base.NameHall']", 'null': 'True', 'blank': 'True'}),
+            'number': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'screen_size_h': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'screen_size_w': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'seats': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'sound_format': ('django.db.models.fields.CharField', [], {'max_length': '1', 'blank': 'True'})
+        },
+        'base.hallssources': {
+            'Meta': {'object_name': 'HallsSources'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'id_hall': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Hall']"}),
+            'source': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.ImportSources']"}),
+            'url_hall_sources': ('django.db.models.fields.URLField', [], {'max_length': '256'})
+        },
+        'base.imageparameter': {
+            'Meta': {'object_name': 'ImageParameter'},
+            'aspect_ratio': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'color': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'dimension': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
+        },
+        'base.imdb': {
+            'Meta': {'object_name': 'IMDB'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'id_imdb': ('django.db.models.fields.BigIntegerField', [], {}),
+            'rating': ('django.db.models.fields.FloatField', [], {'null': 'True', 'blank': 'True'})
+        },
+        'base.importsources': {
+            'Meta': {'object_name': 'ImportSources'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'source': ('django.db.models.fields.CharField', [], {'max_length': '64'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '256'})
+        },
+        'base.interface': {
+            'Meta': {'object_name': 'Interface'},
+            'browser': ('django.db.models.fields.CharField', [], {'max_length': '64', 'null': 'True', 'blank': 'True'}),
+            'city': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.City']", 'null': 'True', 'blank': 'True'}),
+            'display': ('django.db.models.fields.CharField', [], {'max_length': '12', 'null': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'ip_address': ('django.db.models.fields.IPAddressField', [], {'max_length': '15', 'null': 'True', 'blank': 'True'}),
+            'platform': ('django.db.models.fields.CharField', [], {'max_length': '64', 'null': 'True', 'blank': 'True'}),
+            'profile': ('django.db.models.fields.related.ManyToManyField', [], {'symmetrical': 'False', 'to': "orm['base.Profile']", 'null': 'True', 'blank': 'True'}),
+            'timezone': ('django.db.models.fields.CharField', [], {'max_length': '64', 'null': 'True', 'blank': 'True'})
+        },
+        'base.language': {
+            'Meta': {'object_name': 'Language'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.languagecountry': {
+            'Meta': {'object_name': 'LanguageCountry'},
+            'country': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Country']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Language']"})
+        },
+        'base.logger': {
+            'Meta': {'object_name': 'Logger'},
+            'code': ('django.db.models.fields.IntegerField', [], {}),
+            'event': ('django.db.models.fields.IntegerField', [], {}),
+            'extra': ('django.db.models.fields.CharField', [], {'max_length': '256', 'null': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'obj_name': ('django.db.models.fields.CharField', [], {'max_length': '256', 'null': 'True', 'blank': 'True'}),
+            'text': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '256', 'null': 'True', 'blank': 'True'})
+        },
+        'base.metro': {
+            'Meta': {'object_name': 'Metro'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.namecinema': {
+            'Meta': {'object_name': 'NameCinema'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Language']", 'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'status': ('django.db.models.fields.IntegerField', [], {})
+        },
+        'base.namecity': {
+            'Meta': {'object_name': 'NameCity'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Language']", 'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'status': ('django.db.models.fields.IntegerField', [], {})
+        },
+        'base.namehall': {
+            'Meta': {'object_name': 'NameHall'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Language']", 'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'status': ('django.db.models.fields.IntegerField', [], {})
+        },
+        'base.nameperson': {
+            'Meta': {'object_name': 'NamePerson'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Language']"}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'status': ('django.db.models.fields.IntegerField', [], {})
+        },
+        'base.nameproduct': {
+            'Meta': {'object_name': 'NameProduct'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'language': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Language']", 'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
+            'status': ('django.db.models.fields.IntegerField', [], {})
+        },
+        'base.person': {
+            'Meta': {'object_name': 'Person'},
+            'born': ('django.db.models.fields.DateField', [], {'null': 'True', 'blank': 'True'}),
+            'country': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Country']", 'null': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'iid': ('django.db.models.fields.BigIntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'kid': ('django.db.models.fields.BigIntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'male': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'name': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.NamePerson']", 'symmetrical': 'False'})
+        },
+        'base.personinterface': {
+            'Meta': {'object_name': 'PersonInterface'},
+            'changed': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'first_change': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'option1': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'option2': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'option3': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'option4': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'person': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']"})
+        },
+        'base.phone': {
+            'Meta': {'object_name': 'Phone'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'phone': ('django.db.models.fields.CharField', [], {'max_length': '64', 'blank': 'True'}),
+            'phone_type': ('django.db.models.fields.CharField', [], {'max_length': '1', 'blank': 'True'})
+        },
+        'base.profile': {
+            'Meta': {'object_name': 'Profile'},
+            'auth_status': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
+            'email_validation_code': ('django.db.models.fields.CharField', [], {'max_length': '256', 'null': 'True', 'blank': 'True'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'login_counter': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'openid': ('django.db.models.fields.CharField', [], {'max_length': '256', 'null': 'True', 'blank': 'True'}),
+            'person': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Person']", 'null': 'True'}),
+            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['auth.User']", 'unique': 'True'})
+        },
+        'base.relationfp': {
+            'Meta': {'object_name': 'RelationFP'},
+            'action': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Action']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'person': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Person']"}),
+            'product': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Films']"}),
+            'status_act': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.StatusAct']"})
+        },
+        'base.runtime': {
+            'Meta': {'object_name': 'Runtime'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'runtime': ('django.db.models.fields.IntegerField', [], {}),
+            'runtime_note': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'})
+        },
+        'base.session': {
+            'Meta': {'object_name': 'Session'},
+            'average_price': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'demonstration': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['base.Demonstration']"}),
+            'film': ('django.db.models.fields.related.ManyToManyField', [], {'to': "orm['base.NameProduct']", 'symmetrical': 'False'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'number': ('django.db.models.fields.PositiveIntegerField', [], {}),
+            'number_people': ('django.db.models.fields.IntegerField', [], {'null': 'True', 'blank': 'True'})
+        },
+        'base.site': {
+            'Meta': {'object_name': 'Site'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'site_type': ('django.db.models.fields.CharField', [], {'max_length': '1', 'blank': 'True'}),
+            'url': ('django.db.models.fields.URLField', [], {'max_length': '200', 'blank': 'True'})
+        },
+        'base.soundparameter': {
+            'Meta': {'object_name': 'SoundParameter'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'sound': ('django.db.models.fields.CharField', [], {'max_length': '1'}),
+            'soundsystem': ('django.db.models.fields.CharField', [], {'max_length': '1'})
+        },
+        'base.statusact': {
+            'Meta': {'object_name': 'StatusAct'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
+        },
+        'base.streettype': {
+            'Meta': {'object_name': 'StreetType'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'base.version': {
+            'Meta': {'object_name': 'Version'},
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '64'})
+        },
+        'contenttypes.contenttype': {
+            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
+            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+        }
+    }
+
+    complete_apps = ['base']

@@ -1,0 +1,67 @@
+# encoding: utf-8
+import datetime
+from south.db import db
+from south.v2 import SchemaMigration
+from django.db import models
+
+class Migration(SchemaMigration):
+
+    def forwards(self, orm):
+        db.delete_table('base_aboutfilm')
+        db.delete_table('base_aboutfilm_country')
+        db.delete_table('base_aboutfilm_genre')
+        db.delete_table('base_aboutfilm_name')
+        db.delete_table('base_action')
+        db.delete_table('base_altercinemaname')
+        db.delete_table('base_altercityname')
+        db.delete_table('base_alterfilmname')
+        db.delete_table('base_alterhallname')
+        db.delete_table('base_alternames')
+        db.delete_table('base_alterstreettype')
+
+        db.delete_table('base_budget')
+        db.delete_table('base_carrier')
+        db.delete_table('base_carrierlayer')
+        db.delete_table('base_carrierriptype')
+        db.delete_table('base_carriertapecategorie')
+        db.delete_table('base_carriertype')
+        db.delete_table('base_cinema')
+        db.delete_table('base_cinemacircuit')
+        db.delete_table('base_cinema_metro')
+        db.delete_table('base_cinema_phone')
+        db.delete_table('base_cinema_site')
+
+        db.delete_table('base_city')
+        db.delete_table('base_constant')
+        db.delete_table('base_copyfilm')
+        db.delete_table('base_copyfilm_aboutfilm')
+        db.delete_table('base_copyfilmaddvalue')
+        db.delete_table('base_copyfilmformat')
+        db.delete_table('base_copyfilmtype')
+        db.delete_table('base_country')
+        db.delete_table('base_currency')
+        db.delete_table('base_genre')
+        db.delete_table('base_hall')
+
+        db.delete_table('base_importsources')
+        db.delete_table('base_language')
+        db.delete_table('base_metro')
+        db.delete_table('base_namefilm')
+        db.delete_table('base_nameperson')
+        db.delete_table('base_note')
+        db.delete_table('base_person')
+        db.delete_table('base_person_name')
+        db.delete_table('base_phone')
+        db.delete_table('base_relationfp')
+        db.delete_table('base_section')
+
+        db.delete_table('base_session')
+        db.delete_table('base_session_film')
+        db.delete_table('base_site')
+        db.delete_table('base_source')
+        db.delete_table('base_statusact')
+        db.delete_table('base_streettype')
+        db.delete_table('base_topick')
+        db.delete_table('base_version')
+
+

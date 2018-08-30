@@ -1,0 +1,53 @@
+{% load base_tags static %}
+{% get_static_prefix as STATIC_URL %}
+
+
+
+<div class="art-posttree-width">
+    <div>
+
+        
+        <div class="method-list">
+            <ul>
+                <li>
+                    <a href="{% url show_film_list %}">Вернуться на главную (список фильмов)</a>
+                </li></br> 
+                --------------------------------------------------------------------------------------	
+
+
+
+                <li>   
+                    <a href="{% url movie_logs %}">"Выводит содержимое файла с логами"</a>
+                </li></br> 
+
+
+                <li>
+                    <a href="{% url clear_model %}">"Полная отчитска модели megogo"</a>
+                </li></br> 
+
+
+                <li>
+                    <a href="{% url clear_logs %}">"Отчистить логи"</a>
+                </li></br> 
+
+
+                <li>
+                    <a href="{% url model_in_log %}">"Вывести содержимое модели в лог"</a>
+                </li></br> 
+
+
+
+              
+
+
+            </ul>
+        </div>   
+    </div>  
+</div>
+
+
+
+
+
+
+        

@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Admin{% endblock %}
+{% block content %}
+{% load base_tags %}
+
+<h1 class="content-header"><a href="{% url movie_online_admin %}">Main Admin</a></h1>
+{% admin_menu %}
+
+{# вставка на страницу (что угодно, пока просто текст) #}
+{% autoescape off %}
+ {{ value }}
+{% endautoescape %}
+
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        {% block info %}
+
+{% autoescape off %}
+{{ text }}
+{% endautoescape %}
+
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock %}

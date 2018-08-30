@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+{% block title %}Rambler test{% endblock %}
+{% load base_tags %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar">
+        <a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a></b>
+    {{ request.current_site.name }} - 
+    Rambler test
+</h1>
+
+{% kinoafisha_main_menu %}
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        
+        Ростов-На-Дону, "В сердце моря""
+
+        <br />
+
+
+        <!--Start Ticket widget-->
+        <rb:movie key="6bad0ed8-14f6-4e78-9692-a68a29e8bca8" movieName="" cityName="" movieID="56364" cityID="11" xmlns:rb="http://kassa.rambler.ru"></rb:movie>
+        <!--End Ticket widget-->
+        <script type="text/javascript"
+        src="http://s2.kassa.rl0.ru/widget/js/ticketmanager.js"></script>
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,162 @@
+{% load base_tags %}
+
+<div class="art-posttree-width">
+    <div id="accordion">
+        <h5 class="method-category" id="org_section01"><p>О нас</p></h5>
+        <div class="method-list">
+            <ul>
+                <li>
+                    {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+                    <a href="{% url organization_cinema org_id %}">Наша визитка</a>
+                    {% else %}
+                    <a href="{% url organization_show_new org_id %}">Наша визитка</a>
+                    {% endif %}
+                </li>
+                {% if request.current_site.domain != 'kinoinfo.ru' and request.current_site.domain != 'kinoafisha.ru' %}
+                <li>
+                    <a href="{% url organization_staff org_id %}">Наш состав</a>
+                </li>
+                <li>
+                    <a href="{% url organization_relations org_id %}">Ещё о нас в сети</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+        <h5 class="method-category" id="org_section02"><p>Мы предлагаем</p></h5>
+        <div class="method-list">
+            <ul>
+                {% for i in offers_tags %}
+                <li>
+                    - <a href="{% url organization_offers org_id i.id %}">{{ i.organizationtags.name|lower }}</a>
+                </li>
+                {% endfor %}
+                {% if org_ka %}
+                <li>- <a href="{% url organization_schedules org_id %}">Расписание сеансов</a></li>
+                {% endif %}
+            </ul>
+            {% if is_editor or request.user.is_superuser or request.is_admin %}
+                <a class="org_add_menu"><b>добавить страницу</b></a>
+            {% endif %}
+        </div>
+
+        <h5 class="method-category" id="org_section03"><p>Нам требуется</p></h5>
+        <div class="method-list">
+            <ul>
+                {% for i in advert_tags %}
+                <li>
+                    - <a href="{% url organization_adverts org_id i.id %}">{{ i.organizationtags.name|lower }}</a>
+                </li>
+                {% endfor %}
+            </ul>
+            {% if is_editor or request.user.is_superuser or request.is_admin %}
+                <a class="org_add_menu_needs"><b>добавить страницу</b></a>
+            {% endif %}
+        </div>
+
+        <h5 class="method-category" id="org_section04"><p>Наша репутация</p></h5>
+        <div class="method-list">
+            <ul>
+                <li>
+                    <a href="{% url organization_reviews org_id %}">Отзывы</a>
+                </li>
+                <li>
+                    <a href="{% url organization_questions org_id %}">Вопросы</a>
+                </li>
+                <li>
+                    <a href="{% url organization_comments org_id %}">Комментарии</a>
+                </li>
+            </ul>
+        </div>
+
+        
+        {% for k, v in org_menu.items %}
+            {% if k != 'about' %}
+            <h5 class="method-category" id="{{ org_id }}_section{{ k }}"><p>{{ v.title }}</p>{% if request.user.is_superuser or request.is_admin or is_editor %}<a href="#" class="org_menu_title_edit">ред.</a>{% endif %}</h5>
+            <div class="method-list">
+                <ul class="{{ org_id }}_section{{ k }}">
+                {% for i in v.sub %}
+                <li><a href="{% if i.type == '2' %}{% url org_gallery org_id i.id %}{% else %}{% url org_view org_id i.id %}{% endif %}" id="link_menu__{{ k }}">{{ i.name }}</a></li>
+                {% endfor %}
+                </ul>
+                {% if request.user.is_superuser or request.is_admin or is_editor %}
+                    <a class="org_edit_menu" id="{{ org_id }}__{{ k }}"><b>добавить страницу</b></a>
+                {% endif %}
+            </div>
+            {% endif %}
+        {% endfor %}
+        
+        
+        {% if request.user.is_superuser or request.is_admin or is_editor %}
+            
+            <h5 class="method-category" id="about_section" class="aboutus_menu" style="display: none;"><p></p></h5>
+            <div class="method-list" style="display: none;"></div>
+
+            
+            <a href="#" onclick="org_addmenu_bl();"> <b> Добавить меню</b></a>
+            <div class="org_addmenu_bl_fields org_fields">
+                <input type="text" id="{{ org_id }}" class="org_addmenu_title" size="30"/>
+                <input type="button" class="org_addmenu" id="" value="Принять"/>
+                <input type="button" value="Отмена" class="org_addmenu_bl_cancel_btn" onclick="obj_cancel(this);"/>
+            </div>
+            
+        {% endif %}
+    </div>
+    
+    {% if is_editor or request.user.is_superuser or request.is_admin %}
+        
+        <form action="{% url organization_offers_and_advert org_id %}" method="post">{% csrf_token %}
+            <div class="organization_menu1_fields org_fields">
+            <b>Мы предлагаем:</b>
+            <br /><br />
+            {% for i in offers_tags %}
+            <input type="text" value="{{ i.organizationtags.name }}" size="30" name="organization_menu_field" class="organization_menu_field" id="{{ i.organizationtags.id }}" />
+            {% empty %}
+            <input type="text" value="" size="30" name="organization_menu_field" class="organization_menu_field" id="0" />
+            {% endfor %}
+            
+            <span class="menu_new" title="Добавить еще"></span>
+            <br />
+            <input type="button" value="Сохранить" class="organization_menu_accept_btn" />
+            <input type="button" value="Отмена" class="organization_menu1_cancel_btn" />
+            <input type="hidden" value="3" name="status" />
+            </div>
+        </form>
+
+        <form action="{% url organization_offers_and_advert org_id %}" method="post">{% csrf_token %}
+            <div class="organization_menu_needs_fields org_fields">
+            <b>Нам требуется:</b>
+            <br /><br />
+            {% for i in advert_tags %}
+            <input type="text" value="{{ i.organizationtags.name }}" size="30" name="organization_menu_field" class="organization_menu_field" id="{{ i.organizationtags.id }}" />
+            {% empty %}
+            <input type="text" value="" size="30" name="organization_menu_field" class="organization_menu_field" id="0" />
+            {% endfor %}
+            
+            <span class="menu_new" title="Добавить еще"></span>
+            <br />
+            <input type="button" value="Сохранить" class="organization_menu_accept_btn" />
+            <input type="button" value="Отмена" class="organization_menu_needs_cancel_btn" />
+            <input type="hidden" value="4" name="status" />
+            </div>
+        </form>
+        
+        
+        <form action="" method="post">{% csrf_token %}
+            <div class="organization_menu_fields org_fields">
+                <b></b>
+                <br /><br />
+                <span id="org_menu_inputs"></span>
+                <input type="hidden" value="" name="organization_id" />
+                <input type="hidden" value="" name="menu_id" />
+                <span class="submenu_new" title="Добавить еще"></span>
+                <br />
+                <input type="button" value="Сохранить" class="org_menu_accept_btn" />
+                <input type="button" value="Отмена" class="organization_menu_cancel_btn" />
+            </div>
+        </form>
+        
+        
+    {% endif %}
+    
+</div>

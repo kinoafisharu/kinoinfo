@@ -1,0 +1,39 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load url from future %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Запись: API</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+<div style="clear: both;"></div>
+
+<table class="panel_list">  
+    <th>Запуск</th><th>Категория</th><th>Дамп</th><th>Создан</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td><div style="color: #5C9D5C;">CRON</div></td>
+            <td><div>{{ i.category }}</div></td>
+            <td><div>
+                {{ i.name }} {{ i.param }} {{ i.get }}
+                <div style="float: left; padding-right: 10px;">
+                {% if i.param %}
+                <a class="create-dump" href="{% url i.dump i.param %}{{ i.get }}" style="text-decoration: none; color: #E6E6E6;" title="{{ i.name }} {{ i.param }}">. . .</a>
+                    {% if i.modify %}
+                    <a class="download-dump" href="{% url 'download' i.name i.param %}{{ i.get }}" style="text-decoration: none; color: #E6E6E6;" title="{{ i.name }} {{ i.param }}">. . .</a>
+                    {% endif %}
+                {% else %}
+                <a class="create-dump" href="{% url i.dump %}{{ i.get }}" style="text-decoration: none; color: #E6E6E6;" title="{{ i.name }} {{ i.param }}">. . .</a>
+                    {% if i.modify %}
+                    <a class="download-dump" href="{% url 'download' i.name %}{{ i.get }}" style="text-decoration: none; color: #E6E6E6;" title="{{ i.name }} {{ i.param }}">. . .</a>
+                    {% endif %}
+                {% endif %}
+                </div>
+            </div></td>
+            <td><div>{{ i.modify|date:"d b G:i" }}</div></td>
+        </tr>
+    {% endfor %}
+</table>
+   
+{% endblock %}

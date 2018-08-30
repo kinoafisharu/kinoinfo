@@ -1,0 +1,16 @@
+{% extends "kua_base.html" %}
+{% load i18n %}
+{% load kua_tags %}
+{% block title %}{% trans "Авторизация" %}{% endblock %}
+{% block content %}
+    
+    <h1 class="content-header"><a href="{% url login %}">{% trans "Авторизация" %}</a></h1>
+    <div class="block-auth-through-openid">
+        {% kua_user_openid message %}
+        {% kua_user_email %}
+        {% kua_user_lj %}
+    </div>
+<div class="clear"></div>
+<br />
+<a href="{% url main %}">{% trans "На главную" %}</a>
+{% endblock %}

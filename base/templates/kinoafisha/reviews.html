@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Темы и обзоры - {{ request|get_site_name2018 }}{% endblock %}
+
+{% block script %}
+
+    {% if user.is_superuser or request.is_admin %}
+    <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+
+    <script type="text/javascript">
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_text", "language": "en", "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, image, code, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": true, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "emotions, wordcount, paste", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+    </script>
+    {% endif %}
+    
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar">
+        <a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a></b>
+    Киноафиша <a class="select_mycity">{{ request|get_city_name_3 }}</a> - 
+    {% if id %}<a href="{% url kinoafisha_reviews %}">{% endif %}
+    Темы и обзоры
+    {% if id %}</a> - {{ news_data.0.title }}{% endif %}
+</h1>
+
+{% if user.is_superuser or request.is_admin %}
+    {% if id %}
+        {% if news_data.0.obj.reader_type == '21' %}
+        <span class="post_edit in_h1" onclick="post_edit({{ news_data.0.obj.id }})">Ред.статью</span>
+        <span class="post_delete in_h1_left" onclick="if(confirm('Are you sure?')){$('.pst_dl').submit()}">Удалить</span>
+        <form action="" method="post" class="pst_dl">{% csrf_token %}
+            <input type="hidden" value="1" name="del"/>
+        </form>
+        {% endif %}
+    {% else %}
+        <span class="post_add in_h1" onclick="post_edit(0)">Добавить статью</span>
+    {% endif %}
+{% endif %}
+
+
+{% kinoafisha_main_menu %}
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        <div class="article">
+            <div class="scroll_list" style="padding-right: 10px;">
+            {% if id %}
+                {% if news_data.0.title %}
+                <h3>{{ news_data.0.title|safe }}</h3>
+                <br />
+                {% endif %}
+                {{ news_data.0.text|safe }}
+            {% else %}
+                {% for i in news_data %}
+                    {% if i.obj.reader_type == '14' %}
+                        <h3><a href="http://kinoinfo.ru/film/{{ i.film_id }}/reviews/#r{{ i.id }}" target="_blank">{{ i.title|safe }}</a>{% if not i.obj.visible %} <span style="color: red;">(Не отображается)</span>{% endif %}</h3>
+                        Рецензия автора: {% if i.user.fio %}{{ i.user.fio }}{% else %}{{ i.user.short_name }}{% endif %} на фильм <a href="http://kinoinfo.ru/film/{{ i.film_id }}/">{{ i.film_name|safe }}</a> - {{ i.date|date:"d b Y" }}
+                    {% else %}
+                        <h3><a href="http://kinoinfo.ru/film/{{ i.film_id }}/reviews/#r{{ i.id }}">{{ i.title|safe }}</a>{% if not i.obj.visible %} <span style="color: red;">(Не отображается)</span>{% endif %}</h3>
+                        {{ i.description }} - {{ i.date|date:"d b Y" }}
+                    {% endif %}
+                    <br /><br />
+                {% endfor %}
+
+                <div class="more_news" style="margin: 0 auto;">
+                    {% if page == 1 and p.has_next %}
+                    <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Ещё рецензии</a>
+                    {% endif %}
+                    {% if page > 1 %}
+                        <a href="?page={{ p.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">&#8592; Рецензии новее</a>
+                        {% if p.has_next %}
+                        <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Ещё рецензии &#8594;</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            </div>
+        </div>
+
+        {% if user.is_superuser or request.is_admin %}
+            <div class="post_block org_fields">
+                
+                <form action="" method="post" class="new_new">{% csrf_token %}
+                    <b>Заголовок</b>:<br />
+                    <input type="text" value="{% if id %}{{ news_data.0.title|safe }}{% endif %}" size="60" name="news_title" /><br /><br />
+                    <b>Текст</b>:<br />
+                    <textarea id="id_text" name="text">{% if id %}{{ news_data.0.text|safe }}{% endif %}</textarea>
+                    <br />
+                    
+                    <b>Отображать <input {% if id %}{% if news_data.0.obj.visible %}checked="checked"{% endif %}{% else %}checked="checked"{% endif %} type="checkbox" name="visible" /></b>
+                    <br /><br />
+                    
+                    <input type="submit" value="Сохранить" /> <input type="button" value="Отмена" class="post_edit_cancel" />
+                    
+                    <input type="hidden" value="{% if id %}{{ news_data.0.obj.id }}{% endif %}" name="edit" />
+                    <input type="hidden" value="17" name="type" />
+                </form>
+                
+                <input type="text" value="{% if id %}{{ news_data.0.title|safe }}{% endif %}" id="title_hidden" class="org_fields" />
+                <textarea id="text_hidden" class="org_fields">{% if id %}{{ news_data.0.text|safe }}{% endif %}</textarea>
+                
+            </div>
+
+        {% endif %}
+
+
+    </div>
+</div>
+
+{% endblock %}

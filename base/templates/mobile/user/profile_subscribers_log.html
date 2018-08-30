@@ -1,0 +1,47 @@
+{% extends "mobile/base.html" %}
+{% load i18n %}
+{% block title %}Лог уведомлений подписчиков{% endblock %}
+{% load base_tags %}
+
+
+{% block content %}
+    {% mobile_header %}
+
+    {% profile_menu_mobile is_my_profile card.profile.user_id %}
+
+    <div class="art-postcontent-width">
+        <h1>Лог уведомлений подписчиков</h1>
+
+        
+        {% if data %}
+        <table class="modern_tbl">
+        {% for i in data %}
+            {% ifchanged i.obj.dtime|date:"d-b-Y" %}
+            <th>Подписчик</th><th>Уведомлен</th><th>Ошибка</th>
+            {% endifchanged %}
+            <tr>
+                <td>
+                    <div>
+                        {% if i.profile %}
+                        <a href="{% url profile i.profile.id %}" target="_blank">{{ i.profile.name }}</a>
+                        {% else %}
+                        отписался
+                        {% endif %}
+                    </div>
+                </td>
+                <td>
+                    <div>{{ i.obj.dtime|date:"d b Y в H:i" }}</div>
+                </td>
+                <td>
+                    <div>{% if i.obj.error %}{{ i.obj.error }}{% endif %}</div>
+                </td>
+            </tr>
+        {% endfor %}
+        </table>
+        {% else %}
+        Здесь пока пусто
+        {% endif %}
+        
+
+    </div>
+{% endblock %}

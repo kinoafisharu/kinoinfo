@@ -1,0 +1,115 @@
+{% extends t %}
+
+
+{% block info %}
+<h3 class="art-postheader">Обработка связей для объекта Фильм: {{ kinoafisha_name }}</h3>
+        <select name="nof_film" id="nof_data" style="display: none;">
+            <option value="*" id="*" selected></option>
+        </select>
+        
+    <form action="" method="post">{% csrf_token %}
+        Поиск фильма на киноафише<br />
+        <input type="text" id="get_data_name" name="get_data_name" value="{{ search_film }}" /><input type="button" onclick="get_data('film')" value="Найти" />
+        <select name="film" id="data_select">
+            <option value="">пусто</option>
+        </select>
+        <br /><br />
+        <input type="submit" name="submit" id="show_relations" value="Показать все связи с этим фильмом" />
+    </form>
+    <br />
+    
+    
+    
+    {% if flag %}
+        <form action="" method="post">{% csrf_token %}
+            <table class="panel_list">  
+                <th></th><th>Связь с</th><th>Объект</th>
+                {% for i in relations.kifilm %}
+                    {% for k, v in i.names.items %}
+                        <tr>
+                            <td><div><input type="checkbox" name="checker_kifilm" value="{{ i.id }}" /></div></td>
+                            <td><div>{{ i.descr }}</div></td>
+                            <td><div>{{ v }}</div></td>
+                        </tr>
+                    {% endfor %}
+                {% endfor %}
+                
+                {% for i in relations.release %}
+                    <tr>
+                        <td><div><input type="checkbox" name="checker_release" value="{{ i.id }}" /></div></td>
+                        <td><div>{{ i.descr }}</div></td>
+                        <td><div>{{ i.names }}</div></td>
+                    </tr>
+                {% endfor %}
+                
+                {% for i in relations.subscription %}
+                    <tr>
+                        <td><div><input type="checkbox" name="checker_subscription" value="{{ i.id }}" /></div></td>
+                        <td><div>{{ i.descr }}</div></td>
+                        <td><div>{{ i.count }}</div></td>
+                    </tr>
+                {% endfor %}
+                
+                {% for i in relations.schedule %}
+                    <tr>
+                        <td><div><input type="checkbox" name="checker_schedule" value="{{ i.id }}" /></div></td>
+                        <td><div>{{ i.descr }}</div></td>
+                        <td><div>{{ i.count }}</div></td>
+                    </tr>
+                {% endfor %}
+                
+                {% for i in relations.okinoua %}
+                    <tr>
+                        <td><div><input type="checkbox" name="checker_okinoua" value="{{ i.id }}" /></div></td>
+                        <td><div>{{ i.descr }}</div></td>
+                        <td><div>{{ i.names }}</div></td>
+                    </tr>
+                {% endfor %}
+                
+                {% for i in relations.raspishi %}
+                    <tr>
+                        <td><div><input type="checkbox" name="checker_raspishi" value="{{ i.id }}" /></div></td>
+                        <td><div>{{ i.descr }}</div></td>
+                        <td><div>{{ i.names }}</div></td>
+                    </tr>
+                {% endfor %}
+                
+                {% for i in relations.kinohod_film %}
+                    <tr>
+                        <td><div><input type="checkbox" name="checker_kinohod_film" value="{{ i.id }}" /></div></td>
+                        <td><div>{{ i.descr }}</div></td>
+                        <td><div>{{ i.names }}</div></td>
+                    </tr>
+                {% endfor %}
+                
+                {% for i in relations.kinohod_sch %}
+                    <tr>
+                        <td><div><input type="checkbox" name="checker_kinohod_sch" value="{{ i.id }}" /></div></td>
+                        <td><div>{{ i.descr }}</div></td>
+                        <td><div>{{ i.count }}</div></td>
+                    </tr>
+                {% endfor %}
+                
+                {% for i in relations.notfound %}
+                    <tr>
+                        <td><div><input type="checkbox" name="checker_notfound" value="{{ i.id }}" /></div></td>
+                        <td><div>{{ i.descr }}</div></td>
+                        <td><div>{{ i.names }}</div></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        
+
+        
+        {% if relations %}
+            <br />
+            <input type="submit" name="remove_rel" value="Разорвать связи" />
+        {% endif %}
+        
+        
+        
+        </form>
+    {% endif %}
+
+
+{% endblock %}

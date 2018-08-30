@@ -1,0 +1,70 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Топ 250 лучших фильмов по версии IMDb - {{ request|get_site_name2018 }}{% endblock %}
+
+
+{% block content %}
+<h1 class="content-header">
+	<b id="navigation_bar">
+        <a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a></b>
+     Киноафиша <a class="select_mycity">{{ request|get_city_name_3 }}</a> - <span style="font-size: 17px;">Топ 250 лучших фильмов по версии IMDb</span>
+    
+</h1>
+
+{% kinoafisha_main_menu %}
+
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        
+        
+        <select name="year" onchange="$('#filter_year').submit();" form="filter_year">
+            <option value="">Год</option>
+            {% for i in years %}
+            <option value="{{ i }}"{% if i == year %} selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+        
+        <select name="country" onchange="$('#filter_country').submit();" form="filter_country">
+            <option value="">Страна</option>
+            {% for i in countries %}
+            <option value="{{ i.id }}"{% if i.id == country %} selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+        </select>
+        
+        <select name="genre" onchange="$('#filter_genre').submit();" form="filter_genre">
+            <option value="">Жанр</option>
+            {% for i in genres %}
+            <option value="{{ i.id }}"{% if i.id == genre %} selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+        </select>
+        
+        <b>Рейтинг обновлен {{ date_upd }}</b> 
+        
+        <div class="scroll_list" style="padding-right: 10px;">
+        <table class="panel_list">
+            <th>№</th>
+            <th>Изменения</th>
+            <th>Фильм</th>
+            <th>Рейтинг</th>
+            <th>Голоса</th>
+            
+            {% for i in data %}
+                <tr style="background: {% if i.obj.change == 2 %}#D1ECDA;{% endif %}{% if i.obj.change == 3 %}#FFE0E0;{% endif %}{% if i.obj.change == 4 %}#D1E0FF;{% endif %}">
+                    <td><div>{{ i.obj.position }}</div></td>
+                    <td><div>{% if i.obj.change == 1 %}-{% endif %}{% if i.obj.change == 2 %}{{ i.obj.change_val }} ↑{% endif %}{% if i.obj.change == 3 %}{{ i.obj.change_val }} ↓{% endif %}{% if i.obj.change == 4 %}new{% endif %}</div></td>
+                    <td><div title="{% for j in i.awards %}{{ j }}{% endfor %}">{% if i.obj.film.kid %}<a href="http://kinoinfo.ru/film/{{ i.obj.film.kid }}/">{% endif %}{{ i.name|safe }} ({{ i.obj.film.year }}){% if i.obj.film.kid %}</a>{% endif %}</div></td>
+                    <td><div>{{ i.obj.rating }}</div></td>
+                    <td><div>{{ i.obj.votes }}</div></td>
+                </tr>
+            {% endfor %}
+        </table>
+        </div>
+        
+        <form action="" method="POST" id="filter_year">{% csrf_token %}</form>
+        <form action="" method="POST" id="filter_genre">{% csrf_token %}</form>
+        <form action="" method="POST" id="filter_country">{% csrf_token %}</form>
+    </div>
+</div>
+
+{% endblock %}

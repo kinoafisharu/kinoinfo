@@ -1,0 +1,29 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader">Обработка связей для объекта Фильм: </h3>
+    <form action="" method="post">{% csrf_token %}
+
+        <table class="panel_list">  
+            <th></th><th>Название</th><th>Год</th><th>KID</th><th>Альт. назв.</th>
+            {% for i in p.object_list %}
+                <tr>
+                    <td><div><input type="checkbox" name="checker" value="{{ i.id }}" /></div></td>
+                    <td><div>{{ i.name }}</div></td>
+                    <td><div>{{ i.year }}</div></td>
+                    <td><div>{{ i.kid }}</div></td>
+                    <td><div>{{ i.alt_name }}</div></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        {% if p.object_list %}
+        <br />
+        <input type="submit" name="rel_del" value="Разорвать связь" />
+        {% endif %}
+    </form>
+    <br />
+    {% base_pagination p page %}
+
+    
+{% endblock %}

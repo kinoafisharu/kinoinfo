@@ -1,0 +1,28 @@
+{% extends "mobile/base.html" %}
+
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{% trans 'Авторизация' %}{% endblock %}
+
+{% block content %}
+
+	{% mobile_header %}
+
+	{% login_menu_mobile %}
+
+	<div class="art-postcontent-width">
+	    <h1>{% trans 'Авторизация' %}</h1>
+
+	    <div id="film_info" class="film_info-main" style="background: #F2F2F2;">
+		    <div class="block-auth-through-openid">
+		        {% base_user_openid message %}
+		        {% base_user_email %}
+		        {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' %}
+		        {% base_user_lj %}
+		        {% base_user_kinoafisha %}
+		        {% endif %}
+		    </div>
+			<div class="clear"></div>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,16 @@
+<html>
+ <body>
+  <data>
+   <country name="Россия" lang="Русский"></country>
+   <country name="США" lang="Английский"></country>
+   <country name="Великобритания" lang="Английский"></country>
+   <country name="Германия" lang="Немецкий"></country>
+   <country name="Франция" lang="Французский"></country>
+   <country name="Испания" lang="Испанский"></country>
+   <country name="Австралия" lang="Английский"></country>
+   <country name="Япония" lang="Японский"></country>
+   <country name="Швеция" lang="Шведский"></country>
+   <country name="Италия" lang="Итальянский"></country>
+  </data>
+ </body>
+</html>

@@ -1,0 +1,161 @@
+{% extends "mobile/base_forums.html" %}
+{% load base_tags %}
+{% block title %}Женский форум КХВ{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+
+    var wf_search_query = "{{ search_query }}"
+    
+    $(document).ready(function(){
+        $(".fancybox").fancybox({'openEffect': 'none', 'closeEffect': 'none'});
+
+        {% if not topic %}
+            {% if first_load %}
+                get_forum_topic({{ first_load }}, "{{ first_title }}", {{ first_load }})
+            {% endif %}
+        {% else %}
+            {% if topic %}
+                get_forum_topic({{ topic }}, "{{ first_title }}", {{ topic }})
+            {% endif %}
+        {% endif %}
+        
+        {% if search_query %}
+            $('.left_categories_tbl .tlink').highlight(wf_search_query);
+        {% endif %}
+        
+    });
+</script>
+{% endblock %}
+
+
+{% block content %}
+    {% wf_mobile_header %}
+    {% wf_menu_mobile data search_query %}
+
+    <div class="art-postcontent-width">
+
+        <input type="hidden" value="{% if topic %}{{ topic }}{% else %}{{ first_load }}{% endif %}" class="topic_id"/>
+        <input type="hidden" value="{{ first_cat_id }}" class="category_id"/>
+        <input type="hidden" value="0" class="parent_id"/>
+        <input type="hidden" value="{{ newmsg }}" class="newmsg"/>
+        <input type="hidden" value="{{ level }}" class="ignore_current_lvl"/>
+        <input type="hidden" value="{{ next_level }}" class="ignore_nxt_lvl"/>
+        <input type="hidden" value="m" class="is_mobile"/>
+
+        <div class="right-bottom">
+                    <div style="width: 728px; height: 90px; margin: 0 auto; background: #fff;">
+        <!-- BEGIN admelon http://forums.vsetiinter.net/women/ (728x90) -->
+        <script type="text/javascript">
+        (function() {
+            var placeId = 1665, frameId = '_adm_' + placeId + '_iframe', src = document.location.protocol + '//engine.admelon.ru/c?pid=' + placeId + '&rid=' + Math.floor(Math.random() * 1000000000);
+            document.write('<div id="_adm_' + placeId + '_div"></div>');
+            document.write('<div style="visibility:hidden;position:absolute;"><iframe id="'+ frameId + '" width="1" height="1" marginwidth="0" marginheight="0" scrolling="no" style="border:0;"></iframe></div>');
+            var tryCount=0,fn=function(){var a;if(10>tryCount){try{document.all&&!/opera/i.test(navigator.userAgent)?a=window.frames[frameId].document:document.getElementById&&(a=document.getElementById(frameId).contentDocument)}catch(b){}a?a.write(unescape('%3Cscript src="'+src+'" type="text/javascript"%3E%3C/script%3E')):(tryCount++,setTimeout(fn,100))}};fn();})();
+        </script>
+        <!-- END admelon -->
+        </div>
+            <div class="branches">
+                <table class="branch_data" width="100%">
+                </table>
+            </div>
+
+            <div class="rb-data"></div>
+
+            <div class="rb-msg">
+                <input type="hidden" value="{{ nickname }}" class="unick" />
+                <input type="hidden" value="" class="msg_type" />
+                <input type="hidden" value="0" class="msg_edit" id="edt__0" />
+                <div class="rb-msg-title"></div>
+                <table class="rb-msg-editor">
+                    <tr>
+                        <td class="rbe_name"></td>
+                        <td class="uname_error"></td>
+                    </tr>
+                    <tr>
+                        <td class="rbe_name">Имя: </td>
+                        <td class="rbe_field1"><input type="text" value="{{ nickname }}" class="rbe_uname" {% if nickname %}style="background: #F0F0F0;" disabled{% endif %} maxlength="25"/></td>
+                    </tr>
+                    {% if nickname %}
+                    <tr>
+                        <td class="rbe_name">Аноним: </td>
+                        <td><input type="checkbox" class="rbe_anonim" /></td>
+                    </tr>
+                    {% endif %}
+
+                    
+                    <tr{% if nickname %} style="display: none;"{% endif %}>
+                        <td class="rbe_name"></td>
+                        <td class="email_error"></td>
+                    </tr>
+                    <tr{% if nickname %} style="display: none;"{% endif %}>
+                        <td class="rbe_name">Email:</td>
+                        <td class="rbe_field1"><input type="text" value="" class="rbe_email" {% if nickname %}style="background: #F0F0F0;" disabled{% endif %} maxlength="50" /></td>
+                    </tr>
+                    
+
+                    {% if nickname %}
+                    <tr>
+                        <td class="rbe_name"></td>
+                        <td class="file_error"></td>
+                    </tr>
+                    <tr>
+                        <td class="rbe_name">Файл:</td>
+                        <td>
+                        <form action="{% url women_forum_addfile 'm' %}" method="POST" id="wf_upload_form" enctype="multipart/form-data">{% csrf_token %}
+                            <div class="wf_upload" title="Прикрепить файл">
+                                <input type="file" name="file" class="wf_up" /> 
+                            </div>
+                            <span class="wf_upload_stat" style="display: none;">
+                                <div class="check-mark" ></div>
+                                <a class="wf_upload_cancel" style="padding-top: 10px; text-decoration: underline;">отменить</a>
+                            </span>
+                            <input type="hidden" value="" name="new_msg_id" class="rbe_new_msg_id" />
+                            <input type="hidden" value="" name="fnext" class="rbe_fnext" />
+                        </form>
+                        </td>
+                    </tr>
+                    {% endif %}
+
+                    <tr>
+                        <td class="rbe_name"></td>
+                        <td class="subject_text_error"></td>
+                    </tr>
+                    <tr>
+                        <td class="rbe_name">Тема:</td>
+                        <td class="rbe_field2"><input type="text" value="" class="rbe_subject" maxlength="128" /></td>
+                    </tr>
+                    <tr>
+                        <td class="rbe_name">Текст:</td>
+                        <td class="rbe_field2"><textarea class="rbe_text"></textarea></td>
+                    </tr>
+                    
+                    <tr>
+                        <td></td>
+                        <td style="text-align: center;">
+                            <input type="button" value="Просмотреть" class="rbe_preview rbe_btn" onclick="rbe_send(true);"/>
+                            <input type="button" value="Отменить" class="rbe_cancel rbe_btn"/>
+                            <input type="button" value="Отправить" class="rbe_send rbe_btn" onclick="rbe_send(false);"/>
+                        </td>
+                    </tr>
+
+                </table>
+                
+            </div>
+            <div class="rb-preview">
+                <div class="rb-preview-data"></div>
+                <div class="rb-preview-btns">
+                    <input type="button" value="Редактировать" class="rbe_edit rbe_btn" />
+                    <input type="button" value="Отмена" class="rbe_prev_cancel rbe_btn" />
+                    <input type="button" value="Отправить" class="rbe_send rbe_btn" onclick="rbe_send(false);"/>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+
+<div class="clear"></div>
+
+{% endblock %}

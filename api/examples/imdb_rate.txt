@@ -1,0 +1,8 @@
+
+<imdb_rate>
+    <film id="7" imdb="120891" imdb_rate="4,4" imdb_votes="73349"/>
+    <film id="8" imdb="149261" imdb_rate="5,7" imdb_votes="58945"/>
+    <film id="9" imdb="122933" imdb_rate="6,6" imdb_votes="70850"/>
+    <film id="10" imdb="185371" imdb_rate="5,3" imdb_votes="28580"/>
+    <film id="11" imdb="120663" imdb_rate="7,2" imdb_votes="123782"/>
+</imdb_rate>

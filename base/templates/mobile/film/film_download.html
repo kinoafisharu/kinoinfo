@@ -1,0 +1,24 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - скачать{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+
+    {% film_menu_mobile id menu film_editor %}
+
+<div class="art-postcontent-width">
+	<h1><a href="{% url get_film id %}">{{ name_ru|safe }}</a> - Скачать</h1>
+	<br />
+    <b>RuTracker:</b>
+    <br />
+    {% for i in topics %}
+    <a href="http://rutracker.org/forum/viewtopic.php?t={{ i.source_id }}" target="_blank">{{ i.name }}</a>
+    <br />
+    {% endfor %}
+   
+</div>
+
+
+
+{% endblock %}

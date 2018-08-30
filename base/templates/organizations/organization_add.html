@@ -1,0 +1,14 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader">Добавить организацию</h3>
+<div class="clear"></div>
+
+
+    <form action="" method='post'>{% csrf_token %}
+        {{ form }}
+        <input type="submit" name="save" value="Сохранить">
+    </form>
+
+
+{% endblock %}

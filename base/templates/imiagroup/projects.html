@@ -1,0 +1,151 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}{% trans 'Проекты' %}{% endblock %}
+
+{% block script %}
+{% if request.user.is_superuser %}
+<link rel="stylesheet" href="{{ STATIC_URL }}base/css/datepicker.css" type="text/css" media="screen" />
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[name="start_date"], input[name="release_date"]').datepicker({
+            altFormat: "yy-mm-dd",
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1
+        });
+    });
+</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+    {% vlada_top_menu %}
+    {% vlada_left_menu vid %}
+
+
+<div class="art-postcontent-width">
+
+    {% if request.user.is_superuser %}
+    <form action="{% url imiagroup_projects_delete %}" method="post" id="f1">{% csrf_token %}
+    {% endif %}
+    
+        <div class="events_list">        
+            <table class="modern_tbl">
+                {% if request.user.is_superuser %}<th><input type="checkbox" name="checker_all" /></th>{% endif %}
+                <th>{% trans 'Дата старта' %}</th>
+                <th>{% trans 'Название' %}</th>
+                <th>{% trans 'Дата релиза' %}</th>
+                {% if access %}<th>{% trans 'Директора' %}</th>{% endif %}
+                <th>{% trans 'ПланБюджет' %}</th>
+                <th>{% trans 'ФактБюджет' %}</th>
+                {% if request.user.is_superuser %}
+                <th style="display: none;"></th>
+                <th style="display: none;"></th>
+                <th style="display: none;"></th>
+                {% endif %}
+                {% for i in data %}
+                <tr>
+                    {% if request.user.is_superuser %}<td><div><input type="checkbox" name="checker" value="{{ i.obj.id }}" /></div></td>{% endif %}
+                    <td><div class="prjct_start" id='{{ i.obj.start_date|date:"Y-m-d" }}'>{{ i.obj.start_date }}</div></td>
+                    <td><div>{% if request.user.is_superuser %}<a href="#" class="project_edit">{% endif %}{{ i.obj.name }}{% if request.user.is_superuser %}</a>{% endif %}</div></td>
+                    <td><div class="prjct_release" id='{{ i.obj.release_date|date:"Y-m-d" }}'>{{ i.obj.release_date }}</div></td>
+                    {% if access %}<td>{% if request.user.is_superuser or i.im_director %}<div class="prjct_directors" id="{% for j in i.directors %}{{ j.id }}{% if not forloop.last %},{% endif %}{% endfor %}">{% for j in i.directors %}{{ j.name }}{% if not forloop.last %}, <br />{% endif %}{% if not forloop.last %}{% endif %}{% endfor %}</div>{% endif %}</td>{% endif %}
+                    <td><div class="prjct_budget_plan" id="{% if i.obj.budget %}{{ i.obj.budget }}{% else %}0{% endif %}__{% if i.obj.currency %}{{ i.obj.currency }}{% else %}4{% endif %}">{{ i.budget }} {{ i.obj.get_currency_display }}</div></td>
+                    <td>
+                        <div class="prjct_budget">
+                            {% if request.user.is_superuser or i.im_director %}<a href="{% url imiagroup_project_budget i.obj.id %}">{% endif %}{{ i.fact }}%{% if request.user.is_superuser or i.im_director %}</a>{% endif %}
+                        </div>
+                    </td>
+                    {% if request.user.is_superuser %}
+                    <td style="display: none;"><div class="prjct_members">{% for j in i.members %}{{ j.id }}{% if not forloop.last %},{% endif %}{% endfor %}</div></td>
+                    <td style="display: none;"><div class="prjct_notify">{{ i.obj.email }},{{ i.obj.sms }}</div></td>
+                    <td style="display: none;"><div class="prjct_url">{% if i.obj.url %}{{ i.obj.url }}{% endif %}</div></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+            </table>
+        </div>
+        
+    {% if request.user.is_superuser %}
+    </form>
+    
+
+    <form action="{% url imiagroup_projects_edit %}" method="post" id="project_add_frm">{% csrf_token %}
+        <div class="new_project_fields org_fields">
+        
+            <div>
+                <b>{% trans 'Название проекта' %}:</b><br />
+                <input type="text" value="" name="project_name" size="40" maxlength="128" />
+            </div>
+            
+            <div>
+                <b>URL:</b><br />
+                <input type="text" value="" name="project_url" size="40" maxlength="128" />
+            </div>
+            
+            <div style="display: inline-block; margin-right: 20px;">
+                <b>{% trans 'Дата старта' %}:</b><br />
+                <input type="text" value="" name="start_date" size="13" />
+            </div>
+            
+            <div style="display: inline-block; margin-right: 20px;">
+                <b>{% trans 'Дата релиза' %}:</b><br />
+                <input type="text" value="" name="release_date" size="13" />
+            </div>
+            
+            <div>
+                <b>{% trans 'Бюджет' %}:</b><br />
+                <input type="text" value="" name="project_budget" size="8" />
+                <select name="project_currency">
+                    <option value="3">{% trans 'Австралийский доллар' %} (AUD)</option>
+                    <option value="6">{% trans 'Новозеландский доллар' %} (NZD)</option>
+                    <option value="4">{% trans 'Российский рубль' %} (RUB)</option>
+                </select>
+            </div>
+
+            <div class="directors_fields">
+                <b>{% trans 'Директора' %}:</b><br />
+                <select class="directors">
+                {% for i in admins %}
+                    <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+                </select><span class="submenu_new project_member_new" title="{% trans 'Добавить еще' %}"></span> <br />
+            </div>
+
+            <div class="members_fields">
+                <b>{% trans 'Участники' %}:</b> <br />
+                <select class="members">
+                {% for i in members %}
+                    <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+                </select><span class="submenu_new project_member_new" title="{% trans 'Добавить еще' %}"></span> <br />
+            </div>
+
+            <div style="margin: 5px 0 5px 0;">
+                <input type="checkbox" name="project_email" /> <b>{% trans 'Уведомлять по E-Mail' %}</b>
+            </div>
+            
+            <div>
+                <input type="checkbox" name="project_sms" /> <b>{% trans 'Уведомлять по SMS' %}</b>
+            </div>
+            
+            <br />
+            <input type="hidden" value="0" name="edit" />
+            <input type="hidden" value="" name="allmembers" />
+            <input type="hidden" value="" name="alldirectors" />
+            <input type="button" value="{% trans 'Сохранить' %}" name="create" onclick="project_add_valid();" />
+            <input type="button" value="{% trans 'Отмена' %}" class="new_project_cancel_btn" />
+            
+        </div>
+        </form>
+    
+    <br />
+    <input type="button" value="{% trans 'Создать новый проект' %}" class="create_new_project" /> | 
+    <input type="button" value="{% trans 'Удалить отмеченные' %}" onclick="if(confirm('{% trans 'Вы действительно хотите удалить проект' %}?')){$('#f1').submit();}"/>
+    {% endif %}
+    
+    <div class="clear"></div>
+{% endblock %}

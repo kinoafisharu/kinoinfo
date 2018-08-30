@@ -1,0 +1,31 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader" style="float: left;">RuTracker топики</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+<div style="clear: both;"></div>
+
+
+<table class="panel_list">  
+
+    <th>Дата-время</th><th>Источник</th><th>Киноинфо</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td style="width:85px;"><div>{{ i.dtime|date:"j b H:i" }}</div></td>
+            <td style="width:45%; padding-right: 10px;"><div title="{{ i.source.name }}">
+                
+                <a href="http://rutracker.org/forum/viewtopic.php?t={{ i.source.source_id }}" target="_blank">{{ i.source.name }}</a>
+                
+            </div></td>
+            <td><div><a href="{% url get_film i.source.kid %}" target="_blank">{{ i.kinoafisha }}</a></div></td>
+            
+        </tr>
+    {% empty %}
+        <br />пусто<br />
+    {% endfor %}
+</table>
+
+
+{% endblock %}

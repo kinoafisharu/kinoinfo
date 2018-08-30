@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block title %}Ялта в сети интернет{% endblock %}
+{% block description %}{{ main_description }}{% endblock %}
+{% load base_tags %}
+
+{% block content %}
+<h1 class="content-header">Ялта в сети интернет</h1>
+
+<div class="main_block">
+    <div class="left_blocks">
+    {% for i in p.object_list %}
+        {% if i.even %}
+        <div class="short_news"{% if not i.obj.visible %} style="background-color: rgba(255,250,205,0.7);"{% endif %}>
+            
+            <div class="short_news__img">
+                <img src="" />
+            </div>
+            <h2><a href="{% url news i.obj.id %}">{{ i.obj.title }}</a></h2>
+            {{ i.description }}
+            <span>{% if not i.obj.visible %}<font style="color: red;">Не отображается</font> {% endif %}{{ i.obj.dtime|date:"j b Y H:m" }}</span>
+        </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+    
+    <div class="right_blocks">
+    {% for i in p.object_list %}
+        {% if not i.even %}
+        <div class="short_news"{% if not i.obj.visible %} style="background-color: rgba(255,250,205,0.7);"{% endif %}>
+            <div class="short_news__img">
+                <img src="" />
+            </div>
+            <h2><a href="{% url news i.obj.id %}">{{ i.obj.title }}</a></h2>
+            <span>{% if not i.obj.visible %}<font style="color: red;">Не отображается</font> {% endif %}{{ i.obj.dtime|date:"j E Y H:m" }}</span>
+            {{ i.description }}
+        </div>
+        {% endif %}
+    {% endfor %}
+    </div>
+    
+</div>
+
+
+
+{% endblock %}

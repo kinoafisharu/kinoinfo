@@ -1,0 +1,20 @@
+<data>
+    <api_title>
+        Film posters
+    </api_title>
+
+    <api_decription>
+        Метод возвращает постеры к фильмам
+    </api_decription>
+    
+    <api_example>film_posters/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/film_posters/?id=566<br />
+        http://kinoinfo.ru/api/film_posters/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>нет</api_response_details>
+
+    <!--<api_response>film_posters.txt</api_response>-->
+</data>

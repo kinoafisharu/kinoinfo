@@ -1,0 +1,49 @@
+{% extends "umrunet_base.html" %}
+{% block title %}Профиль пользователя{% endblock %}
+{% block content %}
+    <h1 class="content-header"><a href="{% url profile %}">Профиль пользователя</a></h1>
+    
+
+    
+        <div class="profile">
+        <h3>Подключенные аккаунты</h3>
+        {% for i in p_accounts %}
+            <div class="profile-account">
+                <form action="" method="post">{% csrf_token %}
+                    <div class="profile-account-avatar">
+                        {% if i.avatar %}<img src="/media/profiles/{{ user.get_profile.folder }}/{{ i.avatar }}" />{% else %}<span>нет аватара</span>{% endif %}
+                    </div>
+                    <div class="profile-account-info">
+                        login: {{ i.login }}<br />
+                        nickname: {{ i.nickname }}<br />
+                        fullname: {{ i.fullname }}<br />
+                        born: {{ i.born }}<br />
+                        gender: {% if i.male == False %}None{% endif %}
+                                {% if i.male == 1 %}М{% endif %}
+                                {% if i.male == 2 %}Ж{% endif %}<br />
+                    </div>
+                    <div class="profile-account-delete">
+                    {% if p_count > 1 %}
+                        <input type="hidden" name="account" value="{{ i.id }}" />
+                        <input type="submit" value="&#215;" title="Удалить" />
+                    {% endif %}
+                    </div>
+                </form>
+            </div>
+        {% endfor %}
+        </div>
+        
+  
+    
+    <div class="profile_message">
+        {% if p_count < 1 %}
+            <p>У вас еще нет подключенных аккаунтов!</p>
+            <p>Для сохранения настроек и доступа к ним при следующих визитах необходимо <a href="{% url login %}">авторизоваться</a></p>
+
+        {% else %}
+            <a href="{% url login %}">Подключить еще аккаунты</a>
+        {% endif %}
+    </div>
+    <br />
+    <a href="{% url main %}">На главную</a>
+{% endblock %}

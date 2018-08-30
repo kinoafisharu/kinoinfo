@@ -1,0 +1,71 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        var scroll_h = ($(window).height() / 100) * 58
+        $('.scroll_list').css('height', scroll_h + 'px')
+        
+        var fullsc = $.cookie("fullscreen")
+        if(fullsc && fullsc != 'null'){
+            fullscreen('.art-postcontent-width')
+        }
+    });
+</script>
+{% endblock %}
+
+
+
+{% block content %}
+    <h1 class="content-header">
+        <b id="navigation_bar"><a href="{% url main %}">{{ site_name }}</a></b> - 
+        <b id="navigation_bar"><span class="small_film_name">{{ title }}</span></b>
+    </h1>
+
+    {% letsget_menu slug %}
+
+    <div class="art-postcontent-width">
+
+        <div style="float: right;">
+        {% base_pagination p page %}
+        </div>
+
+
+        <form action="" method="post">{% csrf_token %}
+        <b>Object Type:</b> 
+        <select name="group" onchange="this.form.submit();">
+            {% for i in groups %}
+            <option value="{{ i.0 }}"{% if i.0 == group %} selected{% endif %}>{{ i.1 }}</option>
+            {% endfor %}
+        </select>
+        </form>
+        <div style="clear: both;"></div>
+        
+        
+        <div class="scroll_list" style="margin-bottom: 10px;">
+            <table class="panel_list">
+                <th></th><th>Object</th><th>Time</th><th>User</th><th>Action</th><th>Attribute</th>
+                {% for i in log %}
+                    <tr>
+                    <td><div></div></td>
+                    <td>
+                    {% if group == '1' %}
+                        {% if i.slug %}<a href="{% url orgs i.slug %}" target="_blank" title="{{ i.name }}">{{ i.name }}</a>{% else %}{{ i.name }}{% endif %}
+                    {% endif %}
+                    {% if group == '4' or group == '5' or group == '6' or group == '7' or group == '9' or group == '10' %}
+                        <div title="{{ i.name }}">{{ i.name }}</div>
+                    {% endif %}
+                    </div></td>
+                    <td><div>{{ i.dtime|date:"d b Y, H:i:s" }}</div></td>
+                    <td><div><a href="{% url profile i.obj.profile.user_id %}" target="_blank">{{ i.obj.profile.user_id }}</a></div></td>
+                    <td><div>{{ i.obj.get_action_display }}</div></td>
+                    <td><div>{{ i.obj.attributes }}</div></td>
+                    </tr>
+                {% endfor %}
+            </table>
+            
+        </div>
+    </div>
+{% endblock %}

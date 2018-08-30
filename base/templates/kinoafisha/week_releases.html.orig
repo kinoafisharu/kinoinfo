@@ -1,0 +1,402 @@
+{% extends "base.html" %}
+{% load linkexchange_tags %}
+{% block title %}
+    {% if release %}
+        {{ page_title }}
+    {% endif %}
+    {% if online %}
+        Пять случайных фильмов
+    {% endif %}
+    {% if best %}
+        Лучшее сегодня в кинотеатрах
+    {% endif %}
+    {% if soon %}
+        Скоро на экранах {% if fr %}Франции{% else %}России{% endif %}
+    {% endif %}
+    - {{ request.current_site.name }}
+{% endblock %}
+
+{% load base_tags %}
+
+{% block keywords %}{{ request.seo_data.keywords }}{% endblock %}
+{% block description %}{{ request.seo_data.description }}{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".fancybox").fancybox();
+});
+$(document).on('ready', function() {
+    $(".scroll_list2").slick({
+        slidesToShow: 1,
+		adaptiveHeight: true,
+		infinite: false,
+        dots: false
+    });
+});
+
+</script>
+{% endblock %}
+
+
+{% block sys_info %}
+    {% sys_info timer cached_page %}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+	<b id="navigation_bar">
+        <a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a></b>
+     {{ request.current_site.name }} - <a class="select_mycity">{{ request.current_user_city }}</a> - <span style="font-size: 17px;">
+     {% if release %}
+        {{ page_title }}
+    {% endif %}
+    {% if online %}
+        Пять случайных фильмов
+    {% endif %}
+    {% if best %}
+        Лучшее сегодня в кинотеатрах
+    {% endif %}
+    {% if soon %}
+        Скоро на экранах {% if fr %}Франции{% else %}России{% endif %}
+    {% endif %}</span>
+</h1>
+
+
+{% kinoafisha_main_menu %}
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+
+        {% if user.is_superuser and fr %}
+            <a href="{% url admin_film_nof_list 'yovideo_nof_film' %}" style="display: inline-block; margin-bottom: 10px;">Добавить ненайденные<a>
+        {% endif %}
+        
+
+
+
+        <div class="scroll_list2" style="height:100%;">
+            {% if descript_top or user.is_superuser %} 
+                {% if release %}
+                <div id="film_info" style="min-height: 330px; margin-bottom: 20px; padding: 5px 5px 10px 10px; background: #F2F2F2;">
+                    <div{% if user.is_superuser %} class="organization_notex org_hover" title="Редактировать"{% endif %} id="top">
+                        <div id="film_descriptif descript_topion"{% if descript_top %}style="margin-bottom: 20px;"{% endif %}>
+                            {% if descript_top %}
+                                {{ descript_top|safe }}
+                            {% else %}
+                            {% if user.is_superuser %}Нет доп.описания{% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+
+                    {% if user.is_superuser %}
+                    <div class="organization_txt_top org_fields">
+                        <form action="" method="post">{% csrf_token %}
+                        <textarea style="width: 370px; " rows="10" cols="56" name="note" id="id_note_top">{{ descript_top }}</textarea>
+                        <input type="hidden" value="top" name="position" />
+                        <input type="hidden" name="week" value="{{ week }}">
+                        <input type="button" value="Сохранить" class="organization_txt_accept_btn" />
+                        <input type="button" value="Отмена" class="organization_txt_cancel_btn" />
+                        </form>
+                    </div>
+                    {% endif %}
+                </div>
+            {% endif %}
+       {% endif %}
+      
+
+
+        {% for i in data %}
+        <div id="film_info" style="min-height: 330px; margin-bottom: 20px; padding: 5px 5px 10px 10px; background: #F2F2F2;">
+            <div id="film_text" class="small_film_txt">
+                <div id="persons_top_line">
+                {% if i.persons.actors %}
+                    {% for j in i.persons.actors|slice:":3" %}
+                        <a href="{% url get_person j.id %}" target="_blank">
+                        {% if j.poster %}<img src="{{ j.poster }}" id="img_under"/>{% endif %}
+                        {{ j.name }}
+                        </a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    в фильме
+                {% else %}
+                    {% if i.persons.directors %}Фильм{% endif %}
+                {% endif %}
+                
+                {% for j in i.persons.directors %}
+                    <a href="{% url get_person j.id %}" target="_blank">
+                    {% if j.poster %}<img src="{{ j.poster }}" id="img_under"/>{% endif %}
+                    {{ j.name }}
+                    </a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </div>
+
+                <h2 id="film_name"><a href="http://kinoinfo.ru/film/{{ i.id }}/" target="_blank">{% if i.name_ru %}{{ i.name_ru|safe }}{% else %}{{ i.name_en|safe}}{% endif %}</a></h2>
+
+                <b id="film_details">
+                <span>
+                {% for v in i.countries %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},
+                </span>
+                <span>
+                {% for v in i.genres %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},
+                </span>
+                <span>
+                {% if i.runtime %}{{ i.runtime }} мин.{% endif %}
+                </span>
+                </b>
+
+                <div id="film_description">
+                {% if i.descript %}
+                    {% if i.descript_cut %}
+                        {{ i.descript_cut|safe }}
+                        <a id="descript" href="#in_descript" onclick="$.fancybox.open($(this).next());">[подробнее]</a>
+                        <div id="in_descript">
+                            <div style="padding-right: 15px;">
+                            {{ i.descript|safe }}
+                            </div>
+                        </div>
+                        
+                    {% else %}
+                        {{ i.descript|safe }}
+                    {% endif %}
+                {% else %}
+                Нет описания
+                {% endif %}
+                </div>
+                
+
+                <div id="film_trailers">
+                    <div class="trailer"{% if online %} style="height: 230px;"{% endif %}>
+                    {% if i.trailer %}
+                        {% if online %}
+                            {{ i.trailer|safe }}
+                        {% else %}
+                        <div class="youtube_wrapper">
+                            <img src="{{ i.trailer_img }}" width="250" height="150" id="yt_{{ i.trailer_id }}">
+                            <div></div>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        Нет трейлера
+                    {% endif %}
+                    </div>
+                </div>
+
+                {% if not online %}
+                <div id="film_slides" style="margin-bottom: 10px;">
+                {% for s in i.slides %}
+                    <div class="slide">{% if s.0 %}<a class="fancybox" rel="group_{{ i.id }}" href="{{ s.0 }}"><img class="fancy_slide" src="{{ s.1 }}" /></a>{% else %}Нет слайда{% endif %}</div>
+                {% endfor %}
+                </div>
+                {% endif %}
+                
+
+                {% if release %}
+                <div{% if user.is_superuser %} class="organization_notex org_hover" title="Редактировать"{% endif %} id="{{ i.id }}">
+                    <div id="film_description"{% if i.descript_after %}style="margin-bottom: 20px;"{% endif %}>
+                        {% if i.descript_after %}
+                            {{ i.descript_after|safe }}
+                        {% else %}
+                        {% if user.is_superuser %}Нет доп.описания{% endif %}
+                        {% endif %}
+                    </div>
+                </div>
+                {% if user.is_superuser %}
+                <div class="organization_txt_{{ i.id }} org_fields">
+                    <form action="" method="post">{% csrf_token %}
+                    <textarea style="width: 370px; " rows="10" cols="56" name="note" id="id_note_{{ i.id }}">{{ i.descript_after }}</textarea>
+                    <input type="hidden" value="{{ i.id }}" name="position" />
+                    <input type="hidden" name="week" value="{{ week }}">
+                    <input type="button" value="Сохранить" class="organization_txt_accept_btn" />
+                    <input type="button" value="Отмена" class="organization_txt_cancel_btn" />
+                    </form>
+                </div>
+                {% endif %}
+                {% endif %}
+
+                <div class="clear"></div>
+
+                {% if best or release %}
+                    {% if best %}
+                        {% if i.cinemas %}
+                            <h3 style="padding-top: 5px;">В кинотеатрах:</h3>
+                            <select class="film_cinemas_schedules_v2" id="select__{{ i.id }}">
+                            {% for j in i.cinemas %}
+                                <option value="{% for s in j.schedules %}{{ s|date:'H:i' }}{% if not forloop.last %}, {% endif %}{% endfor %}">{{ j.name|safe }}</option>
+                            {% endfor %}
+                            </select>
+
+                            <div id="times__{{ i.id }}" class="film_schedules_block">
+                            {% for s in i.cinemas.0.schedules %}
+                                <b>{{ s|date:'H:i' }}{% if not forloop.last %}, {% endif %}</b>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% else %}
+                        {% if i.cinemas %}
+                            <h3 style="padding-top: 5px;">В кинотеатрах:</h3>
+                            <select class="film_cinemas_schedules_v4" id="select__{{ i.id }}">
+                            {% for j in i.cinemas %}
+                                <option value="{{ j.id }}">{{ j.name|safe }}</option>
+                            {% endfor %}
+                            </select>
+
+                            <span id="dates__{{ i.id }}">
+                            {% for j in i.cinemas %}
+                                <select {% if not forloop.first %}style="display: none;"{% endif %} class="film_cinemas_schedules_v5" id="select__{{ i.id }}__{{ j.id }}">
+                                {% for s in j.schedules %}
+                                    <option value='{{ s.dtime|date:"j" }}'>{{ s.dtime|date:"j b" }}</option>
+                                {% endfor %}
+                                </select>
+                            {% endfor %}
+                            </span>
+
+                            <div id="times__{{ i.id }}" class="film_schedules_block">
+                            {% for j in i.cinemas %}
+                                <span {% if not forloop.first %}style="display: none;"{% endif %} id="times__{{ i.id }}__{{ j.id }}">
+                                    {% for s in j.schedules %}
+                                    <span {% if not forloop.first %}style="display: none;"{% endif %} id='times__{{ i.id }}__{{ j.id }}__{{ s.dtime|date:"j" }}'>
+                                        {% for t in s.time %}
+                                            <b>{{ t|date:"H:i" }}</b>{% if not forloop.last %},{% endif %}
+                                        {% endfor %}
+                                    </span>
+                                    {% endfor %}
+                                </span>
+                            {% endfor %}
+                            </div>
+                        {% endif %}
+                    {% endif %}
+                {% endif %}
+
+            </div>
+
+            {% poster_with_likes i.id i.rating.rate i.rating.show_imdb i.rating.rotten i.rating.show_ir i.likes.likes_cinema i.likes.likes_home i.likes.likes_recommend i.likes.dislikes_seen i.likes.dislikes_recommend i.likes.count_likes i.likes.count_dislikes i.limit i.posters 'small_pstr' i.tickets %}
+
+
+            <div class="fopinions_block">
+                <a onclick="get_film_opinions({{ i.id }}{% if not i.opinions.count %}, 1{% endif %});" class="fopinions">
+                {% if i.opinions.count %}
+                    <span>Отзывы зрителей ({{ i.opinions.count }})</span>
+                    <span>средняя оценка {{ i.opinions.avg }} из 5.0</span>
+                {% else %}
+                    <span>Добавить отзыв</span>
+                    <span></span>
+                {% endif %}
+                </a>
+                <br />
+                {% if i.opinions.my_rate %}
+                <div class="fopinions_rate">
+                    <span>Ваша оценка: {{ i.opinions.my_rate }}</span>
+                </div>
+                {% else %}
+                <a onclick="get_film_opinions({{ i.id }}, 2);" class="fopinions_rate">
+                    <span>Оценить фильм</span>
+                </a>
+                {% endif %}
+            </div>
+
+            
+
+            {% if i.reviews %}
+            <div style="margin-top: 12px;">Рецензии:</div>
+            {% endif %}
+            {% for r in i.reviews %}
+            <div style="margin-top: 12px;">
+                <div class="review_avatar">
+                {% if r.avatar %}
+                    <img src="{{ r.avatar }}" />
+                {% endif %}
+                </div>
+        
+                <span style="color: #666;">
+                    {% if r.author_id %}
+                    <a href="{% url profile r.author_id %}" target="_blank">{{ r.user_firstname }} {{ r.user_lastname }}</a>,
+                    {% else %}
+                    {{ r.user_firstname }} {{ r.user_lastname }},
+                    {% endif %} Оценка: {{ r.rate }}
+                </span>
+                <br />
+                <p style="font-size: 12px; font-weight: bold; color: #444;">{{ r.title|safe }}</p>
+                
+                {% if r.txt_cut %}
+                    <p style="font-size: 12px;">{{ r.txt_cut }}</p>
+                    <a href="{% url get_film_reviews i.id %}{% if r.kinoinfo_id %}#r{{ r.kinoinfo_id }}{% endif %}" target="_blank">[подробнее]</a>
+                    {% comment %}
+                    <a id="descript" href="#in_descript" onclick="$.fancybox.open($(this).next());">[подробнее]</a>
+                    <div id="in_descript">
+                        <div style="padding-right: 15px;">
+                        {{ r.txt|safe }}
+                        </div>
+                    </div>
+                    {% endcomment %}
+                {% else %}
+                    <p style="font-size: 12px;">{{ r.txt|safe }}</p>
+                {% endif %}
+                
+            </div>
+            {% endfor %}
+
+
+        </div>
+
+        {% empty %}
+            {% if best %}
+            <br />
+            К сожалению, сегодня в городе <b>{{ request.current_user_city }}</b> нет хороших фильмов в прокате
+            {% endif %}
+
+        {% endfor %}
+        
+        {% if descript_bottom or user.is_superuser %} 
+        {% if release %}
+        <div id="film_info" style="min-height: 330px; margin-bottom: 20px; padding: 5px 5px 10px 10px; background: #F2F2F2;">
+            
+            <div{% if user.is_superuser %} class="organization_notex org_hover" title="Редактировать"{% endif %} id="bottom">
+                <div id="film_description"{% if descript_bottom %}style="margin-bottom: 20px;"{% endif %}>
+                    {% if descript_bottom %}
+                        {{ descript_bottom|safe }}
+                    {% else %}
+                    {% if user.is_superuser %}Нет доп.описания{% endif %}
+                    {% endif %}
+                </div>
+            </div>
+                {% if user.is_superuser %}
+                <div class="organization_txt_bottom org_fields">
+                    <form action="" method="post">{% csrf_token %}
+                    <textarea style="width: 370px; " rows="10" cols="56" name="note" id="id_note_bottom">{{ descript_bottom }}</textarea>
+                    <input type="hidden" value="bottom" name="position" />
+                    <input type="hidden" name="week" value="{{ week }}">
+                    <input type="button" value="Сохранить" class="organization_txt_accept_btn" />
+                    <input type="button" value="Отмена" class="organization_txt_cancel_btn" />
+                    </form>
+                </div>
+                {% endif %}
+        </div>
+        {% endif %}
+        {% endif %}
+
+        {% if request.current_site.domain == 'kinoafisha.ru' %}
+            {% comment %}<br />{{ linkexchange_blocks.0|safe }}{% endcomment %}
+        {% endif %}
+        
+        </div>
+
+
+
+    </div>
+</div>
+
+<script type="text/javascript" id="kh_script" src="http://kinohod.ru/static/js/widget/v2.1/boxoffice.js?apikey={{ kinohod_key }}&base_uri=http%3a%2f%2fkinohod.ru%2fapi%2fwidget"></script>
+
+<script type="text/javascript" src="http://s2.kassa.rl0.ru/widget/js/ticketmanager.js"></script>
+
+
+{% if user.is_superuser %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+
+<script type="text/javascript">
+tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": ["id_note_top", "id_note_bottom"{% for i in tinymce_ids %}, "id_note_{{ i }}"{% endfor %}], "language": "ru", "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": false, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "wordcount, paste", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+</script>
+{% endif %}
+
+{% endblock %}

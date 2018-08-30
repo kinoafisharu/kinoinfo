@@ -1,0 +1,45 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+
+{% block info %}
+<h3 class="art-postheader">Обработка связей для объекта Кинотеатр: </h3>
+    <form action="" method="post">{% csrf_token %}
+        Город: 
+        <select name='city' onchange="this.form.submit();">
+        {% for i in cities %}
+            <option value="{{ i.kid }}" {% if i.kid == city %}selected{% endif %}>{{ i.name }}</option>
+        {% endfor %}
+        </select>
+        {% if cinemas %}
+            Кинотеатр: 
+            <select name='cinema' onchange="this.form.submit();">
+            {% for i in cinemas %}
+                <option value="{{ i.kid }}" {% if i.kid == cinema %}selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+            </select>
+        {% endif %}
+    
+        
+        <br />
+    
+
+        <table class="panel_list">  
+            <th></th><th>Название</th><th>Статус</th>
+            {% for i in names_rel %}
+                <tr>
+                    <td><div>
+                    {% if i.status != 1 %}
+                        <input type="checkbox" name="checker" value="{{ i.id }}" />
+                    {% endif %}
+                    </div></td>
+                    <td><div>{{ i.name }}</div></td>
+                    <td><div>{{ i.status }}</div></td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% if names_rel %}
+            <br />
+            <input type="submit" name="rel_del" value="Разорвать связь" />
+        {% endif %}
+    </form>
+
+{% endblock %}

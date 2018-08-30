@@ -1,0 +1,197 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Минусовки - {{ artist_name }}{% endblock %}
+{% block script %}
+<link rel="stylesheet" href="{{ STATIC_URL }}base/css/datepicker.css" type="text/css" media="screen" />
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('input[name="person_born"]').datepicker({
+            altFormat: "yy-mm-dd",
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1,
+            yearRange: "-100:+0",
+        });
+
+    });
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">Минусовки</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name"><a href="{% url artist artist.id %}">{{ artist_name }}</a></span></b> - 
+    <b id="navigation_bar"><span class="small_film_name">визитка</span></b>
+</h1>
+
+{% artist_menu artist.id %}
+
+<div class="art-postcontent-width">
+
+    <div id="film_info">
+        <div id="film_text">
+            {% if user.is_superuser %}
+            <div class="artist_type_fields org_fields">
+                <b>Тип:</b>
+                <select class="artist_type_field">
+                    <option value="1">исполнитель</option>
+                    <option value="2"{% if artist.is_group %} selected{% endif %}>группа</option>
+                </select>
+                <input type="button" value="Сохранить" class="artist_type_accept_btn" />
+                <input type="button" value="Отмена" class="artist_type_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            {% endif %}
+        
+            <div style="font-size: 11px;">
+            {% if artist.is_group %}
+                <span{% if user.is_superuser %} class="artist_type org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>группа</span>
+            {% else %}
+                <span{% if user.is_superuser %} class="artist_type org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>исполнитель</span>
+            {% endif %}
+            </div>
+
+            {% if user.is_superuser %}
+            <div class="person_name_fields org_fields">
+                <b>Имя/Название</b><br />
+                <input type="text" value="{{ artist_name|safe }}" size="50" class="person_name_field" />
+                <br />
+                <input type="button" value="Сохранить" class="person_name_accept_btn" />
+                <input type="button" value="Отмена" class="person_name_cancel_btn" onclick="obj_cancel(this);" />
+                <span class="name_err"></span>
+            </div>
+            {% endif %}
+         
+            <h2 id="film_name"><span{% if user.is_superuser %} class="person_name org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>{{ artist_name }}</span></h2>
+
+            <b id="film_details">
+                <span{% if user.is_superuser %} class="person_born org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>
+                    {% if artist.born %}
+                        {{ artist.born }}
+                    {% else %}
+                    {% if user.is_superuser %}<span style="font-weight: normal;">{{ born_txt }}</span>{% endif %}
+                    {% endif %}
+                </span>{% if artist.country.name or user.is_superuser %}, {% endif %}
+                
+                <span{% if user.is_superuser %} class="person_country org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>
+                    {% if artist.country.name %}
+                        {{ artist.country.name }}
+                    {% else %}
+                        {% if user.is_superuser %}<span style="font-weight: normal;">страна</span>{% endif %}
+                    {% endif %}
+                </span>{% if artist.male or user.is_superuser %}{% if not artist.is_group %}, {% endif %}{% endif %}
+                
+                
+                <span{% if user.is_superuser %} class="person_gender org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %} {% if artist.is_group %} style="display: none;"{% endif %}>
+                    {% if artist.male %}
+                        {% if artist.male == 1 %}М{% else %}Ж{% endif %}
+                    {% else %}
+                        {% if user.is_superuser %}<span style="font-weight: normal;">пол</span>{% endif %}
+                    {% endif %}
+                </span>
+                
+            </b>
+            
+            {% if user.is_superuser %}
+            <div class="person_born_fields org_fields">
+                <b>{{ born_txt }}:</b><br />
+                <input type="text" name="person_born" value="{{ artist.born|date:'Y-m-d' }}"/>
+                <input type="button" value="Сохранить" class="person_born_accept_btn" />
+                <input type="button" value="Отмена" class="person_born_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            
+            <div class="person_country_fields org_fields">
+                <b>Страна</b><br />
+                <select name="person_country">
+                {% for i in country %}
+                    <option value="{{ i.id }}"{% if artist.country_id == i.id %} selected{% endif %}>{{ i.name }}</option>
+                {% endfor %}
+                </select>
+                <input type="button" value="Сохранить" class="person_country_accept_btn" />
+                <input type="button" value="Отмена" class="person_country_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            
+            <div class="person_gender_fields org_fields">
+                <b>Пол</b><br />
+                <select name="person_gender">
+                {% for i in sex %}
+                    <option value="{{ i.0 }}"{% if i.0 == artist.male %} selected{% endif %}>{{ i.1 }}</option>
+                {% endfor %}
+                </select>
+                <input type="button" value="Сохранить" class="person_gender_accept_btn" />
+                <input type="button" value="Отмена" class="person_gender_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            {% endif %}
+            <br />
+            <br />
+            <div>
+            {% for i in images.second %}
+                <img src="/upload{{ i }}" /> 
+            {% endfor %}
+            </div>
+            
+            <br />
+            <br />
+            
+            {% if artist.is_group %}
+            <div class="artist_members">
+                Участники: 
+                {% for i in members %}
+                {{ i }}, 
+                {% empty %}
+                нет
+                {% endfor %}
+                {% if user.is_superuser %}<a class="artist_members_edit org_hover" title="Редактировать" onclick="obj_edit(this);">(ред.)</a>{% endif %}
+            </div>
+            
+            <div class="artist_members_edit_fields org_fields">
+                <input type="button" value="Сохранить" class="artist_members_edit_accept_btn" />
+                <input type="button" value="Отмена" class="artist_members_edit_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            {% endif %}
+        </div>
+        
+
+        <div id="org_poster">
+            <div id="poster">
+            {% if images.main %}
+            <a class="fancybox" href="/upload{{ images.main }}"><img src="/upload{{ images.main }}" /></a>
+            {% endif %}
+            </div>
+            {% if user.is_superuser %}
+                <span class="organization_poster_edit">Редактировать</span>
+            {% endif %}
+        </div>
+
+        {% if user.is_superuser %}
+        <div class="organization_poster org_fields">
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+            {{ form }}
+            <br /><br />
+            <input type="submit" value="Сохранить" name="artist_poster_add" class="organization_poster_accept_btn" />
+            <input type="button" value="Отмена" class="organization_poster_cancel_btn" /><br /><br />
+            <input type="submit" value="Удалить текущий постер" name="artist_poster_del" onclick="if(confirm('Вы уверены?')) {$(this).parent().submit();}"/>
+            </form>
+        </div>
+        {% endif %}
+        
+        
+        
+        {% if user.is_superuser %}
+            <input type="hidden" name="person_id" value="{{ artist.id }}" />
+        {% endif %}
+    </div>
+    
+    
+    
+    
+    
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Кинотеатры источников связанные с киноафишей</h3> 
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+    
+    <form action="" method='post'>{% csrf_token %}
+        
+        <div style="clear: both;">
+        
+            <select name='source' onchange="this.form.submit();">
+            {% for i in sources %}
+                <option value="{{ i.id }}" {% if i.id == source %}selected{% endif %}>{{ i.source }}</option>
+            {% endfor %}
+            </select>
+
+        </div>
+
+
+        <table class="panel_list">  
+            <th></th><th>Город</th><th>Кинотеатр</th><th>КА.Город</th><th>КА.Кинотеатр</th>
+            {% for i in p.object_list %}
+                <tr>
+                <td><div><input class="radio_checker" type="radio" name="nof_data" value="{{ i.source.id }}  @   @ {{ i.afisha.city.id }}" id="{{ i.source.name }}" /></div></td>
+                <td><div title="{{ i.source.city.name }}">{{ i.source.city.name }}</div></td>
+                <td><div title="{{ i.source.name }}">{{ i.source.name }}</div></td>
+                <td><div title="{{ i.afisha.city.name }}">{{ i.afisha.city.name }}</div></td>
+                <td><div title="{{ i.afisha.name }}"><a href="http://www.kinoafisha.ru/index.php3?id2={{ i.afisha.id }}&status=2" target="_blank">{{ i.afisha.name }}</div></td>
+                </tr>
+            {% endfor %}
+        </table>
+
+        {% if p.object_list %}
+        <br />
+        <input type="text" id="get_data_name" value="" />
+        <input type="button" onclick="get_data('cinema')" value="Найти" />
+        <select name="data" id="data_select">
+            <option value="">пусто</option>
+        </select>
+        <input type="checkbox" id="check_all_data" checked style="display: none;"/>
+        
+        <br /><br />
+        
+        <input type="submit" id="kid_sid" name="kid_sid" value="Разорвать связь и связать с найденным кинотеатром" />
+            
+        {% endif %}
+    </form>
+
+{% endblock %}

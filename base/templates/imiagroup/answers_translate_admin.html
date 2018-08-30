@@ -1,0 +1,116 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}{% endblock %}
+{% block script %}
+
+    <script type="text/javascript">
+    function get_tags_auto(el){
+        var tags = [{% for i in tags_list %}"{{ i }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+
+        $(el).autocomplete({
+            source: tags,
+            minLength: 2,
+            messages: {
+                noResults: '',
+                results: function() {}
+            }
+        });
+    };
+    </script>
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% vlada_top_menu %}
+    {% vlada_left_menu vid %}
+
+
+
+<div class="art-postcontent-width">
+
+    {% if code|upper != answer.language.code|upper  %}
+    <div class="answer-item">
+        <div class="answer-item-head">
+            <div class="answer-item-author"><a href="{% url profile answer_author.id %}">{{ answer_author.name }}</a> {% trans 'отвечает' %} (<a href="{% url imiagroup_question question %}">{% trans 'перейти к вопросу' %}</a>):</div>
+            <div class="answer-item-datetime">
+            {% if lang == 'ru' %}
+            {{ answer.dtime|date:"d M Y г. H:i" }}
+            {% else %}
+            {{ answer.dtime|date:"M d, Y, g:i a" }}
+            {% endif %}
+            </div>
+        </div>
+        <div class="answer-item-body">
+            <div class="answer-item-text">{{ answer.text }}</div>
+        </div>
+    </div>
+    {% endif %}
+
+    <div>
+        {% if code|upper == answer.language.code|upper  %}
+        <b>{% trans 'Это оригинал' %} {{ code|upper }}, {% trans 'перевод не требуеться' %}.</b> 
+        <a class="edit_translation" ><b>{% trans 'Редактировать ответ' %}</b></a>
+        {% else %}
+        <b>{% trans 'Перевод' %} {{ code|upper }}:</b> 
+        {% endif %}
+    </div>
+
+    
+    <br />
+    <div>
+        {% if translation or code|upper == answer.language.code|upper %}
+            <div class="answer-item" id="q-i-block">
+                <div class="answer-item-head">
+                    <div class="answer-item-author"><a href="{% url profile answer_author.id %}">{{ answer_author.name }}</a> {% trans 'отвечает' %}:</div>
+                    <div class="answer-item-datetime">
+                        {% if lang == 'ru' %}
+                        {{ answer.dtime|date:"d M Y г. H:i" }}
+                        {% else %}
+                        {{ answer.dtime|date:"M d, Y, g:i a" }}
+                        {% endif %}
+                    </div>
+                </div>
+                <div class="answer-item-body">
+                    {% if code|upper == answer.language.code|upper  %}
+                    <div class="answer-item-text" id="q-i-text">{{ answer.text }}</div>
+                    {% else %}
+                    <div class="answer-item-text" id="q-i-text">{{ translation.text }}</div>
+                    {% endif %}
+                </div>
+            </div>
+            
+            {% if user.is_superuser and code|upper != answer.language.code|upper %}<a class="edit_translation" ><b>{% trans 'Редактировать перевод' %}</b></a>{% endif %}
+        {% else %}
+            <span id="q-tr-no">{% trans 'Нет' %}</span>
+            <br /><br />
+            {% if user.is_superuser %}<a class="add_translation"><b>{% trans 'Добавить перевод' %}</b></a>{% endif %}
+        {% endif %}
+
+        
+
+        {% if user.is_superuser %}
+        <div class="translation_block org_fields add_question_bl" style="width: 100%;">
+            <form action="" method="post">{% csrf_token %}
+                <div><b>{% trans 'Ответ' %}:</b></div>
+                <div><textarea class="translation_txt" name="translation_txt" style="width: 95%; height: 90px;"></textarea></div>
+                <div><input type="button" class="add_translation_answer_btn" value="{% trans 'Отправить' %}" /> | <input type="button" class="add_translation_btn_cancel" value="{% trans 'Отмена' %}" /></div>
+                <input type="hidden" value="{{ code }}" name="translate_to_lang" />
+                <input type="hidden" value="{% if translation %}{{ translation.id }}{% endif %}" name="translation_id" />
+                {% if code|upper == answer.language.code|upper  %}
+                <input type="hidden" value="{{ answer.id }}" name="original_id" />
+                <input type="hidden" value="1" name="original_edit" />
+                {% endif %}
+
+            </form>
+        </div>
+        {% endif %}
+
+    </div>
+    
+
+    <div class="clear"></div>
+</div>
+{% endblock %}

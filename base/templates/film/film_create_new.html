@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - создать новый фильм - {{ request.current_site.name }}{% endblock %}
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">фильм</span> <a href="{% url get_film id %}">{{ name_ru|safe }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">создать новый фильм</span></b>
+</h1>
+
+{% film_menu id menu film_editor %}
+
+
+<div class="art-postcontent-width">
+    
+    
+</div>
+
+
+
+{% endblock %}

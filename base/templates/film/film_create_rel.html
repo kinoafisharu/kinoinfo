@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - создать связи - {{ request.current_site.name }}{% endblock %}
+{% block script %}
+    {% if film_editor %}
+        {% if not user.is_superuser and not request.is_admin %}
+        <script type="text/javascript" src="{{ STATIC_URL }}base/js/adm.js"></script>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">фильм</span> <a href="{% url get_film id %}">{{ name_ru|safe }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">создать связи</span></b>
+</h1>
+
+{% film_menu id menu film_editor %}
+
+
+<div class="art-postcontent-width">
+    <input type="hidden" value="{{ id }}" name="kid" />
+    
+    <a href="#" onclick="myhit_search('{{ name_ru_query }}', {{ year }});">Получить рус. данные с my-hit.org</a> <br />
+    <a href="#" onclick="imdb_search('{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}', {{ year }}, 'true'{% if imdb_id %}, {{ imdb_id }}{% endif %});">Искать на IMDb</a> | 
+    <a href="#" onclick="imdb_search('{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}', {{ year }}, 'false');">Искать на IMDb (расширенный)</a>
+    <br />
+</div>
+
+
+<div class="exp_film_block">
+    <span></span>
+    <div class="exp_f">
+    <div style="float: left;">
+        <div class="exp_title"><b>Названия</b><p></p></div>
+        <div class="exp_country"><b>Страны</b><p></p></div>
+        <div class="exp_genre"><b>Жанры</b><p></p></div>
+        <div class="exp_year"><b>Год</b><p></p></div>
+        <div class="exp_limit"><b>Ограничение</b><p></p></div>
+        <div class="exp_runtime"><b>Продолжительность</b><p></p></div>
+        <div class="exp_budget"><b>Бюджет</b><p></p></div>
+    </div>
+    
+    <div style="float: left; margin-left: 40px;">
+        <div class="exp_person"><b>Персоны</b><p></p></div>
+        <div class="exp_imdb"><b>IMDb</b><p></p></div>
+        {% comment %}<div class="exp_release"><b>Релизы</b><p></p></div>{% endcomment %}
+        <div class="exp_distr"><b>Дистрибьюторы</b><p></p></div>
+        <div class="exp_poster"><b>Постер</b><p></p></div>
+    </div>
+    
+    <div style="clear: both;"></div>
+    <input type="button" value="Сохранить" class="exp_go" />
+    </div>
+    
+    <div class="cntry_block">
+    <select name="cntry" style="display: none;">
+    {% for i in countries %}
+        <option value="{{ i.id }}"{% if i.id == 1 %} selected{% endif %}>{{ i.name }}</option>
+    {% endfor %}
+    </select>
+    </div>
+    
+    <div class="lmts_block">
+    <select name="lmts" style="display: none;">
+    {% for i in limits %}
+        <option value="{{ i }}"{% if i == 13 %} selected{% endif %}>+{{ i }}</option>
+    {% endfor %}
+    </select>
+    </div>
+</div>
+
+
+{% endblock %}

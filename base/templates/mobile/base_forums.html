@@ -1,0 +1,74 @@
+{% load base_tags static %}
+{% load dajaxice_templatetags %}
+{% load i18n %}
+{% get_static_prefix as STATIC_URL %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block title %}Main{% endblock %} - Мобильная версия</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/women_forum_style_mobile.css" type="text/css" media="screen" />
+    <link rel="shortcut icon" href="{{ STATIC_URL }}base/images/favicon.ico" type="/media/image/x-icon" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="{{ STATIC_URL }}base/dajaxice/dajaxice.core.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/wf_script.js"></script>
+    {% if user.is_superuser or request.is_admin %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/adm.js"></script>
+    {% endif %}
+    {% block script %}{% endblock %}
+    
+    {% if request.noob %}  
+    <script src="https://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <script type="text/javascript">
+        ymaps.ready(ya_init);
+        function ya_init(){
+            var geo = ymaps.geolocation
+            Dajaxice.user_registration.user_reg(function(){}, {
+                'app_name': navigator.appName,
+                'platform': navigator.platform,
+                'display': screen.width+"x"+screen.height,
+                'geo_co': geo.country,
+                'geo_ci': geo.city,
+            })
+        }
+    </script>
+    {% endif %}
+    
+
+</head>
+
+<body class="body" style="background: {{ request.session.fw_style_settings }};">
+
+    <div class="content-main">
+        {% block content %}{% endblock %}
+    </div>
+
+    <div class="footer">
+        <ul>
+            <li><a href="/women/" class="full_website" id="fw_type_0">Полная версия</a></li>
+        </ul>
+        <div class="copyright">
+        Powered by <b>ИП Михаил Иванов</b> &copy; 2015
+        </div>
+        <div class="footer-metric">
+            <!--LiveInternet counter--><script type="text/javascript"><!--
+            document.write("<a href='//www.liveinternet.ru/click' "+
+            "target=_blank><img src='//counter.yadro.ru/hit?t26.1;r"+
+            escape(document.referrer)+((typeof(screen)=="undefined")?"":
+            ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+            screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+            ";"+Math.random()+
+            "' alt='' title='LiveInternet: показано число посетителей за"+
+            " сегодня' "+
+            "border='0' width='88' height='15'><\/a>")
+            //--></script><!--/LiveInternet-->
+        </div>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+{% block title %}{{ request.current_site.name }}: новинки 2013 и 2014 года, обзоры, трейлеры, рецензии{% endblock %}
+{% load base_tags %}
+{% block content %}
+
+<h1 class="content-header">
+	<b id="navigation_bar">
+        <a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a></b>
+     {{ request.current_site.name }} - <a class="select_mycity">{{ request.current_user_city }}</a>
+    
+</h1>
+
+
+{% kinoafisha_main_menu %}
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        
+
+    </div>
+</div>
+
+{% endblock %}

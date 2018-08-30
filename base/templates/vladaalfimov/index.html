@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{{ site_name }}{% endblock %}
+
+{% block script %}
+<style type="text/css">
+    .content-main{
+        background-color: rgba(255,255,255,0);
+    }
+    /*.main_widget{
+        background-color: rgba(255,255,255,0);
+        height: 50%;
+        margin-top: 0;
+        padding: 0;
+    }*/
+    .main_widget{
+        background-color: rgba(255,255,255,0);
+        height: 50%;
+        margin-top: 0;
+        padding: 0 0 15px 0;
+    }
+    .left_blocks, .right_blocks{
+        height: 100%;
+    }
+</style>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        content_height('.main_block', 69)
+        $(window).resize(function() {
+            content_height('.main_block', 69)
+        });
+    });
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+    <div class="main_block">
+
+        <div class="left_blocks">
+            <a href="{{ links.1 }}">
+            <div class="main_widget">
+            <img src="/static/base/images/vlada/1button.png">
+            </div>
+            </a>
+            
+            <a href="{{ links.3 }}">
+            <div class="main_widget">
+            <img src="/static/base/images/vlada/3button.png">
+            </div>
+            </a>
+        </div>
+        
+        <div class="right_blocks">
+            <a href="{{ links.2 }}">
+            <div class="main_widget">
+            <img src="/static/base/images/vlada/2button.png">
+            </div>
+            </a>
+            
+            <a href="{{ links.4 }}">
+            <div class="main_widget">
+            <img src="/static/base/images/vlada/4button.png">
+            </div>
+            </a>
+        </div>
+        
+    </div>
+    
+
+
+
+{% endblock %}

@@ -1,0 +1,9 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+    {{ log|linebreaks }}
+    <a href="{% if param %}{% url download method param %}{% else %}{% url download method %}{% endif %}{% if version %}?version={{ version }}{% endif %}">Скачать файл</a>
+    
+   
+    
+{% endblock %}
+

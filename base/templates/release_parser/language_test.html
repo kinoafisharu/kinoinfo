@@ -1,0 +1,40 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block info %}
+<h3 class="art-postheader">{% trans "Тест на мультиязычность" %}</h3>
+<br />
+
+<div>
+    <form action="/i18n/setlang/" method="POST">
+        {% csrf_token %}
+        <select name="language" onchange="this.form.submit();">
+            {% get_language_info_list for LANGUAGES as languages %}
+            {% for language in languages %}
+            <option value="{{ language.code }}"{% if language.code == LANGUAGE_CODE %} selected="selected"{% endif %}>
+                {{ language.name_local }}
+            </option>
+            {% endfor %}
+        </select>
+    </form>
+    
+    
+    <br />
+    
+    <ul>
+        <li>{% trans "Идентификация" %}</li>
+        <li>{% trans "Запись" %}</li>
+        <li>{% trans "Редактирование" %}</li>
+    </ul>
+    
+    <br />
+    
+    <a href="#">{% trans "Просто ссылка" %}</a>
+    
+
+    
+    
+    
+</div>
+
+{% endblock %}

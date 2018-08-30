@@ -1,0 +1,37 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}Фильмы {{ year }} года{% endblock %}
+
+
+
+{% block content %}
+    {% mobile_header %}
+    {% ki_main_menu_mobile %}
+
+
+<div class="art-postcontent-width">
+    <h1>Фильмы {{ year }} года</h1>
+
+    <div class="films_years">
+    {% for i in years %}
+        <a href="{% url get_film_list i %}">{{ i }}</a> 
+    {% endfor %}
+    </div>
+
+    <br />
+    <div class="separator_line"></div>
+    <br />
+
+    <div class="films_list_items">
+    {% for i in films %}
+        <a href="{% if request.current_site.domain == 'kinoinfo.ru' %}{% url get_film i.id %}{% else %}/?status=1&id1={{ i.id }}{% endif %}">{% if i.name_ru %}{{ i.name_ru|safe }}{% endif %}{% if i.name_ru and i.name_en %} / {% endif %}{% if i.name_en %}{{ i.name_en|safe }}{% endif %}</a><br />
+    {% empty %}
+        У нас нет фильмов {{ year }} года. Укажите, пожалуйста, другой год. 
+    {% endfor %}
+    </div>
+
+</div>
+
+
+
+{% endblock %}

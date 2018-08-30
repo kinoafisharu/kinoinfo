@@ -1,0 +1,62 @@
+{% extends "mobile/base.html" %}
+{% block title %}{{ request.current_site.name }}: Бокс-офис {% if country == 'russia' %}Россия{% else %}США{% endif %}{% endblock %}
+{% load base_tags %}
+
+
+{% block content %}
+
+{% mobile_header %}
+
+{% kinoafisha_main_menu_mobile %}
+
+<div class="art-postcontent-width">
+    <h1>
+        Бокс-офис {% if country == 'russia' %}Россия{% else %}США{% endif %}
+    </h1>
+
+    <br />
+    
+    <table class="modern_tbl">
+        <th></th>
+        <th>Фильм</th>
+        <th>Дистриб.</th>
+        <th>
+            <a href="{% url boxoffice country %}?sumwee={{ value }}">Cборы за нед. $</a>
+        </th>
+        <th>
+            <a href="{% url boxoffice country %}?sumavg={{ value }}">Сборы AVG $</a>
+        </th>
+        <th>
+            <a href="{% url boxoffice country %}?sumall={{ value }}">Общие сборы $</a>
+        </th>
+        <th>Экранов</th>
+        {% if country == 'russia' %}
+        <th>Зрит. за неделю</th>
+        <th>
+            <a href="{% url boxoffice country %}?audavg={{ value }}">Зрит. AVG</a>
+        </th>
+        <th>Всего зрителей</th>
+        <th>Дней</th>
+        {% endif %}
+        {% for i in p.object_list %}
+            <tr>
+                <td><div>{{ i.place }}</div></td>
+                <td><div title="{{ i.name|safe }}"><a href="http://m.kinoinfo.ru/film/{{ i.kid }}/">{{ i.name|safe }}</a></div></td>
+                <td style="width: 40px;"><div title="{{ i.distrib|safe }}">{{ i.distrib|safe }}</div></td>
+                <td style="text-align: right;"><div>{{ i.week_sum }}</div></td>
+                <td style="text-align: right;"><div>{{ i.week_sum_avg }}</div></td>
+                <td style="text-align: right;"><div>{{ i.all_sum }}</div></td>
+                <td style="text-align: right;"><div>{{ i.screens }}</div></td>
+                {% if country == 'russia' %}
+                <td style="text-align: right;"><div>{{ i.week_audience }}</div></td>
+                <td style="text-align: right;"><div>{{ i.week_audience_avg }}</div></td>
+                <td style="text-align: right;"><div>{{ i.all_audience }}</div></td>
+                <td style="text-align: right;"><div>{{ i.days }}</div></td>
+                {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    
+</div>
+
+{% endblock %}

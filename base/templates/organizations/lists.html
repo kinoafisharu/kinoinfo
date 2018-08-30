@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Список{% endblock %}
+
+{% block content %}
+<h1 class="content-header">Организации (всего: {{ count }}, в категории: {{ cat_count }})</h1>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+<div style="clear: both;"></div>
+
+    <form action="" method='post'>{% csrf_token %}
+        <select name="tags" onchange="this.form.submit();">
+        {% for i in tags %}
+            <option value="{{ i.id }}" {% if tag == i.id %}selected{% endif %}>{{ i.name }}</option>
+        {% endfor %}
+        </select>
+
+        <table class="panel_list">
+        <th></th><th>Название</th>
+        {% for i in p.object_list %}
+            <tr>
+            <td><div></div></td>
+            <td><div><a href="{% url organization_show_new i.uni_slug %}" {% if i.edited %}style="color: #338533;"{% endif %}>{{ i.name }}</a></div></td>
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+    <br />
+    <a href="{% url main %}">Главная</a>
+    
+
+{% endblock %}

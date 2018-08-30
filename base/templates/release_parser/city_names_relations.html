@@ -1,0 +1,48 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block script %}
+    <script type="text/javascript">
+    $(document).ready(function(){
+        val = $("select").children(":selected").attr("id");
+        $('#genitive_text').attr('value', val);
+    });
+    </script>
+{% endblock %}
+{% block info %}
+
+<h3 class="art-postheader">Обработка связей для объекта Город:</h3>
+
+    <form action="" method='post'>{% csrf_token %}
+        Город: 
+        <select name="cities" onchange="this.form.submit();">
+        {% for i in cities %}
+            <option value="{{ i.id }}" {% if name_id == i.id %}selected{% endif %} id="{{ i.name }}">{{ i.name }}</option>
+        {% endfor %}
+        </select>
+        <br />
+        
+        <table class="panel_list">  
+            <th></th><th>Название</th><th>Статус</th>
+            {% for i in names %}
+                <tr>
+                    <td><div>
+                    {% if i.status != 1 %}
+                        <input type="checkbox" name="checker" value="{{ i.id }}" />
+                    {% endif %}
+                    </div></td>
+                    <td><div>{{ i.name }}</div></td>
+                    <td><div>{{ i.status }}</div></td>
+                </tr>
+            {% endfor %}
+        </table>
+        {% if names %}
+            <br />
+            <input type="submit" name="rel_del" value="Разорвать связь" />
+            <br />
+            <br />
+            Название в родительном падеже:
+            <input type="text" name="genitive_text" id="genitive_text" value="" />
+            <input type="submit" name="genitive" value="Добавить" />
+        {% endif %}
+    </form>
+
+{% endblock %}

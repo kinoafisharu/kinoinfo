@@ -1,0 +1,111 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Минусовки - {{ artist.name__name }} - Композиции - {{ name }}{% endblock %}
+{% block script %}
+
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/player/uppod_api.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/swfobject.js"></script>
+
+    {% if user.is_superuser %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.form.js"></script>
+    
+    <script type="text/javascript">
+    var MUSIC_TYPES = []
+    $(document).ready(function(){
+        {% for i in mtype %}
+            MUSIC_TYPES.push(["{{ i.0 }}", "{{ i.1 }}"])
+        {% endfor %}
+    });
+    </script>
+    {% endif %}
+
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">Минусовки</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name"><a href="{% url artist artist.id %}">{{ artist.name__name }}</a></span></b> - 
+    <b id="navigation_bar"><span class="small_film_name"><a href="{% url composition_list artist.id %}">Композиции</a></span></b> - 
+    <b id="navigation_bar"><span class="small_film_name">{{ name }}</span></b>
+</h1>
+
+{% artist_menu artist.id %}
+
+<div class="art-postcontent-width">
+
+    {{ artist.name__name }} - {{ name }}
+    
+    <br /><br />
+    
+    {% if user.is_superuser %}
+    <form class="track_upload_form" action="{% url track_upload %}" method="post" enctype="multipart/form-data" id="form_{{ composition.id }}">{% csrf_token %}
+        <b>Загрузить MP3 файл:</b><br />
+        Укажите тип:
+         <select name="tr_type">
+            {% for mt in mtype %}
+            <option value="{{ mt.0 }}">{{ mt.1 }}</option>
+            {% endfor %}
+        </select>
+        
+        <span class="file-wrapper">
+            <input id="fileInput_{{ composition.id }}" class="input-file" name="upload" type="file" size="1" onchange="$('.track_upload_btn').click();"/>
+            <input type="submit" name="tr_upld_{{ composition.id }}" class="track_upload_btn upld_fl" value="Загрузить" />
+        </span>
+        
+        <input type="hidden" value="{{ composition.id }}" name="tr_id" />
+        <span id="track_upload_progress_{{ composition.id }}"></span>
+    </form>
+    {% endif %}
+    
+    
+    
+    {% if mediafiles %}
+    <br />
+    
+    <div id="uppod_player"></div>
+    
+    
+    <div>Медиафайлы:</div>
+    <div class="scroll_list">
+    <table class="modern_tbl">  
+        {% if user.is_superuser %}
+        <th style="text-align: left;"><input type="checkbox" name="checker_all" /></th>
+        <th></th>
+        {% endif %}
+        <th></th>
+        <th>Название</th>
+        <th>Тип</th>
+        {% if user.is_superuser %}<th></th>{% endif %}
+        {% for i in mediafiles %}
+            <tr id="tr_tr_{{ i.obj.sign }}">
+                {% if user.is_superuser %}
+                <td id="tr_btn"><div><input type="checkbox" name="checker" value="{{ i.obj.id }}" form="f1"/></div></td>
+                <td id="tr_btn"><div><form action="{% url track_download %}" method="post">{% csrf_token %}
+                <input type="hidden" name="id" value="{{ i.obj.sign }}" />
+                <input type="submit" class="track_download" title="Скачать" value="" /></form></div></td>
+                {% endif %}
+                <td id="tr_btn"><div><input type="button" class="play_audio" id="pl_{{ i.obj.sign }}" title="Прослушать" /></div></td>
+                <td><div><span{% if user.is_superuser %} id="{{ i.obj.sign }}" mtype="{{ i.obj.mtype }}" class="audio_title org_hover" title="Редактировать"{% endif %}>{{ i.obj.original_file_name|cut:".mp3" }}</span></div></td>
+                <td><div id="tp_{{ i.obj.sign }}">{{ i.obj.get_mtype_display }}</div></td>
+                {% if user.is_superuser %}<td><div style="display: none;" id="tags">{% for t in i.tags %}{{ t }}{% if not forloop.last %},{% endif %}{% endfor %}</div></td>{% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+    </div>
+    
+    {% if user.is_superuser %}
+    <br />
+    <form action="{% url admin_media_del %}" method="post" id="f1" >{% csrf_token %}
+        <input type="button" value="Удалить отмеченные" onclick="if(confirm('Вы уверены?')){$(this).parent().submit();}"/>
+        <input type="hidden" name="del" />
+    </form>
+    {% endif %}
+    
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

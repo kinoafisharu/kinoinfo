@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Профиль пользователя' %}{% endblock %}
+{% load base_tags %}
+
+
+{% block page_bg %}style="background-image: url('{% if user_bg %}{{ user_bg.file }}{% else %}{{ request.bg_img }}{% endif %}');"{% endblock %}
+{% block br_url %}{% if user_bg %}{{ user_bg.url }}{% else %}{{ request.advert_url }}{% endif %}{% endblock %}
+{% block adv_id %}{% if user_bg %}{{ user_bg.id }}{% else %}{{ request.advert_id }}{% endif %}{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url profile card.profile.user_id %}">{{ card.name|safe|striptags }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Реклама на моей странице</span></b>
+</h1>
+
+
+    {% profile_menu is_my_profile card.profile.user_id %}
+    
+    <div class="art-postcontent-width">
+        <div class="scroll_list">
+            <div class="txt_wrapper">
+                <b>Ваш рекламный блок на Вашей странице для города {{ request.current_user_city }}:</b>
+                <div style="width: 270px; margin: 0 auto;">
+                {% left_banner_user card.profile.user_id is_my_profile simple %}
+                </div>
+
+                {% if user.is_superuser %}
+                    {% if is_my_profile %}
+                    <br />
+                    <a class="left_banner_editor">Управление моей рекламой</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+            
+        </div>
+    </div>
+
+{% endblock %}

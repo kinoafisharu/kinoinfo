@@ -1,0 +1,47 @@
+{% extends "list.html" %}
+{% load base %}
+{% block content %}
+<h1 class="art-postheader">
+{% if org %}
+    Организация "{% for i in org.name.all %}{% if i.status == 1 %}{{i.name}}{% endif %}{% endfor %}"
+{% else %}
+    Добавить организацию
+{% endif %}
+</h1>
+    
+    <fieldset class="brand_form_edit">
+        <legend><b>Редактировать организацию</b></legend>
+        <form action="" method='post'>{% csrf_token %}
+            <ul>
+                <li>{{ form.iid.errors }}{{ form.iid.label }}<br />{{ form.iid }}</li>
+                <li>{{ form.kid.errors }}{{ form.kid.label }}<br />{{ form.kid }}</li>
+                <li>{{ form.country.errors }}{{ form.country.label }}<br />{{ form.country }}</li>
+                <li>{{ form.name.errors }}{{ form.name.label }}<br />
+                {% if org %}
+                    {% for i in org.name.all %}
+                        <a href="{% url edit_org_name i.id %}">{{ i.name }}</a> | 
+                        <a href="{% url delete_rel_org_name org.id i.id %}">Удалить связь</a>
+                        <br />
+                    {% endfor %}
+                {% else %} 
+                    {{ form.name }}
+                {% endif %}
+                </li>
+            </ul>
+            <div class="clear"></div>
+            <input type="submit" name="save" value="Сохранить">
+        </form>
+    </fieldset>
+
+
+<div class="clear"></div>
+{% if org %}
+<br />
+    <form action="{% url delete_organization org.id %}" method='post'>{% csrf_token %}
+        <input type="submit" name="delete" value="Удалить">
+    </form>
+{% endif %}
+<br />
+{% brand_org_navigate %}
+
+{% endblock %}

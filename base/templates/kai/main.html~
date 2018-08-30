@@ -1,0 +1,102 @@
+{% extends "list_2.html" %}
+{% block title %}Навигация{% endblock %}
+{% block content %}
+<div class="art-postcontent">
+    <h2 class="art-postheader">Навигация</h2>
+    <h4>Импорт из источника 'киноафиша'</h4>
+    <a href="{% url get 'country_dir' %}">Получить Справочник 'Страны'</a>
+    {% if 'country_dir' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'city_dir' %}">Получить Справочник 'Города'</a>
+    {% if 'city_dir' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'hall_dir' %}">Получить Справочник 'Залы'</a>
+    {% if 'hall_dir' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'genre_dir' %}">Получить Справочник 'Жанры'</a>
+    {% if 'genre_dir' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'metro_dir' %}">Получить Справочник 'Метро'</a>
+    {% if 'metro_dir' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'sources' %}">Получить Источники</a>
+    {% if 'sources' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'hall' %}">Получить Залы</a>
+    {% if 'hall' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'cinema' %}">Получить Кинотеатры</a>
+    {% if 'cinema' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'persons' %}">Получить Персоны</a>
+    {% if 'persons' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'film' %}?year=1990">Получить Фильмы до 1990</a>
+    {% if 'film1990' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'film' %}?year=1990_1999">Получить Фильмы 1990-1999</a>
+    {% if 'film1990_1999' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'film' %}?year=2000_2009">Получить Фильмы 2000-2009</a>
+    {% if 'film2000_2009' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'film' %}?year=2010">Получить Фильмы 2010</a>
+    {% if 'film2010' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'film' %}?year=2011">Получить Фильмы 2011</a>
+    {% if 'film2011' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <a href="{% url get 'film' %}?year=2012">Получить Фильмы от 2012</a>
+    {% if 'film2012' in files %} | <span style="color: green;">есть</span>{% else %} | <span style="color: red;">нет</span>{% endif %}<br />
+    <h4>Сохранение в БД</h4>
+    <a href="{% url save_country_dir %}">Сохранить в БД Справочник 'Страны'</a>
+    {% if msg == 'save_country_dir' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_city_dir %}">Сохранить в БД Справочник 'Города'</a>
+    {% if msg == 'save_city_dir' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_seti_dir %}">Сохранить в БД Справочник 'Сети'</a>
+    {% if msg == 'save_seti_dir' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_metro_dir %}">Сохранить в БД Справочник 'Метро'</a>
+    {% if msg == 'save_metro_dir' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_lang_dir %}">Сохранить в БД Справочник 'Языки'</a>
+    {% if msg == 'save_lang_dir' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_street_type_dir %}">Сохранить в БД Справочник 'Название типа улицы'</a>
+    {% if msg == 'save_street_type_dir' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_currency_names %}">Сохранить в БД 'Названия валют'</a>
+    {% if msg == 'save_currency_names' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_genre_dir %}">Сохранить в БД Справочник 'Жанры'</a>
+    {% if msg == 'save_genre_dir' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_sources_names %}">Сохранить в БД Названия источников (IMdb,Kinoafisha,Rutracker,Kinoinfo)
+    {% if msg == 'save_sources_names' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_persons_status_dir %}">Сохранить в БД Справочник 'Статус участия персоны'</a>
+    {% if msg == 'save_persons_status_dir' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_persons_type_dir %}">Сохранить в БД Справочник 'Тип участия персоны'</a>
+    {% if msg == 'save_persons_type_dir' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_persons_name %}">Сохранить в БД 'Персоны'</a>
+    {% if msg == 'save_persons_name' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_film '1990' %}">Сохранить в БД 'Фильмы до 1990'</a>
+    {% if msg == 'save_film1990' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_film '1990_1999' %}">Сохранить в БД 'Фильмы 1990-1999'</a>
+    {% if msg == 'save_film1990_1999' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_film '2000_2009' %}">Сохранить в БД 'Фильмы 2000-2009'</a>
+    {% if msg == 'save_film2000_2009' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_film '2010' %}">Сохранить в БД 'Фильмы 2010'</a>
+    {% if msg == 'save_film2010' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_film '2011' %}">Сохранить в БД 'Фильмы 2011'</a>
+    {% if msg == 'save_film2011' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_film '2012' %}">Сохранить в БД 'Фильмы от 2012'</a>
+    {% if msg == 'save_film2012' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_cinema %}">Сохранить в БД 'Кинотеатры'</a>
+    {% if msg == 'save_cinema' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_hall %}">Сохранить в БД 'Залы'</a>
+    {% if msg == 'save_hall' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <a href="{% url save_sources %}">Сохранить в БД 'Источники для парсинга'</a>
+    {% if msg == 'save_sources' %} | <span style="color: green;">Сохранение выполнено</span>{% endif %}<br />
+    <hr />
+
+    <h4>Файл sms.txt</h4>
+    <a href="{% url save_sms_sources %}">Сохранить из sms.txt в БД 'url сточники sms'</a><br />
+
+    <h4>Получение данных</h4>
+    <a href="{% url get_source_data '2' %}">Получить данные о сеансах Kinoafisha</a><br />
+    <a href="{% url get_source_data '5' %}">Получить данные о сеансах SMS</a><br />
+    {% comment %}<a href="{% url get_source_data '7' %}">Получить данные о сеансах Yandex</a><br />{% endcomment %}
+
+    <h4>Сохранение полученных данных в БД</h4>
+    <a href="{% url save_kai_sch %}">Сохранить сеансы Kinoafisha</a><br />
+    Сохранить сеансы SMS<br />
+
+    <h4>Редкатор (возникшие ошибки)</h4>
+    <a href="{% url get_log 'schedule' %}">Ошибки импорта из источников</a>
+    {% if cbsc > 0 %}<span style="color: red;">({{ cbsc }})</span>{% else %}<span style="color: green;">({{ cbsc }})</span>{% endif %}<br />
+    <a href="{% url get_log 'url' %}">Источники были недоступны более 10 раз</a>
+    {% if cbu > 0 %}<span style="color: red;">({{ cbu }})</span>{% else %}<span style="color: green;">({{ cbu }})</span>{% endif %}<br />
+    <a href="{% url get_log 'sms' %}">Ошибки сохранения из sms.txt</a>
+    {% if cbs > 0 %}<span style="color: red;">({{ cbs }})</span>{% else %}<span style="color: green;">({{ cbs }})</span>{% endif %}<br />
+</div>
+{% endblock %}

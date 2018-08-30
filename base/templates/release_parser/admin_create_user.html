@@ -1,0 +1,36 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load i18n %}
+{% load base_tags %}
+
+{% block info %}
+<h3 class="art-postheader">{% trans 'Создать пользователя' %}</h3>
+
+<br />
+
+<form action="" method='post'>{% csrf_token %}
+    
+    {% trans 'Введите e-mail пользователя' %}:
+    <input type="text" value="" name="new_email" />
+    <input type="button" value="{% trans 'Создать' %}" onclick="get_user_by_email(false)" />
+    
+</form>
+
+
+    <br />
+
+    <div class="exist_users" style="display: none;">
+        <b>{% trans 'Возможно пользователь уже существует' %}?</b>
+        <br />
+        <span></span>
+        <br />
+        <input type="button" value="{% trans 'Нет, создать нового' %}" onclick="get_user_by_email(true)" />
+    </div>
+    
+    <div class="news_users" style="display: none;">
+        <br />
+        <b>{% trans 'Пользователь создан' %}:</b>
+        <span></span>
+    </div>
+
+
+{% endblock %}

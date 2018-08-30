@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}Обратная связь{% endblock %}
+{% block content %}
+{% load base_tags %}
+
+{% block script %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+        $("#modal").fancybox();
+
+    });
+    </script>
+{% endblock %}
+
+<h1 class="content-header"><a href="{% url feedback_main %}">Обратная связь</a></h1>
+
+<input type="button" onclick="call_modal();" value="press" >
+<div id="show_modal"></div>
+<div id="in_modal"></div>
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        {% if feedback_msg %}
+            <b>{{ feedback_msg }}</b>
+        {% else %}
+        <form action="" method="post">{% csrf_token %}
+        {% if not emails %}
+            {{ form.email.label }}{{ form.email.errors }}<br />
+            {{ form.email }}
+        {% else %}
+            Оповестить на 
+            {% for i in emails %}
+                <input type="radio" name="emails" value="{{ i }}"{% if forloop.first %} checked{% endif %} />{{ i }} 
+            {% endfor %}
+        {% endif %}
+        <br />
+        {{ form.msg }}{{ form.msg.errors }}
+        <br />
+        <input type="submit" value="Отправить" />
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+
+{% endblock %}
+

@@ -1,0 +1,28 @@
+{% extends "list_2.html" %}
+{% block content %}
+<div class="art-postcontent-width">
+    <h2 class="art-postheader">Лог</h2>
+    <a href="{% url main_kai %}">Назад</a><br /><br />
+    {% if log %}
+        <form action="{% url clear_log %}" method="post">{% csrf_token %} 
+            <input type="hidden" name="event" value="{{ event }}" />
+            <input type="submit" value="Очистить лог" />
+        </form>
+        <br />
+        <p>Всего записей: {{ log_count }}</p>
+        <br />
+        <br />
+        {% for i in log %}
+            {% if event == 3 or event == 2 %}
+                <a href="{% url editor event i.code i.id %}?{% if i.extra %}extra={{ i.extra }}&{% endif %}obj={{ i.obj_name }}" class="log_list">{{ i.text }} "{{ i.obj_name }}"</a>
+                {% if i.url %}<a href="{{ i.url }}" target="_blank">{{ i.url }}</a>{% endif %}
+            {% endif %}
+            {% if event == 1 %}
+                {{ i.text }} "{{ i.obj_name }}"<br />
+            {% endif %}
+        {% endfor %} 
+    {% else %}
+        Лог пуст
+    {% endif %}
+</div>
+{% endblock %}

@@ -1,0 +1,90 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - в кинотеатрах города{% if city_name %} {{ city_name }}{% endif %}{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+    {% if not city_name %}
+    $(document).ready(function(){
+        $.fancybox.open($("#in_descript"), {'modal': true});
+        Dajaxice.user_registration.get_cities(get_sub_country_callback, {'id': {{ country }}})
+    });
+    {% endif %}
+    
+    $("#various1").fancybox();
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+
+    {% film_menu_mobile id menu film_editor %}
+
+<div class="art-postcontent-width">
+    <h1><a href="{% url get_film id %}">{{ name_ru|safe }}</a> - Сеансы</h1>
+    <br />
+    {% if city_name %}
+        В кинотеатрах города{% if city_name %} {{ city_name }}{% endif %}
+        <br /><br />
+        Ближайшие сеансы: 
+        {% if film_sch %}
+            {% for i in first_sch %}
+                <span title="{{ i.obj|safe }}">{{ i.times }}<span>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            <br />
+            <br />
+            <a href="#inline1" id="various1">Полный список сеансов с указанием кинотеатров</a>
+            <div id="inline1" style="margin: 0 !important; padding: 0!important;">
+
+            <table class="modern_tbl" style="margin: 0 !important; padding: 0!important; clear:both;">
+            {% for i in film_sch %}
+                <th colspan="2">
+                {% if i.date == today %}Сегодня{% endif %}
+                {% if i.date == tomorrow %}Завтра{% endif %}
+                {% if i.date != tomorrow and i.date != today %}{{ i.date }}{% endif %}
+                </th>
+                {% for j in i.cinemas %}
+                    <tr>
+                    <td>{{ j.obj|safe }}</td>
+                    <td>
+                    {% for t in j.times %}
+                        {{ t }}{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    </td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+            </table>
+
+            </div>
+        {% else %}
+        нет
+        {% endif %}
+        
+    {% else %}
+    <div id="in_descript">
+    <form action="{% url set_coord %}" method='post'>{% csrf_token %}
+    
+        <b>Укажите Ваше местоположение: </b><br /><br />
+        
+        <select name="countries" id="sub_country">
+        {% for i in countries %}
+        <option value="{{ i.id }}"{% if i.id == country %} selected{% endif %}>{{ i.name }}</option>
+        {% endfor %}
+        </select>
+
+        <select name="cities" id="sub_city">
+        {% for i in cities %}
+            <option value="{{ i.key }}" id="{{ i.code }}"></option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="Выбрать" />
+        <input type="hidden" value="{{ request.path }}" name="next" />
+    </form>
+    </div>
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,82 @@
+{% extends "kua_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Редактор визитки" %}{% endblock %}
+{% block content %}
+    <h1 class="content-header"><a href="{% url user_details %}">{% trans "Редактор визитки" %}</a></h1>
+        <div class="user_card">
+            <div class="user_card_details">
+                <b>{% trans "ФИО" %}:</b>
+                {% if card.name %}{{ card.name }}{% else %}{% trans "Нет" %}{% endif %}
+                <b>{% trans "Пол" %}:</b>
+                {% if card.sex %}
+                    {% if card.sex == 1 %}{% trans "М" %}{% else %}Ж{% endif %}
+                {% else %}
+                    {% trans "Нет" %}
+                {% endif %}
+                <b>{% trans "Дата рожд." %}:</b>
+                {% if card.born %}{{ card.born|date:"d.m.Y" }}{% else %}{% trans "Нет" %}{% endif %}
+                <b>E-mail:</b>
+                {% if card.email %}{{ card.email }}{% else %}{% trans "Нет" %}{% endif %}
+                <b>{% trans "Страна" %}:</b>
+                {% if card.country %}{{ card.country.name }}{% else %}{% trans "Нет" %}{% endif %}
+                <b>{% trans "Город" %}:</b>
+                {% if card.city %}{{ card.city.name }}{% else %}{% trans "Нет" %}{% endif %}
+                <span>
+                    <b>Счет:</b>
+                    {{ card.money }} руб.
+                </span>
+            </div>
+            <br />
+            <p>{% trans "Визитка создается автоматически на основе Ваших подключенных аккаунтов. Вы можете отредактировать ее вручную" %}.</p>
+        </div>
+        
+    <fieldset>
+        <legend><h3>{% trans "Редактировать визитку" %}</h3></legend>
+        <form action="" method="post">{% csrf_token %}
+            <table class="card_editor">
+                <tr>
+                    <td>{{ form.born.label }}</td>
+                    <td>{{ form.born }}</td>
+                    <td>{{ form.born.errors }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.male.label }}</td>
+                    <td>{{ form.male }}</td>
+                    <td>{{ form.male.errors }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.country.label }}</td>
+                    <td>{{ form.country }}</td>
+                    <td>{{ form.country.errors }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.city.label }}</td>
+                    <td>{{ form.city }}</td>
+                    <td>{{ form.city.errors }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.name.label }}</td>
+                    <td>{{ form.name }}</td>
+                    <td>{{ form.name.errors }}</td>
+                <tr>
+                <tr>
+                    <td>Email</td>
+                    <td> 
+                    {% for i in card.emails %}
+                        <input type="radio" name="email" value="{{ i }}"{% if i == card.email %} checked{% endif %} /> {{ i }}<br />
+                    {% endfor %}
+                    </td>
+                    <td><a href="{% url login %}">{% trans "Подключить еще аккаунты" %}</a></td>
+                <tr>
+            </table>
+            
+            <br />
+            <div style="clear:both;"></div>
+            <input type="submit" name="user_card_editor" value="{% trans 'Сохранить' %}" />
+        </form>
+    </fieldset>
+
+    <br />
+    
+    <a href="{% url profile %}">{% trans "Назад" %}</a>
+{% endblock %}

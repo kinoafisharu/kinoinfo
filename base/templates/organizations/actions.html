@@ -1,0 +1,25 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Действия над организациями</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+<div style="clear: both;"></div>
+
+        <table class="panel_list">
+        <th></th><th>Организация</th><th>Время</th><th>Юзер</th><th>Действие</th><th>Свойство</th>
+        {% for i in p.object_list %}
+            <tr>
+            <td><div></div></td>
+            <td><div><a href="{% url organizations_show i.log.object_id %}" target="_blank">{{ i.org }}</a></div></td>
+            <td><div>{{ i.log.dtime|date:"d b Y, H:i:s" }}</div></td>
+            <td><div><a href="{% url get_user_page_info i.log.profile.user_id %}" target="_blank">{{ i.log.profile.user_id }}</a></div></td>
+            <td><div>{{ i.log.get_action_display }}</div></td>
+            <td><div>{{ i.log.attributes }}</div></td>
+            </tr>
+        {% endfor %}
+        </table>
+    </form>
+
+{% endblock %}

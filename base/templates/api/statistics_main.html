@@ -1,0 +1,71 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load googlecharts %}
+{% block info %}
+
+
+    <div class="statistics" id="out_sessions"></div>
+    <div class="statistics" id="out_cinemas"></div>
+    <div class="statistics" id="out_films"></div>
+    <div class="statistics" id="out_pie"></div>
+
+    {% googlecharts %}
+    
+        {% data statistics.sessions "out_data_sessions" %}
+            {% col "string" "Дата" %}"{{ val|date:"d.m" }}"{% endcol %}
+            {% col "number" "Всего сеансов" %}{{ val }}{% endcol %}
+            {% col "number" "Online" %}{{ val }}{% endcol %}
+        {% enddata %}
+
+        {% data statistics.cinemas "out_data_cinemas" %}
+            {% col "string" "Дата" %}"{{ val|date:"d.m" }}"{% endcol %}
+            {% col "number" "Всего кинотеатров" %}{{ val }}{% endcol %}
+            {% col "number" "Online" %}{{ val }}{% endcol %}
+        {% enddata %}
+
+        {% data statistics.films "out_data_films" %}
+            {% col "string" "Дата" %}"{{ val|date:"d.m" }}"{% endcol %}
+            {% col "number" "Всего фильмов" %}{{ val }}{% endcol %}
+        {% enddata %}
+        
+        {% data statistics.pie "out_data_pie" %}
+            {% col "string" "Ист." %}"{{ val }}"{% endcol %}
+            {% col "number" "Сеансов" %}{{ val }}{% endcol %}
+        {% enddata %}
+        
+
+		{% options "out_options" %}
+			kind: "ColumnChart",
+			options: {
+		        chartArea: {left: 20, top: 10, width: 314, height: 140},
+		        legend: {position: 'bottom', textStyle: {fontSize: 10}},
+		        fontSize: 9,
+                width: 335,
+                height: 190
+			}
+		{% endoptions %}
+		
+		{% options "out_options_pie" %}
+			kind: "PieChart",
+            options: {
+                chartArea: {left: 10, top: 30, width: 320, height: 140},
+                legend: {position: 'right', textStyle: {fontSize: 9}},
+                title: '{{ last_dump_date }}',
+                width: 335,
+                height: 190
+            }
+		{% endoptions %}
+		
+        {% graph "out_sessions" "out_data_sessions" "out_options" %}
+        
+        {% graph "out_cinemas" "out_data_cinemas" "out_options" %}
+
+        {% graph "out_films" "out_data_films" "out_options" %}
+        
+        {% graph "out_pie" "out_data_pie" "out_options_pie" %}
+        
+    {% endgooglecharts %}
+
+
+    
+{% endblock %}
+

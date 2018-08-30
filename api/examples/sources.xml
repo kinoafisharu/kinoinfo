@@ -1,0 +1,23 @@
+<data>
+    <api_title>
+        Sources
+    </api_title>
+
+    <api_decription>
+        Метод возвращает все url источников
+    </api_decription>
+    
+    <api_example>sources/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/sources/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details><![CDATA[
+        source - url источника<br/>
+        cinema - кинотеатр<br/>
+        city - город<br/>
+    ]]></api_response_details>
+
+    <!--<api_response>sources.txt</api_response>-->
+</data>

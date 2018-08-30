@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Админ Панель - Медиафайлы{% endblock %}
+{% block script %}
+<script type="text/javascript" src="{{ STATIC_URL }}base/js/player/uppod_api.js"></script>
+<script type="text/javascript" src="{{ STATIC_URL }}base/js/swfobject.js"></script>
+<script type="text/javascript">
+var MUSIC_TYPES = []
+$(document).ready(function(){
+    {% for i in mtype %}
+        MUSIC_TYPES.push(["{{ i.0 }}", "{{ i.1 }}"])
+    {% endfor %}
+});
+</script>
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url admin_main %}">Админ Панель</a></b> - 
+    <b id="navigation_bar">Медиафайлы</b>
+</h1>
+
+{% music_admin_menu %}
+
+<div class="art-postcontent-width">
+    <form action="" method="post">{% csrf_token %}
+        Фильтр по первой букве названия файла: 
+        <select onchange="this.form.submit();" name="char">
+        {% for i in alphabet_filter %}
+            <option value="{{ i }}" {% if char == i %}selected{% endif %}>{{ i }}</option>
+        {% endfor %}
+        </select>
+    </form>
+    
+
+    <div id="uppod_player"></div>
+
+    <div class="scroll_list">
+        <table class="modern_tbl">  
+            <th style="text-align: left;"><input type="checkbox" name="checker_all" /></th><th></th><th></th><th>Название</th><th>Тип</th><th>Дата загрузки</th><th>Юзер</th><th>Мета</th><th></th>
+            {% for i in data %}
+                <tr id="tr_tr_{{ i.obj.sign }}">
+                <td><div><input type="checkbox" name="checker" value="{{ i.obj.id }}" form="f1"/></div></td>
+                <td><div><form action="{% url track_download %}" method="post">{% csrf_token %}
+                <input type="hidden" name="id" value="{{ i.obj.sign }}" />
+                <input type="submit" class="track_download" title="Скачать" value="" /></form></div></td>
+                <td><div><input type="button" class="play_audio" id="pl_{{ i.obj.sign }}" title="Прослушать" /></div></td>
+                <td><div><span id="{{ i.obj.sign }}" mtype="{{ i.obj.mtype }}" class="audio_title org_hover" title="Редактировать">{{ i.obj.original_file_name|cut:".mp3" }}</span></div></td>
+                <td><div id="tp_{{ i.obj.sign }}">{{ i.obj.get_mtype_display }}</div></td>
+                <td><div><a class="nolink" title='{{ i.obj.dtime|date:"H:i" }}'>{{ i.obj.dtime|date:"d b Y" }}</a></div></td>
+                <td><div>{{ i.obj.profile.user_id }}</td>
+                <td><div><a class="nolink" title="Трек        :  {{ i.obj.original_title }}&#013;Артист   :  {{ i.obj.original_artist }}&#013;Альбом :  {{ i.obj.original_album }}&#013;Время    :  {{ i.obj.runtime }}&#013;Битрейт:  {{ i.obj.bitrate }}&#013;Размер  :  {{ i.obj.size }}">ID3</a></div></td>
+                <td><div style="display: none;" id="tags">{% for t in i.tags %}{{ t }}{% if not forloop.last %},{% endif %}{% endfor %}</div></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    <br />
+    <form action="{% url admin_media_del %}" method="post" id="f1" >{% csrf_token %}
+        <input type="button" value="Удалить отмеченные" onclick="if(confirm('Вы уверены?')){$(this).parent().submit();}"/>
+        <input type="hidden" name="del" />
+    </form>
+    
+    {% comment %}
+    
+        {% if user.is_superuser or request.is_admin %}
+            
+            <span class="edit_stff_bl" >(<a id="editor" class="organization_people org_hover" onclick="get_org_stff();">edit</a>)</span>
+            
+            <div class="organization_editor_fields" style="display: none; font-size: 14px;">
+                
+                <div class="search_people_result editor_result" style="width: 600px; clear:both;">
+                
+                    <div class="org_current_stff">
+                    <b>Трек связан с композицией:</b> 
+                        <span></span>
+                    </div>
+                    
+                    <div class="org_stff_alphabet" style="margin-top: 20px;"></div>
+                    <div class="org_stff_result" style="margin-top: 20px; height: 280px; overflow: auto;"></div>
+                    
+                </div>
+
+                <br />
+                <input type="button" class="tr_set_relation" value="Создать связь" />
+            </div>
+
+            {% endif %}
+    
+    {% endcomment %}
+    
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,112 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Кассовые сборы</h3>
+<div style="float: right;">
+    <div class="pagination">
+        {% if p.has_previous or p.has_next %}
+        <span class="step-links">
+            {% if p.has_previous %}
+                <a href="?page=1&{{ url_param }}=1">первая</a> | 
+                <a href="?page={{ p.previous_page_number }}&{{ url_param }}=1">назад</a>
+            {% endif %}
+            <span class="current">
+                {{ p.number }} из {{ p.paginator.num_pages }} стр.
+            </span>
+            {% if p.has_next %}
+                <a href="?page={{ p.next_page_number }}&{{ url_param }}=1">вперед</a> |
+                <a href="?page={{ p.paginator.num_pages }}&{{ url_param }}=1">последняя</a>
+            {% endif %}
+        </span>
+        {% endif %}
+    </div>
+</div>
+
+    {% if user.is_superuser %}
+    <form action="{% url boxoffice_del country %}" method='post' id="f1">{% csrf_token %}
+    </form>
+    {% endif %}
+
+    <form action="" method='post' id="boxoffice_form">{% csrf_token %}
+        <div style="clear: both;">
+
+            <table>
+                <tr style="color: #454545; font-size: 12px;"><td>Weekend</td><td>Дистрибьютор</td><td></td></tr>
+                <tr>
+                <td>
+                    <select name="weekend">
+                    {% for i in weekends %}
+                        <option value="{{ i|date:'d.m.Y' }}" {% if i == weekend %}selected{% endif %}>{{ i }}</option>
+                    {% endfor %}
+                    </select>
+                </td> 
+                <td>
+                    <select name="distributor">
+                    <option value="all" {% if distributor == 'all' %}selected{% endif %}>Все</option>
+                    {% for i in distributors %}
+                        <option value="{{ i.kid }}" {% if i.kid == distributor %}selected{% endif %}>{{ i.name|safe }}</option>
+                    {% endfor %}
+                    </select>
+                </td> 
+                <td>
+                    <input type="submit" name="filter" value=" OK " />
+                </td>
+                </tr>
+            </table>
+        </div>
+        
+        <table class="panel_list">
+            {% if user.is_superuser %}
+            <th></th>
+            <th></th>
+            {% endif %}
+            <th></th>
+            <th>Фильм</th>
+            <th>Дистриб.</th>
+            <th>
+                <a href="{% url boxoffice_admin country %}?page={{ page }}&sumwee={{ value }}">Cборы за нед. $</a>
+            </th>
+            <th>
+                <a href="{% url boxoffice_admin country %}?page={{ page }}&sumavg={{ value }}">Сборы AVG $</a>
+            </th>
+            <th>
+                <a href="{% url boxoffice_admin country %}?page={{ page }}&sumall={{ value }}">Общие сборы $</a>
+            </th>
+            <th>Экранов</th>
+            <th>Зрит. за неделю</th>
+            <th>
+                <a href="{% url boxoffice_admin country %}?page={{ page }}&audavg={{ value }}">Зрит. AVG</a>
+            </th>
+            <th>Всего зрителей</th>
+            <th>Дней</th>
+            
+            {% for i in p.object_list %}
+                <tr>
+                    {% if user.is_superuser %}
+                    <td><div><input type="checkbox" name="checker" value="{{ i.id }}" form="f1" /></div></td>
+                    <td><div><input class="radio_checker" type="radio" name="object" value="{{ i.id }}" id="" /></div></td>
+                    {% endif %}
+                    <td><div>{{ i.place }}</div></td>
+                    <td><div title="{{ i.name }}"><a href="http://www.kinoafisha.ru/?status=1&id1={{ i.kid }}" target="_blank">{{ i.name }}</a></div></td>
+                    <td style="width: 40px;"><div title="{{ i.distrib|safe }}">{{ i.distrib|safe }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.week_sum }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.week_sum_avg }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.all_sum }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.screens }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.week_audience }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.week_audience_avg }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.all_audience }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.days }}</div></td>
+                </tr>
+            {% endfor %}
+        </table>
+        <br />
+        {% if user.is_superuser %}
+        <input type="submit" id="ignore" name="edit_relations" value="Редактировать" />
+        {% comment %}<a href="{% url kinobusiness_export_to_kinoafisha country %}">Экспорт на киноафишу</a>{% endcomment %}
+        
+        <input type="submit" name="box_del" value="Удалить отмеченные галочкой" form="f1" style="float: right;"/>
+        {% endif %}
+    </form>
+
+{% endblock %}

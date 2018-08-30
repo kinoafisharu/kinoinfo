@@ -1,0 +1,103 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{% if srch_category == '3' and request.subdomain == 'music' %}Минусовки - {% endif %}Поиск{% endblock %}
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function(){
+     $(".art-search__title-search").click();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h1 class="content-header">
+    {% if srch_category == '3' and request.subdomain == 'music' %}
+        <b id="navigation_bar"><a href="{% url main %}">Минусовки</a></b> -
+    {% endif %}
+    Результаты поиска по запросу "{{ query|striptags }}"
+</h1>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Sly/1.6.1/sly.min.js"></script>
+<div id="search-results" class="art-postcontent-width">
+{% if query %}
+    {% if count %}
+    <h3>Найдено {{ count }} {{ element }}</h3>
+    
+    <br />
+    
+    <div class="scroll_list horizontal">
+        <div class="search-slider-items">
+        {% if srch_category == '1' %}
+            {% for i in objs %}
+                {% include "./partials/search_item.html" %}
+            {% endfor %}
+        {% endif %}
+
+        {% if srch_category == '2' %}
+            {% for i in objs.first %}
+                <b>
+                <a href="{% url get_person i.0 %}">{{ i.1|safe|striptags }}</a><br />
+                </b>
+            {% endfor %}
+            {% for i in objs.middle %}
+                <a href="{% url get_person i.0 %}">{{ i.1|safe|striptags }}</a><br />
+            {% endfor %}
+            {% for i in objs.last %}
+                <a href="{% url get_person i.0 %}">{{ i.1|safe|striptags }}</a><br />
+            {% endfor %}
+        {% endif %}
+
+        {% if srch_category == '3' %}
+            {% if request.subdomain == 'music' %}
+                {% if objs.first or objs.middle or objs.last %} Композиции:<br />{% endif %}
+                {% for i in objs.first %}
+                    <b>
+                    <a href="{% url composition i.2.pid i.0 %}">{{ i.2.pname|safe|striptags }} - {{ i.1|safe|striptags }}</a><br />
+                    </b>
+                {% endfor %}
+                {% for i in objs.middle %}
+                    <a href="{% url composition i.2.pid i.0 %}">{{ i.2.pname|safe|striptags }} - {{ i.1|safe|striptags }}</a><br />
+                {% endfor %}
+                {% for i in objs.last %}
+                    <a href="{% url composition i.2.pid i.0 %}">{{ i.2.pname|safe|striptags }} - {{ i.1|safe|striptags }}</a><br />
+                {% endfor %}
+
+
+                {% if objs.artist %}
+                    <br />
+                    Исполнители:<br />
+                    {% for i in objs.artist %}
+                        <a href="{% url artist i.id %}">{{ i.name__name|safe|striptags }}</a><br />
+                    {% endfor %}
+                {% endif %}
+
+            {% else %}
+
+                {% for k, v in objs.items %}
+                    <b>{{ k }}</b><br />
+                    {% for i in v %}
+                        {% for j in i.cinemas %}
+                            <a href="{% url organization_cinema j.slug %}">{{ j.name|safe }}</a> ({{ i.name }})<br />
+                        {% endfor %}
+                    {% endfor %}
+                {% endfor %}
+
+            {% endif %}
+        {% endif %}
+    </div>
+    </div>
+        <div class="controls center">
+                <button class="btn prevPage"> < </button>
+                <button class="btn nextPage"> > </button>
+        </div>
+    {% else %}
+    <h3>Ничего нет по запросу - "{{ query|striptags }}" {{ msg }}</h3>
+    {% endif %}
+{% else %}
+    <h3>Вы ничего не указали в строке поиска!</h3>
+{% endif %}
+
+</div>
+
+
+
+{% endblock %}

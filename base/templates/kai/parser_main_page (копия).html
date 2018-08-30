@@ -1,0 +1,21 @@
+{% extends "list_2.html" %}
+{% block content %}
+<div class="art-postcontent">
+    <h2 class="art-postheader">Парсер</h2>
+{% comment %}
+    {% if files.cinema %}
+    <p><a href="{% url get 'cinema' %}">Обновить дамп 'Кинотеатры'</a></p>
+    {% else %}
+    <p><a href="{% url get 'cinema' %}">Получить дамп 'Кинотеатры'</a></p>
+    {% endif %}
+    <hr />
+{% endcomment %}
+    {% if files.street_type_dir %}
+    <p><a href="{% url save_street_type_dir %}">Сохранить в БД Справочник 'Тип улицы'</a></p>
+    <hr />
+    {% endif %}
+    {% if files.cinema %}
+    <p><a href="{% url save_cinema %}">Разбитый список адресов</a></p>
+    {% endif %}
+</div>
+{% endblock %}

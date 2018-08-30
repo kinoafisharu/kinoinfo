@@ -1,0 +1,235 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% load i18n %}
+
+{% block title %}{% if offers.status == 11 or offers.status == 12 %}{{ offers.offer.organizationtags.name }} - {% endif %}{{ news.title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block script %}
+    {% if user.is_superuser or offers.is_editor or request.is_admin %}
+    <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+    
+    <script type="text/javascript">
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_note", "language": {% if current_site.domain == 'letsgetrhythm.com.au' %}"en"{% else %}"ru"{% endif %}, "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": false, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "wordcount, paste", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+    
+function get_names_auto(el, type){
+    var arr = [] 
+    if(type == 'tags'){
+        arr = [{% for i in tags %}"{{ i }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+    }
+    
+    $(el).autocomplete({
+        source: arr,
+        minLength: 2,
+        messages: {
+            noResults: '',
+            results: function() {}
+        }
+    });
+};
+</script>
+{% endif %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".fancybox").fancybox();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">{% if offers.status != 8 and offers.status != 9 and offers.status != 10 and user.is_superuser or offers.is_editor or request.is_admin %}<span class="news_title org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);">{% endif %}{% if offers.status == 11 or offers.status == 12 %}{% if offers.offer %}{{ offers.offer.organizationtags.name }} - {% endif %}{% endif %}{{ news.title }}{% if user.is_superuser or offers.is_editor or request.is_admin %}</span>{% endif %}{% if user.is_superuser or offers.is_editor or request.is_admin %}
+    <div class="news_title_fields org_fields">
+        <input type="text" value="{{ news.title }}" size="80" class="news_title_field" />
+        <input type="button" value="{% trans 'Сохранить' %}" class="news_title_accept_btn" />
+        <input type="button" value="{% trans 'Отмена' %}" class="news_title_cancel_btn" onclick="obj_cancel(this);" />
+        <span class="title_err"></span>
+    </div>{% endif %}</h1>
+    
+    
+        {% if user.is_superuser or offers.is_editor or request.is_admin %}
+        <span class="news_new">{% trans 'Добавить' %}</span>
+        {% endif %}
+    
+    
+    {% if user.is_superuser or creator or offers.is_editor or request.is_admin %}
+    <span class="news_del">{% trans 'Удалить' %}</span>
+    {% endif %}
+
+{% if user.is_superuser or offers.is_editor or request.is_admin %}
+{% if offers.status != 8 and offers.status != 9 and offers.status != 10 %}
+<form action="{% url news_add %}" method="post" class="new_new org_fields">{% csrf_token %}
+    <b>{% trans "Заполните обязательные поля" %}</b><br /><br />
+    {% trans "Заголовок" %}:<br />
+    <input type="text" value="" size="70" name="news_title" class="organization_n" /><br /><br />
+    {% trans "Укажите метки (ключевые слова, теги) через запятую" %}:<br />
+    <input type="text" value="" name="tag" class="organization_t" onkeyup="get_names_auto(this, 'tags');" size="70" /><br /><br />
+    {% trans "Подпись автора" %}:<br />
+    <input type="radio" name="author_nick" value="0" checked /> {% if request.fio %}{{ request.fio }}{% else %}{{ request.acc_list.short_name }}{% endif %}
+    <br />
+    <input type="radio" name="author_nick" value="1"{% if not user.first_name %} disabled{% endif %}/> {% trans "Псевдоним" %}{% if user.first_name %} - {{ user.first_name }}{% endif %} (<a href="{% if request.current_site.domain == 'vsetiinter.net' %}http://ya.vsetiinter.net/user/card/{% else %}{% url user_details %}{% endif %}" target="_blank" rel="nofollow">{% if user.first_name %}{% trans "Изменить" %}{% else %}{% trans "Добавить" %}{% endif %}</a>)
+    <br />
+    <input type="radio" name="author_nick" value="2"/> {% trans "Не показывать подпись" %}
+    <br /><br />
+    
+    {% if offers.status == 11 or offers.status == 12 %}
+    <input type="hidden" value="{{ offers.status }}" name="type" />
+    <input type="hidden" class="organization_id" id="{{ offers.org.id }}" name="org_id" value="{{ offers.org.id }}"/>
+    <input type="hidden" value="{{ offers.offer.id }}" name="offer" />
+    {% endif %}
+    <input type="button" value="{% trans 'Создать' %}" class="organization_new_btn" />
+</form>
+{% endif %}
+    <form action="{% url news_delete news.id %}" method="post" class="new_del org_fields">{% csrf_token %}
+    {% if offers.status %}
+    <input type="hidden" value="{{ offers.status }}" name="type" />
+    {% if offers.org %}
+    <input type="hidden" class="organization_id" id="{{ offers.org.id }}" name="org_id" value="{{ offers.org.id }}"/>
+    {% else %}
+        {% if org_id %}
+        <input type="hidden" class="organization_id" id="{{ org_id }}" name="org_id" value="{{ org_id }}"/>
+        {% endif %}
+    {% endif %}
+    <input type="hidden" value="{{ offers.offer.id }}" name="offer" />
+    {% endif %}
+    </form>
+
+{% endif %}
+
+{% if offers.status and offers.org %}
+{% organization_menu offers.org.uni_slug offers.offers_tags offers.advert_tags offers.is_editor branding %}
+
+<div class="art-postcontent-width">
+{% endif %}
+
+    <div class="news">
+        {% if user.is_superuser or offers.is_editor or request.is_admin %}
+        <input type="hidden" class="news_id" value="{{ news.id }}" />
+        
+            {% if offers.status != 8 and offers.status != 9 and offers.status != 10 %}
+            <input type="checkbox" name="visible" {% if news.visible %}checked{% endif %} class="news_visible_check" /> {% trans 'Показывать' %} 
+            <input type="button" value="{% trans 'Сохранить' %}" name="visible_btn" class="news_visible_btn" />
+            <span class="news_visible_msg"></span>
+            <br />
+            {% endif %}
+            
+            {% if not offers.status %}
+            {% if request.current_site.domain != 'letsgetrhythm.com.au' %}
+            <input type="checkbox" name="visible" {% if news.world_pub %}checked{% endif %} class="news_world_pub_check" /> {% trans 'Публиковать во всех городах' %}
+            <input type="submit" value="{% trans 'Сохранить' %}" name="world_pub_btn" class="news_world_pub_btn" />
+            <span class="news_world_pub_msg"></span>
+            <br />
+            {% endif %}
+            {% endif %}
+        {% endif %}
+        
+        <div id="news_poster">
+            {% if video %}
+            <div class="trailer">{{ video|safe }}</div>
+            {% else %}
+                {% if news.img %}
+                <div class="news__img">
+                    <a class="fancybox" href="/upload{{ news.img }}"><img src="/upload{{ news.img }}" /></a>
+                </div>
+                {% endif %}
+            {% endif %}
+
+            {% if user.is_superuser or offers.is_editor or request.is_admin %}
+                <span class="news_poster_edit">{% trans 'Редактировать' %}</span>
+            {% endif %}
+        </div>
+        
+        {% if user.is_superuser or offers.is_editor or request.is_admin %}
+        <div class="news_form_poster org_fields">
+            <input type="radio" name="type" value="img" onclick="news_form_poster_type(this);" checked> {% trans 'Загрузить изображение' %} 
+            <br />
+            <input type="radio" name="type" value="video" onclick="news_form_poster_type(this);"> {% trans 'URL видеоролика на YouTube' %}
+            <br />
+            <br />
+            <div class="news_form_poster__img">
+                
+                <form action="" method="post" enctype="multipart/form-data">
+
+                {% csrf_token %}
+                {{ form.file }}
+                <br /><br />
+                <input type="submit" value="{% trans 'Сохранить' %}" />
+                <input type="button" value="{% trans 'Отмена' %}" class="news_poster_cancel_btn" />
+                </form>
+            </div>
+            <div class="news_form_poster__video org_fields">
+                
+                <form action="" method="post">
+                
+                {% csrf_token %}
+                <input type="text" name="video" value="{{ video_url }}" style="width: 180px;">
+                <br /><br />
+                <input type="submit" value="{% trans 'Сохранить' %}" />
+                <input type="button" value="{% trans 'Отмена' %}" class="news_poster_cancel_btn" />
+                </form>
+            </div>
+        </div>
+        {% endif %}
+        
+        <b>{% trans 'Автор' %}: </b>
+        {% if autor.show == '1' %}
+        <a href="{% if request.current_site.domain == 'vsetiinter.net' %}http://ya.vsetiinter.net/user/profile/{{ autor.id }}/{% else %}{% url profile autor.id %}{% endif %}" target="_blank" rel="nofollow">{% if autor.fio %}{{ autor.fio }}{% else %}{{ autor.short_name }}{% endif %}</a>
+        {% else %}
+        {% if autor.fio %}{{ autor.fio }}{% else %}{{ autor.short_name }}{% endif %}
+        {% endif %}
+        
+        <span class="pub_date">{{ news.dtime|date:"j E Y H:i" }}</span>
+        {% if user.is_superuser or offers.is_editor or request.is_admin %}
+        <br /><b>{% trans 'Метки' %}:</b> 
+        <span{% if user.is_superuser or offers.is_editor or request.is_admin %} class="news_tags org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);"{% endif %}>
+        {% for i in news.tags.all %}{{ i.name }}; {% endfor %}
+        
+        </span>
+        {% endif %}
+        
+        {% if user.is_superuser or offers.is_editor or request.is_admin %}
+            <div class="news_tags_fields org_fields">
+                {% for i in o_tags_list %}
+                    <input type="text" value="{{ i.name }}" name="tag{{ forloop.counter }}" onkeyup="get_names_auto(this, 'tags');" size="28" class="news_tags_field" />
+                    {% if forloop.counter|divisibleby:"2" %}<br />{% endif %}
+                {% endfor %}
+                <br />
+                <input type="button" value="{% trans 'Сохранить' %}" class="news_tags_accept_btn" />
+                <input type="button" value="{% trans 'Отмена' %}" class="news_tags_cancel_btn" onclick="obj_cancel(this);" />
+                <span class="news_tags_err"></span>
+            </div>
+            
+        <br />
+        {% endif %}
+        
+        
+        <div class="news_text">
+        {{ news.text|safe }}
+        </div>
+        {% if user.is_superuser or offers.is_editor or request.is_admin %}
+            <a class="news_txt">{% trans 'Редактировать текст' %}</a>
+        
+            <div class="organization_txt org_fields">
+                <form action="" method="post">
+                {% csrf_token %}
+                <textarea style="width: 300px; height: 250px;" name="note" id="id_note">{{ news.text }}</textarea>
+                <br />
+                <input type="submit" value="{% trans 'Сохранить' %}" class="organization_txt_accept_btn" />
+                <input type="button" value="{% trans 'Отмена' %}" class="organization_txt_cancel_btn" />
+                </form>
+            </div>
+        {% endif %}
+
+    </div>
+    <div style="clear: both;"></div>
+    {% if not offers.org %}
+    <br />
+    <a href="{% url main %}">{% trans 'На главную' %}</a>
+    {% endif %}
+    
+    
+{% if offers.status and offers.org %}
+</div>
+{% endif %}
+
+
+{% endblock %}

@@ -1,0 +1,225 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+{% block script %}
+
+<link rel="stylesheet" href="{{ STATIC_URL }}base/css/datepicker.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.mask.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('input[name="event_date"]').datepicker({
+            altFormat: "yy-mm-dd",
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1
+        });
+        
+        $('input[name="event_time"], input[name="ahead_of_time"]').mask('00:00');
+        $('input[name="event_bcr"]').mask('00000');
+        
+        {% if event_double %}
+            alert('Such An Event Already Exist!')
+        {% endif %}
+        
+    });
+</script>
+{% endblock %}
+        
+{% block content %}
+
+
+    {% vlada_top_menu %}
+    {% vlada_tools_menu %}
+
+ 
+<div class="art-postcontent-width">
+
+        <form action="" method="post" class="events" id="events">{% csrf_token %}
+        <div class="events_list">        
+            <table class="panel_list auto_fat">
+                <th><input type="checkbox" name="checker_all" /></th><th>Event</th><th>Date</th><th>Time</th><th>Place</th><th>Contact</th><th>Total Price</th><th style="display: none;">Members</th><th>SMS</th><th style="display: none;">Email</th><th>Info</th><th style="display: none;">Ahead sms</th><th style="display: none;">Ahead email</th><th style="display: none;">Type</th><th style="display: none;">Bank</th><th style="display: none;">Note</th><th style="display: none;">Num Sessions</th><th style="display: none;">Invoice Template</th>
+                {% for i in events %}
+                    <tr>
+                        <td><div><input type="checkbox" name="checker" value="{{ i.obj.id }}" /></div></td>
+                        <td><div>{% if i.obj.pdf or past_select == 2 %}
+                        {% if i.obj.event_name %}{{ i.obj.event_name }}{% else %}* edit{% endif %}
+                        {% else %}
+                        <a href="#" class="event_edit" id="{{ i.obj.id }}" title="{{ i.obj.event_name }}">{% if i.obj.event_name %}{{ i.obj.event_name }}{% else %}* edit{% endif %}</a>
+                        {% endif %}
+                        </div></td>
+                        <td><div class="e_date_{{ i.obj.id }}" id="{{ i.obj.dtime|date:'Y-m-d' }}">{{ i.obj.dtime|date:'d-b-Y' }}</div></td>
+                        <td><div class="e_time_{{ i.obj.id }}" id="{{ i.obj.dtime|date:'H:i' }}">{{ i.obj.dtime|date:'H:i' }}</div></td>
+                        <td><div class="e_place_{{ i.obj.id }}" id="{{ i.obj.client_id }}">{{ i.obj.client.organization.name }}</div></td>
+                        <td><div class="e_contact_{{ i.obj.id }}" id="{{ i.member.contact_id }};*{{ i.member.contact }};#{{ i.member.contact_info }}">{% if i.member.contact_id %}<a href="{% url profile i.member.contact_id %}" target="_blank" title="{{ i.member.contact_info }}">{{ i.member.contact }}</a>{% endif %}</div></td>
+                        <td><div class="e_price_{{ i.obj.id }}" id="pr__{{ i.price }}">{{ i.total_price }}</div></td>
+                        <td><div><input type="checkbox" class="e_sms_{{ i.obj.id }}" value="" {% if i.obj.sms %}checked{% endif %} disabled /></div></td>
+                        <td style="display: none;"><div><input type="checkbox" class="e_email_{{ i.obj.id }}" value="" {% if i.obj.email %}checked{% endif %} disabled/></div></td>
+                        <td><div><a href="#" onclick="e_past_info({{ i.obj.id }})">info</a></div></td>
+                        <td style="display: none;"><div class="e_ahead_sms_{{ i.obj.id }}" id="{{ i.obj.start_notify_sms }}"></div></td>
+                        <td style="display: none;"><div class="e_ahead_email_{{ i.obj.id }}" id="{{ i.obj.start_notify_email }}"></div></td>
+                        <td style="display: none;"><div class="e_type_{{ i.obj.id }}" id="{{ i.obj.type }}"></div></td>
+                        <td style="display: none;"><div class="e_bank_{{ i.obj.id }}" id="{{ i.obj.bank_id }}"></div></td>
+                        <td style="display: none;"><div><textarea class="e_note_{{ i.obj.id }}">{% if i.obj.note %}{{ i.obj.note }}{% endif %}</textarea></div></td>
+                        <td style="display: none;"><div class="e_numsess_{{ i.obj.id }}" id="{{ i.obj.num_sessions }}"></div></td>
+                        <td style="display: none;"><div class="e_invoice_tmpl_{{ i.obj.id }}" id="{{ i.obj.invoice_template.id }}"></div></td>
+                    </tr>
+                {% endfor %}
+            </table>
+        
+            <br />
+
+            <div class="events_copy_bl" style="display: none;">
+                <input type="text" value="2" name="copies" size="2" form="events" /> copies of event.<br /><br />
+                Each copy after 
+                <select name="range" form="events">
+                    <option value="7">1 week</option>
+                    <option value="14">2 weeks</option>
+                </select>
+                <br /><br />
+                <input type="submit" name="create_copy" value="Create" form="events" />
+            </div>
+        </div>
+        </form>
+        
+        <form action="{% url letsget_calendar_add %}" method="post" id="calendar_add_frm">{% csrf_token %}
+        <div class="new_events_fields org_fields">
+        
+            <div style="float: left; margin-right: 20px;">
+            <b>Type:</b><br />
+            <select name='event_type'>
+            {% for i in events_type %}
+            <option value="{{ i.0 }}" id="{{ i.1.1 }}">{{ i.1.0 }}</option>
+            {% endfor %}
+            </select>
+            </div>
+            
+            <div style="float: left; margin-right: 20px;">
+            <b>Event:</b><br />
+            <input type="text" value="" name="event_name" size="40" maxlength="128" /><br />
+            </div>
+
+            <div>
+            <b>Price:</b><br />
+            <input type="text" value="" name="event_price" size="6" /><br />
+            </div>
+            
+            <div>
+            <b>Place:</b><br />
+            <select name='event_place'>
+            {% for i in all_clients %}
+                <option value="{{ i.id }}" class="ev_place__{% if i.org_email %}1{% else %}0{% endif %}" id="{{ i.contact_id }};*{{ i.contact }};#{{ i.contact_info }}">{{ i.name }}</option>
+            {% endfor %}
+            </select>
+            <span class="event_place_contact"></span>
+            </div>
+
+            <div style="float: left; margin-right: 20px;">
+            <b>Date:</b><br />
+            <input type="text" value="" name="event_date"/>
+            </div>
+            
+            <div>
+            <b>Time:</b><br />
+            <input type="text" value="" name="event_time" size="13" />
+            </div>
+            
+            <div>
+            <b>Num of sessions:</b><br />
+            <input type="text" name="event_numsess" value="1" size="8" /> = <span class="event_total_price"></span> (total price)
+            </div>
+            
+            <br />
+            
+            <div style="float: left; margin-right: 10px;">
+            <input type="checkbox" name="event_email" value="1" /> <b>Notify by E-mail</b>
+            </div>
+            <div style="float: left; margin-right: 40px;">
+            <select name="time_msg_email">
+                {% for i in time_msg %}
+                <option value="{{ i.0 }}">{{ i.1 }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            
+            <div style="float: left; margin-right: 5px;">
+            <input type="checkbox" name="event_sms" value="1" /> <b>Notify by SMS</b>
+            </div>
+            <div style="float: left;">
+            <select name="time_msg_sms">
+                {% for i in time_msg %}
+                <option value="{{ i.0 }}">{{ i.1 }}</option>
+                {% endfor %}
+            </select>
+            </div>
+            
+            <div style="clear: both;"></div>
+            
+            <br />
+            <div style="float: left;">
+            <b>BSB | Account Number:</b> (<a href="{% url letsget_invoice %}">add</a>)<br />
+            <select name="event_bank">
+            {% for i in banks %}
+                <option value="{{ i.id }}">{{ i.name }} | {{ i.account }}</option>
+            {% endfor %}
+            </select>
+            </div>
+            <br />
+            <div style="clear: both;"></div>
+            <div style="float: left; margin-right: 4px;">
+            <b>Code: </b><br />
+            <input type="text" name="event_code" value="" size="7" /> - 
+            </div>
+            <div style="float: left; margin-right: 20px;">
+            <b>Number: </b><br />
+            <input type="text" name="event_bcr" value="" size="7" /> <span class="bсr_msg"></span>
+            </div>
+            
+            <div style="clear: both; padding-top: 5px;"></div>
+            <div>
+            <b>Invoice Template:</b><br />
+            {% for i in invoice_tmp %}
+            <input type="radio" name="event_invoice_tmpl" value="{{ i.id }}" {% if forloop.first %}checked{% endif %}/> {{ i.title }}<br />
+            {% endfor %}
+            </div>
+            <br />
+            
+            <div>
+            <b>Invoice Note:</b><br />
+            <textarea style="width: 450px; height: 40px; resize: none;" name="event_invoice_note"></textarea>
+            </div>
+            
+            <div style="clear: both;"></div>
+            <br />
+            <input type="hidden" value="0" name="edit" />
+            <input type="button" value="Save" name="create" onclick="calendar_add_valid();" />
+            <input type="button" value="Cancel" class="new_events_cancel_btn" />
+            
+        </div>
+        </form>
+    
+    
+    
+    <input type="button" value="Create New Event" class="create_new_event" /> | <input type="button" value="Create Copy" onclick="$.fancybox.open($('.events_copy_bl').show());" /> | <input type="button" value="Delete Selected Events" onclick="if(confirm('Are you sure?')){$('.events').submit();}" /> <b>||</b> 
+            
+    
+    <input type="button" value="Send Invitation" name="invite" onclick="generate_invoice('invite', false)" /> | <input type="button" value="Send Invoice" name="invoice" onclick="generate_invoice('invoice', true)"/>
+    
+    
+    <div id="e_past_info_bl" style="display: none; font-size: 14px;"></div>
+    
+    <div class="msg_log" style="display: none; font-size: 14px;"></div>
+    
+    <select name="past_filter" class="past_filter" form="events" onchange="this.form.submit();">
+        {% for k, v in past_filter.items %}
+        <option value="{{ k }}"{% if k == past_select %} selected{% endif %}>{{ v }}</option>
+        {% endfor %}
+    </select>
+
+    
+</div>
+
+<div class="clear"></div>
+{% endblock %}

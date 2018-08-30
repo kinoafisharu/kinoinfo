@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ city_name }} - Кинотеатры - {{ request.current_site.name }}{% endblock %}
+
+{% block script %}
+{% if request.current_site.domain == 'kinoinfo.ru' %}
+    <script>
+        $(document).ready(function(){
+            var x = $('.art-posttree-width').offset().top + 10
+            var f = $('.footer').offset().top
+            $('.art-posttree-width, .scroll_list').css({'height': f-x + 'px'})
+            $(window).resize(function(){
+                var x = $('.art-posttree-width').offset().top + 10
+                var f = $('.footer').offset().top
+                $('.art-posttree-width, .scroll_list').css({'height': f-x + 'px'})
+            })
+        });
+    </script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">{{ city_name }} - Кинотеатры</h1>
+
+<div class="art-posttree-width" style="overflow: auto;">
+    <div>
+    {% for i in countries %}
+        <b>{{ i.name }}</b><br />
+        {% for j in i.cities %}
+        <a href="{% url organization_cinema_list j.kid %}">{{ j.name }}</a> <br />
+        {% endfor %}
+    {% endfor %}
+    </div>
+    
+</div>
+
+<div class="art-postcontent-width">
+    <div class="scroll_list">
+    {% for i in cinemas %}
+        <a href="{% url organization_cinema i.slug %}">{{ i.name|safe }}</a><br />
+    {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,23 @@
+
+<data>
+    <hall id="1" name="зал №1" id_name="6">
+        <places value="0"/>
+        <format value="0"/>
+        <cinema id="35" value="Формула Кино Ладога"/>
+    </hall>
+    <hall id="2" name="зал №2" id_name="7">
+        <places value="0"/>
+        <format value="0"/>
+        <cinema id="35" value="Формула Кино Ладога"/>
+    </hall>
+    <hall id="3" name="зал №3" id_name="8">
+        <places value="0"/>
+        <format value="0"/>
+        <cinema id="35" value="Формула Кино Ладога"/>
+    </hall>
+    <hall id="4" name="Большой" id_name="1">
+        <places value="546"/>
+        <format value="1"/>
+        <cinema id="1" value="Формула Кино Аврора"/>
+    </hall>
+</data>

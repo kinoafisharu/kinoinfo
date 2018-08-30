@@ -1,0 +1,91 @@
+{% load umrunet_tags base_tags static %}
+{% load dajaxice_templatetags %}
+{% get_static_prefix as STATIC_URL %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>{% block title %}Главная{% endblock %}</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}umrunet/css/umrunet_style.css" type="text/css" media="screen" />
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/style.css" type="text/css" media="screen" />
+    <!--[if IE 6]><link rel="stylesheet" href="{{ STATIC_URL }}base/css/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="{{ STATIC_URL }}base/css/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+    <link rel="shortcut icon" href="{{ STATIC_URL }}umrunet/images/favicon.ico" type="/media/image/x-icon" />
+    {% dajaxice_js_import %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-1.8.2.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-ui-1.9.1.custom.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.gridster.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}umrunet/js/umrunet_script.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/script.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.cookie.js"></script>
+    {% block script %}{% endblock %}
+    
+</head>
+<body>
+<body class="body" style="background-image: url('{{ bg_img }}');">
+    <div class="art-main">
+        <!--полоса администратора-->
+        <div class="upper-menu">
+            <div class="upper-menu__control-links">
+                <div class="upper-menu__control-links__autorization">
+                    <a href="{% url profile %}">
+                    {% for i in acc_list %}
+                        {{ i }}
+                        {% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    </a>
+                </div>
+                <!--<a class="control-links__autorization" href="{% url login %}">Авторизоваться</a>-->
+            </div>
+        </div>
+        <!--конец полосы администратора-->
+        <!--центральный баннер для шапки-->
+        {% block header %}{% endblock %}
+        <center>
+            <a href="{% umrunet_advert_brand_piclink %}" target="_blank">
+                <img src="{{ STATIC_URL }}base/images/space.png" border="0" width="1024px" height="135px"  alt="" />
+            </a>
+        </center>
+        <!--конец центрального баннера для шапки-->
+        <div class="content-main">
+            <!--блок контента-->
+            <div class="art-content">
+                {% block content %}{% endblock %}
+            </div>
+            <!--конец блока контента-->
+        </div>
+        <a href="{% url feedback_main %}" class="feedback">Обратная связь</a>
+        
+        <div class="footer">
+            <!--блок поиска-->
+            {% if user.is_superuser %}
+                <div class="art-search__title-search">ИСКАТЬ</div>
+            {% endif %}
+            <!--конец блока поиска-->
+            <!--блок метрики-->
+            <div class="footer__content-main">
+                <div class="footer__border"></div>
+                <div class="art-search">
+                    <input class="search-field" type="text" />
+                    <input class="search-button" type="submit" value="GO" />
+                </div>
+                <div class="art-menu">
+
+                </div>
+                <div class="footer__content-main__items">
+                    <div class="footer-icons share share42init" data-path="{{ STATIC_URL }}base/images/"></div>
+                    <div class="footer-icons metric"></div>
+                </div>
+                <div class="footer__content-main__text"></div>
+            </div>
+            <!--конец блок метрики-->
+            <!--блок меню-->
+            {% if user.is_superuser %}
+                <div class="art-menu__title-menu">МЕНЮ</div>
+            {% endif %}
+            <!--конец блока меню-->
+        </div>
+        </div>
+    </div>
+</body>
+</html>

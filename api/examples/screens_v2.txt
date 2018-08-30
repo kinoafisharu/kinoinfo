@@ -1,0 +1,25 @@
+
+<times>
+    <showtime>
+        <movie_name>
+            Пираты: Банда неудачников
+        </movie_name>
+        <movie_id>
+            1430626
+        </movie_id>
+        <theater_id>
+            251
+        </theater_id>
+        <show_date date="20130729">
+        <showtimes kinohod="5976979">
+            11:10 PM
+        </showtimes>
+        <show_attributes/>
+        <show_passes/>
+        <show_festival/>
+        <show_with/>
+        <show_sound/>
+        <show_comments/>
+        </show_date>
+    </showtime>
+</times>

@@ -1,0 +1,28 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader" style="float: left;">Покупка билетов (всего кликов: {{ count }})</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+<div style="clear: both;"></div>
+
+
+<table class="panel_list">
+    <th>Юзер</th><th>Страна</th><th>Покупка</th><th>Где</th><th>Что</th><th>Когда</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td><div>{{ i.profile.user.id }}</div></td>
+            <td><div>{{ i.country.name }}</div></td>
+            <td><div>{{ i.dtime|date:"d b Y, H:i" }}</div></td>
+            <td><div>{{ i.session.cinema.name|safe }} ({{ i.session.cinema.city.name|safe }})</div></td>
+            <td><div>{{ i.session.film.name|safe }}</div></td>
+            <td><div>{{ i.session.dtime|date:"d b Y, H:i" }}</div></td>
+        </tr>
+    {% empty %}
+        <br />пусто<br />
+    {% endfor %}
+</table>
+
+
+{% endblock %}

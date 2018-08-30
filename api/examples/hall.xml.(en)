@@ -1,0 +1,19 @@
+<data>
+    <api_title>
+        Hall
+    </api_title>
+
+    <api_decription>
+        The method returns information about the halls
+    </api_decription>
+    
+    <api_example>hall/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/hall/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>no</api_response_details>
+
+    <!--<api_response>hall.txt</api_response>-->
+</data>

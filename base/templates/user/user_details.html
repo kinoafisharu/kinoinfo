@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{% trans 'Профиль пользователя' %}{% endblock %}
+
+{% block content %}
+    <h1 class="content-header">{% trans 'Профиль пользователя' %}</h1>
+    
+    {% profile_menu is_my_profile user_id %}
+    
+    <div class="art-postcontent-width">
+    
+    <h3>{% trans 'Редактор визитки' %}</h3>
+    <br />
+    <p>{% trans 'Визитка создается автоматически на основе Ваших подключенных аккаунтов. Вы можете отредактировать ее вручную.' %}</p>
+    <br />
+        
+    <fieldset>
+        
+        <form action="" method="post">{% csrf_token %}
+            <table class="card_editor">
+                <tr>
+                    <td>{{ form.born.label }}</td>
+                    <td>{{ form.born }}</td>
+                    <td>{{ form.born.errors }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.male.label }}</td>
+                    <td>{{ form.male }}</td>
+                    <td>{{ form.male.errors }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.country.label }}</td>
+                    <td>{{ form.country }}</td>
+                    <td>{{ form.country.errors }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.city.label }}</td>
+                    <td>{{ form.city }}</td>
+                    <td>{{ form.city.errors }}</td>
+                </tr>
+                <tr>
+                    <td>{{ form.name.label }}</td>
+                    <td class="user_card_fullname">{{ form.name }}</td>
+                    <td>{{ form.name.errors }}</td>
+                <tr>
+                <tr>
+                    <td>{{ form.nickname.label }}</td>
+                    <td>{{ form.nickname }}</td>
+                    <td>{{ form.nickname.errors }}{% if not nick_flag %} {% trans 'Этот псевдоним уже занят. Выберите другой' %}.{% endif %}</td>
+                <tr>
+                <tr>
+                    <td>{{ form.show_profile.label }}</td>
+                    <td>{{ form.show_profile }}</td>
+                    <td>{{ form.show_profile.errors }}</td>
+                <tr>
+                <tr>
+                    <td>{% trans 'Основной e-mail' %}</td>
+                    <td> 
+                    {% for i in card.emails %}
+                        <input type="radio" name="email" value="{{ i }}"{% if i == card.email %} checked{% endif %} /> {{ i }}<br />
+                    {% endfor %}
+                    </td>
+                    <td><a href="{% url login %}">{% trans 'Подключить еще аккаунты' %}</a></td>
+                <tr>
+            </table>
+            
+            <br />
+            <div style="clear:both;"></div>
+            <input type="submit" name="user_card_editor" value="{% trans 'Сохранить' %}" />
+        </form>
+    </fieldset>
+    </div>
+
+{% endblock %}

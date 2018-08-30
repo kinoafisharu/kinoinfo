@@ -1,0 +1,23 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+
+{% block info %}
+
+    <div class="scroll_list">
+    <table class="modern_tbl">
+        <th>Запросов за {{ days }} дней</th>
+        <th>Среднее за 1 день</th>
+        <th>~ Секунд между запросами</th>
+        <th>IP (всего {{ count }})</th>
+        {% for i in data %}
+        <tr style="{% if i.status == 1 %}background: #FF8080;{% endif %}{% if i.status == 2 %}background: #FFC285;{% endif %}">
+            <td>{{ i.count }}</td>
+            <td>{{ i.avg }}</td>
+            <td>{{ i.sec }}</td>
+            <td>{{ i.ip }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+    
+{% endblock %}
+

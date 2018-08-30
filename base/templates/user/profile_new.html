@@ -1,0 +1,367 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ request.current_site.name }} - {{ card.name|safe|striptags }} - визитка{% endblock %}
+{% load base_tags %}
+{% block script %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.mask.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+    });
+    </script>
+{% endblock %}
+
+
+{% block page_bg %}style="background-image: url('{% if user_bg %}{{ user_bg.file }}{% else %}{{ request.bg_img }}{% endif %}');"{% endblock %}
+{% block br_url %}{% if user_bg %}{{ user_bg.url }}{% else %}{{ request.advert_url }}{% endif %}{% endblock %}
+{% block adv_id %}{% if user_bg %}{{ user_bg.id }}{% else %}{{ request.advert_id }}{% endif %}{% endblock %}
+
+
+{% block content %}
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url profile card.profile.user_id %}">{{ card.name|safe|striptags }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">визитка</span></b>
+</h1>
+
+{% profile_menu card %}
+
+<div class="art-postcontent-width">
+    <div id="film_info">
+        
+        <div id="film_text">
+
+            {% if user.is_superuser or card.is_my_profile or request.is_admin %}
+            <div class="person_name_fields org_fields">
+                <b>{% trans 'ФИО' %}</b><br />
+                <input type="text" value="{% if card.name %}{{ card.name|safe|striptags }}{% endif %}" size="50" class="person_name_field" />
+                <br />
+                <input type="button" value="{% trans 'Сохранить' %}" class="person_name_accept_btn" />
+                <input type="button" value="{% trans 'Отмена' %}" class="person_name_cancel_btn" onclick="obj_cancel(this);" />
+                <span class="name_err"></span>
+            </div>
+            {% endif %}
+        
+            <h2 id="film_name"><span{% if user.is_superuser or card.is_my_profile or request.is_admin %} class="person_name org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);"{% endif %}>{% if card.name %}{{ card.name|safe|striptags }}{% else %}{% trans 'Нет' %}{% endif %}{% if user.is_superuser or card.is_my_profile or request.is_admin %}<div class="edit_mark"></div>{% endif %}</span></h2>
+            
+            {% if user.is_superuser or card.is_my_profile or request.is_admin %}
+            <b>Псевдоним:</b> <span class="person_nick_exist">{% trans 'Псевдоним занят, введите другой' %}</span><span class="person_nick_err">{% trans 'Слишком короткий псевдоним (не менее 1 символа)' %}</span> <span class="person_nick org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);">{% if nickname %}{{ nickname }}{% else %}<span style="font-weight: normal;">{% trans 'нет' %}</span>{% endif %}<div class="edit_mark-mini"></div></span>
+
+            <div class="person_nick_fields org_fields">
+                {% if card.profile.auth_status %}
+                    <input type="text" value="{% if nickname %}{{ nickname }}{% endif %}" class="person_nickname" />
+                    <input type="button" value="{% trans 'Сохранить' %}" class="person_nick_accept_btn" />
+                    <input type="button" value="{% trans 'Отмена' %}" class="person_nick_cancel_btn" onclick="obj_cancel(this);" />
+                {% else %}
+                    <a href="{% url login %}">Авторизуйтесь</a>, что бы указать псевдоним
+                {% endif %}
+            </div>
+
+            <br />
+            {% endif %}
+            
+
+            <b id="film_details">
+                <span class="born_txt">
+                {% if card.sex %}
+                    {% if card.sex == 1 %}{% trans 'Родился' %}:{% else %}{% trans 'Родилась' %}:{% endif %}
+                {% else %}
+                    {% trans 'Дата рождения' %}:
+                {% endif %}
+                </span>
+                
+                <span{% if user.is_superuser or card.is_my_profile or request.is_admin %} class="person_borned org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);"{% endif %}>{% if card.born %}{{ card.born|date:"d E Y" }} г.{% else %}<span style="font-weight: normal;">{% trans 'дата' %}</span>{% endif %}</span>,
+                
+                <span{% if user.is_superuser or card.is_my_profile or request.is_admin %} class="person_country_city org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);"{% endif %}>{% if card.country %}{% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' %}{{ card.country.name_en }}{% else %}{{ card.country.name }}{% endif %}{% if card.city %}, {{ card.city.name }}{% else %}<span style="font-weight: normal;">{% trans 'город' %}</span>{% endif %}{% else %}<span style="font-weight: normal;">{% trans 'страна' %}</span>{% endif %}</span>,
+
+                <span{% if user.is_superuser or card.is_my_profile or request.is_admin %} class="person_gender org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);"{% endif %}>{% if card.sex %}{% if card.sex == 1 %}{% trans 'М' %}{% else %}{% trans 'Ж' %}{% endif %}{% else %}<span style="font-weight: normal;">{% trans 'пол' %}</span>{% endif %}</span>
+            </b>
+
+            {% if user.is_superuser or card.is_my_profile or request.is_admin %}
+            <div class="person_borned_fields org_fields">
+                <b>{% trans 'Дата рождения' %}:</b><br />
+                <select class="person_born_day">
+                {% for i in born_days %}
+                    <option value="{{ i }}"{% if card.born.day == i %} selected{% endif %}>{{ i }}</option>
+                {% endfor %}
+                </select>
+                <select class="person_born_month">
+                {% for i in born_months %}
+                    <option value="{{ i.month }}"{% if card.born.month == i.month %} selected{% endif %}>{{ i|date:"E" }}</option>
+                {% endfor %}
+                </select>
+                <select class="person_born_year">
+                {% for i in born_years %}
+                    <option value="{{ i }}"{% if card.born.year == i %} selected{% endif %}>{{ i }}</option>
+                {% endfor %}
+                </select>
+                
+                <input type="button" value="{% trans 'Сохранить' %}" class="person_borned_accept_btn" />
+                <input type="button" value="{% trans 'Отмена' %}" class="person_borned_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            
+            <div class="person_country_city_fields org_fields">
+                <b>{% trans 'Страна и город' %}</b><br />
+                <select id="id_country" class="country_in_card" name="country">
+                {% for i in countries %}
+                    <option value="{{ i.id }}"{% if card.country.id == i.id %} selected{% endif %}>
+                    {% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+                    {{ i.name_en }}
+                    {% else %}
+                    {{ i.name }}
+                    {% endif %}
+                    </option>
+                {% endfor %}
+                </select>
+                <select id="id_city" class="city_in_card" name="city">
+                {% for i in cities_names %}
+                    <option value="{{ i.id }}"{% if card.city.id == i.city__id %} selected{% endif %}>
+                    {{ i.name }}
+                    </option>
+                {% endfor %}
+                </select>
+                <br />
+                <input type="button" value="{% trans 'Сохранить' %}" class="person_country_city_accept_btn" />
+                <input type="button" value="{% trans 'Отмена' %}" class="person_country_city_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            
+            <div class="person_gender_fields org_fields">
+                <b>{% trans 'Пол' %}</b><br />
+                <select name="person_gender">
+                {% for i in sex %}
+                    <option value="{{ i.0 }}"{% if i.0 == card.sex %} selected{% endif %}>{{ i.1 }}</option>
+                {% endfor %}
+                </select>
+                <input type="button" value="{% trans 'Сохранить' %}" class="person_gender_accept_btn" />
+                <input type="button" value="{% trans 'Отмена' %}" class="person_gender_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            {% endif %}
+            
+
+            <div class="separator_line"></div>
+            
+            {% if card.is_my_profile or user.is_superuser or request.is_admin %}
+            
+                <b>{% trans 'Оповещать на E-mail' %}:</b>
+                <span class="person_email org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);">{% if card.email %}{{ card.email }}{% else %}{% trans 'Нет' %}{% endif %}</span>
+                
+                <div class="person_email_fields org_fields">
+                    <select class="person_email">
+                    {% for i in card.emails %}
+                        <option value="{{ i }}"{% if i == card.email %} selected{% endif %} >{{ i }}</option>
+                    {% endfor %}
+                    </select>
+                    {% if card.is_my_profile %}
+                    <a href="{% url login %}">{% trans 'Добавить еще' %}</a><br />
+                    {% else %}
+                    <a href="#" onclick="$.fancybox.open($('.person_newemail').show());">Add User E-mail Address</a><br />
+                    <div class="person_newemail" style="display: none;">
+                        <b>E-mail address:</b>
+                        <input type="text" value="" name="newemail" size="30" />
+                        <input type="button" value="Save" class="newemail_accept_btn" />
+                        <br />
+                        <span class="newemail_msg" style="color: red;"></span>
+                    </div>
+                    {% endif %}
+                    <input type="button" value="{% trans 'Сохранить' %}" class="person_email_accept_btn" />
+                    <input type="button" value="{% trans 'Отмена' %}" class="person_email_cancel_btn" onclick="obj_cancel(this);" />
+                </div>
+                <br />
+                
+                <b>{% trans 'Страница видна' %}:</b>
+                <span class="person_show_profile org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);">{{ card.profile.get_show_profile_display }}</span>
+                
+                <div class="person_show_profile_fields org_fields">
+                    <select class="show_profile">
+                    {% for i in show_profile %}
+                        <option value="{{ i.0 }}"{% if i.0 == card.profile.show_profile %} selected{% endif %}>{{ i.1 }}</option>
+                    {% endfor %}
+                    </select>
+                    <input type="button" value="{% trans 'Сохранить' %}" class="person_show_profile_accept_btn" />
+                    <input type="button" value="{% trans 'Отмена' %}" class="person_show_profile_cancel_btn" onclick="obj_cancel(this);" />
+                </div>
+                
+                <br />
+                {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' %}
+                <span>
+                    <b>{% trans 'Счет' %}:</b>
+                    {% if user.is_superuser %}<a href="#" onclick="$('.money_card_fields').show()">{% endif %}
+                    {{ card.money }} {% trans 'руб' %}.
+                    {% if user.is_superuser %}</a> (<a href="#" onclick="$.fancybox.open($('.money_history').show())">история</a>)
+                    <div class="money_card_fields org_fields">
+                        <form action="{% url withdraw_user_money card.profile.user_id %}" method="post">{% csrf_token %}
+                            <input type="text" name="sum" value="" size="14" />
+                            <input type="submit" value="{% trans 'Списать со счета' %}" />
+                            <input type="button" value="{% trans 'Отмена' %}" onclick="obj_cancel(this);" class="money_card_cancel_btn"/>
+                        </form>
+                    </div>
+                    <div class="money_history org_fields">
+                    <table class="panel_list" style="font-size: 14px;">
+                        <th>Сумма</th><th>Дата</th><th>Кто снял</th>
+                        {% for w in withdraw %}
+                            <tr>
+                                <td><div>{{ w.summa }}</div></td>
+                                <td><div>{{ w.dtime|date:"d b Y, H:i" }}</div></td>
+                                <td><div>{% if w.who.user_id == card.profile.user_id %}Самостоятельно{% else %}<a href="{% url profile w.who.user_id %}" target="_blank">{{ w.who.user_id }}</a>{% endif %}</div></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    </div>
+                    {% endif %}
+                </span>
+                <br />
+                {% endif %}
+
+            {% endif %}
+
+
+            {% if card.profile.phone_visible %}
+                <b>{% trans 'Мобильный телефон' %}:</b>
+
+                {% if card.is_my_profile or user.is_superuser or request.is_admin %}
+                <span class="person_phone org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);">
+                {% endif %}
+
+                {% if card.profile.phone %}
+                    {{ card.profile.phone }}
+                    {% if card.is_my_profile %}
+                    ({% if card.profile.phone_visible %}{% trans 'Всем' %}{% else %}{% trans 'Только мне' %}{% endif %})
+                    {% endif %}
+                {% else %}
+                    {% trans 'Нет' %}
+                {% endif %}
+
+                {% if card.is_my_profile or user.is_superuser or request.is_admin %}
+                    </span>
+                {% endif %}
+                <br />
+            {% else %}
+                {% if card.is_my_profile or user.is_superuser or request.is_admin %}
+                <b>{% trans 'Мобильный телефон' %}:</b>
+                <span class="person_phone org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);">{% if card.profile.phone %}{{ card.profile.phone }} ({% if card.profile.phone_visible %}{% trans 'Всем' %}{% else %}{% trans 'Только мне' %}{% endif %}){% else %}{% trans 'Нет' %}{% endif %}</span>
+                <br />
+                {% endif %}
+            {% endif %}
+
+            {% if card.is_my_profile or user.is_superuser or request.is_admin %}
+                <div class="person_phone_fields org_fields">
+                    <div style="float: left;">
+                    <b>{% trans 'Номер телефона' %}:</b><br />
+                    <input type="text" value="{% if card.profile.phone %}{{ card.profile.phone }}{% else %}{% endif %}" class="person_phone_num" />
+                    </div>
+                    <div>
+                    <b>{% trans 'Виден' %}:</b><br />
+
+                    <select class="show_phone">
+                        <option value="0"{% if not card.profile.phone_visible %} selected{% endif %}>{% trans 'Только мне' %}</option>
+                        <option value="1"{% if card.profile.phone_visible %} selected{% endif %}>{% trans 'Всем' %}</option>
+                    </select>
+                    </div>
+                    <br />
+                    <input type="button" value="{% trans 'Сохранить' %}" class="person_phone_accept_btn" />
+                    <input type="button" value="{% trans 'Отмена' %}" class="person_phone_cancel_btn" onclick="obj_cancel(this);" />
+                </div>
+
+            {% endif %}
+            
+            <input type="hidden" name="person_id" value="{{ card.card.id }}" />
+
+            {% if card.superuser %}
+            <div id="org_trailers">
+                <div class="trailer">{% if video %}{{ video|safe }}{% else %}Нет видео{% endif %}</div>
+                {% if user.is_superuser %}
+                    <span class="organization_trailer_edit">Редактировать</span>
+                {% endif %}
+            </div>
+            <br />
+            {% endif %}
+
+            {% if user.is_superuser %}
+            <div class="organization_trailer org_fields">
+                Укажите url видеоролика на YouTube
+                <form action="" method="post">{% csrf_token %}
+                <input type="text" class="organization_trailer_code" name="trailer" value="{{ video_url }}">
+                <input type="submit" value="Сохранить" class="organization_trailer_accept_btn" />
+                <input type="button" value="Отмена" class="organization_trailer_cancel_btn" />
+                </form>
+            </div>
+            <br />
+            {% endif %}
+
+
+            {% if user.is_superuser %}
+                <br />
+                <b onclick="$('.permis_fields').show()"><a href="#">{% trans 'Управление правами' %}</a></b>
+                <div class="permis_fields org_fields">
+                    <form action="{% url user_permission_set card.profile.user_id %}" method="post">{% csrf_token %}
+                        <select multiple="multiple" style="height: 100px;" class="u_groups" name="u_groups">
+                            <option value="0" {% if card.superuser %}selected{% endif %}>СуперАдмины</option>
+                            {% for i in groups %}
+                            <option value="{{ i.id }}" {% if i.id == 2 %}class="site_editor"{% endif %} {% if i.name in card.groups %}selected{% endif %}>{{ i.name }}</option>
+                            {% endfor %}
+                        </select>
+                        
+                        <select multiple="multiple" style="height: 110px;" class="sites_edit" name="sites_edit" {% if 'Редактор сайтов' not in card.groups %}disabled{% endif %}>
+                            {% for i in sites %}
+                            <option value="{{ i.id }}" {% if i.id in in_sites %}selected{% endif %}>{{ i.name }}</option>
+                            {% endfor %}
+                        </select>
+                        
+                        <br /><br />
+                        <input type="submit" value="{% trans 'Сохранить' %}" /> <input type="button" value="{% trans 'Отмена' %}" class="permis_cancel_btn" onclick="obj_cancel(this);" />
+                    </form>
+                </div>
+                <br />
+                
+            {% endif %}
+            
+            {% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+                {% if user.is_superuser or request.is_admin or request.is_admin %}
+                <br />
+                <form action="{% url letsget_clients_add %}" method='post'>{% csrf_token %}
+                    <input type="submit" value="Add user to my Clients List" />
+                    <input type="hidden" name="user_id" value="{{ card.profile.id }}" />
+                </form>
+                {% endif %}
+            {% endif %}
+
+        </div>
+        
+
+        <div id="org_poster">
+            <div id="poster">
+                {% if poster %}
+                <a class="fancybox" href="/upload{{ poster }}"><img src="/upload{{ poster }}" /></a>
+                {% else %}
+                <div class="no_image"></div>
+                {% endif %}
+            </div>
+            {% if card.is_my_profile or user.is_superuser %}
+            <span class="organization_poster_edit">Редактировать</span>
+            {% endif %}
+        </div>
+
+        {% if card.is_my_profile or user.is_superuser %}
+        <div class="organization_poster org_fields">
+            <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+            File: <input type="file" name="profile_poster_file" size="20" />
+            <br /><br />
+            <input type="submit" value="{% trans 'Сохранить' %}" class="profile_poster_accept_btn" />
+            <input type="button" value="{% trans 'Отмена' %}" class="organization_poster_cancel_btn" onclick="obj_cancel(this);" />
+            </form>
+        </div>
+        {% endif %}
+
+        {% if not p_count %}
+            {% if card.is_my_profile %}
+            <br /><br />
+            <p style="font-weight: bold;">{% trans 'Для сохранения настроек и доступа к ним при следующих визитах необходимо' %} <a href="{% url login %}">{% trans 'авторизоваться' %}</a></p>
+            {% else %}
+            {% comment %}{% trans 'Нет данных' %}{% endcomment %}
+            {% endif %}
+        {% endif %}
+
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,33 @@
+<data>
+    <api_title>
+        FilmsName
+    </api_title>
+
+    <api_decription>
+        The method returns all movie titles
+    </api_decription>
+    
+    <api_example>films_name/</api_example>
+
+    <api_param>no</api_param>
+
+    <api_response_details><![CDATA[
+    http://kinoinfo.ru/api/films_name/?format=json<br />
+    <br />
+    type:<br/>
+        1 - original title,
+        2 - Russian name,
+        3 - international name
+    <br/>
+    <br/>
+    status:<br/>
+        1 - approved,
+        2 - temporary,
+        5 - alternative
+    <br/>
+    <br/>
+    slug - lowercase name, cleared of spaces and punctuation marks
+    ]]></api_response_details>
+
+    <!--<api_response>films_name.txt</api_response>-->
+</data>

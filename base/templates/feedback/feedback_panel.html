@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}Обратная связь{% endblock %}
+{% block content %}
+{% load base_tags %}
+
+<h1 class="content-header"><a href="{% url release_main %}">Обратная связь</a></h1>
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        {% for i in emails %}
+            {{ i }}<br />
+        
+        {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

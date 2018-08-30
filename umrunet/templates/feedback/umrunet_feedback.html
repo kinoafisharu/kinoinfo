@@ -1,0 +1,32 @@
+{% extends "umrunet_base.html" %}
+{% block title %}Обратная связь{% endblock %}
+{% block content %}
+
+<h1 class="content-header"><a href="{% url feedback_main %}">Обратная связь</a></h1>
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        {% if feedback_msg %}
+            <b>{{ feedback_msg }}</b>
+        {% else %}
+        <form action="" method="post">{% csrf_token %}
+        {% if not emails %}
+            {{ form.email.label }}{{ form.email.errors }}<br />
+            {{ form.email }}
+        {% else %}
+            Оповестить на 
+            {% for i in emails %}
+                <input type="radio" name="emails" value="{{ i }}"{% if forloop.first %} checked{% endif %} />{{ i }} 
+            {% endfor %}
+        {% endif %}
+        <br />
+        {{ form.msg }}{{ form.msg.errors }}
+        <br />
+        <input type="submit" value="Отправить" />
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+

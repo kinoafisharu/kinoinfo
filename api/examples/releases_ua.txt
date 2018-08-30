@@ -1,0 +1,8 @@
+
+<data>
+    <film kinoafisha_id="31282" imdb="1757831">
+        <names ru="Очень паранормальное кино" ua="Дуже паранормальне кіно"/>
+        <release value="2013-07-25"/>
+        <distributor value="Каскад Украина"/>
+    </film>
+</data>

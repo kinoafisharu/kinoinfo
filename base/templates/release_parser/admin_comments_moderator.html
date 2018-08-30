@@ -1,0 +1,66 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block script %}
+<link rel="stylesheet" href="{{ STATIC_URL }}base/css/datepicker.css" type="text/css" media="screen" />
+<script type="text/javascript">
+    $(document).ready(function(){
+        
+        $('input[name="date_from"], input[name="date_to"]').datepicker({
+            altFormat: "yy-mm-dd",
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1,
+        });
+        
+    });
+</script>
+{% endblock %}
+
+
+{% block info %}
+<h3 class="art-postheader">Комментарии, Отзывы, Вопросы</h3>
+
+<div class="scroll_list">
+    <form action="" method='post' id="f1">{% csrf_token %}
+        
+    
+    
+        <table class="panel_list">
+            <th><input type="checkbox" name="checker_all"/></th><th>Заголовок</th><th>Тип</th><th>Дата время</th><th>Орг.</th><th>Юзер</th><th>Бан</th>
+            {% for i in data %}
+                <tr>
+                <td><div><input type="checkbox" name="checker" value="{{ i.news_id }}" /></td>
+                <td><div title="{{ i.news_title }}">{{ i.news_title }}</div></td>
+                <td><div>{{ i.news_type }}</div></td>
+                <td><div title="{{ i.news_time|date:"d b Y, H:i" }}">{{ i.news_time|date:"d b Y, H:i" }}</div></td>
+                <td><div><a href="{{ i.org_url }}" target="_blank">{{ i.org_name }}</a></div></td>
+                <td><div><a href="{% url profile i.news_user_id %}" target="_blank">{{ i.news_user_id }}</a></div></td>
+                <td><div style="color: {% if i.banned %}red;{% else %}green;{% endif %}">{% if i.banned %}Да{% else %}Нет{% endif %}</div></td>
+                </tr>
+            {% empty %}
+                <tr>
+                    <td>пусто</td><td></td><td></td><td></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </form>
+</div>
+
+<div>
+    <b>Отмеченных юзеров блокировать: </b>
+    <input type="submit" value="по ID" name="lock_id" form="f1" /> или
+    <input type="submit" value="по IP" name="lock_ip" form="f1" />
+</div>
+
+<div>
+    <b>Удалить сообщения: </b>
+    <input type="submit" value="Отмеченные" name="del_msg" form="f1" /> |
+    От
+    <input type="text" value="{{ date_from }}" name="date_from" size="9" form="f1" /> до <input type="text" value="{{ date_to }}" name="date_to" size="9" form="f1" />
+    <input type="submit" value="OK" name="date_filter" form="f1" /> |
+    От юзера ID <input type="text" value="" name="user_id_del" form="f1" size="9" />
+    <input type="submit" value="OK" name="user_id_del_filter" form="f1" />
+</div>
+{% endblock %}

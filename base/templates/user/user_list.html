@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Список зарегистрированных пользователей{% endblock %}
+{% block content %}
+<div class="art-postcontent-width">
+    <h1 class="content-header"><a href="{% url main_api %}">Список зарегистрированных пользователей</a></h1>
+    {% for i in users %}
+    <div style="width:100%; border:1px solid #999; padding:2px;">
+        <b>USER:</b>
+            {{ i.id }}, {{ i.username }}, {{ i.date_joined }}<br />
+        <b>PROFILE:</b>
+            {{ i.get_profile.login_counter }}, 
+            {% for a in i.get_profile.accounts.all %}
+                {{ a.login }}, 
+            {% endfor %}
+            <br />
+        <b>INTERFACE:</b>
+            {% for ii in i.get_profile.interface.all %}
+                {{ ii.ip_address }}, {{ ii.platform }}, {{ ii.browser }}, {{ ii.display }},<br />
+            {% endfor %}
+        <b>PERSON:</b>
+            {% if i.get_profile.person.male == 0 %}-,{% endif %}
+            {% if i.get_profile.person.male == 1 %}М,{% endif %}
+            {% if i.get_profile.person.male == 2 %}Ж,{% endif %}
+            {{ i.get_profile.person.born }},
+            {% for n in i.get_profile.person.name.all %}
+                {{ n.name }}, 
+            {% endfor %}<br />
+        <form action="" method="post">{% csrf_token %} 
+            <input type="hidden" name="user" value="{{ i.id }}" />
+            <input type="submit" name="submit" value="Удалить пользователя" />
+        </form>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

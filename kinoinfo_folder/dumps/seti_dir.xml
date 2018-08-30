@@ -1,0 +1,25 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+ <set id="0" name="">
+ </set>
+ <set id="1" name="Империя Кино">
+ </set>
+ <set id="2" name="Каро-фильм">
+ </set>
+ <set id="3" name="Синема-парк">
+ </set>
+ <set id="4" name="КиноМакс">
+ </set>
+ <set id="5" name="Киноплекс">
+ </set>
+ <set id="6" name="Люксор">
+ </set>
+ <set id="7" name="Парадиз">
+ </set>
+ <set id="8" name="Центр-фильм">
+ </set>
+ <set id="9" name="Формула кино">
+ </set>
+ <set id="10" name="Вест">
+ </set>
+</data>

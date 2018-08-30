@@ -1,0 +1,23 @@
+
+<data>
+    <film id="29498" imdb="1772422">
+        <trailer_code>
+            <iframe allowfullscreen="" frameborder="0" height="327" src="http://www.youtube.com/embed/BdbLDUp1BjY" width="585"></iframe>
+        </trailer_code>
+    </film>
+    <film id="29497" imdb="2035599">
+        <trailer_code>
+            <iframe allowfullscreen="" frameborder="0" height="327" src="http://www.youtube.com/embed/2AcNN17bBDw" width="585"></iframe>
+        </trailer_code>
+    </film>
+    <film id="29496" imdb="1937506">
+        <trailer_code>
+            <iframe allowfullscreen="" frameborder="0" height="327" src="http://www.youtube.com/embed/hY5oJvY43PE" width="585"></iframe>
+        </trailer_code>
+    </film>
+    <film id="29495" imdb="1836944">
+        <trailer_code>
+            <iframe allowfullscreen="" frameborder="0" height="327" src="http://www.youtube.com/embed/iTFu82uO1i0" width="585"></iframe>
+        </trailer_code>
+    </film>
+</data>

@@ -1,0 +1,31 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h1 class="art-postheader" style="float: left;">{{ org.name }}</h1>
+<div style="clear: both;"></div>
+    <a href="http://www.0654.com.ua/catalog/full/{{ org.source_id }}" target="_blank">источник</a> | 
+    <a href="{% url admin_organization_edit org.id %}">редактировать</a> | 
+    {% if org.edited %}
+    <span style="color: #338533;">
+    Редактировалось {{ org.edited }} <a href="{% url get_user_page_info org.profile.user.id %}" target="_blank" rel="nofollow">Редактор {{ org.profile.user.id }}</a>
+    </span>
+    {% else %}
+    Не редактировалось
+    {% endif %}
+    <br />
+    <b>Адрес</b>: 
+        {% for i in org.buildings.all %}
+            {{ i.street.get_type_display }}
+            {{ i.street.name }}
+            {{ i.number }}
+            {% if not forloop.last %}; {% endif %}
+        {% endfor %}
+    <br />
+    <b>Категории</b>: {% for i in org.tags.all %}{{ i.name }}{% if not forloop.last %}; {% endif %}{% endfor %}<br />
+    <b>Телефон</b>: {% for i in org.phones.all %}{{ i.phone }}{% if not forloop.last %}; {% endif %}{% endfor %}<br />
+    <b>Сайт</b>: {% if org.site %}{{ org.site }}{% endif %}<br />
+    <b>E-mail</b>: {% if org.email %}{{ org.email }}{% endif %}<br />
+    <b>Примечание</b>: {% if org.note %}{{ org.note|safe }}{% endif %}<br />
+
+
+{% endblock %}

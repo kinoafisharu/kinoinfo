@@ -1,0 +1,30 @@
+{% load base_tags %}
+{% load i18n %}
+
+<div class="content-header">
+    <ul>
+        <li><a href="{% url main %}" >{% trans "Главная" %}</a></li>
+    {% if request.acc_list.acc %}
+        <li><a href="{% url profile %}" rel="nofollow">{% trans "Профиль" %}</a></li>
+    {% else %}
+        <li><a href="{% url login %}" rel="nofollow">{% trans "Вход" %}</a></li>
+    {% endif %}
+    
+        <li class="lang_ch">
+            <form action="/i18n/setlang/" method="POST">
+                {% csrf_token %}
+                <select name="language" onchange="this.form.submit();">
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == request.current_language %} selected="selected"{% endif %}>
+                        {{ language.code|upper }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
+        </li>
+    
+    </ul>
+    <div class="clear"></div>
+</div>
+

@@ -1,0 +1,30 @@
+{% load i18n %}
+<h3>{% trans 'Авторизуйтесь используя один из сервисов' %}:</h3>
+{% if message %}<br /><div class="login_message">{{ message }}</div>{% endif %}
+<br />
+
+<form action="{% url oauth %}" method="post">{% csrf_token %}
+    {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' and request.current_site.domain != 'imiagroup.com.au' %}
+    <input type="submit" class="mailru_button" name="mailru_button" value="" />
+    {% endif %}
+    
+    {% comment %}<input type="submit" class="twitter_button" name="twitter_button" value="" />{% endcomment %}
+    
+    <input type="submit" class="google_button" name="google_button" value="" />
+
+    <input type="submit" class="facebook_button" name="facebook_button" value="" />
+    
+    {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' and request.current_site.domain != 'imiagroup.com.au'%}
+    <input type="submit" class="vkontakte_button" name="vkontakte_button" value="" />
+        {% if request.current_site.domain == 'kinoafisha.ru' or request.current_site.domain == 'kinoinfo.ru' %}
+        <input type="submit" class="yandex_button" name="yandex_button" value="" />
+        {% endif %}
+    {% endif %}
+</form>
+{% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' and request.current_site.domain != 'imiagroup.com.au'%}
+<form action="{% url openid %}" method="post">{% csrf_token %}
+
+    {% comment %}<input type="submit" class="myopenid_button" name="myopenid_button" value="" />{% endcomment %}
+    
+</form>
+{% endif %}

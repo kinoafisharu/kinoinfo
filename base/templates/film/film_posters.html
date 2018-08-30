@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - постеры{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">фильм</span> <a href="{% url get_film id %}">{{ name_ru|safe }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">постеры</span></b>
+</h1>
+
+{% film_menu id menu film_editor %}
+
+
+<div class="art-postcontent-width">
+    <div class="film_slides_list">
+        
+            {% for i in posters %}
+                <div class="film_posters">
+                <div id="poster">{% if i.0 %}<a class="fancybox" rel="group" href="{{ i.0 }}"><img src="{{ i.1 }}" /></a>{% else %}Нет слайда{% endif %}</div>
+                </div>
+            {% endfor %}
+        
+    </div>
+    
+</div>
+
+
+
+{% endblock %}

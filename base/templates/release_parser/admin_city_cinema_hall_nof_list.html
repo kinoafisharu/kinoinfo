@@ -1,0 +1,38 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+<h2 class="art-postheader">Ненайденные {{ method }}: {{ count }}</h2><br />
+
+    {% if method == 'hall' %}
+    <form action="{% url hall_nof %}" method='post'>
+    {% else %}
+    <form action="{% url admin_city_cinema_nof method dump %}" method='post'>
+    {% endif %}
+    
+        {% csrf_token %}
+        <select name="nof_data" id="nof_data">
+        {% for i in f %}
+            <option value="{{ i.key }}">{{ i.value }}</option>
+        {% endfor %}
+        </select>
+        <br /><br />
+        
+        Связать с {{ method }}<br />
+        <input type="text" id="get_data_name" value="">
+        <input type="button" onclick="get_data('{{ method }}')" value="Найти">
+        {% if method == 'hall' or method == 'cinema' %}
+        <input type="checkbox" id="check_all_data" />все
+        {% endif %}
+        <select name="data" id="data_select">
+            <option value="">пусто</option>
+        </select>
+        <br /><br />
+        <input type="submit" name="rel" value="Добавить название в альтернативные">
+        
+        {% if method == 'cinema' %}
+        <br /><br />
+        <input type="submit" name="kid_sid" value="Связать кинотеатры" />
+        {% endif %}
+        
+    </form>
+
+{% endblock %}

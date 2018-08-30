@@ -1,0 +1,66 @@
+{% extends "mobile/base.html" %}
+{% block title %}{{ request.current_site.name }}: Топ 250 лучших фильмов по версии IMDb{% endblock %}
+{% load base_tags %}
+
+
+{% block content %}
+
+{% mobile_header %}
+
+{% kinoafisha_main_menu_mobile %}
+
+
+<div class="art-postcontent-width">
+    <h1>Топ 250 лучших фильмов по версии IMDb</h1>
+
+
+    <select name="year" onchange="$('#filter_year').submit();" form="filter_year">
+        <option value="">Год</option>
+        {% for i in years %}
+        <option value="{{ i }}"{% if i == year %} selected{% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+    
+    <select name="country" onchange="$('#filter_country').submit();" form="filter_country">
+        <option value="">Страна</option>
+        {% for i in countries %}
+        <option value="{{ i.id }}"{% if i.id == country %} selected{% endif %}>{{ i.name }}</option>
+        {% endfor %}
+    </select>
+    
+    <select name="genre" onchange="$('#filter_genre').submit();" form="filter_genre">
+        <option value="">Жанр</option>
+        {% for i in genres %}
+        <option value="{{ i.id }}"{% if i.id == genre %} selected{% endif %}>{{ i.name }}</option>
+        {% endfor %}
+    </select>
+    
+    <b>Рейтинг обновлен {{ date_upd }}</b> 
+    
+    
+    <table class="modern_tbl">
+        <th>№</th>
+        <th>Изменения</th>
+        <th>Фильм</th>
+        <th>Рейтинг</th>
+        <th>Голоса</th>
+        
+        {% for i in data %}
+            <tr style="background: {% if i.obj.change == 2 %}#D1ECDA;{% endif %}{% if i.obj.change == 3 %}#FFE0E0;{% endif %}{% if i.obj.change == 4 %}#D1E0FF;{% endif %}">
+                <td><div>{{ i.obj.position }}</div></td>
+                <td><div>{% if i.obj.change == 1 %}-{% endif %}{% if i.obj.change == 2 %}{{ i.obj.change_val }} ↑{% endif %}{% if i.obj.change == 3 %}{{ i.obj.change_val }} ↓{% endif %}{% if i.obj.change == 4 %}new{% endif %}</div></td>
+                <td><div title="{% for j in i.awards %}{{ j }}{% endfor %}">{% if i.obj.film.kid %}<a href="http://m.kinoinfo.ru/film/{{ i.obj.film.kid }}/">{% endif %}{{ i.name|safe }} ({{ i.obj.film.year }}){% if i.obj.film.kid %}</a>{% endif %}</div></td>
+                <td><div>{{ i.obj.rating }}</div></td>
+                <td><div>{{ i.obj.votes }}</div></td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    
+    <form action="" method="POST" id="filter_year">{% csrf_token %}</form>
+    <form action="" method="POST" id="filter_genre">{% csrf_token %}</form>
+    <form action="" method="POST" id="filter_country">{% csrf_token %}</form>
+
+</div>
+
+{% endblock %}

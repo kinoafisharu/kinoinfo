@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Минусовки{% endblock %}
+{% block script %}
+    
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar">Минусовки</b>
+</h1>
+
+
+
+<div class="art-postcontent-width">
+    
+    <b>Исполнители на букву:</b><br /><br />
+    
+    {% for i in alphabet_filter %}
+    <a href="{% url artist_list i %}">{{ i }}</a>, 
+    {% empty %}
+    Нет исполнителей и копозиций
+    {% endfor %}
+    <br />
+    
+    
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,27 @@
+<data>
+    <api_title>
+        Schedule
+    </api_title>
+
+    <api_decription>
+        Метод возвращает все сеансы от сегодняшней даты
+    </api_decription>
+    
+    <api_example>schedule/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/schedule/?city=Казань<br />
+        http://kinoinfo.ru/api/schedule/?movie=931<br />
+        http://kinoinfo.ru/api/schedule/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details><![CDATA[
+        city - город<br />
+        movie - кинотеатр<br />
+        hall - зал<br />
+        film - фильм<br />
+        time - время сеанса<br />
+    ]]></api_response_details>
+
+    <!--<api_response>schedule.txt</api_response>-->
+</data>

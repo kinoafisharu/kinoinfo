@@ -1,0 +1,92 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Бокс-офис {% if country == 'russia' %}Россия{% else %}США{% endif %} - {{ request|get_site_name2018 }}{% endblock %}
+
+
+{% block sys_info %}
+    {% sys_info timer cached_page %}
+{% endblock %}
+
+{% block content %}
+<h1 class="content-header">
+	<b id="navigation_bar">
+        <a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a></b>
+     Киноафиша <a class="select_mycity">{{ request|get_city_name_3 }}</a> - <span style="font-size: 17px;">Бокс-офис {% if country == 'russia' %}Россия{% else %}США{% endif %}</span>
+    
+</h1>
+
+{% kinoafisha_main_menu %}
+
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+    
+        <div style="float: right;">
+            <div class="pagination">
+                {% if p.has_previous or p.has_next %}
+                <span class="step-links">
+                    {% if p.has_previous %}
+                        <a href="?page=1&{{ url_param }}=1">первая</a> | 
+                        <a href="?page={{ p.previous_page_number }}&{{ url_param }}=1">назад</a>
+                    {% endif %}
+                    <span class="current">
+                        {{ p.number }} из {{ p.paginator.num_pages }} стр.
+                    </span>
+                    {% if p.has_next %}
+                        <a href="?page={{ p.next_page_number }}&{{ url_param }}=1">вперед</a> |
+                        <a href="?page={{ p.paginator.num_pages }}&{{ url_param }}=1">последняя</a>
+                    {% endif %}
+                </span>
+                {% endif %}
+            </div>
+        </div>
+        <div style="float: left;">
+            <b>Кассовые сборы за {{ weekend_first|date:"d.m" }} - {{ weekend|date:"d.m" }}</b>
+        </div>
+        <br />
+        <br />
+        
+        <table class="panel_list">
+            <th></th>
+            <th>Фильм</th>
+            <th>Дистриб.</th>
+            <th>
+                <a href="{% url boxoffice country %}?page={{ page }}&sumwee={{ value }}" rel="nofollow">Cборы за нед. $</a>
+            </th>
+            <th>
+                <a href="{% url boxoffice country %}?page={{ page }}&sumavg={{ value }}" rel="nofollow">Сборы AVG $</a>
+            </th>
+            <th>
+                <a href="{% url boxoffice country %}?page={{ page }}&sumall={{ value }}" rel="nofollow">Общие сборы $</a>
+            </th>
+            <th style="font-size: 11px;">Экранов</th>
+            {% if country == 'russia' %}
+            <th style="font-size: 11px;">Зрит. за неделю</th>
+            <th style="font-size: 11px;">
+                <a href="{% url boxoffice country %}?page={{ page }}&audavg={{ value }}">Зрит. AVG</a>
+            </th>
+            <th style="font-size: 11px;">Всего зрителей</th>
+            <th style="font-size: 11px;">Дней</th>
+            {% endif %}
+            {% for i in p.object_list %}
+                <tr>
+                    <td><div>{{ i.place }}</div></td>
+                    <td><div title="{{ i.name|safe }}"><a href="http://kinoinfo.ru/film/{{ i.kid }}/" target="_blank">{{ i.name|safe }}</a></div></td>
+                    <td style="width: 40px;"><div title="{{ i.distrib|safe }}">{{ i.distrib|safe }}</div></td>
+                    <td style="text-align: right; min-width: 62px;"><div>{{ i.week_sum }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.week_sum_avg }}</div></td>
+                    <td style="text-align: right; min-width: 68px;"><div>{{ i.all_sum }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.screens }}</div></td>
+                    {% if country == 'russia' %}
+                    <td style="text-align: right; min-width: 62px;"><div>{{ i.week_audience }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.week_audience_avg }}</div></td>
+                    <td style="text-align: right; min-width: 62px;"><div>{{ i.all_audience }}</div></td>
+                    <td style="text-align: right;"><div>{{ i.days }}</div></td>
+                    {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+</div>
+
+{% endblock %}

@@ -1,0 +1,93 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Профиль пользователя' %}{% endblock %}
+{% load base_tags %}
+
+
+{% block content %}
+<h1 class="content-header">{% trans 'Профиль пользователя' %}</h1>
+
+{% profile_menu is_my_profile user_id %}
+
+<div class="art-postcontent-width">
+    <div class="card_info">
+        <div id="user_text">
+            <div>
+                <h3>{% if is_my_profile %}{% trans 'Моя визитка' %}{% else %}{% trans 'Визитка' %}{% endif %}</h3>
+                <br />
+                {% if p_count %}
+                    <b>{% trans 'ФИО' %}:</b>
+                    {% if card.name %}{{ card.name }}{% else %}{% trans 'Нет' %}{% endif %}
+                    <br />
+                    <b>{% trans 'Пол' %}:</b>
+                    {% if card.sex %}
+                        {% if card.sex == 1 %}{% trans 'М' %}{% else %}{% trans 'Ж' %}{% endif %}
+                    {% else %}
+                        {% trans 'Нет' %}
+                    {% endif %}
+                    <br />
+                    <b>{% trans 'Дата рожд' %}.:</b>
+                    {% if card.born %}{{ card.born|date:"d.m.Y" }}{% else %}{% trans 'Нет' %}{% endif %}
+                    <br />
+                        {% if is_my_profile or user.is_superuser %}
+                        <b>E-mail:</b>
+                        {% if card.email %}{{ card.email }}{% else %}{% trans 'Нет' %}{% endif %}
+                        <br />
+                        {% endif %}
+                    <b>{% trans 'Страна' %}:</b>
+                    {% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+                        {% if card.country %}{{ card.country.name_en }}{% else %}{% trans 'Нет' %}{% endif %}
+                    {% else %}
+                        {% if card.country %}{{ card.country.name }}{% else %}{% trans 'Нет' %}{% endif %}
+                    {% endif %}
+                    <br />
+                    <b>{% trans 'Город' %}:</b>
+                    {% if card.city %}{{ card.city.name }}{% else %}{% trans 'Нет' %}{% endif %}
+                    <br />
+                    {% if is_my_profile or user.is_superuser %}
+                    {% if current_site.domain != 'letsgetrhythm.com.au' %}
+                    <span>
+                        <b>{% trans 'Счет' %}:</b>
+                        {{ card.money }} {% trans 'руб' %}.
+                    </span>
+                    <br />
+                    {% endif %}
+                    <b>{% trans 'Страница видна' %}:</b>
+                    {{ card.profile.get_show_profile_display }}
+                    <br />
+                    <br />
+                        {% if user.is_superuser or is_my_profile %}
+                        <a href="{% if user.is_superuser and user_id %}{% url user_details user_id %}{% else %}{% url user_details %}{% endif %}">{% trans 'Редактировать визитку' %}</a>
+
+                        {% endif %}
+                    {% endif %}
+                {% else %}
+                    {% if is_my_profile %}
+                    <p>{% trans 'Для сохранения настроек и доступа к ним при следующих визитах необходимо' %} <a href="{% url login %}">{% trans 'авторизоваться' %}</a></p>
+                    {% else %}
+                    {% trans 'Нет данных' %}
+                    {% endif %}
+                {% endif %}
+            </div>
+
+            
+            {% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+                {% if user.is_superuser or request.is_admin %}
+                <br />
+                <form action="{% url letsget_clients_add %}" method='post'>{% csrf_token %}
+                    <input type="submit" value="Add user to my Clients List" />
+                    <input type="hidden" name="user_id" value="{{ card.profile.id }}" />
+                </form>
+                {% endif %}
+            {% endif %}
+
+
+            
+        </div>
+        
+    </div>
+</div>
+
+
+
+{% endblock %}

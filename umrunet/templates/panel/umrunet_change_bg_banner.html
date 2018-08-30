@@ -1,0 +1,15 @@
+{% extends "panel/umrunet_panel_main.html" %}
+{% block info %}
+        <form class="change_background" action="{% url change_background %}" method="POST" enctype="multipart/form-data">{% csrf_token %}
+            <div>
+                {{ errors.url }}
+                URL {{ form.url }}
+            </div>
+            <div>
+                {{ errors.file }}
+                FILE {{ form.file }}
+            </div>
+            <input type="submit" value="Сохранить" />
+        </form>
+        {{ errors.msg }}
+{% endblock %}

@@ -1,0 +1,89 @@
+{% comment %}
+i
+{
+'genres': [<AfishaGenre: AfishaGenre object>, <AfishaGenre: AfishaGenre object>],
+'name': u'\u042f \u0432\u0438\u0434\u0435\u043b, \u043a\u0430\u043a \u043c\u0430\u043c\u0430 \u0446\u0435\u043b\u043e\u0432\u0430\u043b\u0430 \u0421\u0430\u043d\u0442\u0443 \u041a\u043b\u0430\u0443\u0441\u0430',
+'poster': u'http://posters.kinoafisha.ru/26/25201-001.jpg',
+'_state': <django.db.models.base.ModelState object at 0x7f90b0d8d9d0>,
+'_film_id_cache': <Film_Deferred_actor1_actor2_actor3_actor4_actor5c544738c1e22d5b32e797594c9cfec1b: Film_Deferred_actor1_actor2_actor3_actor4_actor5c544738c1e22d5b32e797594c9cfec1b object>,
+'film_id_id': 25201L,
+'imdb': u'4,0',
+'id': 56988L
+}
+i.film_id
+{
+'country2_id': None,
+'genre2_id': 17L,
+'genre1_id': 1L,
+'_state': <django.db.models.base.ModelState object at 0x7f90b0d2d850>,
+'prokat2_id': None,
+'country_id': None,
+'company_id': None,
+'genre3_id': None,
+'imdb': u'4,0',
+'year': u'2002',
+'id': 25201L,
+'prokat1_id': None
+}
+{% endcomment %}
+<div class="item{% if not i.poster %} no-image{% endif %}">
+    <div id="subscribe_info" class="rate_color_{{ i.rating.rate }}">
+        <div class="pen_rate"><b
+                title="Репутация фильма:{% if i.rating.show_imdb %} IMDb - {{ i.rating.show_imdb }}{% endif %}{% if i.rating.rotten %} / RottenTomatoes - {{ i.rating.rotten }}{% endif %}{% if i.rating.show_ir %} / Киномэтры - {{ i.rating.show_ir }}{% endif %}{% if not i.rating.show_imdb and not i.rating.rotten and not i.rating.show_ir %} нет{% endif %}">
+            {% if i.rating.rate %}{{ i.rating.rate }}{% else %}?{% endif %}</b></div>
+    </div>
+    <div class="triangle"
+         {% if i.rating.rate == 5 %}style="border-left: 20px solid rgba(60, 179, 113, 0.8);"{% endif %}
+         {% if i.rating.rate == 4 %}style="border-left: 20px solid rgba(126, 192, 238, 0.8);"{% endif %}
+         {% if i.rating.rate == 3 %}style="border-left: 20px solid rgba(255, 218, 185, 0.8);"{% endif %}
+         {% if i.rating.rate == 2 %}style="border-left: 20px solid rgba(238, 130, 238, 0.8);"{% endif %}
+    ></div>
+    {% if i.poster %}
+        <div class="image">
+            <a href="{% url get_film i.film_id_id %}">
+                <img width="100%" src="{{ i.poster }}"/>
+            </a>
+        </div>
+    {% endif %}
+    <div class="info">
+        <span class="title">
+            <a href="{% url get_film i.film_id_id %}">{{ i.name|safe|striptags }} ({{ i.film_id.year }})</a>
+        </span>
+        <div class="rating">
+            {% if i.imdb.value %}
+                <i class="small-rating">IMDB - {{ i.imdb.value }}</i>
+            {% endif %}
+        </div>
+        <div class="meta">
+            <div class="genres">
+                {% for genre in i.genres %}
+                    {{ genre.name }}<br/>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{#<tr {% if priority == "high" %}class="first"{% endif %}>#}
+{#    <td class="title">#}
+{#        <a href="{% url get_film i.film_id_id %}">{{ i.name|safe|striptags }}</a>#}
+{#    </td>#}
+{#    <td class="image">#}
+{#        <img src="{{ i.poster }}"/>#}
+{#    </td>#}
+{#    <td class="year">#}
+{#        {{ i.film_id.year }}#}
+{#    </td>#}
+{#    <td class="genres">#}
+{#        {% for genre in i.genres %}#}
+{#            {{ genre.name }}#}
+{#        {% endfor %}#}
+{#    </td>#}
+{#    <td class="countries">#}
+{#        {% for country in i.countries %}#}
+{#            {{ country.name }}#}
+{#        {% endfor %}#}
+{#    </td>#}
+{#    <td class="imdb">#}
+{#        {{ i.imdb }}#}
+{#    </td>#}
+{#</tr>#}

@@ -1,0 +1,10 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+ <source name="IMdb" url="http://www.imdb.com/" status="1" top="0">title/tt</source>
+ <source name="Kinoafisha" url="http://www.kinoafisha.ru/" status="1" top="0">?status=1&amp;id1=</source>
+ <source name="Rutracker" url="http://rutracker.org/" status="1" top="0">forum/viewtopic.php?t=</source>
+ <source name="Kinoinfo" url="http://www.kinoinfo.ru/" status="1" top="1"></source>
+ <source name="SMS" url="http://212.113.124.238/" status="1" top="0"></source>
+ <source name="Kinomechta" url="kinomechta.com/" status="1" top="0"></source>
+ <source name="Yandex" url="http://afisha.yandex.ru/" status="1" top="0"></source>
+</data>

@@ -1,0 +1,38 @@
+<div id="film_poster" class="{{ class }}">
+    <div id="subscribe_info" class="rate_color_{{ rate }}">
+        <div class="pen_rate"><b title="Репутация фильма:{% if rate_imdb %} IMDb - {{ rate_imdb }}{% endif %}{% if rate_rotten %} / RottenTomatoes - {{ rate_rotten }}{% endif %}{% if rate_views %} / Киномэтры - {{ rate_views }}{% endif %}{% if not rate_imdb and not rate_rotten and not rate_views %} нет{% endif %}">{% if rate %}{{ rate }}{% else %}?{% endif %}</b> </div>
+    </div>
+    <div class="triangle"
+    {% if rate == 5 %}style="border-left: 20px solid rgba(60, 179, 113, 0.8);"{% endif %}
+    {% if rate == 4 %}style="border-left: 20px solid rgba(126, 192, 238, 0.8);"{% endif %}
+    {% if rate == 3 %}style="border-left: 20px solid rgba(255, 218, 185, 0.8);"{% endif %}
+    {% if rate == 2 %}style="border-left: 20px solid rgba(238, 130, 238, 0.8);"{% endif %}
+    ></div>
+    <div class="tickets_info">
+        {% if tickets.kinohod %}
+        <div class="kinohod_tickets_btn">{{ tickets.kinohod|safe }}</div>
+        {% endif %}
+        {% if tickets.rambler %}
+            <div class="rambler_tickets_btn {% if not tickets.kinohod %}tickets_btn_top{% endif %}">{{ tickets.rambler|safe }}</div>
+        {% endif %}
+    </div>
+    <div class="like_list" id="like_{{ id }}">
+        <div class="like_list__options" title="Хочу смотреть в кинотеатре"><div class="like_in_cinema"></div><div class="likes_cinema">{{ like_cinema }}</div></div>
+        <div class="like_list__options" title="Хочу посмотреть дома"><div class="like_in_home"></div><div class="likes_home">{{ like_home }}</div></div>
+        <div class="like_list__options" title="Смотрел - рекомендую"><div class="like_and_recommend"></div><div class="likes_recommend">{{ like_recom }}</div></div>
+    </div>
+    <div class="dislike_list" id="dislike_{{ id }}">
+        <div class="dislike_list__options" title="Не буду смотреть"><div class="dislike_not_be_see"></div><div class="dislikes_seen">{{ dis_seen }}</div></div>
+        <div class="dislike_list__options" title="Смотрел - не рекомендую"><div class="dislike_and_not_recommend"></div><div class="dislikes_recommend">{{ dis_recom }}</div></div>
+    </div>
+    <div class="poster_label">
+        <div class="rating"></div>
+        <div class="evaluation">
+            <div class="likes"><div class="like"></div><div class="count_likes" id="count_l_{{ id }}">{{ count_likes }}</div></div>
+            <div class="dislikes"><div class="dislike"></div><div class="count_dislikes" id="count_d_{{ id }}">{{ count_dislikes }}</div></div>
+        </div>
+        <div id="age_limit">{{ limit }}</div>
+    </div>
+    <div id="poster">{% if poster %}<a class="fancybox" href="{{ poster }}"><img src="{{ poster }}" /></a>{% endif %}</div>
+
+</div>

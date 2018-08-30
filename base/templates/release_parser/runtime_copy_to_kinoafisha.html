@@ -1,0 +1,38 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader" style="float: left;">Хронометраж и копии в Киноафишу</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+<div style="clear: both;"></div>
+
+<table class="panel_list">  
+    <th>Тип</th><th>Фильм</th><th>Текущее значение</th><th>Новое значение</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td><div>
+            {% if i.type == 1 %}
+            Хронометраж
+            {% else %}
+            Копии
+            {% endif %}
+            </div></td>
+            <td><div><a href="http://www.kinoafisha.ru/index.php3?id1={{ i.kid }}&status=1" target="_blank">{{ i.name }}</a></div></td>
+            <td><div>{{ i.current }}</div></td>
+            <td><div>{{ i.new }}</div></td>
+        </tr>
+    {% empty %}
+        <tr>
+            <td>пусто</td><td></td><td></td><td></td>
+        </tr>
+    {% endfor %}
+</table>
+<br />
+{% if p.object_list %}
+<form action="" method="post">{% csrf_token %}
+    <input type="submit" name="save" value="Запись в БД">
+</form>
+{% endif %}
+
+{% endblock %}

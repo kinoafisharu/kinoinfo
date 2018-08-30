@@ -1,0 +1,72 @@
+{% extends "mobile/base.html" %}
+{% block title %}Смотреть кино онлайн{% endblock %}
+{% load base_tags %}
+{% block script %}
+    <script type="text/javascript">
+     $(document).ready(function(){
+        $(".fancybox").fancybox();
+        
+        $("#descript").fancybox();
+        {% if first_load_film %}
+            get_film({{ first_load_film }}, 1);
+        {% else %}
+            $('#film_info').hide()
+            $('#loader').html('К сожалению, таких фильмов пока нет, попробуйте правильнее подобрать фильтры.')
+        {% endif %}
+
+    });
+    </script>
+{% endblock %}
+
+
+{% block content %}    
+    {% mobile_header %}
+    {% ki_main_menu_mobile %}
+
+
+<div class="art-postcontent-width">
+    <h1>Фильмы он-лайн</h1>
+
+    <div class="film_info-main" style="background: #F2F2F2;">
+        {% film_data_mobile 'online' %}
+
+        <br />
+        <div class="separator_line"></div>
+        <br />
+
+        
+        <form action="" method="post">{% csrf_token %}
+            <select name="selected_countries" onchange="this.form.submit();" class="film_filter">
+                {% for i in countries %}
+                    <option value="{{ i }}" {% if selected_countries == i %}selected{% endif %}>{{ i }}</option>
+                {% endfor %}
+            </select>
+            <select name="selected_years" onchange="this.form.submit();" class="film_filter">
+                {% for i in years %}
+                <option value="{{ i }}" {% if selected_years == i %}selected{% endif %}>{{ i }}</option>
+                {% endfor %} 
+            </select>
+        </form>
+
+        <br />
+        
+        {% for i in data %}
+            <div onclick="get_film({{ i.kid }}, 1)" id="release_film_id_{{ i.kid }}" class="release_film">
+                {% if i.rate == 0 %}
+                    <b class="release_film_rate rate_0" >?</b> 
+                    <b class="release_film_rate_angle angle_0"></b>
+                    {% else %}
+                    <b class="release_film_rate rate_{{ i.rate }}" title="Репутация фильма:{% if i.show_imdb %} IMDb - {{ i.show_imdb }}{% endif %}{% if i.rotten %} / RottenTomatoes - {{ i.rotten }}{% endif %}{% if i.show_ir %} / Киномэтры - {{ i.show_ir }}{% endif %}{% if not i.show_imdb and not i.rotten and not i.show_ir %} нет{% endif %}">{{ i.rate }}</b> 
+                    <b class="release_film_rate_angle angle_{{ i.rate }}"></b>
+                {% endif %}
+
+                <b id="release_film_name" class="release_film_name" >{{ i.name|safe }}</b>
+            </div>
+        {% endfor %}    
+        
+
+    </div>
+    
+</div>
+
+{% endblock %}

@@ -1,0 +1,87 @@
+<div class="left_banner">
+    <div class="left_banner_title">Реклама</div>
+    <div class="left_banner_content">
+        {{ swf_object|safe }}
+    </div>
+    
+
+    {% if request.user.is_superuser %}
+    <a class="left_banner_editor">Управление рекламой</a>
+    
+    <div class="left_banner_editor_bl">
+        <script type="text/javascript" src="/static/base/js/jquery.form.js"></script>
+        <link rel="stylesheet" href="/static/base/css/datepicker.css" type="text/css" media="screen" />
+        <script type="text/javascript">
+            $(document).ready(function(){
+                $('.lbe_new_datefrom, .lbe_new_dateto').datepicker({
+                    altFormat: "yy-mm-dd",
+                    dateFormat: 'yy-mm-dd',
+                    changeMonth: true,
+                    changeYear: true,
+                    firstDay: 1
+                });
+            });
+        </script>
+
+        <b>Управление левым блоком рекламы</b>
+        <input type="button" value="Добавить" class="lbe_new_btn" />
+        <div class="lbe_list">
+            Загрузка...
+        </div>
+        
+        <div class="lbe_new">
+            <form class="lbe_new_form" action="{% url add_left_banner %}" method="post" enctype="multipart/form-data" id="form">{% csrf_token %}
+                <ul>
+                    <li>Название:</li>
+                    <li><input type="text" value="" class="lbe_new_name" size="30" name="lbe_new_name" /></li>
+                </ul>
+                <ul>
+                    <li>Файл:</li>
+                    <li><input type="file" class="lbe_new_file" name="lbe_new_file" /></li>
+                </ul>
+                <ul>
+                    <li>URL:</li>
+                    <li><input type="text" value="" class="lbe_new_url" size="50" name="lbe_new_url" /></li>
+                </ul>
+                <ul>
+                    <li>Показ от:</li>
+                    <li><input type="text" value="" class="lbe_new_datefrom" size="10" name="lbe_new_datefrom"/> 
+                        до <input type="text" value="" class="lbe_new_dateto" size="10" name="lbe_new_dateto" /></li>
+                </ul>
+                <ul>
+                    <li>Площадки:</li>
+                    <li>
+                        <input type="checkbox" value='5' class="lbe_new_sites" name="lbe_new_sites" checked /> kinoafisha.ru
+                    </li>
+                </ul>
+                <ul>
+                    <li></li>
+                    <li>
+                        <input type="checkbox" value='1' class="lbe_new_sites" name="lbe_new_sites" /> kinoinfo.ru
+                    </li>
+                </ul>
+                <ul>
+                    <li>Страна:</li>
+                    <li class="lbe_new_target_country"></li>
+                </ul>
+                <ul>
+                    <li>Город:</li>
+                    <li class="lbe_new_target_city"></li>
+                </ul>
+                
+                <br /><br />
+                <input type="hidden" value="0" name="lbe_new_id" class="lbe_new_id" />
+                <input type="button" value="Отмена" class="lbe_new_cancel" />
+                <input type="button" value="Сохранить" class="lbe_new_add" />
+                <span class="lbe_load"></span>
+                <input type="submit" name="lbe_upld" value="" style="display: none;"/>
+                <div class="clear"></div>
+            </form>
+            <div class="lbe_new_error"></div>
+        </div>
+        
+    </div>
+
+    {% endif %}
+</div>
+

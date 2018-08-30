@@ -1,0 +1,58 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+{% block script %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.fancy_slide').click(function(){
+            var txt = $(this).attr('src')
+            $('.letsget_imgs').val(txt).show()
+        });
+    });
+    
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_note", "language": "en", "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": false, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "wordcount, paste", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+{% if current_site.domain == 'vladaalfimovdesign.com.au' %}
+    {% vlada_top_menu %}
+    {% vlada_tools_menu %}
+{% endif %}
+
+ 
+<div class="art-postcontent-width">
+    <div class="edit_btns">
+    {% if user.is_superuser or request.is_admin %}
+    <span class="add_photos edit_btn">Add Images</span>
+    {% endif %}
+    </div>
+
+    {% if user.is_superuser or request.is_admin %}
+    <div class="organization_slides org_fields">
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <label for="id_slides">File:</label> <input type="file" name="slides" id="id_slides" multiple />
+        <br /><br />
+        <input type="submit" value="Save" class="organization_slides_accept_btn" name="photo_add" />
+        <input type="button" value="Cancel" class="organization_slides_cancel_btn" />
+        </form>
+    </div>
+    {% endif %}
+    
+    
+    <input type="text" value="" class="letsget_imgs" style="display: none;" size="90" />
+    
+    {% for i in files %}
+    <span id="g{{ i.2 }}">
+        <div id="film_slides">
+        <div class="slide"><img src="http://{{ current_site.domain }}/upload{{ i.0 }}" class="fancy_slide" style="cursor: pointer;"/><span id="{{ i.1 }}" class="letsget_img_d" title="Delete photo" style="top:0;"></span></div>
+        </div>
+    </span>
+    {% endfor %}
+
+</div>
+
+{% endblock %}

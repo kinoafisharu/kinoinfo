@@ -1,0 +1,2157 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2015-12-18 15:52+0300\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: api/forms.py:19 api/forms.py:39 api/forms.py:44
+#: base/templates/user/profile.html:44
+#: kinoafisha_ua/templates/user/kua_profile.html:35
+#: kinoafisha_ua/templates/user/kua_user_details.html:22
+#: user_registration/forms.py:31
+msgid "Город"
+msgstr "City"
+
+#: api/forms.py:20 base/templates/user/profile.html:37
+#: kinoafisha_ua/templates/user/kua_profile.html:33
+#: kinoafisha_ua/templates/user/kua_user_details.html:20
+#: user_registration/forms.py:32
+msgid "Страна"
+msgstr "Country"
+
+#: api/forms.py:46
+msgid "ДЛЯ ВСЕХ"
+msgstr "FOR ALL"
+
+#: base/feeds.py:169
+#, fuzzy, python-format
+msgid "Новости %s"
+msgstr "News"
+
+#: base/models_choices.py:165
+msgid "Другое"
+msgstr "Other"
+
+#: base/models_choices.py:166
+msgid "Организация"
+msgstr "Organization"
+
+#: base/models_choices.py:167
+msgid "Персона"
+msgstr "Person"
+
+#: base/models_choices.py:168
+msgid "Фильм"
+msgstr "Film"
+
+#: base/models_choices.py:169
+msgid "Меню"
+msgstr "Menu"
+
+#: base/models_choices.py:170
+msgid "ПодМеню"
+msgstr "SubMenu"
+
+#: base/models_choices.py:171
+msgid "Блог"
+msgstr "Blog"
+
+#: base/models_choices.py:172
+msgid "Галерея"
+msgstr "Photo Gallery"
+
+#: base/models_choices.py:173 base/templates/mobile/user/profile_job.html:50
+#: base/templates/mobile/user/profile_menu.html:78
+#: base/templates/user/profile_job.html:56
+#: base/templates/user/profile_job_vlada.html:45
+#: base/templates/user/profile_menu.html:50
+msgid "Работа"
+msgstr "Job"
+
+#: base/models_choices.py:174
+msgid "События"
+msgstr ""
+
+#: base/models_choices.py:175
+#, fuzzy
+msgid "Клиенты"
+msgstr "Guide"
+
+#: base/models_choices.py:179 base/templates/mobile/user/profile_new.html:133
+#: base/templates/mobile/user/profile_new.html:143
+#: base/templates/user/profile_new.html:228
+#: base/templates/user/profile_new.html:241
+#: base/templates/user/profile_new.html:274
+#: base/templates/user/profile_new_vlada.html:179
+#: base/templates/user/profile_new_vlada.html:184
+#: base/templates/user/profile_new_vlada.html:199
+msgid "Всем"
+msgstr "Public"
+
+#: base/models_choices.py:180 base/templates/mobile/user/profile_new.html:133
+#: base/templates/mobile/user/profile_new.html:143
+#: base/templates/user/profile_new.html:228
+#: base/templates/user/profile_new.html:241
+#: base/templates/user/profile_new.html:273
+#: base/templates/user/profile_new_vlada.html:179
+#: base/templates/user/profile_new_vlada.html:184
+#: base/templates/user/profile_new_vlada.html:198
+msgid "Только мне"
+msgstr "Private"
+
+#: base/models_choices.py:264
+msgid "за 5 минут"
+msgstr "5 minutes before"
+
+#: base/models_choices.py:265
+msgid "за 15 минут"
+msgstr "15 minutes before"
+
+#: base/models_choices.py:266
+msgid "за 30 минут"
+msgstr "30 minutes before"
+
+#: base/models_choices.py:267
+msgid "за 1 час"
+msgstr "1 hour before"
+
+#: base/models_choices.py:268
+msgid "за 2 часа"
+msgstr "2 hour before"
+
+#: base/models_choices.py:269
+msgid "за 3 часа"
+msgstr "3 hour before"
+
+#: base/models_choices.py:270
+msgid "за 4 часа"
+msgstr "4 hour before"
+
+#: base/models_choices.py:271
+msgid "за 5 часов"
+msgstr "5 hour before"
+
+#: base/models_choices.py:272
+msgid "за 1 сутки"
+msgstr "1 day before"
+
+#: base/models_choices.py:283
+msgid "Текст / Блог"
+msgstr "Text / Blog"
+
+#: base/models_choices.py:284
+msgid "Фотогалерея"
+msgstr "Photo Gallery"
+
+#: base/templates/404.html:4 base/templates/404.html.py:9
+msgid "Такой страницы не существует или она была удалена"
+msgstr "This page does not exist or has been removed"
+
+#: base/templates/base.html:164
+msgid "На Вашем счету"
+msgstr "Your money"
+
+#: base/templates/base.html:164
+#: base/templates/mobile/user/profile_new.html:106
+#: base/templates/user/profile.html:51
+#: base/templates/user/profile_new.html:189
+msgid "руб"
+msgstr "RUR"
+
+#: base/templates/base.html:165
+msgid "р"
+msgstr "RUR"
+
+#: base/templates/base.html:184 base/templates/mobile/user/email.html:8
+#: base/templates/mobile/user/livejournal.html:8
+#: base/templates/pmprepare/user/login.html:33
+#: base/templates/user/email.html:8 base/templates/user/livejournal.html:8
+#: kinoafisha_ua/templates/user/kua_email.html:8
+#: kinoafisha_ua/templates/user/kua_livejournal.html:8
+msgid "Авторизоваться"
+msgstr "Login"
+
+#: base/templates/base.html:217
+#: kinoafisha_ua/templates/feedback/kua_feedback.html:3
+#: kinoafisha_ua/templates/feedback/kua_feedback.html:7
+msgid "Обратная связь"
+msgstr "Feedback"
+
+#: base/templates/base.html:232 kinoafisha_ua/templates/kua_base.html:146
+msgid "ИСКАТЬ"
+msgstr "SEARCH"
+
+#: base/templates/base.html:247
+msgid "Новости"
+msgstr "News"
+
+#: base/templates/base.html:338
+msgid "МЕНЮ"
+msgstr "MENU"
+
+#: base/templates/base_vlada.html:86
+msgid "Фон"
+msgstr "Background"
+
+#: base/templates/base_vlada.html:87
+#: base/templates/vladaalfimov/vlada_menu.html:38
+#: base/templates/vladaalfimov/vlada_tools_menu.html:4
+msgid "Мои инструменты"
+msgstr "My Tools"
+
+#: base/templates/messanger.html:10
+msgid "Все диалоги"
+msgstr "All dialogs"
+
+#: base/templates/messanger.html:11
+msgid "Новый диалог"
+msgstr "New dialog"
+
+#: base/templates/messanger.html:18
+msgid "Поиск собеседников"
+msgstr "Search users"
+
+#: base/templates/messanger.html:20 base/templates/organizations/search.html:4
+#: base/templates/organizations/search.html:21
+msgid "Поиск"
+msgstr "Search"
+
+#: base/templates/messanger.html:25
+msgid "Получатели"
+msgstr "Recipients"
+
+#: base/templates/messanger.html:31 base/templates/messanger.html.py:42
+#: base/templates/imiagroup/answers_translate_admin.html:99
+#: base/templates/imiagroup/project_discussion.html:75
+#: base/templates/imiagroup/questions_translate_admin.html:124
+#: imiagroup/ajax.py:312 imiagroup/ajax.py:423
+#: kinoafisha_ua/templates/feedback/kua_feedback.html:27
+msgid "Отправить"
+msgstr "Send"
+
+#: base/templates/api/change_bg_banner.html:22
+#: base/templates/api/change_bg_banner.html:78
+#: base/templates/api/change_bg_banner.html:98
+#: base/templates/imiagroup/budget.html:120
+#: base/templates/imiagroup/projects.html:135
+#: base/templates/letsget/main.html:71 base/templates/letsget/main.html:134
+#: base/templates/letsget/main.html:149 base/templates/letsget/main.html:163
+#: base/templates/letsget/main.html:176 base/templates/letsget/main.html:195
+#: base/templates/letsget/main.html:215 base/templates/letsget/main.html:235
+#: base/templates/letsget/main.html:260 base/templates/letsget/orgs.html:59
+#: base/templates/letsget/orgs.html:123 base/templates/letsget/orgs.html:138
+#: base/templates/letsget/orgs.html:152 base/templates/letsget/orgs.html:164
+#: base/templates/letsget/orgs.html:241 base/templates/letsget/orgs.html:261
+#: base/templates/letsget/orgs.html:281 base/templates/letsget/orgs.html:306
+#: base/templates/news/news.html:43 base/templates/news/news.html.py:110
+#: base/templates/news/news.html:118 base/templates/news/news.html.py:155
+#: base/templates/news/news.html:166 base/templates/news/news.html.py:196
+#: base/templates/news/news.html:216 base/templates/pmprepare/index.html:40
+#: base/templates/pmprepare/user/profile.html:33
+#: base/templates/pmprepare/user/profile.html:77
+#: base/templates/pmprepare/user/profile.html:98
+#: base/templates/pmprepare/user/profile.html:109
+#: base/templates/pmprepare/user/profile.html:140
+#: base/templates/user/profile_job_vlada.html:114
+#: base/templates/user/profile_new.html:39
+#: base/templates/user/profile_new.html:53
+#: base/templates/user/profile_new.html:99
+#: base/templates/user/profile_new.html:124
+#: base/templates/user/profile_new.html:135
+#: base/templates/user/profile_new.html:166
+#: base/templates/user/profile_new.html:180
+#: base/templates/user/profile_new.html:257
+#: base/templates/user/profile_new.html:278
+#: base/templates/user/profile_new.html:328
+#: base/templates/user/profile_new.html:363
+#: base/templates/user/profile_new_vlada.html:32
+#: base/templates/user/profile_new_vlada.html:46
+#: base/templates/user/profile_new_vlada.html:93
+#: base/templates/user/profile_new_vlada.html:114
+#: base/templates/user/profile_new_vlada.html:125
+#: base/templates/user/profile_new_vlada.html:156
+#: base/templates/user/profile_new_vlada.html:170
+#: base/templates/user/profile_new_vlada.html:203
+#: base/templates/user/profile_new_vlada.html:230
+#: base/templates/user/user_details.html:70
+#: base/templates/vladaalfimov/about.html:71
+#: base/templates/vladaalfimov/about.html:136
+#: base/templates/vladaalfimov/about.html:152
+#: base/templates/vladaalfimov/about.html:166
+#: base/templates/vladaalfimov/about.html:179
+#: base/templates/vladaalfimov/about.html:198
+#: base/templates/vladaalfimov/about.html:218
+#: base/templates/vladaalfimov/about.html:238
+#: base/templates/vladaalfimov/about.html:263
+#: base/templates/vladaalfimov/about_new.html:63
+#: base/templates/vladaalfimov/about_new.html:80
+#: base/templates/vladaalfimov/about_new.html:109
+#: base/templates/vladaalfimov/about_new.html:135
+#: base/templates/vladaalfimov/about_new.html:157
+#: base/templates/vladaalfimov/about_new.html:212
+#: base/templates/vladaalfimov/about_new.html:228
+#: base/templates/vladaalfimov/about_new.html:241
+#: base/templates/vladaalfimov/about_new.html:254
+#: base/templates/vladaalfimov/blog_post.html:50
+#: base/templates/vladaalfimov/blog_post.html:98
+#: base/templates/vladaalfimov/blog_post.html:132
+#: base/templates/vladaalfimov/blog_post.html:142
+#: base/templates/vladaalfimov/blog_post.html:165
+#: base/templates/vladaalfimov/blog_post.html:184
+#: base/templates/vladaalfimov/change_bg_banner.html:40
+#: base/templates/vladaalfimov/change_bg_banner.html:58
+#: base/templates/vladaalfimov/gallery_new.html:51
+#: base/templates/vladaalfimov/gallery_new.html:95
+#: base/templates/vladaalfimov/main_new.html:107
+#: base/templates/vladaalfimov/vlada_left_menu.html:34
+#: base/templates/vladaalfimov/vlada_menu.html:66 imiagroup/ajax.py:77
+#: kinoafisha_ua/templates/articles/kua_add_article.html:28
+#: kinoafisha_ua/templates/user/kua_user_details.html:75
+msgid "Сохранить"
+msgstr "Save"
+
+#: base/templates/imiagroup/answers_translate_admin.html:37
+#: base/templates/imiagroup/answers_translate_admin.html:67
+#: base/templates/imiagroup/question.html:70
+#: base/templates/imiagroup/question_answer.html:101 imiagroup/ajax.py:490
+msgid "отвечает"
+msgstr "answers"
+
+#: base/templates/imiagroup/answers_translate_admin.html:37
+#: base/templates/imiagroup/question_answer.html:101
+msgid "перейти к вопросу"
+msgstr "go to question"
+
+#: base/templates/imiagroup/answers_translate_admin.html:54
+#: base/templates/imiagroup/questions_translate_admin.html:60
+msgid "Это оригинал"
+msgstr "This is the original"
+
+#: base/templates/imiagroup/answers_translate_admin.html:54
+#: base/templates/imiagroup/questions_translate_admin.html:60
+msgid "перевод не требуеться"
+msgstr "translation not required"
+
+#: base/templates/imiagroup/answers_translate_admin.html:55
+#: base/templates/imiagroup/question_answer.html:115
+msgid "Редактировать ответ"
+msgstr "Edit Answer"
+
+#: base/templates/imiagroup/answers_translate_admin.html:57
+#: base/templates/imiagroup/questions_translate_admin.html:63
+msgid "Перевод"
+msgstr "Translation"
+
+#: base/templates/imiagroup/answers_translate_admin.html:85
+#: base/templates/imiagroup/questions_translate_admin.html:105
+msgid "Редактировать перевод"
+msgstr "Edit Translation"
+
+#: base/templates/imiagroup/answers_translate_admin.html:87
+#: base/templates/imiagroup/question.html:84
+#: base/templates/imiagroup/questions_translate_admin.html:107
+#: base/templates/letsget/main.html:91 base/templates/letsget/main.html:100
+#: base/templates/letsget/main.html:140 base/templates/letsget/main.html:156
+#: base/templates/letsget/main.html:169 base/templates/letsget/orgs.html:80
+#: base/templates/letsget/orgs.html:88 base/templates/letsget/orgs.html:129
+#: base/templates/letsget/orgs.html:145 base/templates/letsget/orgs.html:158
+#: base/templates/mobile/user/profile_new.html:33
+#: base/templates/mobile/user/profile_new.html:95
+#: base/templates/mobile/user/profile_new.html:136
+#: base/templates/mobile/user/profile_new.html:143
+#: base/templates/pmprepare/user/profile.html:39
+#: base/templates/pmprepare/user/profile.html:120
+#: base/templates/user/profile.html:20 base/templates/user/profile.html:26
+#: base/templates/user/profile.html:30 base/templates/user/profile.html:34
+#: base/templates/user/profile.html:39 base/templates/user/profile.html:41
+#: base/templates/user/profile.html:45
+#: base/templates/user/profile_job_vlada.html:93
+#: base/templates/user/profile_new.html:45
+#: base/templates/user/profile_new.html:146
+#: base/templates/user/profile_new.html:231
+#: base/templates/user/profile_new.html:241
+#: base/templates/user/profile_new_vlada.html:38
+#: base/templates/user/profile_new_vlada.html:136
+#: base/templates/user/profile_new_vlada.html:179
+#: base/templates/user/profile_new_vlada.html:184
+#: base/templates/vladaalfimov/about.html:93
+#: base/templates/vladaalfimov/about.html:102
+#: base/templates/vladaalfimov/about.html:143
+#: base/templates/vladaalfimov/about.html:159
+#: base/templates/vladaalfimov/about.html:172
+#: base/templates/vladaalfimov/about_new.html:170
+#: base/templates/vladaalfimov/about_new.html:177
+#: base/templates/vladaalfimov/about_new.html:219
+#: base/templates/vladaalfimov/about_new.html:235
+#: base/templates/vladaalfimov/about_new.html:248
+#: kinoafisha_ua/templates/user/kua_profile.html:22
+#: kinoafisha_ua/templates/user/kua_profile.html:27
+#: kinoafisha_ua/templates/user/kua_profile.html:30
+#: kinoafisha_ua/templates/user/kua_profile.html:32
+#: kinoafisha_ua/templates/user/kua_profile.html:34
+#: kinoafisha_ua/templates/user/kua_profile.html:36
+#: kinoafisha_ua/templates/user/kua_user_details.html:9
+#: kinoafisha_ua/templates/user/kua_user_details.html:14
+#: kinoafisha_ua/templates/user/kua_user_details.html:17
+#: kinoafisha_ua/templates/user/kua_user_details.html:19
+#: kinoafisha_ua/templates/user/kua_user_details.html:21
+#: kinoafisha_ua/templates/user/kua_user_details.html:23
+msgid "Нет"
+msgstr "No"
+
+#: base/templates/imiagroup/answers_translate_admin.html:89
+#: base/templates/imiagroup/questions_translate_admin.html:109
+msgid "Добавить перевод"
+msgstr "Add translation"
+
+#: base/templates/imiagroup/answers_translate_admin.html:97
+msgid "Ответ"
+msgstr "Answer"
+
+#: base/templates/imiagroup/answers_translate_admin.html:99
+#: base/templates/imiagroup/budget.html:121
+#: base/templates/imiagroup/budget.html:154
+#: base/templates/imiagroup/project_discussion.html:76
+#: base/templates/imiagroup/projects.html:136
+#: base/templates/imiagroup/questions_translate_admin.html:124
+#: base/templates/letsget/main.html:72 base/templates/letsget/main.html:135
+#: base/templates/letsget/main.html:150 base/templates/letsget/main.html:164
+#: base/templates/letsget/main.html:177 base/templates/letsget/main.html:196
+#: base/templates/letsget/main.html:216 base/templates/letsget/main.html:236
+#: base/templates/letsget/main.html:261 base/templates/letsget/orgs.html:60
+#: base/templates/letsget/orgs.html:124 base/templates/letsget/orgs.html:139
+#: base/templates/letsget/orgs.html:153 base/templates/letsget/orgs.html:165
+#: base/templates/letsget/orgs.html:242 base/templates/letsget/orgs.html:262
+#: base/templates/letsget/orgs.html:282 base/templates/letsget/orgs.html:307
+#: base/templates/mobile/user/accounts_merger.html:35
+#: base/templates/news/news.html:44 base/templates/news/news.html.py:156
+#: base/templates/news/news.html:167 base/templates/news/news.html.py:197
+#: base/templates/news/news.html:217 base/templates/pmprepare/index.html:41
+#: base/templates/pmprepare/user/accounts_merger.html:42
+#: base/templates/pmprepare/user/profile.html:34
+#: base/templates/pmprepare/user/profile.html:78
+#: base/templates/pmprepare/user/profile.html:99
+#: base/templates/pmprepare/user/profile.html:110
+#: base/templates/pmprepare/user/profile.html:141
+#: base/templates/user/accounts_merger.html:35
+#: base/templates/user/accounts_merger_vlada.html:38
+#: base/templates/user/profile_new.html:40
+#: base/templates/user/profile_new.html:54
+#: base/templates/user/profile_new.html:100
+#: base/templates/user/profile_new.html:125
+#: base/templates/user/profile_new.html:136
+#: base/templates/user/profile_new.html:167
+#: base/templates/user/profile_new.html:181
+#: base/templates/user/profile_new.html:195
+#: base/templates/user/profile_new.html:258
+#: base/templates/user/profile_new.html:279
+#: base/templates/user/profile_new.html:328
+#: base/templates/user/profile_new.html:364
+#: base/templates/user/profile_new_vlada.html:33
+#: base/templates/user/profile_new_vlada.html:47
+#: base/templates/user/profile_new_vlada.html:94
+#: base/templates/user/profile_new_vlada.html:115
+#: base/templates/user/profile_new_vlada.html:126
+#: base/templates/user/profile_new_vlada.html:157
+#: base/templates/user/profile_new_vlada.html:171
+#: base/templates/user/profile_new_vlada.html:204
+#: base/templates/user/profile_new_vlada.html:230
+#: base/templates/vladaalfimov/about.html:72
+#: base/templates/vladaalfimov/about.html:137
+#: base/templates/vladaalfimov/about.html:153
+#: base/templates/vladaalfimov/about.html:167
+#: base/templates/vladaalfimov/about.html:180
+#: base/templates/vladaalfimov/about.html:199
+#: base/templates/vladaalfimov/about.html:219
+#: base/templates/vladaalfimov/about.html:239
+#: base/templates/vladaalfimov/about.html:264
+#: base/templates/vladaalfimov/about_new.html:64
+#: base/templates/vladaalfimov/about_new.html:81
+#: base/templates/vladaalfimov/about_new.html:110
+#: base/templates/vladaalfimov/about_new.html:136
+#: base/templates/vladaalfimov/about_new.html:158
+#: base/templates/vladaalfimov/about_new.html:213
+#: base/templates/vladaalfimov/about_new.html:229
+#: base/templates/vladaalfimov/about_new.html:242
+#: base/templates/vladaalfimov/about_new.html:255
+#: base/templates/vladaalfimov/blog_post.html:51
+#: base/templates/vladaalfimov/blog_post.html:133
+#: base/templates/vladaalfimov/blog_post.html:143
+#: base/templates/vladaalfimov/blog_post.html:166
+#: base/templates/vladaalfimov/blog_post.html:185
+#: base/templates/vladaalfimov/gallery_new.html:52
+#: base/templates/vladaalfimov/main_new.html:107
+#: base/templates/vladaalfimov/vlada_left_menu.html:22
+#: base/templates/vladaalfimov/vlada_left_menu.html:35
+#: base/templates/vladaalfimov/vlada_menu.html:50
+#: base/templates/vladaalfimov/vlada_menu.html:67
+#: base/templates/vladaalfimov/vlada_tools_menu.html:17 imiagroup/ajax.py:78
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:34
+msgid "Отмена"
+msgstr "Cancel"
+
+#: base/templates/imiagroup/budget.html:4
+#: base/templates/imiagroup/budget.html:46
+#: base/templates/imiagroup/project_discussion.html:35
+msgid "Проект"
+msgstr "Project"
+
+#: base/templates/imiagroup/budget.html:4
+#: base/templates/imiagroup/budget.html:52
+#: base/templates/imiagroup/projects.html:96
+msgid "Бюджет"
+msgstr "Budget"
+
+#: base/templates/imiagroup/budget.html:32
+msgid "Дней"
+msgstr "Days"
+
+#: base/templates/imiagroup/budget.html:34
+#: base/templates/imiagroup/budget.html:54
+msgid "Всего"
+msgstr "Total"
+
+#: base/templates/imiagroup/budget.html:36
+#: base/templates/imiagroup/budget.html:56
+msgid "Факт"
+msgstr "Fact"
+
+#: base/templates/imiagroup/budget.html:69
+msgid "Этап"
+msgstr "Stage"
+
+#: base/templates/imiagroup/budget.html:70
+msgid "Старт"
+msgstr "Start"
+
+#: base/templates/imiagroup/budget.html:71
+msgid "Конец"
+msgstr "End"
+
+#: base/templates/imiagroup/budget.html:72
+#: base/templates/imiagroup/projects.html:115
+msgid "Участники"
+msgstr "Members"
+
+#: base/templates/imiagroup/budget.html:73
+msgid "Лимит"
+msgstr "Limit"
+
+#: base/templates/imiagroup/budget.html:74
+msgid "Использ."
+msgstr "Used"
+
+#: base/templates/imiagroup/budget.html:75
+#: base/templates/user/profile_job_vlada.html:85
+msgid "Оплачено"
+msgstr "Paid"
+
+#: base/templates/imiagroup/budget.html:76
+msgid "Не оплачено"
+msgstr "Unpaid"
+
+#: base/templates/imiagroup/budget.html:83
+msgid "Показать подробнее"
+msgstr "Show Details"
+
+#: base/templates/imiagroup/budget.html:98
+msgid "Название этапа"
+msgstr "Stage Name"
+
+#: base/templates/imiagroup/budget.html:103
+msgid "Дата начала"
+msgstr "Start Date"
+
+#: base/templates/imiagroup/budget.html:108
+msgid "Дата окончания"
+msgstr "End Date"
+
+#: base/templates/imiagroup/budget.html:113
+msgid "Ограничение бюджета для этапа"
+msgstr "Limiting budget for stage"
+
+#: base/templates/imiagroup/budget.html:127
+msgid "Создать новый этап"
+msgstr "Create New Stage"
+
+#: base/templates/imiagroup/budget.html:128
+#: base/templates/imiagroup/projects.html:143
+msgid "Удалить отмеченные"
+msgstr "Delete Selected"
+
+#: base/templates/imiagroup/budget.html:128
+msgid "Вы действительно хотите удалить этап"
+msgstr "You really want to delete the stage"
+
+#: base/templates/imiagroup/budget.html:135
+msgid "Неоплаченная сумма"
+msgstr "Outstanding Amount"
+
+#: base/templates/imiagroup/budget.html:138
+msgid "Заметка"
+msgstr "Note"
+
+#: base/templates/imiagroup/budget.html:141
+msgid "Номер инвойса"
+msgstr "Invoice Number"
+
+#: base/templates/imiagroup/budget.html:144
+msgid "Директоры"
+msgstr "Directors"
+
+#: base/templates/imiagroup/budget.html:149
+msgid "ред.имя"
+msgstr "edit name"
+
+#: base/templates/imiagroup/budget.html:152
+msgid "Новое имя директора"
+msgstr "Director new name"
+
+#: base/templates/imiagroup/budget.html:152
+msgid "инвойс кому"
+msgstr "invoice bill to"
+
+#: base/templates/imiagroup/budget.html:159
+msgid "Создать инвойс"
+msgstr "Create Invoice"
+
+#: base/templates/imiagroup/project_discussion.html:19
+#: base/templates/user/profile_job_vlada.html:31 imiagroup/ajax.py:79
+msgid "осталось символов"
+msgstr "remaining characters"
+
+#: base/templates/imiagroup/project_discussion.html:40
+msgid "Задание"
+msgstr "Task"
+
+#: base/templates/imiagroup/project_discussion.html:55
+msgid "Комментарии"
+msgstr "Comments"
+
+#: base/templates/imiagroup/project_discussion.html:55
+#: base/templates/news/main.html:44 base/templates/news/main.html.py:85
+#: base/templates/news/news.html:50 base/templates/news/news.html.py:69
+#: base/templates/vladaalfimov/blog.html:48
+#: base/templates/vladaalfimov/blog.html:59
+#: base/templates/vladaalfimov/blog_post.html:57
+#: base/templates/vladaalfimov/blog_post.html:69
+msgid "Добавить"
+msgstr "Add"
+
+#: base/templates/imiagroup/project_discussion.html:60
+msgid "Новый комментарий"
+msgstr "New comment"
+
+#: base/templates/imiagroup/project_discussion.html:65
+msgid "Уведомлять об ответах на комментарий"
+msgstr "Notify me about answers to a comment"
+
+#: base/templates/imiagroup/project_discussion.html:67
+msgid "Введите Ваш E-Mail"
+msgstr "Enter email address"
+
+#: base/templates/imiagroup/projects.html:4
+msgid "Проекты"
+msgstr "Projects"
+
+#: base/templates/imiagroup/projects.html:38
+#: base/templates/imiagroup/projects.html:86
+msgid "Дата старта"
+msgstr "Start Date"
+
+#: base/templates/imiagroup/projects.html:39
+#: base/templates/letsget/main.html:110 base/templates/letsget/orgs.html:99
+#: base/templates/vladaalfimov/about.html:112
+#: base/templates/vladaalfimov/about_new.html:188
+msgid "Название"
+msgstr "Name"
+
+#: base/templates/imiagroup/projects.html:40
+#: base/templates/imiagroup/projects.html:91
+msgid "Дата релиза"
+msgstr "Release Date"
+
+#: base/templates/imiagroup/projects.html:41
+#: base/templates/imiagroup/projects.html:106
+msgid "Директора"
+msgstr "Directors"
+
+#: base/templates/imiagroup/projects.html:42
+msgid "ПланБюджет"
+msgstr "PlanBudget"
+
+#: base/templates/imiagroup/projects.html:43
+msgid "ФактБюджет"
+msgstr "FactBudget"
+
+#: base/templates/imiagroup/projects.html:76
+msgid "Название проекта"
+msgstr "Project Name"
+
+#: base/templates/imiagroup/projects.html:99
+msgid "Австралийский доллар"
+msgstr "Australian Dollar"
+
+#: base/templates/imiagroup/projects.html:100
+#, fuzzy
+msgid "Новозеландский доллар"
+msgstr "Australian Dollar"
+
+#: base/templates/imiagroup/projects.html:101
+msgid "Российский рубль"
+msgstr "Russian Ruble"
+
+#: base/templates/imiagroup/projects.html:111
+#: base/templates/imiagroup/projects.html:120
+#: base/templates/letsget/main.html:144 base/templates/letsget/main.html:146
+#: base/templates/letsget/orgs.html:133 base/templates/letsget/orgs.html:135
+#: base/templates/pmprepare/user/profile.html:129
+#: base/templates/user/profile_new.html:155
+#: base/templates/user/profile_new_vlada.html:145
+#: base/templates/vladaalfimov/about.html:147
+#: base/templates/vladaalfimov/about.html:149
+#: base/templates/vladaalfimov/about_new.html:223
+#: base/templates/vladaalfimov/about_new.html:225
+#: base/templates/vladaalfimov/vlada_left_menu.html:32
+#: base/templates/vladaalfimov/vlada_menu.html:64
+msgid "Добавить еще"
+msgstr "Add more"
+
+#: base/templates/imiagroup/projects.html:124
+msgid "Уведомлять по E-Mail"
+msgstr "Notify by E-Mail"
+
+#: base/templates/imiagroup/projects.html:128
+msgid "Уведомлять по SMS"
+msgstr "Notify by SMS"
+
+#: base/templates/imiagroup/projects.html:142
+msgid "Создать новый проект"
+msgstr "Create New Project"
+
+#: base/templates/imiagroup/projects.html:143
+msgid "Вы действительно хотите удалить проект"
+msgstr "You really want to delete the project"
+
+#: base/templates/imiagroup/question.html:37
+#: base/templates/imiagroup/question_answer.html:71
+#: base/templates/imiagroup/questions_translate_admin.html:37
+#: base/templates/imiagroup/questions_translate_admin.html:73
+#: imiagroup/ajax.py:390
+msgid "спрашивает"
+msgstr "asks"
+
+#: base/templates/imiagroup/question.html:59
+msgid "Ответить"
+msgstr "Answer"
+
+#: base/templates/imiagroup/question.html:63
+#: base/templates/imiagroup/question_answer.html:4
+msgid "Ответы"
+msgstr "Answers"
+
+#: base/templates/imiagroup/question_answer.html:4
+msgid "Вопросы"
+msgstr "Questions"
+
+#: base/templates/imiagroup/question_answer.html:33
+msgid "Все вопросы"
+msgstr "All Questions"
+
+#: base/templates/imiagroup/question_answer.html:34
+msgid "С ответами"
+msgstr "With Answers"
+
+#: base/templates/imiagroup/question_answer.html:35
+msgid "Без ответов"
+msgstr "Without Answers"
+
+#: base/templates/imiagroup/question_answer.html:36
+msgid "Задать вопрос"
+msgstr "Ask a Question"
+
+#: base/templates/imiagroup/question_answer.html:38
+msgid "Админ"
+msgstr "Admin"
+
+#: base/templates/imiagroup/question_answer.html:45
+msgid "Список вопросов"
+msgstr "List of Questions"
+
+#: base/templates/imiagroup/question_answer.html:46
+msgid "Список ответов"
+msgstr "List of Answers"
+
+#: base/templates/imiagroup/question_answer.html:59
+msgid "Есть ответы"
+msgstr "There are Answers"
+
+#: base/templates/imiagroup/question_answer.html:61
+msgid "Нет ответов"
+msgstr "No Answers"
+
+#: base/templates/imiagroup/question_answer.html:64
+msgid "Кол-во ответов"
+msgstr "Number of Answers"
+
+#: base/templates/imiagroup/question_answer.html:65
+msgid "Просмотры"
+msgstr "Views"
+
+#: base/templates/imiagroup/question_answer.html:84
+msgid "Поиск по тегу"
+msgstr "Search by Tag"
+
+#: base/templates/imiagroup/question_answer.html:89
+#: base/templates/imiagroup/question_answer.html:115
+msgid "Оригинал"
+msgstr "Original"
+
+#: base/templates/imiagroup/question_answer.html:89
+#: base/templates/imiagroup/questions_translate_admin.html:61
+msgid "Редактировать вопрос"
+msgstr "Edit Question"
+
+#: base/templates/imiagroup/question_answer.html:90
+#: base/templates/imiagroup/question_answer.html:116
+msgid "Переведен"
+msgstr "Translated"
+
+#: base/templates/imiagroup/question_answer.html:90
+msgid "Перевести вопрос"
+msgstr "Translate Question"
+
+#: base/templates/imiagroup/question_answer.html:90
+#: base/templates/imiagroup/question_answer.html:116
+msgid "да"
+msgstr "yes"
+
+#: base/templates/imiagroup/question_answer.html:90
+#: base/templates/imiagroup/question_answer.html:116
+#: base/templates/mobile/user/profile_new.html:37
+#: base/templates/user/profile_new.html:48
+#: base/templates/user/profile_new_vlada.html:41
+msgid "нет"
+msgstr "no"
+
+#: base/templates/imiagroup/question_answer.html:116
+#, fuzzy
+msgid "Перевести ответ"
+msgstr "Translate Question"
+
+#: base/templates/imiagroup/question_answer.html:130
+#: base/templates/imiagroup/question_answer.html:135
+#: base/templates/mobile/user/view.html:146
+#: base/templates/mobile/user/view.html:151 base/templates/user/view.html:202
+#: base/templates/user/view.html.py:207
+msgid "Предыдущие записи"
+msgstr "Previous entries"
+
+#: base/templates/imiagroup/question_answer.html:133
+#: base/templates/mobile/user/view.html:149 base/templates/user/view.html:205
+msgid "Новые записи"
+msgstr "New entries"
+
+#: base/templates/imiagroup/questions_translate_admin.html:117
+#: imiagroup/ajax.py:307
+msgid "Вопрос"
+msgstr "Question"
+
+#: base/templates/imiagroup/questions_translate_admin.html:119
+#: base/templates/user/profile_job_vlada.html:67
+#: base/templates/vladaalfimov/gallery_new.html:91 imiagroup/ajax.py:68
+#: imiagroup/ajax.py:308
+msgid "Описание"
+msgstr "Description"
+
+#: base/templates/imiagroup/questions_translate_admin.html:121
+#: imiagroup/ajax.py:309
+msgid "Теги"
+msgstr "Tags"
+
+#: base/templates/imiagroup/questions_translate_admin.html:121
+#: imiagroup/ajax.py:310
+msgid "перечисление через \"Enter\""
+msgstr "listing by \"Enter\" key"
+
+#: base/templates/imiagroup/questions_translate_admin.html:122
+#: imiagroup/ajax.py:311
+msgid "Введите теги"
+msgstr "Enter tags"
+
+#: base/templates/kinoafisha/news.html:82
+#: base/templates/linkanoid/inform.html:72
+#: base/templates/mobile/kinoafisha/news.html:53
+#: base/templates/mobile/organizations/view.html:51
+#: base/templates/mobile/user/view.html:138 base/templates/news/main.html:119
+#: base/templates/news/main.html.py:155
+#: base/templates/organizations/view.html:96 base/templates/user/view.html:191
+#: base/templates/vladaalfimov/blog.html:96
+#: base/templates/vladaalfimov/main.html:199
+#: base/templates/vladaalfimov/main_new.html:76
+msgid "Не отображается"
+msgstr "Invisible"
+
+#: base/templates/letsget/main.html:67
+#: base/templates/vladaalfimov/about.html:67
+#: base/templates/vladaalfimov/about_new.html:105
+msgid "Метка"
+msgstr "Tag"
+
+#: base/templates/letsget/main.html:89 base/templates/letsget/main.html:98
+#: base/templates/letsget/orgs.html:78 base/templates/letsget/orgs.html:86
+#: base/templates/vladaalfimov/about.html:91
+#: base/templates/vladaalfimov/about.html:100
+#: base/templates/vladaalfimov/about_new.html:168
+#: base/templates/vladaalfimov/about_new.html:175
+msgid "Адрес"
+msgstr "Address"
+
+#: base/templates/letsget/main.html:90 base/templates/letsget/main.html:99
+#: base/templates/letsget/main.html:140 base/templates/letsget/main.html:169
+#: base/templates/letsget/main.html:184 base/templates/letsget/main.html:207
+#: base/templates/letsget/main.html:251 base/templates/letsget/orgs.html:79
+#: base/templates/letsget/orgs.html:87 base/templates/letsget/orgs.html:129
+#: base/templates/letsget/orgs.html:158 base/templates/letsget/orgs.html:230
+#: base/templates/letsget/orgs.html:253 base/templates/letsget/orgs.html:297
+#: base/templates/news/news.html:40 base/templates/news/news.html.py:137
+#: base/templates/news/news.html:183 base/templates/pmprepare/index.html:25
+#: base/templates/pmprepare/user/profile.html:39
+#: base/templates/pmprepare/user/profile.html:50
+#: base/templates/pmprepare/user/profile.html:52
+#: base/templates/pmprepare/user/profile.html:54
+#: base/templates/pmprepare/user/profile.html:120
+#: base/templates/user/profile_new.html:45
+#: base/templates/user/profile_new.html:48
+#: base/templates/user/profile_new.html:73
+#: base/templates/user/profile_new.html:75
+#: base/templates/user/profile_new.html:77
+#: base/templates/user/profile_new.html:146
+#: base/templates/user/profile_new.html:172
+#: base/templates/user/profile_new.html:222
+#: base/templates/user/profile_new.html:241
+#: base/templates/user/profile_new.html:250
+#: base/templates/user/profile_new_vlada.html:38
+#: base/templates/user/profile_new_vlada.html:41
+#: base/templates/user/profile_new_vlada.html:66
+#: base/templates/user/profile_new_vlada.html:68
+#: base/templates/user/profile_new_vlada.html:70
+#: base/templates/user/profile_new_vlada.html:136
+#: base/templates/user/profile_new_vlada.html:162
+#: base/templates/user/profile_new_vlada.html:179
+#: base/templates/user/profile_new_vlada.html:184
+#: base/templates/vladaalfimov/about.html:92
+#: base/templates/vladaalfimov/about.html:101
+#: base/templates/vladaalfimov/about.html:143
+#: base/templates/vladaalfimov/about.html:172
+#: base/templates/vladaalfimov/about.html:187
+#: base/templates/vladaalfimov/about.html:210
+#: base/templates/vladaalfimov/about.html:254
+#: base/templates/vladaalfimov/about_new.html:54
+#: base/templates/vladaalfimov/about_new.html:72
+#: base/templates/vladaalfimov/about_new.html:124
+#: base/templates/vladaalfimov/about_new.html:169
+#: base/templates/vladaalfimov/about_new.html:176
+#: base/templates/vladaalfimov/about_new.html:219
+#: base/templates/vladaalfimov/about_new.html:248
+#: base/templates/vladaalfimov/blog_post.html:46
+#: base/templates/vladaalfimov/blog_post.html:115
+#: base/templates/vladaalfimov/blog_post.html:152
+msgid "Редактировать"
+msgstr "Edit"
+
+#: base/templates/letsget/main.html:110 base/templates/letsget/orgs.html:99
+#: base/templates/vladaalfimov/about.html:112
+#: base/templates/vladaalfimov/about_new.html:188
+msgid "Тип"
+msgstr "Type"
+
+#: base/templates/letsget/main.html:110 base/templates/letsget/orgs.html:99
+#: base/templates/vladaalfimov/about.html:112
+#: base/templates/vladaalfimov/about_new.html:188
+msgid "Дом"
+msgstr "Building"
+
+#: base/templates/letsget/main.html:126 base/templates/letsget/orgs.html:115
+#: base/templates/vladaalfimov/about.html:128
+#: base/templates/vladaalfimov/about_new.html:204
+msgid "Ориентир"
+msgstr "Guide"
+
+#: base/templates/letsget/main.html:140 base/templates/letsget/orgs.html:129
+#: base/templates/vladaalfimov/about.html:143
+#: base/templates/vladaalfimov/about_new.html:219
+msgid "Телефон"
+msgstr "Phone number"
+
+#: base/templates/letsget/main.html:156
+#: base/templates/vladaalfimov/about.html:159
+#: base/templates/vladaalfimov/about_new.html:235
+msgid "Сайт"
+msgstr "Website"
+
+#: base/templates/letsget/main.html:186 base/templates/letsget/orgs.html:232
+#: base/templates/vladaalfimov/about.html:189
+msgid "Подробнее"
+msgstr "Read more"
+
+#: base/templates/letsget/main.html:188 base/templates/letsget/orgs.html:234
+#: base/templates/vladaalfimov/about.html:191
+#: base/templates/vladaalfimov/about_new.html:128
+msgid "Нет описания"
+msgstr "No description"
+
+#: base/templates/letsget/main.html:205 base/templates/letsget/orgs.html:251
+#: base/templates/vladaalfimov/about.html:208
+#: base/templates/vladaalfimov/about_new.html:70
+msgid "Нет трейлера"
+msgstr "No trailer"
+
+#: base/templates/letsget/main.html:212 base/templates/letsget/orgs.html:258
+#: base/templates/vladaalfimov/about.html:215
+#: base/templates/vladaalfimov/about_new.html:77
+msgid "Укажите url видеоролика на YouTube"
+msgstr "YouTube video page URL"
+
+#: base/templates/letsget/main.html:223 base/templates/letsget/orgs.html:269
+#: base/templates/vladaalfimov/about.html:226
+#: base/templates/vladaalfimov/about_new.html:145
+msgid "Нет слайда"
+msgstr "No slide"
+
+#: base/templates/letsget/main.html:223 base/templates/letsget/orgs.html:269
+#: base/templates/mobile/user/profile_accounts.html:83
+#: base/templates/news/news.html:55
+#: base/templates/pmprepare/user/profile_accounts.html:54
+#: base/templates/user/profile_accounts.html:95
+#: base/templates/user/profile_accounts_vlada.html:83
+#: base/templates/vladaalfimov/about.html:226
+#: base/templates/vladaalfimov/about_new.html:145
+#: base/templates/vladaalfimov/blog_post.html:58
+#: kinoafisha_ua/templates/articles/kua_add_article.html:35
+#: kinoafisha_ua/templates/user/kua_profile.html:86
+msgid "Удалить"
+msgstr "Delete"
+
+#: base/templates/letsget/main.html:226 base/templates/letsget/orgs.html:272
+#: base/templates/vladaalfimov/about.html:229
+#: base/templates/vladaalfimov/about_new.html:148 imiagroup/ajax.py:66
+msgid "Ред."
+msgstr "Edit"
+
+#: base/templates/letsget/search.html:31
+#: base/templates/organizations/search.html:28
+msgid "Найдено"
+msgstr "Results:"
+
+#: base/templates/letsget/search.html:31
+#: base/templates/organizations/search.html:28
+msgid "по запросу"
+msgstr "items by query"
+
+#: base/templates/letsget/search.html:43
+#: base/templates/organizations/search.html:47
+msgid "Ничего нет по запросу"
+msgstr "No one items by query"
+
+#: base/templates/letsget/search.html:46
+#: base/templates/organizations/search.html:50
+msgid "Вы ничего не указали в строке поиска"
+msgstr "Empty search query"
+
+#: base/templates/mobile/news/news.html:39 base/templates/news/news.html:173
+msgid "Автор"
+msgstr "Author"
+
+#: base/templates/mobile/organizations/view.html:57
+#: base/templates/news/main.html:166
+#: base/templates/organizations/view.html:102
+#: base/templates/vladaalfimov/blog.html:102
+#: base/templates/vladaalfimov/main.html:205
+#: base/templates/vladaalfimov/main_new.html:82
+msgid "Ещё новости"
+msgstr "More news"
+
+#: base/templates/mobile/organizations/view.html:60
+#: base/templates/news/main.html:169
+#: base/templates/organizations/view.html:105
+#: base/templates/vladaalfimov/blog.html:105
+#: base/templates/vladaalfimov/main.html:208
+#: base/templates/vladaalfimov/main_new.html:85
+msgid "Новости горячее"
+msgstr "Hot news"
+
+#: base/templates/mobile/organizations/view.html:62
+#: base/templates/news/main.html:171
+#: base/templates/organizations/view.html:107
+#: base/templates/vladaalfimov/blog.html:107
+#: base/templates/vladaalfimov/main.html:210
+#: base/templates/vladaalfimov/main_new.html:87
+msgid "Новости холоднее"
+msgstr "Cold news"
+
+#: base/templates/mobile/user/accounts_merger.html:4
+#: base/templates/mobile/user/accounts_merger.html:6
+#: base/templates/pmprepare/user/accounts_merger.html:4
+#: base/templates/pmprepare/user/accounts_merger.html:12
+#: base/templates/user/accounts_merger.html:4
+#: base/templates/user/accounts_merger.html:6
+#: base/templates/user/accounts_merger_vlada.html:4
+#: base/templates/user/accounts_merger_vlada.html:8
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:3
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:5
+msgid "Конфликт учетных записей"
+msgstr "Accounts conflict"
+
+#: base/templates/mobile/user/accounts_merger.html:30
+#: base/templates/pmprepare/user/accounts_merger.html:37
+#: base/templates/user/accounts_merger.html:30
+#: base/templates/user/accounts_merger_vlada.html:33
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:29
+msgid "Оставить текущие настройки"
+msgstr "Current settings"
+
+#: base/templates/mobile/user/accounts_merger.html:32
+#: base/templates/pmprepare/user/accounts_merger.html:39
+#: base/templates/user/accounts_merger.html:32
+#: base/templates/user/accounts_merger_vlada.html:35
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:31
+msgid "Импортировать настройки"
+msgstr "Import settings"
+
+#: base/templates/mobile/user/accounts_merger.html:35
+#: base/templates/pmprepare/user/accounts_merger.html:42
+#: base/templates/user/accounts_merger.html:35
+#: base/templates/user/accounts_merger_vlada.html:38
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:34
+msgid "Объединить аккаунты"
+msgstr "Merge accounts"
+
+#: base/templates/mobile/user/email.html:4
+#: base/templates/pmprepare/user/login.html:29
+#: base/templates/user/email.html:4
+msgid "Ваш e-mail"
+msgstr "Email address"
+
+#: base/templates/mobile/user/livejournal.html:4
+#: base/templates/user/livejournal.html:4
+#: kinoafisha_ua/templates/user/kua_livejournal.html:4
+msgid "Ваш логин"
+msgstr "Account"
+
+#: base/templates/mobile/user/login.html:5
+#: base/templates/mobile/user/login.html:14
+#: base/templates/pmprepare/user/login.html:4 base/templates/user/login.html:4
+#: base/templates/user/login.html.py:6 base/templates/user/login_vlada.html:4
+#: kinoafisha_ua/templates/user/kua_login.html:4
+#: kinoafisha_ua/templates/user/kua_login.html:7
+#: user_registration/views.py:527
+msgid "Авторизация"
+msgstr "Login"
+
+#: base/templates/mobile/user/openid.html:2
+#: base/templates/pmprepare/user/login.html:12
+#: base/templates/user/openid.html:2
+#: kinoafisha_ua/templates/user/kua_openid.html:2
+msgid "Авторизуйтесь используя один из сервисов"
+msgstr "Authorization by services"
+
+#: base/templates/mobile/user/profile_accounts.html:60
+#: base/templates/pmprepare/user/profile_accounts.html:31
+#: base/templates/user/profile_accounts.html:69
+#: base/templates/user/profile_accounts_vlada.html:60
+msgid "Не подтвержден!"
+msgstr "Not confirmed!"
+
+#: base/templates/mobile/user/profile_accounts.html:68
+#: base/templates/pmprepare/user/profile_accounts.html:39
+#: base/templates/user/profile_accounts.html:77
+#: base/templates/user/profile_accounts_vlada.html:68
+msgid "Для подтверждения адреса необходимо пройти по ссылке указанной в письме"
+msgstr "Confirm your email address by clicking link in message"
+
+#: base/templates/mobile/user/profile_accounts.html:74
+#: base/templates/mobile/user/profile_new.html:87
+#: base/templates/pmprepare/user/profile.html:54
+#: base/templates/pmprepare/user/profile_accounts.html:45
+#: base/templates/user/profile.html:24
+#: base/templates/user/profile_accounts.html:83
+#: base/templates/user/profile_accounts_vlada.html:74
+#: base/templates/user/profile_new.html:77
+#: base/templates/user/profile_new_vlada.html:70
+#: kinoafisha_ua/templates/user/kua_profile.html:25
+#: kinoafisha_ua/templates/user/kua_profile.html:78
+#: kinoafisha_ua/templates/user/kua_user_details.html:12
+msgid "М"
+msgstr "Male"
+
+#: base/templates/mobile/user/profile_accounts.html:74
+#: base/templates/mobile/user/profile_new.html:87
+#: base/templates/pmprepare/user/profile.html:54
+#: base/templates/pmprepare/user/profile_accounts.html:45
+#: base/templates/user/profile.html:24
+#: base/templates/user/profile_accounts.html:83
+#: base/templates/user/profile_accounts_vlada.html:74
+#: base/templates/user/profile_new.html:77
+#: base/templates/user/profile_new_vlada.html:70
+msgid "Ж"
+msgstr "Female"
+
+#: base/templates/mobile/user/profile_accounts.html:96
+#: base/templates/pmprepare/user/profile_accounts.html:67
+#: base/templates/user/profile_accounts.html:108
+#: base/templates/user/profile_accounts_vlada.html:96
+msgid "У вас еще нет подключенных аккаунтов"
+msgstr "You don't have no one account"
+
+#: base/templates/mobile/user/profile_accounts.html:98
+#: base/templates/mobile/user/profile_new.html:28
+#: base/templates/pmprepare/user/profile.html:163
+#: base/templates/pmprepare/user/profile_accounts.html:68
+#: base/templates/user/profile.html:66
+#: base/templates/user/profile_accounts.html:110
+#: base/templates/user/profile_accounts_vlada.html:97
+#: base/templates/user/profile_new.html:371
+#: base/templates/user/profile_new_vlada.html:252
+#: kinoafisha_ua/templates/user/kua_profile.html:100
+msgid ""
+"Для сохранения настроек и доступа к ним при следующих визитах необходимо"
+msgstr "You must"
+
+#: base/templates/mobile/user/profile_accounts.html:98
+#: base/templates/mobile/user/profile_new.html:28
+#: base/templates/pmprepare/user/profile.html:163
+#: base/templates/pmprepare/user/profile_accounts.html:68
+#: base/templates/user/profile.html:66
+#: base/templates/user/profile_accounts.html:110
+#: base/templates/user/profile_accounts_vlada.html:97
+#: base/templates/user/profile_new.html:371
+#: base/templates/user/profile_new_vlada.html:252
+#: kinoafisha_ua/templates/user/kua_profile.html:100
+msgid "авторизоваться"
+msgstr "login"
+
+#: base/templates/mobile/user/profile_accounts.html:100
+#: base/templates/pmprepare/user/profile_accounts.html:70
+#: base/templates/user/profile_accounts.html:113
+#: base/templates/user/profile_accounts_vlada.html:100
+#: base/templates/user/user_details.html:64
+#: kinoafisha_ua/templates/user/kua_profile.html:103
+#: kinoafisha_ua/templates/user/kua_user_details.html:69
+msgid "Подключить еще аккаунты"
+msgstr "Add more accounts"
+
+#: base/templates/mobile/user/profile_job.html:50
+#: base/templates/mobile/user/profile_menu.html:78
+#: base/templates/user/profile_job.html:56
+#: base/templates/user/profile_job_vlada.html:45
+#: base/templates/user/profile_menu.html:50
+msgid "Моя работа"
+msgstr "My Job"
+
+#: base/templates/mobile/user/profile_menu.html:56
+#: base/templates/user/profile_menu.html:28
+msgid "Обо мне"
+msgstr "About"
+
+#: base/templates/mobile/user/profile_menu.html:56
+#: base/templates/user/profile_menu.html:28
+msgid "О пользователе"
+msgstr "About"
+
+#: base/templates/mobile/user/profile_menu.html:63
+#: base/templates/pmprepare/user/profile_menu.html:10
+#: base/templates/user/profile.html:16
+#: base/templates/user/profile_menu.html:35
+msgid "Моя визитка"
+msgstr "My profile"
+
+#: base/templates/mobile/user/profile_menu.html:63
+#: base/templates/pmprepare/user/profile_menu.html:10
+#: base/templates/user/profile.html:16
+#: base/templates/user/profile_menu.html:35
+msgid "Визитка"
+msgstr "Profile"
+
+#: base/templates/mobile/user/profile_menu.html:75
+#: base/templates/pmprepare/user/profile_accounts.html:15
+#: base/templates/pmprepare/user/profile_menu.html:22
+#: base/templates/user/profile_accounts_vlada.html:31
+#: base/templates/user/profile_menu.html:47
+msgid "Мои аккаунты"
+msgstr "My accounts"
+
+#: base/templates/mobile/user/profile_menu.html:75
+#: base/templates/pmprepare/user/profile_accounts.html:15
+#: base/templates/pmprepare/user/profile_menu.html:22
+#: base/templates/user/profile_accounts_vlada.html:31
+#: base/templates/user/profile_menu.html:47
+msgid "Аккаунты"
+msgstr "Accounts"
+
+#: base/templates/mobile/user/profile_new.html:69
+#: base/templates/pmprepare/user/profile.html:44
+#: base/templates/user/profile_new.html:67
+#: base/templates/user/profile_new_vlada.html:60
+msgid "Родился"
+msgstr "Born"
+
+#: base/templates/mobile/user/profile_new.html:69
+#: base/templates/pmprepare/user/profile.html:44
+#: base/templates/user/profile_new.html:67
+#: base/templates/user/profile_new_vlada.html:60
+msgid "Родилась"
+msgstr "Born"
+
+#: base/templates/mobile/user/profile_new.html:71
+#: base/templates/pmprepare/user/profile.html:46
+#: base/templates/pmprepare/user/profile.html:60
+#: base/templates/user/profile_new.html:69
+#: base/templates/user/profile_new.html:82
+#: base/templates/user/profile_new_vlada.html:62
+#: base/templates/user/profile_new_vlada.html:76 user_registration/forms.py:29
+msgid "Дата рождения"
+msgstr "DOB"
+
+#: base/templates/mobile/user/profile_new.html:75
+#: base/templates/pmprepare/user/profile.html:50
+#: base/templates/user/profile_new.html:73
+#: base/templates/user/profile_new_vlada.html:66
+msgid "дата"
+msgstr "DOB"
+
+#: base/templates/mobile/user/profile_new.html:81
+#: base/templates/pmprepare/user/profile.html:52
+#: base/templates/user/profile_new.html:75
+#: base/templates/user/profile_new_vlada.html:68
+msgid "город"
+msgstr "city"
+
+#: base/templates/mobile/user/profile_new.html:81
+#: base/templates/pmprepare/user/profile.html:52
+#: base/templates/user/profile_new.html:75
+#: base/templates/user/profile_new_vlada.html:68
+msgid "страна"
+msgstr "country"
+
+#: base/templates/mobile/user/profile_new.html:87
+#: base/templates/pmprepare/user/profile.html:54
+#: base/templates/user/profile_new.html:77
+#: base/templates/user/profile_new_vlada.html:70
+msgid "пол"
+msgstr "sex"
+
+#: base/templates/mobile/user/profile_new.html:94
+#: base/templates/pmprepare/user/profile.html:119
+#: base/templates/user/profile_new.html:145
+#: base/templates/user/profile_new_vlada.html:135
+msgid "Оповещать на E-mail"
+msgstr "Notify by E-mail"
+
+#: base/templates/mobile/user/profile_new.html:99
+#: base/templates/user/profile.html:55
+#: base/templates/user/profile_new.html:171
+#: base/templates/user/profile_new_vlada.html:161
+#: user_registration/forms.py:33
+msgid "Страница видна"
+msgstr "My profile page is"
+
+#: base/templates/mobile/user/profile_new.html:105
+#: base/templates/user/profile.html:50
+#: base/templates/user/profile_new.html:187
+msgid "Счет"
+msgstr "Money"
+
+#: base/templates/mobile/user/profile_new.html:128
+#: base/templates/mobile/user/profile_new.html:142
+#: base/templates/user/profile_new.html:219
+#: base/templates/user/profile_new.html:240
+#: base/templates/user/profile_new_vlada.html:178
+#: base/templates/user/profile_new_vlada.html:183
+msgid "Мобильный телефон"
+msgstr "Mobile phone number"
+
+#: base/templates/news/main.html:36 base/templates/news/news.html:61
+#: base/templates/vladaalfimov/blog.html:51
+#: base/templates/vladaalfimov/blog_post.html:61
+msgid "Заполните обязательные поля"
+msgstr "Required fields"
+
+#: base/templates/news/main.html:37 base/templates/news/news.html:62
+#: base/templates/pmprepare/index.html:32
+#: base/templates/vladaalfimov/blog.html:52
+#: base/templates/vladaalfimov/blog_post.html:62
+#: base/templates/vladaalfimov/gallery_new.html:89
+#: base/templates/vladaalfimov/main_new.html:100
+msgid "Заголовок"
+msgstr "Title"
+
+#: base/templates/news/main.html:39 base/templates/news/news.html:64
+#: base/templates/vladaalfimov/blog.html:54
+#: base/templates/vladaalfimov/blog_post.html:64
+msgid "Укажите метки (ключевые слова, теги) через запятую"
+msgstr "Tags separated by commas"
+
+#: base/templates/news/main.html:41 base/templates/news/news.html:66
+#: base/templates/vladaalfimov/blog.html:56
+#: base/templates/vladaalfimov/blog_post.html:66
+msgid "Подпись автора"
+msgstr "Author name"
+
+#: base/templates/news/main.html:44 base/templates/news/news.html:69
+#: base/templates/user/profile_new_vlada.html:41
+#: base/templates/vladaalfimov/blog.html:59
+#: base/templates/vladaalfimov/blog_post.html:69 user_registration/forms.py:34
+msgid "Псевдоним"
+msgstr "Author alias"
+
+#: base/templates/news/main.html:44 base/templates/news/news.html:69
+#: base/templates/vladaalfimov/blog.html:59
+#: base/templates/vladaalfimov/blog_post.html:69
+msgid "Изменить"
+msgstr "Edit"
+
+#: base/templates/news/main.html:46 base/templates/news/news.html:71
+#: base/templates/vladaalfimov/blog.html:61
+#: base/templates/vladaalfimov/blog_post.html:71
+msgid "Не показывать подпись"
+msgstr "Anonymous"
+
+#: base/templates/news/main.html:48 base/templates/news/news.html:79
+#: base/templates/release_parser/admin_create_user.html:14
+#: base/templates/vladaalfimov/blog.html:63
+#: base/templates/vladaalfimov/blog_post.html:73
+msgid "Создать"
+msgstr "Create"
+
+#: base/templates/news/main.html:85 base/templates/vladaalfimov/blog.html:48
+msgid "Добавить новость"
+msgstr "Add news"
+
+#: base/templates/news/news.html:109
+#: base/templates/vladaalfimov/blog_post.html:97
+#: base/templates/vladaalfimov/main_new.html:105
+msgid "Показывать"
+msgstr "Visible"
+
+#: base/templates/news/news.html:117
+msgid "Публиковать во всех городах"
+msgstr "Multi site publish"
+
+#: base/templates/news/news.html:143
+#: base/templates/vladaalfimov/blog_post.html:121
+msgid "Загрузить изображение"
+msgstr "Upload image"
+
+#: base/templates/news/news.html:145
+#: base/templates/vladaalfimov/blog_post.html:123
+msgid "URL видеоролика на YouTube"
+msgstr "YouTube video page URL"
+
+#: base/templates/news/news.html:182
+#: base/templates/vladaalfimov/blog_post.html:151
+msgid "Метки"
+msgstr "Tags"
+
+#: base/templates/news/news.html:209
+#: base/templates/vladaalfimov/blog_post.html:178
+msgid "Редактировать текст"
+msgstr "Edit text"
+
+#: base/templates/news/news.html:226 base/templates/user/login.html:17
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:38
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:134
+#: kinoafisha_ua/templates/release_parser/kua_film_list_form_ajax.html:56
+#: kinoafisha_ua/templates/user/kua_login.html:15
+#: kinoafisha_ua/templates/user/kua_profile.html:107
+msgid "На главную"
+msgstr "Main page"
+
+#: base/templates/organizations/search.html:57
+#: base/templates/pmprepare/top_menu.html:6
+msgid "Главная"
+msgstr "Main page"
+
+#: base/templates/pmprepare/index.html:37
+#: base/templates/vladaalfimov/main_new.html:102 imiagroup/ajax.py:80
+msgid "Текст"
+msgstr "Text"
+
+#: base/templates/pmprepare/top_menu.html:8
+#: base/templates/vladaalfimov/vlada_top_menu.html:15
+msgid "Профиль"
+msgstr "Profile"
+
+#: base/templates/pmprepare/top_menu.html:10
+#: base/templates/vladaalfimov/vlada_top_menu.html:17
+msgid "Вход"
+msgstr "Login"
+
+#: base/templates/pmprepare/user/profile.html:3
+#: base/templates/pmprepare/user/profile_accounts.html:3
+#: base/templates/user/profile.html:3 base/templates/user/profile.html.py:8
+#: base/templates/user/profile_accounts.html:3
+#: base/templates/user/profile_accounts_vlada.html:3
+#: base/templates/user/profile_job.html:3
+#: base/templates/user/profile_job_vlada.html:3
+#: base/templates/user/profile_new_vlada.html:3
+#: base/templates/user/profile_recommend.html:3
+#: base/templates/user/user_details.html:4
+#: base/templates/user/user_details.html:7
+#: kinoafisha_ua/templates/user/kua_profile.html:3
+#: kinoafisha_ua/templates/user/kua_profile.html:16
+msgid "Профиль пользователя"
+msgstr "User profile"
+
+#: base/templates/pmprepare/user/profile.html:30
+#: base/templates/user/profile.html:19 base/templates/user/profile_new.html:36
+#: base/templates/user/profile_new_vlada.html:29
+#: kinoafisha_ua/templates/user/kua_profile.html:21
+#: kinoafisha_ua/templates/user/kua_user_details.html:8
+#: user_registration/forms.py:28
+msgid "ФИО"
+msgstr "Full Name"
+
+#: base/templates/pmprepare/user/profile.html:82
+#: base/templates/user/profile_new.html:104
+#: base/templates/user/profile_new_vlada.html:98
+msgid "Страна и город"
+msgstr "Country and City"
+
+#: base/templates/pmprepare/user/profile.html:103
+#: base/templates/user/profile.html:22
+#: base/templates/user/profile_new.html:129
+#: base/templates/user/profile_new_vlada.html:119
+#: kinoafisha_ua/templates/user/kua_profile.html:23
+#: kinoafisha_ua/templates/user/kua_user_details.html:10
+#: user_registration/forms.py:27
+msgid "Пол"
+msgstr "Sex"
+
+#: base/templates/release_parser/admin_create_user.html:6
+msgid "Создать пользователя"
+msgstr "Create User"
+
+#: base/templates/release_parser/admin_create_user.html:12
+msgid "Введите e-mail пользователя"
+msgstr "Enter user e-mail"
+
+#: base/templates/release_parser/admin_create_user.html:22
+msgid "Возможно пользователь уже существует"
+msgstr "Maybe user already exist"
+
+#: base/templates/release_parser/admin_create_user.html:26
+msgid "Нет, создать нового"
+msgstr "No, create new user"
+
+#: base/templates/release_parser/admin_create_user.html:31
+msgid "Пользователь создан"
+msgstr "User created"
+
+#: base/templates/release_parser/language_test.html:5
+msgid "Тест на мультиязычность"
+msgstr "Multi-language test"
+
+#: base/templates/release_parser/language_test.html:25
+msgid "Идентификация"
+msgstr "Identification"
+
+#: base/templates/release_parser/language_test.html:26
+msgid "Запись"
+msgstr "Recording"
+
+#: base/templates/release_parser/language_test.html:27
+msgid "Редактирование"
+msgstr "Editing"
+
+#: base/templates/release_parser/language_test.html:32
+msgid "Просто ссылка"
+msgstr "Simple link"
+
+#: base/templates/user/profile.html:29
+msgid "Дата рожд"
+msgstr "DOB"
+
+#: base/templates/user/profile.html:60
+#: kinoafisha_ua/templates/user/kua_profile.html:41
+#: kinoafisha_ua/templates/user/kua_user_details.html:34
+msgid "Редактировать визитку"
+msgstr "Edit profile"
+
+#: base/templates/user/profile.html:68 imiagroup/ajax.py:72
+msgid "Нет данных"
+msgstr "No data"
+
+#: base/templates/user/profile_job_vlada.html:52
+msgid "Задания"
+msgstr "Tasks"
+
+#: base/templates/user/profile_job_vlada.html:66
+#: base/templates/user/profile_job_vlada.html:111 imiagroup/ajax.py:69
+msgid "Дата"
+msgstr "Date"
+
+#: base/templates/user/profile_job_vlada.html:68
+msgid "Подробности"
+msgstr "Details"
+
+#: base/templates/user/profile_job_vlada.html:75 imiagroup/ajax.py:81
+#: imiagroup/ajax.py:188
+msgid "Обсуждение"
+msgstr "Discussion"
+
+#: base/templates/user/profile_job_vlada.html:81
+msgid "добавить действие"
+msgstr "Add action"
+
+#: base/templates/user/profile_job_vlada.html:85
+msgid "Инфо"
+msgstr "Info"
+
+#: base/templates/user/profile_job_vlada.html:85
+msgid "Дата время"
+msgstr "Date Time"
+
+#: base/templates/user/profile_job_vlada.html:85
+msgid "Общая сумма"
+msgstr "Total Amount"
+
+#: base/templates/user/profile_job_vlada.html:85
+msgid "Кол"
+msgstr "Quantity"
+
+#: base/templates/user/profile_job_vlada.html:93
+msgid "Да"
+msgstr "yes"
+
+#: base/templates/user/profile_job_vlada.html:100
+msgid "Этап работы"
+msgstr "Stage of Work"
+
+#: base/templates/user/profile_job_vlada.html:107
+msgid "Описание работы"
+msgstr "Description of Work"
+
+#: base/templates/user/profile_job_vlada.html:109
+msgid "Затрачено часов"
+msgstr "It took hours"
+
+#: base/templates/user/profile_new.html:48
+#: base/templates/user/profile_new_vlada.html:41
+msgid "Псевдоним занят, введите другой"
+msgstr "This nickname is already in use"
+
+#: base/templates/user/profile_new.html:48
+#: base/templates/user/profile_new_vlada.html:41
+msgid "Слишком короткий псевдоним (не менее 1 символа)"
+msgstr "Too short nickname (at least one character)"
+
+#: base/templates/user/profile_new.html:194
+msgid "Списать со счета"
+msgstr "Withdraw"
+
+#: base/templates/user/profile_new.html:266
+#: base/templates/user/profile_new_vlada.html:191
+msgid "Номер телефона"
+msgstr "Phone number"
+
+#: base/templates/user/profile_new.html:270
+#: base/templates/user/profile_new_vlada.html:195
+msgid "Виден"
+msgstr "Visible"
+
+#: base/templates/user/profile_new.html:311
+#: base/templates/user/profile_new_vlada.html:213
+msgid "Управление правами"
+msgstr "Set Permissions"
+
+#: base/templates/user/user_details.html:13
+#: kinoafisha_ua/templates/user/kua_user_details.html:3
+#: kinoafisha_ua/templates/user/kua_user_details.html:5
+msgid "Редактор визитки"
+msgstr "Profile editor"
+
+#: base/templates/user/user_details.html:15
+msgid ""
+"Визитка создается автоматически на основе Ваших подключенных аккаунтов. Вы "
+"можете отредактировать ее вручную."
+msgstr "This data created automatically based on added yours accounts"
+
+#: base/templates/user/user_details.html:50
+msgid "Этот псевдоним уже занят. Выберите другой"
+msgstr "This alias is already in use"
+
+#: base/templates/user/user_details.html:58
+msgid "Основной e-mail"
+msgstr "General email address"
+
+#: base/templates/vladaalfimov/about_new.html:235
+#: base/templates/vladaalfimov/vlada_left_menu.html:6
+#: base/templates/vladaalfimov/vlada_menu.html:8
+msgid "ред."
+msgstr "edit"
+
+#: base/templates/vladaalfimov/gallery_new.html:40
+#: base/templates/vladaalfimov/main_new.html:50
+msgid "Тип страницы"
+msgstr "Page Type"
+
+#: base/templates/vladaalfimov/gallery_new.html:42
+msgid "Добавить фото"
+msgstr "Add Photos"
+
+#: base/templates/vladaalfimov/gallery_new.html:49
+msgid "File"
+msgstr "Файл"
+
+#: base/templates/vladaalfimov/gallery_new.html:68
+msgid "Удалить фото"
+msgstr "Delete Photo"
+
+#: base/templates/vladaalfimov/gallery_new.html:69
+msgid "Ред.заголовок и описание"
+msgstr "Edit title and description"
+
+#: base/templates/vladaalfimov/gallery_new.html:102
+#: base/templates/vladaalfimov/main_new.html:119
+msgid "Укажите тип страницы"
+msgstr "Choose Page Type"
+
+#: base/templates/vladaalfimov/gallery_new.html:108
+#: base/templates/vladaalfimov/main_new.html:125
+msgid "Выбрать"
+msgstr "Select"
+
+#: base/templates/vladaalfimov/main_new.html:51
+msgid "Добавить пост"
+msgstr "Add Post"
+
+#: base/templates/vladaalfimov/main_new.html:53
+msgid "Ред.пост"
+msgstr "Edit Post"
+
+#: base/templates/vladaalfimov/main_new.html:54
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:6
+msgid "Добавить статью"
+msgstr "Add Post"
+
+#: base/templates/vladaalfimov/main_new.html:55
+msgid "Удалить пост"
+msgstr "Delete Post"
+
+#: base/templates/vladaalfimov/vlada_left_menu.html:17
+#: base/templates/vladaalfimov/vlada_menu.html:16
+#: base/templates/vladaalfimov/vlada_menu.html:32
+msgid "редактировать пункты"
+msgstr "edit page links"
+
+#: base/templates/vladaalfimov/vlada_left_menu.html:21
+#: base/templates/vladaalfimov/vlada_menu.html:49
+#: base/templates/vladaalfimov/vlada_tools_menu.html:16
+msgid "Принять"
+msgstr "Accept"
+
+#: base/templates/vladaalfimov/vlada_menu.html:23
+#: base/templates/vladaalfimov/vlada_menu.html:26
+#: base/templates/vladaalfimov/vlada_top_menu.html:7
+msgid "О нас"
+msgstr "About Us"
+
+#: base/templates/vladaalfimov/vlada_menu.html:41
+#: base/templates/vladaalfimov/vlada_tools_menu.html:7
+msgid "Календарь"
+msgstr "Calendar"
+
+#: base/templates/vladaalfimov/vlada_menu.html:42
+#: base/templates/vladaalfimov/vlada_tools_menu.html:8
+msgid "Список клиентов"
+msgstr "Clients List"
+
+#: base/templates/vladaalfimov/vlada_menu.html:43
+#: base/templates/vladaalfimov/vlada_tools_menu.html:9
+msgid "Шаблон пригласительного"
+msgstr "Template Invite Message"
+
+#: base/templates/vladaalfimov/vlada_menu.html:44
+#: base/templates/vladaalfimov/vlada_tools_menu.html:10
+msgid "Загрузка изображений"
+msgstr "Upload Images"
+
+#: base/templates/vladaalfimov/vlada_menu.html:45
+#: base/templates/vladaalfimov/vlada_tools_menu.html:12
+msgid "Добавить верхнее меню"
+msgstr "Add Top Menu"
+
+#: django_openid_consumer/views.py:107
+msgid "i-names не поддерживаются"
+msgstr "i-names not supported"
+
+#: django_openid_consumer/views.py:114
+msgid "Неверный OpenID"
+msgstr "Not correct OpenID"
+
+#: django_openid_consumer/views.py:174 user_registration/views.py:833
+msgid "Авторизация была отменена"
+msgstr "Log in has been canceled"
+
+#: django_openid_consumer/views.py:178
+msgid "Setup needed"
+msgstr ""
+
+#: feedback/ajax.py:43
+msgid "отказался получить ответ"
+msgstr "did not leave a email address"
+
+#: feedback/ajax.py:45
+#, python-format
+msgid ""
+"\n"
+"Пользователь: %s"
+msgstr ""
+"\n"
+"User %s"
+
+#: feedback/ajax.py:47
+#, python-format
+msgid ""
+"\n"
+"Отправлено со страницы: %s"
+msgstr ""
+"\n"
+"Sent from page %s"
+
+#: feedback/ajax.py:48
+#, python-format
+msgid ""
+"\n"
+"Профиль: %s"
+msgstr ""
+"\n"
+"Profile: %s"
+
+#: feedback/ajax.py:51
+#, python-format
+msgid ""
+"\n"
+"Субдомен: %s"
+msgstr ""
+
+#: feedback/ajax.py:53
+#, python-format
+msgid "Обратная связь %s"
+msgstr "Feedback %s"
+
+#: imiagroup/ajax.py:67
+msgid "Выполненные задания"
+msgstr "Completed Tasks"
+
+#: imiagroup/ajax.py:70
+msgid "Сумма"
+msgstr "Sum"
+
+#: imiagroup/ajax.py:71
+msgid "Часы"
+msgstr "Hours"
+
+#: imiagroup/ajax.py:73
+msgid "Будущие задания"
+msgstr "Future Tasks"
+
+#: imiagroup/ajax.py:74
+msgid "Одобрить выбранные задания"
+msgstr "Accept Selected Tasks"
+
+#: imiagroup/ajax.py:75
+msgid "Добавить новое"
+msgstr "Add new"
+
+#: imiagroup/ajax.py:76
+msgid "Удалить выбранные"
+msgstr "Delete Selected"
+
+#: imiagroup/ajax.py:303
+msgid ""
+"Что бы оставить вопрос, <a href=\"/user/login/\">авторизуйтесь</a>, "
+"пожалуйста."
+msgstr "To leave a question, please <a href=\"/user/login/\">log in</a>"
+
+#: imiagroup/ajax.py:419
+msgid ""
+"Что бы дать ответ, <a href=\"/user/login/\">авторизуйтесь</a>, пожалуйста."
+msgstr "To give an answer, please <a href=\"/user/login/\">log in</a>"
+
+#: imiagroup/ajax.py:422
+msgid "Ваш ответ"
+msgstr "Your answer"
+
+#: kinoafisha_ua/templates/articles/kua_add_article.html:4
+#: kinoafisha_ua/templates/articles/kua_add_article.html:12
+msgid "Добавление статьи"
+msgstr ""
+
+#: kinoafisha_ua/templates/articles/kua_add_article.html:4
+#: kinoafisha_ua/templates/articles/kua_add_article.html:12
+msgid "Редактирование статьи"
+msgstr ""
+
+#: kinoafisha_ua/templates/articles/kua_articles_main.html:3
+#: kinoafisha_ua/templates/articles/kua_articles_main.html:8
+msgid "Статьи"
+msgstr ""
+
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:23
+msgid "назад"
+msgstr ""
+
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:27
+msgid "из"
+msgstr ""
+
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:27
+msgid "стр."
+msgstr ""
+
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:31
+msgid "вперед"
+msgstr ""
+
+#: kinoafisha_ua/templates/feedback/kua_feedback.html:19
+msgid "Оповестить на"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:5
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:44
+msgid "Киноафиша города"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:7
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:46
+msgid "Киноафиша Вашего города"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:23
+msgid "города"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:26
+msgid "кинотеатра"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:29
+msgid "К сожалению, для этого"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:29
+msgid "нет ни одного сеанса, выберите другой"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:32
+msgid "Запомнить выбор города"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:57
+msgid "Выберите город"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:83
+msgid "Выберите кинотеатр"
+msgstr ""
+
+#: kinoafisha_ua/templates/release_parser/kua_film_list_form_ajax.html:3
+#: kinoafisha_ua/templates/release_parser/kua_film_list_form_ajax.html:20
+msgid "Скоро в кинотеатрах"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:3
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:7
+msgid "Киноафиша Украины"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:13
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:66
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:86
+msgid "Подписаться"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:20
+msgid "Сеансы в городе"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:23
+msgid "Пять лучших фильмов"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:33
+msgid "На сегодня сеансов нет"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:43
+msgid "Смотреть он-лайн"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:70
+msgid "Скоро в кино"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:73
+msgid "Десять ближайших релизов"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:90
+msgid "Рецензии, обзоры, статьи"
+msgstr ""
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:93
+msgid "Пять последних публикаций"
+msgstr ""
+
+#: kinoafisha_ua/templates/user/kua_profile.html:29
+#: kinoafisha_ua/templates/user/kua_user_details.html:16
+msgid "Дата рожд."
+msgstr ""
+
+#: kinoafisha_ua/templates/user/kua_profile.html:56
+msgid "Подключенные аккаунты"
+msgstr ""
+
+#: kinoafisha_ua/templates/user/kua_profile.html:64
+msgid "нет аватара"
+msgstr ""
+
+#: kinoafisha_ua/templates/user/kua_profile.html:99
+msgid "У вас еще нет подключенных аккаунтов!"
+msgstr ""
+
+#: kinoafisha_ua/templates/user/kua_user_details.html:30
+msgid ""
+"Визитка создается автоматически на основе Ваших подключенных аккаунтов. Вы "
+"можете отредактировать ее вручную"
+msgstr ""
+
+#: kinoafisha_ua/templates/user/kua_user_details.html:81
+msgid "Назад"
+msgstr ""
+
+#: news/views.py:413
+msgid "Вы уже отправили максимальное число сообщений в сутки (100 штук)"
+msgstr ""
+
+#: news/views.py:420
+msgid "Вы можете отправить не более 1 сообщения в 5 минут"
+msgstr ""
+
+#: organizations/views.py:75
+msgid "новостей"
+msgstr "news"
+
+#: organizations/views.py:110
+msgid "Слишком короткий запрос"
+msgstr "Short query"
+
+#: user_registration/ajax.py:1267
+msgid "удалить"
+msgstr "delete"
+
+#: user_registration/ajax.py:1268
+msgid "ответить"
+msgstr "answer"
+
+#: user_registration/forms.py:26
+msgid "Мужской"
+msgstr "Male"
+
+#: user_registration/forms.py:26
+msgid "Женский"
+msgstr "Female"
+
+#: user_registration/views.py:493
+#, python-format
+msgid "На ваш email %s отправлен ключ подтверждения"
+msgstr "Confirmation code has been sent on your email address %s"
+
+#: user_registration/views.py:494
+msgid "Введите email правильно"
+msgstr "Incorrect email address"
+
+#: user_registration/views.py:510
+msgid "У вас уже есть такая учетная запись"
+msgstr "You already have this account"
+
+#: user_registration/views.py:513 user_registration/views.py:600
+#: user_registration/views.py:658
+msgid ""
+"Эта учетная запись закреплена за другим вашим аккаунтом! Вы можете "
+"объединить аккаунты."
+msgstr ""
+"This account related with other your profile. You may merge profiles/accounts"
+
+#: user_registration/views.py:525
+#, python-format
+msgid "Для авторизации пройдите по ссылке %s"
+msgstr "To confirm account click here %s"
+
+#: user_registration/views.py:542 user_registration/views.py:543
+#: user_registration/views.py:544
+msgid "Введите email"
+msgstr "Enter email address"
+
+#: user_registration/views.py:618 user_registration/views.py:668
+msgid "Неверный ключ авторизации"
+msgstr "Incorrect confirmation code"
+
+#: user_registration/views.py:752 user_registration/views.py:803
+#: user_registration/views.py:804 user_registration/views.py:832
+#: user_registration/views.py:874 user_registration/views.py:875
+#: user_registration/views.py:907 user_registration/views.py:908
+#: user_registration/views.py:947 user_registration/views.py:952
+#, python-format
+msgid "Ошибка %s"
+msgstr "Error %s"
+
+#: user_registration/views.py:805 user_registration/views.py:834
+#: user_registration/views.py:876 user_registration/views.py:909
+#: user_registration/views.py:958
+msgid "Неверный запрос"
+msgstr "Incorrect query"
+
+#: user_registration/views.py:950
+msgid "Ошибка SSL (2)"
+msgstr "Error SSL (2)"
+
+#: user_registration/views.py:957
+msgid "Ошибка SSL (1)"
+msgstr "Error SSL (1)"
+
+#~ msgid "Тема"
+#~ msgstr "Subject"
+
+#~ msgid "Персоны"
+#~ msgstr "Persons"
+
+#~ msgid "Редакторы"
+#~ msgstr "Editors"
+
+#~ msgid "Предлагаю"
+#~ msgstr "Offers"
+
+#~ msgid "Требуется"
+#~ msgstr "Seek"
+
+#~ msgid "Связи"
+#~ msgstr "Relations"
+
+#~ msgid "Ошибка 404"
+#~ msgstr "404 Not Found"

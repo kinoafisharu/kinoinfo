@@ -1,0 +1,170 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}Киноинфо - открытая база данных о кино и платформа для приложений{% endblock %}
+
+{% block keywords %}{{ request.seo_data.keywords }}{% endblock %}
+{% block description %}{{ request.seo_data.description }}{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+    {% ki_main_menu_mobile %}
+
+<div class="art-postcontent-width">
+    <h1>Открытая база данных о кино и платформа для приложений</h1>
+
+    <div id="film_info" class="film_info-main" style="background: #F2F2F2;">
+
+        <h2><a href="http://m.kinoafisha.ru/schedules/">Сеансы сегодня в городе: {% if city_name %}{{ city_name }}{% endif %}</a></h2>
+
+        <div>
+        {% if schedules %}
+            <div style="margin: 10px 0 10px;">Пять лучших фильмов:</div>
+            {% for i in schedules %}
+            <div class="mainp_item">
+            <a href="http://m.kinoafisha.ru/schedules/">
+                <div class="block_poster" title="{% for k, v in i.film_info.items %} {{ v }} {% endfor %}">
+                    <div id="subscribe_small" class="rate_color_small_{{ i.rating }}">
+                        <div class="pen_rate_small">
+                            <b title="Репутация фильма:{% if i.show_imdb %} IMDb - {{ i.show_imdb }}{% endif %}{% if i.rotten %} / RottenTomatoes - {{ i.rotten }}{% endif %}{% if i.show_ir %} / Киномэтры - {{ i.show_ir }}{% endif %}{% if not i.show_imdb and not i.rotten and not i.show_ir %} нет{% endif %}" >{% if i.rating %}{{ i.rating }}{% else %}?{% endif %}</b>
+                        </div>
+                    </div>
+                    <div class="triangle_small"
+                    {% if i.rating == 5 %}style="border-left: 10px solid rgba(60, 179, 113, 0.7);" {% endif %}
+                    {% if i.rating == 4 %}style="border-left: 10px solid rgba(126, 192, 238, 0.7);"{% endif %}
+                    {% if i.rating == 3 %}style="border-left: 10px solid rgba(255, 218, 185, 0.7);"{% endif %}
+                    {% if i.rating == 2 %}style="border-left: 10px solid rgba(238, 130, 238, 0.7);"{% endif %}
+                    ></div>
+
+                    {% if i.poster %}
+                    <img src="{{ i.poster }}" width="80px" height="120px"/>
+                    {% endif %}
+
+                    <div class="block_times" style="font-size: 15px;">
+                        {{ i.times_grafic_interface }}
+                        <br />
+                        {{ i.times_grafic_interface2 }}
+                    </div>
+                </div>
+            </a>
+            </div>
+            {% endfor %}
+        {% else %}
+        <div>На сегодня сеансов нет</div>
+        {% endif %}
+        <div class="clear"></div>
+        </div>
+
+        <br />
+
+        <h2><a href="{% url releases_ajax %}">Скоро в кино</a></h2>
+        <div style="margin: 10px 0 10px;">Ближайшие релизы</div>
+        <div>
+        {% for i in releases %}
+        <div class="mainp_item">
+        <a href="{% url releases_ajax i.kid %}">
+            <div class="block_poster" title="{% for k, v in i.film_info.items %} {{ v }} {% endfor %}">
+                <div id="subscribe_small" class="rate_color_small_{{ i.rating }}">
+                    <div class="pen_rate_small">
+                        <b title="Рейтинг: IMDb = {{ i.show_imdb }} {% if i.show_ir %} / Оценка киномэтров = {{ i.show_ir }}{% endif %}" >
+                            {% if i.rating %}{{ i.rating }}{% else %}?{% endif %}</b>
+                    </div>
+                </div>
+                <div class="triangle_small"
+                {% if i.rating == 5 %}style="border-left: 10px solid rgba(60, 179, 113, 0.7);" {% endif %}
+                {% if i.rating == 4 %}style="border-left: 10px solid rgba(126, 192, 238, 0.7);"{% endif %}
+                {% if i.rating == 3 %}style="border-left: 10px solid rgba(255, 218, 185, 0.7);"{% endif %}
+                {% if i.rating == 2 %}style="border-left: 10px solid rgba(238, 130, 238, 0.7);"{% endif %}
+                ></div>
+
+                {% if i.poster %}
+                <img src="{{ i.poster }}" width="80px" height="120px"/>
+                {% endif %}
+
+                <div class="block_times">
+                {{ i.release|date:"d/m/Y" }}
+                </div>
+            </div>
+        </a>
+        </div>
+        {% endfor %}
+        <div class="clear"></div>
+        </div>
+
+        <br />
+
+        <h2><a href="{% url show_film_list %}">Смотреть он-лайн</a></h2>
+        <div style="margin: 10px 0 10px;">Пять случайных фильмов</div>
+        <div>
+        {% for i in online_films %}
+        <div class="mainp_item">
+        <a href="{% url show_film_list i.kid %}">
+            <div class="block_poster" title="{% for k, v in i.film_info.items %} {{ v }} {% endfor %}">
+                <div id="subscribe_small" class="rate_color_small_{{ i.rating }}">
+                    <div class="pen_rate_small">
+                        <b title="Репутация фильма:{% if i.show_imdb %} IMDb - {{ i.show_imdb }}{% endif %}{% if i.rotten %} / RottenTomatoes - {{ i.rotten }}{% endif %}{% if i.show_ir %} / Киномэтры - {{ i.show_ir }}{% endif %}{% if not i.show_imdb and not i.rotten and not i.show_ir %} нет{% endif %}" >
+                        {% if i.rating %}{{ i.rating }}{% else %}?{% endif %}</b>
+                    </div>
+                </div>
+                <div class="triangle_small"
+                {% if i.rating == 5 %}style="border-left: 10px solid rgba(60, 179, 113, 0.7);" {% endif %}
+                {% if i.rating == 4 %}style="border-left: 10px solid rgba(126, 192, 238, 0.7);"{% endif %}
+                {% if i.rating == 3 %}style="border-left: 10px solid rgba(255, 218, 185, 0.7);"{% endif %}
+                {% if i.rating == 2 %}style="border-left: 10px solid rgba(238, 130, 238, 0.7);"{% endif %}>
+                </div>
+
+                {% if i.poster %}
+                <img src="{{ i.poster }}" width="80px" height="120px"/>
+                {% endif %}
+
+                <div class="block_times">
+                {{ i.name }}
+                </div>
+            </div>
+        </a>
+        </div>
+        {% endfor %}
+        <div class="clear"></div>
+        </div>
+
+        <br />
+
+        <h2>Новинки кино на торрент-трекерах</h2>
+        <div style="margin: 10px 0 10px;">Пять последних релизов</div>
+        <div>
+
+       {% for i in rutracker_films %}
+            <div class="mainp_item">
+            <a href="{% url new_torrents %}">
+                <div class="block_poster">
+                    <div id="subscribe_small" class="rate_color_small_{{ i.rate }}">
+                        <div class="pen_rate_small">
+                            <b title="Репутация фильма:{% if i.rating.show_imdb %} IMDb - {{ i.rating.show_imdb }}{% endif %}{% if i.rating.rotten %} / RottenTomatoes - {{ i.rating.rotten }}{% endif %}{% if i.rating.show_ir %} / Киномэтры - {{ i.rating.show_ir }}{% endif %}{% if not i.rating.show_imdb and not i.rating.rotten and not i.rating.show_ir %} нет{% endif %}" >
+                        {% if i.rate %}{{ i.rate }}{% else %}?{% endif %}</b>
+                        </div>
+                    </div>
+                    <div class="triangle_small"
+                    {% if i.rate == 5 %}style="border-left: 10px solid rgba(60, 179, 113, 0.7);" {% endif %}
+                    {% if i.rate == 4 %}style="border-left: 10px solid rgba(126, 192, 238, 0.7);"{% endif %}
+                    {% if i.rate == 3 %}style="border-left: 10px solid rgba(255, 218, 185, 0.7);"{% endif %}
+                    {% if i.rate == 2 %}style="border-left: 10px solid rgba(238, 130, 238, 0.7);"{% endif %}
+                    ></div>
+
+                    {% if i.posters %}
+                    <img src="{{ i.posters }}" width="80px" height="120px"/>
+                    {% endif %}
+
+                    <div class="block_times">
+                    
+                    </div>
+                </div>
+            </a>
+            </div>
+        {% endfor %}
+
+        <div class="clear"></div>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}

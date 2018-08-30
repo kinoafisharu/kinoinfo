@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Минусовки - {{ artist.name__name }} - Композиции{% endblock %}
+{% block script %}
+    
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">Минусовки</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name"><a href="{% url artist artist.id %}">{{ artist.name__name }}</a></span></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Композиции</span></b>
+</h1>
+
+{% artist_menu artist.id %}
+
+<div class="art-postcontent-width">
+    <div class="scroll_list">
+    {% for i in compositions %}
+    <a href="{% url composition artist.id i.id %}">{{ artist.name__name }} - {{ i.name__name }}</a><br />
+    {% empty %}
+    Пусто
+    {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}

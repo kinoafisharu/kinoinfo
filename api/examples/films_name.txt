@@ -1,0 +1,15 @@
+
+<films_name>
+    <id id_film="7" imdb="120891">
+        <name id="46400" value="Дикий дикий Запад"/>
+        <type value="2"/>
+        <status value="1"/>
+        <slug value="дикийдикийзапад"/>
+    </id>
+    <id id_film="7" imdb="120891">
+        <name id="2" value="Wild Wild West"/>
+        <type value="1"/>
+        <status value="1"/>
+        <slug value="wildwildwest"/>
+    </id>
+</films_name>

@@ -1,0 +1,73 @@
+{% load base_tags %}
+{% load i18n %}
+
+<div class="art-posttree-width">
+    <div id="accordion">
+        {% for k, v in org_menu.items %}
+            {% if k != 'about' %}
+            <h5 class="method-category" id="{{ org_id }}_section{{ k }}"><p>{{ v.title }}</p>{% if request.user.is_superuser or request.is_admin %}<a href="#" class="org_menu_title_edit">{% trans 'ред.' %}</a>{% endif %}</h5>
+            <div class="method-list">
+                <ul class="{{ org_id }}_section{{ k }}">
+                {% for i in v.sub %}
+                <li><a href="{% if i.type == '2' %}{% url gallery i.id %}{% else %}{% url letsget_view i.id %}{% endif %}" id="link_menu__{{ k }}">{{ i.name }}</a></li>
+                {% endfor %}
+                </ul>
+                {% if request.user.is_superuser or request.is_admin %}
+                    <a class="org_edit_menu" id="{{ org_id }}__{{ k }}"><b>{% trans 'редактировать пункты' %}</b></a>
+                {% endif %}
+            </div>
+            {% endif %}
+        {% endfor %}
+        
+
+        <h5 class="method-category" id="about_section" class="aboutus_menu"><p>{% trans 'О нас' %}</p></h5>
+        <div class="method-list">
+            <ul class="{{ org_id }}_sectionabout">
+                <li><a href="{% url about %}" id="">{% trans 'О нас' %}</a></li>
+                {% for i in org_menu.about.sub %}
+                <li><a href="{% if i.type == '2' %}{% url gallery i.id %}{% else %}{% url letsget_view i.id %}{% endif %}" id="link_menu__about">{{ i.name }}</a></li>
+                {% endfor %}
+            </ul>
+            {% if request.user.is_superuser or request.is_admin %}
+                <a class="org_edit_menu" id="{{ org_id }}__about"><b>{% trans 'редактировать пункты' %}</b></a>
+            {% endif %}
+        </div>
+        
+
+        {% if request.user.is_superuser or request.is_admin %}
+        <h5 class="method-category" id="section_tools"><p>{% trans 'Мои инструменты' %}</p></h5>
+        <div class="method-list">
+            <ul>
+                <li><a href="{% url letsget_calendar %}">{% trans 'Календарь' %}</a></li>
+                <li><a href="{% url letsget_clients %}">{% trans 'Список клиентов' %}</a></li>
+                <li><a href="{% url letsget_invite_template %}">{% trans 'Шаблон пригласительного' %}</a></li>
+                <li><a href="{% url letsget_upload_images %}">{% trans 'Загрузка изображений' %}</a></li>
+                <li><a href="#" onclick="org_addmenu_bl();">{% trans 'Добавить верхнее меню' %}</a></li>
+            </ul>
+            <div class="org_addmenu_bl_fields org_fields">
+                <input type="text" id="{{ org_id }}" class="org_addmenu_title" size="35"/>
+                <input type="button" class="org_addmenu" id="" value="{% trans 'Принять' %}"/>
+                <input type="button" value="{% trans 'Отмена' %}" class="org_addmenu_bl_cancel_btn" onclick="obj_cancel(this);"/>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+    
+    {% if request.user.is_superuser or request.is_admin %}
+    <form action="" method="post">{% csrf_token %}
+        <div class="organization_menu_fields org_fields">
+        <b></b>
+        <br /><br />
+        <span id="org_menu_inputs"></span>
+        <input type="hidden" value="" name="organization_id" />
+        <input type="hidden" value="" name="menu_id" />
+        <span class="submenu_new" title="{% trans 'Добавить еще' %}"></span>
+        <br />
+        <input type="button" value="{% trans 'Сохранить' %}" class="org_menu_accept_btn" />
+        <input type="button" value="{% trans 'Отмена' %}" class="organization_menu_cancel_btn" />
+        </div>
+    </form>
+    {% endif %}
+
+</div>
+

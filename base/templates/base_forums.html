@@ -1,0 +1,107 @@
+{% load base_tags static %}
+{% load dajaxice_templatetags %}
+{% load i18n %}
+{% get_static_prefix as STATIC_URL %}
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="viewport" content="width=device-width">
+    <title>{% block title %}Main{% endblock %}</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/women_forum_style.css" type="text/css" media="screen" />
+    <link rel="shortcut icon" href="{{ STATIC_URL }}base/images/favicon.ico" type="/media/image/x-icon" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="{{ STATIC_URL }}base/dajaxice/dajaxice.core.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/wf_script.js"></script>
+    {% if user.is_superuser or request.is_admin %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/adm.js"></script>
+    {% endif %}
+    {% block script %}{% endblock %}
+    
+    {% if request.noob %}  
+    <script src="https://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <script type="text/javascript">
+        ymaps.ready(ya_init);
+        function ya_init(){
+            var geo = ymaps.geolocation
+            Dajaxice.user_registration.user_reg(function(){}, {
+                'app_name': navigator.appName,
+                'platform': navigator.platform,
+                'display': screen.width+"x"+screen.height,
+                'geo_co': geo.country,
+                'geo_ci': geo.city,
+            })
+        }
+    </script>
+    {% endif %}
+    
+
+</head>
+
+<body class="body" style="background: {{ request.session.fw_style_settings }};">
+
+    <div class="art-main">
+
+        <!--центральный баннер для шапки-->
+        <div class="header">
+            {% if request.bg_img %}
+            <div class="branding_place">
+                <object type="application/x-shockwave-flash" data="{{ request.bg_img }}" width="100%" height="40px">
+                <param name="movie" value="{{ request.bg_img }}"/>
+                <param name="quality" value="high"/>
+                <param name="scale" value="noborder"/>
+                </object>
+            </div>
+            {% endif %}
+
+
+            <div class="branding_place_under">
+                {% if user.is_superuser %}
+                <a href="#" class="branding_banner_edit">Баннер</a>
+                <a href="#" class="branding_string_edit">Строка</a>
+                {% endif %}
+                
+                <div class="branding_profile">
+                {% if request.acc_list.acc %}
+                    <a href="http://ya.vsetiinter.net/user/profile/" target="_blank" id="user_full_name" rel="nofollow"><b>{% if request.fio %}{{ request.fio|safe|striptags }}{% else %}{{ request.acc_list.short_name|safe|striptags }}{% endif %}</b></a>
+                {% else %}
+                    <a class="kinoafisha_button"><b>Авторизоваться</b></a>
+                {% endif %}
+                
+                {% base_user_kinoafisha %}
+
+                </div>
+                
+                {% if request.acc_list.acc %}
+                <form action="{% url women_forum_logout %}" method="POST" class="logout">{% csrf_token %}
+                    <input type="submit" value="Выйти" name="wf_logout" />
+                </form>
+                {% endif %}
+                
+                <div class="branding_ticker">
+                    <marquee width="100%" direction="left" scrolldelay="5" scrollamount="4" hspace="0" vspace="0">
+                    {{ request.advert_url|safe }}
+                    </marquee>
+                </div>
+                
+            </div>
+        </div>
+        <!--конец центрального баннера для шапки-->
+
+        <div class="content-main">
+
+            <!--блок контента-->
+            <div class="art-content">
+                {% block content %}{% endblock %}
+            </div>
+            <!--конец блока контента-->
+
+        </div>
+
+    </div>
+</body>
+</html>

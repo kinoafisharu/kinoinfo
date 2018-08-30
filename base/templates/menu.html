@@ -1,0 +1,7 @@
+<ul>
+    {% for value in links %}
+    <li class="art-menu__li">
+        {% if request.noindex %}<noindex>{% endif %}<a href="{{ value.1 }}"{% if value.4 %} target="_blank"{% endif %} id="bottom_menu__{{ value.5 }}" {% if request.noindex %}rel="nofollow"{% endif %}>{{ value.0 }}</a>{% if request.noindex %}</noindex>{% endif %}
+    </li>
+    {% endfor %}
+</ul>

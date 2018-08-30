@@ -1,0 +1,41 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - в сети{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+    {% film_menu_mobile id menu film_editor %}
+
+<div class="art-postcontent-width">
+    <h1><a href="{% url get_film id %}">{{ name_ru|safe }}</a> - В сети</h1>
+    <br />
+
+    {% if nowru or megogo or tvzavr or ivi or codes_list %}
+        {% for i in nowru %}
+        <b>Now.ru</b> - <a href="{{ i.url_player }}" target="_blank" class="organization_url">{{ i.name_ru|safe }}</a><br />
+        {% endfor %}
+        {% for i in megogo %}
+        <b>Megogo</b> - <a href="{% url show_film_list i.afisha_id %}" target="_blank">{{ i.title|safe }}</a><br />
+        {% endfor %}
+        {% for i in tvzavr %}
+        <b>TVZavr</b> - <a href="http://mgm.iframe.tvzavr.ru/action/window/{{ i.source_id }}" class="organization_url">{{ i.name|safe }}</a><br />
+        {% endfor %}
+        
+        
+        {% for i in codes_list %}
+            <b>{{ i.name }}</b> - <a id="descript" href="#in_descript" onclick="$.fancybox.open($(this).next(), {'padding': 0});">{{ name_ru|safe }}</a>
+            <div id="in_descript" style="width:90%; height:90%;">
+                {{ i.player|safe }}
+            </div>
+            <br />
+        {% endfor %}
+        
+        
+    {% else %}
+        Нет
+    {% endif %}
+</div>
+
+
+
+{% endblock %}

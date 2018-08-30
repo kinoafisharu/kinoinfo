@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Редактирование имени персоны{% endblock %}
+{% block content %}
+    <h1 class="content-header"><a href="{% url main_api %}">Редактирование имени персоны</a></h1>
+    <form action="" method="POST">{% csrf_token %}
+        <input type="text" name="name" value="{{ name_obj.name }}" />
+        <input type="hidden" name="name_id" value="{{ name_obj.id }}" />
+        <input type="hidden" name="user_id" value="{{ user_id }}" />
+        <input type="submit" value="Сохранить" />
+    </form>
+    <br />
+    <div style="clear:both;"></div>
+    <a href="{% url user_details user.id %}">Визитка пользователя</a>
+    <br />
+    <a href="{% url main_api %}">На главную</a>
+    
+{% endblock %}

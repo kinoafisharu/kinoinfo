@@ -1,0 +1,13 @@
+
+<data>
+    <country id="1" name="США" name_en="USA"/>
+    <country id="2" name="Россия" name_en="Russia"/>
+    <country id="3" name="Франция" name_en="France"/>
+    <country id="4" name="Беларусь" name_en="Belarus"/>
+    <country id="5" name="Великобритания" name_en="UK"/>
+    <country id="6" name="Нидерланды" name_en="Netherlands"/>
+    <country id="7" name="Германия" name_en="Germany"/>
+    <country id="8" name="Индия" name_en="India"/>
+    <country id="9" name="Италия" name_en="Italy"/>
+    <country id="10" name="Бельгия" name_en="Belgium"/>
+</data>

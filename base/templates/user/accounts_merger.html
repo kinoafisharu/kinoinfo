@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{% trans 'Конфликт учетных записей' %}{% endblock %}
+{% block content %}
+    <h1 class="content-header">{% trans 'Конфликт учетных записей' %}</h1>
+    {% if message %}<br /><div style="width: 640px; text-align:center; color:red; padding: 4px; border: 1px solid;">{{ message }}</div>{% endif %}
+    <br />
+    <div class="profile-account_merge">
+    {% for i in accounts %}
+        <div class="profile-account_merge-list">
+            {% if i.avatar %}<img src="/upload/avatars/{{ i.avatar }}" />{% else %}<span></span>{% endif %}
+            <p>{{ i.login }}</p>
+        </div>
+    {% endfor %}
+    </div>
+    <div class="profile-account_merge-separator">&#11013;</div>
+    <div class="profile-account_merge">
+    {% for i in merge_accounts %}
+        <div class="profile-account_merge-list">
+            {% if i.avatar %}<img src="/upload/avatars/{{ i.avatar }}" />{% else %}<span></span>{% endif %}
+            <p>{{ i.login }}</p>
+        </div>
+    {% endfor %}
+    </div>
+    
+    
+    <form action="" class="profile-account_merge-form" method="post">{% csrf_token %}
+        <div class="profile-account_merge-rgroup">
+            <input type="radio" name="merge_settings" value="1" checked="checked" /><p>{% trans 'Оставить текущие настройки' %}</p>
+            <br />
+            <input type="radio" name="merge_settings" value="2" /><p>{% trans 'Импортировать настройки' %}</p>
+            <br />
+        </div>
+        <input type="submit" name="merge" value="{% trans 'Объединить аккаунты' %}" /><input type="submit" name="cancel" value="{% trans 'Отмена' %}" />
+    </form>
+{% endblock %}

@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - создать связи - {{ request.current_site.name }}{% endblock %}
+
+{% block script %}
+    {% if film_editor %}
+        {% if not user.is_superuser and not request.is_admin %}
+        <script type="text/javascript" src="{{ STATIC_URL }}base/js/adm.js"></script>
+        {% endif %}
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">фильм</span> <a href="{% url get_film id %}">{{ name_ru|safe }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">создать связи</span></b>
+</h1>
+
+{% film_menu id menu film_editor %}
+
+
+
+<div class="art-postcontent-width">
+    {% if user.is_superuser %}
+        <div style="float: right;">
+        {% base_pagination p page %}
+        </div>
+
+        <div style="clear: both;"></div>
+
+        <table class="panel_list">  
+        
+        <th>Источник</th><th>Создан</th><th>Связи</th><th>Ненайдено</th>
+        {% for i in p.object_list %}
+            <tr>
+                <td><div>{{ i.source }}</div></td>
+                <td><div>
+                {% if i.modify_date == today or i.modify_date == yesterday %}
+                    {% if i.modify_date == today %}Сегодня{% else %}Вчера{% endif %}
+                {% else %}
+                    {{ i.modify_date|date:"d b" }}
+                {% endif %}
+                </div></td>
+                <td><div>
+                {% if obj == 'film' %}
+                    <a href="{% url admin_film_nof_list i.dump %}">Редактировать</a>
+                {% endif %}
+                {% if obj == 'distributor' %}
+                    <a href="{% url admin_distributor_nof i.dump %}">Редактировать</a>
+                {% endif %}
+                {% if obj == 'hall' or obj == 'city' or obj == 'cinema' %}
+                    <a href="{% url admin_city_nof_list2 obj i.dump %}">Редактировать</a>
+                {% endif %}
+                {% if obj == 'person' %}
+                    <a href="{% url admin_person_nof_list i.dump %}">Редактировать</a>
+                {% endif %}
+                {% if obj == 'country' %}
+                    <a href="{% url admin_country_nof_list i.dump %}">Редактировать</a>
+                {% endif %}
+                </div></td>
+                <td>
+                    {% if i.nof_data %}
+                    <div style="text-align: center; border-bottom: 1px dotted #B23636; background: #EA6969;">
+                        {{ i.nof_data }}
+                    </div>
+                    {% else %}
+                    <div style="text-align: center; border-bottom: 1px dotted #657E4B; background: #98B17E;">
+                        {{ i.nof_data }}
+                    </div>
+                    {% endif %}
+                </td>
+            </tr>
+        {% empty %}
+            <br />пусто<br />
+        {% endfor %}
+        </table>
+        <br />
+    {% endif %}
+    <a href="#" class="create_film_new"><b>Создать новый фильм</b></a>
+</div>
+
+
+
+{% endblock %}

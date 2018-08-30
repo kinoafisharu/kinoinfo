@@ -1,0 +1,102 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% load googlecharts %}
+{% block title %}Экономика фильма {{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - {{ request.current_site.name }}{% endblock %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">фильм</span> <a href="{% url get_film id %}">{{ name_ru|safe }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">экономика фильма</span></b>
+</h1>
+
+{% film_menu id menu film_editor %}
+
+
+<div class="art-postcontent-width">
+    <b>Сборы в </b>
+    {% if money.usa.all %}<b class="gathering_usa selected">США</b>{% if money.ru.all %},{% endif %}{% endif %}
+    {% if money.ru.all %}
+    <b class="gathering_ru{% if not money.usa.all %} selected{% endif %}">России</b>
+    {% endif %}
+
+
+    {% if money.usa.all %}
+    <div class="stat_block_usa">
+        <div class="statistics" id="out_money_usa"></div>
+        <div>
+        <b>Общие сборы, $:</b> {{ money.usa.total }}
+        
+        <table class="panel_list" style="width: 140px; margin-top: 10px;">
+            <th>Уикенд</th><th>Топ-10</th>
+            {% for i in money.usa.all %}
+            <tr>
+                <td><div>{{ i.0 }}</div></td>
+                <td><div>{{ i.2 }}</div></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if money.ru.all %}
+    <div class="stat_block_ru"{% if money.usa.all %} style="display: none;"{% endif %}>
+        <div class="statistics" id="out_money_ru"></div>
+        <div>
+        <b>Общие сборы, $:</b> {{ money.ru.total }}
+        
+        <table class="panel_list" style="width: 140px; margin-top: 10px;">
+            <th>Уикенд</th><th>Топ-10</th>
+            {% for i in money.ru.all %}
+            <tr>
+                <td><div>{{ i.0 }}</div></td>
+                <td><div>{{ i.2 }}</div></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+    {% endif %}
+
+    {% googlecharts %}
+        {% if money.usa.all %}
+        {% data money.usa.all "out_data_money_usa" %}
+            {% col "string" "Уикенд" %}"{{ val }}"{% endcol %}
+            {% col "number" "Кассовые сборы $" %}{{ val }}{% endcol %}
+        {% enddata %}
+        {% endif %}
+        
+        {% data money.ru.all "out_data_money_ru" %}
+            {% col "string" "Уикенд" %}"{{ val }}"{% endcol %}
+            {% col "number" "Кассовые сборы $" %}{{ val }}{% endcol %}
+        {% enddata %}
+        
+        {% options "out_options" %}
+            kind: "BarChart",
+            options: {
+                chartArea: {left: 70, top: 5, width: 450, height: 390},
+                legend: {position: 'bottom', textStyle: {fontSize: 9}},
+                fontSize: 9,
+                width: 470,
+                height: 470,
+            }
+        {% endoptions %}
+        
+        {% if money.usa.all %}
+        {% graph "out_money_usa" "out_data_money_usa" "out_options" %}
+        {% endif %}
+        
+        {% graph "out_money_ru" "out_data_money_ru" "out_options" %}
+        
+    {% endgooglecharts %}
+
+
+
+</div>
+
+
+
+{% endblock %}

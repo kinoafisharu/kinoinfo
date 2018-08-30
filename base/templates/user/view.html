@@ -1,0 +1,248 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}
+    {% if id %}
+        {% if news_data.0.obj.title %}
+            {{ news_data.0.obj.title }}
+        {% else %}
+            {{ title }}
+        {% endif %}
+    {% else %}
+        {{ title }}
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+
+    {% if access %}
+        {% if card.is_my_profile %}
+        <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+        {% endif %}
+    {% endif %}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            {% if count == 1 %}
+            get_bpost_comments({{ news_data.0.obj.id }})
+            {% endif %}
+
+            var scroll_h = ($(window).height() / 100) * 60
+            $('.scroll_list').css('height', scroll_h + 'px')
+            
+            var fullsc = $.cookie("fullscreen")
+            if(fullsc && fullsc != 'null'){
+                fullscreen('.post_block')
+            }
+        
+            {% if not page_type %}
+            $.fancybox.open($('.page_types_choice').show(), {'modal': true})
+            {% endif %}
+        
+            $('.txt_wrapper img').click(function(){
+                $obj = $(this).clone()
+                $obj.attr({'width': '100%', 'height': 'auto'}).css({'margin': 0})
+                $.fancybox($obj, {'width': '90%'})
+            });
+
+        var maxLength = $('.comments_block-new textarea').attr('maxlength')
+        $('.comments_block-new textarea').keyup(function(){
+            var curLength = $('.comments_block-new textarea').val().length
+            if($(this).val().length >= maxLength){
+                $(this).val($(this).val().substr(0, maxLength))
+            }
+            var remaning = maxLength - curLength
+            if(remaning < 0){
+                remaning = 0
+            }
+            $('#char_count').html('(осталось символов: ' + remaning + ')')
+        });
+
+
+        {% if access %}
+            {% if card.is_my_profile %}
+
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_text", "language": "en", "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,td,th,div,ul,ol,li,table"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, image, code, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": true, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "emotions, wordcount, paste", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+            {% endif %}
+        {% endif %}
+        
+        
+        });
+    </script>
+
+{% endblock %}
+
+
+{% block page_bg %}style="background-image: url('{% if user_bg %}{{ user_bg.file }}{% else %}{{ request.bg_img }}{% endif %}');"{% endblock %}
+{% block br_url %}{% if user_bg %}{{ user_bg.url }}{% else %}{{ request.advert_url }}{% endif %}{% endblock %}
+{% block adv_id %}{% if user_bg %}{{ user_bg.id }}{% else %}{{ request.advert_id }}{% endif %}{% endblock %}
+
+
+
+{% block content %}
+
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url profile card.profile.user_id %}">{{ card.name|safe|striptags }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">{% if id %}<a href="{% url profile_view card.profile.user_id vid %}">{% endif %}{{ title }}{% if id %}</a>{% endif %}</span></b>
+    {% if id %}
+        - <b id="navigation_bar">
+        {% if news_data.0.obj.title %}
+            <span class="small_film_name">{{ news_data.0.obj.title }}</span>
+        {% else %}
+            <span class="small_film_name">{{ title }}</span>
+        {% endif %}
+        </span></b>
+    {% endif %}
+</h1>
+
+{% if access %}
+    {% if card.is_my_profile %}
+        {% if count == 0 and not id %}
+        <span class="change_page_type in_h1_left" onclick="$.fancybox.open($('.page_types_choice').show());">Page Type</span>
+        <span class="post_add in_h1" onclick="post_edit(0)">Add Post</span>
+        {% endif %}
+        {% if count == 1 %}<span class="post_edit in_h1" onclick="post_edit({{ news_data.0.obj.id }})">Edit Post</span>
+        {% endif %}
+        {% if count > 0 and not id %}<span class="post_add in_h1_left" onclick="post_edit(0)">Add Post</span>{% endif %}
+        {% if id %}<span class="post_delete in_h1_left" onclick="if(confirm('Are you sure?')){$('.pst_dl').submit()}">Delete Post</span><span class="post_add in_h1_left" onclick="post_edit(0)" style="margin-right: 120px;">Add Post</span>
+
+        <form action="{% url profile_view_post_del vid id %}" method="post" class="pst_dl">{% csrf_token %}
+        </form>
+        {% endif %}
+    {% endif %}
+{% endif %}
+
+{% profile_menu card %}
+
+<div class="art-postcontent-width">
+
+    <div class="article">
+        <div class="scroll_list">
+            {% if card.is_my_profile or user.is_superuser %}
+                <div style="text-align: right; margin-bottom: 7px;">
+                    <b><a href="{% url profile_subscribers card.profile.user_id vid %}">Мои подписчики</a></b> |
+                    <b><a href="{% url profile_subscribers_log card.profile.user_id vid %}">Лог</a></b>
+                </div>
+            {% endif %}
+
+            {% if count == 1 %}
+                <div class="txt_wrapper">
+                    {% if news_data.0.obj.title %}
+                    <h3>{{ news_data.0.obj.title }}</h3>
+                    <br />
+                    {% endif %}
+                    {{ news_data.0.obj.text|safe }}
+                    {% if card.is_my_profile or user.is_superuser %}
+                    <div style="text-align: right; color: #666; font-size: 10px;">
+                        <div class="wf_eye" title="Просмотров">{{ news_data.0.obj.views }}</div> 
+                    </div>
+                    {% endif %}
+                </div>
+
+                
+                <div style="text-align: center;">
+                    <div class="subscribe_form">
+                        <div id="subscribe_form-msg">{% if subscribed %}Вы уже подписаны<br /><br />{% endif %}</div>
+                        <div id="subscribe_form-bl" {% if email_exist %}style="display: none;"{% endif %}> 
+                            <input type="text" value="" placeholder="Введите Ваш E-Mail" id="subscribe_form-email" {% if subscribed %}disabled{% endif %} {% if email_exist %}email-exist="1" style="display: none;" {% else %}email-exist="0"{% endif %}/>
+                            <br />
+                        </div>
+                        <input type="button" value="Подписаться на новые статьи" id="subscribe_form-btn" onclick="subscriber(1, {{ vid }});" {% if subscribed %}disabled{% endif %} />
+                    </div>
+                </div>
+
+                <noindex>
+                    <div class="comments_block">
+                        <div><b>Комментарии:</b><a class="comments_block-add_link" onclick="comments_add(this);">Добавить</a></div>
+                        <div class="comments_block-content">
+                            <div class="loader"></div>
+                        </div>
+                        <div class="comments_block-new">
+                            Новый комментарий: <span id="char_count"></span><br />
+                            <textarea maxlength="1000"></textarea>
+                            <br />
+
+                            <div{% if comments_subscribed %} style="display: none;"{% endif %}>
+                            <input type="checkbox" class="comments_subscribe" checked="checked" /> Уведомлять об ответах на комментарий
+                            <div class="comments_subscribe-bl" {% if email_exist %}style="display: none;"{% endif %}>
+                                E-Mail <input type="text" value="" placeholder="Введите Ваш E-Mail" id="comments_subscribe_form-email" {% if email_exist %}email-exist="1"{% else %}email-exist="0"{% endif %} /> <span id="comments_subscribe-msg"></span>
+                            </div>
+                            <br />
+                            </div>
+
+                            <input type="hidden" value="{{ news_data.0.obj.id }}" class="comments_block-id"/>
+                            <input type="hidden" value="0" class="comments_block-new-answer"/>
+                            <input type="button" value="Отправить" class="comments_block-new-btn"/>
+                            <input type="button" value="Отмена" class="comments_block-new-cancel"/>
+                            <div class="loader"></div>
+                        </div>
+                    </div>
+                </noindex>
+
+            {% endif %}
+            {% if count > 1 %}
+                {% for i in news_data %}
+                <div class="short_news"{% if not i.obj.visible %} style="background-color: rgba(255,250,205,0.7);"{% endif %}>
+                    <h2><a href="{% url profile_view_post card.profile.user_id vid i.obj.id %}">{% if i.obj.title %}{{ i.obj.title }}{% else %}{{ title }}{% endif %}</a></h2>
+                    {{ i.description }}
+
+                    <span>{% if not i.obj.visible %}<font style="color: red;">{% trans "Не отображается" %}</font> {% endif %}{{ i.obj.dtime|date:"j E" }}</span>
+                    <div class="read-nxt"><a href="{% url profile_view_post card.profile.user_id vid i.obj.id %}">Читать далее...</a></div>
+                </div>
+            {% endfor %}
+
+
+            <div class="more_news" style="margin: 0 auto;">
+                {% if page == 1 and p.has_next %}
+                <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">{% trans "Предыдущие записи" %}</a>
+                {% endif %}
+                {% if page > 1 %}
+                    <a href="?page={{ p.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">&#8592; {% trans "Новые записи" %}</a>
+                    {% if p.has_next %}
+                    <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">{% trans "Предыдущие записи" %} &#8594;</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+        </div>
+    </div>
+    
+    
+    {% if user.is_superuser or request.is_admin %}
+    <div class="post_block org_fields">
+        <div class="fullscreen_btn" onclick="fullscreen('.post_block')"></div>
+        <form action="" method="post" class="new_new">{% csrf_token %}
+            <b>Title</b>:<br />
+            <input type="text" value="{% if count == 1 %}{{ news_data.0.obj.title }}{% endif %}" size="60" name="news_title" /><br /><br />
+            <b>Text</b>:<br />
+            <textarea id="id_text" name="text">{% if count == 1 %}{{ news_data.0.obj.text }}{% endif %}</textarea>
+            <br />
+            <b>Visible <input {% if count == 1 %}{% if news_data.0.obj.visible %}checked="checked"{% endif %}{% else %}checked="checked"{% endif %} type="checkbox" name="visible" /></b>
+            <br /><br />
+            <input type="submit" value="Save" /> <input type="button" value="Cancel" class="post_edit_cancel" />
+            <input type="hidden" value="" name="edit" />
+        </form>
+        
+        <input type="text" value="{% if count == 1 %}{{ news_data.0.obj.title|safe }}{% endif %}" id="title_hidden" class="org_fields" />
+        <textarea id="text_hidden" class="org_fields">{% if count == 1 %}{{ news_data.0.obj.text|safe }}{% endif %}</textarea>
+        <input {% if count == 1 %}{% if news_data.0.obj.visible %}checked="checked"{% endif %}{% else %}checked="checked"{% endif %} id="visible_hidden" class="org_fields" />
+    </div>
+
+        {% if not page_type or count == 0 %}
+        <form action="{% url user_change_page_type card.profile.user_id vid %}" method="post" class="page_types_choice" style="display: none;">{% csrf_token %}
+            <b>Choose Page Type: </b>
+            <select name="page_type">
+            {% for i in page_types %}
+            <option value="{{ i.0 }}"{% if page_type == i.0 %} selected{% endif %}>{{ i.1 }}</option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="Select" />
+        </form>
+        {% endif %}
+        
+    {% endif %}
+</div>
+
+{% endblock %}

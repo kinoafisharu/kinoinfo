@@ -1,0 +1,45 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader">
+{% if org %}
+    Дистрибьютор "{% for i in org.name.all %}{% if i.status == 1 %}{{i.name}}{% endif %}{% endfor %}"
+{% else %}
+    Добавить дистрибьютора
+{% endif %}
+</h3>
+    
+    <fieldset class="brand_form_edit">
+        <legend><b>Редактировать организацию</b></legend>
+        <form action="" method='post'>{% csrf_token %}
+            <ul>
+                <li>{{ form.iid.errors }}{{ form.iid.label }}<br />{{ form.iid }}</li>
+                <li>{{ form.kid.errors }}{{ form.kid.label }}<br />{{ form.kid }}</li>
+                <li>{{ form.country.errors }}{{ form.country.label }}<br />{{ form.country }}</li>
+                <li>{{ form.name.errors }}{{ form.name.label }}<br />
+                {% if org %}
+                    {% for i in org.name.all %}
+                        <a href="{% url edit_org_name i.id %}">{{ i.name }}</a>
+                         (<a href="{% url distributor_delete_name org.id i.id %}">Удалить связь</a>)
+                        <br />
+                    {% endfor %}
+                {% else %} 
+                    {{ form.name }}
+                {% endif %}
+                </li>
+            </ul>
+            <div class="clear"></div>
+            <input type="submit" name="save" value="Сохранить">
+        </form>
+    </fieldset>
+
+
+<div class="clear"></div>
+{% if org %}
+<br />
+    <form action="{% url distributor_delete org.id %}" method='post'>{% csrf_token %}
+        <input type="submit" name="delete" value="Удалить">
+    </form>
+{% endif %}
+
+{% endblock %}

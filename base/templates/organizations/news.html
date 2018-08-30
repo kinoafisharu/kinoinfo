@@ -1,0 +1,109 @@
+{% extends "base.html" %}
+{% block title %}{{ news.title }}{% endblock %}
+{% block description %}{{ description }}{% endblock %}
+{% block script %}
+    {% if user.is_superuser %}
+    <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+    
+    <script type="text/javascript">
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_note", "language": "ru", "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": false, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "wordcount", "pagebreak_separator": ""});
+    
+function get_names_auto(el, type){
+    var arr = [] 
+    if(type == 'tags'){
+        arr = [{% for i in tags %}"{{ i }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+    }
+    
+    $(el).autocomplete({
+        source: arr,
+        minLength: 2,
+        messages: {
+            noResults: '',
+            results: function() {}
+        }
+    });
+};
+    
+{% endif %}
+    
+    </script>
+{% endblock %}
+
+{% block content %}
+<h1 class="content-header">{% if user.is_superuser %}<span class="news_title org_hover" title="Редактировать">{% endif %}{{ news.title }}{% if user.is_superuser %}</span>{% endif %}{% if user.is_superuser %}
+    <div class="news_title_fields org_fields">
+        <input type="text" value="{{ news.title }}" size="80" class="news_title_field" />
+        <input type="button" value="Сохранить" class="news_title_accept_btn" />
+        <input type="button" value="Отмена" class="news_title_cancel_btn" />
+        <span class="title_err"></span>
+     </div>{% endif %}</h1>
+    {% if user.is_superuser %}
+    <span class="news_new" title="Добавить новость">Добавить</span>
+    {% endif %}
+    {% if user.is_superuser or creator %}
+    <span class="news_del" title="Удалить новость">Удалить</span>
+    {% endif %}
+
+{% if user.is_superuser %}
+<form action="{% url news_add %}" method="post" class="new_new org_fields">{% csrf_token %}
+    <b>Заполните обязательные поля</b><br /><br />
+    Заголовок:<br />
+    <input type="text" value="" size="70" name="news_title" class="organization_n" /><br /><br />
+    Метка (ключевое слово, категория, тег):<br />
+    <input type="text" value="" name="tag" class="organization_t" onkeyup="get_names_auto(this, 'tags');" size="34" /><br /><br />
+    <input type="button" value="Создать" class="news_new_btn" />
+</form>
+
+    <form action="{% url news_delete news.id %}" method="post" class="new_del org_fields">{% csrf_token %}</form>
+
+{% endif %}
+
+
+<div>
+
+    <div class="news">
+        {% if user.is_superuser %}
+        <input type="hidden" class="news_id" value="{{ news.id }}" />
+        <form action="" method="post">{% csrf_token %}
+        Показывать статью <input type="checkbox" name="visible" {% if news.visible %}checked{% endif %} />
+        <input type="submit" value="Сохранить" name="visible_btn" />
+        </form>
+        <br />
+        {% endif %}
+        
+        <div class="news__img">
+            <img src="" />
+        </div>
+        
+        <span>{{ news.dtime|date:"j b Y H:m" }}</span>
+        {% if user.is_superuser %}
+        {% for i in news.tags.all %}
+            {{ i.name }} 
+        {% endfor %}
+        {% endif %}
+        <br />
+        <div class="news_text">
+        {{ news.text|safe }}
+        </div>
+        {% if user.is_superuser %}
+            <a class="news_txt">Редактировать текст</a>
+        
+            <div class="organization_txt org_fields">
+                <form action="" method="post">{% csrf_token %}
+                <textarea style="width: 700px; height: 300px;" name="note" id="id_note">{{ news.text }}</textarea>
+                <br />
+                <input type="submit" value="Сохранить" class="organization_txt_accept_btn" />
+                <input type="button" value="Отмена" class="organization_txt_cancel_btn" />
+                </form>
+            </div>
+        {% endif %}
+
+    </div>
+    <div style="clear: both;"></div>
+    <br />
+    <a href="{% url main %}">На главную</a>
+</div>
+
+
+
+{% endblock %}

@@ -1,0 +1,86 @@
+<span id="loader"></span>
+    <div id="film_info">
+        <div id="film_text">
+            <div id="persons_top_line"></div>
+            <h2 id="film_name"></h2>
+            <div id="kid" style="display: none;"></div>
+            <b id="film_details"></b>
+            <div class="separator_line"></div>
+            <div id="film_description"></div>
+            
+            {% if page_status == 'schedule' %}
+                <div id="schedules"></div>
+            {% endif %}
+            
+            <div id="in_descript"></div>
+            
+            {% if page_status == 'online' %}
+                {% autoescape off %}
+                <div id="player"></div>	 
+                {% endautoescape %}
+            {% endif %}
+            
+            {% if page_status == 'release' %}
+            <div class="subs"></div>
+            {% else %}
+            <div class="subs" style="display: none;"></div>
+            {% endif %}
+            
+            {% if page_status == 'release' or page_status == 'schedule' %}
+            <div id="film_trailers"></div>
+            <div id="film_slides"></div>
+            {% endif %}
+            
+            <a id="various3" href="#inline3"></a>
+            <div id="inline3">
+                <form action="{% url email_auth_send %}" method="post" id="sub_e">{% csrf_token %}
+                </form>
+            </div>
+            
+            <div id="film_bottom_details" style="margin-top: 20px;">
+                <span id="details_msg"></span>
+                <span id="reviews"></span> - 
+                <span id="opinions"></span> - 
+                <span id="distribs"></span> - 
+                <span id="release_dt"></span> - 
+                <span id="soundcopies"></span> - 
+                <span id="budget"></span> - 
+                <span id="bx_office"></span>
+            </div>
+            
+            <div class="subme_bl"></div>
+            
+        </div>
+        
+        
+        
+        <div id="film_poster">
+            <div id="subscribe_info" class="">
+                <div class="pen_rate"><b title=""></b></div>
+            </div>
+            <div class="triangle"></div>
+            
+            <div class="tickets_info">
+            <a href="http://kinohod.ru/" class="kh_boxoffice" ticket movie="" city=""></a>
+            </div>
+            
+            <div class="like_list">
+                <div class="like_list__options subscription_release" title="Хочу смотреть в кинотеатре"><div class="like_in_cinema"></div><div class="likes_cinema"></div></div>
+                <div class="like_list__options subscription_topic" title="Хочу посмотреть дома"><div class="like_in_home"></div><div class="likes_home"></div></div>
+                <div class="like_list__options" title="Смотрел - рекомендую"><div class="like_and_recommend"></div><div class="likes_recommend"></div></div>
+            </div>
+            <div class="dislike_list">
+                <div class="dislike_list__options" title="Не буду смотреть"><div class="dislike_not_be_see"></div><div class="dislikes_seen"></div></div>
+                <div class="dislike_list__options" title="Смотрел - не рекомендую"><div class="dislike_and_not_recommend"></div><div class="dislikes_recommend"></div></div>
+            </div>
+            <div class="poster_label">
+                <div class="rating"></div>
+                <div class="evaluation">
+                    <div class="likes"><div class="like"></div><div class="count_likes"></div></div>
+                    <div class="dislikes"><div class="dislike"></div><div class="count_dislikes"></div></div>
+                </div>
+                <div id="age_limit"></div>
+            </div>
+            <div id="poster"></div>
+        </div>
+    </div>

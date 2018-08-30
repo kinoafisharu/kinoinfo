@@ -1,0 +1,19 @@
+<data>
+    <api_title>
+        Cinema
+    </api_title>
+
+    <api_decription>
+        Метод возвращает информацию о кинотеатрах
+    </api_decription>
+    
+    <api_example>cinema/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/cinema/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>нет</api_response_details>
+
+    <!--<api_response>cinema.txt</api_response>-->
+</data>

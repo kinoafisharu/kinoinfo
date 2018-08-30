@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{{ org.name }}{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".fancybox").fancybox();
+    $("#descript").fancybox();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ site_name }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url orgs org.uni_slug %}">{{ org.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Staff</span></b>
+</h1>
+
+{% org_menu org.uni_slug is_editor %}
+
+<div class="art-postcontent-width">
+    {% if user.is_superuser or is_editor or request.is_admin %}
+        <input type="hidden" class="organization_id" id="{{ org.id }}" />
+        <a id="staff" class="organization_people org_hover" title="Edit">Management Staff</a>
+        <br />
+        <br />
+        
+        <div class="organization_staff_fields" style="display: none;">
+            Searching staff:
+            <input type="text" class="search_staff" value="" size="70" />
+            <input type="button" class="search_people_btn" id="staff" value="Search" />
+            <div class="search_people_result staff_result">
+            {% if users %}
+            Editors:<br />
+            {% endif %}
+            {% for i in staff %}
+                <input type="checkbox" id="checker_staff" value="{{ i.id }}" id="default" checked/> 
+                <a href="{% url profile i.id %}" target="_blank" rel="nofollow">{{ i.name }} &#8226; <b>{{ i.city }}</b></a>
+                <br />
+            {% endfor %} 
+            </div>
+            <input type="button" class="search_appoint" id="staff_app" {% if not staff %}style="display: none;"{% endif %} value="Save" />
+        </div>
+
+    {% endif %}
+
+    <div class="scroll_list">
+    {% for i in staff %}
+        <div class="profile-account">
+            <div class="profile-account-avatar">
+                {% if i.avatar %}
+                    <img src="/upload/avatars/{{ i.avatar }}" />
+                {% else %}
+                    <img src="{{ STATIC_URL }}base/images/noavatar-64.png" />
+                {% endif %}
+            </div>
+            <div class="profile-account-info">
+                {% if i.show == '1' %}
+                <p><a href="{% url profile i.id %}" target="_blank" rel="nofollow">{{ i.name }}</a></p>
+                {% endif %}
+                {% if i.show == '2' %}
+                <p>{{ i.name }}</p>
+                {% endif %}
+            </div>
+        </div>
+    {% endfor %}
+    </div>
+
+
+</div>
+
+{% endblock %}

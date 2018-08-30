@@ -1,0 +1,267 @@
+{% extends "base_vlada.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block script %}
+
+{% if user.is_superuser or is_editor or request.is_admin %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+{% endif %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".fancybox").fancybox();
+    $("#descript").fancybox();
+});
+
+{% if user.is_superuser or is_editor or request.is_admin %}
+tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_note", "language": "en", "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline, forecolor, backcolor", "theme_advanced_resizing": false, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "wordcount", "pagebreak_separator": ""});
+
+function get_names_auto(el, type){
+    var arr = []
+    if(type == 'tags'){
+        arr = [{% for k, v in tags.items %}"{{ k }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+    }
+    if(type == 'streets'){
+        arr = [{% for i in streets %}"{{ i }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+    }
+    $(el).autocomplete({
+        source: arr,
+        minLength: 2,
+        messages: {
+            noResults: '',
+            results: function() {}
+        }
+    });
+};
+
+{% endif %}
+</script>
+{% endblock %}
+
+{% block content %}
+
+{% vlada_top_menu %}
+
+<div class="art-posttree-width">
+    <div id="org_poster">
+        <div id="poster">
+        {% if images.main %}
+        <a class="fancybox" href="/upload{{ images.main }}"><img src="/upload{{ images.main }}" /></a>
+        {% endif %}
+        </div>
+        {% if user.is_superuser or is_editor or request.is_admin %}
+            <span class="organization_poster_edit">{% trans 'Редактировать' %}</span>
+        {% endif %}
+    </div>
+
+    {% if user.is_superuser or is_editor or request.is_admin %}
+    <div class="organization_poster org_fields">
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        {{ form }}
+        <br /><br />
+        <input type="submit" value="{% trans 'Сохранить' %}" class="organization_poster_accept_btn" />
+        <input type="button" value="{% trans 'Отмена' %}" class="organization_poster_cancel_btn" />
+        </form>
+    </div>
+    {% endif %}
+    
+    <br />
+    <div id="org_trailers"><div class="trailer">{% if trailer %}{{ trailer|safe }}{% else %}{% trans 'Нет трейлера' %}{% endif %}</div>
+    {% if user.is_superuser or is_editor or request.is_admin %}
+    <span class="organization_trailer_edit">{% trans 'Редактировать' %}</span>
+    {% endif %}
+    </div>
+    {% if user.is_superuser or is_editor or request.is_admin %}
+    <div class="organization_trailer org_fields">
+        {% trans 'Укажите url видеоролика на YouTube' %}
+        <form action="" method="post">{% csrf_token %}
+        <input type="text" class="organization_trailer_code" name="trailer" value="{{ trailer_url }}">
+        <input type="submit" value="{% trans 'Сохранить' %}" class="organization_trailer_accept_btn" />
+        <input type="button" value="{% trans 'Отмена' %}" class="organization_trailer_cancel_btn" />
+        </form>
+    </div>
+    {% endif %}
+    
+    {% social_icons %}
+</div>
+
+
+{% if user.is_superuser or is_editor or request.is_admin %}
+
+    <div class="organization_name_fields org_fields">
+        <select class="organization_ownership">
+        {% for i in ownership %}
+            <option value="{{ i.0 }}" {% if org.ownership == i.0 %}selected{% endif %}>{{ i.1 }}</option>
+        {% endfor %}
+        </select>
+        <input type="text" value="{{ org.name }}" size="60" class="organization_name_field" />
+        <input type="button" value="Сохранить" class="organization_name_accept_btn" />
+        <input type="button" value="Отмена" class="organization_name_cancel_btn" onclick="obj_cancel(this);" />
+        <span class="name_err"></span>
+        
+        <br /><br />
+
+        <span style="font-size: 12px;">{% trans 'Метка' %}:</span>
+        {% for i in name_tags %}
+        <input type="text" value="{{ i.name }}" size="20" class="organization_name_tag" onkeyup="get_names_auto(this, 'tags');" />
+        {% endfor %}
+        <input type="button" value="{% trans 'Сохранить' %}" class="organization_name_tag_accept_btn" id='1' />
+        <input type="button" value="{% trans 'Отмена' %}" class="organization_name_cancel_btn" onclick="obj_cancel(this);" />
+        <span class="tags_err"></span>
+        
+    </div>
+{% endif %}
+
+
+<div class="art-postcontent-width" >
+    
+    <input type="hidden" class="organization_id" id="{{ org.id }}" />
+    
+    <div id="org_info">
+        <div id="org_text">
+
+            <div{% if user.is_superuser or is_editor or request.is_admin %} class="organization_note org_hover" title="{% trans 'Редактировать' %}"{% endif %}>
+                {% if note_cut %}
+                    {{ note_all|safe }}
+                {% else %}
+                    {% trans 'Нет описания' %}
+                {% endif %}
+            </div>
+            {% if user.is_superuser or is_editor or request.is_admin %}
+            <div class="organization_txt org_fields">
+                <form action="" method="post">{% csrf_token %}
+                <textarea style="width: 100%; height: 250px;" rows="10" cols="56" name="note" id="id_note">{{ note_all }}</textarea>
+                <input type="submit" value="{% trans 'Сохранить' %}" class="organization_txt_accept_btn" />
+                <input type="button" value="{% trans 'Отмена' %}" class="organization_txt_cancel_btn" />
+                </form>
+            </div>
+            {% endif %}
+
+            <br />    
+            
+            <div id="org_slides">
+            {% for i in images.slides %}
+                <div class="slide">{% if i.img %}<a class="fancybox" rel="group" href="/upload{{ i.img }}"><img class="fancy_slide" src="/upload{{ i.img }}" /></a>{% else %}{% trans 'Нет слайда' %}{% endif %}{% if user.is_superuser or is_editor or request.is_admin %}{% if i.img %}<span id="{{ i.id }}" class="organization_slides_d" title="{% trans 'Удалить' %}"></span>{% endif %}{% endif %}</div>
+            {% endfor %}
+            {% if user.is_superuser or is_editor or request.is_admin %}
+                <span class="organization_slides_edit">{% trans 'Ред.' %}</span>
+            {% endif %}
+            </div>
+
+            {% if user.is_superuser or is_editor or request.is_admin %}
+            <div class="organization_slides org_fields">
+                <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+                <label for="id_slides">File:</label> <input type="file" name="slides" id="id_slides" multiple />
+                <br /><br />
+                <input type="submit" value="{% trans 'Сохранить' %}" class="organization_slides_accept_btn" />
+                <input type="button" value="{% trans 'Отмена' %}" class="organization_slides_cancel_btn" />
+                </form>
+            </div>
+            {% endif %}
+            
+            
+            <br /><br />
+            <div class="org_contacts">
+                <div style="margin-bottom: 7px;">
+                    {% if street.number %}
+                        <b>{% trans 'Адрес' %}</b>:
+                        <span{% if user.is_superuser or is_editor or request.is_admin %} class="organization_address org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);"{% endif %}>
+                        {% if street.number %} {{ street.number }} {{ street.street.name }} {{ street.street.get_type_display }};{% else %}{% trans 'Нет' %}{% endif %}
+                        </span>
+                        <span class="guide">{% for i in guide_tags %}({{ i.name }}){% endfor %}</span>
+                    {% else %}
+                        {% if user.is_superuser or is_editor or request.is_admin %}
+                            <b>{% trans 'Адрес' %}</b>:
+                            <span class="organization_address org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);">
+                            {% trans 'Нет' %}
+                            </span>
+                            <span class="guide">{% for i in guide_tags %}({{ i.name }}){% endfor %}</span>
+                            <br />
+                        {% endif %}
+                    {% endif %}
+                </div>
+                
+                {% if user.is_superuser or is_editor or request.is_admin %}
+                <div class="organization_address_fields org_fields">
+                    <table>
+                        <th>{% trans 'Тип' %}</th><th>{% trans 'Название' %}</th><th>{% trans 'Дом' %}</th>
+                        <tr>
+                        <td>
+                            <select class="organization_street_types">
+                            {% for i in street_types %}
+                                <option value="{{ i.0 }}"{% if street.street.type == i.0 %} selected{% endif %}>{{ i.1 }}</option>
+                            {% endfor %}
+                            </select>
+                        </td>
+                        <td>
+                            <input type="text" class="organization_street_name" value="{% if street.street.name %}{{ street.street.name }}{% endif %}" size="25" onkeyup="get_names_auto(this, 'streets');" />
+                        </td>
+                        <td>
+                            <input type="text" class="organization_street_number" value="{% if street.number %}{{ street.number }}{% endif %}" size="6" />
+                        </td>
+                        </tr>
+                        <th colspan="3">{% trans 'Ориентир' %}</th>
+                        <tr>
+                            <td colspan="3">
+                                <input type="text" class="organization_guide" value="{% for i in guide_tags %}{{ i.name }}{% endfor %}" size="50" />
+                            </td>
+                        </tr>
+                    </table>
+                    <br />
+                    <input type="button" value="{% trans 'Сохранить' %}" class="organization_address_accept_btn" />
+                    <input type="button" value="{% trans 'Отмена' %}" class="organization_address_cancel_btn" onclick="obj_cancel(this);" />
+                </div>
+                {% endif %}
+
+                
+                <div style="margin-bottom: 7px;">
+                    <b>{% trans 'Телефон' %}</b>: <span{% if user.is_superuser or is_editor or request.is_admin %} class="organization_phones org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);"{% endif %}>{% for i in phones %}{% if not i.code %}{{ i.pre }}{% endif %}{{ i.format }}{% if not forloop.last %}; {% endif %}{% empty %}{% trans 'Нет' %}{% endfor %}</span>
+                    {% if user.is_superuser or is_editor or request.is_admin %}
+                    <div class="organization_phones_fields org_fields">
+                        {% for i in phones %}
+                            <span>{{ phone_pre }}</span><input type="text" value="{{ i.code }}{{ i.num }}" size="20" class="organization_phones_field" />{% if forloop.last %} <span class="phone_new" title="{% trans 'Добавить еще' %}" id="{{ phone_pre }}"></span>{% endif %}<br />
+                        {% empty %}
+                            <span>{{ phone_pre }}</span><input type="text" value="" size="20" class="organization_phones_field" /> <span class="phone_new" title="{% trans 'Добавить еще' %}" id="{{ phone_pre }}"></span><br />
+                        {% endfor %}
+
+                        <input type="button" value="{% trans 'Сохранить' %}" class="organization_phones_accept_btn" />
+                        <input type="button" value="{% trans 'Отмена' %}" class="organization_phones_cancel_btn" onclick="obj_cancel(this);" />
+                    </div>
+                    {% endif %}
+                </div>
+                
+                <div style="margin-bottom: 7px;">
+                    <b>{% trans 'Сайт' %}</b>: <span{% if user.is_superuser or is_editor or request.is_admin %} class="organization_site org_hover"{% endif %}><a href="{{ site }}" class="organization_url">{{ site }}</a>{% if not site %}{% trans 'Нет' %}{% endif %}</span>{% if user.is_superuser or is_editor or request.is_admin %} (<a class="organization_site_edit">{% trans 'ред.' %}</a>){% endif %}
+
+                    {% if user.is_superuser or is_editor or request.is_admin %}
+                    <div class="organization_site_fields org_fields">
+                        <input type="text" value="{% if org.site %}{{ org.site }}{% endif %}" size="50" class="organization_site_field" />
+                        <br />
+                        <input type="button" value="{% trans 'Сохранить' %}" class="organization_site_accept_btn" />
+                        <input type="button" value="{% trans 'Отмена' %}" class="organization_site_cancel_btn"  />
+                    </div>
+                    {% endif %}
+                </div>
+
+                <div style="margin-bottom: 7px;">
+                    <b>E-mail</b>: <span{% if user.is_superuser or is_editor or request.is_admin %} class="organization_email org_hover" title="{% trans 'Редактировать' %}" onclick="obj_edit(this);"{% endif %} id="org_email">{% if org.email %}{{ org.email }}{% else %}{% trans 'Нет' %}{% endif %}</span>
+                    
+                    {% if user.is_superuser or is_editor or request.is_admin %}
+                    <div class="organization_email_fields org_fields">
+                        <input type="text" value="{% if org.email %}{{ org.email }}{% endif %}" size="40" class="organization_email_field" /><span class="email_err"></span>
+                        <br />
+                        <input type="button" value="{% trans 'Сохранить' %}" class="organization_email_accept_btn" />
+                        <input type="button" value="{% trans 'Отмена' %}" class="organization_email_cancel_btn" onclick="obj_cancel(this);" />
+                    </div>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="clear"></div>
+{% endblock %}

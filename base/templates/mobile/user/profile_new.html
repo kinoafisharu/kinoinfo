@@ -1,0 +1,170 @@
+{% extends "mobile/base.html" %}
+{% load i18n %}
+{% block title %}{{ card.name|safe|striptags }} - визитка{% endblock %}
+{% load base_tags %}
+{% block script %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.mask.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+
+    {% profile_menu_mobile is_my_profile card.profile.user_id %}
+
+<div class="art-postcontent-width">
+    <h1>Визитка</h1>
+
+    <div id="film_info" class="film_info-main" style="background: #F2F2F2;">
+        
+        <div id="film_text">
+
+            {% if not p_count %}
+                {% if is_my_profile %}
+                <div class="warning_block">{% trans 'Для сохранения настроек и доступа к ним при следующих визитах необходимо' %} <a href="{% url login %}">{% trans 'авторизоваться' %}</a></div>
+                <br /><br />
+                {% endif %}
+            {% endif %}
+
+            <h2 id="film_name">{% if card.name %}{{ card.name|safe|striptags }}{% else %}{% trans 'Нет' %}{% endif %}</h2>
+            <br />
+            {% if user.is_superuser or is_my_profile or request.is_admin %}
+            <div>
+            <b>Псевдоним:</b> {% if nickname %}{{ nickname }}{% else %}<span style="font-weight: normal;">{% trans 'нет' %}</span>{% endif %}</span>
+            </div>
+            <br />
+            {% endif %}
+            
+            {% if poster %}
+            <div id="org_poster" class="small_pstr">
+                <div id="poster">
+                    {% if poster %}
+                    <a class="fancybox" href="/upload{{ poster }}"><img src="/upload{{ poster }}" /></a>
+                    {% else %}
+                    <div class="no_image"></div>
+                    {% endif %}
+                </div>
+            </div>
+            {% endif %}
+
+
+            {% if card.superuser %}
+            <div class="trailer_slides">
+            
+                <div id="film_trailers">
+                    <div class="trailer"{% if online %} style="height: 230px;"{% endif %}>
+                    {% if video %}
+                        {{ video|safe }}
+                    {% else %}
+                        Нет видео
+                    {% endif %}
+                    </div>
+                </div>
+
+                {% if not online %}
+                <div id="film_slides">
+                {% for s in i.slides %}
+                    <div class="slide">{% if s.0 %}<a class="fancybox" rel="group_{{ i.id }}" href="{{ s.0 }}"><img class="fancy_slide" src="{{ s.1 }}" /></a>{% else %}Нет слайда{% endif %}</div>
+                {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+
+            <br />
+            {% endif %}
+
+            <div style="display: inline-block;">
+                <span class="born_txt">
+                <b>
+                {% if card.sex %}
+                    {% if card.sex == 1 %}{% trans 'Родился' %}:{% else %}{% trans 'Родилась' %}:{% endif %}
+                {% else %}
+                    {% trans 'Дата рождения' %}:
+                {% endif %}
+                </span>
+                
+                <span>{% if card.born %}{{ card.born|date:"d E Y" }} г.{% else %}<span style="font-weight: normal;">{% trans 'дата' %}</span>{% endif %}</span>
+                </b>
+            </div>
+
+            <div style="display: inline-block;">
+                <b>
+                <span>{% if card.country %}{{ card.country.name }}{% if card.city %}, {{ card.city.name }}{% else %}<span style="font-weight: normal;">{% trans 'город' %}</span>{% endif %}{% else %}<span style="font-weight: normal;">{% trans 'страна' %}</span>{% endif %}</span>, 
+                </b>
+            </div>
+
+            <div style="display: inline-block; margin-bottom: 10px;">
+                <b>
+                <span>{% if card.sex %}{% if card.sex == 1 %}{% trans 'М' %}{% else %}{% trans 'Ж' %}{% endif %}{% else %}<span style="font-weight: normal;">{% trans 'пол' %}</span>{% endif %}</span>
+                </b>
+            </div>
+
+
+            {% if is_my_profile or user.is_superuser or request.is_admin %}
+            <div style="margin-bottom: 10px;">
+                <b>{% trans 'Оповещать на E-mail' %}:</b>
+                <span>{% if card.email %}{{ card.email }}{% else %}{% trans 'Нет' %}{% endif %}</span>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <b>{% trans 'Страница видна' %}:</b>
+                <span>{{ card.profile.get_show_profile_display }}</span>
+            </div>
+
+            <div style="margin-bottom: 10px;">
+                <span>
+                    <b>{% trans 'Счет' %}:</b>
+                    {{ card.money }} {% trans 'руб' %}.
+                    {% if user.is_superuser %}</a> (<a href="#" onclick="$.fancybox.open($('.money_history').show())">история</a>)
+                    <div class="money_history org_fields">
+                    <table class="modern_tbl" style="font-size: 16px;">
+                        <th>Сумма</th><th>Дата</th><th>Кто снял</th>
+                        {% for w in withdraw %}
+                            <tr>
+                                <td><div>{{ w.summa }}</div></td>
+                                <td><div>{{ w.dtime|date:"d b Y, H:i" }}</div></td>
+                                <td><div>{% if w.who.user_id == card.profile.user_id %}Самостоятельно{% else %}<a href="{% url profile w.who.user_id %}" target="_blank">{{ w.who.user_id }}</a>{% endif %}</div></td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                    </div>
+                    {% endif %}
+                </span>
+                <br />
+            </div>
+            {% endif %}
+
+
+            {% if card.profile.phone_visible %}
+                <b>{% trans 'Мобильный телефон' %}:</b>
+
+                {% if card.profile.phone %}
+                    {{ card.profile.phone }}
+                    {% if is_my_profile %}
+                    ({% if card.profile.phone_visible %}{% trans 'Всем' %}{% else %}{% trans 'Только мне' %}{% endif %})
+                    {% endif %}
+                {% else %}
+                    {% trans 'Нет' %}
+                {% endif %}
+
+                <br />
+            {% else %}
+                {% if is_my_profile or user.is_superuser or request.is_admin %}
+                <b>{% trans 'Мобильный телефон' %}:</b>
+                <span>{% if card.profile.phone %}{{ card.profile.phone }} ({% if card.profile.phone_visible %}{% trans 'Всем' %}{% else %}{% trans 'Только мне' %}{% endif %}){% else %}{% trans 'Нет' %}{% endif %}</span>
+                <br />
+                {% endif %}
+            {% endif %}
+
+            <input type="hidden" name="person_id" value="{{ card.card.id }}" />
+
+        </div>
+
+    </div>
+</div>
+
+{% endblock %}

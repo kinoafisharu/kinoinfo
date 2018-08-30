@@ -1,0 +1,58 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block script %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+        $("#various2").fancybox();
+    });
+    </script>
+{% endblock %}
+{% block info %}
+{% load base_tags %}
+<h1 class="art-postheader">Лог экспорта сеансов в киноафишу</h1>
+
+    <span>
+    Удалено {{ session_del }}с. в {{ cinema_del }}к. Записано {{ session_save }}с. в {{ cinema_save }}к.
+    Всего сейчас {{ session_now }}c. в {{ cinema_now }}к. 
+    <a id="various2" href="#inline2" title="Замена редакторов на автозаполнение">Замена редакторов на автозаполнение ({{ cinema_ids_count }})</a>
+    <div id="inline2">
+        {% for i in cinema_ids %}
+            <a href="http://www.kinoafisha.ru/index.php3?id2={{ i }}&status=2" target="_blank">{{ i }}</a>, 
+        {% endfor %}
+    </div>
+    </span>
+    <table class="panel_list">
+    <th></th><th>Фильм</th><th>Кинотеатр</th><th>Период</th><th>Время</th>
+    {% for i in p.object_list %}
+        <tr>
+        <td><div><input type="checkbox" /></div></td>
+        <td><div><a href="http://www.kinoafisha.ru/?status=1&id1={{ i.film_kid }}" target="_blank">{{ i.film }}</a></div></td>
+        <td><div><a href="http://www.kinoafisha.ru/index.php3?id2={{ i.kid }}&status=2" target="_blank">{{ i.name }}</a></div></td>
+        <td><div>{{ i.from }} - {{ i.to }}</div></td>
+        <td><div>{{ i.time }}</div></td>
+        </tr>
+    {% endfor %}
+    </table>
+
+    <br />
+    <form action="" method='post'>{% csrf_token %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if p.has_previous %}
+                    <input type="submit" name="btn" value="Назад">
+                    <input type="hidden" name="prev" value="{{ p.previous_page_number }}">
+                {% endif %}
+                <span class="current">
+                    {{ p.number }} страница из {{ p.paginator.num_pages }}
+                </span>
+                {% if p.has_next %}
+                    <input type="submit" name="btn" value="Вперед">
+                    <input type="hidden" name="next" value="{{ p.next_page_number }}">
+                {% endif %}
+            </span>
+        </div>
+    </form>
+
+{% endblock %}

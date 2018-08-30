@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}{% if article %}{{ article.title }}{% else %}Статьи{% endif %}{% endblock %}
+
+{% block content %}
+{% load base_tags %}
+
+<h1 class="content-header">{% if article %}{{ article.title }}{% else %}Статьи{% endif %}</h1>
+
+{% articles_menu %}
+
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        <div class="article">
+        {% if article %}
+            {{ article.text|safe }}
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

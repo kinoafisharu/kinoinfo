@@ -1,0 +1,21 @@
+<?xml version='1.0' encoding='utf-8'?>
+<data>
+ <type id="1" name="актер/актриса">
+ </type>
+ <type id="2" name="продюсер">
+ </type>
+ <type id="3" name="режиссер">
+ </type>
+ <type id="4" name="сценарист">
+ </type>
+ <type id="5" name="голоса">
+ </type>
+ <type id="6" name="композитор">
+ </type>
+ <type id="7" name="автор идеи">
+ </type>
+ <type id="8" name="оператор">
+ </type>
+ <type id="9" name="монтажер">
+ </type>
+</data>

@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Минусовки - Исполнители на букву: {{ char }}{% endblock %}
+{% block script %}
+    
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">Минусовки</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Исполнители на букву: {{ char }}</span></b>
+</h1>
+
+
+
+<div class="art-postcontent-width">
+    <div class="scroll_list">
+    {% for i in data %}
+    <a href="{% url composition_list i.id %}">{{ i.name__name }}</a><br />
+    {% empty %}
+    Пусто
+    {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}

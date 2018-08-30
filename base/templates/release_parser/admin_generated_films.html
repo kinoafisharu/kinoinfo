@@ -1,0 +1,33 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+
+<h3 class="art-postheader" style="float: left;">Фильмы созданные кнопкой rutracker</h3> 
+
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+<div style="clear: both;"></div>
+
+<div class="scroll_list">
+    <table class="modern_tbl">
+        <th>Фильм</th><th>Дата, время создания</th>
+        {% for i in data %}
+            <tr>
+            <td><div><a href="{% if i.kid %}{% url get_film i.kid %}{% else %}#{% endif %}">
+                {% if i.name.2 %}{{ i.name.2|safe }}{% if i.name.1 %} / {% endif %}{% endif %}
+                {% if i.name.1 %}{{ i.name.1|safe }}{% endif %}
+            </a></div></td>
+            <td><div>{{ i.dtime }}</div></td>
+            </tr>
+        {% empty %}
+            <tr>
+                <td>пусто</td>
+                <td></td>
+            </tr>
+        {% endfor %}
+    </table>
+</div>
+
+{% endblock %}

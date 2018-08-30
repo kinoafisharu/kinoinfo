@@ -1,0 +1,77 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader" style="float: left;">Подписчики E-mail (всего: {{ all_users }})</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+<div style="clear: both;"></div>
+
+<div class="filter_panel">
+<div class="filter">
+    <form action="" method="post">{% csrf_token %}
+        <p>Города:</p>
+        <select name="subr_cities" onchange="this.form.submit();">
+            <option value="">--------</option>
+            {% for k, v in cities.items %}
+            <option value="{{ k }}" {% if k == sess_value %}selected{% endif %}>{{ v }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+
+<div class="filter">
+    <form action="" method="post">{% csrf_token %}
+        <p>Фильмы:</p>
+        <select name="subr_films" onchange="this.form.submit();">
+            <option value="">--------</option>
+            {% for i in films %}
+            <option value="{{ i.kid }}" {% if i.kid == sess_value %}selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+        </select>
+    </form>
+</div>
+
+<div class="filter">
+    <form action="" method="post">{% csrf_token %}
+        <p>Уведомлен ли:</p>
+        {% for i in notified %}
+        <input type="radio" name="subr_notified" value="{{ i }}" {% if i and sess_value == 'True' %}checked{% endif %}{% if not i and sess_value == 'False' %}checked{% endif %} onchange="this.form.submit();">
+        {% if i %}Да{% else %}Нет{% endif %}
+        {% endfor %}
+    </form>
+</div>
+
+<div class="filter">
+    <form action="" class="subr_date" method="post">{% csrf_token %}
+        <p>Диапазон (дд-мм-гггг):</p>
+        <input type="text" name="subr_date_from" value="{{ date_from }}" size="10">
+        <input type="text" name="subr_date_to" value="{{ date_to }}" size="10">
+        <input type="submit" name="date_btn" value="OK">
+    </form>
+</div>
+</div>
+
+<table class="panel_list">  
+
+    <th>User</th><th>User Email</th><th>Film</th><th>Time</th><th>Notified</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td><div>
+                {% if i.user_id %}
+                <a href="{% url profile i.user_id %}" target="_blank">{{ i.user_id }}</a>
+                {% endif %}
+            </div></td>
+            <td><div>{{ i.email }}</div></td>
+            <td><div>{{ i.name }}</div></td>
+            <td><div>{{ i.dtime }}</div></td>
+            <td><div>{{ i.notified }}</div></td>
+        </tr>
+    {% empty %}
+        <br />пусто<br />
+    {% endfor %}
+</table>
+
+
+{% endblock %}

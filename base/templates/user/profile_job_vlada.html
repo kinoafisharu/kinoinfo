@@ -1,0 +1,126 @@
+{% extends "base_vlada.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Профиль пользователя' %}{% endblock %}
+{% load base_tags %}
+
+{% block script %}
+<link rel="stylesheet" href="{{ STATIC_URL }}base/css/datepicker.css" type="text/css" media="screen" />
+<script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.mask.js"></script>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('input[name="hours"]').mask('00');
+
+        $('input[name="date"]').datepicker({
+            altFormat: "yy-mm-dd",
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1
+        });
+        
+        var maxLength = $('textarea[name="details"]').attr('maxlength')
+        $('textarea[name="details"]').keyup(function(){
+            var curLength = $('textarea[name="details"]').val().length
+            if($(this).val().length >= maxLength){
+                $(this).val($(this).val().substr(0, maxLength))
+            }
+            var remaning = maxLength - curLength
+            if(remaning < 0){
+                remaning = 0
+            }
+            $('#char_count').html('({% trans "осталось символов" %}: ' + remaning + ')')
+        });
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+    {% vlada_top_menu %}
+
+    {% profile_menu card %}
+    
+    <div class="art-postcontent-width">
+        {% if current_group %}
+        <form action="" method="get">
+            <h3>{% if card.is_my_profile %}{% trans 'Моя работа' %}{% else %}{% trans 'Работа' %}{% endif %}
+            "{{ current_group.name }}"
+            <select name="project" onchange="this.form.submit();">
+            {% for p in projects %}
+                <option value="{{ p.id }}"{% if p.id == project_id %} selected{% endif %}>{{ p.name }}</option>
+            {% endfor %}
+            </select>
+            {% if card.is_my_profile %}<a onclick="$.fancybox.open($('.tasks').show())">{% trans 'Задания' %} ({{ tasks_count }})</a>{% endif %}
+            </h3>
+        </form>
+        {% endif %}
+
+        <br />
+        
+        {% if current_group %}
+        <br />
+
+        <div class="scroll_list">
+            {% if card.is_my_profile %}
+            <div class="tasks" style="display: none; font-size: 12px;">
+                <table class="modern_tbl">
+                    <th>{% trans 'Дата' %}</th>
+                    <th>{% trans 'Описание' %}</th>
+                    <th>{% trans 'Подробности' %}</th>
+                    <th></th>
+                    {% for i in tasks %}
+                    <tr>
+                        <td><div id="tsk_date">{{ i.dtime|date:"d.m.Y" }}</div></td>
+                        <td><div><span class="task_txt_edit org_hover">{{ i.extra }}</span></div></td>
+                        <td><div>{% if i.text %}{{ i.text }}{% endif %}</div></td>
+                        <td><a href="http://imiagroup.com.au/view/project/{{ project_id }}/discussion/{{ i.id }}/" target="_blank">{% trans 'Обсуждение' %}</a></td>
+                    </tr>
+                    {% endfor %}
+                </table>
+            </div>
+
+            <a onclick="$.fancybox.open($('.add_job_action').show())">{% trans 'добавить действие' %}</a> 
+            <br />
+            {% endif %}
+            <table class="modern_tbl" style="margin-top: 10px;">
+                <th></th><th>{% trans 'Инфо' %}</th><th>{% trans 'Дата время' %}</th><th>{% trans 'Общая сумма' %}</th><th>{% trans 'Кол' %}</th><th>{% trans 'Оплачено' %}</th>
+            {% for j in actions %}
+                <tr>
+                    <td><div></div></td>
+                    <td><div>{{ j.obj.extra|safe|linebreaks }}</div></td>
+                    <td><div>{{ j.obj.dtime|date:"d b Y" }}</div></td>
+                    <td><div>{{ j.summa }}</div></td>
+                    <td><div>{{ j.obj.number }}</div></td>
+                    <td><div>{% if j.obj.allow %}<span style="color: green;">{% trans 'Да' %}{% else %}<span style="color: red;">{% trans 'Нет' %}{% endif %}</span></div></td>
+                </tr>
+            {% endfor %}
+            </table>
+            
+            <div class="add_job_action" style="display: none; font-size: 12px;">
+                <form action="{% url add_job_action %}" method="post">{% csrf_token %}
+                    <b>{% trans 'Этап работы' %}:</b><br />
+                    <select name="stage">
+                        <option value="">-----------</option>
+                        {% for i in stages %}
+                        <option value="{{ i.id }}">{{ i.name }}</option>
+                        {% endfor %}
+                    </select><br />
+                    <b>{% trans 'Описание работы' %}:</b> <span id="char_count"></span><br />
+                    <textarea name="details" maxlength="256" cols="80" rows="5"></textarea><br />
+                    <b>{% trans 'Затрачено часов' %}:</b><br />
+                    <input type="text" name="hours" value="" /><br />
+                    <b>{% trans 'Дата' %}:</b><br />
+                    <input type="text" name="date" value="" /><br /><br />
+                    <input type="hidden" name="proj_id" value="{{ project_id }}" />
+                    <input type="submit" value="{% trans 'Сохранить' %}" />
+                </form>
+            </div>
+
+        </div>
+        {% endif %}
+
+    </div>
+    
+    
+<div class="clear"></div>
+{% endblock %}

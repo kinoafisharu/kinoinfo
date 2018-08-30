@@ -1,0 +1,25 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader" style="float: left;">Лог импорта релизов из Кинометро</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+<div style="clear: both;"></div>
+
+<table class="panel_list">
+<th></th><th>Фильм</th><th>Релиз</th><th>Дистриб</th><th>Копии</th><th>Хрон</th>
+{% for i in p.object_list %}
+    <tr>
+    <td><div><input type="checkbox" /></div></td>
+    <td><div><a href="{{ i.url }}" target="_blank">{{ i.name_ru }} / {{ i.name_en }}</a></div></td>
+    <td><div>{{ i.release_date }}</div></td>
+    <td><div>{{ i.distributor1 }}{% if i.distributor2 %} / {{ i.distributor2 }}{% endif %}</div></td>
+    <td><div>{{ i.copies }}</div></td>
+    <td><div>{{ i.runtime }}</div></td>
+    </tr>
+{% endfor %}
+</table>
+
+
+{% endblock %}

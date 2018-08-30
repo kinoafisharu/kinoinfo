@@ -1,0 +1,43 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+    {% if result.status == 'request_list' %}
+        <div class="scroll_list">
+        <form action="" method='post'>{% csrf_token %}
+            <b>Показать последние записи:</b> <a href="{% url get_user_request_list '100' %}">100</a> | 
+            <a href="{% url get_user_request_list '300' %}">300</a> | 
+            <a href="{% url get_user_request_list '500' %}">500</a> | 
+            <a href="{% url get_user_request_list '1000' %}">1000</a>
+            <br /><br />
+            <table class="panel_list">  
+            	<tr>
+	                <th>Дата время</th>
+	                <th>IP</th>
+	                <th>Пользователь</th>
+	                <th>Событие</th>
+                </tr>
+            	{% for i in p.object_list %}
+                <tr>
+                    <td>{{ i.date }}</td>
+                    <td>{{ i.ip }}</td> 
+                    <td>{% if i.user_id %}<a href="{% url profile i.user_id %}" target="_blank">{% endif %}{{ i.user_id }}{% if i.user_id %}</a>{% endif %}</td> 
+                    <td>{{ i.details }} ({{ i.method }})</td>
+                </tr>
+            	{% endfor %}
+            </table
+            <div class="pagination">
+                <span class="step-links">
+                    {% if p.has_previous %}
+                        <input type="submit" name="btn" value="Назад">
+                        <input type="hidden" name="prev" value="{{ p.previous_page_number }}">
+                    {% endif %}
+                    <b>{{ p.number }} страница из {{ p.paginator.num_pages }}</b>
+                    {% if p.has_next %}
+                        <input type="submit" name="btn" value="Вперед">
+                        <input type="hidden" name="next" value="{{ p.next_page_number }}">
+                    {% endif %}
+                </span>
+            </div>
+        </form>
+        </div>
+    {% endif %}
+{% endblock %}

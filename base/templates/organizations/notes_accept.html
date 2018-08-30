@@ -1,0 +1,42 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block script %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_note", "language": "ru", "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": false, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "wordcount", "pagebreak_separator": ""});
+</script>
+{% endblock %}
+
+
+{% block info %}
+<h3 class="art-postheader">Непроверенные описания организаций {% if p %}(всего {{ p.object_list.count }}){% endif %}</h3>
+<br />
+<div class="clear"></div>
+    {% if org %}
+    
+    <b>Название:</b> {{ org.name }}<br />
+    <b>Автор:</b> {% if org.creator %}<a href="{% url get_user_page_info org.creator.user_id %}" target="_blank">{{ org.creator.user_id }}</a>{% endif %}<br /><br />
+    {% if warning %}<span style="color: red;">Текст подозрительный</span>{% else %}<span style="color: #808080;">Текст неподозрительный</span>{% endif %}
+    <br />
+    <br />
+    <form action="" method="post">{% csrf_token %}
+        <textarea style="width: 500px;" rows="10" name="note">{{ org.note|safe }}</textarea>
+        <br />
+        <input type="hidden" name="org_id" value="{{ org.id }}" />
+        <input type="submit" value="Одобрить" />
+    </form>
+    
+    {% else %}
+    
+    <table class="panel_list">
+        <th></th><th>Название</th>
+        {% for i in p.object_list %}
+            <tr>
+            <td><div></div></td>
+            <td><div><a href="{% url admin_organization_notes i.id %}">{{ i.name }}</a></div></td>
+            </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+
+{% endblock %}

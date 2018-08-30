@@ -1,0 +1,105 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - источники информации и связи{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+
+    {% film_menu_mobile id menu film_editor %}
+
+
+<div class="art-postcontent-width">
+    <h1><a href="{% url get_film id %}">{{ name_ru|safe }}</a> - Источники информации и связи</h1>
+
+    <table>
+        <tr>
+            <td><b>Россия: </b></td>
+            <td></td>
+            <td></td>
+        </tr>
+        
+        {% if kinoafisha_rel %}
+        <tr>
+            <td>- <b>Киноафиша</b></td>
+            <td><a href="{{ kinoafisha_rel }}" class="organization_url">{{ name_ru|safe }}</a></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endif %}
+        
+        {% for i in films_rel %}
+        <tr>
+            <td>- <b>Кинометро</b></td>
+            <td><a href="{{ i.release.url }}" class="organization_url">{{ i.release.name_ru|safe }} / {{ i.release.name_en|safe }}</a></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endfor %}
+        
+        {% for i in world.russia %}
+        <tr>
+            <td>- <b>{{ i.obj.source_obj.source }}</b></td>
+            <td>{% if i.url %}<a href="{{ i.url }}" {% if not i.admin %}class="organization_url"{% endif %} target="_blank">{{ i.obj.name|safe }}</a>{% else %}{{ i.obj.name|safe }}{% endif %}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endfor %}
+        
+        {% if world.cis %}
+        <tr>
+            <td style="padding-top: 10px;"><b>СНГ: </b></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endif %}
+        
+        {% for i in world.cis %}
+        <tr>
+            <td>- <b>{{ i.obj.source_obj.source }}</b></td>
+            <td>{% if i.url %}<a href="{{ i.url }}" class="organization_url">{{ i.obj.name|safe }}</a>{% else %}{{ i.obj.name|safe }}{% endif %}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endfor %}
+        
+        {% if imdb_id or world.world %}
+        <tr>
+            <td style="padding-top: 10px;"><b>Мир: </b></td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endif %}
+        
+        {% if imdb_id %}
+        <tr>
+            <td>- <b>IMDb</b></td>
+            <td><a href="http://www.imdb.com/title/tt{{ imdb_id }}/" target="_blank">{{ name_en|safe }}</a></td>
+            <td></td>
+        </tr>
+        {% endif %}
+        
+        {% for i in world.world %}
+        <tr>
+            <td>- <b>{{ i.obj.source_obj.source }}</b></td>
+            <td>{% if i.url %}<a href="{{ i.url }}" class="organization_url">{{ i.obj.name|safe }}</a>{% else %}{{ i.obj.name|safe }}{% endif %}</td>
+            <td></td>
+            <td></td>
+        </tr>
+        {% endfor %}
+    
+    </table>
+
+    
+    {% if official_site %}
+    <br />
+    <b>Официальная страница</b>
+    <br />
+     - <a href="{{ official_site }}" class="organization_url">{{ official_site }}</a><br />
+    {% endif %}
+    
+
+</div>
+
+
+
+{% endblock %}

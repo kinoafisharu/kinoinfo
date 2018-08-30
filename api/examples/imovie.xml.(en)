@@ -1,0 +1,19 @@
+<data>
+    <api_title>
+        imovie
+    </api_title>
+
+    <api_decription>
+        The method returns information about the movie
+    </api_decription>
+    
+    <api_example>imovie/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/imovie/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>no</api_response_details>
+
+    <!--<api_response>imovie.txt</api_response>-->
+</data>

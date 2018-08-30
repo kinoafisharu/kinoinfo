@@ -1,0 +1,16 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+<h3 class="art-postheader">Удаление данных источника (в крайних случаях):</h3>
+    <br />
+    <form action="" method='post'>{% csrf_token %}
+        <select name="sources">
+            {% for i in sources %}
+                <option value="{{ i.id }}" >{{ i.source }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" name="delete" value="Удалить" />
+        
+    </form>
+
+{% endblock %}

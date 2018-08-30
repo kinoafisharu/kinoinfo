@@ -1,0 +1,265 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}
+    {% if id %}
+        {% if news_data.0.obj.title %}
+            {{ news_data.0.obj.title }}
+        {% else %}
+            {{ title }}
+        {% endif %}
+    {% else %}
+        {{ title }}
+    {% endif %}
+{% endblock %}
+
+{% block script %}
+
+    {% if user.is_superuser or request.is_admin %}
+    <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+    {% endif %}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var scroll_h = ($(window).height() / 100) * 60
+            $('.scroll_list').css('height', scroll_h + 'px')
+            
+            var fullsc = $.cookie("fullscreen")
+            if(fullsc && fullsc != 'null'){
+                fullscreen('.post_block')
+            }
+            
+            {% if vid and not page_type %}
+            $.fancybox.open($('.page_types_choice').show(), {'modal': true})
+            {% endif %}
+            
+        });
+        
+        {% if user.is_superuser or request.is_admin %}
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_text", "language": "en", "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, anchor, image, code, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": true, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "emotions, wordcount, paste, advlink", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+        {% endif %}
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ site_name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">
+        {% if vid and id %}<a href="{% url letsget_view vid %}">{% endif %}
+        {% if itype == 'invite' and id %}<a href="{% url letsget_invite_template %}">{% endif %}
+        {% if itype == 'invoice' and id %}<a href="{% url letsget_invoice_template %}">{% endif %}
+        {{ title }}
+        {% if vid and id %}</a>{% endif %}
+        {% if itype == 'invite' and id %}</a>{% endif %}
+        {% if itype == 'invoice' and id %}</a>{% endif %}
+        </span></b>
+    {% if id %}
+        - <b id="navigation_bar"><span class="small_film_name">
+        {% if news_data.0.obj.title %}
+            {{ news_data.0.obj.title }}
+        {% else %}
+            {{ title }}
+        {% endif %}
+        </span></b>
+    {% endif %}
+    
+</h1>
+{% if user.is_superuser or request.is_admin %}
+    {% if count == 0 and not id %}
+    {% if vid %}<span class="change_page_type in_h1_left" onclick="$.fancybox.open($('.page_types_choice').show());">Page Type</span>{% endif %}
+    <span class="post_add in_h1" onclick="post_edit(0)">Add Post</span>
+    {% endif %}
+    {% if count == 1 %}<span class="post_edit in_h1" onclick="post_edit({{ news_data.0.obj.id }})">Edit {% if vid %}Post{% else %}Templ.{% endif %}</span>{% endif %}
+    {% if count > 0 and not id %}<span class="post_add in_h1_left" onclick="post_edit(0)">Add {% if vid %}Post{% else %}Templ.{% endif %}</span>{% endif %}
+    {% if id %}<span class="post_delete in_h1_left" onclick="if(confirm('Are you sure?')){$('.pst_dl').submit()}">Delete {% if vid %}Post{% else %}Templ.{% endif %}</span>
+    <form action="{% if vid %}{% url letsget_view_post_del vid id %}{% else %}{% if itype == 'invite' %}{% url letsget_invite_del id %}{% endif %}{% if itype == 'invoice' %}{% url letsget_invoice_del id %}{% endif %}{% endif %}" method="post" class="pst_dl">{% csrf_token %}
+    </form>
+    {% endif %}
+{% endif %}
+
+{% if current_site.domain == 'vladaalfimovdesign.com.au' %}
+    {% vlada_menu slug %}
+{% endif %}
+{% if current_site.domain == 'letsgetrhythm.com.au' or current_site.domain == 'vsetiinter.net' %}
+    {% letsget_menu slug %}
+{% endif %}
+
+
+<div class="art-postcontent-width">
+
+    <div class="article">
+        <div class="scroll_list">
+            {% if count == 1 %}
+                {% if news_data.0.obj.title %}
+                <h3>{{ news_data.0.obj.title|safe }}</h3>
+                <br />
+                {% endif %}
+                {{ news_data.0.obj.text|safe }}
+                
+                {% if is_blog %}
+                    <div class="social_share">
+                    {% if request.user.is_superuser %}
+                        {% if report.is_report %}
+                            {% if report.send %}
+                                <input type="button" value="Report Has Been Sent" disabled style="float: left; margin-top: 15px;" />
+                            {% else %}
+                                <input type="button" value="Send A Report To The Client" style="float: left; margin-top: 15px;" class="send_report_client" id="{{ vid }};{{ news_data.0.obj.id }};{{ report.calendar_id }}"/>
+                            {% endif %}
+                        {% endif %}
+                    {% endif %}
+                    
+                    Share the post:
+                        <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="en" data-yashareQuickServices="vkontakte,facebook,twitter,gplus,pinterest" data-yashareTheme="counter" data-yashareType="small" data-yashareImage="http://letsgetrhythm.com.au/static/base/images/vlada/pinterest-3-48.png"></div>
+                        
+                    {% if request.user.is_superuser %}
+                    <br /><div class="report_msg_callback"> </div>
+                    {% endif %}
+                    </div>
+                    
+                    
+                    <b><a href="#" class="leave_en_comment_btn" onclick="$.fancybox($('.leave_comment').show());">Leave Comment</a></b><br /><br />
+                        {% if request.user.is_authenticated %}
+                            <div style="display: none; font-size: 14px;" class="leave_comment">{% csrf_token %}
+                                Comment:<br />
+                                <textarea name="text" style="width: 600px; height: 70px;" id="id_note1"></textarea>
+                                <input type="hidden" name="pst_id" value="{{ news_data.0.obj.id }}" />
+                                <input type="hidden" name="answer" value="0" />
+                                <input type="hidden" name="review" value="" />
+                                <br />
+                                {% if user.is_superuser or is_editor or request.is_admin %}
+                                    <br />
+                                    The Author's Signature:<br />
+                                    <input type="radio" name="author_nick" value="0" checked /> {% if request.fio %}{{ request.fio }}{% else %}{{ request.acc_list.short_name }}{% endif %}
+                                    <br />
+                                    <input type="radio" name="author_nick" value="1"{% if not user.first_name %} disabled{% endif %}/> Alias{% if user.first_name %} - {{ user.first_name }}{% endif %} (<a href="{% url profile %}" target="_blank" rel="nofollow">{% if user.first_name %}Edit{% else %}Add{% endif %}</a>)
+                                    <br />
+                                    <input type="radio" name="author_nick" value="2"/> Do Not Show My Signature
+                                    <br />
+                                {% endif %}
+                                <br />
+                                <input type="button" value="Send Comment" class="blog_cmmnt" />
+                                <br /><br />
+                                <div class="blog_cmmnt_warning" style="color: #CF0000;"></div>
+                            </div>
+                        {% else %}
+                            Login To Leave A Comment
+                        {% endif %}
+
+                    <div class="comments_popup" style="font-size: 14px; display: block; opacity: 0.7;">
+                    {% for i in comments_list %}
+                    <div class="message_block lets_mb">
+                        <div class="message_head">
+                            <b>
+                            {{ i.user }}
+                            {% if i.answer %}
+                                <span style="color:#29A329;"> answer for </span> {{ i.answer }}
+                            {% endif %}
+                            </b>
+                            <em>{{ i.date }}</em>
+                        </div>
+                        <div class="message_text">
+                            {% if i.comment_cut %}
+                                <div id="lets_mb_shortcut">{{ i.comment_cut }}</div>
+                                <div style="display: none;">
+                                    {{ i.comment }}
+                                </div>
+                                <a class="lets_mb_readnext">[read next]</a>
+                            {% else %}
+                                {{ i.comment }}
+                            {% endif %}
+                            
+                            
+                            
+                            <div style="text-align: right;">
+                                {% if request.user.is_superuser %}
+                                <form action="{% url blog_comment_delete %}" method="post" class="del_comm">{% csrf_token %}
+                                    <input type="hidden" value="{{ i.id }}" name="comment_id"/>
+                                </form>
+                                <a href="#" onclick="if(confirm('Are you sure?')){$('.del_comm').submit();}">Delete</a> | 
+                                {% endif %}
+                                <a href="#answer" class="lets_leave_com" id="{{ id }}__{{ i.id }}">Answer</a>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    </div>   
+                    
+                    
+                {% endif %}
+                
+            {% endif %}
+            {% if count > 1 %}
+                {% for i in news_data %}
+                <div class="short_news"{% if not i.obj.visible %} style="background-color: rgba(255,250,205,0.7);"{% endif %}>
+                    <h2><a href="{% if vid %}{% url letsget_view_post vid i.obj.id %}{% else %}{% if itype == 'invite' %}{% url letsget_invite_template i.obj.id %}{% endif %}{% if itype == 'invoice' %}{% url letsget_invoice_template i.obj.id %}{% endif %}{% endif %}">{% if i.obj.title %}{{ i.obj.title }}{% else %}{{ title }}{% endif %}</a></h2>
+                    {{ i.description }}
+
+                    <span>{% if not i.obj.visible %}<font style="color: red;">{% trans "Не отображается" %}</font> {% endif %}{{ i.obj.dtime|date:"j E" }}</span>
+                </div>
+                {% endfor %}
+            
+                <div class="more_news" style="margin: 0 auto;">
+                    {% if page == 1 and p.has_next %}
+                    <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">{% trans "Ещё новости" %}</a>
+                    {% endif %}
+                    {% if page > 1 %}
+                        <a href="?page={{ p.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">&#8592; {% trans "Новости горячее" %}</a>
+                        {% if p.has_next %}
+                        <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">{% trans "Новости холоднее" %} &#8594;</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif %}
+        </div>
+    </div>
+    
+    
+    {% if user.is_superuser or request.is_admin %}
+        <div class="post_block org_fields">
+            <div class="fullscreen_btn" onclick="fullscreen('.post_block')"></div>
+            <form action="" method="post" class="new_new">{% csrf_token %}
+                <b>Title</b>:<br />
+                <input type="text" value="{% if count == 1 %}{{ news_data.0.obj.title|safe }}{% endif %}" size="60" name="news_title" /><br /><br />
+                <b>Text</b>:<br />
+                <textarea id="id_text" name="text">{% if count == 1 %}{{ news_data.0.obj.text|safe }}{% endif %}</textarea>
+                <br />
+                {% if vid %}
+                <b>Visible <input {% if count == 1 %}{% if news_data.0.obj.visible %}checked="checked"{% endif %}{% else %}checked="checked"{% endif %} type="checkbox" name="visible" /></b>
+                <br /><br />
+                {% else %}
+                <input type="checkbox" name="visible" checked="checked" style="display: none;" />
+                {% endif %}
+                <input type="submit" value="Save" /> <input type="button" value="Cancel" class="post_edit_cancel" />
+                
+                <input type="hidden" value="{% if count == 1 %}{{ news_data.0.obj.id }}{% endif %}" name="edit" />
+            </form>
+            
+            <input type="text" value="{% if count == 1 %}{{ news_data.0.obj.title|safe }}{% endif %}" id="title_hidden" class="org_fields" />
+            <textarea id="text_hidden" class="org_fields">{% if count == 1 %}{{ news_data.0.obj.text|safe }}{% endif %}</textarea>
+            {% if vid %}
+            <input {% if count == 1 %}{% if news_data.0.obj.visible %}checked="checked"{% endif %}{% else %}checked="checked"{% endif %} id="visible_hidden" class="org_fields" />
+            {% else %}
+            <input checked="checked" id="visible_hidden" class="org_fields" />
+            {% endif %}
+        </div>
+        
+        {% if vid %}
+            {% if not page_type or count == 0 %}
+            <form action="{% url change_page_type vid %}" method="post" class="page_types_choice" style="display: none;">{% csrf_token %}
+                <b>Choose Page Type: </b>
+                <select name="page_type">
+                {% for i in page_types %}
+                <option value="{{ i.0 }}"{% if page_type == i.0 %} selected{% endif %}>{{ i.1 }}</option>
+                {% endfor %}
+                </select>
+                <input type="submit" value="Select" />
+            </form>
+            {% endif %}
+        {% endif %}
+        
+    {% endif %}
+</div>
+
+{% endblock %}

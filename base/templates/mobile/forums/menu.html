@@ -1,0 +1,45 @@
+{% load base_tags %}
+<div class="art-posttree-width">
+
+    <div class="left_categories">
+        
+            <div class="method-list">
+                <ul><li>
+                {% if request.acc_list.acc %}
+                    <a href="http://ya.vsetiinter.net/user/profile/" target="_blank" id="user_full_name" rel="nofollow"><b>{% if request.fio %}{{ request.fio|safe|striptags }}{% else %}{{ request.acc_list.short_name|safe|striptags }}{% endif %}</b></a>
+                    <form action="{% url women_forum_logout 'm' %}" method="POST" class="logout">{% csrf_token %}
+                        <input type="submit" value="Выйти" name="wf_logout" />
+                    </form>
+                {% else %}
+                    <a class="kinoafisha_button"><b>Авторизоваться</b></a>
+                {% endif %}
+                {% base_user_kinoafisha_mobile %}
+                </li>
+                </ul>
+            </div>
+
+
+        {% for i in data %}
+            <h5 class="method-category"><p><div class="tbl_item" id="item_{{ i.id }}">{{ i.subject }}</div></p></h5>
+            <div class="method-list">
+                <ul>
+                    <li><input type="button" value="Начать тему" style="margin: 10px 0 10px 10px;" onclick="wf_msg(1, {{ i.id }})" /></li>
+                {% for t in i.topics %}
+                    <li>
+                    <a href="javascript:void(0)" id="{{ i.id }}__{{ t.id }}" class="topic_link">
+                    <div class="tbl_item">
+                        <div class="tlink">{{ t.subject|safe }}</div>
+                        <div class="tbl_info">
+                            <div id="comm_count_{{ t.id }}" class="mc" title="Всего сообщений">{{ t.count }}{% if t.no_readed %}/<b>{{ t.no_readed }}</b>{% endif %}</div>
+                        </div>
+                    </div>
+                    </a>
+                    </li>
+                {% endfor %}
+                </ul>
+            </div>
+        {% endfor %}
+
+    </div>
+    <div style="clear: both;"></div>
+</div>

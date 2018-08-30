@@ -1,0 +1,13 @@
+
+<data>
+    <genre id="1" name="комедия" name_en="Comedy"/>
+    <genre id="2" name="романтика" name_en="Romance"/>
+    <genre id="3" name="фантастика" name_en="Sci-Fi"/>
+    <genre id="4" name="мелодрама" name_en=""/>
+    <genre id="5" name="драма" name_en="Drama"/>
+    <genre id="6" name="приключения" name_en="Adventure"/>
+    <genre id="7" name="боевик" name_en="Action"/>
+    <genre id="8" name="исторический" name_en="History"/>
+    <genre id="9" name="триллер" name_en="Thriller"/>
+    <genre id="10" name="ужасы" name_en="Horror"/>
+</data>

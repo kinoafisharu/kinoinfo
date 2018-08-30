@@ -1,0 +1,116 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block script %}
+
+    {% if user.is_superuser or request.is_admin %}
+    <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+
+    <script type="text/javascript">
+    function get_names_auto(el, type){
+        var arr = [] 
+        if(type == 'tags'){
+            arr = [{% for i in tags %}"{{ i }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+        }
+        
+        $(el).autocomplete({
+            source: arr,
+            minLength: 2,
+            messages: {
+                noResults: '',
+                results: function() {}
+            }
+        });
+    };
+    </script>
+    {% endif %}
+
+    <script type="text/javascript">
+        $(document).ready(function(){
+            var scroll_h = ($(window).height() / 100) * 60
+            $('.scroll_list').css('height', scroll_h + 'px')
+        });
+
+    </script>
+
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ site_name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">{{ title }}</span></b>
+</h1>
+
+{% if user.is_superuser or request.is_admin %}
+<span class="news_new" title="{% trans 'Добавить новость' %}">{% trans "Добавить" %}</span>
+
+<form action="{% url news_add %}" method="post" class="new_new org_fields">{% csrf_token %}
+    <b>{% trans "Заполните обязательные поля" %}</b><br /><br />
+    {% trans "Заголовок" %}:<br />
+    <input type="text" value="" size="70" name="news_title" class="organization_n" /><br /><br />
+    {% trans "Укажите метки (ключевые слова, теги) через запятую" %}:<br />
+    <input type="text" value="" name="tag" class="organization_t" onkeyup="get_names_auto(this, 'tags');" size="70" /><br /><br />
+    {% trans "Подпись автора" %}:<br />
+    <input type="radio" name="author_nick" value="0" checked /> {% if request.fio %}{{ request.fio }}{% else %}{{ request.acc_list.short_name }}{% endif %}
+    <br />
+    <input type="radio" name="author_nick" value="1"{% if not user.first_name %} disabled{% endif %}/> {% trans "Псевдоним" %}{% if user.first_name %} - {{ user.first_name }}{% endif %} (<a href="{% url user_details %}" target="_blank" rel="nofollow">{% if user.first_name %}{% trans "Изменить" %}{% else %}{% trans "Добавить" %}{% endif %}</a>)
+    <br />
+    <input type="radio" name="author_nick" value="2"/> {% trans "Не показывать подпись" %}
+    <br /><br />
+    <input type="button" value="{% trans 'Создать' %}" class="organization_new_btn" />
+</form>
+{% endif %}
+
+
+
+{% if current_site.domain == 'vladaalfimovdesign.com.au' %}
+    {% vlada_menu %}
+{% endif %}
+{% if current_site.domain == 'letsgetrhythm.com.au' %}
+    {% letsget_menu %}
+{% endif %}
+
+
+<div class="art-postcontent-width">
+
+    <div class="scroll_list">
+    {% for i in news_data %}
+        <div class="short_news"{% if not i.obj.visible %} style="background-color: rgba(255,250,205,0.7);"{% endif %}>
+            <a href="{% url post i.obj.id %}">
+            <div class="short_news__img">
+                {% if i.video %}
+                    <img src="{{ STATIC_URL }}base/images/watch_video_eng.jpg" />
+                {% else %}
+                    {% if i.obj.img %}
+                    <img src="/upload{{ i.obj.img }}" />
+                    {% endif %}
+                {% endif %}
+            </div>
+            </a>
+            <h2><a href="{% url post i.obj.id %}">{{ i.obj.title }}</a></h2>
+            {{ i.description }}
+
+            <span>{% if not i.obj.visible %}<font style="color: red;">{% trans "Не отображается" %}</font> {% endif %}{{ i.obj.dtime|date:"j E" }}</span>
+        </div>
+    {% endfor %}
+    
+    <div class="more_news" style="margin: 0 auto;">
+    {% if page == 1 and p.has_next %}
+    <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">{% trans "Ещё новости" %}</a>
+    {% endif %}
+    {% if page > 1 %}
+        <a href="?page={{ p.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">&#8592; {% trans "Новости горячее" %}</a>
+        {% if p.has_next %}
+        <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">{% trans "Новости холоднее" %} &#8594;</a>
+        {% endif %}
+    {% endif %}
+    </div>
+    
+    </div>
+
+</div>
+
+{% endblock %}

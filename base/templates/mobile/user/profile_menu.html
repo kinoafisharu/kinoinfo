@@ -1,0 +1,86 @@
+{% load i18n %}
+{% load base_tags %}
+
+<div class="art-posttree-width">
+        <noindex>
+        <h5 class="method-category" id="{{ user_id }}_section{{ k }}"><p>Мой профиль</p></h5>
+        <div class="method-list">
+            <ul>
+                <li>
+                    {% if request.acc_list.acc %}
+                    <a href="{% url profile %}" id="user_full_name" rel="nofollow">{{ request.fio }}</a>
+                    {% else %}
+                    <a href="{% url login %}" rel="nofollow">Авторизоваться</a>
+                    {% endif %}
+                </li>
+                <li>
+                    <a class="select_mycity">
+                    {{ request.current_user_city }}
+                    </a>
+                </li>
+                <li>
+                    <a href="{% url profile %}" target="_blank" rel="nofollow">
+                    На Вашем счету {{ request.mymoney }} руб.
+                    </a>
+                </li>
+                <li>
+                    <div id="show_modal">
+                    <a class="feedback" id="modal" href="#in_modal" rel="nofollow">
+                    Обратная связь
+                    </a>
+                    </div>
+                    <div id="in_modal"></div>
+                </li>
+            </ul>
+        </div>
+        </noindex>
+
+
+        {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+            {% for k, v in org_menu.items %}
+                {% if k != 'about' %}
+                {% if not v.private or v.private and is_my_profile %}
+                <h5 class="method-category" id="{{ user_id }}_section{{ k }}"><p>{{ v.title }}</p></h5>
+                <div class="method-list">
+                    <ul class="{{ user_id }}_section{{ k }}">
+                    {% for i in v.sub %}
+                    <li><a href="{% if i.type == '2' %}{% url profile_gallery user_id i.id %}{% else %}{% url profile_view user_id i.id %}{% endif %}" id="link_menu__{{ k }}">{{ i.name }}</a></li>
+                    {% endfor %}
+                    </ul>
+                </div>
+                {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <h5 class="method-category" id="about_section" class="aboutus_menu"><p>{% if is_my_profile %}{% trans 'Обо мне' %}{% else %}{% trans 'О пользователе' %}{% endif %}</p></h5>
+
+
+        <div class="method-list">
+            <ul class="{{ user_id }}_sectionabout">
+                <li>
+                    <a href="{% url profile user_id %}">
+                    {% if is_my_profile %}{% trans 'Моя визитка' %}{% else %}{% trans 'Визитка' %}{% endif %}
+                    </a>
+                </li>
+                {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+                <li>
+                    <a href="{% url profile_recommend user_id %}">
+                    Мои рекомендации
+                    </a>
+                </li>
+                {% endif %}
+                {% if is_my_profile or request.user.is_superuser or request.is_admin %}
+                <li>
+                    <a href="{% url profile_accounts user_id %}">{% if is_my_profile %}{% trans 'Мои аккаунты' %}{% else %}{% trans 'Аккаунты' %}{% endif %}</a>
+                </li>
+                <li>
+                    <a href="{% url profile_job user_id %}">{% if is_my_profile %}{% trans 'Моя работа' %}{% else %}{% trans 'Работа' %}{% endif %}</a>
+                </li>
+                {% endif %}
+            </ul>
+        </div>
+
+
+</div>
+

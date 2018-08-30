@@ -1,0 +1,115 @@
+{% extends "mobile/base.html" %}
+
+{% block title %}{{ request.current_site.name }}: {{ page_title }}{% endblock %}
+{% load base_tags %}
+
+{% block script %}
+<style>
+#film_info{
+    margin-bottom: 10px; padding: 5px;
+}
+</style>
+{% endblock %}
+
+
+{% block content %}
+
+{% mobile_header %}
+
+{% kinoafisha_main_menu_mobile %}
+
+
+<div class="art-postcontent-width">
+    <h1>
+    <a class="select_mycity">{{ request.current_user_city }}</a> - {{ page_title }} - {{ set_date|date:"l, d E Y" }} г.
+    </h1>
+
+    {% spaceless %}
+    
+
+    {% if data %}
+        <input type="hidden" value='{{ set_date|date:"d.m.Y" }}' class="sch_date" />
+
+        <div class="schedule_title {{ day_class }}" style="margin-top: 0;">
+            {{ day_part }} сеансы
+            <div class="sch_arrow-h"></div>
+        </div>
+
+        <div class="schedule_data-{{ day_class }}" id="1">
+        {% for i in data %}
+
+            <div id="film_info" style="background: {% if forloop.counter|divisibleby:'2' %}#EBEBEB;{% else %}#F2F2F2;{% endif %}">
+                <div class="film_info-schedules">
+                    
+                    <ul>
+                        <li class="film_info-sch">
+                            <div>{{ i.dtime|date:"H:i" }}</div>
+                            <span style="font-size: {{ i.cinema_size }}px;">{{ i.cinema|safe }}</span>
+                        </li>
+                        <li class="film_info-img">
+                            <a href="http://m.kinoinfo.ru/film/{{ i.film.id }}/" target="_blank"><div class="film_info-data-img" id="poster" style="width: 50px;">{% if i.film.posters %}<img src="{{ i.film.posters }}" style="width: 50px;"/>{% endif %}</div></a>
+                        </li>
+                        <li class="film_info-data">
+                            <div>
+                                <h2 id="film_name"><a href="http://m.kinoinfo.ru/film/{{ i.film.id }}/">{{ i.film.name_ru }}</a></h2>
+                                <div id="film_details">
+                                    <em>{% for v in i.film.countries %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},</em>
+                                    <em>{% for v in i.film.genres %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},</em>
+                                    <em>{% if i.film.runtime %}{{ i.film.runtime }} мин.{% endif %}</em>
+                                </div>
+                                <div id="film_info-description">{{ i.film.descript_cut }}</div>
+                            </div>
+                        </li>
+                        <li class="film_info-rate">
+                            <div class="rate_color_{{ i.film.rate }}">
+                                <div class="pen_rate"><b title="Репутация фильма:{% if i.film.rating.show_imdb %} IMDb - {{ i.film.rating.show_imdb }}{% endif %}{% if i.film.rating.rotten %} / RottenTomatoes - {{ i.film.rating.rotten }}{% endif %}{% if i.film.rating.show_ir %} / Киномэтры - {{ i.film.rating.show_ir }}{% endif %}{% if not i.film.rating.show_imdb and not i.film.rating.rotten and not i.film.rating.show_ir %} нет{% endif %}">{% if i.film.rate %}{{ i.film.rate }}{% else %}?{% endif %}</b></div>
+                            </div>
+                            <span>{{ i.film.limit }}</span>
+                        </li>
+                    </ul> 
+                    
+                </div>
+                <div class="clear"></div>
+            </div>
+        {% endfor %}
+        </div>
+
+        {% if day_part == 'Утренние' %}
+            <div class="schedule_title part_day">Дневные сеансы<div class="sch_arrow-s"></div></div>
+            <div class="schedule_data-part_day" id="0"></div>
+            <div class="schedule_title part_evening">Вечерние сеансы<div class="sch_arrow-s"></div></div>
+            <div class="schedule_data-part_evening" id="0"></div>
+            <div class="schedule_title part_night">Ночные сеансы<div class="sch_arrow-s"></div></div>
+            <div class="schedule_data-part_night" id="0"></div>
+        {% else %}
+            {% if day_part == 'Дневные' %}
+                <div class="schedule_title part_evening">Вечерние сеансы<div class="sch_arrow-s"></div></div>
+                <div class="schedule_data-part_evening" id="0"></div>
+                <div class="schedule_title part_night">Ночные сеансы<div class="sch_arrow-s"></div></div>
+                <div class="schedule_data-part_night" id="0"></div>
+            {% else %}
+                {% if day_part == 'Вечерние' %}
+                    <div class="schedule_title part_night">Ночные сеансы<div class="sch_arrow-s"></div></div>
+                    <div class="schedule_data-part_night" id="0"></div>
+                {% endif %}
+            {% endif %}
+        {% endif %}
+    {% else %}
+    Нет сеансов на этот день
+    {% endif %}
+
+        <ul class="set_sch_date">
+        {% for i in days_range %}
+        {% if i != set_date.date %}<a href='?date={{ i|date:"d.m.Y" }}'>{% endif %}
+            <li><div style="font-size: 16px; font-weight: bold;">{{ i|date:"d" }}</div><div style="font-size: 11px;">{{ i|date:"E" }}</div></li>
+        {% if i != set_date.date %}</a>{% endif %}
+        {% endfor %}
+        </ul>
+
+        <div class="clear"></div>
+        
+    {% endspaceless %}
+</div>
+
+
+{% endblock %}

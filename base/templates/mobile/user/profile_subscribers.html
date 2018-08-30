@@ -1,0 +1,33 @@
+{% extends "mobile/base.html" %}
+{% load i18n %}
+{% block title %}Мои подписчики{% endblock %}
+{% load base_tags %}
+
+{% block content %}
+
+    {% mobile_header %}
+
+    {% profile_menu_mobile is_my_profile card.profile.user_id %}
+
+    <div class="art-postcontent-width">
+        <h1>Мои подписчики</h1>
+
+        {% if data %}
+        <table class="modern_tbl">
+            {% for i in data %}
+            <tr>
+                <td>
+                    <div><a href="{% url profile i.user_id %}" target="_blank">{{ i.user }}</a></div>
+                </td>
+                <td>
+                    <div>{{ i.dtime }}</div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        Здесь пока пусто
+        {% endif %}
+
+    </div>
+{% endblock %}

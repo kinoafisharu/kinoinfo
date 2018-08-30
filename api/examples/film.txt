@@ -1,0 +1,32 @@
+
+<data>
+    <film id="291" idimdb="238883" name="Брат-2" original="Brat 2">
+        <year value="2000"/>
+        <director id="342" name="Алексей Балабанов"/>
+        <actor id="230" name="Сергей Бодров-мл."/>
+        <actor id="688" name="Виктор Сухоруков"/>
+        <actor id="656" name="Сергей Маковецкий"/>
+        <actor id="664" name="Александр Дьяченко"/>
+        <actor id="642" name="Константин Мурзенко"/>
+        <actor id="1225" name="Кирилл Пирогов"/>
+        <runtime value="121"/>
+        <genre1 id="7" name="боевик"/>
+        <genre2 id="0" name="None"/>
+        <genre3 id="0" name="None"/>
+        <country1 id="2" name="Россия"/>
+        <country2 id="0" name="None"/>
+        <poster path="http://www.kinoafisha.ru/posters/1/291-001.jpg"/>
+        <rate value="8.0"/>
+        <votes value="22"/>
+        <imdb value="7,5"/>
+        <imdb_votes value="3700"/>
+        <site value="http://brat2.film.ru/"/>
+        <limits value="без ограничений"/>
+        <date value="None"/>
+        <decription value="Участвуя в программе на телевидении, Данила Багров встречает своих друзей по Чечне. Одного из них внезапно убивают. Данила знает, что у того были неприятности из-за брата-хоккеиста в Америке. Данила должен разобраться. Теперь его фотография ходит по рукам русской и американской мафии. Новоявленные «Аль Капоне» понимают, что нарвались на профессионала…"/>
+        <comment value=""/>
+        <trailers value=""/>
+        <company id="16" value="СТВ"/>
+        <datelastupd value="2011-10-14 11:46:31"/>
+    </film>
+</data>

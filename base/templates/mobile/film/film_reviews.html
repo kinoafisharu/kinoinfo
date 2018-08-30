@@ -1,0 +1,118 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - рецензии экспертов{% endblock %}
+{% block script %}
+<style type="text/css">
+.fancybox-skin{
+    background: #FFF5EB;
+}
+</style>
+{% if first_load %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('.descr_id_' + {{ first_load }}).click();
+    });
+</script>
+{% endif %}
+{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+
+    {% film_menu_mobile id menu film_editor %}
+
+<div class="art-postcontent-width">
+    <h1><a href="{% url get_film id %}">{{ name_ru|safe }}</a> - Рецензии экспертов</h1>
+
+    {% if reviews_count > 1 %}
+        <div class="txt_wrapper">
+            <p style="margin-bottom: 10px;">Быстрая навигация по рецензиям:</p>
+        {% for i in data %}
+            <h3 style="color: #555; margin-bottom: 10px;"><a href="#r{{ i.id }}">{{ i.title|safe }}</a></h3>
+        {% endfor %}
+        </div>
+    {% endif %}
+
+    {% for i in data %}
+    <div class="txt_wrapper">
+        <h2 id="title__{{ i.id }}"><a name="r{{ i.id }}">{{ i.title|safe }}</a></h2>
+        
+        <div id="text__{{ data.0.id }}">
+            {{ i.txt|safe }}
+        </div>
+
+        <div class="review_bottom">
+            <span>
+                <div class="review_rate_details">
+                    Для глаз и ушей: 
+                    {% if i.rate.r1 == 1 %}Скучно{% else %}{% if i.rate.r1 == 2 %}Хорошо{% else %}Супер{% endif %}{% endif %}
+                    <br />
+                    Для ума: {% if i.rate.r2 == 1 %}Глупо{% else %}{% if i.rate.r2 == 2 %}Занятно{% else %}Сильно{% endif %}{% endif %}
+                    <br />
+                    Для сердца: {% if i.rate.r3 == 1 %}Раздражает{% else %}{% if i.rate.r3 == 2 %}Так себе{% else %}Трогает{% endif %}{% endif %}
+                </div>
+
+                <div class="review_avatar">
+                    {% if i.avatar %}
+                        <img src="{{ i.avatar }}" />
+                    {% endif %}
+                </div>
+
+                {% if i.kinoinfo %}
+                    <a style="font-size: 14px;" href="{% url profile i.uid %}">{% if i.user.fio %}{{ i.user.fio }}{% else %}{{ i.user.short_name }}{% endif %}</a>
+                {% else %}
+                    {{ i.user }}
+                {% endif %}
+
+                <br />
+                Оценка: <a class="review_rate_details_show nolink">{{ i.rate.sum }} / 9</a> ({{ i.rate.rate_txt }})
+            </span>
+
+            <span style="float: right; font-weight: normal;">
+                {{ i.date|date:"d.m.Y" }}
+            </span>
+        </div>
+
+        <div class="clear"></div>
+        <div class="share_me">
+            <script type="text/javascript" src="//yastatic.net/es5-shims/0.0.2/es5-shims.min.js" charset="utf-8"></script>
+            <script type="text/javascript" src="//yastatic.net/share2/share.js" charset="utf-8" async="async"></script>
+            <div class="ya-share2" data-services="vkontakte,facebook,odnoklassniki,twitter,gplus,moimir" data-counter="" data-title="Киноафиша России: рецензия на фильм - {{ name_ru|safe }} ({% if i.kinoinfo %}{% if i.user.fio %}{{ i.user.fio }}{% else %}{{ i.user.short_name }}{% endif %}{% else %}{{ i.user }}{% endif %})" data-image="{{ poster_path }}"></div>
+        </div>
+
+    </div>
+
+    <noindex>
+        <div class="comments_block" id="cmb_{{ i.id }}" style="margin-bottom: 40px;">
+            <div><b>Комментарии:</b><a class="comments_block-add_link" onclick="comments_add(this);">Добавить</a></div>
+            <div class="comments_block-content">
+                {% if i.comments %}{{ i.comments|safe }}{% else %}Нет{% endif %}
+            </div>
+            <div class="comments_block-new">
+                Новый комментарий: <span id="char_count"></span><br />
+                <textarea maxlength="1000"></textarea>
+                <br />
+
+                <div{% if i.comments_subscribed %} style="display: none;"{% endif %}>
+                <input type="checkbox" class="comments_subscribe" checked="checked" /> Уведомлять об ответах на комментарий
+                <div class="comments_subscribe-bl" {% if email_exist %}style="display: none;"{% endif %}>
+                    E-Mail <input type="text" value="" placeholder="Введите Ваш E-Mail" id="comments_subscribe_form-email" {% if email_exist %}email-exist="1"{% else %}email-exist="0"{% endif %} /> <span id="comments_subscribe-msg"></span>
+                </div>
+                <br />
+                </div>
+
+                <br />
+                <input type="hidden" value="{{ i.id }}" class="comments_block-id"/>
+                <input type="hidden" value="0" class="comments_block-new-answer"/>
+                <input type="button" value="Отправить" class="comments_block-new-btn"/>
+                <input type="button" value="Отмена" class="comments_block-new-cancel"/>
+                <div class="loader"></div>
+            </div>
+        </div>
+    </noindex>
+    {% endfor %}
+
+</div>
+
+
+{% endblock %}

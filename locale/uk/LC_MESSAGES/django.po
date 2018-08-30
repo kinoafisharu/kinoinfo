@@ -1,0 +1,335 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2013-12-24 15:57+0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n%10==1 && n%100!=11 ? 0 : n%10>=2 && n"
+"%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2)\n"
+
+#: django_openid_consumer/views.py:106
+msgid "i-names не поддерживаются"
+msgstr "i-names не підтримуються"
+
+#: django_openid_consumer/views.py:113
+msgid "Неверный OpenID"
+msgstr "Невірний OpenID"
+
+#: django_openid_consumer/views.py:173
+msgid "Авторизация была отменена"
+msgstr "Авторизація була скасована"
+
+#: django_openid_consumer/views.py:177
+msgid "Setup needed"
+msgstr ""
+
+#: kinoafisha_ua/templates/kua_base.html:73
+#: kinoafisha_ua/templates/feedback/kua_feedback.html:3
+#: kinoafisha_ua/templates/feedback/kua_feedback.html:7
+msgid "Обратная связь"
+msgstr "Зворотній зв'язок"
+
+#: kinoafisha_ua/templates/kua_base.html:78
+msgid "ИСКАТЬ"
+msgstr "ШУКАТИ"
+
+#: kinoafisha_ua/templates/articles/kua_add_article.html:4
+#: kinoafisha_ua/templates/articles/kua_add_article.html:12
+msgid "Добавление статьи"
+msgstr "Додавання статті"
+
+#: kinoafisha_ua/templates/articles/kua_add_article.html:4
+#: kinoafisha_ua/templates/articles/kua_add_article.html:12
+msgid "Редактирование статьи"
+msgstr "Редагування статті"
+
+#: kinoafisha_ua/templates/articles/kua_add_article.html:28
+#: kinoafisha_ua/templates/user/kua_user_details.html:71
+msgid "Сохранить"
+msgstr "Зберегти"
+
+#: kinoafisha_ua/templates/articles/kua_add_article.html:35
+#: kinoafisha_ua/templates/user/kua_profile.html:52
+msgid "Удалить"
+msgstr "Видалити"
+
+#: kinoafisha_ua/templates/articles/kua_articles_main.html:3
+#: kinoafisha_ua/templates/articles/kua_articles_main.html:8
+msgid "Статьи"
+msgstr "Статті"
+
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:6
+msgid "Добавить статью"
+msgstr "Додати статтю"
+
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:23
+msgid "назад"
+msgstr "назад"
+
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:27
+msgid "из"
+msgstr "з"
+
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:27
+msgid "стр."
+msgstr "стор."
+
+#: kinoafisha_ua/templates/articles/kua_articles_menu.html:31
+msgid "вперед"
+msgstr "вперед"
+
+#: kinoafisha_ua/templates/feedback/kua_feedback.html:19
+msgid "Оповестить на"
+msgstr "Оповістити на"
+
+#: kinoafisha_ua/templates/feedback/kua_feedback.html:27
+msgid "Отправить"
+msgstr "Надіслати"
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:5
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:44
+msgid "Киноафиша города"
+msgstr "Кіноафіша міста"
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:7
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:46
+msgid "Киноафиша Вашего города"
+msgstr "Кіноафіша Вашого міста"
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:23
+msgid "города"
+msgstr "міста"
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:26
+msgid "кинотеатра"
+msgstr "кінотеатра"
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:29
+msgid "К сожалению, для этого"
+msgstr "На жаль, для цього"
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:29
+msgid "нет ни одного сеанса, выберите другой"
+msgstr "немає жодного сеансу, виберіть друге"
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:32
+msgid "Запомнить выбор города"
+msgstr "Запам'ятати вибір міста?"
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:57
+msgid "Выберите город"
+msgstr "Виберіть місто"
+
+#: kinoafisha_ua/templates/release_parser/kua_cmc_schedules_list_ajax2.html:83
+msgid "Выберите кинотеатр"
+msgstr "Виберіть кінотеатр"
+
+#: kinoafisha_ua/templates/release_parser/kua_film_list_form_ajax.html:3
+#: kinoafisha_ua/templates/release_parser/kua_film_list_form_ajax.html:20
+msgid "Скоро в кинотеатрах"
+msgstr "Незабаром в кінотеатрах"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:3
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:7
+msgid "Киноафиша Украины"
+msgstr "Кіноафіша України"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:13
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:56
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:76
+msgid "Подписаться"
+msgstr "Підписатися"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:20
+msgid "Сеансы в городе"
+msgstr "Сеанси в місті"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:23
+msgid "Пять лучших фильмов"
+msgstr "П'ять найкращих фільмів"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:33
+msgid "На сегодня сеансов нет"
+msgstr "На сьогодні сеансів немає"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:43
+msgid "Смотреть он-лайн"
+msgstr "Дивитися он-лайн"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:46
+msgid "Пять фильмов"
+msgstr "П'ять фільмів"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:60
+msgid "Скоро в кино"
+msgstr "Незабаром в кіно"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:63
+msgid "Десять ближайших релизов"
+msgstr "Десять найближчих релізів"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:80
+msgid "Рецензии, обзоры, статьи"
+msgstr "Рецензії, огляди, статті"
+
+#: kinoafisha_ua/templates/slideblock/kua_blocks_main.html:83
+msgid "Пять последних публикаций"
+msgstr "П'ять останніх публікацій"
+
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:3
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:5
+msgid "Конфликт учетных записей"
+msgstr "Конфлікт облікових записів"
+
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:29
+msgid "Оставить текущие настройки"
+msgstr "Залишити поточні налаштування"
+
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:31
+msgid "Импортировать настройки"
+msgstr "Імпортувати налаштування"
+
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:34
+msgid "Объединить аккаунты"
+msgstr "Об'єднати аккаунти"
+
+#: kinoafisha_ua/templates/user/kua_accounts_merger.html:34
+msgid "Отмена"
+msgstr "Відміна"
+
+#: kinoafisha_ua/templates/user/kua_email.html:8
+#: kinoafisha_ua/templates/user/kua_livejournal.html:8
+msgid "Авторизоваться"
+msgstr "Авторизуватись"
+
+#: kinoafisha_ua/templates/user/kua_livejournal.html:4
+msgid "Ваш логин"
+msgstr "Ваш логін"
+
+#: kinoafisha_ua/templates/user/kua_login.html:4
+#: kinoafisha_ua/templates/user/kua_login.html:7
+msgid "Авторизация"
+msgstr "Авторизація"
+
+#: kinoafisha_ua/templates/user/kua_login.html:15
+#: kinoafisha_ua/templates/user/kua_profile.html:72
+msgid "На главную"
+msgstr "На головну"
+
+#: kinoafisha_ua/templates/user/kua_openid.html:2
+msgid "Авторизуйтесь используя один из сервисов"
+msgstr "Авторизуйтесь з допомогою одного з сервісів"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:3
+#: kinoafisha_ua/templates/user/kua_profile.html:5
+msgid "Профиль пользователя"
+msgstr "Профіль користувача"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:10
+#: kinoafisha_ua/templates/user/kua_user_details.html:8
+msgid "ФИО"
+msgstr "ПІБ"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:11
+#: kinoafisha_ua/templates/user/kua_profile.html:16
+#: kinoafisha_ua/templates/user/kua_profile.html:19
+#: kinoafisha_ua/templates/user/kua_profile.html:21
+#: kinoafisha_ua/templates/user/kua_profile.html:23
+#: kinoafisha_ua/templates/user/kua_profile.html:25
+#: kinoafisha_ua/templates/user/kua_user_details.html:9
+#: kinoafisha_ua/templates/user/kua_user_details.html:14
+#: kinoafisha_ua/templates/user/kua_user_details.html:17
+#: kinoafisha_ua/templates/user/kua_user_details.html:19
+#: kinoafisha_ua/templates/user/kua_user_details.html:21
+#: kinoafisha_ua/templates/user/kua_user_details.html:23
+msgid "Нет"
+msgstr "Немає"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:12
+#: kinoafisha_ua/templates/user/kua_user_details.html:10
+msgid "Пол"
+msgstr "Стать"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:14
+#: kinoafisha_ua/templates/user/kua_profile.html:46
+#: kinoafisha_ua/templates/user/kua_user_details.html:12
+msgid "М"
+msgstr "Ч"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:18
+#: kinoafisha_ua/templates/user/kua_user_details.html:16
+msgid "Дата рожд."
+msgstr "Дата народж."
+
+#: kinoafisha_ua/templates/user/kua_profile.html:22
+#: kinoafisha_ua/templates/user/kua_user_details.html:20
+msgid "Страна"
+msgstr "Країна"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:24
+#: kinoafisha_ua/templates/user/kua_user_details.html:22
+msgid "Город"
+msgstr "Місто"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:26
+#: kinoafisha_ua/templates/user/kua_user_details.html:30
+msgid "Редактировать визитку"
+msgstr "Редагувати візитку"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:33
+msgid "Подключенные аккаунты"
+msgstr "Підключені аккаунти"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:38
+msgid "нет аватара"
+msgstr "немає аватара"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:64
+msgid "У вас еще нет подключенных аккаунтов!"
+msgstr "У вас ще немає підключених аккаунтів!"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:65
+msgid ""
+"Для сохранения настроек и доступа к ним при следующих визитах необходимо"
+msgstr ""
+"Для збереження налаштувань і доступу до них при наступних візитах необхідно"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:65
+msgid "авторизоваться"
+msgstr "авторизуватись"
+
+#: kinoafisha_ua/templates/user/kua_profile.html:68
+#: kinoafisha_ua/templates/user/kua_user_details.html:65
+msgid "Подключить еще аккаунты"
+msgstr "Підключити ще аккаунти"
+
+#: kinoafisha_ua/templates/user/kua_user_details.html:3
+#: kinoafisha_ua/templates/user/kua_user_details.html:5
+msgid "Редактор визитки"
+msgstr "Редактор візитки"
+
+#: kinoafisha_ua/templates/user/kua_user_details.html:26
+msgid ""
+"Визитка создается автоматически на основе Ваших подключенных аккаунтов. Вы "
+"можете отредактировать ее вручную"
+msgstr ""
+"Візитка створюється автоматично на основі Ваших підключених акаунтів. Ви "
+"можете відредагувати її вручну"
+
+#~ msgid "Киноафиша"
+#~ msgstr "Кіноафіша"
+
+#~ msgid "Скоро"
+#~ msgstr "Незабаром"

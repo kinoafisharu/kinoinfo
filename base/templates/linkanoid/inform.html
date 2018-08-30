@@ -1,0 +1,126 @@
+{% extends "base.html" %}
+{% block title %}{{ request.current_site.name }}: Статьи
+    {% if id %}
+        -
+        {% if news_data.0.obj.title %}
+            {{ news_data.0.obj.title }}
+        {% else %}
+            {{ title }}
+        {% endif %}
+    {% endif %}
+{% endblock %}
+{% load base_tags %}
+{% load i18n %}
+{% block script %}
+
+    {% if user.is_superuser or request.is_admin or linkanoid_user %}
+    <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+
+    <script type="text/javascript">
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_text", "language": "en", "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, image, code, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": true, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "emotions, wordcount, paste", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+    </script>
+    {% endif %}
+    
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+	<b id="navigation_bar">
+        <noindex><a href="{% url main %}" rel="nofollow"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a></noindex></b>
+     {{ request.current_site.name }} - {% if id %}<a href="{% url linkanoid_inform %}" rel="nofollow">{% endif %}Статьи{% if id %}</a> - 
+        {% if news_data.0.obj.title %}
+            {{ news_data.0.obj.title }}
+        {% else %}
+            {{ title }}
+        {% endif %}
+    {% endif %}
+</h1>
+
+{% if user.is_superuser or request.is_admin or linkanoid_user %}
+    {% if id %}
+        <span class="post_edit in_h1" onclick="post_edit({{ news_data.0.obj.id }})">Ред. статью</span>
+        <span class="post_delete in_h1_left" onclick="if(confirm('Are you sure?')){$('.pst_dl').submit()}">Удалить статью</span>
+        <form action="{% url linkanoid_inform_del id %}" method="post" class="pst_dl">{% csrf_token %}
+        </form>
+    {% else %}
+        <span class="post_add in_h1" onclick="post_edit(0)">Добавить статью</span>
+    {% endif %}
+
+{% endif %}
+
+
+
+<div class="art-postcontent-width art-wide-width">
+
+    <div class="article">
+        <div class="scroll_list">
+            {% if id %}
+                {% if news_data.0.obj.title %}
+                <h3>{{ news_data.0.obj.title|safe }}</h3>
+                <br />
+                {% endif %}
+                {{ news_data.0.obj.text|safe }}
+            {% else %}
+            
+                {% for i in news_data %}
+                <div class="short_news"{% if not i.obj.visible %} style="background-color: rgba(255,250,205,0.7);"{% endif %}>
+                    <h2><a href="{% url linkanoid_inform_view i.obj.id %}">{% if i.obj.title %}{{ i.obj.title }}{% else %}{{ title }}{% endif %}</a></h2>
+                    {{ i.description }}
+
+                    <span>{% if not i.obj.visible %}<font style="color: red;">{% trans "Не отображается" %}</font> {% endif %}{{ i.obj.dtime|date:"j E" }}</span>
+                </div>
+                {% endfor %}
+            
+                <div class="more_news" style="margin: 0 auto;">
+                    {% if page == 1 and p.has_next %}
+                    <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Ещё статьи</a>
+                    {% endif %}
+                    {% if page > 1 %}
+                        <a href="?page={{ p.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">&#8592; Статьи новее</a>
+                        {% if p.has_next %}
+                        <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Ещё статьи &#8594;</a>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            {% endif %}
+            <br />
+            <br />
+            <br />
+            <br />
+            {% linkanoid_links %}
+            
+        </div>
+    </div>
+    
+    
+    {% if user.is_superuser or request.is_admin or linkanoid_user %}
+        <div class="post_block org_fields">
+            
+            <form action="" method="post" class="new_new">{% csrf_token %}
+                <b>Title</b>:<br />
+                <input type="text" value="{% if id %}{{ news_data.0.obj.title|safe }}{% endif %}" size="60" name="news_title" /><br /><br />
+                <b>Text</b>:<br />
+                <textarea id="id_text" name="text">{% if id %}{{ news_data.0.obj.text|safe }}{% endif %}</textarea>
+                <br />
+                
+                <b>Visible <input {% if id %}{% if news_data.0.obj.visible %}checked="checked"{% endif %}{% else %}checked="checked"{% endif %} type="checkbox" name="visible" /></b>
+                <br /><br />
+                
+                <input type="submit" value="Save" /> <input type="button" value="Cancel" class="post_edit_cancel" />
+                
+                <input type="hidden" value="{% if id %}{{ news_data.0.obj.id }}{% endif %}" name="edit" />
+            </form>
+            
+            <input type="text" value="{% if id %}{{ news_data.0.obj.title|safe }}{% endif %}" id="title_hidden" class="org_fields" />
+            <textarea id="text_hidden" class="org_fields">{% if id %}{{ news_data.0.obj.text|safe }}{% endif %}</textarea>
+            
+        </div>
+
+    {% endif %}
+
+</div>
+
+
+{% endblock %}

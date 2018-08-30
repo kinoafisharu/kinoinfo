@@ -1,0 +1,17 @@
+<ul class="socialicons">
+    {% if data.fb_vis %}
+    <a href="{% if data.fb_url != 'http://' %}{{ data.fb_url }}{% endif %}" target="_blank"><li class="social-fb"></li></a>
+    {% endif %}
+    {% if data.inst_vis %}
+    <a href="{% if data.inst_url != 'http://' %}{{ data.inst_url }}{% endif %}" target="_blank"><li class="social-inst"></li></a>
+    {% endif %}
+    {% if data.tw_vis %}
+    <a href="{% if data.tw_url != 'http://' %}{{ data.tw_url }}{% endif %}" target="_blank"><li class="social-tw"></li></a>
+    {% endif %}
+    {% if data.pin_vis %}
+    <a href="{% if data.pin_url != 'http://' %}{{ data.pin_url }}{% endif %}" target="_blank"><li class="social-pin"></li></a>
+    {% endif %}
+    {% if data.goo_vis %}
+    <a href="{% if data.goo_url != 'http://' %}{{ data.goo_url }}{% endif %}" target="_blank"><li class="social-goo"></li></a>
+    {% endif %}
+</ul>

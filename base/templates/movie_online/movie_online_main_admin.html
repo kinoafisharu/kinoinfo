@@ -1,0 +1,38 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block info %}
+
+Управление дампом:
+	<br />
+	<br />
+
+<strong>Загрузить: </strong>    
+
+	<form action="" method='post' enctype="multipart/form-data">{% csrf_token %}
+	{{ form }}
+	<input type="submit" value="Загрузить" onclick="$(this).val('Ожидайте...')"/>
+	</form>
+
+	<br />
+
+<strong>Обновить: </strong><a href="{% url data_file_create %}">Link</a>
+	<br />
+
+<strong>Скачать: </strong><a href="{% url data_file_open %}">Link</a>
+	<br />
+
+<strong>Источник: </strong> <a href="{{ obj }}">Link</a>
+	<br />
+
+<strong>Дата:</strong> {{ filedate }}      
+	<br />
+
+<strong>Размер: </strong>{{ filesize }}
+	<br />
+
+<strong>Путь: </strong>{{ filepath }}
+	<br />
+
+
+{% endblock %}

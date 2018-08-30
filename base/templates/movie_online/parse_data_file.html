@@ -1,0 +1,25 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block info %}
+<strong> Разбор xml-структуры дампа мегого </strong>
+<br />
+<input type="button" id="parse_data"> 
+
+<div id="all_cheker">
+<input type="checkbox" name="checkParseAll" id="checkParseAll" title="Будут разобранны все записи из дампа и новые будут записаваться в модель(долгий запрос)" checked /> Считать все записи из дампа и сохранить их в модель
+</div>
+
+
+<div id ="parse_menu">
+
+    <div id="info"></div>
+    <div id="show_img"></div>
+    <div id="show_parse"></div>
+    <div id="show_filters"></div>
+    <div id="show_timer"></div>
+
+</div>
+
+
+{% endblock %}

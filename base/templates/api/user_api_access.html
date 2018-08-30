@@ -1,0 +1,71 @@
+{% extends "api/api_main.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Активация/деактивация АПИ-пользователя <a href="{% url profile api_user.id %}" target="_blank">{{ api_user_name }}</a></h3>
+
+
+<div style="clear: both;"></div>
+
+    <form style="padding: 10px;" action="{% url api_user_edit %}" method="POST" id="form">{% csrf_token %}
+        <br>
+
+        <h3> User Id = {{ userid }} </h3><input style="visibility: hidden;" type="text" value ="{{ userid }}" name="userid" />
+        <br>
+        <br>
+        Активен <input type="checkbox" id="user_is_active" name="user_is_active" {% if api_user_is_active %}checked="checked"{% endif %} />
+        <br>
+        <br>
+        <table>
+        <tr>
+        <td>API-KEY </td><td><input type="text" value = {{api_key}} name='api_key' id='api_key' disabled="disabled" /></td>
+        <td><a style="display: inline-block;" id='apikeypic' class='edit-apikey-disable' href="javascript:disable_enable_edit_apikey()"></a></td>
+        </tr>
+        <tr>
+        <td>Начало диапазона IP </td><td><input type="text" value = "{{ip_start}}" name='ip_start' id='ip_start'/></td>
+        </tr>
+        <tr>
+        <td>Конец диапазона IP </td><td><input type="text" value = "{{ip_end}}" name='ip_end' id='ip_end'/></td>
+        </tr>
+        </table>
+
+        <input type="submit" value="Сохранить" name="search_btn" /> 
+
+    </form>
+    <br>  
+    <br>
+    <br>
+    <br>
+<p style="padding: 10px;">*Примечание: для генерации нового API-KEY разблокировать поле с ключом, удалить существующий ключ, нажать кнопку "Сохранить" </p>
+</div>
+<script type="text/javascript">
+document.getElementById("ip_start").onblur = function() {
+ var ipformat = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;  
+ if(this.value.match(ipformat))  
+ {  
+ return true;  
+ }
+ alert("Ошибка в поле <Начало диапазона IP>"); 
+};
+
+document.getElementById("ip_end").onblur = function() {
+ var ipformat = /^(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)$/;  
+ if(this.value.match(ipformat))  
+ {  
+ return true;  
+ }
+ alert("Ошибка в поле <Конец диапазона IP>"); 
+};
+
+
+function disable_enable_edit_apikey(){
+  //  document.getElementById("api_key").disabled=!document.getElementById("api_key").disabled;
+    if (document.getElementById("api_key").disabled==true)
+       { document.getElementById("apikeypic").className="edit-apikey-enable";
+         document.getElementById("api_key").disabled=false;}
+    else
+       { document.getElementById("apikeypic").className="edit-apikey-disable";
+         document.getElementById("api_key").disabled=true;}
+
+}
+</script>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "mobile/base.html" %}
+{% block title %}{{ request.current_site.name }}: Отзывы на фильмы{% endblock %}
+{% load base_tags %}
+
+{% block content %}
+
+{% mobile_header %}
+
+{% kinoafisha_main_menu_mobile %}
+
+<div class="art-postcontent-width">
+
+    <h1>Отзывы на фильмы</h1>
+
+    <div class="opinions_list" style="margin-top: 10px;">
+        {% for i in opinions %}
+        <div class="opinion_bl" style="background: {% if forloop.counter|divisibleby:'2' %}#EBEBEB;{% else %}#F2F2F2;{% endif %}">
+        <b style="color: #333;">{{ i.nick }}</b>, отзыв на <a href="http://m.kinoinfo.ru/film/{{ i.film.id }}/">{{ i.film.name_ru }}</a>
+        <p style="color: #888;">{{ i.date|date:"H:i, d E Y года" }}</p>
+        {% if i.rate %}
+        <div class="opinion_rate" title="Оценка">{{ i.rate }}</div>
+        {% endif %}
+        
+        {{ i.full_txt|safe }}
+        {% if i.source %}<em style="color: #888;">Источник: <a href="{{ i.source }}" target="_blank" {% if i.source_name == 'kino.ru' %}class="organization_url"{% endif %}>{{ i.source_name }}</a></em>{% endif %}
+
+        <br />
+        </div>
+        {% empty %}
+            <p id="opinions_empty">Отзывов нет</p>
+        {% endfor %}
+    </div>
+
+    <div class="more_news" style="margin: 0 auto;">
+        {% if page == 1 and p.has_next %}
+        <a href="?page={{ p.next_page_number }}" class="more_news__link">Ещё отзывы</a>
+        {% endif %}
+        {% if page > 1 %}
+            <a href="?page={{ p.previous_page_number }}" class="more_news__link">&#8592; Отзывы новее</a>
+            {% if p.has_next %}
+            <a href="?page={{ p.next_page_number }}" class="more_news__link">Ещё отзывы &#8594;</a>
+            {% endif %}
+        {% endif %}
+    </div>
+
+</div>
+
+
+
+{% endblock %}

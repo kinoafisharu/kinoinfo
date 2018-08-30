@@ -1,0 +1,71 @@
+{% extends "mobile/base.html" %}
+{% load i18n %}
+{% block title %}{{ card.name|safe|striptags }} - рекомендации{% endblock %}
+{% load base_tags %}
+
+
+{% block content %}
+    {% mobile_header %}
+
+    {% profile_menu_mobile is_my_profile card.profile.user_id %}
+
+    <div class="art-postcontent-width">
+        <h1>Рекомендации</h1>
+
+        <form action="" method="post" id="f1">{% csrf_token %}</form>
+        <form action="" method="post" id="f2">{% csrf_token %}</form>
+        <form action="" method="post" id="f3">{% csrf_token %}</form>
+        <form action="" method="post" id="f4">{% csrf_token %}</form>
+
+        <select name="type" onchange="$('#f1').submit();" form="f1">
+            {% for k, v in rtypes.items %}
+            <option value="{{ k }}"{% if k == rtype %} selected{% endif %}>{{ v }}</option>
+            {% endfor %}
+        </select>
+
+        <select name="year" onchange="$('#f2').submit();" form="f2">
+            {% for i in years %}
+            <option value="{{ i }}"{% if i == year %} selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <select name="country" onchange="$('#f3').submit();" form="f3">
+            {% for i in countries %}
+            <option value="{{ i.id }}"{% if i.id == country %} selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+        </select>
+
+        <select name="genre" onchange="$('#f4').submit();" form="f4">
+            {% for i in genres %}
+            <option value="{{ i.id }}"{% if i.id == genre %} selected{% endif %}>{{ i.name|capfirst }}</option>
+            {% endfor %}
+        </select>
+        
+        <br />
+
+        <div class="scroll_list">
+        {% if data %}
+        <table class="modern_tbl">
+            {% for i in data %}
+            <tr>
+                <td>
+                    <div id="subscribe_micro" class="rate_color_small_{{ i.rating.rate }}">
+                        <div class="pen_rate_micro">
+                        <p title="Репутация фильма:{% if i.rating.show_imdb %} IMDb - {{ i.rating.show_imdb }}{% endif %}{% if i.rating.rotten %} / RottenTomatoes - {{ i.rating.rotten }}{% endif %}{% if i.rating.show_ir %} / Киномэтры - {{ i.rating.show_ir }}{% endif %}{% if not i.rating.show_imdb and not i.rating.rotten and not i.rating.show_ir %} нет{% endif %}" >
+                        {% if i.rating.rate %}{{ i.rating.rate }}{% else %}?{% endif %}</p>
+                        </div>
+                    </div>
+                </td>
+                <td>
+                    <div><a href="{% url get_film i.id %}" target="_blank">{{ i.name_ru }} ({{ i.year }})</a></div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+        {% else %}
+        Здесь пока пусто
+        {% endif %}
+        </div>
+
+    </div>
+{% endblock %}

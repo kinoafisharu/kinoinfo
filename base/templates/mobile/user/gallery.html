@@ -1,0 +1,41 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+    });
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+    {% mobile_header %}
+
+    {% profile_menu_mobile is_my_profile card.profile.user_id %}
+
+<div class="art-postcontent-width">
+    <h1>{{ title }}</h1>
+
+    <div class="gallery">
+        {% for i in photos %}
+            <div class="g_photo_el" id="g{{ i.id }}">
+                
+                <a class="fancybox" rel="group" href="/upload{{ i.file }}"><img src="/upload{{ i.file }}" />{% if i.description %}
+                <p class="g_photo_description">{{ i.description }}</p>
+                {% endif %}</a>
+                <div class="g_photo_title">{% if i.title %}{{ i.title }}{% endif %}</div>
+                
+
+            </div>
+        {% endfor %}
+        <div class="clear"></div>
+    </div>
+
+</div>
+
+{% endblock %}

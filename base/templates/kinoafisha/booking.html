@@ -1,0 +1,372 @@
+{% extends "base.html" %}
+{% block title %}{{ request.current_site.name }} - Букинг кинотеатров{% endblock %}
+{% load base_tags %}
+
+{% block script %}
+{% if access %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+<link rel="stylesheet" href="{{ STATIC_URL }}base/css/datepicker.css" type="text/css" media="screen" />
+
+{% endif %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        wfhvalue = $('.content-main').height() - $('.footer').height()
+        $(window).resize(function(){
+            wfhvalue = $('.content-main').height() - $('.footer').height()
+            $('.art-posttree-width').css('height', wfhvalue + 'px')
+            $('.art-postcontent-width').css('height', wfhvalue + 'px')
+        })
+        $('.art-posttree-width').css('height', wfhvalue + 'px')
+        $('.art-postcontent-width').css('height', wfhvalue + 'px')
+
+        var onfullsceen = $.cookie("onfullscreen")
+        if(onfullsceen && onfullsceen != 'null'){
+            booking_fullscreen()
+        }
+
+        $('.booking-get-excel-halls').multiselect({ 
+            selectedList: 10,
+            noneSelectedText: 'Зал не выбран',
+            minWidth: 425,
+        });
+
+        booking_set_calendar('input[name="ex_date_from"]', 'input[name="ex_date_to"]', 'minDate')
+        booking_set_calendar('input[name="ex_date_to"]', 'input[name="ex_date_from"]', 'maxDate')
+
+    });
+
+
+    {% if access %}
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_text", "language": "en", "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,td,th,div,ul,ol,li,table"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, backcolor, bold, italic, underline, strikethrough", "theme_advanced_resizing": true, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "emotions, wordcount, paste", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+    {% endif %}
+
+</script>
+{% endblock %}
+
+{% block sys_info %}
+    {% sys_info timer cached_page %}
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+	<b id="navigation_bar">
+        <a href="{% url main %}">{{ request.current_site.name }}</a>
+    </b> - <span style="font-size: 17px;">Букинг кинотеатров</span>
+    
+    <select style="opacity: 0.7; margin-left: 40px;" name="date_from" form="f1" onchange="this.form.submit();">
+        {% for i in days_range %}
+        <option value='{{ i|date:"Y-m-d" }}'{% if i == date_from %} selected{% endif %}>{{ i|date:"j b Y" }}</option>
+        {% empty %}
+        <option value=''>Пусто</option>
+        {% endfor %}
+    </select>
+
+    {% if access %}<div class="excel_btn booking-get-excel" style="margin-left: 10px;" onclick="$.fancybox($('.booking-get-excel-block').show());"></div>{% endif %}
+
+    <span style="font-size: 14px; font-weight: normal; display: inline-block; float: right;">
+        <div class="fullscreen_btn" onclick="booking_fullscreen();"></div>
+        <a href="{% url get_spec url_name %}" target="_blank" style="margin-right: 50px;">Спек и тесты</a>
+    </span>
+</h1>
+
+<form action="" method="post" id="f1">{% csrf_token %}</form>
+
+<div class="booking_container">
+
+    <div class="art-posttree-width">
+        <div class="booking-left-block">
+            <div class="booking-block-title">
+                Релизы
+                <select style="position: absolute; top: 5px; right: 5px; height: 16px; font-size: 11px; background: #CCC;" name="country" form="f1" onchange="this.form.submit();">
+                    <option value="2"{% if country == 2 %}selected{% endif %}>Россия</option>
+                    <option value="43"{% if country == 43 %}selected{% endif %}>Украина</option>
+                </select>
+            </div>
+            <div class="booking-scroll">
+                {% for i in releases %}
+                <div>{{ i.date|date:"d b" }}, <a href="{% url get_film i.id %}" target="_blank">{{ i.name }}</a></div>
+                {% empty %}
+                <div>Пусто</div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="booking-left-block">
+            <div class="booking-block-title">Заметки{% if access %}<div class="booking-add-article" title="Добавить заметку"></div>{% endif %}</div>
+            <div class="booking-scroll">
+                {% for i in articles %}
+                <div id="booking-article-item-{{ i.id }}"><a onclick="get_booking_article({{ i.id }});">{{ i.title }}</a></div>
+                {% empty %}
+                <div>Пусто</div>
+                {% endfor %}
+            </div>
+        </div>
+        <div class="booking-left-block">
+            <div class="booking-block-title">Отчеты</div>
+            <div class="booking-scroll">
+                <div>Пусто</div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="art-postcontent-width">
+
+        <div class="booking-schedules">
+
+            <div class="booking-timeline">
+                {% for i in timeline %}
+                <div>
+                    {% if i.minutes %}
+                    &#8211;
+                    {% else %}
+                    &#8212; {{ i.time|date:"H:i" }}
+                    {% endif %}
+                </div>
+                {% endfor %}
+            </div>
+
+
+            
+            <div class="booking-sch-col" id="bsc-1">
+                <div class="booking-block-title">
+                    <select class="booking-halls">
+                        {% for i in data %}
+                        <option value="{{ i.hall_id }}" {% if i.hall_id == data.0.hall_id %}selected{% endif %}>{{ i.cinema.name|safe }} / {{ i.name|safe }}</option>
+                        {% empty %}
+                        <option value="">Пусто</option>
+                        {% endfor %}
+                    </select>
+                    <select class="booking-date-range">
+                        {% for i in data.0.date_range %}
+                        <option value='{{ i.from|date:"Y-m-d" }}'>{{ i.from|date:"j b" }}-{{ i.to|date:"j b" }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="booking-sch-items">
+                    {% for i in data.0.date_range %}
+                        <div class="bsi" id='from_{{ i.from|date:"Y-m-d" }}' {% if forloop.first %}style="display: block;"{% endif %}>
+                            {% for j in i.times %}
+                            <div class="booking-sch-item{% if data.0.cinema.access == '1' and j.tmp %} booking-sch-item-edit{% endif %}" id="{{ j.id }}">
+                                {% if not j.tmp %}<b>{% endif %}{{ j.time|date:"H:i" }}, {% for f in j.films %}{{ f.name }} {% endfor %}{% if not j.tmp %}</b>{% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    {% if data.0.date_range %}
+                        {% if data.0.cinema.access == '1' %}
+                        <div class="booking-sch-item booking-add-schedules-btn">Добавить сеанс</div>
+                        {% endif %}
+                    {% else %}
+                        {% if access %}
+                        <div class="booking-sch-item booking-add-schedules-btn">Добавить сеанс</div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="booking-sch-col" id="bsc-2">
+                <div class="booking-block-title">
+                    <select class="booking-halls">
+                        {% for i in data %}
+                        <option value="{{ i.hall_id }}" {% if i.hall_id == data.1.hall_id %}selected{% endif %}>{{ i.cinema.name|safe }} / {{ i.name|safe }}</option>
+                        {% empty %}
+                        <option value="">Пусто</option>
+                        {% endfor %}
+                    </select>
+                    <select class="booking-date-range">
+                        {% for i in data.1.date_range %}
+                        <option value='{{ i.from|date:"Y-m-d" }}'>{{ i.from|date:"j b" }}-{{ i.to|date:"j b" }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="booking-sch-items">
+                    {% for i in data.1.date_range %}
+                        <div class="bsi" id='from_{{ i.from|date:"Y-m-d" }}' {% if forloop.first %}style="display: block;"{% endif %}>
+                            {% for j in i.times %}
+                            <div class="booking-sch-item{% if data.1.cinema.access == '1' and j.tmp %} booking-sch-item-edit{% endif %}" id="{{ j.id }}">
+                                {% if not j.tmp %}<b>{% endif %}{{ j.time|date:"H:i" }}, {% for f in j.films %}{{ f.name }} {% endfor %}{% if not j.tmp %}</b>{% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    {% if data.1.date_range %}
+                        {% if data.1.cinema.access == '1' %}
+                        <div class="booking-sch-item booking-add-schedules-btn">Добавить сеанс</div>
+                        {% endif %}
+                    {% else %}
+                        {% if access %}
+                        <div class="booking-sch-item booking-add-schedules-btn">Добавить сеанс</div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+            <div class="booking-sch-col" id="bsc-3">
+                <div class="booking-block-title">
+                    <select class="booking-halls">
+                        {% for i in data %}
+                        <option value="{{ i.hall_id }}" {% if i.hall_id == data.2.hall_id %}selected{% endif %}>{{ i.cinema.name|safe }} / {{ i.name|safe }}</option>
+                        {% empty %}
+                        <option value="">Пусто</option>
+                        {% endfor %}
+                    </select>
+                    <select class="booking-date-range">
+                        {% for i in data.2.date_range %}
+                        <option value='{{ i.from|date:"Y-m-d" }}'>{{ i.from|date:"j b" }}-{{ i.to|date:"j b" }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                <div class="booking-sch-items">
+                    {% for i in data.2.date_range %}
+                        <div class="bsi" id='from_{{ i.from|date:"Y-m-d" }}' {% if forloop.first %}style="display: block;"{% endif %}>
+                            {% for j in i.times %}
+                            <div class="booking-sch-item{% if data.2.cinema.access == '1' and j.tmp %} booking-sch-item-edit{% endif %}" id="{{ j.id }}">
+                                {% if not j.tmp %}<b>{% endif %}{{ j.time|date:"H:i" }}, {% for f in j.films %}{{ f.name }} {% endfor %}{% if not j.tmp %}</b>{% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+                    {% endfor %}
+                    {% if data.2.date_range %}
+                        {% if data.2.cinema.access == '1' %}
+                        <div class="booking-sch-item booking-add-schedules-btn">Добавить сеанс</div>
+                        {% endif %}
+                    {% else %}
+                        {% if access %}
+                        <div class="booking-sch-item booking-add-schedules-btn">Добавить сеанс</div>
+                        {% endif %}
+                    {% endif %}
+                </div>
+            </div>
+
+        </div>
+
+
+        {% if access %}
+            <div class="booking-get-excel-block" style="width: 600px;">
+                <form action="{% url booking_get_excel_doc %}" method="post">{% csrf_token %}
+                    <div>
+                        <div style="font-size: 12px; display: inline-block; width: 100px;">Залы:</div>
+                        <div style="display: inline-block; width: 400px;">
+                            <select class="booking-get-excel-halls" name="ex_halls" multiple="multiple">
+                                {% for i in halls %}
+                                    {% if i.cinema.access == '1' %}
+                                    <option value="{{ i.hall_id }}">{{ i.cinema.name }} / {{ i.name }}</option>
+                                    {% endif %}
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <div style="font-size: 12px; display: inline-block; width: 100px;">Период:</div>
+                        <div style="display: inline-block; width: 400px; overflow: hidden; font-size: 12px;" class="booking-get-excel-dates">
+                            <input type="text" name="ex_date_from" value="" style="width: 80px;" placeholder="2016-06-09"/> -
+                            <input type="text" name="ex_date_to" value="" style="width: 80px;" placeholder="2016-06-15" />
+                            <input type="checkbox" name="ex_date_all" style="margin-left: 10px;" /> Все даты
+                        </div>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <div style="font-size: 12px; display: inline-block; width: 100px;">С черновиками:</div>
+                        <div style="display: inline-block; width: 400px; overflow: hidden;" class="booking-get-excel-temp">
+                            <input type="checkbox" name="ex_temp" />
+                        </div>
+                    </div>
+
+                    <input type="button" value="Получить Excel документ" class="booking-get-excel-btn" style="margin-top: 20px;"/>
+                </form>
+            </div>
+
+
+            <div class="booking-add-article-block">
+                <div class="booking-block-title">Добавление заметки</div>
+                <div class="booking-add-article-fields">
+                <form action="{% url booking_article_add %}" method="post" class="new_new">{% csrf_token %}
+                    <b>Заголовок</b>:<br />
+                    <input type="text" value="" size="60" name="news_title" required /><br /><br />
+                    <b>Текст</b>:<br />
+                    <textarea id="id_text" name="text"></textarea>
+                    <div style="display: none;">
+                    <br />
+                    <b>Visible <input checked="checked" type="checkbox" name="visible" /></b>
+                    </div>
+                    <br /><br />
+                    <input type="submit" value="Сохранить" /> <input type="button" value="Отмена" class="booking-article-edit-cancel" />
+                    <input type="hidden" value="0" name="edit" />
+                </form>
+                <input type="text" value="" id="title_hidden" class="org_fields" />
+                <textarea id="text_hidden" class="org_fields"></textarea>
+                </div>
+            </div>
+            
+
+
+            <div class="booking-add-container txt_wrapper">
+
+                <div>
+                    <div style="font-size: 12px; display: inline-block;">Залы:</div>
+                    <div style="display: inline-block;">
+                        <select class="booking-add-halls" multiple="multiple">
+                            {% for i in halls %}
+                                {% if i.cinema.access == '1' %}
+                                <option value="{{ i.hall_id }}">{{ i.cinema.name }} / {{ i.name }}</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </div>
+
+                    <a style="position: absolute; top: 5px; right: 10px; font-size: 12px;" class="booking-add-container-close">Закрыть</a>
+                </div>
+
+                <div class="booking-add-dates">
+
+                    <span class="add-plus booking-add-range" title="Добавить новый периода" style="top: 10px; right: 10px;"></span>
+                    <span class="copy-icon booking-copy-range" title="Копировать периода" style="top: 10px; right: 40px;"></span>
+                    
+                    <div style="font-size: 12px; display: inline-block; width: 100px;">Период показа:</div>
+                    <div style="display: inline-block; width: 500px; overflow: hidden;" class="booking-add-range-dates">
+                        <input type="text" name="date_from" value="" style="width: 80px;" placeholder="2016-06-09"/> -
+                        <input type="text" name="date_to" value="" style="width: 80px;" placeholder="2016-06-15" />
+                    </div> {% comment %}<span class="add-plus booking-add-dates-range" title="Добавить еще диапозон" style="margin-left: 20px;"></span><br />{% endcomment %}
+
+                    <div class="booking-add-sch-bl">
+                        
+                    </div>
+
+                </div>
+
+                <div class="booking-add-releases-container" style="display: none;" id="original">
+                    <div style="font-size: 12px; display: inline-block; width: 100px;">Релиз:</div>
+                    <div style="display: inline-block; width: 500px; overflow: hidden;">
+                        <select class="booking-add-releases" multiple="multiple">
+                            {% for i in releases %}
+                            <option value="{{ i.id }}">{{ i.date|date:"d b" }}, {{ i.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    <div style="font-size: 12px; display: inline-block; width: 100px;">Ролики:</div>
+                    <div style="display: inline-block; width: 500px; overflow: hidden;">
+                        <select class="booking-add-adv">
+                            {% for i in adv_movies %}
+                            <option value="{{ i.id }}">{{ i.name }}</option>
+                            {% endfor %}
+                        </select>
+                    </div>
+                    
+                </div>
+
+                <input type="button" value="Сохранить" class="booking-add-save" />
+                <span class="booking-add-save-msg"></span>
+                <input type="hidden" value="" class="booking-edit-sch-id" />
+            </div>
+
+        {% endif %}
+
+    </div>
+
+</div>
+
+
+{% endblock %}

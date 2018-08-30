@@ -1,0 +1,67 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+<h2 class="art-postheader">Ненайденные фильмы: {{ count }}</h2><br />
+
+    <form action="{% url admin_films_nof dump %}" method='post'>{% csrf_token %}
+        <select name="nof_film" id="nof_data">
+        {% for i in f|dictsort:"name" %}
+            <option value="{{ i.key }}" id="{{ i.code }}">
+            {% if i.info == "Фильм не найден" %}0 - {% endif %}
+            {% if i.info == "Найдено больше 1 фильма" %}2 - {% endif %}
+            {% if "Фильм найден, но нет дистриб.на киноафише" in i.info %}1 - {% endif %}
+            {% if i.info == 'Нет такого дистрибьютора' %}d - {% endif %}
+            {{ i.name }}
+            </option>
+        {% endfor %}
+        </select>
+        <br /><br />
+        
+        {% if dump != 'cmc_nof_films' %}
+        <div>
+        {% for i in f %}
+            <div id="info_{{ i.code }}" {% if forloop.first %}{% else %}style="display:none"{% endif %}>
+                {% if i.info %}{{ i.info }}{% endif %}
+                {% if dump == 'nof_films' %}
+                    ( <a href="http://www.kinometro.ru/release/card/id/{{ i.code }}" target="_blank">Источник</a>
+                    {% if i.kid %}
+                    , <a href="http://www.kinoafisha.ru/index.php3?status=1&id1={{ i.kid }}" target="_blank">Киноафиша</a>
+                    {% endif %}
+                    )
+                    <br /><br />
+                    <em>Дистрибьюторы:</em> 
+                    {% for d in i.distr %}
+                        {{ d.name }}{% if forloop.last %}{% else %}, {% endif %}
+                    {% endfor %}
+                {% else %}
+                    {% if dump == 'kinohod_nof_films' %}
+                        ( <a href="http://api.kinohod.ru/movie/{{ i.code }}" target="_blank">Источник</a> ) 
+                    {% else %}
+                        {% if dump == 'okinoua_nof_films' %}
+                            ( <a href="http://www.okino.ua/film/{{ i.code }}" target="_blank">Источник</a> ) 
+                        {% endif %}
+                    {% endif %}
+                        
+                    {% if i.kid %}
+                    , ( <a href="http://www.kinoafisha.ru/index.php3?status=1&id1={{ i.kid }}" target="_blank">Киноафиша</a> )
+                    {% endif %}
+                    
+                {% endif %}
+            </div>
+        {% endfor %}
+        </div>
+        <br />
+        {% endif %}
+        
+        
+        Поиск фильма на киноафише<br />
+        <input type="text" id="get_data_name" value="" /><input type="button" onclick="get_data('film')" value="Найти" />
+        <select name="film" id="data_select">
+            <option value="">пусто</option>
+        </select>
+        <br /><br />
+        <input type="submit" name="rel" value="Добавить название в альтернативные" />
+        <br /><br />
+        <input type="submit" name="kid_sid" value="Связать фильм источника с фильмом на киноафише" />
+    </form>
+
+{% endblock %}

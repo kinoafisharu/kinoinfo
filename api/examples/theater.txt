@@ -1,0 +1,27 @@
+
+<houses>
+    <theater>
+        <theater_name>Формула Кино Аврора</theater_name>
+        <theater_id>1</theater_id>
+        <theater_address>ул. Профсоюзная, 154</theater_address>
+        <theater_city>Москва</theater_city>
+        <theater_state>RU</theater_state>
+        <theater_zip>117321</theater_zip>
+        <theater_phone>795-3-795</theater_phone>
+        <theater_attributes/>
+        <theater_county>RUS</theater_county>
+        <theater_ticketing/>
+        <theater_closed_reason/>
+        <theater_location/>
+        <theater_market/>
+        <theater_screens>2</theater_screens>
+        <theater_seating>546, 232</theater_seating>
+        <theater_adult/>
+        <theater_child/>
+        <theater_senior/>
+        <theater_sound>Dolby Digital Surround EX</theater_sound>
+        <theater_sound/>
+        <theater_lat/>
+        <theater_lon/>
+    </theater>
+</houses>

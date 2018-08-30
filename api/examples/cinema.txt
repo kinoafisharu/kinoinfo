@@ -1,0 +1,25 @@
+
+<data>
+    <cinema id="1" name="Формула Кино Аврора">
+        <zip value="117321"/>
+        <address value="ул. Профсоюзная, 154"/>
+        <phones value="795-3-795"/>
+        <techinfo value="2 зала: 546+232 места, звук: Dolby Digital Surround EX"/>
+        <site value="http://www.formulakino.ru/cinemas/avrora/seans.shtml"/>
+        <random value="209522637"/>
+        <city id="1" name="Москва"/>
+        <metro id="1" name="Теплый Стан"/>
+        <coordinates id="http://ru.wikipedia.org/wiki/Москва"/>
+    </cinema>
+    <cinema id="2" name="Алмаз Синема Алмаз">
+        <zip value="117419"/>
+        <address value="ул. Шаболовка, 56"/>
+        <phones value="221-5-221 - автоотв, 954-10-02 - заказ билетов"/>
+        <techinfo value="5 залов на 851 место, звук: Dolby Digital Surround EX"/>
+        <site value="http://www.almazcinema.ru/cinema/1654/"/>
+        <random value="711850660"/>
+        <city id="1" name="Москва"/>
+        <metro id="2" name="Шаболовская"/>
+        <coordinates id="http://ru.wikipedia.org/wiki/Москва"/>
+    </cinema>
+</data>

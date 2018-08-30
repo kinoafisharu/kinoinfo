@@ -1,0 +1,45 @@
+
+<data>
+    <city id="7" name="Владивосток">
+        <movie id="229" name="Нью Вэйв Синема">
+            <hall hall id="51" name="Звездный">
+                <film id="17259" name="Боевой конь" idimdb="1568911">
+                    <date start="2012-03-01" finish="2012-03-22">
+                        <time>
+                        10:00:00
+                        </time>
+                        <time>
+                        17:50:00
+                        </time>
+                        <time>
+                        21:20:00
+                        </time>
+                    </date>
+                </film>
+            </hall>
+            <hall id="51" name="Звездный">
+                <film id="11537" name="Другой мир: Пробуждение" idimdb="1496025">
+                    <date start="2012-03-01" finish="2012-03-22">
+                        <time>
+                        10:00:00
+                        </time>
+                        <time>
+                        13:40:00
+                        </time>
+                        <time>
+                        17:30:00
+                        </time>
+                    </date>
+                </film>
+            </hall>
+        </movie>
+    </city>
+</data>
+
+Если нет сеансов
+
+<data>
+    <empty>
+    НЕТ ДАННЫХ
+    </empty>
+</data>

@@ -1,0 +1,107 @@
+{% extends "kua_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Киноафиша Украины" %}{% endblock %}
+{% block content %}
+
+<div class="main_block">
+    <h1 class="content-header">{% trans "Киноафиша Украины" %}</h1>
+    <div class="left_blocks">
+        
+        <div class="main_widget">
+            <div class="main_widget__header">
+                {% if city %}
+                <a href="{% url rss city.id %}" title="{% trans 'Подписаться' %}">
+                    <div class="main_widget__header__rss"></div>
+                </a>
+                {% else %}
+                    <div class="main_widget__header__rss"></div>
+                {% endif %}
+                <a href="{% url schedule_ajax %}">
+                    <h2 class="main_widget__header__title">{% trans 'Сеансы в городе' %} {% if city_name %}{{ city_name }}{% endif %}</h2>
+                </a>
+            </div>
+            <div class="main_widget__details"><h3>{% trans 'Пять лучших фильмов' %}</h3></div>
+            <div class="main_widget__content">
+                {% for i in schedules %}
+                    <div>
+                        <b>{{ i.name }}</b>:
+                        <div class="main_widget__content__details" title="{{ i.times }}">
+                        {{ i.times }}
+                        </div>
+                    </div>
+                {% empty %}
+                    <div class="main_widget__content__times no_times">{% trans 'На сегодня сеансов нет' %}</div>
+                {% endfor %}
+            </div>
+        </div>
+
+
+        <div class="main_widget">
+            <div class="main_widget__header">
+                <div class="main_widget__header__rss"></div>
+                <a href="{% url show_film_list %}">
+                    <h2 class="main_widget__header__title">{% trans 'Смотреть он-лайн' %}</h2>
+                </a>
+            </div>
+            <div class="main_widget__details"><h3>Toп 3</h3></div>
+            <div class="main_widget__content">
+            {% if user.is_superuser %}
+            {% for i in films %}
+                <div>
+                    <b><a href="{% url show_film_list i.id %}">{{ i.name }} ({{ i.year }}) </a> {{ i.top }} / 10</b>
+                    <div class="main_widget__content__details" title="">
+                     {{ i.genres }} 
+                    </div>
+                </div>
+            {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+     </div>
+     
+     
+     <div class="right_blocks">
+        <div class="main_widget">
+            <div class="main_widget__header">
+                <a href="{% url rss_releases %}" title="{% trans 'Подписаться' %}">
+                    <div class="main_widget__header__rss"></div>
+                </a>
+                <a href="{% url releases_ajax %}">
+                    <h2 class="main_widget__header__title">{% trans 'Скоро в кино' %}</h2>
+                </a>
+            </div>
+            <div class="main_widget__details"><h3>{% trans 'Десять ближайших релизов' %}</h3></div>
+            <div class="main_widget__content">
+            {% for i in releases %}
+                <div>
+                    <b>{{ i.release|date:"d b Y" }}</b>: 
+                    <div class="main_widget__content__details" style="display: inline;" title="">{{ i.name }}</div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+        
+        <div class="main_widget">
+            <div class="main_widget__header">
+                <a href="{% url rss_articles %}" title="{% trans 'Подписаться' %}">
+                    <div class="main_widget__header__rss"></div>
+                </a>
+                <a href="{% url articles_main %}">
+                    <h2 class="main_widget__header__title">{% trans 'Рецензии, обзоры, статьи' %}</h2>
+                </a>
+            </div>
+            <div class="main_widget__details"><h3>{% trans 'Пять последних публикаций' %}</h3></div>
+            <div class="main_widget__content">
+            {% for i in articles_list %}
+                <div>
+                    <b><a href="{% url articles_main i.id %}">{{ i.title }}</a></b>:
+                    <div class="main_widget__content__details" title="">
+                    {{ i.text }}
+                    </div>
+                </div>
+            {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

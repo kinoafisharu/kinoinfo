@@ -1,0 +1,26 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+<h1 class="art-postheader">Ненайденные дистрибьюторы: {{ count }}</h1>
+
+    <form action="{% url admin_distributor_nof dump %}" method='post'>{% csrf_token %}
+        <select name="nof_distr">
+        {% for i in d|dictsort:"slug" %}
+            <option value="{{ i.key }}">{{ i.key }} (1), {{ i.slug }} (2), {{ i.alt }} (0)</option>
+        {% endfor %}
+        </select>
+
+        <br /><br />
+        Связать с дистрибьютором
+        <br />
+        <select name="distr">
+        {% for i in distr|dictsort:"name" %}
+            <option value="{{ i.id }}">
+                {{ i.name }}
+            </option>
+        {% endfor %}
+        </select>
+        <br /><br />
+        <input type="submit" name="rel" value="Добавить альтернативное название">
+    </form>
+
+{% endblock %}

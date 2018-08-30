@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="art-postcontent">
+    <h1 class="art-postheader">Изменения в дампе с последнего вашего скачивания</h1>
+        {% if result.status %}
+            Изменения в фильмах (показано до 25 записей):<br /><br />
+            {% for i in result.content %}
+                {{ i.name }} (ID: {{ i.film_id_id }}, IMDB: {{ i.film_id.idalldvd }})<br />
+            {% endfor %}
+        {% else %}
+            {{ result.content }}
+        {% endif %}
+    <br />
+    <a href="{% url main_api %}">Вернуться на главную API</a>
+</div>
+{% endblock %}

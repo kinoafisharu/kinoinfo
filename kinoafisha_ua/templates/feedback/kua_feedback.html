@@ -1,0 +1,34 @@
+{% extends "kua_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Обратная связь" %}{% endblock %}
+{% block content %}
+{% load base_tags %}
+
+<h1 class="content-header"><a href="{% url feedback_main %}">{% trans "Обратная связь" %}</a></h1>
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        {% if feedback_msg %}
+            <b>{{ feedback_msg }}</b>
+        {% else %}
+        <form action="" method="post">{% csrf_token %}
+        {% if not emails %}
+            {{ form.email.label }}{{ form.email.errors }}<br />
+            {{ form.email }}
+        {% else %}
+            {% trans "Оповестить на" %} 
+            {% for i in emails %}
+                <input type="radio" name="emails" value="{{ i }}"{% if forloop.first %} checked{% endif %} />{{ i }} 
+            {% endfor %}
+        {% endif %}
+        <br />
+        {{ form.msg }}{{ form.msg.errors }}
+        <br />
+        <input type="submit" value="{% trans 'Отправить' %}" />
+        </form>
+        {% endif %}
+    </div>
+</div>
+
+{% endblock %}
+

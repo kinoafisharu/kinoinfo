@@ -1,0 +1,18 @@
+
+<data>
+    <film id="7" imdb="120891">
+        <poster path="http://www.kinoafisha.ru/posters/1/7-000.jpg"/>
+    </film>
+    <film id="8" imdb="149261">
+        <poster path="http://www.kinoafisha.ru/posters/1/8-000.jpg"/>
+    </film>
+    <film id="9" imdb="122933">
+        <poster path="http://www.kinoafisha.ru/posters/1/9-000.jpg"/>
+    </film>
+    <film id="10" imdb="185371">
+        <poster path="http://www.kinoafisha.ru/posters/1/10-000.jpg"/>
+    </film>
+    <film id="11" imdb="120663">
+        <poster path="http://www.kinoafisha.ru/posters/1/11-000.jpg"/>
+    </film>
+</data>

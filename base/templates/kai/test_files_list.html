@@ -1,0 +1,21 @@
+{% extends "list_2.html" %}
+{% block content %}
+<div class="art-postcontent-width">
+    <h2 class="art-postheader">Список файлов с репертуарами</h2>
+    <a href="{% url main_kai %}">Назад</a><br /><br />
+    {% if files_list %}
+        <form action="{% url delete_sms_files %}" method="post">{% csrf_token %} 
+            <input type="submit" value="Удалить все" />
+        </form>
+        <br />
+        <p>Всего файлов: {{ files_count }}</p>
+        <br />
+        <br />
+        {% for i in files_list %}
+            <p>{{ i }}</p><br />
+        {% endfor %} 
+    {% else %}
+        Список пуст
+    {% endif %}
+</div>
+{% endblock %}

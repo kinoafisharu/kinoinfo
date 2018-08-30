@@ -1,0 +1,98 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Статистика по рекламным компаниям{% endblock %}
+
+{% block content %}
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url kinoafisha_admin_main %}">Админ панель</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Статистика по рекламным компаниям</span></b>
+</h1>
+
+<div class="scroll_list">
+<div style="text-align: right; padding: 5px 0;">
+	Всего компаний: <b>{{ count_banners }}</b>, Всего снято: <b>{{ spent_sum }}</b> руб.
+</div>
+<table class="lbe_list_tbl modern_tbl">
+	<tr>
+		<th>Услуга</th><th>Площадка</th><th>Название</th><th>URL</th><th>Показ</th><th>Клик</th><th>Страна</th><th>Город</th><th>Автор</th><th>Снято</th>
+	</tr>
+	{% for i in data %}
+	<tr>
+		<td><div>{{ i.obj.get_btype_display }}</div></td>
+		<td><div>{% for s in i.sites %}{{ s }}{% endfor %}</div></td>
+		<td><div>{% if i.obj.btype != '0' %}<a class="lbe_adv_anchor nolink">{% endif %}{{ i.obj.name }}{% if i.obj.btype != '0' %}</a>{% endif %}</div></td>
+		<td class="lbe_url_bl">
+			<div>{% if i.obj.url %}{{ i.obj.url }}{% endif %}</div>
+			{% if i.obj.file %}
+			<div class="lbe_img"><object type="application/x-shockwave-flash" data="{{ i.obj.file }}"><param name="movie" value="{{ i.obj.file }}" /><param name="wmode" value="transparent" /></object></div>
+			{% else %}
+			{% if i.obj.btype != '0' %}
+			<div class="lbe_img" style="width: 200px; height: auto;">
+				<div style="padding: 10px;">
+                <a>{{ i.obj.name }}</a><br />
+                <p style="size: 11px;">{{ i.obj.text }}</p>
+                </div>
+            </div>
+            {% endif %}
+			{% endif %}
+		</td>
+		{% if i.views %}
+		<td><div class="lbe_adv_item_clicks"><a title="Подробнее..." id="my_adv_info_v{{ i.obj.id }}">{{ i.views }}</a></div></td>
+		{% else %}
+		<td><div>{{ i.views }}</div></td>
+		{% endif %}
+		{% if i.clicks %}
+		<td><div class="lbe_adv_item_clicks"><a title="Подробнее..." id="my_adv_info_{{ i.obj.id }}">{{ i.clicks }}</a></div></td>
+		{% else %}
+		<td><div>{{ i.clicks }}</div></td>
+		{% endif %}
+		<td><div>{{ i.country }}</div></td>
+		<td><div>{{ i.city }}</div></td>
+		<td><div>{% if i.author_id %}<a href="/user/profile/{{ i.author_id }}/" target="_blank">{% endif %}{{ i.author_name }}{% if i.author_id %}<a>{% endif %}</div></td>
+		<td><div>{% if i.obj.btype == '3' %}беспл.{% else %}{{ i.obj.spent }} руб.{% endif %}</div></td>
+	</tr>
+		{% if i.views_data %}
+		<tr style="display: none; font-size: 12px;" id="my_adv_v{{ i.obj.id }}"><th colspan="10">Показы</th></tr>
+		{% endif %}
+		{% for k, v in i.views_data.items %}
+	    <tr style="display: none; background: #FFE6CC; font-size: 12px;" id="my_adv_v{{ i.obj.id }}">
+	        <td><div>{{ k }}</div></td>
+	        <td colspan="9">
+	        	<div>
+		    	{% for j in v %}
+			        {% if j.user %}
+			            <div><a href="/user/profile/{{ j.user }}/" target="_blank">{{ j.name }}</a></div>
+			        {% else %}
+			            <div>{{ j.name }}</div>
+			        {% endif %}
+			    {% endfor %}
+	        	</div>
+	        </td>
+	    </tr>
+		{% endfor %}
+
+		{% if i.clicks_data %}
+		<tr style="display: none; font-size: 12px;" id="my_adv_{{ i.obj.id }}"><th>Клики</th><th colspan="9"><input type="checkbox" class="check_all_next" /> <div class="my_adv_messenger">Отправить сообщение</div> <span class="my_adv_messenger_w"></span></th></tr>
+		{% endif %}
+	    {% for k, v in i.clicks_data.items %}
+	    <tr style="display: none; background: #FFE6CC; font-size: 12px;" id="my_adv_{{ i.obj.id }}">
+	        <td><div>{{ k }}</div></td>
+	        <td colspan="9">
+	        	<div>
+		    	{% for j in v %}
+			        {% if j.user %}
+			            <div><input type="checkbox" class="check_all_item" value="{{ j.user }}" /> <a href="/user/profile/{{ j.user }}/" target="_blank">{{ j.name }}</a></div>
+			        {% else %}
+			            <div>{{ j.name }}</div>
+			        {% endif %}
+			    {% endfor %}
+	        	</div>
+	        </td>
+	    </tr>
+		{% endfor %}
+
+	{% endfor %}
+</table>
+</div>
+{% endblock %}

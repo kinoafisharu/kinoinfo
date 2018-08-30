@@ -1,0 +1,32 @@
+{% load base_tags %}
+
+<div class="art-posttree-width">
+
+    <noindex>
+    <h5 class="method-category" id="{{ user_id }}_section{{ k }}"><p>Мой профиль</p></h5>
+    <div class="method-list">
+        <ul>
+            <li>
+                {% if request.acc_list.acc %}
+                <a href="{% url profile %}" id="user_full_name" rel="nofollow">{{ request.fio }}</a>
+                {% else %}
+                <a href="{% url login %}" rel="nofollow">Авторизоваться</a>
+                {% endif %}
+            </li>
+            <li>
+                <a class="select_mycity upper-menu__control-links__city">
+                {{ request.current_user_city }}
+                </a>
+            </li>
+            <li>
+                <a href="{% url profile %}" target="_blank" rel="nofollow">
+                <div class="upper-menu__control-links__money">
+                На Вашем счету {{ request.mymoney }} руб.
+                </div>
+                </a>
+            </li>
+        </ul>
+    </div>
+    </noindex>
+</div>
+

@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+
+        {% if user.is_superuser or request.is_admin or is_editor %}
+        var maxLength = $('textarea[name="photo_description"]').attr('maxlength')
+        $('textarea[name="photo_description"]').keyup(function(){
+            var curLength = $('textarea[name="photo_description"]').val().length
+            if($(this).val().length >= maxLength){
+                $(this).val($(this).val().substr(0, maxLength))
+            }
+            var remaning = maxLength - curLength
+            if(remaning < 0){
+                remaning = 0
+            }
+            $('#char_count').html('(remaining characters: ' + remaning + ')')
+        });
+        {% endif %}
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header"><a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a>
+{% if request.current_site.domain != 'kinoinfo.ru' and request.current_site.domain != 'kinoafisha.ru' %}
+ <span id="cities2">{% for i in DOMAIN_CITIES %}{% if i.sub == request.subdomain %}{{ i.name }}{% endif %}{% endfor %}</span> - <a href="{% url organization_list 'а' %}">
+{% endif %}
+{% if org.ownership %}{{ org.get_ownership_display }} {% endif %}{{ org.name }}
+{% if request.current_site.domain != 'kinoinfo.ru' and request.current_site.domain != 'kinoafisha.ru' %}
+</a>
+{% endif %} - 
+    {% if id %}
+        {% if news_data.0.obj.title %}
+            {{ news_data.0.obj.title }}
+        {% else %}
+            {{ title }}
+        {% endif %}
+    {% else %}
+        {{ title }}
+    {% endif %}
+</h1>
+
+{% organization_menu org.uni_slug offers_tags advert_tags is_editor branding org_ka %}
+
+
+<div class="art-postcontent-width">
+
+    {% if user.is_superuser or request.is_admin or is_editor%}
+        {% if count == 0 and not id %}
+        <span class="change_page_type in_h1_left" onclick="$.fancybox.open($('.page_types_choice').show());">Тип страницы</span>
+        {% endif %}
+        <span class="add_photos in_h1">Фото</span>
+    {% endif %}
+    
+    
+    
+    {% if user.is_superuser or request.is_admin or is_editor %}
+    <div class="organization_slides org_fields">
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <label for="id_slides">Файл:</label> <input type="file" name="slides" id="id_slides" multiple />
+        <br /><br />
+        <input type="submit" value="Сохранить" class="organization_slides_accept_btn" name="photo_add" />
+        <input type="button" value="Отмена" class="organization_slides_cancel_btn" />
+        </form>
+    </div>
+    {% endif %}
+    
+    <div class="gallery">
+        <div class="scroll_list">
+        {% for i in photos %}
+            <div class="g_photo_el" id="g{{ i.id }}">
+                
+                <a class="fancybox" rel="group" href="/upload{{ i.file }}"><img src="/upload{{ i.file }}" /></a>
+                {% if user.is_superuser or request.is_admin or is_editor %}
+                <span id="{{ i.id }}" class="g_photo_del" title="Удалить фото"></span>
+                <span id="{{ i.id }}" class="g_photo_edit" title="Ред. заголовок и описание"></span>
+                {% endif %}
+                <div class="g_photo_title">{% if i.title %}{{ i.title }}{% endif %}</div>
+                {% if i.description %}
+                <p class="g_photo_description">{{ i.description }}</p>
+                {% endif %}
+
+            </div>
+            {% if forloop.last %}
+            <div style="display: inline-block; height: 20px; width: 250px;"></div>
+            {% endif %}
+        {% endfor %}
+        </div>
+    </div>
+    
+    
+    {% if user.is_superuser or request.is_admin or is_editor %}
+        <div class="photo_edit_form">
+            <form action="" method="post">{% csrf_token %}
+                <b>Заголовок:</b><br />
+                <input type="text" value="" name="photo_title" size="50" maxlength="60" style="width: 390px;"/>
+                <br /><br /><b>Описание:</b> <span id="char_count"></span><br />
+                <textarea name="photo_description" maxlength="500" style="width: 400px; height: 70px;"/></textarea>
+                <br /><br />
+                <input type="hidden" value="" name="photo_id" />
+                <input type="button" value="Сохранить" class="gallery_photo_edit" />
+                <br /><br />
+            </form>
+        </div>
+    
+        {% if not page_type or count == 0 %}
+        <form action="{% url org_change_page_type org.uni_slug vid %}" method="post" class="page_types_choice" style="display: none;">{% csrf_token %}
+            <b>Укажите тип страницы: </b>
+            <select name="page_type">
+            {% for i in page_types %}
+            <option value="{{ i.0 }}"{% if page_type == i.0 %} selected{% endif %}>{{ i.1 }}</option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="Выбрать" />
+        </form>
+        {% endif %}
+        
+    {% endif %}
+    
+</div>
+
+{% endblock %}

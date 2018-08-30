@@ -1,0 +1,142 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block script %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+function get_tags(el){
+    var availableTags = [{% for k, v in tags.items %}"{{ k }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+    
+    $(el).autocomplete({
+        source: availableTags,
+        minLength: 2,
+        messages: {
+            noResults: '',
+            results: function() {}
+        }
+    });
+};
+</script>
+{% endblock %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader">Добавить организацию</h3>
+<div class="clear"></div>
+    <form action="" method='post'>{% csrf_token %}
+    
+    <div style="width: 710px; height: 140px; margin-bottom: 10px;">
+
+        <table style="width: 320px; float: left; margin-right: 10px; background: #DBDBDB;">
+            <th colspan="3" style="background: #CCCCCC;">Организация</th>
+            <tr>
+                <td>{{ form.ownership.errors }}{{ form.ownership.label }}</td>
+                <td colspan="2">
+                {% if form.name.errors %}
+                    <span style="color: red;">{{ form.name.errors }}</span>
+                {% else %}
+                    {{ form.name.label }} *
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td>{{ form.ownership }}</td>
+                <td colspan="2">{{ form.name }}</td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                {% if tags_error %}
+                    <span style="color: red;">Укажите хотя бы одну метку</span>
+                {% else %}
+                    Метки *
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">
+                    {% for i in o_tags_list %}
+                        <input type="text" value="{{ i.name }}" name="tag{{ forloop.counter }}" onkeyup="get_tags(this);" size="23" />
+                    {% endfor %}
+
+                </td>
+            </tr>
+        </table>
+        
+        <table style="width: 370px; float: right; background: #DBDBDB;">
+            <th colspan="3" style="background: #CCCCCC;">Адрес</th>
+            <tr>
+                <td colspan="3">
+                {% if form.city.errors %}
+                    <span style="color: red;">{{ form.city.errors }}</span>
+                {% else %}
+                    {{ form.city.label }} *
+                {% endif %}
+                </td>
+            </tr>
+            <tr>
+                <td colspan="3">{{ form.city }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.street_type.errors }}{{ form.street_type.label }}</td>
+                <td colspan="2">{{ form.street.errors }}{{ form.street.label }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.street_type }}</td>
+                <td colspan="2">{{ form.street }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.buildings.errors }}{{ form.buildings.label }}</td>
+                <td>{{ form.room_type.errors }}{{ form.room_type.label }}</td>
+                <td>{{ form.room_num.errors }}{{ form.room_num.label }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.buildings }}</td>
+                <td>{{ form.room_type }}</td>
+                <td>{{ form.room_num }}</td>
+            </tr>
+        </table>
+        
+    </div>
+    
+    <div style="width: 710px; margin-bottom: 10px;">
+
+        <table style="width: 320px; float: left; margin-right: 10px; background: #DBDBDB;">
+            <th style="background: #CCCCCC;">Контакты</th>
+            <tr>
+                <td>{{ form.site.errors }}{{ form.site.label }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.site }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.email.errors }}{{ form.email.label }}</td>
+            </tr>
+            <tr>
+                <td>{{ form.email }}</td>
+            </tr>
+            <tr>
+                <td>Телефоны</td>
+            </tr>
+            <tr>
+                <td>
+                {% for i in phones %}
+                    <input type="text" value="{{ i.phone }}" name="phone_{{ i.id }}" size="25" /><br />
+                {% endfor %}
+                </td>
+            </tr>
+            
+        </table>
+
+        <table style="float: right; background: #DBDBDB;">
+            <th style="background: #CCCCCC;">Примечание</th>
+            <tr>
+                <td>{{ form.note }}</td>
+            </tr>
+        </table>
+    
+    
+    </div>
+        <div class="clear"></div>
+        <input type="submit" name="save" value="Сохранить" />
+        
+    </form>
+
+
+{% endblock %}

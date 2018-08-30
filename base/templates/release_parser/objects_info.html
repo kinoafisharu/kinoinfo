@@ -1,0 +1,68 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Идентификация
+{% if obj == 'country' %}стран{% endif %}
+{% if obj == 'city' %}городов{% endif %}
+{% if obj == 'cinema' %}кинотеатров{% endif %}
+{% if obj == 'hall' %}залов{% endif %}
+{% if obj == 'film' %}фильмов{% endif %}
+{% if obj == 'distributor' %}дистрибьюторов{% endif %}
+{% if obj == 'person' %}персон{% endif %}
+</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+<div style="clear: both;"></div>
+
+<table class="panel_list">  
+    
+    <th>Источник</th><th>Создан</th><th>Связи</th><th>Ненайдено</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td><div>{{ i.source }}</div></td>
+            <td><div>
+            {% if i.modify_date == today or i.modify_date == yesterday %}
+                {% if i.modify_date == today %}Сегодня{% else %}Вчера{% endif %}
+            {% else %}
+                {{ i.modify_date|date:"d b" }}
+            {% endif %}
+            </div></td>
+            <td><div>
+            {% if obj == 'film' %}
+                <a href="{% url admin_film_nof_list i.dump %}">Редактировать</a>
+            {% endif %}
+            {% if obj == 'distributor' %}
+                <a href="{% url admin_distributor_nof i.dump %}">Редактировать</a>
+            {% endif %}
+            {% if obj == 'hall' or obj == 'city' or obj == 'cinema' %}
+                <a href="{% url admin_city_nof_list2 obj i.dump %}">Редактировать</a>
+            {% endif %}
+            {% if obj == 'person' %}
+                <a href="{% url admin_person_nof_list i.dump %}">Редактировать</a>
+            {% endif %}
+            {% if obj == 'country' %}
+                <a href="{% url admin_country_nof_list i.dump %}">Редактировать</a>
+            {% endif %}
+            </div></td>
+            <td>
+                {% if i.nof_data %}
+                <div style="text-align: center; border-bottom: 1px dotted #B23636; background: #EA6969;">
+                    {{ i.nof_data }}
+                </div>
+                {% else %}
+                <div style="text-align: center; border-bottom: 1px dotted #657E4B; background: #98B17E;">
+                    {{ i.nof_data }}
+                </div>
+                {% endif %}
+            </td>
+        </tr>
+    {% empty %}
+        <br />пусто<br />
+    {% endfor %}
+</table>
+
+
+{% endblock %}

@@ -1,0 +1,13 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader">Список фильмов у которых есть рецензия, но нет оценки ({{ count }} шт.)</h3>
+    
+    <div class="scroll_list">
+        {% for i in data %}
+            {{ i.year }} <a href="{% url get_film_reviews i.id %}" target="_blank">{{ i.name_ru }}</a><br />
+        {% endfor %}
+    </div>
+
+
+{% endblock %}

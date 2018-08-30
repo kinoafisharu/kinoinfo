@@ -1,0 +1,84 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{% if org.ownership %}{{ org.get_ownership_display }} {% endif %}{{ org.name }} - связи{% endblock %}
+
+{% block content %}
+<h1 class="content-header"><a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a> 
+{% if request.current_site.domain != 'kinoinfo.ru' %}
+<span id="cities2">{% for i in DOMAIN_CITIES %}{% if i.sub == request.subdomain %}{{ i.name }}{% endif %}{% endfor %}</span> - <a href="{% url organization_list 'а' %}">
+{% endif %}
+{% if org.ownership %}{{ org.get_ownership_display }} {% endif %}{{ org.name }}
+{% if request.current_site.domain != 'kinoinfo.ru' %}
+</a>
+{% endif %} - связи</h1>
+
+{% if request.current_site.domain != 'kinoinfo.ru' %}
+<div id="cities_inline">
+    <div style="padding: 8px;">
+        {% for i in DOMAIN_CITIES %}
+            {% if i.sub == request.subdomain %}
+                <div class="cities_list" style="color: #333;">
+                {{ i.name }}
+                </div>
+            {% else %}
+                <a href="http://{{ i.sub }}.vsetiinter.net/">
+                    <div class="cities_list">
+                    {{ i.name }}
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+
+{% organization_menu org.uni_slug offers_tags advert_tags is_editor branding %}
+
+
+<div class="art-postcontent-width">
+
+    {% if user.is_superuser or is_editor or request.is_admin %}
+    <input type="hidden" class="organization_id" id="{{ org.id }}" />
+
+    <a class="organization_relations_edit">Редактировать</a><br />
+    {% endif %}
+    
+    <br />
+    <span{% if user.is_superuser or is_editor or request.is_admin %} class="organization_relations"{% endif %}>
+        {% for i in org.relations.all %}
+            <a href="{{ i.link }}" target="_blank">{{ i.name }}</a><br />
+        {% empty %}
+            Нет
+        {% endfor %}
+    </span>
+    
+
+    {% if user.is_superuser or is_editor or request.is_admin %}
+    <div class="organization_relations_fields org_fields">
+        {% for i in org.relations.all %}
+            <span class="organization_relations_field">
+            Название: <input type="text" value="{{ i.name }}" size="25" class="rel_name" />
+            Ссылка: <input type="text" value="{{ i.link }}" size="40" class="rel_link" />
+            </span>
+            {% if not forloop.last %}<br />{% endif %}
+            {% if forloop.last %} <span class="relation_new" title="Добавить еще"></span>{% endif %}
+        {% empty %}
+            <span class="organization_relations_field">
+            Название: <input type="text" value="" size="25" class="rel_name" />
+            Ссылка: <input type="text" value="http://" size="40" class="rel_link" />
+            </span>
+            <span class="relation_new" title="Добавить еще"></span>
+        {% endfor %}
+        <br />
+        <br />
+        <input type="button" value="Сохранить" class="organization_relations_accept_btn" />
+        <input type="button" value="Отмена" class="organization_relations_cancel_btn" onclick="obj_cancel(this);" />
+    </div>
+    {% endif %}
+
+</div>
+
+
+
+{% endblock %}

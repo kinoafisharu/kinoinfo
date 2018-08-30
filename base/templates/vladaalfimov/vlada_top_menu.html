@@ -1,0 +1,38 @@
+{% load base_tags %}
+{% load i18n %}
+
+<div class="content-header">
+    <ul>
+    {% if request.current_site.domain == 'vladaalfimovdesign.com.au' %}<li><a href="{% url main %}">Home</a></li>{% endif %}
+    <li><a href="{% url about %}">{% trans "О нас" %}</a></li>
+    {% for k, v in org_menu.items %}
+        {% if k != 'about' %}
+        <li><a href="{% if v.sub.0.type == '2' %}{% url gallery v.sub.0.id %}{% else %}{% url letsget_view v.sub.0.id %}{% endif %}"">{{ v.title }}</a></li>
+        {% endif %}
+    {% endfor %}
+    
+    {% if request.acc_list.acc %}
+        <li><a href="{% url profile %}" target="_blank" rel="nofollow" style="color: #D48E9C;">{% trans "Профиль" %}</a></li>
+    {% else %}
+        <li><a href="{% url login %}" target="_blank" rel="nofollow" style="color: #D48E9C;">{% trans "Вход" %}</a></li>
+    {% endif %}
+    
+    {% if request.current_site.domain == 'imiagroup.com.au' %}
+        <li class="lang_ch">
+            <form action="/i18n/setlang/" method="POST">
+                {% csrf_token %}
+                <select name="language" onchange="this.form.submit();">
+                    {% get_language_info_list for LANGUAGES as languages %}
+                    {% for language in languages %}
+                    <option value="{{ language.code }}"{% if language.code == request.current_language %} selected="selected"{% endif %}>
+                        {{ language.code|upper }}
+                    </option>
+                    {% endfor %}
+                </select>
+            </form>
+            
+        </li>{% endif %}
+    </ul>
+    <div class="clear"></div>
+</div>
+

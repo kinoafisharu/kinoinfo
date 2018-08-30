@@ -1,0 +1,85 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}Настройки букинга{% endblock %}
+{% load base_tags %}
+
+
+{% block page_bg %}style="background-image: url('{% if user_bg %}{{ user_bg.file }}{% else %}{{ request.bg_img }}{% endif %}');"{% endblock %}
+{% block br_url %}{% if user_bg %}{{ user_bg.url }}{% else %}{{ request.advert_url }}{% endif %}{% endblock %}
+{% block adv_id %}{% if user_bg %}{{ user_bg.id }}{% else %}{{ request.advert_id }}{% endif %}{% endblock %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url profile card.profile.user_id %}">{{ card.name|safe|striptags }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Настройки букинга</span></b>
+
+    <select style="opacity: 0.7; margin-left: 15px;" name="country" form="f_country" onchange="this.form.submit();">
+        <option value="2"{% if country == 2 %}selected{% endif %}>Россия</option>
+        <option value="43"{% if country == 43 %}selected{% endif %}>Украина</option>
+    </select>
+</h1>
+
+    <form action="" method="post" id="f_country">{% csrf_token %}</form>
+    
+    {% profile_menu card %}
+    
+    <div class="art-postcontent-width">
+        
+            <h3>Укажите необходимые кинотеатры</h3>
+            <br />
+            <div class="txt_wrapper" style="max-height: 350px; overflow: auto; width: 280px; display: inline-block; margin-right: 20px; vertical-align: top;">
+                <div>
+                    <b>Все кинотеатры</b>
+                </div>
+
+                <select class="booker-exist-cities">
+                {% for i in data %}
+                    <option value="{{ i.id }}" {% if i.user_city %}selected{% endif %}>{{ i.name }}</option>
+                {% endfor %}
+                </select>
+
+                <div class="booker-exist-cinemas">
+                {% for i in data %}
+                    <div class="booker-exist-cinemas-bl" id="booker-cinemas-{{ i.id }}" {% if i.user_city %}style="display: block;"{% endif %}>
+                    {% for j in i.cinemas %}
+                        <div class="booker-cinema" id="{{ j.id }}">{{ j.name|safe }}</div>
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+                </div>
+
+            </div>
+
+            <div class="txt_wrapper" style="max-height: 350px; overflow: auto; width: 280px; display: inline-block; vertical-align: top;">
+                <div>
+                    <b>Выбранные кинотеатры</b>
+                </div>
+
+                <select class="booker-selected-cities">
+                    {% for i in booker_data %}
+                    <option value="{{ i.id }}">{{ i.name }}</option>
+                    {% endfor %}
+                </select>
+
+                <div class="booker-selected-cinemas">
+                {% for i in booker_data %}
+                    <div class="booker-selected-cinemas-bl" id="booker-cinemas-{{ i.id }}" {% if forloop.first %}style="display: block;"{% endif %}>
+                    {% for j in i.cinemas %}
+                        <div class="booker-cinema" id="{{ j.id }}">{{ j.name|safe }}</div>
+                    {% endfor %}
+                    </div>
+                {% endfor %}
+                </div>
+            </div>
+        
+        <form action="" method="post">{% csrf_token %}
+            <input type="hidden" value="{% for i in booker_data %}{% for j in i.cinemas %}{{ j.id }};{% endfor %}{% endfor %}" name="cinemas" />
+            <input type="submit" value="Сохранить">
+        </form>
+
+
+    </div>
+{% endblock %}

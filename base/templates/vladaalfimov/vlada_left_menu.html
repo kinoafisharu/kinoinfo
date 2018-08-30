@@ -1,0 +1,45 @@
+{% load base_tags %}
+{% load i18n %}
+
+<div class="art-posttree-width">
+    {% if request.user.is_superuser or request.is_admin %}
+        <h5 class="method-category" id="{{ slug }}_section{{ orgmenu.id }}"><p>{{ orgmenu.name }}</p><a href="#" class="org_menu_title_edit">{% trans 'ред.' %}</a></h5>
+    {% endif %}
+        <div class="method-list">
+        <ul class="{{ slug }}_section{{ orgmenu.id }}">
+        {% for i in left_menu %}
+            {% if i.id %}
+            <li><a href="{% if i.page_type == '2' %}{% url gallery i.id %}{% else %}{% url letsget_view i.id %}{% endif %}" id="link_menu__{{ orgmenu.id }}">{{ i.name }}</a></li>
+            {% else %}
+            <li><a href="{% url imiagroup_projects %}" id="">{{ i.name }}</a></li>
+            {% endif %}
+        {% endfor %}
+        </ul>
+        </div>
+
+    {% if request.user.is_superuser or request.is_admin %}
+    <a class="org_edit_menu" id="{{ slug }}__{{ orgmenu.id }}"><b>{% trans 'редактировать пункты' %}</b></a>
+    
+    <div class="org_addmenu_bl_fields org_fields">
+        <input type="text" id="{{ slug }}" class="org_addmenu_title" size="30"/>
+        <input type="button" class="org_addmenu" id="" value="{% trans 'Принять' %}"/>
+        <input type="button" value="{% trans 'Отмена' %}" class="org_addmenu_bl_cancel_btn" onclick="obj_cancel(this);"/>
+    </div>
+
+    <form action="" method="post">{% csrf_token %}
+        <div class="organization_menu_fields org_fields">
+        <b></b>
+        <br /><br />
+        <span id="org_menu_inputs"></span>
+        <input type="hidden" value="" name="organization_id" />
+        <input type="hidden" value="" name="menu_id" />
+        <span class="submenu_new" title="{% trans 'Добавить еще' %}"></span>
+        <br />
+        <input type="button" value="{% trans 'Сохранить' %}" class="org_menu_accept_btn" />
+        <input type="button" value="{% trans 'Отмена' %}" class="organization_menu_cancel_btn" />
+        </div>
+    </form>
+    {% endif %}
+    
+    {% social_icons %}
+</div>

@@ -1,0 +1,60 @@
+{% extends "list_2.html" %}
+{% block content %}
+<div class="art-postcontent">
+    <h2 class="art-postheader">Форма редактирования</h2>
+    <a href="{% url get_log event %}">Назад</a><br /><br /> 
+        <form action="" method="post">{% csrf_token %} 
+            <b>Поиск:</b> {{ obj }} | <input type="text" name="search"><input type="submit" value="Поиск">
+            {% if search_msg %}Слишком короткий запрос{% endif %}
+        </form>
+        <fieldset>
+            <legend>Частичные совпадения</legend>
+            {% if result %}           
+                <form action="" method="post">{% csrf_token %}             
+                    <select name="set_rel_obj">
+                            {% if event == '3' or event == '4' %}
+                                {% for i in result %}
+                                    <option value="{{ i.id }}">{{ i.name }} (
+                                    {% if i.release_end %}{{ i.release_end|date:"Y"}}{% endif %}
+                                    )</option>
+                                {% endfor %}      
+                            {% else %}
+                                {% for i in result %}                            
+                                    {% for r in i.name.all %}
+                                        {% if r.status == 1 %}
+                                            <option value="{{ i.id }}">{{ r.name }} (
+                                            {% if i.release_end %}{{ i.release_end|date:"Y"}}{% endif %}
+                                            {% if i.city %}
+                                                {% for c in i.city.name.all %}
+                                                    {% if c.status == 1 %}
+                                                        г.{{ c.name }}
+                                                    {% endif %}
+                                                {% endfor %}
+                                            {% endif %}
+                                            {% if i.phone_code != False %}
+                                                тел.код {{ i.phone_code }}
+                                            {% endif %}
+                                            )</option>
+                                        {% endif %}
+                                    {% endfor %}
+                                {% endfor %}
+                            {% endif %}
+                    </select>
+                    <select name="set_rel_lang">
+                        {% for l in lang %}
+                            <option value="{{ l.id }}">{{ l.name }}</option>
+                        {% endfor %}
+                    </select>
+                    <input type="submit" name="btn1" value="Создать связь" />
+                </form>
+            {% else %}
+                Нет
+            {% endif %}
+            <br /><br />
+            <form action="" method="post">{% csrf_token %} 
+                <input type="submit" name="log_del" value="Удалить запись из лога" />
+            </form>
+        </fieldset>
+
+</div>
+{% endblock %}

@@ -1,0 +1,50 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Управление пользователями</h3>
+
+
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+<div style="clear: both;"></div>
+
+    <form action="{% url api_users %}" method="POST" id="form">{% csrf_token %}
+        <select name="user_group" onchange="this.form.submit();">
+        {% for i in groups %}
+            <option value="{{ i.id }}"{% if i.id == group %} selected{% endif %}>{{ i.name }}</option>
+        {% endfor %}
+        </select>
+
+        <input type="text" name='user_search' value="{% if search %}{{ search }}{% endif %}" />
+        <input type="submit" value="Поиск" name="search_btn" /> Поиск юзера (login, email, nickname, fullname)
+        
+    </form>
+    
+    
+    <table class="panel_list lighting">
+        <th>Adm</th><th>API</th><th>User</th><th></th><th></th><th></th>
+        {% for i in users_x %}
+            <tr>
+                <td><div><input type="checkbox" id="1_{{ i.id }}" {% if i.is_superuser %}checked="checked"{% endif %} /></div></td>
+                <td><div><input type="checkbox" id="2_{{ i.id }}" {% if i.api_client %}checked="checked"{% endif %} /></div></td>
+                <td><div><a href="{% url profile i.id %}" target="_blank">{{ i.name }}</a></div></td>
+                <td><div><input type="button" value="Сохранить" onclick="api_panel({{ i.id }});"></div></td>
+                <td><div><span id="api_panel_status_{{ i.id }}"></span></div></td>
+                <td><div><a title="Добавить аккаунт в список слияния" id="merge__{{ i.id }}" class="add_to_merge_list">Слияние</a></div></td>
+            </tr>
+        {% endfor %}
+    </table>
+
+        {% if group == '4' %}
+            <br />
+            От <input type="text" name='date_from' value="{{ date_past|date:'d-m-Y' }}" size="10" form="form" />
+            до <input type="text" name='date_to' value="{{ date_now|date:'d-m-Y' }}" size="10" form="form" />
+            <input type="submit" value="ОК" name="date_btn" form="form" /> Фильтровать по дате регистрации (дд-мм-гггг)
+            
+        {% endif %}
+
+
+<a class="merge_list" style="float: right;">В списке слияния <b>{{ mlist_count }}</b> акк.</a>
+{% endblock %}

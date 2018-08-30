@@ -1,0 +1,650 @@
+premer.slx	ПРЕМЬЕР	Салехард Премьер	premer.slx	http://212.113.124.238/afisha/public_xml.aspx?group=premer.slx	http://212.113.124.238/afisha/public_html.aspx?group=premer.slx
+zhemhuzhina.rbc	ЖЕМЧУЖИНА	Рубцовск Жемчужина	zhemhuzhina.rbc	http://212.113.124.238/afisha/public_xml.aspx?group=zhemhuzhina.rbc	http://212.113.124.238/afisha/public_html.aspx?group=zhemhuzhina.rbc
+centavr.chi	ЦЕНТАВР	Чита Центавр	centavr.chi	http://212.113.124.238/afisha/public_xml.aspx?group=centavr.chi	http://212.113.124.238/afisha/public_html.aspx?group=centavr.chi
+test2.spb	КИНОТЕСТ2	Санкт-Петербург КИНОТЕСТ2	test2.spb	http://212.113.124.238/afisha/public_xml.aspx?group=test2.spb	http://212.113.124.238/afisha/public_html.aspx?group=test2.spb
+kmrodnik.chel	РОДНИК	Челябинск Киномакс Родник	kmrodnik.chel	http://212.113.124.238/afisha/public_xml.aspx?group=kmrodnik.chel	http://212.113.124.238/afisha/public_html.aspx?group=kmrodnik.chel
+vl.penz	ЛИГА	Пенза Высшая Лига	vl.penz	http://212.113.124.238/afisha/public_xml.aspx?group=vl.penz	http://212.113.124.238/afisha/public_html.aspx?group=vl.penz
+kosmos.ptg	КОСМОС	Пятигорск Космос	kosmos.ptg	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.ptg	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.ptg
+armada.lip	АРМАДА	Липецк Армада	armada.lip	http://212.113.124.238/afisha/public_xml.aspx?group=armada.lip	http://212.113.124.238/afisha/public_html.aspx?group=armada.lip
+kosmos.orb	КОСМОС	Оренбург Космос	kosmos.orb	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.orb	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.orb
+tab.del	ТАБДЕЛ	Анадырь ТАБДЕЛ	tab.del	http://212.113.124.238/afisha/public_xml.aspx?group=tab.del	http://212.113.124.238/afisha/public_html.aspx?group=tab.del
+shift.del	ШИФТ	Анадырь ШИФТ	shift.del	http://212.113.124.238/afisha/public_xml.aspx?group=shift.del	http://212.113.124.238/afisha/public_html.aspx?group=shift.del
+kapets.ins	КАПЕЦ	Чукотка Капец	kapets.ins	http://212.113.124.238/afisha/public_xml.aspx?group=kapets.ins	http://212.113.124.238/afisha/public_html.aspx?group=kapets.ins
+insert.del	ИНСЕРТ	Чукотка ИНСЕРТ	insert.del	http://212.113.124.238/afisha/public_xml.aspx?group=insert.del	http://212.113.124.238/afisha/public_html.aspx?group=insert.del
+test.del	ДЕЛИТЕ	Чукотка ДЕЛИТЕ	test.del	http://212.113.124.238/afisha/public_xml.aspx?group=test.del	http://212.113.124.238/afisha/public_html.aspx?group=test.del
+arlekino.klga	АРЛЕКИНО	Калуга АрлеКино	arlekino.klga	http://212.113.124.238/afisha/public_xml.aspx?group=arlekino.klga	http://212.113.124.238/afisha/public_html.aspx?group=arlekino.klga
+arbat.kurg	АРБАТ	Курган Арбат	arbat.kurg	http://212.113.124.238/afisha/public_xml.aspx?group=arbat.kurg	http://212.113.124.238/afisha/public_html.aspx?group=arbat.kurg
+planeta.dim	ПЛАНЕТА	Дмитров Планета	planeta.dim	http://212.113.124.238/afisha/public_xml.aspx?group=planeta.dim	http://212.113.124.238/afisha/public_html.aspx?group=planeta.dim
+grandcinema.fry	СПУТНИК	Фрязино Гранд Синема ТЦ Спутник	grandcinema.fry	http://212.113.124.238/afisha/public_xml.aspx?group=grandcinema.fry	http://212.113.124.238/afisha/public_html.aspx?group=grandcinema.fry
+test.yar	РИО2	TEST23 Синема-Стар ТЦ "РИО"(Гранд)	test.yar	http://212.113.124.238/afisha/public_xml.aspx?group=test.yar	http://212.113.124.238/afisha/public_html.aspx?group=test.yar
+Cinemastar.yar	РИО2	Ярославль Синема-Стар ТЦ 	Cinemastar.yar	http://212.113.124.238/afisha/public_xml.aspx?group=Cinemastar.yar	http://212.113.124.238/afisha/public_html.aspx?group=Cinemastar.yar
+kinomaxclab.kzn	ЮЖНЫЙ	Казань Киномакс РТЦ"Южный"	kinomaxclab.kzn	http://212.113.124.238/afisha/public_xml.aspx?group=kinomaxclab.kzn	http://212.113.124.238/afisha/public_html.aspx?group=kinomaxclab.kzn
+slon.ish	СЛОН	Ишим Оранжевый слон	slon.ish	http://212.113.124.238/afisha/public_xml.aspx?group=slon.ish	http://212.113.124.238/afisha/public_html.aspx?group=slon.ish
+rus.nbk	РУСЬ	Ноябрьск Русь	rus.nbk	http://212.113.124.238/afisha/public_xml.aspx?group=rus.nbk	http://212.113.124.238/afisha/public_html.aspx?group=rus.nbk
+piramida.mxh	ПИРАМИДА	Махачкала Пирамида	piramida.mxh	http://212.113.124.238/afisha/public_xml.aspx?group=piramida.mxh	http://212.113.124.238/afisha/public_html.aspx?group=piramida.mxh
+yunost.csv	ЮНОСТЬ	Чусовой Юность	yunost.csv	http://212.113.124.238/afisha/public_xml.aspx?group=yunost.csv	http://212.113.124.238/afisha/public_html.aspx?group=yunost.csv
+azot.nvm	АЗОТ	Новомосковск КДЦ "Азот"	azot.nvm	http://212.113.124.238/afisha/public_xml.aspx?group=azot.nvm	http://212.113.124.238/afisha/public_html.aspx?group=azot.nvm
+cinema5.chb	СИНЕМА5	Чебоксары Синема5	cinema5.chb	http://212.113.124.238/afisha/public_xml.aspx?group=cinema5.chb	http://212.113.124.238/afisha/public_html.aspx?group=cinema5.chb
+erevanplaza.msk	ЕРЕВАН ПЛАЗА	Москва Синема Стар в ТРЦ "Ереван Плаза"	erevanplaza.msk	http://212.113.124.238/afisha/public_xml.aspx?group=erevanplaza.msk	http://212.113.124.238/afisha/public_html.aspx?group=erevanplaza.msk
+cinemastar.reut	КИНО РЕУТОВ	Реутов Синема Стар	cinemastar.reut	http://212.113.124.238/afisha/public_xml.aspx?group=cinemastar.reut	http://212.113.124.238/afisha/public_html.aspx?group=cinemastar.reut
+mayak.pnr	МАЯК	Пионерский Маяк	mayak.pnr	http://212.113.124.238/afisha/public_xml.aspx?group=mayak.pnr	http://212.113.124.238/afisha/public_html.aspx?group=mayak.pnr
+metelitsa.pyah	МЕТЕЛИЦА	Пыть-Ях Метелица	metelitsa.pyah	http://212.113.124.238/afisha/public_xml.aspx?group=metelitsa.pyah	http://212.113.124.238/afisha/public_html.aspx?group=metelitsa.pyah
+kinodom.ekat	КИНОДОМ	Екатеринбург Кинодом	kinodom.ekat	http://212.113.124.238/afisha/public_xml.aspx?group=kinodom.ekat	http://212.113.124.238/afisha/public_html.aspx?group=kinodom.ekat
+pobeda.nmos	ПОБЕДА	Новомосковск Победа	pobeda.nmos	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.nmos	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.nmos
+rodina.tul	РОДИНА	ЗАКРЫТ Тула Родина	rodina.tul	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.tul	http://212.113.124.238/afisha/public_html.aspx?group=rodina.tul
+oktjabr.tul	ОКТЯБРЬ	Тула Октябрь	oktjabr.tul	http://212.113.124.238/afisha/public_xml.aspx?group=oktjabr.tul	http://212.113.124.238/afisha/public_html.aspx?group=oktjabr.tul
+vershina.srg	ВЕРШИНА	Сургут Вершина	vershina.srg	http://212.113.124.238/afisha/public_xml.aspx?group=vershina.srg	http://212.113.124.238/afisha/public_html.aspx?group=vershina.srg
+chaika.prk	ЧАЙКА	Прокопьевск Чайка	chaika.prk	http://212.113.124.238/afisha/public_xml.aspx?group=chaika.prk	http://212.113.124.238/afisha/public_html.aspx?group=chaika.prk
+polet.nk	ПОЛЕТ	Новокузнецк Полет	polet.nk	http://212.113.124.238/afisha/public_xml.aspx?group=polet.nk	http://212.113.124.238/afisha/public_html.aspx?group=polet.nk
+parus.nk	ПАРУС	Новокузнецк Парус	parus.nk	http://212.113.124.238/afisha/public_xml.aspx?group=parus.nk	http://212.113.124.238/afisha/public_html.aspx?group=parus.nk
+globus.nkz	ГЛОБУС	Новокузнецк Глобус	globus.nkz	http://212.113.124.238/afisha/public_xml.aspx?group=globus.nkz	http://212.113.124.238/afisha/public_html.aspx?group=globus.nkz
+zvezda.tvr	ЗВЕЗДА	Тверь Звезда	zvezda.tvr	http://212.113.124.238/afisha/public_xml.aspx?group=zvezda.tvr	http://212.113.124.238/afisha/public_html.aspx?group=zvezda.tvr
+yunost.stp	КДЦ	Ступино Юность	yunost.stp	http://212.113.124.238/afisha/public_xml.aspx?group=yunost.stp	http://212.113.124.238/afisha/public_html.aspx?group=yunost.stp
+cinemapark.blg	СИНЕМА ПАРК	Можайск Синема	cinemapark.blg	http://212.113.124.238/afisha/public_xml.aspx?group=cinemapark.blg	http://212.113.124.238/afisha/public_html.aspx?group=cinemapark.blg
+cinemastar.tul	РИО	Тула Синема Стар	cinemastar.tul	http://212.113.124.238/afisha/public_xml.aspx?group=cinemastar.tul	http://212.113.124.238/afisha/public_html.aspx?group=cinemastar.tul
+premierniy.ser	ПРЕМЬЕРНЫЙ	Серпухов Премьерный	premierniy.ser	http://212.113.124.238/afisha/public_xml.aspx?group=premierniy.ser	http://212.113.124.238/afisha/public_html.aspx?group=premierniy.ser
+erviy.yosh	ЭРВИЙ	Йошкар-Ола Эрвий	erviy.yosh	http://212.113.124.238/afisha/public_xml.aspx?group=erviy.yosh	http://212.113.124.238/afisha/public_html.aspx?group=erviy.yosh
+raduga.msk	РАДУГА	Москва Радуга Кино	raduga.msk	http://212.113.124.238/afisha/public_xml.aspx?group=raduga.msk	http://212.113.124.238/afisha/public_html.aspx?group=raduga.msk
+domjur.msk	АРБАТКИНО	Москва Кинозал Домжур	domjur.msk	http://212.113.124.238/afisha/public_xml.aspx?group=domjur.msk	http://212.113.124.238/afisha/public_html.aspx?group=domjur.msk
+kosmos.tol	КОСМОС	Тольятти Космос	kosmos.tol	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.tol	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.tol
+cinema5.nk	СИНЕМА5	Нижнекамск Синема5	cinema5.nk	http://212.113.124.238/afisha/public_xml.aspx?group=cinema5.nk	http://212.113.124.238/afisha/public_html.aspx?group=cinema5.nk
+kinofox3d.ku	КИНОФОКС3Д	Каменск-Уральский Кинофокс 3D	kinofox3d.ku	http://212.113.124.238/afisha/public_xml.aspx?group=kinofox3d.ku	http://212.113.124.238/afisha/public_html.aspx?group=kinofox3d.ku
+sezon.msk	СЕЗОН	Москва Сезон Синема	sezon.msk	http://212.113.124.238/afisha/public_xml.aspx?group=sezon.msk	http://212.113.124.238/afisha/public_html.aspx?group=sezon.msk
+yunost.dub	ЮНОСТЬ-КИНО	Дубна Юность	yunost.dub	http://212.113.124.238/afisha/public_xml.aspx?group=yunost.dub	http://212.113.124.238/afisha/public_html.aspx?group=yunost.dub
+royal.dzr	РОЯЛЬ	Дзержинск Рояль	royal.dzr	http://212.113.124.238/afisha/public_xml.aspx?group=royal.dzr	http://212.113.124.238/afisha/public_html.aspx?group=royal.dzr
+unost.odn	ЮНОСТЬ-СИНЕМА	Одинцово Юность	unost.odn	http://212.113.124.238/afisha/public_xml.aspx?group=unost.odn	http://212.113.124.238/afisha/public_html.aspx?group=unost.odn
+chaika.lbn	ЧАЙКА	Лобня Чайка	chaika.lbn	http://212.113.124.238/afisha/public_xml.aspx?group=chaika.lbn	http://212.113.124.238/afisha/public_html.aspx?group=chaika.lbn
+samohval.dbn	САМОХВАЛ	Дубна Самохвал Синема	samohval.dbn	http://212.113.124.238/afisha/public_xml.aspx?group=samohval.dbn	http://212.113.124.238/afisha/public_html.aspx?group=samohval.dbn
+luxorbars.rzn	ЛЮКСОР	Рязань Люксор в ТЦ"Барс"	luxorbars.rzn	http://212.113.124.238/afisha/public_xml.aspx?group=luxorbars.rzn	http://212.113.124.238/afisha/public_html.aspx?group=luxorbars.rzn
+drugar.ptg	ДРУГАР	Пятигорск Другар	drugar.ptg	http://212.113.124.238/afisha/public_xml.aspx?group=drugar.ptg	http://212.113.124.238/afisha/public_html.aspx?group=drugar.ptg
+rodina.pod	РОДИНА	Подольск Родина	rodina.pod	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.pod	http://212.113.124.238/afisha/public_html.aspx?group=rodina.pod
+kinograd.msk	КИНОГРАД	Москва Киноград	kinograd.msk	http://212.113.124.238/afisha/public_xml.aspx?group=kinograd.msk	http://212.113.124.238/afisha/public_html.aspx?group=kinograd.msk
+mariel.msk	ЛАЙНС	Москва Мариэль (Lines Cinema)	mariel.msk	http://212.113.124.238/afisha/public_xml.aspx?group=mariel.msk	http://212.113.124.238/afisha/public_html.aspx?group=mariel.msk
+lines.msk	МАРИЭЛЬ	Москва Лайнз	lines.msk	http://212.113.124.238/afisha/public_xml.aspx?group=lines.msk	http://212.113.124.238/afisha/public_html.aspx?group=lines.msk
+alt.msk	А8	Москва Кино на Алтуфьевском	alt.msk	http://212.113.124.238/afisha/public_xml.aspx?group=alt.msk	http://212.113.124.238/afisha/public_html.aspx?group=alt.msk
+luxor.zhk	ЛЮКСОР	Жуковский Люксор	luxor.zhk	http://212.113.124.238/afisha/public_xml.aspx?group=luxor.zhk	http://212.113.124.238/afisha/public_html.aspx?group=luxor.zhk
+sfera.pural	СФЕРА	Первоуральск Сфера	sfera.pural	http://212.113.124.238/afisha/public_xml.aspx?group=sfera.pural	http://212.113.124.238/afisha/public_html.aspx?group=sfera.pural
+senezh.sgor	СЕНЕЖ	Солнечногорск Сенеж	senezh.sgor	http://212.113.124.238/afisha/public_xml.aspx?group=senezh.sgor	http://212.113.124.238/afisha/public_html.aspx?group=senezh.sgor
+kinocenter.yar	КИНОЦЕНТР	Ярославль Киноцентр	kinocenter.yar	http://212.113.124.238/afisha/public_xml.aspx?group=kinocenter.yar	http://212.113.124.238/afisha/public_html.aspx?group=kinocenter.yar
+kinomax.izh	КИНОМАКС	Ижевск Киномакс	kinomax.izh	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.izh	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.izh
+azov.pol	АЗОВ	Полевской Азов	azov.pol	http://212.113.124.238/afisha/public_xml.aspx?group=azov.pol	http://212.113.124.238/afisha/public_html.aspx?group=azov.pol
+varshava.msk	ВАРШАВА	Москва Варшава	varshava.msk	http://212.113.124.238/afisha/public_xml.aspx?group=varshava.msk	http://212.113.124.238/afisha/public_html.aspx?group=varshava.msk
+polet.msk	ПОЛЁТ	Москва Полёт	polet.msk	http://212.113.124.238/afisha/public_xml.aspx?group=polet.msk	http://212.113.124.238/afisha/public_html.aspx?group=polet.msk
+kemp.shelk	ЩЕЛКОВО	Щелково Щелково	kemp.shelk	http://212.113.124.238/afisha/public_xml.aspx?group=kemp.shelk	http://212.113.124.238/afisha/public_html.aspx?group=kemp.shelk
+formulaa113.iv	А113	Иваново Формула А113	formulaa113.iv	http://212.113.124.238/afisha/public_xml.aspx?group=formulaa113.iv	http://212.113.124.238/afisha/public_html.aspx?group=formulaa113.iv
+test.spb	KINOTEST	Санкт-Петербург Тест СПб	test.spb	http://212.113.124.238/afisha/public_xml.aspx?group=test.spb	http://212.113.124.238/afisha/public_html.aspx?group=test.spb
+oktyabr.ppk	ОКТЯБРЬСКИЙ	Петропавловск-Камчатский Октябрьский	oktyabr.ppk	http://212.113.124.238/afisha/public_xml.aspx?group=oktyabr.ppk	http://212.113.124.238/afisha/public_html.aspx?group=oktyabr.ppk
+rosssia.tih	РОССИЯ	Тихорецк Россия	rosssia.tih	http://212.113.124.238/afisha/public_xml.aspx?group=rosssia.tih	http://212.113.124.238/afisha/public_html.aspx?group=rosssia.tih
+oktjabr.ioshk	ОКТЯБРЬ	Йошкар-Ола Октябрь	oktjabr.ioshk	http://212.113.124.238/afisha/public_xml.aspx?group=oktjabr.ioshk	http://212.113.124.238/afisha/public_html.aspx?group=oktjabr.ioshk
+poljarniy.andr	ПОЛЯРНЫЙ	Анадырь Полярный	poljarniy.andr	http://212.113.124.238/afisha/public_xml.aspx?group=poljarniy.andr	http://212.113.124.238/afisha/public_html.aspx?group=poljarniy.andr
+svetof.blsh	СВЕТОФОР	Балашиха Светофор	svetof.blsh	http://212.113.124.238/afisha/public_xml.aspx?group=svetof.blsh	http://212.113.124.238/afisha/public_html.aspx?group=svetof.blsh
+rossia.iosh	РОССИЯ	Йошкар-Ола Россия	rossia.iosh	http://212.113.124.238/afisha/public_xml.aspx?group=rossia.iosh	http://212.113.124.238/afisha/public_html.aspx?group=rossia.iosh
+planeta.arh	ПЛАНЕТА	Мирный Планета	planeta.arh	http://212.113.124.238/afisha/public_xml.aspx?group=planeta.arh	http://212.113.124.238/afisha/public_html.aspx?group=planeta.arh
+prezent.ugsk	ПРЕЗЕНТ	Югорск Югра-Презент	prezent.ugsk	http://212.113.124.238/afisha/public_xml.aspx?group=prezent.ugsk	http://212.113.124.238/afisha/public_html.aspx?group=prezent.ugsk
+don.dnk	ДОН	Данков Дон	don.dnk	http://212.113.124.238/afisha/public_xml.aspx?group=don.dnk	http://212.113.124.238/afisha/public_html.aspx?group=don.dnk
+slk.sax	СЛК	Южно-Сахалинск Самый Лучший Кинотеатр	slk.sax	http://212.113.124.238/afisha/public_xml.aspx?group=slk.sax	http://212.113.124.238/afisha/public_html.aspx?group=slk.sax
+oktober.nkuz	ОКТЯБРЬ	Новокузнецк Октябрь	oktober.nkuz	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.nkuz	http://212.113.124.238/afisha/public_html.aspx?group=oktober.nkuz
+luxorakv.orzv	ЛЮКСОР	Орехово-Зуево Люксор Аквилон	luxorakv.orzv	http://212.113.124.238/afisha/public_xml.aspx?group=luxorakv.orzv	http://212.113.124.238/afisha/public_html.aspx?group=luxorakv.orzv
+luxorvegas.msk	ВЕГАС	Москва Люксор Vegas	luxorvegas.msk	http://212.113.124.238/afisha/public_xml.aspx?group=luxorvegas.msk	http://212.113.124.238/afisha/public_html.aspx?group=luxorvegas.msk
+luxor.klin	КЛИН	Клин Люксор	luxor.klin	http://212.113.124.238/afisha/public_xml.aspx?group=luxor.klin	http://212.113.124.238/afisha/public_html.aspx?group=luxor.klin
+grinnfilm.orl	ГРИНН	Орел Гриннфильм	grinnfilm.orl	http://212.113.124.238/afisha/public_xml.aspx?group=grinnfilm.orl	http://212.113.124.238/afisha/public_html.aspx?group=grinnfilm.orl
+kinocentr.mjar	КИНОЦЕНТР	Малоярославец Киноцентр	kinocentr.mjar	http://212.113.124.238/afisha/public_xml.aspx?group=kinocentr.mjar	http://212.113.124.238/afisha/public_html.aspx?group=kinocentr.mjar
+pobeda.lk	ПОБЕДА	Ленинск-Кузнецкий Победа	pobeda.lk	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.lk	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.lk
+neformat.brt	НЕФОРМАТ	Братск Неформат	neformat.brt	http://212.113.124.238/afisha/public_xml.aspx?group=neformat.brt	http://212.113.124.238/afisha/public_html.aspx?group=neformat.brt
+era.urg	ЭРА	Юрга Эра	era.urg	http://212.113.124.238/afisha/public_xml.aspx?group=era.urg	http://212.113.124.238/afisha/public_html.aspx?group=era.urg
+mossovet.msk	МОССОВЕТ	Москва Моссовет	mossovet.msk	http://212.113.124.238/afisha/public_xml.aspx?group=mossovet.msk	http://212.113.124.238/afisha/public_html.aspx?group=mossovet.msk
+luch.sov	ЛУЧ	Советский Луч	luch.sov	http://212.113.124.238/afisha/public_xml.aspx?group=luch.sov	http://212.113.124.238/afisha/public_html.aspx?group=luch.sov
+fabrika.rosl	ФАБРИКА	Рославль Фабрика	fabrika.rosl	http://212.113.124.238/afisha/public_xml.aspx?group=fabrika.rosl	http://212.113.124.238/afisha/public_html.aspx?group=fabrika.rosl
+tomlun.us	ТОМЛУН	Усинск Томлун	tomlun.us	http://212.113.124.238/afisha/public_xml.aspx?group=tomlun.us	http://212.113.124.238/afisha/public_html.aspx?group=tomlun.us
+olimp.ekt	ОЛИМП	Екатеринбург Олимп	olimp.ekt	http://212.113.124.238/afisha/public_xml.aspx?group=olimp.ekt	http://212.113.124.238/afisha/public_html.aspx?group=olimp.ekt
+iskra.arh	ИСКРА	Архангельск Искра 	iskra.arh	http://212.113.124.238/afisha/public_xml.aspx?group=iskra.arh	http://212.113.124.238/afisha/public_html.aspx?group=iskra.arh
+progress.ulan	ПРОГРЕСС	Улан-Удэ Прогресс	progress.ulan	http://212.113.124.238/afisha/public_xml.aspx?group=progress.ulan	http://212.113.124.238/afisha/public_html.aspx?group=progress.ulan
+erdem.ulan	ЭРДЭМ	Улан-Удэ Эрдэм	erdem.ulan	http://212.113.124.238/afisha/public_xml.aspx?group=erdem.ulan	http://212.113.124.238/afisha/public_html.aspx?group=erdem.ulan
+iskra.ess	ИСКРА	Ессентуки Искра 	iskra.ess	http://212.113.124.238/afisha/public_xml.aspx?group=iskra.ess	http://212.113.124.238/afisha/public_html.aspx?group=iskra.ess
+mori.cherepovez	МОРИ	Череповец МориСинема 	mori.cherepovez	http://212.113.124.238/afisha/public_xml.aspx?group=mori.cherepovez	http://212.113.124.238/afisha/public_html.aspx?group=mori.cherepovez
+kosmos.nvar	КИНО	Нижневартовск Космос	kosmos.nvar	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.nvar	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.nvar
+kinomechta.krs	КИНОМЕЧТА	ЗАКРЫТ Красноярск Киномечта	kinomechta.krs	http://212.113.124.238/afisha/public_xml.aspx?group=kinomechta.krs	http://212.113.124.238/afisha/public_html.aspx?group=kinomechta.krs
+unost.urai	ЮНОСТЬ	Урай Юность 	unost.urai	http://212.113.124.238/afisha/public_xml.aspx?group=unost.urai	http://212.113.124.238/afisha/public_html.aspx?group=unost.urai
+mir.mgt	МИР	ЗАКРЫТ Магнитогорск Мир	mir.mgt	http://212.113.124.238/afisha/public_xml.aspx?group=mir.mgt	http://212.113.124.238/afisha/public_html.aspx?group=mir.mgt
+arena.ktl	АРЕНА	Котлас Арена 	arena.ktl	http://212.113.124.238/afisha/public_xml.aspx?group=arena.ktl	http://212.113.124.238/afisha/public_html.aspx?group=arena.ktl
+zarya.alp	РАСПИСАНИЕ	Алапаевск Заря 	zarya.alp	http://212.113.124.238/afisha/public_xml.aspx?group=zarya.alp	http://212.113.124.238/afisha/public_html.aspx?group=zarya.alp
+kinomechta.tmn	КИНОМЕЧТА	Тюмень Киномечта 	kinomechta.tmn	http://212.113.124.238/afisha/public_xml.aspx?group=kinomechta.tmn	http://212.113.124.238/afisha/public_html.aspx?group=kinomechta.tmn
+vavilon.oms	ВАВИЛОН	Омск Вавилон 	vavilon.oms	http://212.113.124.238/afisha/public_xml.aspx?group=vavilon.oms	http://212.113.124.238/afisha/public_html.aspx?group=vavilon.oms
+oktober.oz	ОКТЯБРЬ	Озерск Октябрь 	oktober.oz	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.oz	http://212.113.124.238/afisha/public_html.aspx?group=oktober.oz
+avrora.chel	АВРОРА	Челябинск Аврора 	avrora.chel	http://212.113.124.238/afisha/public_xml.aspx?group=avrora.chel	http://212.113.124.238/afisha/public_html.aspx?group=avrora.chel
+meridian.ber	МЕРИДИАН	Березники Меридиан 	meridian.ber	http://212.113.124.238/afisha/public_xml.aspx?group=meridian.ber	http://212.113.124.238/afisha/public_html.aspx?group=meridian.ber
+skazka.krs	СКАЗКА	Курск Сказка 	skazka.krs	http://212.113.124.238/afisha/public_xml.aspx?group=skazka.krs	http://212.113.124.238/afisha/public_html.aspx?group=skazka.krs
+sinema.mchg	СИНЕМА	Мончегорск Синема 	sinema.mchg	http://212.113.124.238/afisha/public_xml.aspx?group=sinema.mchg	http://212.113.124.238/afisha/public_html.aspx?group=sinema.mchg
+kosmos.mluz	КОСМОС	ЗАКРЫТ Мелеуз Космос	kosmos.mluz	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.mluz	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.mluz
+piramida.kmch	ПИРАМИДА	Петропавловск-Камчатский Пирамида 	piramida.kmch	http://212.113.124.238/afisha/public_xml.aspx?group=piramida.kmch	http://212.113.124.238/afisha/public_html.aspx?group=piramida.kmch
+rovesnik.zar	РОВЕСНИК	Заречный Ровесник 	rovesnik.zar	http://212.113.124.238/afisha/public_xml.aspx?group=rovesnik.zar	http://212.113.124.238/afisha/public_html.aspx?group=rovesnik.zar
+pobeda.yar	ПОБЕДА	Ярославль Победа 	pobeda.yar	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.yar	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.yar
+kedr.pya	КЕДР	Пыть-Ях Кедр 	kedr.pya	http://212.113.124.238/afisha/public_xml.aspx?group=kedr.pya	http://212.113.124.238/afisha/public_html.aspx?group=kedr.pya
+utes	УТЁС	Трёхгорный Утёс 	utes	http://212.113.124.238/afisha/public_xml.aspx?group=utes	http://212.113.124.238/afisha/public_html.aspx?group=utes
+znamya.chlb	ЗНАМЯ	Челябинск Знамя	znamya.chlb	http://212.113.124.238/afisha/public_xml.aspx?group=znamya.chlb	http://212.113.124.238/afisha/public_html.aspx?group=znamya.chlb
+proletariy.vrnz	ПРОЛЕТАРИЙ	Воронеж Пролетарий 	proletariy.vrnz	http://212.113.124.238/afisha/public_xml.aspx?group=proletariy.vrnz	http://212.113.124.238/afisha/public_html.aspx?group=proletariy.vrnz
+sovremen.tum	СОВРЕМЕННИК	ТЮМЕНЬ Современник 	sovremen.tum	http://212.113.124.238/afisha/public_xml.aspx?group=sovremen.tum	http://212.113.124.238/afisha/public_html.aspx?group=sovremen.tum
+Kosmos.tum	КОСМОС	ТЮМЕНЬ Космос	Kosmos.tum	http://212.113.124.238/afisha/public_xml.aspx?group=Kosmos.tum	http://212.113.124.238/afisha/public_html.aspx?group=Kosmos.tum
+peoples.ulud	СИНЕМА	Улан-Удэ Peoples Cinema 	peoples.ulud	http://212.113.124.238/afisha/public_xml.aspx?group=peoples.ulud	http://212.113.124.238/afisha/public_html.aspx?group=peoples.ulud
+favorit.tum	ФАВОРИТ	ТЮМЕНЬ Фаворит 	favorit.tum	http://212.113.124.238/afisha/public_xml.aspx?group=favorit.tum	http://212.113.124.238/afisha/public_html.aspx?group=favorit.tum
+stroitel.tum	СТРОИТЕЛЬ	ТЮМЕНЬ Строитель	stroitel.tum	http://212.113.124.238/afisha/public_xml.aspx?group=stroitel.tum	http://212.113.124.238/afisha/public_html.aspx?group=stroitel.tum
+rossia.ksl	РОССИЯ	Киселевск Россия 	rossia.ksl	http://212.113.124.238/afisha/public_xml.aspx?group=rossia.ksl	http://212.113.124.238/afisha/public_html.aspx?group=rossia.ksl
+kinomir.cher	КИНОМИР	Череповец Киномир 	kinomir.cher	http://212.113.124.238/afisha/public_xml.aspx?group=kinomir.cher	http://212.113.124.238/afisha/public_html.aspx?group=kinomir.cher
+kirov.pavl	КИРОВ	Павловская ст. им. Кирова	kirov.pavl	http://212.113.124.238/afisha/public_xml.aspx?group=kirov.pavl	http://212.113.124.238/afisha/public_html.aspx?group=kirov.pavl
+mir.most	МИР	Мостовой Мир 	mir.most	http://212.113.124.238/afisha/public_xml.aspx?group=mir.most	http://212.113.124.238/afisha/public_html.aspx?group=mir.most
+kinomechta.sam	КИНОМЕЧТА	Самара Киномечта 	kinomechta.sam	http://212.113.124.238/afisha/public_xml.aspx?group=kinomechta.sam	http://212.113.124.238/afisha/public_html.aspx?group=kinomechta.sam
+kosmos.kan	КОСМОС	Каневская ст. Космос 	kosmos.kan	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.kan	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.kan
+zodiak.gul	ЗОДИАК	Гулькевич Зодиак 	zodiak.gul	http://212.113.124.238/afisha/public_xml.aspx?group=zodiak.gul	http://212.113.124.238/afisha/public_html.aspx?group=zodiak.gul
+ulica.szr	УЛИЦА	Сызрань Улица	ulica.szr	http://212.113.124.238/afisha/public_xml.aspx?group=ulica.szr	http://212.113.124.238/afisha/public_html.aspx?group=ulica.szr
+mir.nev	АФИША	Невинномысск Мир 	mir.nev	http://212.113.124.238/afisha/public_xml.aspx?group=mir.nev	http://212.113.124.238/afisha/public_html.aspx?group=mir.nev
+oktober.stavr	ОКТЯБРЬ	Ставрополь Октябрь	oktober.stavr	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.stavr	http://212.113.124.238/afisha/public_html.aspx?group=oktober.stavr
+sovremennik.krg	СОВРЕМЕННИК	Курган Современник 	sovremennik.krg	http://212.113.124.238/afisha/public_xml.aspx?group=sovremennik.krg	http://212.113.124.238/afisha/public_html.aspx?group=sovremennik.krg
+rodina.pa	КДЦ	Приморско-Ахтарск Родина	rodina.pa	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.pa	http://212.113.124.238/afisha/public_html.aspx?group=rodina.pa
+4d.iva	4Д	Иваново 4Д Синема	4d.iva	http://212.113.124.238/afisha/public_xml.aspx?group=4d.iva	http://212.113.124.238/afisha/public_html.aspx?group=4d.iva
+rodina.eisk	РОДИНА	Ейск Родина 	rodina.eisk	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.eisk	http://212.113.124.238/afisha/public_html.aspx?group=rodina.eisk
+kinoclub.krg	КИНО	ЗАКРЫТ Курган Кино Club	kinoclub.krg	http://212.113.124.238/afisha/public_xml.aspx?group=kinoclub.krg	http://212.113.124.238/afisha/public_html.aspx?group=kinoclub.krg
+sagaanmorin.ula	МОРИН	Улан-Удэ Сагаан Морин 	sagaanmorin.ula	http://212.113.124.238/afisha/public_xml.aspx?group=sagaanmorin.ula	http://212.113.124.238/afisha/public_html.aspx?group=sagaanmorin.ula
+kontinent.oms	КОНТИНЕНТ	Омск Континент 	kontinent.oms	http://212.113.124.238/afisha/public_xml.aspx?group=kontinent.oms	http://212.113.124.238/afisha/public_html.aspx?group=kontinent.oms
+atrium.oms	АТРИУМ	Омск Атриум 	atrium.oms	http://212.113.124.238/afisha/public_xml.aspx?group=atrium.oms	http://212.113.124.238/afisha/public_html.aspx?group=atrium.oms
+ostrov2.ast	ОСТРОВ2	Астрахань Остров Сокровищ на Магистральной 	ostrov2.ast	http://212.113.124.238/afisha/public_xml.aspx?group=ostrov2.ast	http://212.113.124.238/afisha/public_html.aspx?group=ostrov2.ast
+assol.kur	АССОЛЬ	Курск Ассоль 	assol.kur	http://212.113.124.238/afisha/public_xml.aspx?group=assol.kur	http://212.113.124.238/afisha/public_html.aspx?group=assol.kur
+multiland.tmn	МУЛЬТИЛЭНД	Тюмень Мультилэнд	multiland.tmn	http://212.113.124.238/afisha/public_xml.aspx?group=multiland.tmn	http://212.113.124.238/afisha/public_html.aspx?group=multiland.tmn
+vega.dmtr	ВЕГА	Димитровград Вега 	vega.dmtr	http://212.113.124.238/afisha/public_xml.aspx?group=vega.dmtr	http://212.113.124.238/afisha/public_html.aspx?group=vega.dmtr
+taman.tmr	ТАМАНЬ	Темрюк Тамань 	taman.tmr	http://212.113.124.238/afisha/public_xml.aspx?group=taman.tmr	http://212.113.124.238/afisha/public_html.aspx?group=taman.tmr
+admiral.lss	АДМИРАЛ	Лесосибирск Адмирал 	admiral.lss	http://212.113.124.238/afisha/public_xml.aspx?group=admiral.lss	http://212.113.124.238/afisha/public_html.aspx?group=admiral.lss
+druzhba.ksl	ДРУЖБА	Киселевск Дружба 	druzhba.ksl	http://212.113.124.238/afisha/public_xml.aspx?group=druzhba.ksl	http://212.113.124.238/afisha/public_html.aspx?group=druzhba.ksl
+irtish.oms	ИРТЫШ	Омск Иртыш 	irtish.oms	http://212.113.124.238/afisha/public_xml.aspx?group=irtish.oms	http://212.113.124.238/afisha/public_html.aspx?group=irtish.oms
+komsomolec.che	КОМСОМОЛЕЦ	Череповец Комсомолец 	komsomolec.che	http://212.113.124.238/afisha/public_xml.aspx?group=komsomolec.che	http://212.113.124.238/afisha/public_html.aspx?group=komsomolec.che
+kuzbass.mdr	КУЗБАСС	Междуреченск Кузбасс 	kuzbass.mdr	http://212.113.124.238/afisha/public_xml.aspx?group=kuzbass.mdr	http://212.113.124.238/afisha/public_html.aspx?group=kuzbass.mdr
+kosmos.nchr	КОСМОС	Новочеркасск Космос 	kosmos.nchr	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.nchr	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.nchr
+ugan.nfg	ЮГАН	Нефтеюганск Юган 	ugan.nfg	http://212.113.124.238/afisha/public_xml.aspx?group=ugan.nfg	http://212.113.124.238/afisha/public_html.aspx?group=ugan.nfg
+ugrakino.htm	ЦЕНТР	Ханты-Мансийск Югорский кинопрокат 	ugrakino.htm	http://212.113.124.238/afisha/public_xml.aspx?group=ugrakino.htm	http://212.113.124.238/afisha/public_html.aspx?group=ugrakino.htm
+domkino.sar	ДК	Саратов Дом Кино 	domkino.sar	http://212.113.124.238/afisha/public_xml.aspx?group=domkino.sar	http://212.113.124.238/afisha/public_html.aspx?group=domkino.sar
+illuzion.vrn	ИЛЛЮЗИОН	Воронеж Иллюзион	illuzion.vrn	http://212.113.124.238/afisha/public_xml.aspx?group=illuzion.vrn	http://212.113.124.238/afisha/public_html.aspx?group=illuzion.vrn
+megafilm.krg	МЕГАФИЛЬМ	Курган Megafilm 	megafilm.krg	http://212.113.124.238/afisha/public_xml.aspx?group=megafilm.krg	http://212.113.124.238/afisha/public_html.aspx?group=megafilm.krg
+progress.asb	ПРОГРЕСС	Асбест Прогресс 	progress.asb	http://212.113.124.238/afisha/public_xml.aspx?group=progress.asb	http://212.113.124.238/afisha/public_html.aspx?group=progress.asb
+neiva.nurl	НЕЙВА	Новоуральск Нейва 	neiva.nurl	http://212.113.124.238/afisha/public_xml.aspx?group=neiva.nurl	http://212.113.124.238/afisha/public_html.aspx?group=neiva.nurl
+berezka.georg	БЕРЕЗКА	Георгиевск Березка 	berezka.georg	http://212.113.124.238/afisha/public_xml.aspx?group=berezka.georg	http://212.113.124.238/afisha/public_html.aspx?group=berezka.georg
+berezka.grg	БЕРЕЗКА	Белгород Березка	berezka.grg	http://212.113.124.238/afisha/public_xml.aspx?group=berezka.grg	http://212.113.124.238/afisha/public_html.aspx?group=berezka.grg
+kosmos.sar	КОСМОС	Балаково Космос 	kosmos.sar	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.sar	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.sar
+gallery.ptg	ГАЛЕРЕЯ	Пятигорск Галерея Синема 	gallery.ptg	http://212.113.124.238/afisha/public_xml.aspx?group=gallery.ptg	http://212.113.124.238/afisha/public_html.aspx?group=gallery.ptg
+yunost.vgl	ЮНОСТЬ	Волжский Юность 	yunost.vgl	http://212.113.124.238/afisha/public_xml.aspx?group=yunost.vgl	http://212.113.124.238/afisha/public_html.aspx?group=yunost.vgl
+sochi.soch	СОЧИ	СОЧИ СОЧИ 	sochi.soch	http://212.113.124.238/afisha/public_xml.aspx?group=sochi.soch	http://212.113.124.238/afisha/public_html.aspx?group=sochi.soch
+mir.stavr	МИР	Ставрополь Мир	mir.stavr	http://212.113.124.238/afisha/public_xml.aspx?group=mir.stavr	http://212.113.124.238/afisha/public_html.aspx?group=mir.stavr
+raduga.gel	РАДУГА	Геленджик Радуга 	raduga.gel	http://212.113.124.238/afisha/public_xml.aspx?group=raduga.gel	http://212.113.124.238/afisha/public_html.aspx?group=raduga.gel
+voshod.soch	ВОСХОД	Сочи Восход 	voshod.soch	http://212.113.124.238/afisha/public_xml.aspx?group=voshod.soch	http://212.113.124.238/afisha/public_html.aspx?group=voshod.soch
+premier.eisk	ПРЕМЬЕР	Ейск Премьер 	premier.eisk	http://212.113.124.238/afisha/public_xml.aspx?group=premier.eisk	http://212.113.124.238/afisha/public_html.aspx?group=premier.eisk
+illuzion.usp	ИЛЛЮЗИОН	Успенское Иллюзион 	illuzion.usp	http://212.113.124.238/afisha/public_xml.aspx?group=illuzion.usp	http://212.113.124.238/afisha/public_html.aspx?group=illuzion.usp
+illuzion.astr	ИЛЛЮЗИОН	Астрахань Иллюзион 	illuzion.astr	http://212.113.124.238/afisha/public_xml.aspx?group=illuzion.astr	http://212.113.124.238/afisha/public_html.aspx?group=illuzion.astr
+bruklin.elbg	БРУКЛИН	Елабуга BROOKLYN 	bruklin.elbg	http://212.113.124.238/afisha/public_xml.aspx?group=bruklin.elbg	http://212.113.124.238/afisha/public_html.aspx?group=bruklin.elbg
+premier.yar	ПРЕМЬЕР	ЯРОСЛАВЬ Премьер 	premier.yar	http://212.113.124.238/afisha/public_xml.aspx?group=premier.yar	http://212.113.124.238/afisha/public_html.aspx?group=premier.yar
+krnvforum.mrk	ФОРУМ	Мурманск "Кронверк Синема" Форум 	krnvforum.mrk	http://212.113.124.238/afisha/public_xml.aspx?group=krnvforum.mrk	http://212.113.124.238/afisha/public_html.aspx?group=krnvforum.mrk
+kosmos.rbns	КОСМОС	Рыбинск Космос 	kosmos.rbns	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.rbns	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.rbns
+temp.srt	ТЕМП	Саратов Темп 	temp.srt	http://212.113.124.238/afisha/public_xml.aspx?group=temp.srt	http://212.113.124.238/afisha/public_html.aspx?group=temp.srt
+prada.ekb	ПРАДА	Екатеринбург PRADA 3D 	prada.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=prada.ekb	http://212.113.124.238/afisha/public_html.aspx?group=prada.ekb
+krnvfelich.spb	ФЕЛИЧИТА	Санкт-Петербург "Кронверк Синема" Феличита	krnvfelich.spb	http://212.113.124.238/afisha/public_xml.aspx?group=krnvfelich.spb	http://212.113.124.238/afisha/public_html.aspx?group=krnvfelich.spb
+krnvmegaplx.nvs	МЕГАПЛЕКС	Новосибирск "Кронверк Синема" Мегаплекс	krnvmegaplx.nvs	http://212.113.124.238/afisha/public_xml.aspx?group=krnvmegaplx.nvs	http://212.113.124.238/afisha/public_html.aspx?group=krnvmegaplx.nvs
+krnvkont.nvs	КОНТИНЕНТ	Новосибирск "Кронверк Синема" Континент 	krnvkont.nvs	http://212.113.124.238/afisha/public_xml.aspx?group=krnvkont.nvs	http://212.113.124.238/afisha/public_html.aspx?group=krnvkont.nvs
+krnjazzmall.mgt	ДЖАЗЗМАЛЛ	Магнитогорск "Кронверк Синема" Jazz Mall	krnjazzmall.mgt	http://212.113.124.238/afisha/public_xml.aspx?group=krnjazzmall.mgt	http://212.113.124.238/afisha/public_html.aspx?group=krnjazzmall.mgt
+epicentr.rbns	ЭПИЦЕНТР	Рыбинск Эпицентр 	epicentr.rbns	http://212.113.124.238/afisha/public_xml.aspx?group=epicentr.rbns	http://212.113.124.238/afisha/public_html.aspx?group=epicentr.rbns
+krnvlefortovo.m	ЛЕФОРТОВО	Москва "Кронверк Синема" Лефортово 	krnvlefortovo.m	http://212.113.124.238/afisha/public_xml.aspx?group=krnvlefortovo.m	http://212.113.124.238/afisha/public_html.aspx?group=krnvlefortovo.m
+krnvoblaka.msk	ОБЛАКА	Москва "Кронверк Синема" Облака	krnvoblaka.msk	http://212.113.124.238/afisha/public_xml.aspx?group=krnvoblaka.msk	http://212.113.124.238/afisha/public_html.aspx?group=krnvoblaka.msk
+krnvaypark.msk	ВЭЙПАРК	Москва "Кронверк Синема" Вэйпарк 	krnvaypark.msk	http://212.113.124.238/afisha/public_xml.aspx?group=krnvaypark.msk	http://212.113.124.238/afisha/public_html.aspx?group=krnvaypark.msk
+krnvmdm.msk	МДМ	Москва "Кронверк Синема" МДМ 	krnvmdm.msk	http://212.113.124.238/afisha/public_xml.aspx?group=krnvmdm.msk	http://212.113.124.238/afisha/public_html.aspx?group=krnvmdm.msk
+krnvredeo.spb	РОДЕО	Санкт-Петербург "Кронверк Синема" Радео Драйв	krnvredeo.spb	http://212.113.124.238/afisha/public_xml.aspx?group=krnvredeo.spb	http://212.113.124.238/afisha/public_html.aspx?group=krnvredeo.spb
+krnvnord.spb	НОРД	Санкт-Петербург "Кронверк Синема" Норд	krnvnord.spb	http://212.113.124.238/afisha/public_xml.aspx?group=krnvnord.spb	http://212.113.124.238/afisha/public_html.aspx?group=krnvnord.spb
+krnvneo.spb	НЕО	Санкт-Петербург "Кронверк Синема" НЕО	krnvneo.spb	http://212.113.124.238/afisha/public_xml.aspx?group=krnvneo.spb	http://212.113.124.238/afisha/public_html.aspx?group=krnvneo.spb
+krnvmerkur.spb	МЕРКУРИЙ	Санкт-Петербург "Кронверк Синема" Меркурий 	krnvmerkur.spb	http://212.113.124.238/afisha/public_xml.aspx?group=krnvmerkur.spb	http://212.113.124.238/afisha/public_html.aspx?group=krnvmerkur.spb
+krnvzanevks.spb	КАСКАД	Санкт-Петербург "Кронверк Синема" Заневский каскад 	krnvzanevks.spb	http://212.113.124.238/afisha/public_xml.aspx?group=krnvzanevks.spb	http://212.113.124.238/afisha/public_html.aspx?group=krnvzanevks.spb
+krnvakadem.spb	АКАДЕМИЧЕСКИЙ	Санкт-Петербург "Кронверк Синема" Академический	krnvakadem.spb	http://212.113.124.238/afisha/public_xml.aspx?group=krnvakadem.spb	http://212.113.124.238/afisha/public_html.aspx?group=krnvakadem.spb
+krnvbalkan.spb	БАЛКАНСКИЙ	Санкт-Петербург "Кронверк Синема" Балканский	krnvbalkan.spb	http://212.113.124.238/afisha/public_xml.aspx?group=krnvbalkan.spb	http://212.113.124.238/afisha/public_html.aspx?group=krnvbalkan.spb
+mir.srg	МИР	Сургут Мир 	mir.srg	http://212.113.124.238/afisha/public_xml.aspx?group=mir.srg	http://212.113.124.238/afisha/public_html.aspx?group=mir.srg
+Avrora.srg	АВРОРА	Сургут Аврора 	Avrora.srg	http://212.113.124.238/afisha/public_xml.aspx?group=Avrora.srg	http://212.113.124.238/afisha/public_html.aspx?group=Avrora.srg
+Ural.ngt	УРАЛ	Нижний Тагил Урал 	Ural.ngt	http://212.113.124.238/afisha/public_xml.aspx?group=Ural.ngt	http://212.113.124.238/afisha/public_html.aspx?group=Ural.ngt
+KGvsrdeec.ngt	КРАСНОГВАРДЕЕЦ	Нижний Тагил Красногвардеец	KGvsrdeec.ngt	http://212.113.124.238/afisha/public_xml.aspx?group=KGvsrdeec.ngt	http://212.113.124.238/afisha/public_html.aspx?group=KGvsrdeec.ngt
+rodina.kaz	РОДИНА	Казань Родина 	rodina.kaz	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.kaz	http://212.113.124.238/afisha/public_html.aspx?group=rodina.kaz
+rossia.nzht	РОССИЯ	Нижний Тагил Россия 	rossia.nzht	http://212.113.124.238/afisha/public_xml.aspx?group=rossia.nzht	http://212.113.124.238/afisha/public_html.aspx?group=rossia.nzht
+iskra.msk	ИСКРА	Москва Искра 	iskra.msk	http://212.113.124.238/afisha/public_xml.aspx?group=iskra.msk	http://212.113.124.238/afisha/public_html.aspx?group=iskra.msk
+molodezhnyj	МОЛОДЕЖНЫЙ	Москва Молодежный 	molodezhnyj	http://212.113.124.238/afisha/public_xml.aspx?group=molodezhnyj	http://212.113.124.238/afisha/public_html.aspx?group=molodezhnyj
+malina.lip	МАЛИНА	Липецк Малина-Водопьянова	malina.lip	http://212.113.124.238/afisha/public_xml.aspx?group=malina.lip	http://212.113.124.238/afisha/public_html.aspx?group=malina.lip
+balash.msk	БАЛАШИХА	Москва Люксор Балашиха 	balash.msk	http://212.113.124.238/afisha/public_xml.aspx?group=balash.msk	http://212.113.124.238/afisha/public_html.aspx?group=balash.msk
+kinocity.nvsb	КИНОСИТИ	Новосибирск Кино Сити 	kinocity.nvsb	http://212.113.124.238/afisha/public_xml.aspx?group=kinocity.nvsb	http://212.113.124.238/afisha/public_html.aspx?group=kinocity.nvsb
+simex4D.kaz	СИМЕКС	Казань SimEx4D 	simex4D.kaz	http://212.113.124.238/afisha/public_xml.aspx?group=simex4D.kaz	http://212.113.124.238/afisha/public_html.aspx?group=simex4D.kaz
+kinomaxpobeda.r	ПОБЕДА	Ростов-на-Дону Киномакс-Победа 	kinomaxpobeda.r	http://212.113.124.238/afisha/public_xml.aspx?group=kinomaxpobeda.r	http://212.113.124.238/afisha/public_html.aspx?group=kinomaxpobeda.r
+salut.msk	САЛЮТ	Москва Салют 	salut.msk	http://212.113.124.238/afisha/public_xml.aspx?group=salut.msk	http://212.113.124.238/afisha/public_html.aspx?group=salut.msk
+russia.srn	РОССИЯ	Саранск Россия 	russia.srn	http://212.113.124.238/afisha/public_xml.aspx?group=russia.srn	http://212.113.124.238/afisha/public_html.aspx?group=russia.srn
+kvadro.krs	КВАДРО	Красноярск Квадро 	kvadro.krs	http://212.113.124.238/afisha/public_xml.aspx?group=kvadro.krs	http://212.113.124.238/afisha/public_html.aspx?group=kvadro.krs
+suvar.kzn	СУВАР	Казань Сувар 	suvar.kzn	http://212.113.124.238/afisha/public_xml.aspx?group=suvar.kzn	http://212.113.124.238/afisha/public_html.aspx?group=suvar.kzn
+port.kzn	ПОРТ	Казань Порт 	port.kzn	http://212.113.124.238/afisha/public_xml.aspx?group=port.kzn	http://212.113.124.238/afisha/public_html.aspx?group=port.kzn
+neva.spb	НЕВА	Санкт-Петербург Нева 	neva.spb	http://212.113.124.238/afisha/public_xml.aspx?group=neva.spb	http://212.113.124.238/afisha/public_html.aspx?group=neva.spb
+grandcinema.kzn	ГРАНД	Казань Гранд Синема 	grandcinema.kzn	http://212.113.124.238/afisha/public_xml.aspx?group=grandcinema.kzn	http://212.113.124.238/afisha/public_html.aspx?group=grandcinema.kzn
+rossia.izh	РОССИЯ	Ижевск Россия 	rossia.izh	http://212.113.124.238/afisha/public_xml.aspx?group=rossia.izh	http://212.113.124.238/afisha/public_html.aspx?group=rossia.izh
+atmosfera.ptrz	АТМОСФЕРА	Петрозаводск Атмосфера 	atmosfera.ptrz	http://212.113.124.238/afisha/public_xml.aspx?group=atmosfera.ptrz	http://212.113.124.238/afisha/public_html.aspx?group=atmosfera.ptrz
+Murmansk.mur	МУРМАНСК	Мурманск Мурманск 	Murmansk.mur	http://212.113.124.238/afisha/public_xml.aspx?group=Murmansk.mur	http://212.113.124.238/afisha/public_html.aspx?group=Murmansk.mur
+atlantika.mur	АТЛАНТИКА	Мурманск Атлантика 	atlantika.mur	http://212.113.124.238/afisha/public_xml.aspx?group=atlantika.mur	http://212.113.124.238/afisha/public_html.aspx?group=atlantika.mur
+avrora.mur	АВРОРА	Мурманск Аврора 	avrora.mur	http://212.113.124.238/afisha/public_xml.aspx?group=avrora.mur	http://212.113.124.238/afisha/public_html.aspx?group=avrora.mur
+premer.ptz	ПРЕМЬЕР	Петрозаводск Премьер 	premer.ptz	http://212.113.124.238/afisha/public_xml.aspx?group=premer.ptz	http://212.113.124.238/afisha/public_html.aspx?group=premer.ptz
+orsk.mir	КИНО	Орск Мир (1803) 	orsk.mir	http://212.113.124.238/afisha/public_xml.aspx?group=orsk.mir	http://212.113.124.238/afisha/public_html.aspx?group=orsk.mir
+vipzal.prz	ВИП	ЗАКРЫТ Петрозаводск Vip-зал	vipzal.prz	http://212.113.124.238/afisha/public_xml.aspx?group=vipzal.prz	http://212.113.124.238/afisha/public_html.aspx?group=vipzal.prz
+kinoprostor.ufa	ПРОСТОР	Уфа Кинопростор 	kinoprostor.ufa	http://212.113.124.238/afisha/public_xml.aspx?group=kinoprostor.ufa	http://212.113.124.238/afisha/public_html.aspx?group=kinoprostor.ufa
+cinemastar.kal	СИНЕМА	Калуга Синема Стар 	cinemastar.kal	http://212.113.124.238/afisha/public_xml.aspx?group=cinemastar.kal	http://212.113.124.238/afisha/public_html.aspx?group=cinemastar.kal
+premier.prm	ПРЕМЬЕР	Пермь Премьер 	premier.prm	http://212.113.124.238/afisha/public_xml.aspx?group=premier.prm	http://212.113.124.238/afisha/public_html.aspx?group=premier.prm
+cinemastar.klm	РИО	Коломна Синема Стар 	cinemastar.klm	http://212.113.124.238/afisha/public_xml.aspx?group=cinemastar.klm	http://212.113.124.238/afisha/public_html.aspx?group=cinemastar.klm
+goldcinema.klm	КАДО	Коломна Голд Синема 	goldcinema.klm	http://212.113.124.238/afisha/public_xml.aspx?group=goldcinema.klm	http://212.113.124.238/afisha/public_html.aspx?group=goldcinema.klm
+sinemastar.bel	СИНЕМА	Белгород Синема Стар 	sinemastar.bel	http://212.113.124.238/afisha/public_xml.aspx?group=sinemastar.bel	http://212.113.124.238/afisha/public_html.aspx?group=sinemastar.bel
+megapolis.ufa	МЕГАПОЛИС	УФА Мегаполис 	megapolis.ufa	http://212.113.124.238/afisha/public_xml.aspx?group=megapolis.ufa	http://212.113.124.238/afisha/public_html.aspx?group=megapolis.ufa
+Jam.irk	ДЖЕМ	Иркутск КиноJAM	Jam.irk	http://212.113.124.238/afisha/public_xml.aspx?group=Jam.irk	http://212.113.124.238/afisha/public_html.aspx?group=Jam.irk
+record.nng	РЕКОРД	Нижний Новгород РЕКОРД 	record.nng	http://212.113.124.238/afisha/public_xml.aspx?group=record.nng	http://212.113.124.238/afisha/public_html.aspx?group=record.nng
+Orlenok.nng	ОРЛЁНОК	Нижний Новгород Орлёнок	Orlenok.nng	http://212.113.124.238/afisha/public_xml.aspx?group=Orlenok.nng	http://212.113.124.238/afisha/public_html.aspx?group=Orlenok.nng
+kinopark.ulya	КИНОПАРК	Ульяновск Кинопарк 	kinopark.ulya	http://212.113.124.238/afisha/public_xml.aspx?group=kinopark.ulya	http://212.113.124.238/afisha/public_html.aspx?group=kinopark.ulya
+sespel.cheb	СЕСПЕЛЬ	Чебоксары Сеспель 	sespel.cheb	http://212.113.124.238/afisha/public_xml.aspx?group=sespel.cheb	http://212.113.124.238/afisha/public_html.aspx?group=sespel.cheb
+tatarstan.almt	ТАТАРСТАН	Альметьевск Татарстан 	tatarstan.almt	http://212.113.124.238/afisha/public_xml.aspx?group=tatarstan.almt	http://212.113.124.238/afisha/public_html.aspx?group=tatarstan.almt
+hudozhestvenniy	ХУДОЖЕСТВЕННЫЙ	Санкт-Петербург Художественный 	hudozhestvenniy	http://212.113.124.238/afisha/public_xml.aspx?group=hudozhestvenniy	http://212.113.124.238/afisha/public_html.aspx?group=hudozhestvenniy
+kinomechta.kaz	КИНОМЕЧТА	Казань Киномечта 	kinomechta.kaz	http://212.113.124.238/afisha/public_xml.aspx?group=kinomechta.kaz	http://212.113.124.238/afisha/public_html.aspx?group=kinomechta.kaz
+illuzium.nbch	ИЛЛЮЗИУМ	Набережные Челны Иллюзиум 	illuzium.nbch	http://212.113.124.238/afisha/public_xml.aspx?group=illuzium.nbch	http://212.113.124.238/afisha/public_html.aspx?group=illuzium.nbch
+rodina.eng	РОДИНА	Энгельс Родина 	rodina.eng	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.eng	http://212.113.124.238/afisha/public_html.aspx?group=rodina.eng
+kinomax.kaz	КИНОМАКС	Казань Киномакс-Тандем	kinomax.kaz	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.kaz	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.kaz
+druzhba.nvdv	ДРУЖБА	Новодвинск Дружба 	druzhba.nvdv	http://212.113.124.238/afisha/public_xml.aspx?group=druzhba.nvdv	http://212.113.124.238/afisha/public_html.aspx?group=druzhba.nvdv
+rodina.svdv	РОДИНА	Северодвинск Родина 	rodina.svdv	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.svdv	http://212.113.124.238/afisha/public_html.aspx?group=rodina.svdv
+sirius.svdv	СИРИУС	ЗАКРЫТ Северодвинск Сириус 	sirius.svdv	http://212.113.124.238/afisha/public_xml.aspx?group=sirius.svdv	http://212.113.124.238/afisha/public_html.aspx?group=sirius.svdv
+korston.kaz	КОРСТОН	Казань Корстон 	korston.kaz	http://212.113.124.238/afisha/public_xml.aspx?group=korston.kaz	http://212.113.124.238/afisha/public_html.aspx?group=korston.kaz
+mirluxor.chb	ЛУКСОР	Чебоксары Мир-Луксор 	mirluxor.chb	http://212.113.124.238/afisha/public_xml.aspx?group=mirluxor.chb	http://212.113.124.238/afisha/public_html.aspx?group=mirluxor.chb
+mirag.kzn	МИРАЖ	ЗАКРЫТ Казань Мираж 	mirag.kzn	http://212.113.124.238/afisha/public_xml.aspx?group=mirag.kzn	http://212.113.124.238/afisha/public_html.aspx?group=mirag.kzn
+rodina.ufa	РОДИНА	УФА Родина 	rodina.ufa	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.ufa	http://212.113.124.238/afisha/public_html.aspx?group=rodina.ufa
+oktober.nfk	ОКТЯБРЬ	Нефтекамск Октябрь	oktober.nfk	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.nfk	http://212.113.124.238/afisha/public_html.aspx?group=oktober.nfk
+kinomax.yar	КИНОМАКС	Ярославль Киномакс 	kinomax.yar	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.yar	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.yar
+kinomax.krd	КИНОМАКС	Краснодар Киномакс 	kinomax.krd	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.krd	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.krd
+kmaxplan.krya	ПЛАНЕТА	Красноярск Киномакс Планета 	kmaxplan.krya	http://212.113.124.238/afisha/public_xml.aspx?group=kmaxplan.krya	http://212.113.124.238/afisha/public_html.aspx?group=kmaxplan.krya
+kinomax.vrn	КИНОМАКС	Воронеж Киномакс 	kinomax.vrn	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.vrn	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.vrn
+kmaxdon.rnd	КИНОМАКС	Ростов на Дону Киномакс Дон 	kmaxdon.rnd	http://212.113.124.238/afisha/public_xml.aspx?group=kmaxdon.rnd	http://212.113.124.238/afisha/public_html.aspx?group=kmaxdon.rnd
+arsenal.nfkm	АРСЕНАЛ	Нефтекамск Арсенал 	arsenal.nfkm	http://212.113.124.238/afisha/public_xml.aspx?group=arsenal.nfkm	http://212.113.124.238/afisha/public_html.aspx?group=arsenal.nfkm
+kmaxrod.ntg	КИНОМАКС	Нижний Тагил Родина	kmaxrod.ntg	http://212.113.124.238/afisha/public_xml.aspx?group=kmaxrod.ntg	http://212.113.124.238/afisha/public_html.aspx?group=kmaxrod.ntg
+kmaxmega.ekb	МЕГА	Екатеринбург Киномакс 3D МегаПолис 	kmaxmega.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=kmaxmega.ekb	http://212.113.124.238/afisha/public_html.aspx?group=kmaxmega.ekb
+kmaxbur.vldm	БУРЕВЕСТНИК	Владимир Киномакс Буревестник 	kmaxbur.vldm	http://212.113.124.238/afisha/public_xml.aspx?group=kmaxbur.vldm	http://212.113.124.238/afisha/public_html.aspx?group=kmaxbur.vldm
+avrora.izh	АВРОРА	ЗАКРЫТ Ижевск Аврора 	avrora.izh	http://212.113.124.238/afisha/public_xml.aspx?group=avrora.izh	http://212.113.124.238/afisha/public_html.aspx?group=avrora.izh
+mir.kaz	МИР	Казань Мир 	mir.kaz	http://212.113.124.238/afisha/public_xml.aspx?group=mir.kaz	http://212.113.124.238/afisha/public_html.aspx?group=mir.kaz
+smena.ufa	СМЕНА	УФА СМЕНА 	smena.ufa	http://212.113.124.238/afisha/public_xml.aspx?group=smena.ufa	http://212.113.124.238/afisha/public_html.aspx?group=smena.ufa
+pioner.sar	ПИОНЕР	Саратов Пионер 	pioner.sar	http://212.113.124.238/afisha/public_xml.aspx?group=pioner.sar	http://212.113.124.238/afisha/public_html.aspx?group=pioner.sar
+lumier.ul	ЛЮМЬЕР	Ульяновск Люмьер 	lumier.ul	http://212.113.124.238/afisha/public_xml.aspx?group=lumier.ul	http://212.113.124.238/afisha/public_html.aspx?group=lumier.ul
+luxorcentr.msk	ЦЕНТР	Москва Люксор Центр 	luxorcentr.msk	http://212.113.124.238/afisha/public_xml.aspx?group=luxorcentr.msk	http://212.113.124.238/afisha/public_html.aspx?group=luxorcentr.msk
+cinemapark.prm	ПАРК	Пермь Синема Парк 	cinemapark.prm	http://212.113.124.238/afisha/public_xml.aspx?group=cinemapark.prm	http://212.113.124.238/afisha/public_html.aspx?group=cinemapark.prm
+kinomax.prm	КИНОМАКС	Пермь Киномакс Пермь	kinomax.prm	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.prm	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.prm
+gornyak.mgd	ГОРНЯК	Магадан Горняк	gornyak.mgd	http://212.113.124.238/afisha/public_xml.aspx?group=gornyak.mgd	http://212.113.124.238/afisha/public_html.aspx?group=gornyak.mgd
+monitor.krd	МОНИТОР	Краснодар Киномонитор 	monitor.krd	http://212.113.124.238/afisha/public_xml.aspx?group=monitor.krd	http://212.113.124.238/afisha/public_html.aspx?group=monitor.krd
+luxor.ros	ЛЮКСОР	Ростов-на-Дону Люксор 	luxor.ros	http://212.113.124.238/afisha/public_xml.aspx?group=luxor.ros	http://212.113.124.238/afisha/public_html.aspx?group=luxor.ros
+moll.lip	МОЛЛ	Липецк Молл 	moll.lip	http://212.113.124.238/afisha/public_xml.aspx?group=moll.lip	http://212.113.124.238/afisha/public_html.aspx?group=moll.lip
+sochiall.sch	КИНО	ЗАКРЫТ СОЧИ КИНО	sochiall.sch	http://212.113.124.238/afisha/public_xml.aspx?group=sochiall.sch	http://212.113.124.238/afisha/public_html.aspx?group=sochiall.sch
+rolikspass.pnz	ПАССАЖ	ЗАКРЫТ Пенза Кингуру (ТЦ Пассаж)	kinguru.pnz	http://212.113.124.238/afisha/public_xml.aspx?group=kinguru.pnz	http://212.113.124.238/afisha/public_html.aspx?group=kinguru.pnz
+rossia.iskitim	РОССИЯ	Искитим Россия	rossia.iskitim	http://212.113.124.238/afisha/public_xml.aspx?group=rossia.iskitim	http://212.113.124.238/afisha/public_html.aspx?group=rossia.iskitim
+planetakino.gal	ПЛАНЕТА	Горно-Алтайск Планета Кино	planetakino.gal	http://212.113.124.238/afisha/public_xml.aspx?group=planetakino.gal	http://212.113.124.238/afisha/public_html.aspx?group=planetakino.gal
+planetakino.bsk	ПЛАНЕТА	Бийск Планета Кино	planetakino.bsk	http://212.113.124.238/afisha/public_xml.aspx?group=planetakino.bsk	http://212.113.124.238/afisha/public_html.aspx?group=planetakino.bsk
+promenand3.kmr	ПРОМЕНАД3	Кемерово Променад3 	promenand3.kmr	http://212.113.124.238/afisha/public_xml.aspx?group=promenand3.kmr	http://212.113.124.238/afisha/public_html.aspx?group=promenand3.kmr
+promenand2.kmr	ПРОМЕНАД2	Кемерово Променад2 	promenand2.kmr	http://212.113.124.238/afisha/public_xml.aspx?group=promenand2.kmr	http://212.113.124.238/afisha/public_html.aspx?group=promenand2.kmr
+gorizont.nvs	ГОРИЗОНТ	Новосибирск ГОРИЗОНТ	gorizont.nvs	http://212.113.124.238/afisha/public_xml.aspx?group=gorizont.nvs	http://212.113.124.238/afisha/public_html.aspx?group=gorizont.nvs
+avrora.nvs	АВРОРА	Новосибирск АВРОРА 	avrora.nvs	http://212.113.124.238/afisha/public_xml.aspx?group=avrora.nvs	http://212.113.124.238/afisha/public_html.aspx?group=avrora.nvs
+planetakino.nvs	ПЛАНЕТА	Новосибирск Планета Кино 	planetakino.nvs	http://212.113.124.238/afisha/public_xml.aspx?group=planetakino.nvs	http://212.113.124.238/afisha/public_html.aspx?group=planetakino.nvs
+sevenayr.nvs	НЕБО	Новосибирск Седьмое Небо 	sevenayr.nvs	http://212.113.124.238/afisha/public_xml.aspx?group=sevenayr.nvs	http://212.113.124.238/afisha/public_html.aspx?group=sevenayr.nvs
+pioner.nvs	ПИОНЕР	Новосибирск Пионер 	pioner.nvs	http://212.113.124.238/afisha/public_xml.aspx?group=pioner.nvs	http://212.113.124.238/afisha/public_html.aspx?group=pioner.nvs
+orion.brd	ОРИОН	Новосибирск Орион г.Бийск	orion.brd	http://212.113.124.238/afisha/public_xml.aspx?group=orion.brd	http://212.113.124.238/afisha/public_html.aspx?group=orion.brd
+komsomol.soch	КОМСОМОЛЕЦ	СОЧИ Комсомолец	komsomol.soch	http://212.113.124.238/afisha/public_xml.aspx?group=komsomol.soch	http://212.113.124.238/afisha/public_html.aspx?group=komsomol.soch
+evropa.krd	ЕВРОПА	Краснодар Европа	evropa.krd	http://212.113.124.238/afisha/public_xml.aspx?group=evropa.krd	http://212.113.124.238/afisha/public_html.aspx?group=evropa.krd
+kinocentr.krd	КИНОЦЕНТР	Краснодар Киноцентр	kinocentr.krd	http://212.113.124.238/afisha/public_xml.aspx?group=kinocentr.krd	http://212.113.124.238/afisha/public_html.aspx?group=kinocentr.krd
+flint.bel	ФЛИНТ	Липецк Флинт (бывший Сокол) 	flint.bel	http://212.113.124.238/afisha/public_xml.aspx?group=flint.bel	http://212.113.124.238/afisha/public_html.aspx?group=flint.bel
+kmaxokt.mos	ОКТЯБРЬ	Москва Киномакс Октябрь	kmaxokt.mos	http://212.113.124.238/afisha/public_xml.aspx?group=kmaxokt.mos	http://212.113.124.238/afisha/public_html.aspx?group=kmaxokt.mos
+kinomaxsol.mos	СОЛЯРИС	Москва Киномакс Солярис 	kinomaxsol.mos	http://212.113.124.238/afisha/public_xml.aspx?group=kinomaxsol.mos	http://212.113.124.238/afisha/public_html.aspx?group=kinomaxsol.mos
+kinomaxmir.mos	КИНОМИР	Москва Киномир 	kinomaxmir.mos	http://212.113.124.238/afisha/public_xml.aspx?group=kinomaxmir.mos	http://212.113.124.238/afisha/public_html.aspx?group=kinomaxmir.mos
+kinoaxXL.mos	XL	Москва XL 	kinoaxXL.mos	http://212.113.124.238/afisha/public_xml.aspx?group=kinoaxXL.mos	http://212.113.124.238/afisha/public_html.aspx?group=kinoaxXL.mos
+autokino.tom	АВТО	Томск Авто	autokino.tom	http://212.113.124.238/afisha/public_xml.aspx?group=autokino.tom	http://212.113.124.238/afisha/public_html.aspx?group=autokino.tom
+zvezdniy.irc	Звездный	Иркутск Звездный 	zvezdniy.irc	http://212.113.124.238/afisha/public_xml.aspx?group=zvezdniy.irc	http://212.113.124.238/afisha/public_html.aspx?group=zvezdniy.irc
+vtoroyetazh.bel	ЭТАЖ	Иркутск Второй этаж	vtoroyetazh.bel	http://212.113.124.238/afisha/public_xml.aspx?group=vtoroyetazh.bel	http://212.113.124.238/afisha/public_html.aspx?group=vtoroyetazh.bel
+kapital.tol	КАПИТАЛ	Тольятти Вега Капитал 	kapital.tol	http://212.113.124.238/afisha/public_xml.aspx?group=kapital.tol	http://212.113.124.238/afisha/public_html.aspx?group=kapital.tol
+koncert.vol	КОНЦЕРТ	Вологда Концерт	koncert.vol	http://212.113.124.238/afisha/public_xml.aspx?group=koncert.vol	http://212.113.124.238/afisha/public_html.aspx?group=koncert.vol
+club.cher	КЛУБ	Череповец Клуб 	club.cher	http://212.113.124.238/afisha/public_xml.aspx?group=club.cher	http://212.113.124.238/afisha/public_html.aspx?group=club.cher
+ruskino.vld	КИНО	Владимир Руськино 	ruskino.vld	http://212.113.124.238/afisha/public_xml.aspx?group=ruskino.vld	http://212.113.124.238/afisha/public_html.aspx?group=ruskino.vld
+cinemacentr.yak	ЦЕНТР	Якутск CinemaCentr 	cinemacentr.yak	http://212.113.124.238/afisha/public_xml.aspx?group=cinemacentr.yak	http://212.113.124.238/afisha/public_html.aspx?group=cinemacentr.yak
+novgorod.vng	НОВГОРОД	Великий Новгород Новгород 	novgorod.vng	http://212.113.124.238/afisha/public_xml.aspx?group=novgorod.vng	http://212.113.124.238/afisha/public_html.aspx?group=novgorod.vng
+terek.vldkz	ТЕРЕК	Владикавказ Терек	terek.vldkz	http://212.113.124.238/afisha/public_xml.aspx?group=terek.vldkz	http://212.113.124.238/afisha/public_html.aspx?group=terek.vldkz
+kinocentr.vnov	КИНОЦЕНТР	Великий Новгород Киноцентр 	kinocentr.vnov	http://212.113.124.238/afisha/public_xml.aspx?group=kinocentr.vnov	http://212.113.124.238/afisha/public_html.aspx?group=kinocentr.vnov
+rodina.brn	РОДИНА	Барнаул РОДИНА 	rodina.brn	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.brn	http://212.113.124.238/afisha/public_html.aspx?group=rodina.brn
+europa.brn	ЕВРОПА	Барнаул ЕВРОПА 	europa.brn	http://212.113.124.238/afisha/public_xml.aspx?group=europa.brn	http://212.113.124.238/afisha/public_html.aspx?group=europa.brn
+mir.brn	МИР	Барнаул МИР 	mir.brn	http://212.113.124.238/afisha/public_xml.aspx?group=mir.brn	http://212.113.124.238/afisha/public_html.aspx?group=mir.brn
+vostok.kem	ВОСТОК	Кемерово ВОСТОК 	vostok.kem	http://212.113.124.238/afisha/public_xml.aspx?group=vostok.kem	http://212.113.124.238/afisha/public_html.aspx?group=vostok.kem
+kaskad.vrk	КАСКАД	Воркута Каскад	kaskad.vrk	http://212.113.124.238/afisha/public_xml.aspx?group=kaskad.vrk	http://212.113.124.238/afisha/public_html.aspx?group=kaskad.vrk
+misteria.ntg	МИСТЕРИЯ	Нижний Тагил Мистерия Кино	misteria.ntg	http://212.113.124.238/afisha/public_xml.aspx?group=misteria.ntg	http://212.113.124.238/afisha/public_html.aspx?group=misteria.ntg
+vosxod.nkv	ВОСХОД	Новокуйбышевск Восход 	vosxod.nkv	http://212.113.124.238/afisha/public_xml.aspx?group=vosxod.nkv	http://212.113.124.238/afisha/public_html.aspx?group=vosxod.nkv
+kinofox.kms	КИНОФОКС	Каменск-Уральский KINOFOX 	kinofox.kms	http://212.113.124.238/afisha/public_xml.aspx?group=kinofox.kms	http://212.113.124.238/afisha/public_html.aspx?group=kinofox.kms
+globus.kir	GLOBUS	Киров Глобус 	globus.kir	http://212.113.124.238/afisha/public_xml.aspx?group=globus.kir	http://212.113.124.238/afisha/public_html.aspx?group=globus.kir
+lublino.fk	ФК	Формула Кино в Люблино 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+domino.pen	КИНО58	Пенза Кино58 	domino.pen	http://212.113.124.238/afisha/public_xml.aspx?group=domino.pen	http://212.113.124.238/afisha/public_html.aspx?group=domino.pen
+veryvelly.ije	ВВ	Ижевск Very Velly 	veryvelly.ije	http://212.113.124.238/afisha/public_xml.aspx?group=veryvelly.ije	http://212.113.124.238/afisha/public_html.aspx?group=veryvelly.ije
+pubin.prm	РУБИН	Пермь Рубин 	pubin.prm	http://212.113.124.238/afisha/public_xml.aspx?group=pubin.prm	http://212.113.124.238/afisha/public_html.aspx?group=pubin.prm
+vvelly.prm	ВВ	Пермь VeryVelly 	vvelly.prm	http://212.113.124.238/afisha/public_xml.aspx?group=vvelly.prm	http://212.113.124.238/afisha/public_html.aspx?group=vvelly.prm
+kinoplex.sam	АВРОРА	Самара Киноплекс 	kinoplex.sam	http://212.113.124.238/afisha/public_xml.aspx?group=kinoplex.sam	http://212.113.124.238/afisha/public_html.aspx?group=kinoplex.sam
+zarya.ekb	ЗАРЯ	Екатеринбург Заря 	zarya.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=zarya.ekb	http://212.113.124.238/afisha/public_html.aspx?group=zarya.ekb
+fourroom.khv	ФОРУМ	Хабаровск Форум 	fourroom.khv	http://212.113.124.238/afisha/public_xml.aspx?group=fourroom.khv	http://212.113.124.238/afisha/public_html.aspx?group=fourroom.khv
+taezhny.brt	ТАЕЖНЫЙ	Братск Таежный (СК)	taezhny.brt	http://212.113.124.238/afisha/public_xml.aspx?group=taezhny.brt	http://212.113.124.238/afisha/public_html.aspx?group=taezhny.brt
+tkc.brt	ТКЦ	Братск ТКЦ Братск Арт 	tkc.brt	http://212.113.124.238/afisha/public_xml.aspx?group=tkc.brt	http://212.113.124.238/afisha/public_html.aspx?group=tkc.brt
+kukly.brt	КУКЛЫ	Братск Тирлямы кукольный театр	kukly.brt	http://212.113.124.238/afisha/public_xml.aspx?group=kukly.brt	http://212.113.124.238/afisha/public_html.aspx?group=kukly.brt
+formula.brt	ФОРМУЛА	Братск Формула 	formula.brt	http://212.113.124.238/afisha/public_xml.aspx?group=formula.brt	http://212.113.124.238/afisha/public_html.aspx?group=formula.brt
+bdt.brt	БДТ	Братск Братский драматический театр	bdt.brt	http://212.113.124.238/afisha/public_xml.aspx?group=bdt.brt	http://212.113.124.238/afisha/public_html.aspx?group=bdt.brt
+hollywood.brt	ГОЛЛИВУД	Братск Голливуд 	hollywood.brt	http://212.113.124.238/afisha/public_xml.aspx?group=hollywood.brt	http://212.113.124.238/afisha/public_html.aspx?group=hollywood.brt
+drujba.khb	ДРУЖБА	Хабаровск Дружба 	drujba.khb	http://212.113.124.238/afisha/public_xml.aspx?group=drujba.khb	http://212.113.124.238/afisha/public_html.aspx?group=drujba.khb
+luxor.ryaz	ЛЮКСОР	Рязань Люксор	luxor.ryaz	http://212.113.124.238/afisha/public_xml.aspx?group=luxor.ryaz	http://212.113.124.238/afisha/public_html.aspx?group=luxor.ryaz
+seans.vologda	СЕАНС	Вологда Сеанс 	seans.vologda	http://212.113.124.238/afisha/public_xml.aspx?group=seans.vologda	http://212.113.124.238/afisha/public_html.aspx?group=seans.vologda
+kama.chaik	КАМА	Чайковский Кама 	kama.chaik	http://212.113.124.238/afisha/public_xml.aspx?group=kama.chaik	http://212.113.124.238/afisha/public_html.aspx?group=kama.chaik
+sokol.rostov	СОКОЛ	Ростов-на-Дону Чарли-Западный (Сокол)	sokol.rostov	http://212.113.124.238/afisha/public_xml.aspx?group=sokol.rostov	http://212.113.124.238/afisha/public_html.aspx?group=sokol.rostov
+rolix.penz	РОЛИКС	Пенза РОЛИКС 	rolix.penz	http://212.113.124.238/afisha/public_xml.aspx?group=rolix.penz	http://212.113.124.238/afisha/public_html.aspx?group=rolix.penz
+kinomost.sam	КИНОМОСТ	Самара Кино Мост 	kinomost.sam	http://212.113.124.238/afisha/public_xml.aspx?group=kinomost.sam	http://212.113.124.238/afisha/public_html.aspx?group=kinomost.sam
+langal.htm	ЛАНГАЛ	Ханты-Мансийск ЛАНГАЛ 	langal.htm	http://212.113.124.238/afisha/public_xml.aspx?group=langal.htm	http://212.113.124.238/afisha/public_html.aspx?group=langal.htm
+kaskad.spb	КАСКАД	Санкт-Петербург Каскад 	kaskad.spb	http://212.113.124.238/afisha/public_xml.aspx?group=kaskad.spb	http://212.113.124.238/afisha/public_html.aspx?group=kaskad.spb
+raduga.spb	РАДУГА	С.-Петербург Радуга 	raduga.spb	http://212.113.124.238/afisha/public_xml.aspx?group=raduga.spb	http://212.113.124.238/afisha/public_html.aspx?group=raduga.spb
+donotello.irk	ОТЕЛЛО	Иркутск Дон Отелло	donotello.irk	http://212.113.124.238/afisha/public_xml.aspx?group=donotello.irk	http://212.113.124.238/afisha/public_html.aspx?group=donotello.irk
+tvtrans.khb	ФИЛЬМ	Хабаровск ТВ на транспорте	tvtrans.khb	http://212.113.124.238/afisha/public_xml.aspx?group=tvtrans.khb	http://212.113.124.238/afisha/public_html.aspx?group=tvtrans.khb
+rossia.bel	РОССИЯ	Губкин Россия 	rossia.bel	http://212.113.124.238/afisha/public_xml.aspx?group=rossia.bel	http://212.113.124.238/afisha/public_html.aspx?group=rossia.bel
+ikar.ish	ИКАР	Ишимбай Икар 	ikar.ish	http://212.113.124.238/afisha/public_xml.aspx?group=ikar.ish	http://212.113.124.238/afisha/public_html.aspx?group=ikar.ish
+morisinema.spb	СИНЕМА	Санкт-Петербург MoriCinema 	morisinema.spb	http://212.113.124.238/afisha/public_xml.aspx?group=morisinema.spb	http://212.113.124.238/afisha/public_html.aspx?group=morisinema.spb
+jamholl.spb	ДЖЕМ	Санкт-Перербург Jam Hall 	jamholl.spb	http://212.113.124.238/afisha/public_xml.aspx?group=jamholl.spb	http://212.113.124.238/afisha/public_html.aspx?group=jamholl.spb
+newrubege.spb	РУБЕЖ	Санкт - Петербург Новый Рубеж 	newrubege.spb	http://212.113.124.238/afisha/public_xml.aspx?group=newrubege.spb	http://212.113.124.238/afisha/public_html.aspx?group=newrubege.spb
+Kosmos.ekb	КОСМОС	Екатеринбург Космос 	Kosmos.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=Kosmos.ekb	http://212.113.124.238/afisha/public_html.aspx?group=Kosmos.ekb
+ussury.Vlad	УССУРИ	Владивосток Уссури 	ussury.Vlad	http://212.113.124.238/afisha/public_xml.aspx?group=ussury.Vlad	http://212.113.124.238/afisha/public_html.aspx?group=ussury.Vlad
+pik.spb	ПИК	Санкт-Петербург ПИК 	pik.spb	http://212.113.124.238/afisha/public_xml.aspx?group=pik.spb	http://212.113.124.238/afisha/public_html.aspx?group=pik.spb
+pulkovo.spb	ПУЛКОВО	Санкт-Петербург Пулково 3 	pulkovo.spb	http://212.113.124.238/afisha/public_xml.aspx?group=pulkovo.spb	http://212.113.124.238/afisha/public_html.aspx?group=pulkovo.spb
+mechta.sam	МЕЧТА	Самара Мечта 	mechta.sam	http://212.113.124.238/afisha/public_xml.aspx?group=mechta.sam	http://212.113.124.238/afisha/public_html.aspx?group=mechta.sam
+blagovech.blg	ЦЕНТР	ЗАКРЫТ Благовещенск Киноцентр 	blagovech.blg	http://212.113.124.238/afisha/public_xml.aspx?group=blagovech.blg	http://212.113.124.238/afisha/public_html.aspx?group=blagovech.blg
+magnit.blg	КАКТУС	Благовещенск Кактус 	magnit.blg	http://212.113.124.238/afisha/public_xml.aspx?group=magnit.blg	http://212.113.124.238/afisha/public_html.aspx?group=magnit.blg
+sinemastar.yar	СИНЕМА	Ярославль Синема Стар 	sinemastar.yar	http://212.113.124.238/afisha/public_xml.aspx?group=sinemastar.yar	http://212.113.124.238/afisha/public_html.aspx?group=sinemastar.yar
+festival.tmb	ФЕСТИВАЛЬ	Тамбов ФЕСТИВАЛЬ 	festival.tmb	http://212.113.124.238/afisha/public_xml.aspx?group=festival.tmb	http://212.113.124.238/afisha/public_html.aspx?group=festival.tmb
+krasniy.kms	КРАСНЫЙ	Комсомольск-на-Амуре Красный 	krasniy.kms	http://212.113.124.238/afisha/public_xml.aspx?group=krasniy.kms	http://212.113.124.238/afisha/public_html.aspx?group=krasniy.kms
+luxor.vkr	ЛЮКСОР	Воскресенск Люксор 	luxor.vkr	http://212.113.124.238/afisha/public_xml.aspx?group=luxor.vkr	http://212.113.124.238/afisha/public_html.aspx?group=luxor.vkr
+favorit.nabch	ФАВОРИТ	Набережные Челны Фаворит 	favorit.nabch	http://212.113.124.238/afisha/public_xml.aspx?group=favorit.nabch	http://212.113.124.238/afisha/public_html.aspx?group=favorit.nabch
+raduga.ajs	РАДУГА	Анжеро-Судженск Радуга 	raduga.ajs	http://212.113.124.238/afisha/public_xml.aspx?group=raduga.ajs	http://212.113.124.238/afisha/public_html.aspx?group=raduga.ajs
+oktober.salv	ОКТЯБРЬ	САЛАВАТ ОКТЯБРЬ 	oktober.salv	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.salv	http://212.113.124.238/afisha/public_html.aspx?group=oktober.salv
+luxor.lip	ЛЮКСОР	Липецк Малина-Москва (бывш. Люксор)	luxor.lip	http://212.113.124.238/afisha/public_xml.aspx?group=luxor.lip	http://212.113.124.238/afisha/public_html.aspx?group=luxor.lip
+nescafe.msk	НЕСКАФЕ	Москва Nescafe IMAX 	nescafe.msk	http://212.113.124.238/afisha/public_xml.aspx?group=nescafe.msk	http://212.113.124.238/afisha/public_html.aspx?group=nescafe.msk
+kmural.chel	УРАЛ	Челябинск Киномакс УРАЛ 	kmural.chel	http://212.113.124.238/afisha/public_xml.aspx?group=kmural.chel	http://212.113.124.238/afisha/public_html.aspx?group=kmural.chel
+kmpobeda.chb	ПОБЕДА	Челябинск Киномакс Победа 	kmpobeda.chb	http://212.113.124.238/afisha/public_xml.aspx?group=kmpobeda.chb	http://212.113.124.238/afisha/public_html.aspx?group=kmpobeda.chb
+sinemapark.chel	ПАРК	Челябинск Синема Парк 	sinemapark.chel	http://212.113.124.238/afisha/public_xml.aspx?group=sinemapark.chel	http://212.113.124.238/afisha/public_html.aspx?group=sinemapark.chel
+yubileyn.ramn	ЮБИЛЕЙНЫЙ	Раменское Юбилейный 	yubileyn.ramn	http://212.113.124.238/afisha/public_xml.aspx?group=yubileyn.ramn	http://212.113.124.238/afisha/public_html.aspx?group=yubileyn.ramn
+russia.chb	РОССИЯ	Челябинск Россия 	russia.chb	http://212.113.124.238/afisha/public_xml.aspx?group=russia.chb	http://212.113.124.238/afisha/public_html.aspx?group=russia.chb
+pushkin.chb	ПУШКИН	Челябинск Им. А.С. Пушкина	pushkin.chb	http://212.113.124.238/afisha/public_xml.aspx?group=pushkin.chb	http://212.113.124.238/afisha/public_html.aspx?group=pushkin.chb
+rassvet.nog	РАССВЕТ	Ногинск Рассвет 	rassvet.nog	http://212.113.124.238/afisha/public_xml.aspx?group=rassvet.nog	http://212.113.124.238/afisha/public_html.aspx?group=rassvet.nog
+karofilm.sam	КАРО	Самара Каро Фильм 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+almaz.kmu	АЛМАЗ	Гусь-Хрустальный Алмаz 	almaz.kmu	http://212.113.124.238/afisha/public_xml.aspx?group=almaz.kmu	http://212.113.124.238/afisha/public_html.aspx?group=almaz.kmu
+magia.kaz	МАГИЯ	КАЗАНЬ Магия Кино 	magia.kaz	http://212.113.124.238/afisha/public_xml.aspx?group=magia.kaz	http://212.113.124.238/afisha/public_html.aspx?group=magia.kaz
+nairal.bel	КИНО	Кызыл Наырал 	nairal.bel	http://212.113.124.238/afisha/public_xml.aspx?group=nairal.bel	http://212.113.124.238/afisha/public_html.aspx?group=nairal.bel
+hudojest.irk	ХУДОЖКА	ИРКУТСК Художественный 	hudojest.irk	http://212.113.124.238/afisha/public_xml.aspx?group=hudojest.irk	http://212.113.124.238/afisha/public_html.aspx?group=hudojest.irk
+vega.tol	ВЕГА	Тольятти Вега 	vega.tol	http://212.113.124.238/afisha/public_xml.aspx?group=vega.tol	http://212.113.124.238/afisha/public_html.aspx?group=vega.tol
+sokol.lip	СОКОЛ	ЗАКРЫТ Липецк Сокол 	sokol.lip	http://212.113.124.238/afisha/public_xml.aspx?group=sokol.lip	http://212.113.124.238/afisha/public_html.aspx?group=sokol.lip
+hudozhestv.sam	ХУДОЖКА	Самара Художественный 	hudozhestv.sam	http://212.113.124.238/afisha/public_xml.aspx?group=hudozhestv.sam	http://212.113.124.238/afisha/public_html.aspx?group=hudozhestv.sam
+sovremenik.elst	СОВРЕМЕННИК	Электросталь Современник 	sovremenik.elst	http://212.113.124.238/afisha/public_xml.aspx?group=sovremenik.elst	http://212.113.124.238/afisha/public_html.aspx?group=sovremenik.elst
+kinoplex.tol	КИНОПЛЕКС	Тольятти Киноплекс 	kinoplex.tol	http://212.113.124.238/afisha/public_xml.aspx?group=kinoplex.tol	http://212.113.124.238/afisha/public_html.aspx?group=kinoplex.tol
+_kinoplex.eburg	КИНОПЛЕКС	Екатеринбург Киноплекс	kinoplex.eburg	http://212.113.124.238/afisha/public_xml.aspx?group=kinoplex.eburg	http://212.113.124.238/afisha/public_html.aspx?group=kinoplex.eburg
+domkino.eburg	КИНО	Екатеринбург ДомКино	domkino.eburg	http://212.113.124.238/afisha/public_xml.aspx?group=domkino.eburg	http://212.113.124.238/afisha/public_html.aspx?group=domkino.eburg
+edison.arx	ЭДИСОН	ЗАКРЫТ Архангельск Эдисон	edison.arx	http://212.113.124.238/afisha/public_xml.aspx?group=edison.arx	http://212.113.124.238/afisha/public_html.aspx?group=edison.arx
+modern.arx	МОДЕРН	Архангельск Модерн 	modern.arx	http://212.113.124.238/afisha/public_xml.aspx?group=modern.arx	http://212.113.124.238/afisha/public_html.aspx?group=modern.arx
+kinoklub.ije	КИНОКЛУБ	Ижевск Киноклуб	kinoklub.ije	http://212.113.124.238/afisha/public_xml.aspx?group=kinoklub.ije	http://212.113.124.238/afisha/public_html.aspx?group=kinoklub.ije
+pobeda.nvb	ПОБЕДА	Новосибирск Победа 	pobeda.nvb	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.nvb	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.nvb
+charly.brt	ЧАРЛИ	Братск Чарли 	charly.brt	http://212.113.124.238/afisha/public_xml.aspx?group=charly.brt	http://212.113.124.238/afisha/public_html.aspx?group=charly.brt
+russia.irk	РОССИЯ	Иркутск Россия 	russia.irk	http://212.113.124.238/afisha/public_xml.aspx?group=russia.irk	http://212.113.124.238/afisha/public_html.aspx?group=russia.irk
+orion.irk	ОРИОН	Иркутск Орион 	orion.irk	http://212.113.124.238/afisha/public_xml.aspx?group=orion.irk	http://212.113.124.238/afisha/public_html.aspx?group=orion.irk
+rodina.angr	РОДИНА	Ангарск Родина 	rodina.angr	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.angr	http://212.113.124.238/afisha/public_html.aspx?group=rodina.angr
+miramax.angr	МИРАМАКС	Ангарск Мирамакс 	miramax.angr	http://212.113.124.238/afisha/public_xml.aspx?group=miramax.angr	http://212.113.124.238/afisha/public_html.aspx?group=miramax.angr
+pobeda.karel	ПОБЕДА	Петрозаводск Победа 	pobeda.karel	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.karel	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.karel
+sipka.sam	ШИПКА	ЗАКРЫТ Самара Шипка	sipka.sam	http://212.113.124.238/afisha/public_xml.aspx?group=sipka.sam	http://212.113.124.238/afisha/public_html.aspx?group=sipka.sam
+samara.sam	САМАРА	САМАРА Самара	samara.sam	http://212.113.124.238/afisha/public_xml.aspx?group=samara.sam	http://212.113.124.238/afisha/public_html.aspx?group=samara.sam
+chaika.solk	ЧАЙКА	Соликамск Чайка	chaika.solk	http://212.113.124.238/afisha/public_xml.aspx?group=chaika.solk	http://212.113.124.238/afisha/public_html.aspx?group=chaika.solk
+parkhaus.ekb	ПАРКХАУС	Екатеринбург Паркхаус 	parkhaus.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=parkhaus.ekb	http://212.113.124.238/afisha/public_html.aspx?group=parkhaus.ekb
+kosmos.jgk	КОСМОС26	Железногорск Космос 	kosmos.jgk	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.jgk	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.jgk
+kosmos.kns	КОСМОС	КАНСК Космос 	kosmos.kns	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.kns	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.kns
+kostino.msk	КОСТИНО	Королев Костино	kostino.msk 	http://212.113.124.238/afisha/public_xml.aspx?group=kostino.msk 	http://212.113.124.238/afisha/public_html.aspx?group=kostino.msk
+mir.obninsk	МИР	Обнинск Мир 	mir.obninsk	http://212.113.124.238/afisha/public_xml.aspx?group=mir.obninsk	http://212.113.124.238/afisha/public_html.aspx?group=mir.obninsk
+kolizey.ekb	КОЛИЗЕЙ	Екатеринбург Колизей 	kolizey.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=kolizey.ekb	http://212.113.124.238/afisha/public_html.aspx?group=kolizey.ekb
+mirkino.anapa	АНАПА	Анапа Мир кино 	mirkino.anapa	http://212.113.124.238/afisha/public_xml.aspx?group=mirkino.anapa	http://212.113.124.238/afisha/public_html.aspx?group=mirkino.anapa
+ivengo.ozersk	АЙВЕНГО	Озерск Айвенго	ivengo.ozersk	http://212.113.124.238/afisha/public_xml.aspx?group=ivengo.ozersk	http://212.113.124.238/afisha/public_html.aspx?group=ivengo.ozersk
+russia.sam	РОССИЯ	ЗАКРЫТ Самара Россия	russia.sam	http://212.113.124.238/afisha/public_xml.aspx?group=russia.sam	http://212.113.124.238/afisha/public_html.aspx?group=russia.sam
+atlantis.stavr	АТЛАНТИС	Ставрополь Атлантис 	atlantis.stavr	http://212.113.124.238/afisha/public_xml.aspx?group=atlantis.stavr	http://212.113.124.238/afisha/public_html.aspx?group=atlantis.stavr
+horizont.klm	ГОРИЗОНТ	КОЛОМНА Горизонт 	horizont.klm	http://212.113.124.238/afisha/public_xml.aspx?group=horizont.klm	http://212.113.124.238/afisha/public_html.aspx?group=horizont.klm
+molodezhniy.kmu	М	Каменск-Уральский Молодежный 	molodezhniy.kmu	http://212.113.124.238/afisha/public_xml.aspx?group=molodezhniy.kmu	http://212.113.124.238/afisha/public_html.aspx?group=molodezhniy.kmu
+zvezda.sam	ЗВЕЗДА	ЗАКРЫТ Самара Звезда	zvezda.sam	http://212.113.124.238/afisha/public_xml.aspx?group=zvezda.sam	http://212.113.124.238/afisha/public_html.aspx?group=zvezda.sam
+retro.sve	РЕТРО	Лесной Ретро 	retro.sve	http://212.113.124.238/afisha/public_xml.aspx?group=retro.sve	http://212.113.124.238/afisha/public_html.aspx?group=retro.sve
+maik.nvc	МАЯК	Новосибирск Маяк	maik.nvc	http://212.113.124.238/afisha/public_xml.aspx?group=maik.nvc	http://212.113.124.238/afisha/public_html.aspx?group=maik.nvc
+oktober.shad	ОКТЯБРЬ	Шадринск Курганская Обл. ОКТЯБРЬ 	oktober.shad	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.shad	http://212.113.124.238/afisha/public_html.aspx?group=oktober.shad
+rostov.rst	РОСТОВ	Ростов-на-Дону Ростов	rostov.rst	http://212.113.124.238/afisha/public_xml.aspx?group=rostov.rst	http://212.113.124.238/afisha/public_html.aspx?group=rostov.rst
+maiak.Nov	МАЯКОВСКИЙ	Новосибирск им. В. Маяковского 	maiak.Nov	http://212.113.124.238/afisha/public_xml.aspx?group=maiak.Nov	http://212.113.124.238/afisha/public_html.aspx?group=maiak.Nov
+hollywood.khv	СЕАНС	ЗАКРЫТ Хабаровск СЕАНС 	hollywood.khv	http://212.113.124.238/afisha/public_xml.aspx?group=hollywood.khv	http://212.113.124.238/afisha/public_html.aspx?group=hollywood.khv
+imVisockogo.nor	ТАЛНАХ	Норильск КДЦ им. Высоцкого 	imVisockogo.nor	http://212.113.124.238/afisha/public_xml.aspx?group=imVisockogo.nor	http://212.113.124.238/afisha/public_html.aspx?group=imVisockogo.nor
+znamya.ekb	ЗНАМЯ	Екатеринбург Знамя	znamya.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=znamya.ekb	http://212.113.124.238/afisha/public_html.aspx?group=znamya.ekb
+YugoZapad.ekb	ЮЗ	Екатеринбург Юго-Западный 	YugoZapad.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=YugoZapad.ekb	http://212.113.124.238/afisha/public_html.aspx?group=YugoZapad.ekb
+dkj.nvs	ДКЖ	Новосибирск ДКЖ 	dkj.nvs	http://212.113.124.238/afisha/public_xml.aspx?group=dkj.nvs	http://212.113.124.238/afisha/public_html.aspx?group=dkj.nvs
+epitcentr.kry	Эпицентр	Красноярск Эпицентр 	epitcentr.kry 	http://212.113.124.238/afisha/public_xml.aspx?group=epitcentr.kry 	http://212.113.124.238/afisha/public_html.aspx?group=epitcentr.kry
+vosx.pru	ВОСХОД	Перввоуральск Восход 	vosx.pru	http://212.113.124.238/afisha/public_xml.aspx?group=vosx.pru	http://212.113.124.238/afisha/public_html.aspx?group=vosx.pru
+yubileyniy.uxt	ЮБИЛЕЙНЫЙ	Ухта Юбилейный 	yubileyniy.uxt	http://212.113.124.238/afisha/public_xml.aspx?group=yubileyniy.uxt	http://212.113.124.238/afisha/public_html.aspx?group=yubileyniy.uxt
+mir.njv	РАСПИСАНИЕ	Нижневартовск МИР 	mir.njv	http://212.113.124.238/afisha/public_xml.aspx?group=mir.njv	http://212.113.124.238/afisha/public_html.aspx?group=mir.njv
+russia.msk	РОССИЯ	Калининград Россия 	russia.msk	http://212.113.124.238/afisha/public_xml.aspx?group=russia.msk	http://212.113.124.238/afisha/public_html.aspx?group=russia.msk
+rodina.klg	РОДИНА	Калининград Родина 	rodina.klg	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.klg	http://212.113.124.238/afisha/public_html.aspx?group=rodina.klg
+luxinserpos.msk	ЛЮКСОР	ЛЮКСОР В СЕРГИЕВОМ ПОСАДЕ 	luxinserpos.msk	http://212.113.124.238/afisha/public_xml.aspx?group=luxinserpos.msk	http://212.113.124.238/afisha/public_html.aspx?group=luxinserpos.msk
+luxinorzuev.msk	ЛЮКСОР	Орехово-Зуево Люксор-Капитолий	luxinorzuev.msk	http://212.113.124.238/afisha/public_xml.aspx?group=luxinorzuev.msk	http://212.113.124.238/afisha/public_html.aspx?group=luxinorzuev.msk
+luxinyasen.msk	ЛЮКСОР	ЛЮКСОР В ЯСЕНЕВО 	luxinyasen.msk	http://212.113.124.238/afisha/public_xml.aspx?group=luxinyasen.msk	http://212.113.124.238/afisha/public_html.aspx?group=luxinyasen.msk
+luxinotrad.msk	ЛЮКСОР	ЛЮКСОР В ОТРАДНОМ 	luxinotrad.msk	http://212.113.124.238/afisha/public_xml.aspx?group=luxinotrad.msk	http://212.113.124.238/afisha/public_html.aspx?group=luxinotrad.msk
+luxinmitino.msk	ЛЮКСОР	ЛЮКСОР В МИТИНО 	luxinmitino.msk	http://212.113.124.238/afisha/public_xml.aspx?group=luxinmitino.msk	http://212.113.124.238/afisha/public_html.aspx?group=luxinmitino.msk
+luxorion.msk	ОРИОН	ЛЮКСОР ОРИОН 	luxorion.msk	http://212.113.124.238/afisha/public_xml.aspx?group=luxorion.msk	http://212.113.124.238/afisha/public_html.aspx?group=luxorion.msk
+luxhavanf.msk	ГАВАНА	ЛЮКСОР ГАВАННА 	luxhavanf.msk	http://212.113.124.238/afisha/public_xml.aspx?group=luxhavanf.msk	http://212.113.124.238/afisha/public_html.aspx?group=luxhavanf.msk
+oktober.psk	ОКТЯБРЬ	Псков Октябрь 	oktober.psk	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.psk	http://212.113.124.238/afisha/public_html.aspx?group=oktober.psk
+rus.arx	РУСЬ	АРХАНГЕЛЬСК РУСЬ 	rus.arx	http://212.113.124.238/afisha/public_xml.aspx?group=rus.arx	http://212.113.124.238/afisha/public_html.aspx?group=rus.arx
+central2.yak	ЦЕНТРАЛЬНЫЙ	ЗАКРЫТ ЯКУТСК ЦЕНТРАЛЬНЫЙ ДВА 	central2.yak	http://212.113.124.238/afisha/public_xml.aspx?group=central2.yak	http://212.113.124.238/afisha/public_html.aspx?group=central2.yak
+lena.yak	LENA	ЯКУТСК Лена 	lena.yak	http://212.113.124.238/afisha/public_xml.aspx?group=lena.yak	http://212.113.124.238/afisha/public_html.aspx?group=lena.yak
+fitil.msk	ФИТИЛЬ	МОСКВА ФИТИЛЬ	fitil.msk	http://212.113.124.238/afisha/public_xml.aspx?group=fitil.msk	http://212.113.124.238/afisha/public_html.aspx?group=fitil.msk
+Kosmos.vor	КОСМОС	Воронеж Космос	Kosmos.vor	http://212.113.124.238/afisha/public_xml.aspx?group=Kosmos.vor	http://212.113.124.238/afisha/public_html.aspx?group=Kosmos.vor
+Udokan.chi	УДОКАН	ЧИТА Удокан 	Udokan.chi	http://212.113.124.238/afisha/public_xml.aspx?group=Udokan.chi	http://212.113.124.238/afisha/public_html.aspx?group=Udokan.chi
+yunost.msk	ЮНОСТЬ	МОСКВА ЮНОСТЬ 	yunost.msk	http://212.113.124.238/afisha/public_xml.aspx?group=yunost.msk	http://212.113.124.238/afisha/public_html.aspx?group=yunost.msk
+pioner.msk	ПИОНЕР	Москва Пионер 	pioner.msk	http://212.113.124.238/afisha/public_xml.aspx?group=pioner.msk	http://212.113.124.238/afisha/public_html.aspx?group=pioner.msk
+strela.fk	ФК	Формула Кино Стрела 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+sofia.fk	ФК	Формула Кино София 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+solnce.fk	ФК	Формула Кино Солнцево 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+praga.fk	ФК	Формула Кино Прага 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+rub.fk	ФК	Формула Кино на Рублёвке 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+mozhay.fk	ФК	Формула Кино на Можайке 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+michurin.fk	ФК	Формула Кино на Мичуринском 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+mechta.fk	ФК	Формула Кино Мечта 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+ladoga.fk	ФК	Формула Кино Ладога 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+evropa.fk	ФК	Формула Кино Европа 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+gorizont.fk	ФК	Формула Кино Горизонт 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+vitaz.fk	ФК	Формула Кино Витязь 	fk	http://212.113.124.238/afisha/public_xml.aspx?group=fk	http://212.113.124.238/afisha/public_html.aspx?group=fk
+rodina.eao	РОДИНА	Биробиджан Родина 	rodina.eao	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.eao	http://212.113.124.238/afisha/public_html.aspx?group=rodina.eao
+avrora.prim	АВРОРА	Спасск-Дальний АВРОРА 	avrora.prim	http://212.113.124.238/afisha/public_xml.aspx?group=avrora.prim	http://212.113.124.238/afisha/public_html.aspx?group=avrora.prim
+karo.atrium.msk	КАРО	Москва Каро Атриум 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.schuka.msk	КАРО	Многозальный кинотеатр в ТРК "Щука" 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.krkit.myt	КАРО	Мытищи Каро Красный Кит	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.ramsher.ms	КАРО	Москва Каро Рамстор на Шереметьевской	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.ramkash.ms	КАРО	Москва Каро Рамстор на Каширке	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.ramver.msk	КАРО	Москва Каро Рамстор на Вернадского	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.ram.pod	КАРО	Подольск Каро Рамстор	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.electr.msk	КАРО	Москва Каро Электрон 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.udar.msk	КАРО	Москва Каро Ударник 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.push.msk	КАРО	Москва Каро Пушкинский 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.1may.msk	КАРО	Москва Каро Первомайский 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.oktobr.msk	КАРО	Москва Каро Октябрь 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.kir.msk	КАРО	Москва Каро Киргизия 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.zvezd.msk	КАРО	Москва Каро Звёздный 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+karo.bar.msk	КАРО	Москва Каро Баррикады 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+pobeda.msk	POBEDA	Москва Победа 	pobeda.msk	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.msk	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.msk
+dinamit.msk	ДИНАМИТ	МОСКВА ДИНАМИТ 	dinamit.msk	http://212.113.124.238/afisha/public_xml.aspx?group=dinamit.msk	http://212.113.124.238/afisha/public_html.aspx?group=dinamit.msk
+sovremennik.orl	СОВРЕМЕННИК	ОРЕЛ Современник 	sovremennik.orl	http://212.113.124.238/afisha/public_xml.aspx?group=sovremennik.orl	http://212.113.124.238/afisha/public_html.aspx?group=sovremennik.orl
+pobeda.orl	ПОБЕДА	ОРЕЛ Победа 	pobeda.orl	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.orl	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.orl
+neo.orl	НЕО	ОРЕЛ Нео	neo.orl	http://212.113.124.238/afisha/public_xml.aspx?group=neo.orl	http://212.113.124.238/afisha/public_html.aspx?group=neo.orl
+ekran.msk	ЭКРАН	Москва ЭКРАН 	ekran.msk	http://212.113.124.238/afisha/public_xml.aspx?group=ekran.msk	http://212.113.124.238/afisha/public_html.aspx?group=ekran.msk
+miriskustva.msk	МИР	МОСКВА Мир Искусства	miriskustva.msk	http://212.113.124.238/afisha/public_xml.aspx?group=miriskustva.msk	http://212.113.124.238/afisha/public_html.aspx?group=miriskustva.msk
+artkino.msk	АРТКИНО	МОСКВА АртКино	artkino.msk	http://212.113.124.238/afisha/public_xml.aspx?group=artkino.msk	http://212.113.124.238/afisha/public_html.aspx?group=artkino.msk
+aelita.tom	АЭЛИТА	Томск АЭЛИТА	aelita.tom	http://212.113.124.238/afisha/public_xml.aspx?group=aelita.tom	http://212.113.124.238/afisha/public_html.aspx?group=aelita.tom
+rodina.yar	РОДИНА	Ярославль Родина 	rodina.yar	http://212.113.124.238/afisha/public_xml.aspx?group=rodina.yar	http://212.113.124.238/afisha/public_html.aspx?group=rodina.yar
+sputnik.vgl	СПУТНИК	Волжский Спутник 	sputnik.vgl	http://212.113.124.238/afisha/public_xml.aspx?group=sputnik.vgl	http://212.113.124.238/afisha/public_html.aspx?group=sputnik.vgl
+kinomax.vgl	КИНОМАКС	Волгоград Киномакс 	kinomax.vgl	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.vgl	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.vgl
+Sovremennik.pen	СОВРЕМЕННИК	Пенза Современник 	Sovremennik.pen	http://212.113.124.238/afisha/public_xml.aspx?group=Sovremennik.pen	http://212.113.124.238/afisha/public_html.aspx?group=Sovremennik.pen
+gorizont.krd	ГОРИЗОНТ	Краснодар Горизонт 	gorizont.krd	http://212.113.124.238/afisha/public_xml.aspx?group=gorizont.krd	http://212.113.124.238/afisha/public_html.aspx?group=gorizont.krd
+druzhba.max	ДРУЖБА	МАХАЧКАЛА Дружба 	druzhba.max	http://212.113.124.238/afisha/public_xml.aspx?group=druzhba.max	http://212.113.124.238/afisha/public_html.aspx?group=druzhba.max
+komsomolec.vgd	КОМСОМОЛЕЦ	Волгодонск КОМСОМОЛЕЦ 	komsomolec.vgd	http://212.113.124.238/afisha/public_xml.aspx?group=komsomolec.vgd	http://212.113.124.238/afisha/public_html.aspx?group=komsomolec.vgd
+oktober.msk	ОКТЯБРЬ	Улан-уде Октябрь	oktober.msk	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.msk	http://212.113.124.238/afisha/public_html.aspx?group=oktober.msk
+romanov.msk	РОМАНОВ	Москва РОМАНОВ - Синема	romanov.msk	http://212.113.124.238/afisha/public_xml.aspx?group=romanov.msk	http://212.113.124.238/afisha/public_html.aspx?group=romanov.msk
+panarama.sax	ПАНОРАМА	Южно-Сахалинск Кинопанорама	panarama.sax	http://212.113.124.238/afisha/public_xml.aspx?group=panarama.sax	http://212.113.124.238/afisha/public_html.aspx?group=panarama.sax
+premer.sax	ПРЕМЬЕР	Южно-Сахалинск Премьер	premer.sax	http://212.113.124.238/afisha/public_xml.aspx?group=premer.sax	http://212.113.124.238/afisha/public_html.aspx?group=premer.sax
+komsomol.sax	КОМСОМОЛЕЦ	Южно-Сахалинск Комсомолец	komsomol.sax	http://212.113.124.238/afisha/public_xml.aspx?group=komsomol.sax	http://212.113.124.238/afisha/public_html.aspx?group=komsomol.sax
+oktober.sax	ОКТЯБРЬ	Южно-Сахалинск ОКТЯБРЬ 	oktober.sax	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.sax	http://212.113.124.238/afisha/public_html.aspx?group=oktober.sax
+parma2.stk	КИНО	Сыктывкар Парма 2 	parma2.stk	http://212.113.124.238/afisha/public_xml.aspx?group=parma2.stk	http://212.113.124.238/afisha/public_html.aspx?group=parma2.stk
+kino.tom	КИНО	Томск Кино 	kino.tom	http://212.113.124.238/afisha/public_xml.aspx?group=kino.tom	http://212.113.124.238/afisha/public_html.aspx?group=kino.tom
+7zvezd.krd	7	Краснодар Семь Звезд	7zvezd.krd	http://212.113.124.238/afisha/public_xml.aspx?group=7zvezd.krd	http://212.113.124.238/afisha/public_html.aspx?group=7zvezd.krd
+prazdnik.ast	ПРАЗДНИК	Астрахань Праздник 	prazdnik.ast	http://212.113.124.238/afisha/public_xml.aspx?group=prazdnik.ast	http://212.113.124.238/afisha/public_html.aspx?group=prazdnik.ast
+oktober.mch	ОКТЯБРЬ	Махачкала Октябрь 	oktober.mch	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.mch	http://212.113.124.238/afisha/public_html.aspx?group=oktober.mch
+chaika.Irk	ЧАЙКА	ИРКУТСК ЧАЙКА 	chaika.Irk	http://212.113.124.238/afisha/public_xml.aspx?group=chaika.Irk	http://212.113.124.238/afisha/public_html.aspx?group=chaika.Irk
+entuziast.msk	ЭНТУЗИАСТ	Москва Энтузиаст	entuziast.msk	http://212.113.124.238/afisha/public_xml.aspx?group=entuziast.msk	http://212.113.124.238/afisha/public_html.aspx?group=entuziast.msk
+matrica.msk	МАТРИЦА	МОСКВА МАТРИЦА 	karo	http://212.113.124.238/afisha/public_xml.aspx?group=karo	http://212.113.124.238/afisha/public_html.aspx?group=karo
+deluks.msk	КИНОСТАР2	МОСКВА КИНОСТАР ДЕ ЛЮКС ХИМКИ	deluks.msk	http://212.113.124.238/afisha/public_xml.aspx?group=deluks.msk	http://212.113.124.238/afisha/public_html.aspx?group=deluks.msk
+kinostar.msk	КИНОСТАР1	МОСКВА КИНОСТАР ДЕ ЛЮКС МОСКВА	kinostar.msk	http://212.113.124.238/afisha/public_xml.aspx?group=kinostar.msk	http://212.113.124.238/afisha/public_html.aspx?group=kinostar.msk
+siti.krd	СИТИ	КРАСНОДАР СИТИ - СИНЕМА 	siti.krd	http://212.113.124.238/afisha/public_xml.aspx?group=siti.krd	http://212.113.124.238/afisha/public_html.aspx?group=siti.krd
+burevestnik.ros	БУРЕВЕСТНИК	Ростов-на-Дону Буревестник 	burevestnik.ros	http://212.113.124.238/afisha/public_xml.aspx?group=burevestnik.ros	http://212.113.124.238/afisha/public_html.aspx?group=burevestnik.ros
+rio.msk	РИО	Москва RIO - Синема 	rio.msk	http://212.113.124.238/afisha/public_xml.aspx?group=rio.msk	http://212.113.124.238/afisha/public_html.aspx?group=rio.msk
+erevan.msk	ЕРЕВАН	Москва Ереван - Синема	erevan.msk	http://212.113.124.238/afisha/public_xml.aspx?group=erevan.msk	http://212.113.124.238/afisha/public_html.aspx?group=erevan.msk
+saratov.sar	САРАТОВ	Саратов САРАТОВ 	saratov.sar	http://212.113.124.238/afisha/public_xml.aspx?group=saratov.sar	http://212.113.124.238/afisha/public_html.aspx?group=saratov.sar
+kolizey.tol	КОЛИЗЕЙ	Тольятти Колизей 	kolizey.tol	http://212.113.124.238/afisha/public_xml.aspx?group=kolizey.tol	http://212.113.124.238/afisha/public_html.aspx?group=kolizey.tol
+bolgaria.krd	БОЛГАРИЯ	Краснодар Болгария 	bolgaria.krd	http://212.113.124.238/afisha/public_xml.aspx?group=bolgaria.krd	http://212.113.124.238/afisha/public_html.aspx?group=bolgaria.krd
+karo.kaz	ФИЛЬМ	Казань Каро Фильм 	karo.kaz	http://212.113.124.238/afisha/public_xml.aspx?group=karo.kaz	http://212.113.124.238/afisha/public_html.aspx?group=karo.kaz
+ostrov.ast	ОСТРОВ	Астрахань Остров Сокровищ на Воробьева 	ostrov.ast	http://212.113.124.238/afisha/public_xml.aspx?group=ostrov.ast	http://212.113.124.238/afisha/public_html.aspx?group=ostrov.ast
+eldar.msk	ЭЛЬДАР	Москва Эльдар 	eldar.msk	http://212.113.124.238/afisha/public_xml.aspx?group=eldar.msk	http://212.113.124.238/afisha/public_html.aspx?group=eldar.msk
+komsomolec.msk	КОМСОМОЛЕЦ	ЗАКРЫТ Москва Комсомолец	komsomolec.msk	http://212.113.124.238/afisha/public_xml.aspx?group=komsomolec.msk	http://212.113.124.238/afisha/public_html.aspx?group=komsomolec.msk
+baykonur.msk	БАЙКОНУР	Москва Байконур 	baykonur.msk	http://212.113.124.238/afisha/public_xml.aspx?group=baykonur.msk	http://212.113.124.238/afisha/public_html.aspx?group=baykonur.msk
+oktyabr.sch	ОКТЯБРЬ	СОЧИ ОКТЯБРЬ 	oktyabr.sch	http://212.113.124.238/afisha/public_xml.aspx?group=oktyabr.sch	http://212.113.124.238/afisha/public_html.aspx?group=oktyabr.sch
+avrora.krd	АВРОРА	Краснодар Аврора 	avrora.krd	http://212.113.124.238/afisha/public_xml.aspx?group=avrora.krd	http://212.113.124.238/afisha/public_html.aspx?group=avrora.krd
+mir.ors	МИР	Орск Мир (1800) 	mir.ors	http://212.113.124.238/afisha/public_xml.aspx?group=mir.ors	http://212.113.124.238/afisha/public_html.aspx?group=mir.ors
+centr.cal	ЦЕНТР	Калуга Центральный 	centr.cal	http://212.113.124.238/afisha/public_xml.aspx?group=centr.cal	http://212.113.124.238/afisha/public_html.aspx?group=centr.cal
+kinoplex.ekb	КИНОПЛЕКС	Екатеринбург КИНОПЛЕКС КАРНАВАЛ 	kinoplex.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=kinoplex.ekb	http://212.113.124.238/afisha/public_html.aspx?group=kinoplex.ekb
+titanic.mos	ТИТАНИК	МОСКВА ТИТАНИК	titanic.mos	http://212.113.124.238/afisha/public_xml.aspx?group=titanic.mos	http://212.113.124.238/afisha/public_html.aspx?group=titanic.mos
+yubileyniy.kem	АФИША	Кемерово Юбилейный 	yubileyniy.kem	http://212.113.124.238/afisha/public_xml.aspx?group=yubileyniy.kem	http://212.113.124.238/afisha/public_html.aspx?group=yubileyniy.kem
+Ishstal.izh	ИЖСТАЛЬ	Ижевск ИЖСТАЛЬ 	Ishstal.izh	http://212.113.124.238/afisha/public_xml.aspx?group=Ishstal.izh	http://212.113.124.238/afisha/public_html.aspx?group=Ishstal.izh
+chaika.krs	ЧАЙКА	ЗАКРЫТ Красноярск Чайка 	chaika.krs	http://212.113.124.238/afisha/public_xml.aspx?group=chaika.krs	http://212.113.124.238/afisha/public_html.aspx?group=chaika.krs
+triumf.msk	ТРИУМФ	МОСКВА ТРиУМФ	triumf.msk	http://212.113.124.238/afisha/public_xml.aspx?group=triumf.msk	http://212.113.124.238/afisha/public_html.aspx?group=triumf.msk
+DEL_rubin.prm	РУБИН	Пермь РУБИН	rubin.prm	http://212.113.124.238/afisha/public_xml.aspx?group=rubin.prm	http://212.113.124.238/afisha/public_html.aspx?group=rubin.prm
+kristall.prm	КРИСТАЛЛ	Пермь Кристалл 	kristall.prm	http://212.113.124.238/afisha/public_xml.aspx?group=kristall.prm	http://212.113.124.238/afisha/public_html.aspx?group=kristall.prm
+triumf.prm	ТРИУМФ	Перьмь ТРИУМФ	triumf.prm	http://212.113.124.238/afisha/public_xml.aspx?group=triumf.prm	http://212.113.124.238/afisha/public_html.aspx?group=triumf.prm
+ashxabad.mos	АШХАБАД	Москва Ашхабад 	ashxabad.mos	http://212.113.124.238/afisha/public_xml.aspx?group=ashxabad.mos	http://212.113.124.238/afisha/public_html.aspx?group=ashxabad.mos
+kinodron.prm	КИНОДРОМ	Пермь КИНОДРОМ	kinodron.prm	http://212.113.124.238/afisha/public_xml.aspx?group=kinodron.prm	http://212.113.124.238/afisha/public_html.aspx?group=kinodron.prm
+yu-sity.kms	Ю	Комсомольск Ю-Сити 	yu-sity.kms	http://212.113.124.238/afisha/public_xml.aspx?group=yu-sity.kms	http://212.113.124.238/afisha/public_html.aspx?group=yu-sity.kms
+alians.msk	АЛЬЯНС	Минусинск Альянс 	alians.msk	http://212.113.124.238/afisha/public_xml.aspx?group=alians.msk	http://212.113.124.238/afisha/public_html.aspx?group=alians.msk
+kinomax.srn	ПОБЕДА	Саранск Киномакс Победа 	kinomax.srn	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.srn	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.srn
+rus.sol	РУСЬ	Соликамск Русь	rus.sol	http://212.113.124.238/afisha/public_xml.aspx?group=rus.sol	http://212.113.124.238/afisha/public_html.aspx?group=rus.sol
+saturn.tol	САТУРН	Тольятти Сатурн	saturn.tol	http://212.113.124.238/afisha/public_xml.aspx?group=saturn.tol	http://212.113.124.238/afisha/public_html.aspx?group=saturn.tol
+burevestnik.tol	БУРЕВЕСТНИК	ЗАКРЫТ Тольятти Буревестник 	burevestnik.tol	http://212.113.124.238/afisha/public_xml.aspx?group=burevestnik.tol	http://212.113.124.238/afisha/public_html.aspx?group=burevestnik.tol
+pobeda.bry	ПОБЕДА	Брянск Победа 	pobeda.bry	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.bry	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.bry
+ibarguzin.irk	БАРГУЗИН	Иркутск БАРГУЗИН 	ibarguzin.irk	http://212.113.124.238/afisha/public_xml.aspx?group=ibarguzin.irk	http://212.113.124.238/afisha/public_html.aspx?group=ibarguzin.irk
+chaskino.mos	ЧАС	Москва Час Кино 	chaskino.mos	http://212.113.124.238/afisha/public_xml.aspx?group=chaskino.mos	http://212.113.124.238/afisha/public_html.aspx?group=chaskino.mos
+mars.arm	МАРС	Армавир МАРС 	mars.arm	http://212.113.124.238/afisha/public_xml.aspx?group=mars.arm	http://212.113.124.238/afisha/public_html.aspx?group=mars.arm
+cosmos.oms	КОСМОС	Омск Космос 	cosmos.oms	http://212.113.124.238/afisha/public_xml.aspx?group=cosmos.oms	http://212.113.124.238/afisha/public_html.aspx?group=cosmos.oms
+premer.krg	ПРЕМЬЕР	Курган ПРЕМЬЕР 	premer.krg	http://212.113.124.238/afisha/public_xml.aspx?group=premer.krg	http://212.113.124.238/afisha/public_html.aspx?group=premer.krg
+xxx.kna	30	Комсомольск XXX 	xxx.kna	http://212.113.124.238/afisha/public_xml.aspx?group=xxx.kna	http://212.113.124.238/afisha/public_html.aspx?group=xxx.kna
+moscow.kem	МОСКВА	Кемерово Дом кино Москва 	moscow.kem	http://212.113.124.238/afisha/public_xml.aspx?group=moscow.kem	http://212.113.124.238/afisha/public_html.aspx?group=moscow.kem
+oktober.orl	ОКТЯБРЬ	Орел Октябрь 	oktober.orl	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.orl	http://212.113.124.238/afisha/public_html.aspx?group=oktober.orl
+kalevala.ptz	kalevala	Петрозаводск КАЛЕВАЛА 	kalevala.ptz	http://212.113.124.238/afisha/public_xml.aspx?group=kalevala.ptz	http://212.113.124.238/afisha/public_html.aspx?group=kalevala.ptz
+parnas.sto	ПАРНАС	СТАРЫЙ ОСКОЛ ПАРНАС 	parnas.sto	http://212.113.124.238/afisha/public_xml.aspx?group=parnas.sto	http://212.113.124.238/afisha/public_html.aspx?group=parnas.sto
+royal.chr	РОЯЛЬ	ЧЕРЕПОВЕЦ РОЯЛЬ-ВИО 	royal.chr	http://212.113.124.238/afisha/public_xml.aspx?group=royal.chr	http://212.113.124.238/afisha/public_html.aspx?group=royal.chr
+druzhba.izh	ДРУЖБА	ИЖЕВСК ДРУЖБА 	druzhba.izh	http://212.113.124.238/afisha/public_xml.aspx?group=druzhba.izh	http://212.113.124.238/afisha/public_html.aspx?group=druzhba.izh
+forum.nal	ФОРУМ	Нальчик Форум 	forum.nal	http://212.113.124.238/afisha/public_xml.aspx?group=forum.nal	http://212.113.124.238/afisha/public_html.aspx?group=forum.nal
+kinomax.tom	КИНОМАКС	ТОМСК КИНОМАКС 	kinomax.tom	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.tom	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.tom
+fakel.kna	ФАКЕЛ	Комсомольск-на-Амуре Факел 	fakel.kna	http://212.113.124.238/afisha/public_xml.aspx?group=fakel.kna	http://212.113.124.238/afisha/public_html.aspx?group=fakel.kna
+kinoimkino.nvk	КИНО	Новокузнецк Кино им. Кино 	kinoimkino.nvk	http://212.113.124.238/afisha/public_xml.aspx?group=kinoimkino.nvk	http://212.113.124.238/afisha/public_html.aspx?group=kinoimkino.nvk
+mirtomsk.tom	МИР	ТОМСК МИР 	mirtomsk.tom	http://212.113.124.238/afisha/public_xml.aspx?group=mirtomsk.tom	http://212.113.124.238/afisha/public_html.aspx?group=mirtomsk.tom
+pervomaisk.oms	ПЕРВЫЙ	ЗАКРЫТ ОМСК Первомайск 	pervomaisk.oms	http://212.113.124.238/afisha/public_xml.aspx?group=pervomaisk.oms	http://212.113.124.238/afisha/public_html.aspx?group=pervomaisk.oms
+saturn.oms	САТУРН	ЗАКРЫТ ОМСК Сатурн 	saturn.oms	http://212.113.124.238/afisha/public_xml.aspx?group=saturn.oms	http://212.113.124.238/afisha/public_html.aspx?group=saturn.oms
+pobeda.che	ПОБЕДА	Череповец Победа 	pobeda.che	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.che	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.che
+tomsk.tom	КИНОМИР	Томск Киномир	tomsk.tom	http://212.113.124.238/afisha/public_xml.aspx?group=tomsk.tom	http://212.113.124.238/afisha/public_html.aspx?group=tomsk.tom
+kursk.kur	КИНО	КУРСК КИНО 1803	kursk.kur	http://212.113.124.238/afisha/public_xml.aspx?group=kursk.kur	http://212.113.124.238/afisha/public_html.aspx?group=kursk.kur
+yunost.kur	ЮНОСТЬ	КУРСК ЮНОСТЬ	yunost.kur	http://212.113.124.238/afisha/public_xml.aspx?group=yunost.kur	http://212.113.124.238/afisha/public_html.aspx?group=yunost.kur
+sxhepkin.kur	ЩЕПКИН	КУРСК к\т ЩЕПКИНА	sxhepkin.kur	http://212.113.124.238/afisha/public_xml.aspx?group=sxhepkin.kur	http://212.113.124.238/afisha/public_html.aspx?group=sxhepkin.kur
+mir.kur	МИР	КУРСК МИР	mir.kur	http://212.113.124.238/afisha/public_xml.aspx?group=mir.kur	http://212.113.124.238/afisha/public_html.aspx?group=mir.kur
+yunost.vor	ЮНОСТЬ	Воронеж Юность 	yunost.vor	http://212.113.124.238/afisha/public_xml.aspx?group=yunost.vor	http://212.113.124.238/afisha/public_html.aspx?group=yunost.vor
+rolex.ije	РОЛИКС	ИЖЕВСК РОЛИКС 	rolex.ije	http://212.113.124.238/afisha/public_xml.aspx?group=rolex.ije	http://212.113.124.238/afisha/public_html.aspx?group=rolex.ije
+drujba.kst	ДРУЖБА	Кострома ДРУЖБА 	drujba.kst	http://212.113.124.238/afisha/public_xml.aspx?group=drujba.kst	http://212.113.124.238/afisha/public_html.aspx?group=drujba.kst
+ogonek.sam	ОГОНЕК	ЗАКРЫТ Самара Огонек	ogonek.sam	http://212.113.124.238/afisha/public_xml.aspx?group=ogonek.sam	http://212.113.124.238/afisha/public_html.aspx?group=ogonek.sam
+sputnik.lip	СПУТНИК	ЛИПЕЦК Спутник 	sputnik.lip	http://212.113.124.238/afisha/public_xml.aspx?group=sputnik.lip	http://212.113.124.238/afisha/public_html.aspx?group=sputnik.lip
+oktober.lip	ОКТЯБРЬ	Липецк Oktober 	oktober.lip	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.lip	http://212.113.124.238/afisha/public_html.aspx?group=oktober.lip
+solyaris.lip	СОЛЯРИС	Липецк Солярис 	solyaris.lip	http://212.113.124.238/afisha/public_xml.aspx?group=solyaris.lip	http://212.113.124.238/afisha/public_html.aspx?group=solyaris.lip
+spartak.vor	СПАРТАК	Воронеж Спартак 	spartak.vor	http://212.113.124.238/afisha/public_xml.aspx?group=spartak.vor	http://212.113.124.238/afisha/public_html.aspx?group=spartak.vor
+strstosfera.irk	СТРАТО	ИРКУТСК Стратосфера 	strstosfera.irk	http://212.113.124.238/afisha/public_xml.aspx?group=strstosfera.irk	http://212.113.124.238/afisha/public_html.aspx?group=strstosfera.irk
+Oktober.tom	ОКТЯБРЬ	ТОМСК ОКТЯБРЬ	Oktober.tom	http://212.113.124.238/afisha/public_xml.aspx?group=Oktober.tom	http://212.113.124.238/afisha/public_html.aspx?group=Oktober.tom
+cosmos.uli	КОСМОС	Ульяновск Космос 	cosmos.uli	http://212.113.124.238/afisha/public_xml.aspx?group=cosmos.uli	http://212.113.124.238/afisha/public_html.aspx?group=cosmos.uli
+galaktika.oms	ГАЛАКТИКА	ОМСК Галактика 	galaktika.oms	http://212.113.124.238/afisha/public_xml.aspx?group=galaktika.oms	http://212.113.124.238/afisha/public_html.aspx?group=galaktika.oms
+oktober.sml	ОКТЯБРЬ	Смоленск Октябрь	oktober.sml	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.sml	http://212.113.124.238/afisha/public_html.aspx?group=oktober.sml
+Sovremennik.sml	СОВР	Смоленск Современник	Sovremennik.sml	http://212.113.124.238/afisha/public_xml.aspx?group=Sovremennik.sml	http://212.113.124.238/afisha/public_html.aspx?group=Sovremennik.sml
+rossia.sml	РОССИЯ	СМОЛЕНСК Россия 	rossia.sml	http://212.113.124.238/afisha/public_xml.aspx?group=rossia.sml	http://212.113.124.238/afisha/public_html.aspx?group=rossia.sml
+shariki.tom	ШАРИКИ	ТОМСК ШАРИКИ 	shariki.tom	http://212.113.124.238/afisha/public_xml.aspx?group=shariki.tom	http://212.113.124.238/afisha/public_html.aspx?group=shariki.tom
+lenkom.vol	ЛЕНКОМ	Вологда Ленком 	lenkom.vol	http://212.113.124.238/afisha/public_xml.aspx?group=lenkom.vol	http://212.113.124.238/afisha/public_html.aspx?group=lenkom.vol
+mayak.oms	МАЯК	ОМСК МАЯК	mayak.oms	http://212.113.124.238/afisha/public_xml.aspx?group=mayak.oms	http://212.113.124.238/afisha/public_html.aspx?group=mayak.oms
+Salut.vol	САЛЮТ	ВОЛОГДА Салют 	Salut.vol	http://212.113.124.238/afisha/public_xml.aspx?group=Salut.vol	http://212.113.124.238/afisha/public_html.aspx?group=Salut.vol
+domkino.ekb	ДК	Екатеринбург Премьер-зал Дом кино 	domkino.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=domkino.ekb	http://212.113.124.238/afisha/public_html.aspx?group=domkino.ekb
+domkino.rst	КИНО	Ростов-на-Дону Дом кино 	domkino.rst	http://212.113.124.238/afisha/public_xml.aspx?group=domkino.rst	http://212.113.124.238/afisha/public_html.aspx?group=domkino.rst
+ekaterininsk.ek	ЕКАТЕРИН	Екатеринбург Екатерининский 	ekaterininsk.ek	http://212.113.124.238/afisha/public_xml.aspx?group=ekaterininsk.ek	http://212.113.124.238/afisha/public_html.aspx?group=ekaterininsk.ek
+titanik.ekb	ТИТАНИК	Екатеринбург ТИТАНИК 	titanik.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=titanik.ekb	http://212.113.124.238/afisha/public_html.aspx?group=titanik.ekb
+salut.ekb	САЛЮТ	Екатеринбург САЛЮТ 	salut.ekb	http://212.113.124.238/afisha/public_xml.aspx?group=salut.ekb	http://212.113.124.238/afisha/public_html.aspx?group=salut.ekb
+kosmos.kem	КОСМОС	КЕМЕРОВО КОСМОС 	kosmos.kem	http://212.113.124.238/afisha/public_xml.aspx?group=kosmos.kem	http://212.113.124.238/afisha/public_html.aspx?group=kosmos.kem
+smena.nvr	СМЕНА	НОВОРОСИЙСК СМЕНА	smena.nvr	http://212.113.124.238/afisha/public_xml.aspx?group=smena.nvr	http://212.113.124.238/afisha/public_html.aspx?group=smena.nvr
+kinoars.yar	АРС	Ярославль КиноАРС	kinoars.yar	http://212.113.124.238/afisha/public_xml.aspx?group=kinoars.yar	http://212.113.124.238/afisha/public_html.aspx?group=kinoars.yar
+avrora.yar	АВРОРА	ЗАКРЫТ Ярославль Аврора 	avrora.yar	http://212.113.124.238/afisha/public_xml.aspx?group=avrora.yar	http://212.113.124.238/afisha/public_html.aspx?group=avrora.yar
+Lodz.iva	ЛОДЗЬ	Иваново Лодзь 	Lodz.iva	http://212.113.124.238/afisha/public_xml.aspx?group=Lodz.iva	http://212.113.124.238/afisha/public_html.aspx?group=Lodz.iva
+pobeda.psk	ПОБЕДА	Псков Победа 	pobeda.psk	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.psk	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.psk
+kinomaks.tom	КИНОМАКС	ТАМБОВ Киномакс Родина 	kinomaks.tom	http://212.113.124.238/afisha/public_xml.aspx?group=kinomaks.tom	http://212.113.124.238/afisha/public_html.aspx?group=kinomaks.tom
+sovremennik.iva	СОВРЕМЕННИК	ЗАКРЫТ ИВАНОВО СОВРЕМЕННИК	sovremennik.iva	http://212.113.124.238/afisha/public_xml.aspx?group=sovremennik.iva	http://212.113.124.238/afisha/public_html.aspx?group=sovremennik.iva
+iskra.iva	ИСКРА	Иваново Искра 	iskra.iva	http://212.113.124.238/afisha/public_xml.aspx?group=iskra.iva	http://212.113.124.238/afisha/public_html.aspx?group=iskra.iva
+fakel.tom	ФАКЕЛ	ТОМСК Факел 	fakel.tom	http://212.113.124.238/afisha/public_xml.aspx?group=fakel.tom	http://212.113.124.238/afisha/public_html.aspx?group=fakel.tom
+rarodina.bel	РОДИНА	Тула Родина	rarodina.bel	http://212.113.124.238/afisha/public_xml.aspx?group=rarodina.bel	http://212.113.124.238/afisha/public_html.aspx?group=rarodina.bel
+olbany.tul	ОЛБАНИ	Тула Олбани 	olbany.tul	http://212.113.124.238/afisha/public_xml.aspx?group=olbany.tul	http://212.113.124.238/afisha/public_html.aspx?group=olbany.tul
+mir.sar	МИР	Балаково МИР	mir.sar	http://212.113.124.238/afisha/public_xml.aspx?group=mir.sar	http://212.113.124.238/afisha/public_html.aspx?group=mir.sar
+aeroholl.tal	АЕРОХОЛЛ	Тольятти Аерохолл 	aeroholl.tal	http://212.113.124.238/afisha/public_xml.aspx?group=aeroholl.tal	http://212.113.124.238/afisha/public_html.aspx?group=aeroholl.tal
+salavat.ufa	САЛАВАТ	Стерлитамак Салават 	salavat.ufa	http://212.113.124.238/afisha/public_xml.aspx?group=salavat.ufa	http://212.113.124.238/afisha/public_html.aspx?group=salavat.ufa
+Pobeda.ufa	ПОБЕДА	УФА ПОБЕДА 	Pobeda.ufa	http://212.113.124.238/afisha/public_xml.aspx?group=Pobeda.ufa	http://212.113.124.238/afisha/public_html.aspx?group=Pobeda.ufa
+mir.ufa	МИР	УФА МИР 	mir.ufa	http://212.113.124.238/afisha/public_xml.aspx?group=mir.ufa	http://212.113.124.238/afisha/public_html.aspx?group=mir.ufa
+iskra.ufa	ИСКРА	УФА ИСКРА 	iskra.ufa	http://212.113.124.238/afisha/public_xml.aspx?group=iskra.ufa	http://212.113.124.238/afisha/public_html.aspx?group=iskra.ufa
+tver.tvr	ТВЕРЬ	ТВЕРЬ ТВЕРЬ 	tver.tvr	http://212.113.124.238/afisha/public_xml.aspx?group=tver.tvr	http://212.113.124.238/afisha/public_html.aspx?group=tver.tvr
+kriliya.uly	КРЫЛЬЯ	Ульяновск Крылья 	kriliya.uly	http://212.113.124.238/afisha/public_xml.aspx?group=kriliya.uly	http://212.113.124.238/afisha/public_html.aspx?group=kriliya.uly
+hudojka.uly	ХУДОЖКА	ульяновск Художественный 	hudojka.uly	http://212.113.124.238/afisha/public_xml.aspx?group=hudojka.uly	http://212.113.124.238/afisha/public_html.aspx?group=hudojka.uly
+ctetral.yak	КИНО	Якутск ЦЕНТРАЛЬНЫЙ 	ctetral.yak	http://212.113.124.238/afisha/public_xml.aspx?group=ctetral.yak	http://212.113.124.238/afisha/public_html.aspx?group=ctetral.yak
+Ruslan.uly	РУСЛАН	Ульяновск РУСЛАН 	Ruslan.uly	http://212.113.124.238/afisha/public_xml.aspx?group=Ruslan.uly	http://212.113.124.238/afisha/public_html.aspx?group=Ruslan.uly
+DEL_premer.per	ПРЕМЬЕР	Пермь Премьер	premer.per	http://212.113.124.238/afisha/public_xml.aspx?group=premer.per	http://212.113.124.238/afisha/public_html.aspx?group=premer.per
+luna.uly	ЛУНА	Ульяновск Луна 	luna.uly	http://212.113.124.238/afisha/public_xml.aspx?group=luna.uly	http://212.113.124.238/afisha/public_html.aspx?group=luna.uly
+shaxter.art	ШАХТЕР	Артем Шахтер 	shaxter.art	http://212.113.124.238/afisha/public_xml.aspx?group=shaxter.art	http://212.113.124.238/afisha/public_html.aspx?group=shaxter.art
+diamant.vol	ДИАМАНТ	Волгоград Диамант 	diamant.vol	http://212.113.124.238/afisha/public_xml.aspx?group=diamant.vol	http://212.113.124.238/afisha/public_html.aspx?group=diamant.vol
+oktober.per	ОКТЯБРЬ	Пермь Октябрь 	oktober.per	http://212.113.124.238/afisha/public_xml.aspx?group=oktober.per	http://212.113.124.238/afisha/public_html.aspx?group=oktober.per
+cinema.ros	СИНЕМА	Батайск Синема 	cinema.ros	http://212.113.124.238/afisha/public_xml.aspx?group=cinema.ros	http://212.113.124.238/afisha/public_html.aspx?group=cinema.ros
+kinoplex.vol	КИНОПЛЕКС	Волгоград Киноплекс 	kinoplex.vol	http://212.113.124.238/afisha/public_xml.aspx?group=kinoplex.vol	http://212.113.124.238/afisha/public_html.aspx?group=kinoplex.vol
+planeta.pkm	ПЛАНЕТА	Петропавловск-Камчатский PLANETA 	planeta.pkm	http://212.113.124.238/afisha/public_xml.aspx?group=planeta.pkm	http://212.113.124.238/afisha/public_html.aspx?group=planeta.pkm
+gippopo.ros	ГИППОПО	Волгоград Гиппопо	gippopo.ros	http://212.113.124.238/afisha/public_xml.aspx?group=gippopo.ros	http://212.113.124.238/afisha/public_html.aspx?group=gippopo.ros
+piramida.ros	ПИРАМИДА	Волгоград Пирамида 	piramida.ros	http://212.113.124.238/afisha/public_xml.aspx?group=piramida.ros	http://212.113.124.238/afisha/public_html.aspx?group=piramida.ros
+vaviloniya.ros	ВАВИЛОНИЯ	Ростов-на-Дону Чарли-Северный (Вавилон)	vaviloniya.ros	http://212.113.124.238/afisha/public_xml.aspx?group=vaviloniya.ros	http://212.113.124.238/afisha/public_html.aspx?group=vaviloniya.ros
+Smena.kir	СМЕНА	Киров Смена 	Smena.kir	http://212.113.124.238/afisha/public_xml.aspx?group=Smena.kir	http://212.113.124.238/afisha/public_html.aspx?group=Smena.kir
+Kolizei.kir	КОЛИЗЕЙ	Киров Kolizeum Cinema 	Kolizei.kir	http://212.113.124.238/afisha/public_xml.aspx?group=Kolizei.kir	http://212.113.124.238/afisha/public_html.aspx?group=Kolizei.kir
+Rossia.Dag	РОССИЯ	Махачкала Россия 	Rossia.Dag	http://212.113.124.238/afisha/public_xml.aspx?group=Rossia.Dag	http://212.113.124.238/afisha/public_html.aspx?group=Rossia.Dag
+Rossia.Uss	РОССИЯ	Уссурийск Россия 	Rossia.Uss	http://212.113.124.238/afisha/public_xml.aspx?group=Rossia.Uss	http://212.113.124.238/afisha/public_html.aspx?group=Rossia.Uss
+Fabrika.Ula	ФАБРИКА	Улан-Удэ Фабрика Кино 	Fabrika.Ula	http://212.113.124.238/afisha/public_xml.aspx?group=Fabrika.Ula	http://212.113.124.238/afisha/public_html.aspx?group=Fabrika.Ula
+Rus.nax	РУСЬ	Находка Русь 	Rus.nax	http://212.113.124.238/afisha/public_xml.aspx?group=Rus.nax	http://212.113.124.238/afisha/public_html.aspx?group=Rus.nax
+Burevestnik.nax	БУРЕВЕСТНИК	Находка Буревестник 	Burevestnik.nax	http://212.113.124.238/afisha/public_xml.aspx?group=Burevestnik.nax	http://212.113.124.238/afisha/public_html.aspx?group=Burevestnik.nax
+Kosmos.Yak	КОСМОС	ЗАКРЫТ Якутск Космос	Kosmos.Yak	http://212.113.124.238/afisha/public_xml.aspx?group=Kosmos.Yak	http://212.113.124.238/afisha/public_html.aspx?group=Kosmos.Yak
+maximus.nvr	МАКСИМУС	ЗАКРЫТ Новороссийск Максимус 	maximus.nvr	http://212.113.124.238/afisha/public_xml.aspx?group=maximus.nvr	http://212.113.124.238/afisha/public_html.aspx?group=maximus.nvr
+mirkinoDORA.blg	ДОРА	Благовещенск Дом Оффицеров 	mirkinoDORA.blg	http://212.113.124.238/afisha/public_xml.aspx?group=mirkinoDORA.blg	http://212.113.124.238/afisha/public_html.aspx?group=mirkinoDORA.blg
+mirkinoDK.blg	ДК	Благовещенск ДК Профсоюзов 	mirkinoDK.blg	http://212.113.124.238/afisha/public_xml.aspx?group=mirkinoDK.blg	http://212.113.124.238/afisha/public_html.aspx?group=mirkinoDK.blg
+kinomax.spb	КИНОМАКС	Санкт-Петербург Киномакс 	kinomax.spb	http://212.113.124.238/afisha/public_xml.aspx?group=kinomax.spb	http://212.113.124.238/afisha/public_html.aspx?group=kinomax.spb
+raduga.bel	РАДУГА	Белгород Радуга 	raduga.bel	http://212.113.124.238/afisha/public_xml.aspx?group=raduga.bel	http://212.113.124.238/afisha/public_html.aspx?group=raduga.bel
+pobeda.bel	ПОБЕДА	Белгород Победа 	pobeda.bel	http://212.113.124.238/afisha/public_xml.aspx?group=pobeda.bel	http://212.113.124.238/afisha/public_html.aspx?group=pobeda.bel
+rusich.bel	РУСИЧ	Белгород Русич 	rusich.bel	http://212.113.124.238/afisha/public_xml.aspx?group=rusich.bel	http://212.113.124.238/afisha/public_html.aspx?group=rusich.bel
+varjag.prim	ВАРЯГ	Владивосток Варяг 	varjag.prim	http://212.113.124.238/afisha/public_xml.aspx?group=varjag.prim	http://212.113.124.238/afisha/public_html.aspx?group=varjag.prim
+neptun.prim	НЕПТУН	Владивосток Нептун 	neptun.prim	http://212.113.124.238/afisha/public_xml.aspx?group=neptun.prim	http://212.113.124.238/afisha/public_html.aspx?group=neptun.prim
+cinema.prim	СИНЕМА	Владивосток НьюВейв Синема	cinema.prim	http://212.113.124.238/afisha/public_xml.aspx?group=cinema.prim	http://212.113.124.238/afisha/public_html.aspx?group=cinema.prim
+gallaktika.prim	ГАЛАКТИКА	Владивосток Галактика 	gallaktika.prim	http://212.113.124.238/afisha/public_xml.aspx?group=gallaktika.prim	http://212.113.124.238/afisha/public_html.aspx?group=gallaktika.prim
+golliwood.khv	ГОЛЛИВУД	Хабаровск Голливуд 	golliwood.khv	http://212.113.124.238/afisha/public_xml.aspx?group=golliwood.khv	http://212.113.124.238/afisha/public_html.aspx?group=golliwood.khv
+okean.prim	ОКЕАН	Владивосток Океан 	okean.prim	http://212.113.124.238/afisha/public_xml.aspx?group=okean.prim	http://212.113.124.238/afisha/public_html.aspx?group=okean.prim
+illusion.prim	ИЛЛЮЗИОН	Владивосток Иллюзион 	illusion.prim	http://212.113.124.238/afisha/public_xml.aspx?group=illusion.prim	http://212.113.124.238/afisha/public_html.aspx?group=illusion.prim
+majectic.khv	МАДЖЕСТИК	Хабаровск Маджестик 	majectic.khv	http://212.113.124.238/afisha/public_xml.aspx?group=majectic.khv	http://212.113.124.238/afisha/public_html.aspx?group=majectic.khv
+sovkino.khv	СОВКИНО	Хабаровск Совкино 	sovkino.khv	http://212.113.124.238/afisha/public_xml.aspx?group=sovkino.khv	http://212.113.124.238/afisha/public_html.aspx?group=sovkino.khv
+vosxod.khv	ВОСХОД	Хабаровск Восход 	vosxod.khv	http://212.113.124.238/afisha/public_xml.aspx?group=vosxod.khv	http://212.113.124.238/afisha/public_html.aspx?group=vosxod.khv
+gigant.khv	ГИГАНТ	Хабаровск Гигант 	gigant.khv	http://212.113.124.238/afisha/public_xml.aspx?group=gigant.khv	http://212.113.124.238/afisha/public_html.aspx?group=gigant.khv
+kino.yakutsk	СЕАНС	Якутск 	kino.yakutsk	http://212.113.124.238/afisha/public_xml.aspx?group=kino.yakutsk	http://212.113.124.238/afisha/public_html.aspx?group=kino.yakutsk
+kino.cherepovez	КИНО	Череповец 	kino.cherepovez	http://212.113.124.238/afisha/public_xml.aspx?group=kino.cherepovez	http://212.113.124.238/afisha/public_html.aspx?group=kino.cherepovez
+kino.piter	КИНО	Санкт-Петербург Кристалл-Палас 	kino.piter	http://212.113.124.238/afisha/public_xml.aspx?group=kino.piter	http://212.113.124.238/afisha/public_html.aspx?group=kino.piter
+kino.orel	КИНО	Орел 	kino.orel	http://212.113.124.238/afisha/public_xml.aspx?group=kino.orel	http://212.113.124.238/afisha/public_html.aspx?group=kino.orel
+kino.belgorod	КИНО	Белгородская область 	kino.belgorod	http://212.113.124.238/afisha/public_xml.aspx?group=kino.belgorod	http://212.113.124.238/afisha/public_html.aspx?group=kino.belgorod
+hollywood.khv	КИНО	ЗАКРЫТ Хабаровск КИНО 	hollywood.khv	http://212.113.124.238/afisha/public_xml.aspx?group=hollywood.khv	http://212.113.124.238/afisha/public_html.aspx?group=hollywood.khv

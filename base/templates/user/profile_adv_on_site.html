@@ -1,0 +1,81 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Профиль пользователя' %}{% endblock %}
+{% load base_tags %}
+
+
+{% block page_bg %}style="background-image: url('{% if user_bg %}{{ user_bg.file }}{% else %}{{ request.bg_img }}{% endif %}');"{% endblock %}
+{% block br_url %}{% if user_bg %}{{ user_bg.url }}{% else %}{{ request.advert_url }}{% endif %}{% endblock %}
+{% block adv_id %}{% if user_bg %}{{ user_bg.id }}{% else %}{{ request.advert_id }}{% endif %}{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><a href="{% url profile card.profile.user_id %}">{{ card.name|safe|striptags }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Реклама на сайте</span></b>
+</h1>
+
+
+    {% profile_menu is_my_profile card.profile.user_id %}
+    
+    <div class="art-postcontent-width">
+        <div class="scroll_list">
+            <div class="txt_wrapper">
+                <b>Ваш рекламный блок для <u>полной версии</u> сайта для города {{ request.current_user_city }}:</b>
+                <div style="width: 270px; margin: 0 auto;">
+                    <div class="left_banner left_adv_gen">
+                        {% if adv_type == 'adv' %}
+                        <a class="flb_adv_link" id="flb_id_{{ banner_id }}" href="{{ banner_url }}" target="_blank" rel="nofollow">
+                            <div class="left_adv_content {{ adv_style }}">
+                                {{ swf_object|safe }}
+                            </div>
+                        </a>
+                        {% else %}
+                        <div class="left_banner_content">
+                            {{ swf_object|safe }}
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                {% if user.is_superuser %}
+                    {% if is_my_profile %}
+                    <br />
+                    <a class="left_banner_editor_adv" style="background: none; display: inline; color: #BA5B32; opacity: 1;">Управление рекламой на сайте</a>
+                    {% endif %}
+
+                    {% if user.is_superuser %}
+                    <div style="width: 250px; float: right; text-align: right;">
+                        <a onclick="adv_adm();">Админ управление рекламой на сайте</a>
+                    </div>
+                    {% endif %}
+                {% endif %}
+            </div>
+            
+            
+
+            <div class="txt_wrapper">
+                <b>Ваш рекламный блок для <u>мобильной версии</u> сайта для города {{ request.current_user_city }}:</b>
+                <div style="width: 270px; margin: 0 auto;">
+                    <div class="left_banner left_adv_gen">
+                        {% if mswf_object != 'Banner' %}<a class="flb_adv_link" id="flb_id_{{ mbanner_id }}" href="{{ mbanner_url }}" target="_blank" rel="nofollow">{% endif %}
+                            <div class="left_adv_content {{ madv_style }}">
+                                {{ mswf_object|safe }}
+                            </div>
+                        {% if mswf_object != 'Banner' %}</a>{% endif %}
+                    </div>
+                </div>
+
+                {% if user.is_superuser %}
+                    {% if is_my_profile %}
+                    <br />
+                    <a onclick="Dajaxice.base.get_my_blocks(get_my_blocks_callback, {'btype': 6});" >Управление рекламой на сайте</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+
+        </div>
+    </div>
+
+{% endblock %}

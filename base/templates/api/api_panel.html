@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+{% load base_tags %}
+{% api_menu %}
+<div class="art-postcontent">
+    <h1 class="content-header">API Панель</h1>
+    <div class="menu-panel">
+        <a href="{% url api_users %}">Управление пользователями</a>
+        <a href="{% url edit_api_description %}">Изменить описание API</a>
+        <a href="{% url change_background %}">Изменить фоновый баннер</a>
+        <a href="{% url get_user_request_list %}">Обращения к API</a>
+        <a href="{% url main_parser %}">Парсер релизов</a>
+        <a href="{% url main_api %}">Главная страница API</a>
+    </div>
+</div>
+{% endblock %}

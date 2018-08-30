@@ -1,0 +1,296 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Профиль пользователя' %}{% endblock %}
+{% load base_tags %}
+{% block script %}
+{% if user.is_superuser %}
+<script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+<script type="text/javascript">
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": "id_text", "language": "ru", "keep_styles": false, "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": true, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "wordcount, paste", "paste_use_dialog": false, "paste_auto_cleanup_on_paste": true, "paste_convert_headers_to_strong": false, "paste_strip_class_attributes": "all", "paste_remove_spans": true, "paste_remove_styles": true, "paste_retain_style_properties": "", "pagebreak_separator": "", "forced_root_block": false, "relative_urls": false, "remove_script_host": false});
+</script>
+{% endif %}
+{% endblock %}
+
+{% block page_bg %}style="background-image: url('{{ adv_img }}');"{% endblock %}
+{% block br_url %}{{ adv_url }}{% endblock %}
+{% block adv_id %}{{ adv_id }}{% endblock %}
+
+
+{% block content %}
+
+    <h1 class="content-header">
+        <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+        <b id="navigation_bar"><a href="{% url profile card.profile.user_id %}">{{ card.name|safe|striptags }}</a></b> - 
+        <b id="navigation_bar"><span class="small_film_name">Управление рекламой</span></b>
+    </h1>
+
+    {% profile_menu card lb %}
+    
+    <div class="art-postcontent-width">
+        <div class="scroll_list">
+            <div class="txt_wrapper" style="position: relative; margin-bottom: 10px;">
+                <form action="" method="post">{% csrf_token %}
+                    Сайт
+                    <select name="site">
+                        {% for i in sites %}
+                        <option value="{{ i.id }}" {% if i == site %}selected{% endif %}>{{ i.domain }}</option>
+                        {% endfor %}
+                    </select>
+                    Страница
+                    <select name="page">
+                        {% for k, v in pages.items %}
+                        <option value="{{ k }}" {% if k == page %}selected{% endif %}>{{ v }}</option>
+                        {% endfor %}
+                    </select>
+                    Видят
+                    <select name="visible">
+                        {% for k, v in visibles.items %}
+                        <option value="{{ k }}" {% if k == visible %}selected{% endif %}>{{ v }}</option>
+                        {% endfor %}
+                    </select>
+
+                    <input type="submit" value="GO" />
+
+                    <a style="position: absolute; top: 10px; right: 10px;" onclick="Dajaxice.base.get_adv_conditions(function(data){$.fancybox(data.content)}, {});">Условия размещения</a>
+                </form>
+            </div>
+                
+            {% if user.is_superuser %}
+            <div class="adv_conditions_txt_edit org_fields">
+                <textarea id="id_text" style="width: 90%;"></textarea>
+                <input type="button" value="Сохранить" class="adv_conditions_txt_edit_save" /> | <input type="button" value="Отмена" class="adv_conditions_txt_edit_cancel" onclick="$('.adv_conditions_txt_edit').hide();" />
+            </div>
+            {% endif %}
+            
+            <h3 style="padding-bottom: 10px;">
+                Ваши рекламные кампании:
+                {% if user.is_superuser %}
+                <span style="font-size: 12px; font-weight: normal; float: right;"><a onclick="new_usr();">Добавить пользователя</a></span>
+                {% endif %}
+            </h3>
+
+            <div class="txt_wrapper">
+                <h3 style="text-align: center;">Фон (брендирование) <span title="Добавить" style="float: right;" class="add_btn" onclick="adv_item_edit(true, {{ new_bg_btype }});"></span></h3>
+                <table class="modern_tbl">
+                    <tr>
+                        <th style="width: 110px;">Период показов</th>
+                        <th style="width: 160px;">Название</th>
+                        <th style="width: 60px;">Показы</th>
+                        <th style="width: 60px;">Клики</th>
+                        <th style="width: 120px;">Стоимость</th>
+                        <th style="width: 30px;"></th>
+                        <th style="width: 30px;"></th>
+                    </tr>
+                    {% for k, v in data.items %}
+                        {% if k == '2' or k == '3' %}
+                            {% for i in v.current %}
+                            <tr style="background: #d6f5d6;">
+                                <td>{% if i.from_date %}{{ i.from_date|date:"d b" }} - {{ i.to_date|date:"d b" }}{% endif %}</td>
+                                <td><a class="lbe_adv_anchor nolink">{{ i.name }}</a></td>
+                                <td class="lbe_url_bl">
+                                    {{ i.views }}
+                                    {% if i.file %}
+                                        <div class="lbe_img"><object type="application/x-shockwave-flash" data="{{ i.file }}"><param name="movie" value="{{ i.file }}" /><param name="wmode" value="transparent" /></object></div>
+                                    {% else %}
+                                        <div class="lbe_img" style="width: 200px; height: auto;">
+                                            <div style="padding: 10px;">
+                                            <a>{{ i.name }}</a><br />
+                                            <p style="size: 11px;">{{ i.text }}</p>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </td>
+                                <td>{% if i.clicks %}<a onclick="adv_item_clicks({{ i.id }});">{% endif %}{{ i.clicks }}{% if i.clicks %}</a>{% endif %}</td>
+                                <td><a href="{% url profile_adv_details card.profile.user_id i.id %}">{{ i.spent }} руб. ({{ i.spent_percent }}%)</a></td>
+                                <td>{% if i.im_author %}<div class="edit_btn" onclick="adv_item_edit(false, {{ i.btype }}, {{ i.id }})" title="Редактировать"></div>{% endif %}</td>
+                                <td>{% if user.is_superuser %}<div class="delete_btn" onclick="adv_item_remove(this, {{ i.btype }}, {{ i.id }})" title="Удалить"></div>{% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                
+                    {% for k, v in data.items %}
+                        {% if k == '2' or k == '3' %}
+                            {% for i in v.past %}
+                            <tr>
+                                <td>{% if i.from_date %}{{ i.from_date|date:"d b" }} - {{ i.to_date|date:"d b" }}{% endif %}</td>
+                                <td><a class="lbe_adv_anchor nolink">{{ i.name }}</a></td>
+                                <td class="lbe_url_bl">
+                                    {{ i.views }}
+                                    {% if i.file %}
+                                        <div class="lbe_img"><object type="application/x-shockwave-flash" data="{{ i.file }}"><param name="movie" value="{{ i.file }}" /><param name="wmode" value="transparent" /></object></div>
+                                    {% else %}
+                                        
+                                        <div class="lbe_img" style="width: 200px; height: auto;">
+                                            <div style="padding: 10px;">
+                                            <a>{{ i.name }}</a><br />
+                                            <p style="size: 11px;">{{ i.text }}</p>
+                                            </div>
+                                        </div>
+
+                                    {% endif %}
+                                </td>
+                                <td>{% if i.clicks %}<a onclick="adv_item_clicks({{ i.id }});">{% endif %}{{ i.clicks }}{% if i.clicks %}</a>{% endif %}</td>
+                                <td><a href="{% url profile_adv_details card.profile.user_id i.id %}">{{ i.spent }} руб. ({{ i.spent_percent }}%)</a></td>
+                                <td>{% if i.im_author %}<div class="edit_btn" onclick="adv_item_edit(false, {{ i.btype }}, {{ i.id }})" title="Редактировать"></div>{% endif %}</td>
+                                <td>{% if user.is_superuser %}<div class="delete_btn" onclick="adv_item_remove(this, {{ i.btype }}, {{ i.id }})" title="Удалить"></div>{% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </table>
+
+            </div>
+
+
+            <div class="txt_wrapper">
+                <h3 style="text-align: center;">Рекламный блок (под меню слева) <span title="Добавить" style="float: right;" class="add_btn" onclick="adv_item_edit(true, {{ new_adv_btype }});"></span></h3>
+                <table class="modern_tbl">
+                    <tr>
+                        <th style="width: 110px;">Период показов</th>
+                        <th style="width: 160px;">Название</th>
+                        <th style="width: 60px;">Показы</th>
+                        <th style="width: 60px;">Клики</th>
+                        <th style="width: 120px;">Стоимость</th>
+                        <th style="width: 30px;"></th>
+                        <th style="width: 30px;"></th>
+                    </tr>
+                    {% for k, v in data.items %}
+                        {% if k == '1' or k == '4' or k == '5' or k == '7' %}
+                            {% for i in v.current %}
+                            <tr style="background: #d6f5d6;">
+                                <td>{% if i.from_date %}{{ i.from_date|date:"d b" }} - {{ i.to_date|date:"d b" }}{% endif %}</td>
+                                <td><a class="lbe_adv_anchor nolink">{{ i.name }}</a></td>
+                                <td class="lbe_url_bl">
+                                    {{ i.views }}
+                                    {% if i.file %}
+                                        <div class="lbe_img"><object type="application/x-shockwave-flash" data="{{ i.file }}"><param name="movie" value="{{ i.file }}" /><param name="wmode" value="transparent" /></object></div>
+                                    {% else %}
+                                        {% if i.btype != '0' %}
+                                            <div class="lbe_img" style="width: 200px; height: auto;">
+                                                <div style="padding: 10px;">
+                                                <a>{{ i.name }}</a><br />
+                                                <p style="size: 11px;">{{ i.text }}</p>
+                                                </div>
+                                            </div>
+                                        {% endif %}
+                                    {% endif %}
+                                </td>
+                                <td>{% if i.clicks %}<a onclick="adv_item_clicks({{ i.id }});">{% endif %}{{ i.clicks }}{% if i.clicks %}</a>{% endif %}</td>
+                                <td><a href="{% url profile_adv_details card.profile.user_id i.id %}">{{ i.spent }} руб. ({{ i.spent_percent }}%)</a></td>
+                                <td>{% if i.im_author %}<div class="edit_btn" onclick="adv_item_edit(false, {{ i.btype }}, {{ i.id }})" title="Редактировать"></div>{% endif %}</td>
+                                <td>{% if user.is_superuser %}<div class="delete_btn" onclick="adv_item_remove(this, {{ i.btype }}, {{ i.id }})" title="Удалить"></div>{% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for k, v in data.items %}
+                        {% if k == '1' or k == '4' or k == '5' or k == '7' %}
+                            {% for i in v.past %}
+                            <tr>
+                                <td>{% if i.from_date %}{{ i.from_date|date:"d b" }} - {{ i.to_date|date:"d b" }}{% endif %}</td>
+                                <td><a class="lbe_adv_anchor nolink">{{ i.name }}</a></td>
+                                <td class="lbe_url_bl">
+                                    {{ i.views }}
+                                    {% if i.file %}
+                                        <div class="lbe_img"><object type="application/x-shockwave-flash" data="{{ i.file }}"><param name="movie" value="{{ i.file }}" /><param name="wmode" value="transparent" /></object></div>
+                                    {% else %}
+                                        
+                                        <div class="lbe_img" style="width: 200px; height: auto;">
+                                            <div style="padding: 10px;">
+                                            <a>{{ i.name }}</a><br />
+                                            <p style="size: 11px;">{{ i.text }}</p>
+                                            </div>
+                                        </div>
+                                        
+                                    {% endif %}
+                                </td>
+                                <td>{% if i.clicks %}<a onclick="adv_item_clicks({{ i.id }});">{% endif %}{{ i.clicks }}{% if i.clicks %}</a>{% endif %}</td>
+                                <td><a href="{% url profile_adv_details card.profile.user_id i.id %}">{{ i.spent }} руб. ({{ i.spent_percent }}%)</a></td>
+                                <td>{% if i.im_author %}<div class="edit_btn" onclick="adv_item_edit(false, {{ i.btype }}, {{ i.id }})" title="Редактировать"></div>{% endif %}</td>
+                                <td>{% if user.is_superuser %}<div class="delete_btn" onclick="adv_item_remove(this, {{ i.btype }}, {{ i.id }})" title="Удалить"></div>{% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+
+
+            {% if page == '1' %}
+            <div class="txt_wrapper">
+                <h3 style="text-align: center;">Мобильный блок <span title="Добавить" style="float: right;" class="add_btn" onclick="adv_item_edit(true, {{ new_mob_btype }});"></span></h3>
+                <table class="modern_tbl">
+                    <tr>
+                        <th style="width: 110px;">Период показов</th>
+                        <th style="width: 160px;">Название</th>
+                        <th style="width: 60px;">Показы</th>
+                        <th style="width: 60px;">Клики</th>
+                        <th style="width: 120px;">Стоимость</th>
+                        <th style="width: 30px;"></th>
+                        {% if user.is_superuser %}<th style="width: 30px;"></th>{% endif %}
+                    </tr>
+                    {% for k, v in data.items %}
+                        {% if k == '6' %}
+                            {% for i in v.current %}
+                            <tr style="background: #d6f5d6;">
+                                <td>{% if i.from_date %}{{ i.from_date|date:"d b" }} - {{ i.to_date|date:"d b" }}{% endif %}</td>
+                                <td><a class="lbe_adv_anchor nolink">{{ i.name }}</a></td>
+                                <td class="lbe_url_bl">
+                                    {{ i.views }}
+                                    {% if i.file %}
+                                        <div class="lbe_img"><object type="application/x-shockwave-flash" data="{{ i.file }}"><param name="movie" value="{{ i.file }}" /><param name="wmode" value="transparent" /></object></div>
+                                    {% else %}
+                                        <div class="lbe_img" style="width: 200px; height: auto;">
+                                            <div style="padding: 10px;">
+                                            <a>{{ i.name }}</a><br />
+                                            <p style="size: 11px;">{{ i.text }}</p>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </td>
+                                <td>{% if i.clicks %}<a onclick="adv_item_clicks({{ i.id }});">{% endif %}{{ i.clicks }}{% if i.clicks %}</a>{% endif %}</td>
+                                <td><a href="{% url profile_adv_details card.profile.user_id i.id %}">{{ i.spent }} руб. ({{ i.spent_percent }}%)</a></td>
+                                <td>{% if i.im_author %}<div class="edit_btn" onclick="adv_item_edit(false, {{ i.btype }}, {{ i.id }})" title="Редактировать"></div>{% endif %}</td>
+                                <td>{% if user.is_superuser %}<div class="delete_btn" onclick="adv_item_remove(this, {{ i.btype }}, {{ i.id }})" title="Удалить"></div>{% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+
+                    {% for k, v in data.items %}
+                        {% if k == '6' %}
+                            {% for i in v.past %}
+                            <tr>
+                                <td>{% if i.from_date %}{{ i.from_date|date:"d b" }} - {{ i.to_date|date:"d b" }}{% endif %}</td>
+                                <td><a class="lbe_adv_anchor nolink">{{ i.name }}</a></td>
+                                <td class="lbe_url_bl">
+                                    {{ i.views }}
+                                    {% if i.file %}
+                                        <div class="lbe_img"><object type="application/x-shockwave-flash" data="{{ i.file }}"><param name="movie" value="{{ i.file }}" /><param name="wmode" value="transparent" /></object></div>
+                                    {% else %}
+                                        <div class="lbe_img" style="width: 200px; height: auto;">
+                                            <div style="padding: 10px;">
+                                            <a>{{ i.name }}</a><br />
+                                            <p style="size: 11px;">{{ i.text }}</p>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </td>
+                                <td>{% if i.clicks %}<a onclick="adv_item_clicks({{ i.id }});">{% endif %}{{ i.clicks }}{% if i.clicks %}</a>{% endif %}</td>
+                                <td><a href="{% url profile_adv_details card.profile.user_id i.id %}">{{ i.spent }} руб. ({{ i.spent_percent }}%)</a></td>
+                                <td>{% if i.im_author %}<div class="edit_btn" onclick="adv_item_edit(false, {{ i.btype }}, {{ i.id }})" title="Редактировать"></div>{% endif %}</td>
+                                <td>{% if user.is_superuser %}<div class="delete_btn" onclick="adv_item_remove(this, {{ i.btype }}, {{ i.id }})" title="Удалить"></div>{% endif %}</td>
+                            </tr>
+                            {% endfor %}
+                        {% endif %}
+                    {% endfor %}
+                </table>
+            </div>
+            {% endif %}
+
+        </div>
+    </div>
+
+{% endblock %}

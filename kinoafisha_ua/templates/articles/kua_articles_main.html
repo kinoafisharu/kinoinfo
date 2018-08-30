@@ -1,0 +1,23 @@
+{% extends "kua_base.html" %}
+{% load i18n %}
+{% block title %}{% if article %}{{ article.title }}{% else %}{% trans "Статьи" %}{% endif %}{% endblock %}
+
+{% block content %}
+{% load kua_tags %}
+
+<h1 class="content-header">{% if article %}{{ article.title }}{% else %}{% trans "Статьи" %}{% endif %}</h1>
+
+{% kua_articles_menu %}
+
+
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        <div class="article">
+        {% if article %}
+            {{ article.text|safe }}
+        {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

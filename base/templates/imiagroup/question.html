@@ -1,0 +1,90 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}{% endblock %}
+{% block script %}
+
+    <script type="text/javascript">
+    function get_tags_auto(el){
+        var tags = [{% for i in tags_list %}"{{ i }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+
+        $(el).autocomplete({
+            source: tags,
+            minLength: 2,
+            messages: {
+                noResults: '',
+                results: function() {}
+            }
+        });
+    };
+    </script>
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% vlada_top_menu %}
+    {% vlada_left_menu vid %}
+
+
+
+<div class="art-postcontent-width">
+
+
+    <div class="question-item">
+        <div class="question-item-head">
+            <div class="question-item-author"><a href="{% url profile question_author.id %}">{{ question_author.name }}</a> {% trans 'спрашивает' %}:</div>
+            <div class="question-item-datetime">
+                {% if lang == 'ru' %}
+                {{ question.dtime|date:"d M Y г. H:i" }}
+                {% else %}
+                {{ question.dtime|date:"M d, Y, g:i a" }}
+                {% endif %}
+            </div>
+        </div>
+        <div class="question-item-body">
+            <div class="question-item-subject"><h1>{{ question.title }}</h1></div>
+            <div class="question-item-text">{{ question.text }}</div>
+            <div class="question-item-tags">
+                {% for tag in question_tags %}
+                <a href="{% url imiagroup_question_answer_tag tag %}"><div class="item-tag">{{ tag }}</div></a>
+                {% endfor %}
+            </div>
+        </div>
+
+    </div>
+    
+    <div style="text-align: center;">
+        <input type="button" value="{% trans 'Ответить' %}" class="create_answer question_btn" />
+    </div>
+
+    <div>
+        {% trans 'Ответы' %}:
+    </div>
+    
+    <div class="answer_list">
+    {% for i in answers %}
+        <div class="answer-item">
+            <div class="answer-item-head">
+                <div class="answer-item-author"><a href="{% url profile i.author.id %}">{{ i.author.name }}</a> {% trans 'отвечает' %}:</div>
+                <div class="answer-item-datetime">
+                {% if lang == 'ru' %}
+                {{ i.dtime|date:"d M Y г. H:i" }}
+                {% else %}
+                {{ i.dtime|date:"M d, Y, g:i a" }}
+                {% endif %}
+                </div>
+            </div>
+            <div class="answer-item-body">
+                <div class="answer-item-text">{{ i.text }}</div>
+            </div>
+        </div>
+    {% empty %}
+        <span id="q-tr-no"><br />{% trans 'Нет' %}</span>
+    {% endfor %}
+    </div>
+
+    <div class="clear"></div>
+</div>
+{% endblock %}

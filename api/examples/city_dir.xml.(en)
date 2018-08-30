@@ -1,0 +1,19 @@
+<data>
+    <api_title>
+        City_dir
+    </api_title>
+
+    <api_decription>
+        The method returns all cities
+    </api_decription>
+    
+    <api_example>city_dir/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/city_dir/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>no</api_response_details>
+
+    <!--<api_response>city_dir.txt</api_response>-->
+</data>

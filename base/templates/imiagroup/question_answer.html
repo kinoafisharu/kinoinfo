@@ -1,0 +1,144 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}{% trans 'Вопросы' %} - {% trans 'Ответы' %}{% endblock %}
+{% block script %}
+
+    <script type="text/javascript">
+    function get_tags_auto(el){
+        var tags = [{% for i in tags_list %}"{{ i }}"{% if not forloop.last %}, {% endif %}{% endfor %}];
+
+        $(el).autocomplete({
+            source: tags,
+            minLength: 2,
+            messages: {
+                noResults: '',
+                results: function() {}
+            }
+        });
+    };
+    </script>
+
+{% endblock %}
+
+
+{% block content %}
+
+    {% vlada_top_menu %}
+    {% vlada_left_menu vid %}
+
+
+<div class="art-postcontent-width">
+    <div style="text-align: center; padding-top: 10px;">
+        <a href="{% url imiagroup_question_answer %}" class="question_btn{% if not qtype %} qselected {% endif %}">{% trans 'Все вопросы' %}</a> 
+        <a href="{% url imiagroup_question_answer_type 'with' %}" class="question_btn{% if qtype == 'with' %} qselected {% endif %}">{% trans 'С ответами' %}</a> 
+        <a href="{% url imiagroup_question_answer_type 'without' %}" class="question_btn{% if qtype == 'without' %} qselected {% endif %}">{% trans 'Без ответов' %}</a>
+        <input type="button" value="{% trans 'Задать вопрос' %}" class="create_question question_btn" />
+        {% if user.is_superuser %}
+        <a href="{% url imiagroup_questions_admin %}" class="question_btn qaselected {% if qtype == 'admin' %} qselected {% endif %}" >{% trans 'Админ' %}</a> 
+        {% endif %}
+    </div>
+
+    {% if user.is_superuser and qtype == 'admin' %}
+    
+    <div style="margin-top: 5px; padding: 0 0 5px 15px;">
+        <a href="{% url imiagroup_questions_admin %}" {% if qa_list_type == 'questions' %}style="font-weight: bold; font-size: 16px;"{% endif %}>{% trans 'Список вопросов' %}</a> | 
+        <a href="{% url imiagroup_answers_admin %}" {% if qa_list_type == 'answers' %}style="font-weight: bold; font-size: 16px;"{% endif %}>{% trans 'Список ответов' %}</a>
+    </div>
+    
+    {% endif %}
+
+    <div class="question_list">
+        {% if qa_list_type == 'questions' %}
+            {% for i in data %}
+            <div class="question-item">
+                {% if qtype != 'admin' %}
+                <div class="question-item-bar">
+                    <div class="question-item-bar-star">
+                        {% if i.answers %}
+                        <div class="question-item-bar-star-green-empty" title="{% trans 'Есть ответы' %}"></div>
+                        {% else %}
+                        <div class="question-item-bar-star-grey-empty" title="{% trans 'Нет ответов' %}"></div>
+                        {% endif %}
+                    </div>
+                    <div class="question-item-bar-answers" title="{% trans 'Кол-во ответов' %}">{{ i.answers }}</div>
+                    <div class="question-item-bar-views" title="{% trans 'Просмотры' %}">{{ i.views }}</div>
+                </div>
+                {% endif %}
+
+                <div>
+                    <div class="question-item-head" {% if qtype != 'admin' %}style="margin-right: 50px;"{% endif %}>
+                        <div class="question-item-author"><a href="{% url profile i.author.id %}">{{ i.author.name }}</a> {% trans 'спрашивает' %}:</div>
+                        <div class="question-item-datetime">
+                        {% if lang == 'ru' %}
+                        {{ i.dtime|date:"d M Y г. H:i" }}
+                        {% else %}
+                        {{ i.dtime|date:"M d, Y, g:i a" }}
+                        {% endif %}
+                        </div>
+                    </div>
+                    <div class="question-item-body">
+                        <div class="question-item-subject"><h2><a href="{% url imiagroup_question i.id %}">{{ i.subject }}</a></h2></div>
+                        <div class="question-item-tags">
+                            {% for tag in i.tags %}
+                            <a href="{% url imiagroup_question_answer_tag tag %}" title="{% trans 'Поиск по тегу' %}"><div class="item-tag">{{ tag }}</div></a>
+                            {% endfor %}
+                        </div>
+                        {% if user.is_superuser and qtype == 'admin' %}
+                        <div class="question-item-translation">
+                            {% trans 'Оригинал' %}: <a href="{% url imiagroup_questions_translate_admin i.id i.lang %}" title="{% trans 'Редактировать вопрос' %}">{{ i.lang|upper }}</a>,
+                             <span style="padding-left: 20px;">{% trans 'Переведен' %}: {% for key, value in i.translation.items %}{% if key != i.lang %}<a href="{% url imiagroup_questions_translate_admin i.id key %}" title="{% trans 'Перевести вопрос' %}">{{ key|upper }} {% if value %}<span style="font-size: 10px; color: green;">{% trans 'да' %}</span>{% else %}<span style="font-size: 10px; color: red;">{% trans 'нет' %}</span>{% endif %}</a>{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}</span>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        {% else %}
+            {% for i in data %}
+            <div class="answer-item">
+                <div class="answer-item-head">
+                    <div class="answer-item-author"><a href="{% url profile i.author.id %}">{{ i.author.name }}</a> {% trans 'отвечает' %} (<a href="{% url imiagroup_question i.qid %}">{% trans 'перейти к вопросу' %}</a>):</div>
+                    <div class="answer-item-datetime">
+                    {% if lang == 'ru' %}
+                    {{ i.dtime|date:"d M Y г. H:i" }}
+                    {% else %}
+                    {{ i.dtime|date:"M d, Y, g:i a" }}
+                    {% endif %}
+                    </div>
+                </div>
+                <div class="answer-item-body">
+                    <div class="answer-item-text">{{ i.text }}</div>
+                </div>
+                {% if user.is_superuser and qtype == 'admin' %}
+                    <div class="question-item-translation" style="padding: 10px;">
+                        {% trans 'Оригинал' %}: <a href="{% url imiagroup_answers_translate_admin i.id i.parent i.lang %}" title="{% trans 'Редактировать ответ' %}">{{ i.lang|upper }}</a>
+                        <span style="padding-left: 20px;">{% trans 'Переведен' %}: {% for key, value in i.translation.items %}{% if key != i.lang %}<a href="{% url imiagroup_answers_translate_admin i.id i.parent key %}" title="{% trans 'Перевести ответ' %}">{{ key|upper }} {% if value %}<span style="font-size: 10px; color: green;">{% trans 'да' %}</span>{% else %}<span style="font-size: 10px; color: red;">{% trans 'нет' %}</span>{% endif %}</a>{% if not forloop.last %}, {% endif %}{% endif %}{% endfor %}</span>
+                        
+                    </div>
+
+                    
+                {% endif %}
+
+
+            </div>
+            {% endfor %}
+        {% endif %}
+
+        <div class="more_news" style="margin: 0 auto;">
+            {% if page == 1 and p.has_next %}
+            <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">{% trans "Предыдущие записи" %}</a>
+            {% endif %}
+            {% if page > 1 %}
+                <a href="?page={{ p.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">&#8592; {% trans "Новые записи" %}</a>
+                {% if p.has_next %}
+                <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">{% trans "Предыдущие записи" %} &#8594;</a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+    </div>
+    
+    <div class="clear"></div>
+</div>
+{% endblock %}

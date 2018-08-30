@@ -1,0 +1,95 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+
+{% block info %}
+{% load base_tags %}
+
+<script>
+        $(document).ready(function(){
+            var x = $('.art-posttree-width').offset().top + 30
+            var f = $('.footer').offset().top
+            $('.art-posttree-width, .scroll_list').css({'height': f-x + 'px'})
+            $(window).resize(function(){
+                var x = $('.art-posttree-width').offset().top + 30
+                var f = $('.footer').offset().top
+                $('.art-posttree-width, .scroll_list').css({'height': f-x + 'px'})
+            })
+        });
+    </script>
+
+
+
+
+<div class="scroll_list">
+    <form action="" method="post">{% csrf_token %}
+        <select onchange="this.form.submit();" name="country_filter">
+            {% for i in countries %}
+            <option value="{{ i.id }}" {% if i.id == country %}selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+        </select>
+        <a onclick="$.fancybox($('.distributor_new').show())">Добавить новый дистрибьютор</a>
+    </form>
+
+<table class="panel_list">  
+{% if status == 'distr' %}
+    
+    <th>Название</th>
+    {% for i in content %}
+        <tr>
+            <td><div>{{ i.name }}</div></td>
+        </tr>
+    {% empty %}
+        <br />пусто<br />
+    {% endfor %}
+{% endif %}
+
+{% if status == 'brand' %}
+    <th>ID</th><th>Название</th><th>Статус</th><th>Язык</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td><div>{{ i.id }}</div></td>
+            <td><div><a href="">{{ i.name }}</a></div></td>
+            <td><div>{{ i.status }}</div></td>
+            <td><div>{{ i.language }}</div></td>
+        </tr>
+    {% empty %}
+        <br />пусто<br />
+    {% endfor %}
+{% endif %}
+
+{% if status == 'names' %}
+    <th>ID</th><th>Название</th><th>Статус</th><th>Язык</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td><div>{{ i.id }}</div></td>
+            <td><div><a href="{% url edit_org_name i.id %}">{{ i.name }}</a></div></td>
+            <td><div>{{ i.status }}</div></td>
+            <td><div>{{ i.language }}</div></td>
+        </tr>
+    {% empty %}
+        <br />пусто<br />
+    {% endfor %}
+{% endif %}
+</table>
+</div>
+
+
+
+<form action="" method="post" class="distributor_new org_fields">{% csrf_token %}
+    Название:<br />
+    <input type="text" value="" size="70" name="distributor_name" /><br /><br />
+
+    Страна:<br />
+    <select name="distributor_country">
+    {% for i in all_countries %}
+        <option value="{{ i.id }}" {% if i.id == country %}selected{% endif %}>
+        {{ i.name }}
+        </option>
+    {% endfor %}
+    </select>
+
+    <br /><br />
+    <input type="button" value="Создать" class="distributor_new_btn" />
+</form>
+
+
+{% endblock %}

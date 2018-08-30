@@ -1,0 +1,15 @@
+{% extends "api/api_main.html" %}
+{% block info %}
+    <h2>{{ api_title }}</h2>
+    <p>{{ api_decription }}</p>
+    <h4>{% if lang == 'en' %}Example request{% else %}Пример запроса{% endif %}</h4>
+    <a href="{{ api_example }}" target="_blank" rel="nofollow">{{ api_example }}</a>
+    <h4>{% if lang == 'en' %}Options{% else %}Параметры{% endif %}</h4>
+    <p>{{ api_param|safe }}</p>
+    <h4>{% if lang == 'en' %}Explanation of the answer{% else %}Расшифровка ответа{% endif %}</h4>
+    <p>{{ api_response_details|safe }}</p>
+{#  <h4>{% if lang == 'en' %}For Developers{% else %}Для разработчиков{% endif %}</h4>#}
+{#   <p>{{ api_dev|safe }}</p>#}
+
+
+{% endblock %}

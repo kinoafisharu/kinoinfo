@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% block title %}Настройки{% endblock %}
+{% block content %}
+    <h1 class="content-header"><a href="{% url main_api %}">Настройки</a></h1>
+    <input type="checkbox" id="op1" {% if options.option1 %}checked{% endif %} onchange="settings(this.checked, this.id)" /> Отключить рекламу<br />
+    <input type="checkbox" id="op2" {% if options.option2 %}checked{% endif %} onchange="settings(this.checked, this.id)" /> Настройка 2<br />
+    <input type="checkbox" id="op3" {% if options.option3 %}checked{% endif %} onchange="settings(this.checked, this.id)" /> Настройка 3<br />
+    <input type="checkbox" id="op4" {% if options.option4 %}checked{% endif %} onchange="settings(this.checked, this.id)" /> Настройка 4<br /><br />
+    {% if not user.get_profile.auth_status %}
+        <a href="{% url login %}">Сохранить настройки</a>  
+    {% endif %}
+    {% if user.get_profile.auth_status %}
+        <a href="{% url profile %}">Профиль</a> 
+    {% endif %}
+    <br />
+    <br />
+    <a href="{% url main_api %}">На главную</a>
+{% endblock %}

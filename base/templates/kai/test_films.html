@@ -1,0 +1,103 @@
+{% extends "list_2.html" %}
+{% block content %}
+<div class="art-postcontent-width">
+    <h2 class="art-postheader">Фильмы</h2>
+    {% for i in film %}
+    <div class="test_list">
+        <div class="test_list_6">
+        <span>Названия</span><br />
+        {% for j in i.id_films.name.all %}
+            {% if j.status == 1 %}
+                <b>{{ j }}</b><br />
+            {% else %}
+                {{ j }}<br />
+            {% endif %}
+        {% endfor %}
+        </div>
+        <div class="test_list_7">
+        <span>Персоны</span><br />
+        {% for a in i.id_films.relationfp_set.all %}  
+            {% for n in a.person.name.all %}
+                {% if n.status == 1 %}
+                    {{ n }} ({{ a.action.name }})<br />
+                {% endif %}
+            {% endfor %}
+        {% endfor %}
+        </div>
+        <div class="test_list_2">
+        <span>Жанры</span><br />
+        {% for g in i.id_films.genre.all %}
+            {{ g.name }}<br />
+        {% endfor %}
+  
+        </div>
+        <div class="test_list_8">
+        <span>Год выхода</span><br />
+        {{ i.id_films.release_end|date:"Y"}}
+        </div>
+        <div class="test_list_5">
+        <br />
+        <span>Описание</span><br />
+        {{ i.id_films.note }}
+        </div>
+        <div class="test_list_2">
+        <br />
+        <span>Тип</span><br />
+        {{ i.id_films.get_film_type_display }}
+        </div>
+        <div class="test_list_8">
+        <br />
+        <span>Хроном.</span><br />
+        {{ i.id_films.runtime }}
+        </div>
+        <div class="test_list_9">
+        <br />
+        <span>Ограничения</span><br />
+        {{ i.id_films.get_rated_display }}
+        </div>
+        <div class="test_list_9">
+        <br />
+        <span>Бюджет</span><br />
+        {{ i.id_films.budget.budget }}{{ i.id_films.budget.currency }}
+        </div>
+        <div class="test_list_10">
+        <br />
+        <span>img</span><br />
+        {{ i.id_films.image_parameter.get_dimension_display }}<br />
+        {{ i.id_films.image_parameter.get_color_display }}<br />
+        {{ i.id_films.image_parameter.get_aspect_ratio_display }}<br />
+        </div>
+        <div class="test_list_10">
+        <br />
+        <span>sound</span><br />
+        {{ i.id_films.sound_parameter.get_sound_display }}<br />
+        {{ i.id_films.sound_parameter.get_soundsystem_display }}<br />
+        </div>
+        <div class="test_list_8">
+        <br />
+        <span>imdb</span><br />
+        {% for im in imdb_rel %}
+            {% if im.id_films == i.id_films %}
+                id: {{ im.id_films_sources }}
+                {% for j in imdb %}
+                    {% if j.id_imdb == im.id_films_sources %}
+                        rate: {{ j.rating }}
+                    {% endif %}
+                {% endfor %}
+            {% endif %}
+        {% endfor %}
+        </div>
+        <div class="test_list_10">
+        <br />
+        <span>Страны</span><br />
+        {% for co in i.id_films.countrys.all %}
+            {{ co }}<br />
+        {% endfor %}
+        </div>
+        <div class="test_list_5"></div>
+    </div>
+    {% endfor %}
+
+
+</div>
+{% endblock %}

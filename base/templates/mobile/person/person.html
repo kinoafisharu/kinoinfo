@@ -1,0 +1,83 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}{{ names.1|safe|striptags }}{% if names.1 and names.2 %} / {% endif %}{{ names.2|safe|striptags }} - визитка{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+    });
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+    {% mobile_header %}
+    {% person_menu_mobile person.kid %}
+
+
+<div class="art-postcontent-width">
+
+    <h1>Визитка</h1>
+
+    <div id="film_info" class="film_info-main" style="background: #F2F2F2;">
+        <div id="film_text">
+            
+            <div>
+            {% if actions_list %}
+                {% for i in actions_list|slice:":5"  %}
+                    {{ i }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            {% endif %}
+            </div>
+         
+            
+            <h2 id="film_name"><span>{% if names.1 %}{{ names.1|safe|striptags }}{% endif %}</span>
+            <p>
+                {% if imdb_id %}<a href="http://www.imdb.com/name/nm{{ imdb_id }}/" target="_blank" class="film_name_en_url">{% endif %}<span class="person_en_name">{{ names.2|safe|striptags }}</span>{% if imdb_id %}</a>{% endif %}
+            </p>
+            </h2>
+
+            <br/ >
+            
+            <b id="film_details">
+                <span class="born_txt">{% if person.born %}{{ born_txt }}{% endif %}</span>
+                <span>{% if person.born %}{{ person.born }}{% endif %}</span>{% if person.country %}, {% endif %}
+                <span>{% if person.country %}{{ person.country }}{% endif %}</span>
+            </b>
+            
+            <br/ >
+            <div id="film_poster" class="small_pstr">
+                <div id="poster">{% if photo %}<a class="fancybox" href="{{ photo }}"><img src="{{ photo }}" /></a>{% else %}<div class="no_image"></div>{% endif %}</div>
+            </div>
+
+            <br/ ><br/ >
+            <h3>Фильмография:</h3>
+            <br/ ><br/ >
+            
+            {% for t in film_data %}
+                <b>{{ t.title|capfirst }}:</b><br/ >
+                {% for i in t.data %}
+                    <div class="person_film_item">
+                        <div id="subscribe_micro" class="rate_color_small_{{ i.rate.int_rate }}">
+                            <div class="pen_rate_micro">
+                            <p title="Репутация фильма:{% if i.rate.show_imdb %} IMDb - {{ i.rate.show_imdb }}{% endif %}{% if i.rate.rotten %} / RottenTomatoes - {{ i.rate.rotten }}{% endif %}{% if i.rate.show_ir %} / Киномэтры - {{ i.rate.show_ir }}{% endif %}{% if not i.rate.show_imdb and not i.rate.rotten and not i.rate.show_ir %} нет{% endif %}" >
+                            {% if i.rate.int_rate %}{{ i.rate.int_rate }}{% else %}?{% endif %}</p>
+                            </div>
+                        </div>
+                            
+                        <a href="http://m.kinoinfo.ru/film/{{ i.kid }}/">{% if i.name_ru %}{{ i.name_ru|safe }}{% if i.name_en %} / {% endif %}{% endif %}{{ i.name_en|safe }} ({{ i.year }})</a>
+                    </div>
+                {% endfor %}
+                <br/ >
+            {% endfor %}
+            
+        </div>
+
+    </div>
+</div>
+
+
+
+{% endblock %}

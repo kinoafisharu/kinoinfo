@@ -1,0 +1,280 @@
+{% extends "base.html" %}
+{% load linkexchange_tags %}
+{% block title %}Новинки кино на торрент-трекерах{% endblock %}
+
+{% load base_tags %}
+
+{% block keywords %}{% endblock %}
+{% block description %}{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".fancybox").fancybox();
+});
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+<h1 class="content-header">
+	<b id="navigation_bar">
+        <a href="{% url main %}">{{ request.current_site.name }}</a>
+    </b> - <span style="font-size: 17px;">Новинки кино на торрент-трекерах</span>
+    {% if user.is_superuser %}
+    <span style="font-size: 14px; font-weight: normal; display: inline-block; float: right;">
+    <a href="{% url torrents_listing 50 %}" target="_blank">Cinemate</a>
+    | <a href="{% url torrents_listing 37 %}" target="_blank">Rutracker</a>
+    | <a href="{% url get_spec url_name %}" target="_blank">Спек и тесты</a>
+    </span>
+    {% endif %}
+</h1>
+
+
+{% torrents_menu %}
+
+
+<div class="art-postcontent-width">
+    {% if access %}
+    <form action="" method="post" style="margin-bottom: 10px;">{% csrf_token %}
+        <b style="vertical-align: top; line-height: 22px;">Год</b>
+        <select name="year">
+            {% for i in year_filter %}
+            <option value="{{ i }}" {% if i == year %} selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <b style="vertical-align: top; line-height: 22px;">Жанр</b>
+        <select name="genre">
+            {% for i in genre_filter %}
+            <option value="{{ i.id }}" {% if i.id == genre %} selected{% endif %}>{{ i.name|capfirst }}</option>
+            {% endfor %}
+        </select>
+
+        <b style="vertical-align: top; line-height: 22px;">Страна</b>
+        <select name="country">
+            {% for i in country_filter %}
+            <option value="{{ i.id }}" {% if i.id == country %} selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+        </select>
+
+        <b style="vertical-align: top; line-height: 22px;">Оценка</b>
+        <select name="rate">
+            {% for i in rate_filter %}
+            <option value="{{ i }}" {% if i == rate %} selected{% endif %}>{{ i }}</option>
+            {% endfor %}
+        </select>
+
+        <input type="submit" value="OK" name="filter" class="{% if set_filter %}btn_red{% else %}btn_green{% endif %}" />
+        <input type="submit" value="Сбросить" name="nofilter" />
+    </form>
+
+    <div class="art-postcontent">
+
+        <div class="scroll_list" style="padding-right: 10px;">
+        
+        {% for i in data %}
+        <div id="film_info" style="min-height: 330px; margin-bottom: 20px; padding: 5px 5px 10px 10px; background: {% if forloop.counter|divisibleby:'2' %}#EBEBEB;{% else %}#F2F2F2;{% endif %}{% if i.opinion %} opacity: 0.5;{% endif %}">
+            <div id="film_text" class="small_film_txt">
+                <div id="persons_top_line">
+                {% if i.persons.actors %}
+                    {% for j in i.persons.actors|slice:":3" %}
+                        <a href="{% url get_person j.id %}" target="_blank">
+                        {% if j.poster %}<img src="{{ j.poster }}" id="img_under"/>{% endif %}
+                        {{ j.name }}
+                        </a>{% if not forloop.last %}, {% endif %}
+                    {% endfor %}
+                    в фильме
+                {% else %}
+                    {% if i.persons.directors %}Фильм{% endif %}
+                {% endif %}
+                
+                {% for j in i.persons.directors %}
+                    <a href="{% url get_person j.id %}" target="_blank">
+                    {% if j.poster %}<img src="{{ j.poster }}" id="img_under"/>{% endif %}
+                    {{ j.name }}
+                    </a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                </div>
+
+                <h2 id="film_name"><a href="{% url get_film i.id %}" target="_blank">{% if i.name_ru %}{{ i.name_ru|safe }}{% else %}{{ i.name_en|safe}}{% endif %}</a></h2>
+                <b id="film_details">
+                <span>
+                {% for v in i.countries %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},
+                </span>
+                <span>
+                {% for v in i.genres %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},
+                </span>
+                <span>
+                {% if i.runtime %}{{ i.runtime }} мин.{% endif %}
+                </span>
+                </b>
+
+                <div id="film_description">
+                {% if i.descript %}
+                    {% if i.descript_cut %}
+                        {{ i.descript_cut|safe }}
+                        <a id="descript" href="#in_descript" onclick="$.fancybox.open($(this).next());">[подробнее]</a>
+                        <div id="in_descript">
+                            <div style="padding-right: 15px;">
+                            {{ i.descript|safe }}
+                            </div>
+                        </div>
+                        
+                    {% else %}
+                        {{ i.descript|safe }}
+                    {% endif %}
+                {% else %}
+                Нет описания
+                {% endif %}
+                </div>
+                
+
+                <div id="film_trailers">
+                    <div class="trailer"{% if online %} style="height: 230px;"{% endif %}>
+                    {% if i.trailer %}
+                        {% if online %}
+                            {{ i.trailer|safe }}
+                        {% else %}
+                        <div class="youtube_wrapper">
+                            <img src="{{ i.trailer_img }}" width="250" height="150" id="yt_{{ i.trailer_id }}">
+                            <div></div>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        Нет трейлера
+                    {% endif %}
+                    </div>
+                </div>
+
+                
+                <div id="film_slides" style="margin-bottom: 10px;">
+                {% for s in i.slides %}
+                    <div class="slide">{% if s.0 %}<a class="fancybox" rel="group_{{ i.id }}" href="{{ s.0 }}"><img class="fancy_slide" src="{{ s.1 }}" /></a>{% else %}Нет слайда{% endif %}</div>
+                {% endfor %}
+                </div>
+                
+                <div class="clear"></div>
+
+                {% if i.got %}
+                <div style="background: #FFF; padding: 10px; width: 310px;">
+                    Просмотрен: <a onclick="$(this).parents('#film_info').find('.fopinions_rate').click();">оценить</a> или <a onclick="$(this).parents('#film_info').find('.fopinions').click();">оставить мнение</a>
+                </div>
+                {% else %}
+                <a class="fopinions" onclick="watch_at_home({{ i.id }});">Хочу посмотреть дома</a>
+                {% endif %}
+            </div>
+
+            {% poster_with_likes i.id i.rating.rate i.rating.show_imdb i.rating.rotten i.rating.show_ir i.likes.likes_cinema i.likes.likes_home i.likes.likes_recommend i.likes.dislikes_seen i.likes.dislikes_recommend i.likes.count_likes i.likes.count_dislikes i.limit i.posters 'small_pstr' '' %}
+
+
+            <div class="fopinions_block">
+                <a onclick="get_film_opinions({{ i.id }}{% if not i.opinions.count %}, 1{% endif %});" class="fopinions">
+                {% if i.opinions.count %}
+                    <span>Отзывы зрителей ({{ i.opinions.count }})</span>
+                    <span>средняя оценка {{ i.opinions.avg }} из 5.0</span>
+                {% else %}
+                    <span>Добавить отзыв</span>
+                    <span></span>
+                {% endif %}
+                </a>
+                <br />
+                {% if i.opinions.my_rate %}
+                <div class="fopinions_rate">
+                    <span>Ваша оценка: {{ i.opinions.my_rate }}</span>
+                </div>
+                {% else %}
+                <a onclick="get_film_opinions({{ i.id }}, 2);" class="fopinions_rate">
+                    <span>Оценить фильм</span>
+                </a>
+                {% endif %}
+            </div>
+
+
+            {% if i.reviews %}
+            <div style="margin-top: 12px;">Рецензии:</div>
+            {% endif %}
+            {% for r in i.reviews %}
+            <div style="margin-top: 12px;">
+                <div class="review_avatar">
+                {% if r.avatar %}
+                    <img src="{{ r.avatar }}" />
+                {% endif %}
+                </div>
+        
+                <span style="color: #666;">
+                    {% if r.author_id %}
+                    <a href="{% url profile r.author_id %}" target="_blank">{{ r.user_firstname }} {{ r.user_lastname }}</a>,
+                    {% else %}
+                    {{ r.user_firstname }} {{ r.user_lastname }},
+                    {% endif %} Оценка: {{ r.rate }}
+                </span>
+                <br />
+                <p style="font-size: 12px; font-weight: bold; color: #444;">{{ r.title|safe }}</p>
+                
+                {% if r.txt_cut %}
+                    <p style="font-size: 12px;">{{ r.txt_cut }}</p>
+                    <a href="{% url get_film_reviews i.id %}{% if r.kinoinfo_id %}#r{{ r.kinoinfo_id }}{% endif %}" target="_blank">[подробнее]</a>
+                    {% comment %}
+                    <a id="descript" href="#in_descript" onclick="$.fancybox.open($(this).next());">[подробнее]</a>
+                    <div id="in_descript">
+                        <div style="padding-right: 15px;">
+                        {{ r.txt|safe }}
+                        </div>
+                    </div>
+                    {% endcomment %}
+                {% else %}
+                    <p style="font-size: 12px;">{{ r.txt|safe }}</p>
+                {% endif %}
+                
+            </div>
+            {% endfor %}
+
+        </div>
+
+        {% endfor %}
+
+
+
+        <div class="more_news" style="margin: 0 auto;">
+            {% if page == 1 and p.has_next %}
+            <a href="?page={{ p.next_page_number }}" class="more_news__link">Далее</a>
+            {% endif %}
+            {% if page > 1 %}
+                <a href="?page={{ p.previous_page_number }}" class="more_news__link">&#8592; Назад</a>
+                {% if p.has_next %}
+                <a href="?page={{ p.next_page_number }}" class="more_news__link">Далее &#8594;</a>
+                {% endif %}
+            {% endif %}
+        </div>
+
+        
+        </div>
+
+    </div>
+
+    {% else %}
+    У Вас недостаточно средств для просмотра этой страницы
+    {% endif %}
+</div>
+
+<div class="film_quality" style="display: none;">
+    <b>Выберите качество видео:</b>
+    <br />
+    <br />
+    <select class="watch_at_home_quality">
+        <option value="0">Любое качество</option>
+        <option value="1">Любое, кроме экранок</option>
+        <option value="2">Высокое качество (HD)</option>
+    </select>
+    <input type="button" class="watch_at_home_btn" value="OK" />
+    <input type="hidden" class="watch_at_home_id" value="" />
+    
+</div>
+
+<script type="text/javascript" id="kh_script" src="http://kinohod.ru/static/js/widget/v2.1/boxoffice.js?apikey={{ kinohod_key }}&base_uri=http%3a%2f%2fkinohod.ru%2fapi%2fwidget"></script>
+
+<script type="text/javascript" src="http://s2.kassa.rl0.ru/widget/js/ticketmanager.js"></script>
+
+{% endblock %}

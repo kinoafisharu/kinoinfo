@@ -1,0 +1,31 @@
+{% extends "api/api_main.html" %}
+{% load base_tags %}
+{% block info %}
+<div style="float: right;">
+</div>
+
+        <form action="" method='post'>{% csrf_token %}
+
+
+            <table class="panel_list">  
+                <th></th><th>Cron API dump command</th>
+                {% for i in cronlines %}
+                    <tr>
+                        <td>
+                            <div>
+                                <input type="checkbox" name="checker" value="{{ i.id }}" {% if i.enabled %}checked{% endif %}/>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                {{ i.cmd }}
+                           </div>
+                       </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <br />
+            <input type="submit" name="savechanges" value="Сохранить" />
+        </form>
+
+{% endblock %}

@@ -1,0 +1,56 @@
+{% extends "list_2.html" %}
+{% block title %}Навигация{% endblock %}
+{% block content %}
+<div class="art-postcontent-width">
+    <h2 class="art-postheader">Навигация</h2>
+    <h4>Импорт из источника 'киноафиша'</h4>
+    <br />
+    <a href="{% url save_lang_dir %}">Справочник Языки</a><br />
+    <a href="{% url save_country_dir %}">Справочник Страны</a><br />
+    <a href="{% url save_country_lang_rel %}">Справочник Связь страны и языка</a><br />
+    <a href="{% url save_city_dir %}">Справочник Города</a><br />
+    <a href="{% url save_seti_dir %}">Справочник Сети</a><br />
+    <a href="{% url save_metro_dir  %}">Справочник Метро</a><br />
+    <a href="{% url save_street_type_dir %}">Справочник Название типа улицы</a><br />
+    <a href="{% url save_genre_dir %}">Справочник Жанры</a><br />
+    <a href="{% url save_sources_dir %}">Справочник Источники (Киноафиша, IMDb, SMS)</a><br />
+    <a href="{% url save_persons_status_dir %}">Справочник Статус участия персоны</a><br />
+    <a href="{% url save_persons_type_dir %}">Справочник Тип участия персоны</a><br />
+    <a href="{% url save_persons %}">Персоны</a><br />
+    <a href="{% url save_film '1990' %}">Фильмы до 1990</a><br />
+    <a href="{% url save_films_name '1990' %}">Названия фильмов 1990</a><br />
+    <a href="{% url save_film '1990_1999' %}">Фильмы 1990-1999</a><br />
+    <a href="{% url save_films_name '1990_1999' %}">Названия фильмов 1990-1999</a><br />
+    <a href="{% url save_film '2000_2009' %}">Фильмы 2000-2009</a><br />
+    <a href="{% url save_films_name '2000_2009' %}">Названия фильмов 2000-2009</a><br />
+    <a href="{% url save_film '2010' %}">Фильмы 2010</a><br />
+    <a href="{% url save_films_name '2010' %}">Названия фильмов 2010</a><br />
+    <a href="{% url save_film '2011' %}">Фильмы 2011'</a><br />
+    <a href="{% url save_films_name '2011' %}">Названия фильмов 2011</a><br />
+    <a href="{% url save_film '2012' %}">Фильмы от 2012'</a><br />
+    <a href="{% url save_films_name '2012' %}">Названия фильмов 2012</a><br />
+    <a href="{% url save_cinema %}">Кинотеатры</a><br />
+    <a href="{% url save_hall %}">Залы</a><br />
+    <a href="{% url save_schedule %}">Сеансы</a> | <a href="{% url get_log 1 %}" style="color:red;">Лог</a><br />
+    <br />
+    <h4>Парсер</h4>
+    <br />
+    <a href="{% url save_sms_sources %}">1. Парсить sms.txt (получить url источники)</a> | <a href="{% url get_log 2 %}" style="color:red;">Лог</a><br />
+    <a href="{% url get_source_data 3 %}">2. Получить сеансы из источника 'sms' (сохранение в файл)</a> | <a href="{% url get_files_list_sms_schedule %}">Список файлов</a><br />
+    <a href="{% url save_sms_schedule %}">3. Сохранить сеансы 'sms' (из файла в БД)</a> | <a href="{% url get_log 3 %}" style="color:red;">Лог</a><br />
+    <br />
+    <h4>Тест</h4>
+    <a href="{% url get_films %}">Вывод Фильмы (2012, 100 шт.)</a><br />
+    <a href="{% url get_cinema %}">Вывод Кинотеатры (100 шт.)</a><br />
+    <a href="{% url get_schedule %}">Вывод Сеансы</a><br /><br />
+    <a href="{% url save_films_name2 '1990' %}">Сохранить в БД имена фильмов 1990</a><br />
+    <a href="{% url save_films_name2 '1990_1999' %}">Сохранить в БД имена фильмов 1990-1999</a><br />
+    <a href="{% url save_films_name2 '2000_2009' %}">Сохранить в БД имена фильмов 2000-2009</a><br />
+    <a href="{% url save_films_name2 '2010' %}">Сохранить в БД имена фильмов 2010</a><br />
+    <a href="{% url save_films_name2 '2011' %}">Сохранить в БД имена фильмов 2011</a><br />
+    <a href="{% url save_films_name2 '2012' %}">Сохранить в БД имена фильмов 2012</a><br />
+    <a href="{% url get_film_names %}">Вывод имен фильмов</a><br />
+    <a href="{% url test_search_name %}">Поиск названий фильмов</a><br />
+    <br />
+</div>
+{% endblock %}

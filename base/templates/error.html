@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %} Внимание: сбой в работе сервиса {% endblock %}
+{% block content %}
+<h1 class="art-postheader" style="text-align: center; margin-top: 30px;">
+Код ошибки: {{error}}
+<br><br>
+{{text}}
+<br><br>
+Попробуйте позже или <a href="mailto:kinoafisharu@gmail.com">свяжитесь</a> с администрацией сервиса.</h1>
+<br><br>
+
+
+<p style="width:100%; bottom: 30px; text-align: center;">Back to <a href="/">Home</a></p>
+
+{% endblock %}

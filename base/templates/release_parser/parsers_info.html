@@ -1,0 +1,45 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block info %}
+<h3 class="art-postheader" style="float: left;">
+{% if type == 'export' %}Экспорт{% endif %}
+{% if type == 'html' or type == 'xml' %}Парсинг{% endif %}
+{% if type == 'import' %}Импорт{% endif %}
+{% if type == 'api' %}API{% endif %}
+</h3>
+
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+<div style="clear: both;"></div>
+
+<table class="panel_list">  
+
+    <th>Источник</th><th>Цель</th><th>Создан</th><th>Статус</th>
+    {% for i in p.object_list %}
+        <tr>
+            <td><div>{{ i.source }}</div></td>
+            <td><div>{{ i.title }}</div></td>
+            <td><div>
+            {% if i.modify_date == today or i.modify_date == yesterday %}
+                {% if i.modify_date == today %}Сегодня{% else %}Вчера{% endif %}
+            {% else %}
+                {{ i.modify_date|date:"d b" }}
+            {% endif %}
+            </div></td>
+            <td>
+            {% if i.error %}
+                <div style="text-align: center; border-bottom: 1px dotted #B23636; background: #EA6969;">error</div>
+            {% else %}
+                <div style="text-align: center; border-bottom: 1px dotted #657E4B; background: #98B17E;">ok</div>
+            {% endif %}
+            </td>
+        </tr>
+    {% empty %}
+        <br />пусто<br />
+    {% endfor %}
+</table>
+
+{% endblock %}

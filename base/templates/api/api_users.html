@@ -1,0 +1,45 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags static %}
+{% get_static_prefix as STATIC_URL %}
+
+{% block info %}
+    {% if result.status == 'user_api' %}
+        <form action="" method="POST">{% csrf_token %}
+            Поиск юзера (login, email, nickname, fullname)<br />
+            <input type="text" name='user' value="" />
+            <input type="submit" value="Поиск" />
+            <a href="{% url user_list %}">Список всех пользователей</a>
+        </form>
+        {% if result.content %}
+            <ul class="api_panel_ul_top">
+                <li class="api_panel_ul_li1">Админ</li>
+                <li class="api_panel_ul_li1">Клиент</li>
+                <li class="api_panel_ul_li1">ID</li>
+                <li class="api_panel_ul_li1">Актив.</li>
+                <li class="api_panel_ul_li2">Login</li>
+                <li class="api_panel_ul_li2">Nickname</li>
+                <li class="api_panel_ul_li2">E-Mail</li>
+                <li class="api_panel_ul_li2">Fullname</li>
+            </ul>    
+            {% for k, i in result.content.items %}
+                    <ul class="api_panel_ul_sub">
+                        <li class="api_panel_ul_li1"><input type="checkbox" id="1_{{ i.user.id }}" {% if i.user.is_superuser %}checked="checked"{% endif %} /></li>
+                        <li class="api_panel_ul_li1"><input type="checkbox" id="2_{{ i.user.id }}" 
+                        {% for g in i.user.groups.all %}
+                            {% if g.name == 'API' %}checked="checked"{% endif %}
+                        {% endfor %}
+                         /></li>
+                        <li class="api_panel_ul_li1"><a href="{% url user_details i.user.id %}">{{ i.user.id }}</a></li>
+                        <li class="api_panel_ul_li1">{% if i.user.get_profile.auth_status %}да{% else %}нет{% endif %}</li>
+                        <li class="api_panel_ul_li2">{{ i.acc.login }}</li>
+                        <li class="api_panel_ul_li2">{{ i.acc.nickname }}</li>
+                        <li class="api_panel_ul_li2">{{ i.acc.email }}</li>
+                        <li class="api_panel_ul_li2">{{ i.acc.fullname}}</li>
+                    </ul>
+                    <input type="button" value="Сохранить" onclick="api_panel({{ i.user.id }});">
+                    <span id="api_panel_status_{{ i.user.id }}"></span>
+            {% endfor %}
+        {% endif %}
+    {% endif %}
+    
+{% endblock %}

@@ -1,0 +1,52 @@
+1
+1
+no_cache
+1
+no_cache
+280
+no_cache
+56
+no_cache
+56
+no_cache
+56
+no_cache
+28
+56
+no_cache
+28
+56
+no_cache
+28
+56
+no_cache
+28
+37891
+city_id 56
+no_cache
+len(films) 28
+37891
+city_id 56
+no_cache
+len(films) 28
+i = 37891
+city_id 56
+no_cache
+len(films) 28
+i = 37891
+city_id 1
+no_cache
+len(films) 1310
+i = 37403
+city_id 1
+no_cache
+len(films) 1310
+i = 37403
+city_id 1
+no_cache
+len(films) 1310
+i = 37403
+city_id 1
+no_cache
+len(films) 1310
+i = 37403

@@ -1,0 +1,88 @@
+{% extends "release_parser/schedule_main.html" %}
+{% block info %}
+<h1 class="art-postheader">График сеансов</h1>
+
+<div class="filter_panel">
+<div class="filter">
+<form action="" method="post">{% csrf_token %}
+    <p>Города</p>
+    <select name="city" onchange="this.form.submit();">
+        <option value="0">------</option>
+        {% for i in cities %}
+            <option value="{{ i }}" {% if fil.name == 'city' and fil.value == i %}selected{% endif %}>
+            {{ i }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+</div>
+<div class="filter">
+<form action="" method="post">{% csrf_token %}
+    <p>Кинотеатры</p>
+    <select name="cinema" onchange="this.form.submit();">
+        <option value="0">------</option>
+        {% for i in cinemas %}
+            <option value="{{ i }}" {% if fil.name == 'cinema' and fil.value == i %}selected{% endif %}>
+            {{ i }}
+            </option>
+        {% endfor %}
+    </select>
+</form>
+</div>
+<div class="filter">
+<form action="" method="post">{% csrf_token %}
+    <p>Найдены/Ненайдены</p>
+    <select name="found" onchange="this.form.submit();">
+        <option value="0">------</option>
+        <option value="1" {% if fil.name == 'found' and fil.value == 1 %}selected{% endif %}>Найденные</option>
+        <option value="2" {% if fil.name == 'found' and fil.value == 2 %}selected{% endif %}>Ненайденные</option>
+    </select>
+</form>
+</div>
+
+</div>
+<div class="filtered_content">
+
+    <form action="" method='post'>{% csrf_token %}
+        <table class="panel_list">
+        <th></th><th>Названия</th><th>Названия ист.</th>
+        {% for i in p.object_list %}
+                <tr>
+                <td><input type="checkbox" /></td>
+                <td>{{ i.name2 }}</td> 
+                <td>
+                {% if i.k_obj %}
+                    <a href="http://www.kinoafisha.ru/index.php3?status=1&id1={{ i.k_obj.id }}" target="_blank">
+                    {% for n in i.k_obj.filmsname_set.all %}
+                        {% if n.status == 1 %}
+                            {{ n.name|safe }} /
+                        {% endif %}
+                    {% endfor %}
+                {% endif %}
+                </td> 
+                </tr>
+        {% endfor %}
+        </table>
+    </form>
+
+    <br />
+    <form action="" method='post'>{% csrf_token %}
+        <div class="pagination">
+            <span class="step-links">
+                {% if p.has_previous %}
+                    <input type="submit" name="btn" value="Назад">
+                    <input type="hidden" name="prev" value="{{ p.previous_page_number }}">
+                {% endif %}
+                <span class="current">
+                    {{ p.number }} страница из {{ p.paginator.num_pages }}
+                </span>
+                {% if p.has_next %}
+                    <input type="submit" name="btn" value="Вперед">
+                    <input type="hidden" name="next" value="{{ p.next_page_number }}">
+                {% endif %}
+            </span>
+        </div>
+    </form>
+
+</div>
+{% endblock %}

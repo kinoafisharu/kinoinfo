@@ -1,0 +1,13 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Кинотеатры Киноафиши:</h3>
+
+    <div class="scroll_list" style="margin-bottom: 10px;">
+        {% for i in data %}
+        <a href="{% url organization_cinema i.uni_slug %}">{{ i.name }}</a><br />
+        {% endfor %}
+    </div>
+
+{% endblock %}

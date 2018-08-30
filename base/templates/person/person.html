@@ -1,0 +1,185 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ names.1|safe|striptags }} / {{ names.2|safe|striptags }} - визитка - {{ request.current_site.name }}{% endblock %}
+
+{% block keywords %}{% if names.1 %}{{ names.1|safe }}{% endif %} {% if names.2 %}{{ names.2|safe }}{% endif %} {% if actions_list %}{{ i }} {% endif %}фильмография фото{% endblock %}
+
+{% block description %}Фильмография, {% for t in film_data|slice:":3" %}{{ t.title }}: {% for i in t.data|slice:":3" %}{{ i.name_ru }}, {% endfor %} {% endfor %}{% endblock %}
+
+{% block script %}
+    {% if user.is_superuser %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/datepicker.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}tiny_mce/tiny_mce.js"></script>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+
+        $('input[name="person_born"]').datepicker({
+            altFormat: "yy-mm-dd",
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1,
+            yearRange: "-100:+0",
+        });
+
+    });
+    </script>
+    {% endif %}
+    
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+    });
+
+{% if user.is_superuser %}
+    tinyMCE.init({"cleanup_on_startup": true, "theme_advanced_toolbar_location": "top", "theme_advanced_toolbar_align": "left", "elements": ["id_note", "id_note2"], "language": "ru", "spellchecker_languages": "+\u0420\u0443\u0441\u0441\u043a\u0438\u0439=ru,\u0423\u043a\u0440\u0430\u0438\u043d\u0441\u043a\u0438\u0439=uk", "formats": {"alignleft": {"classes": "align-left", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "bold": {"inline": "strong"}, "alignfull": {"classes": "align-justify", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "alignright": {"classes": "align-right", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}, "italic": {"inline": "em"}, "strikethrough": {"inline": "del"}, "underline": {"inline": "u"}, "aligncenter": {"classes": "align-center", "selector": "p,h1,h2,h3,h4,h5,h6,td,th,div,ul,ol,li,table,img"}}, "theme_advanced_buttons1": "bullist, link, unlink, undo, redo, formatselect, fontsizeselect, alignleft, aligncenter, alignright, alignfull, bold, italic, underline", "theme_advanced_resizing": false, "directionality": "ltr", "theme_advanced_statusbar_location": "bottom", "theme": "advanced", "strict_loading_mode": 1, "mode": "exact", "custom_undo_redo_levels": 20, "plugins": "wordcount", "pagebreak_separator": ""});
+
+{% endif %}
+</script>
+{% endblock %}
+
+{% block sys_info %}
+    {% sys_info timer cached_page %}
+{% endblock %}
+
+{% block content %}
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">персона</span> <a href="{% url get_person person.kid %}">{% if names.1 %}{{ names.1|safe|striptags }}{% else %}{{ names.2|safe|striptags }}{% endif %}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">визитка</span></b>
+</h1>
+
+{% if user.is_superuser %}
+    <span class="post_delete in_h1_left" onclick="if(confirm('Вы уверены, что хотите удалить персону?')){$('.pst_dl').submit()}">Удалить персону</span>
+    <form action="{% url delete_person %}" method="post" class="pst_dl">{% csrf_token %}
+        <input type="hidden" value="{{ person.kid }}" name="del"/>
+    </form>
+{% endif %}
+
+{% person_menu person.kid %}
+
+<div class="art-postcontent-width">
+
+    <div id="film_info" itemscope itemtype="http://schema.org/Person">
+        <div id="film_text">
+            
+            <div style="font-size: 11px;">
+            {% if actions_list %}
+                {% for i in actions_list|slice:":5"  %}
+                    {{ i }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+            {% endif %}
+            </div>
+         
+            {% if user.is_superuser %}
+            <div class="person_name_fields org_fields">
+                <b>Имя Фамилия (ru)</b><br />
+                <input type="text" value="{{ names.1|safe }}" size="50" class="person_name_field" />
+                <br /><b>В род. падеже (ru)</b><br />
+                <input type="text" value="{{ par_name|safe }}" size="50" class="person_par_name_field" />
+                <br /><b>Имя Фамилия (en)</b><br />
+                <input type="text" value="{{ names.2|safe }}" size="50" class="person_name_en_field" />
+                <br />
+                <input type="button" value="Сохранить" class="person_name_accept_btn" />
+                <input type="button" value="Отмена" class="person_name_cancel_btn" onclick="obj_cancel(this);" />
+                <span class="name_err"></span>
+            </div>
+            {% endif %}
+         
+            <h2 id="film_name"><span{% if user.is_superuser %} class="person_name org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %} itemprop="name">{% if names.1 %}{{ names.1|safe|striptags }}{% else %}{% if user.is_superuser %}Нет{% endif %}{% endif %}</span>
+            <p>
+                {% if imdb_id %}<a href="http://www.imdb.com/name/nm{{ imdb_id }}/" target="_blank" class="film_name_en_url">{% endif %}<span class="person_en_name">{{ names.2|safe|striptags }}</span>{% if imdb_id %}</a>{% endif %}
+
+                {% if request.user.is_superuser %} | 
+                    {% if imdb_id %}
+                        <a onclick="imdb_person_get_data('{{ person.id }}', '{{ imdb_id }}');">обновить слой IMDb</a>
+                    {% else %}
+                        <a onclick="imdb_person_search('{{ person.id }}', '{{ names.2|safe }}');">обновить слой IMDb</a>
+                    {% endif %}
+                {% endif %}
+            </p>
+            </h2>
+
+            <b id="film_details">
+                <span class="born_txt">{% if person.born %}{{ born_txt }}{% else %}{% if user.is_superuser %}{{ born_txt }}{% endif %}{% endif %}</span>
+                <span{% if user.is_superuser %} class="person_born org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>{% if person.born %}{{ person.born }}{% else %}{% if user.is_superuser %}<span style="font-weight: normal;">дата</span>{% endif %}{% endif %}</span>{% if person.country %}, {% endif %}
+                
+                <span{% if user.is_superuser %} class="person_country org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>
+                {% if person.country %}{{ person.country }}{% else %}{% if user.is_superuser %}<span style="font-weight: normal;">страна</span>{% endif %}{% endif %}
+                </span>
+                
+                {% if user.is_superuser %}
+                    , <span class="person_gender org_hover" title="Редактировать" onclick="obj_edit(this);">{% if person.male %}{% if person.male == 1 %}М{% else %}Ж{% endif %}{% else %}{% if user.is_superuser %}<span style="font-weight: normal;">пол</span>{% endif %}{% endif %}</span>
+                {% endif %}
+            </b>
+            
+            {% if user.is_superuser %}
+            <div class="person_born_fields org_fields">
+                <b>Дата рождения (ddmmyyyy):</b><br />
+                <input type="text" name="person_born" value="{{ born_edit }}"/>
+                <input type="button" value="Сохранить" class="person_born_accept_btn" />
+                <input type="button" value="Отмена" class="person_born_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            
+            <div class="person_country_fields org_fields">
+                <b>Страна</b><br />
+                <select name="person_country">
+                {% for i in country %}
+                    <option value="{{ i.id }}"{% if person.country_id == i.id %} selected{% endif %}>{{ i.name }}</option>
+                {% endfor %}
+                </select>
+                <input type="button" value="Сохранить" class="person_country_accept_btn" />
+                <input type="button" value="Отмена" class="person_country_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            
+            <div class="person_gender_fields org_fields">
+                <b>Пол</b><br />
+                <select name="person_gender">
+                {% for i in sex %}
+                    <option value="{{ i.0 }}"{% if i.0 == person.male %} selected{% endif %}>{{ i.1 }}</option>
+                {% endfor %}
+                </select>
+                <input type="button" value="Сохранить" class="person_gender_accept_btn" />
+                <input type="button" value="Отмена" class="person_gender_cancel_btn" onclick="obj_cancel(this);" />
+            </div>
+            {% endif %}
+            
+
+            <div class="separator_line"></div>
+            <h3>Фильмография:</h3>
+            <div style="height: 280px !important; overflow: auto; padding-right: 5px;">
+            {% for t in film_data %}
+                <b>{{ t.title|capfirst }}:</b><br/ >
+                {% for i in t.data %}
+                    <div id="subscribe_micro" class="rate_color_small_{{ i.rate.int_rate }}">
+                        <div class="pen_rate_micro">
+                        <p title="Репутация фильма:{% if i.rate.show_imdb %} IMDb - {{ i.rate.show_imdb }}{% endif %}{% if i.rate.rotten %} / RottenTomatoes - {{ i.rate.rotten }}{% endif %}{% if i.rate.show_ir %} / Киномэтры - {{ i.rate.show_ir }}{% endif %}{% if not i.rate.show_imdb and not i.rate.rotten and not i.rate.show_ir %} нет{% endif %}" >
+                        {% if i.rate.int_rate %}{{ i.rate.int_rate }}{% else %}?{% endif %}</p>
+                        </div>
+                    </div>
+                        
+                    <a href="http://kinoinfo.ru/film/{{ i.kid }}/">{% if i.name_ru %}{{ i.name_ru|safe }}{% if i.name_en %} / {% endif %}{% endif %}{{ i.name_en|safe }} ({{ i.year }})</a><br />
+                {% endfor %}
+            {% endfor %}
+            </div>
+        </div>
+        
+        <div id="film_poster">
+            {% if user.is_superuser %}
+                <a href="http://persons.nodomain.kinoafisha.ru/loadtrailers18/detalfilms.php?id={{ person.kid }}&ix=5507931&act=foto_persons" target="_blank"><span class="film_poster_edit">Редактировать</span></a>
+            {% endif %}
+            
+            <div id="poster">{% if photo %}<a class="fancybox" href="{{ photo }}"><img src="{{ photo }}" itemprop="image" /></a>{% else %}<div class="no_image"></div>{% endif %}</div>
+
+        </div>
+        
+        {% if user.is_superuser %}
+            <input type="hidden" name="person_id" value="{{ person.id }}" />
+        {% endif %}
+    </div>
+</div>
+
+
+
+{% endblock %}

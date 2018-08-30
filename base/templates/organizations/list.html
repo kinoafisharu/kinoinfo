@@ -1,0 +1,48 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Организации {{ city_names }} от А до Я{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">Организации {{ city_names }} от А до Я</h1>
+
+{% if user.is_superuser or request.is_admin %}
+    <span class="org_new" title="Добавить новую организацию">Добавить</span>
+
+    <form action="{% url organizations_add %}" method="post" class="organization_new org_fields">{% csrf_token %}
+        <b>Заполните обязательные поля</b><br /><br />
+        Название организации:<br />
+        <input type="text" value="" size="70" name="organization_name" class="organization_n" /><br /><br />
+        Укажите <b>одну</b> метку/тег:<br />
+        <input type="text" value="" name="tag" class="organization_t" onkeyup="get_names_auto(this, 'tags');" size="35" /><br /><br />
+        <input type="button" value="Создать" class="organization_new_btn" />
+    </form>
+{% endif %}
+    
+<div class="art-posttree-width">
+    <div class="films_years">
+    {% for i in alphabet %}
+        <a href="{% url organization_list i %}">{{ i }}</a> 
+    {% endfor %}
+    </div>
+</div>
+
+<div class="art-postcontent-width">
+    <div class="scroll_list">
+    {% for i in orgs %}
+        <a href="{% url organization_show_new i.uni_slug %}">{{ i.name }}</a> 
+        {% for t in i.tags.all %}
+            {% if not forloop.last %}
+            <span style="color: red;">
+            {{ t.name }}, 
+            </span>
+            {% else %}
+            {{ t.name }}
+            {% endif %}
+        {% endfor %}
+        <br /> 
+    {% endfor %}
+    </div>
+</div>
+
+{% endblock %}

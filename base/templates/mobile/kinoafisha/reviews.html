@@ -1,0 +1,50 @@
+{% extends "mobile/base.html" %}
+{% block title %}{{ request.current_site.name }}: Темы и обзоры{% endblock %}
+{% load base_tags %}
+
+{% block content %}
+
+{% mobile_header %}
+
+{% kinoafisha_main_menu_mobile %}
+
+<div class="art-postcontent-width">
+
+    <h1>{% if id %}<a href="{% url kinoafisha_reviews %}">{% endif %}Темы и обзоры{% if id %}</a>{% endif %}</h1>
+
+        {% if id %}
+            <div class="article">
+            {% if news_data.0.title %}
+            <h3>{{ news_data.0.title|safe }}</h3>
+            {% endif %}
+            {{ news_data.0.text|safe }}
+            </div>
+        {% else %}
+            {% for i in news_data %}
+                {% if i.obj.reader_type == '14' %}
+                    <h3><a href="{% url kinoafisha_reviews i.id %}">{{ i.title|safe }}</a>{% if not i.obj.visible %} <span style="color: red;">(Не отображается)</span>{% endif %}</h3>
+                    Рецензия автора: {% if i.user.fio %}{{ i.user.fio }}{% else %}{{ i.user.short_name }}{% endif %} на фильм <a href="http://m.kinoinfo.ru/film/{{ i.film_id }}/">{{ i.film_name|safe }}</a> - {{ i.date|date:"d b Y" }}
+                {% else %}
+                    <h3><a href="{% url kinoafisha_reviews i.id %}">{{ i.title|safe }}</a>{% if not i.obj.visible %} <span style="color: red;">(Не отображается)</span>{% endif %}</h3>
+                    {{ i.description }} - {{ i.date|date:"d b Y" }}
+                {% endif %}
+                <br /><br />
+            {% endfor %}
+
+            <div class="more_news" style="margin: 0 auto;">
+                {% if page == 1 and p.has_next %}
+                <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Ещё рецензии</a>
+                {% endif %}
+                {% if page > 1 %}
+                    <a href="?page={{ p.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">&#8592; Рецензии новее</a>
+                    {% if p.has_next %}
+                    <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Ещё рецензии &#8594;</a>
+                    {% endif %}
+                {% endif %}
+            </div>
+        {% endif %}
+    
+
+</div>
+
+{% endblock %}

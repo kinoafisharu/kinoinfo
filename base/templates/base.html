@@ -1,0 +1,354 @@
+{% load base_tags static %}
+{% load dajaxice_templatetags %}
+{% load i18n %}
+{% get_static_prefix as STATIC_URL %}
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" dir="ltr" lang="en-US" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="keywords" content="{% block keywords %}{% endblock %}" />
+    <meta name="description" content="{% block description %}{% endblock %}" />
+    <meta name="viewport" content="width=device-width" />
+    {% if request.current_site.domain == 'kinoinfo.ru' %}
+    <link href="http://kinoinfo.ru" rel="canonical" />
+    <meta name="google-site-verification" content="GWpQ-IFyoAe53CVTsat1D75l-0gv3NvD1kmL6OobZ84" />
+    <meta name='yandex-verification' content='4023559cda59a0b0' />
+    {% endif %}
+    {% if request.current_site.domain == 'letsgetrhythm.com.au' %}
+    <meta name='yandex-verification' content='4cfb4f045e505090' />
+    {% endif %}
+    {% if request.current_site.domain == 'kinoafisha.ru' %}
+    <link href="http://www.kinoafisha.ru" rel="canonical" />
+    <meta name='shareinstock' content='f6553a70f3113bb3067b38bb6' />
+    {% endif %}
+
+
+    <title>{% block title %}Главная{% endblock %}</title>
+    
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/style.css" type="text/css" media="screen" />
+    <!--[if IE 6]><link rel="stylesheet" href="{{ STATIC_URL }}base/css/style.ie6.css" type="text/css" media="screen" /><![endif]-->
+    <!--[if IE 7]><link rel="stylesheet" href="{{ STATIC_URL }}base/css/style.ie7.css" type="text/css" media="screen" /><![endif]-->
+    <link rel="shortcut icon" href="{{ STATIC_URL }}base/images/favicon.ico" type="/media/image/x-icon" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-ui-1.9.2.custom.min.js"></script>
+
+    <script src="{{ STATIC_URL }}base/dajaxice/dajaxice.core.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/script.js"></script>
+    {% if user.is_superuser or request.is_admin %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/adm.js"></script>
+    {% endif %}
+
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/slick.js"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/slick.css" type="text/css" media="screen">
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/slick-theme2018.css" type="text/css" media="screen">
+    
+    {% block script %}{% endblock %}
+    
+    {% if request.noob %}  
+    <script src="https://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <script type="text/javascript">
+        ymaps.ready(ya_init);
+        function ya_init(){
+            var geo = ymaps.geolocation
+            Dajaxice.user_registration.user_reg(function(){}, {
+                'app_name': navigator.appName,
+                'platform': navigator.platform,
+                'display': screen.width+"x"+screen.height,
+                'geo_co': geo.country,
+                'geo_ci': geo.city,
+            })
+        }
+    </script>
+    {% endif %}
+
+    
+    {% if request.new_messages %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.messenger_pre_show').addClass('new_msg_indicator');
+        });
+    </script>
+    {% endif %}
+
+    {% if request.current_site.domain == 'kinoinfo.ru' %}
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-47575701-1', 'kinoinfo.ru');
+        ga('send', 'pageview');
+    </script>
+    {% endif %}
+    
+    {% if request.current_site.domain == 'kinoafisha.ru' %}
+    <script>
+        $(document).ready(function(){
+            var x = $('.art-posttree-width').offset().top + 10
+            var f = $('.footer').offset().top
+            $('.art-posttree-width, .scroll_list').css({'height': f-x + 'px'})
+            $(window).resize(function(){
+                var x = $('.art-posttree-width').offset().top + 10
+                var f = $('.footer').offset().top
+                $('.art-posttree-width, .scroll_list').css({'height': f-x + 'px'})
+            })
+        });
+    </script>
+    {% endif %}
+    
+    {% if request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+    <style>
+    html a, html a:visited{color: #aa1e38 !important;}
+    </style>
+    {% endif %}
+
+
+</head>
+
+<body>
+<div class="body" {% block page_bg %}style="background-image: url('{% if branding %}{{ branding }}{% else %}{{ request.bg_img }}{% endif %}');"{% endblock %}>
+    
+    {% if request.current_site.domain == 'kinoafisha.ru' %}
+    <!-- Yandex.Metrika counter --><script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter33495773 = new Ya.Metrika({ id:33495773, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="https://mc.yandex.ru/watch/33495773" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
+    {% endif %}
+
+    {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+        <!--LiveInternet counter--><script type="text/javascript"><!--
+        new Image().src = "//counter.yadro.ru/hit?r"+
+        escape(document.referrer)+((typeof(screen)=="undefined")?"":
+        ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
+        screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
+        ";"+Math.random();//--></script><!--/LiveInternet-->
+    {% endif %}
+
+    <div class="art-main">
+        {% block sys_info %}{% endblock %}
+
+        <!--Верхняя панель управления-->
+        <div class="upper-menu">
+            <div class="upper-menu__control-links">
+		        
+		        {% if request.user.is_superuser or request.is_admin %}
+		            {% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+		            <noindex>
+		            <a href="{% url change_background %}" rel="nofollow">
+		                <div class="upper-menu__control-links__bg">Background</div>
+                    </a>
+                    </noindex>
+		            {% endif %}
+		            
+		            {% if request.current_site.domain == 'vsetiinter.net' and request.subdomain == 'music' %}
+		            <noindex>
+                    <a href="{% url admin_main %}" rel="nofollow">
+		                <div class="upper-menu__control-links__bg">Админ Панель</div>
+                    </a>
+                    </noindex>
+		            {% endif %}
+		        {% endif %}
+		        
+		        {% if request.current_site.domain == 'letsgetrhythm.com.au' %}
+		            {% if request.acc_list.acc %}
+		            <div class="upper-menu__control-links__city">
+		                <noindex>
+                        <a href="{% url logout %}" rel="nofollow">Logout</a>
+                        </noindex>
+                    </div>
+		            {% endif %}
+		        {% endif %}
+		        
+                {% if request.current_user_city %}
+                    <a class="select_mycity upper-menu__control-links__city">
+                    {{ request.current_user_city }}
+                    </a>
+                {% endif %}
+
+                {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' %}
+                <noindex>
+                <a href="{% if request.current_site.domain == 'vsetiinter.net' %}http://ya.vsetiinter.net/user/profile/{% else %}{% url profile %}{% endif %}" target="_blank" rel="nofollow">
+                <div class="upper-menu__control-links__money" title="{% trans 'На Вашем счету' %} {{ request.mymoney }} {% trans 'руб' %}.">
+                {% if not request.acc_list.acc %}{{ request.acc_list.name }}: {% endif %}{{ request.mymoney_int }} {% trans 'р' %}.
+                </div>
+                </a>
+                </noindex>
+                {% endif %}
+                
+                {% messanger %}
+
+                {% if request.acc_list.acc %}
+                    <noindex>
+                    <a class="upper-menu__control-links__autorization" href="{% if request.current_site.domain == 'vsetiinter.net' %}http://ya.vsetiinter.net/user/profile/{% else %}{% url profile %}{% endif %}" target="_blank" id="user_full_name" rel="nofollow">{% if request.fio %}{{ request.fio|safe|striptags }}{% else %}{{ request.acc_list.short_name|safe|striptags }}{% endif %}</a>
+                    </noindex>
+                {% else %}
+                    <noindex>
+                    <a href="{% if request.current_site.domain == 'vsetiinter.net' %}http://ya.vsetiinter.net/user/login/{% else %}{% url login %}{% endif %}" target="_blank" rel="nofollow">
+                        <div class="upper-menu__control-links__autorization">
+                            {% trans 'Авторизоваться' %}
+                        </div>
+                    </a>
+                    </noindex>
+                {% endif %}
+
+            </div>
+        </div>
+        <!--конец верхней панели управления-->
+        {% csrf_token %}
+        <!--центральный баннер для шапки-->
+        {% block header %}{% endblock %}
+        <center>
+            {% if request.current_site.domain == 'kinoafisha.ru' %}
+            <div class="logo_txt"><span>КИНОАФИША РОССИИ</span></div>
+            {% endif %}
+            {% if not branding %}
+                {% if request.noindex %}<noindex>{% endif %}
+                <a href="{% block br_url %}{{ request.advert_url }}{% endblock %}" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %} {% if request.current_site.domain == 'kinoafisha.ru' or request.current_site.domain == 'kinoinfo.ru' %} style="display: inline; position: static;" class="flb_link" id="flb_id_{% block adv_id %}{{ request.advert_id }}{% endblock %}"{% endif %}>
+                    <img src="{{ STATIC_URL }}base/images/space.png" border="0" width="100%" height="30%" alt="" />
+                </a>
+                {% if request.noindex %}</noindex>{% endif %}
+            {% endif %}
+        </center>
+        <!--конец центрального баннера для шапки-->
+        <div class="content-main">
+            <!--блок контента-->
+            <div class="art-content">
+                {% block content %}{% endblock %}
+            </div>
+            <!--конец блока контента-->
+        </div>
+
+        <!-- Обратная Обратная связь -->
+        <div id="show_modal">
+            <noindex>
+            <a class="feedback" id="modal" href="#in_modal" rel="nofollow">{% trans 'Обратная связь' %}</a>
+            </noindex>
+        </div>
+        <div id="in_modal"></div>
+
+        {% if request.current_site.domain == 'kinoafisha.ru' %}
+        <a href="http://m.kinoafisha.ru" class="mobile_version full_website" id="fw_type_1" title="Мобильная версия"></a>
+        {% endif %}
+        {% if request.current_site.domain == 'kinoinfo.ru' %}
+        <a href="http://m.kinoinfo.ru" class="mobile_version full_website" id="fw_type_1" title="Мобильная версия"></a>
+        {% endif %}
+        <!--конец Обратной связи-->
+                
+        <div class="footer">
+            <!--блок поиска-->
+            <div class="art-search__title-search">{% trans 'ИСКАТЬ' %}</div>
+            <!--конец блока поиска-->
+            <!--блок метрики-->
+            <div class="footer__content-main">
+                <div class="footer__border"></div>
+
+                {% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' or request.subdomain == 'yalta' or request.subdomain == 'orsk' %}
+                <div class="art-search">
+                    <form action="{% url search %}" method="GET" class="art-search-form">
+                        <input class="search-field" type="text" name="query" />
+
+                        <select class="search-filter" name="filter">
+                            {% if request.subdomain == 'yalta' or request.subdomain == 'orsk' %}
+                            <option value="1">Организации</option>
+                            {% endif %}
+                            <option value="2">{% trans 'Новости' %}</option>
+                            {% if request.subdomain == 'yalta' or request.subdomain == 'orsk' %}
+                            <option value="3">Люди</option>
+                            {% endif %}
+                        </select>
+
+                        <input class="search-button" type="submit" value="GO" />
+                    </form>
+                </div>
+                {% endif %}
+                
+                
+                {% if request.subdomain == 'music' %}
+                <div class="art-search">
+                    <form action="{% url search %}" method="GET" class="art-search-form">
+                        <input class="search-field" type="text" name="query" />
+                        <input name="filter" type="hidden" value="3" />
+                        <input class="search-button" type="submit" value="GO" />
+                    </form>
+                </div>
+                {% endif %}
+                
+                {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+                <div class="art-search">
+                    <form action="{% url search %}" method="GET" class="art-search-form">
+                        <input class="search-field" type="text" name="query" />
+                        <select class="search-filter" name="filter">
+                            <option value="1"{% if srch_category == '1' %} selected{% endif %}>Фильмы</option>
+                            <option value="2"{% if srch_category == '2' %} selected{% endif %}>Персоны</option>
+                            <option value="3"{% if srch_category == '3' %} selected{% endif %}>Кинотеатры</option>
+                        </select>
+                        <input class="search-button" type="submit" value="GO" />
+                    </form>
+                </div>
+                {% endif %}
+
+                <div class="art-menu">
+                    {% menu %}
+                </div>
+                
+                {% if request.subdomain != 'music' %}
+                <div class="footer__content-main__items"{% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' %} style="margin-top: 12px;"{% endif %}>
+                {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' %}
+
+                    <p class="footer-icons copy">
+                        {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+                            {% if request.current_site.domain == 'kinoinfo.ru' %}
+                                {% block multifooter01 %}<a href="/">Здесь</a> - четыре примера приложений, использующих базу "Киноинфо".{% endblock multifooter01 %}
+                            {% else %}
+                                Киноафиша России - одно из приложений, использующих базу {% if request.noindex %}<noindex>{% endif %}<a href="http://kinoinfo.ru/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Киноинфо</a>{% if request.noindex %}</noindex>{% endif %}.
+                            {% endif %}
+                        {% else %}
+                            Сделано в ООО "Яумён", а именно: концепция - <a href="https://plus.google.com/u/0/112583972897815812222/posts" target="_blank">Михаил Иванов</a>, программирование - <a href="https://plus.google.com/u/0/110631826052054330418/" target="_blank">Юрий Данилевский</a>, интерфейс - <a href="https://plus.google.com/u/0/110162576318268593569/posts?tab=XX" target="_blank">Илья Земляков</a>
+                        {% endif %}
+                    </p>
+
+                    <div class="footer-icons metric">
+                    {% liveinternet_counter %}
+                    </div>
+                {% endif %}
+                </div>
+                {% endif %}
+                
+                <div class="footer__content-main__text"> 
+                {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' %}
+                    
+                    {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+                         {% block multifooter02 %}
+                         База содержит актуальную информацию о более чем 
+                         {% if request.noindex %}<noindex>{% endif %}
+                         <a href="{% url get_film_list 2015 %}" {% if request.noindex %}rel="nofollow"{% endif %}>35 тысячах фильмов</a>{% if request.noindex %}</noindex>{% endif %}.
+                         Взаимодействие с базой - через {% if request.noindex %}<noindex>{% endif %}<a href="http://kinoinfo.ru/api/" {% if request.noindex %}rel="nofollow"{% endif %}>API</a>{% if request.noindex %}</noindex>{% endif %}.
+                         Разработчики: {% if request.noindex %}<noindex>{% endif %}<a href="http://www.kinoafisha.ru/user/profile/7518740/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Михаил Иванов</a>{% if request.noindex %}</noindex>{% endif %}, 
+                         {% if request.noindex %}<noindex>{% endif %}<a href="https://plus.google.com/u/0/110631826052054330418/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Юрий Данилевский</a>.{% if request.noindex %}</noindex>{% endif %}
+                         <br />(с) <a href="http://www.kinoafisha.ru/user/profile/7518740/" target="_blank">ИП Михаил Иванов</a> 2014-{% now "Y" %}
+                         {% endblock multifooter02 %}
+                        {% endif %}
+                        
+                        {% if request.subdomain == 'yalta' %}
+                            <a href="{% url organization_list 'а' %}">Все организации Ялты</a>
+                        {% endif %}
+                        {% if request.subdomain == 'orsk' %}
+                            <a href="{% url organization_list 'а' %}">Все организации Орска</a>
+                        {% endif %}
+                    
+                {% else %}
+                     Powered by <b><a href="http://www.kinoafisha.ru/user/profile/7518740/" target="_blank">ИП Михаил Иванов</a></b> &copy; 2014
+                {% endif %}
+                </div>
+            </div>
+            <!--конец блок метрики-->
+            <!--блок меню-->
+            <div class="art-menu__title-menu">{% trans 'МЕНЮ' %}</div>
+            <!--конец блока меню-->
+        </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

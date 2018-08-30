@@ -1,0 +1,24 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader">Имена режиссеров</h3>
+
+
+    <div class="scroll_list">
+    
+        <table class="panel_list">  
+            <th>RUS</th><th>ENG</th><th>RUS род.падеж</th>
+            {% for i in data %}
+                <tr>
+                    <td><div{% if not i.ru %} style="background: #FFE0E0;"{% endif %}><a href="#" id="{{ i.pid }}__{{ i.ru_id }}__ru" class="edit_persons_name">{% if i.ru %}{{ i.ru|safe }}{% else %}ред.{% endif %}</a></div></td>
+                    <td><div><a href="{{ i.person_url }}" target="_blank">{% if i.en %}{{ i.en|safe }}{% else %}нет{% endif %}</a></div></td>
+                    <td><div{% if not i.parent %} style="background: #FFE0E0;"{% endif %}><a href="#" id="{{ i.pid }}__{{ i.parent_id }}__parent" class="edit_persons_name">{% if i.parent %}{{ i.parent|safe }}{% else %}ред.{% endif %}</a></div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+          
+
+    </div>
+
+{% endblock %}

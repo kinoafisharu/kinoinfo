@@ -1,0 +1,166 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{% if org.ownership %}{{ org.get_ownership_display }} {% endif %}{{ org.name }} - {{ offer.organizationtags.name|lower }}{% endblock %}
+
+{% block script %}
+    {% if user.is_superuser or offers.is_editor or request.is_admin %}
+    {% if not news_data %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $('.news_new').click();
+        });
+    </script>
+    {% endif %}
+    {% endif %}
+{% endblock %}
+
+
+{% block content %}
+<h1 class="content-header"><a href="{% url main %}"><img id="home_image" src="{{ STATIC_URL }}base/images/home.png" title="на Главную" /></a> 
+{% if request.current_site.domain != 'kinoinfo.ru' and request.current_site.domain != 'kinoafisha.ru' %}
+<span id="cities2">{% for i in DOMAIN_CITIES %}{% if i.sub == request.subdomain %}{{ i.name }}{% endif %}{% endfor %}</span> - <a href="{% url organization_list 'а' %}">
+{% endif %}
+{% if org.ownership %}{{ org.get_ownership_display }} {% endif %}{{ org.name }}
+{% if request.current_site.domain != 'kinoinfo.ru' and request.current_site.domain != 'kinoafisha.ru' %}
+</a>
+{% endif %} - {{ offer.organizationtags.name|lower }}</h1>
+
+{% if request.current_site.domain != 'kinoinfo.ru' and request.current_site.domain != 'kinoafisha.ru' %}
+<div id="cities_inline">
+    <div style="padding: 8px;">
+        {% for i in DOMAIN_CITIES %}
+            {% if i.sub == request.subdomain %}
+                <div class="cities_list" style="color: #333;">
+                {{ i.name }}
+                </div>
+            {% else %}
+                <a href="http://{{ i.sub }}.vsetiinter.net/">
+                    <div class="cities_list">
+                    {{ i.name }}
+                    </div>
+                </a>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+{% endif %}
+
+
+{% organization_menu org.uni_slug offers_tags advert_tags is_editor branding %}
+
+
+<div class="art-postcontent-width">
+    
+    {% if user.is_superuser or is_editor or request.is_admin %}
+
+    <span class="news_new" title="Добавить">Добавить</span>
+    
+    <form action="{% url news_add %}" method="post" class="new_new org_fields">{% csrf_token %}
+        <b>Заполните обязательные поля</b><br /><br />
+        Заголовок:<br />
+        <input type="text" value="" size="70" name="news_title" class="organization_n" /><br /><br />
+        Укажите метки (ключевые слова, теги) через запятую:<br />
+        <input type="text" value="" name="tag" class="organization_t" onkeyup="get_names_auto(this, 'tags');" size="70" /><br /><br />
+        Подпись автора:<br />
+        <input type="radio" name="author_nick" value="0" checked /> {% if fio %}{{ fio }}{% else %}{{ acc_list.short_name }}{% endif %}
+        <br />
+        <input type="radio" name="author_nick" value="1"{% if not user.first_name %} disabled{% endif %}/> Псевдоним{% if user.first_name %} - {{ user.first_name }}{% endif %} (<a href="http://ya.vsetiinter.net/user/card/" target="_blank" rel="nofollow">{% if user.first_name %}Изменить{% else %}Добавить{% endif %}</a>)
+        <br />
+        <input type="radio" name="author_nick" value="2"/> Не показывать подись
+        <br /><br />
+        <input type="hidden" value="12" name="type" />
+        <input type="hidden" class="organization_id" id="{{ org.id }}" name="org_id" value="{{ org.id }}"/>
+        <input type="hidden" value="{{ offer.id }}" name="offer" />
+        <input type="button" value="Создать" class="organization_new_btn" />
+    </form>
+
+    {% endif %}
+
+    <div class="main_block">
+        <div class="left_blocks">
+        {% for i in news_data %}
+            {% if i.even %}
+            <div class="short_news"{% if not i.obj.visible %} style="background-color: rgba(255,250,205,0.7);"{% endif %}>
+                <a href="{% url organization_adverts_news org.uni_slug offer.id i.obj.id %}">
+                <div class="short_news__img">
+                    {% if i.video %}
+                        <img src="{{ STATIC_URL }}base/images/watch_video.jpg" />
+                    {% else %}
+                        {% if i.obj.img %}
+                        <img src="/upload{{ i.obj.img }}" />
+                        {% endif %}
+                    {% endif %}
+                </div>
+                </a>
+                <h2><a href="{% url organization_adverts_news org.uni_slug offer.id i.obj.id %}">{{ i.obj.title }}</a></h2>
+                {{ i.description }}
+                
+                <span class="news_autor">
+                {% if i.autor.show == '1' %}
+                <a href="http://ya.vsetiinter.net/user/profile/{{ i.autor.id }}/" target="_blank" rel="nofollow">{{ i.autor.short_name }}</a>
+                {% else %}
+                {{ i.autor.short_name }}
+                {% endif %}
+                </span>
+                
+                <span>{% if not i.obj.visible %}<font style="color: red;">Не отображается</font> {% endif %}{{ i.obj.dtime|date:"j E" }}</span>
+            </div>
+            {% endif %}
+        {% empty %}
+            Пусто
+        {% endfor %}
+        </div>
+        
+        <div class="right_blocks">
+        {% for i in news_data %}
+            {% if not i.even %}
+            <div class="short_news"{% if not i.obj.visible %} style="background-color: rgba(255,250,205,0.7);"{% endif %}>
+                <a href="{% url organization_adverts_news org.uni_slug offer.id i.obj.id %}">
+                <div class="short_news__img">
+                    {% if i.video %}
+                        <img src="{{ STATIC_URL }}base/images/watch_video.jpg" />
+                    {% else %}
+                        {% if i.obj.img %}
+                        <img src="/upload{{ i.obj.img }}" />
+                        {% endif %}
+                    {% endif %}
+                </div>
+                </a>
+                <h2><a href="{% url organization_adverts_news org.uni_slug offer.id i.obj.id %}">{{ i.obj.title }}</a></h2>
+                {{ i.description }}
+                
+                <span class="news_autor">
+                {% if i.autor.show == '1' %}
+                <a href="http://ya.vsetiinter.net/user/profile/{{ i.autor.id }}/" target="_blank" rel="nofollow">{{ i.autor.short_name }}</a>
+                {% else %}
+                {{ i.autor.short_name }}
+                {% endif %}
+                </span>
+                
+                <span>{% if not i.obj.visible %}<font style="color: red;">Не отображается</font> {% endif %}{{ i.obj.dtime|date:"j E" }}</span>
+                
+            </div>
+            {% endif %}
+        {% endfor %}
+        </div>
+
+    </div>
+        
+    <div class="more_news">
+    {% if page == 1 and p.has_next %}
+    <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Ещё новости</a>
+    {% endif %}
+    {% if page > 1 %}
+        <a href="?page={{ p.previous_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">&#8592; Новости горячее</a>
+        {% if p.has_next %}
+        <a href="?page={{ p.next_page_number }}{% if tag %}&tag={{ tag }}{% endif %}" class="more_news__link">Новости холоднее &#8594;</a>
+        {% endif %}
+    {% endif %}
+    </div>
+        
+    
+</div>
+
+
+
+{% endblock %}

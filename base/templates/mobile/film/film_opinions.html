@@ -1,0 +1,97 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - отзывы зрителей{% endblock %}
+{% block script %}
+    <style type="text/css">
+    .fancybox-skin{ background: #FFF5EB; }
+    </style>
+
+    
+{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+
+    {% film_menu_mobile id menu film_editor %}
+
+<div class="art-postcontent-width">
+    <h1><a href="{% url get_film id %}">{{ name_ru|safe }}</a> - Отзывы зрителей</h1>
+    <br />
+
+    {% if avg_rates %}<b>Средняя оценка фильма от зрителей: {{ avg_rates }}</b>{% endif %}
+    <input type="button" value="Оставить отзыв" class="opinions_text" />
+
+    <div class="opinions_text_fields org_fields" style="margin: 20px 0 20px 0;">
+        
+        <b>Новый отзыв:</b><br />
+        
+        <textarea class="otext"></textarea>
+        <br />
+        
+        <div id="author_names">
+            {% if not my_rate_exist %}
+            <table style="text-align: left;">
+                <th style="width: 150px;">Для глаз и ушей:</th>
+                <th style="width: 150px;">Для ума:</th>
+                <th style="width: 150px;">Для сердца:</th>
+                <tr>
+                    <td><input type="radio" name="eye" id="eye_3" value="3" checked /> Супер</td>
+                    <td><input type="radio" name="mind" id="mind_3" value="3" checked /> Сильно</td>
+                    <td><input type="radio" name="heart" id="heart_3" value="3" checked /> Трогает</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="eye" id="eye_2" value="2" /> Хорошо</td>
+                    <td><input type="radio" name="mind" id="mind_2" value="2" /> Занятно</td>
+                    <td><input type="radio" name="heart" id="heart_2" value="2" /> Так себе</td>
+                </tr>
+                <tr>
+                    <td><input type="radio" name="eye" id="eye_1" value="1" /> Скучно</td>
+                    <td><input type="radio" name="mind"  id="mind_1" value="1" /> Глупо</td>
+                    <td><input type="radio" name="heart" id="heart_1" value="1" /> Раздражает</td>
+                </tr>
+            </table>
+            <br />
+            {% endif %}
+        </div>
+
+        <div class="nick_bl">
+            Подпись автора:<br />
+            <input type="radio" name="author_nick" value="0" checked /> {% if request.fio %}{{ request.fio }}{% else %}{{ request.acc_list.short_name }}{% endif %}
+            <br />
+            <input type="radio" name="author_nick" value="1"{% if not user.first_name %} disabled{% endif %}/> Псевдоним{% if user.first_name %} - {{ user.first_name }}{% endif %} {% if user.id %}(<a href="{% url user_details user.id %}" target="_blank">{% if user.first_name %}Изменить{% else %}Добавить{% endif %}</a>){% endif %}
+            <br />
+        </div>
+        
+        <br />
+        <input type="hidden" value="{{ id }}" class="ofilm_id" />
+        <input type="submit" value="Сохранить" class="opinions_text_accept_btn" />
+        <input type="button" value="Отмена" class="opinions_text_cancel_btn" />
+        <span class="opinion_msg"></span>
+
+    </div>
+
+    <div class="opinions_list" style="margin-top: 10px;">
+        {% for i in opinions %}
+        <div class="opinion_bl" style="background: {% if forloop.counter|divisibleby:'2' %}#EBEBEB;{% else %}#F2F2F2;{% endif %}">
+            <b style="color: #333;">{{ i.nick }}</b>
+            <p style="color: #888;">{{ i.date|date:"H:i, d E Y года" }}</p>
+            {% if i.rate %}
+            <div class="opinion_rate" title="Оценка">{{ i.rate }}</div>
+            {% endif %}
+            
+            {{ i.full_txt|safe }}
+            
+            {% if i.source %}<br /><br /><em>Источник: <a href="{{ i.source }}" target="_blank" {% if i.source_name == 'kino.ru' %}class="organization_url"{% endif %}>{{ i.source_name }}</a></em>{% endif %}
+            <br />
+        </div>
+        {% empty %}
+        Отзывов нет
+        {% endfor %}
+    </div>
+    
+    
+</div>
+
+
+
+{% endblock %}

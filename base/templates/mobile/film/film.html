@@ -1,0 +1,281 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - визитка{% endblock %}
+
+{% block script %}
+
+    <script id="kh_script" type="text/javascript" src="http://load.kinohod.ru/static/js/widget/v4/boxoffice.js?apikey={{ kinohod_key }}"></script>
+    
+    <script type="text/javascript">
+    var film_id_schedules = {{ id }}
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+        $("#descript").fancybox();
+        {% if schedule_cinemas %}
+        get_film_schedule(film_id_schedules, {{ cinema_load }}, 2);
+        {% endif %}
+    });
+
+
+{% if not city_name %}
+function set_user_city(){
+    $.fancybox.open($("#in_descript2"));
+    Dajaxice.user_registration.get_cities(get_sub_country_callback, {'id': {{ country }}});
+};
+{% endif %}
+
+    </script>
+{% endblock %}
+
+
+{% block content %}
+    {% mobile_header %}
+
+    {% film_menu_mobile id menu film_editor %}
+
+
+<div class="art-postcontent-width">
+
+    <h1>Визитка</h1>
+
+    <span id="loader"></span>
+    <div id="film_info" class="film_info-main" style="background: #F2F2F2;">
+        <div id="film_text">
+
+            <div id="persons_top_line">
+            {% if actors %}
+                {% for i in actors|slice:":3"  %}
+                    <a href="{% url get_person i.id %}">{% if i.photo %}<img src="{{ i.photo }}" id="img_under" />{% endif %}{{ i.afisha_name }}</a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                в фильме 
+            {% endif %}
+            
+            {% if directors %}
+                {% if not actors %}
+                    Фильм 
+                {% endif %}
+                {% for i in directors|slice:":2" %}
+                    <a href="{% url get_person i.id %}">{% if i.photo %}<img src="{{ i.photo }}" id="img_under" />{% endif %}{% if i.parental_name %}{{ i.parental_name }}{% else %}{{ i.afisha_name }}{% endif %}</a>{% if not forloop.last %} и {% endif %}
+                {% endfor %}
+            {% endif %}
+           </div>
+
+            <h2 id="film_name">{{ name_ru|safe }} <span>({{ year }})</span>
+            <p style="padding-top: 10px;"><a href="http://www.imdb.com/title/tt{{ imdb_link }}" target="_blank" class="film_name_en_url">{{ name_en|safe }}</a></p></h2>
+
+            <div id="kid" style="display: none;">{{ id }}</div>
+            
+            <div id="film_details">
+                <span>
+                {% for k, v in countries.items %}{{ v }}{% if not forloop.last %} / {% endif %}{% empty %}<span style="font-weight: normal;">страна</span>{% endfor %},
+                </span>
+                <span>
+                {% for k, v in genres.items %}{{ v }}{% if not forloop.last %} / {% endif %}{% empty %}<span style="font-weight: normal;">жанр</span>{% endfor %},
+                </span>
+                <span>
+                {% if runtime %}{{ runtime }} мин.{% else %}<span style="font-weight: normal;">продолжит.</span>{% endif %}
+                </span>
+            </div>
+            
+            <div id="film_description">
+                {% if description %}
+                    {{ description|safe }}
+                {% else %}
+                Нет описания
+                {% endif %}
+            </div>
+            
+            
+            <div id="in_descript" style="padding-right: 15px; font-size: 16px;">
+                {{ description|safe }}
+                <br />
+                {% if directors %}
+                <br />
+                <b>Режиссер:</b> 
+                {% for i in directors %}
+                    <a href="{{ i.afisha_link }}">{{ i.afisha_name }}</a>{% if i.imdb_name %} <span class="small_star">({{ i.imdb_name }})</span>{% endif %}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                {% endif %}
+                
+                {% if actors %}
+                <br />
+                <br />
+                <b>Звезды:</b> 
+                {% for i in actors %}
+                    <a href="{{ i.afisha_link }}">{{ i.afisha_name }}</a>{% if i.imdb_name %} <span class="small_star">({{ i.imdb_name }})</span>{% endif %}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                {% endif %}
+                
+                {% if other_person %}
+                <br />
+                <br />
+                <b>Прочие создатели:</b> 
+                {% for i in other_person %}
+                    <a href="{{ i.afisha_link }}">{{ i.afisha_name }}</a>{% if i.imdb_name %} <span class="small_star">({{ i.imdb_name }})</span>{% endif %} - {{ i.type }}{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                {% endif %}
+            </div>
+            
+            <br />
+            <br />
+
+            <div id="film_poster" class="small_pstr">
+                <div id="subscribe_info" class="rate_color_{{ rating.rate }}">
+                    <div class="pen_rate"><b>{% if rating.rate %}{{ rating.rate }}{% else %}?{% endif %}</b></div>
+                </div>
+                <div class="triangle"
+                {% if rating.rate == 5 %}style="border-left: 20px solid rgba(60, 179, 113, 0.8);"{% endif %}
+                {% if rating.rate == 4 %}style="border-left: 20px solid rgba(126, 192, 238, 0.8);"{% endif %}
+                {% if rating.rate == 3 %}style="border-left: 20px solid rgba(255, 218, 185, 0.8);"{% endif %}
+                {% if rating.rate == 2 %}style="border-left: 20px solid rgba(238, 130, 238, 0.8);"{% endif %}
+                ></div>
+                
+                <div class="tickets_info">
+                <a href="http://kinohod.ru/" class="kh_boxoffice" ticket movie="" city=""></a>
+                </div>
+                
+                <div class="like_list">
+                    <div class="like_list__options subscription_release" title="Хочу смотреть в кинотеатре"><div class="like_in_cinema"></div><div class="likes_cinema">{{ likes_cinema }}</div></div>
+                    <div class="like_list__options subscription_topic" title="Хочу посмотреть дома"><div class="like_in_home"></div><div class="likes_home">{{ likes_home }}</div></div>
+                    <div class="like_list__options" title="Смотрел - рекомендую"><div class="like_and_recommend"></div><div class="likes_recommend">{{ likes_recommend }}</div></div>
+                </div>
+                <div class="dislike_list">
+                    <div class="dislike_list__options" title="Не буду смотреть"><div class="dislike_not_be_see"></div><div class="dislikes_seen">{{ dislikes_seen }}</div></div>
+                    <div class="dislike_list__options" title="Смотрел - не рекомендую"><div class="dislike_and_not_recommend"></div><div class="dislikes_recommend">{{ dislikes_recommend }}</div></div>
+                </div>
+                <div class="poster_label">
+                    <div class="rating"></div>
+                    <div class="evaluation">
+                        <div class="likes"><div class="like"></div><div class="count_likes">{{ count_likes }}</div></div>
+                        <div class="dislikes"><div class="dislike"></div><div class="count_dislikes">{{ count_dislikes }}</div></div>
+                    </div>
+                    <div id="age_limit">{% if limits %}{{ limits }}{% endif %}</div>
+                </div>
+                <div id="poster">{% if posters %}<a class="fancybox" href="{{ posters }}"><img src="{{ posters }}" /></a>{% else %}<div class="no_image"></div>{% endif %}</div>
+            </div>
+            
+            <div class="trailer_slides">
+                <div id="film_trailers">
+                    <div class="trailer">{% if trailers %}{{ trailers|safe }}{% else %}Нет трейлера{% endif %}</div>
+                </div>
+            
+                <div id="film_slides">
+                {% for i in slides %}
+                    <div class="slide">{% if i.0 %}<a class="fancybox" rel="group" href="{{ i.0 }}"><img class="fancy_slide" src="{{ i.1 }}" /></a>{% else %}Нет слайда{% endif %}</div>
+                {% endfor %}
+                </div>
+            </div>
+
+
+            <div class="film_under_poster">
+            {% if rating.show_imdb %}
+                <div>Рейтинг IMDb: {{ rating.show_imdb }}</div>
+            {% endif %}
+            {% if rating.rotten %}
+                <div>Рейтинг RottenTomatoes: {{ rating.rotten }}</div>
+            {% endif %}
+            {% if rating.show_ir %}
+                <div>Рейтинг от Киномэтров: {{ rating.show_ir }}</div>
+            {% endif %}
+                <div><a href="{% url get_film_posters id %}">Все постеры</a></div>
+                <div><a href="{% url get_film_slides id %}">Все слайды</a></div>
+                <div><a href="{% url get_film_trailers id %}">Все трейлеры</a></div>
+            </div>
+
+            {% if schedule_cinemas %}
+            <br />
+            <br />
+            
+            <select class="film_cinemas_schedules">
+            {% for i in schedule_cinemas %}
+            <option value="{{ i.cinema__cinema }}">{{ i.cinema__cinema__name__name|safe }}</option>
+            {% endfor %}
+            </select>
+            {% endif %}
+            
+            <div id="schedules" class="film_schedules_block">
+            {% if not city_name %}
+                <div class="separator_line"></div>
+                <a onclick="set_user_city();">Сеансы в Вашем городе</a>
+            {% endif %}
+            </div>
+            
+
+            {% if comment %}
+                <br />
+                <div class="fcomment">
+                {{ comment|safe }}
+                </div>
+            {% endif %}
+            
+            <div class="subs" style="display: none;" id="{{ id }}">
+                <div class="subscription_release subs_btn" {% if subs %}id="cancel_subs"{% endif %}></div>
+            </div>
+            <a id="various3" href="#inline3"></a>
+            <div id="inline3">
+                <form action="{% url email_auth_send %}" method="post" id="sub_e">{% csrf_token %}
+                </form>
+            </div>
+
+            <div style="margin-top: 20px;">
+                {% if reviews %}
+                <div style="margin-bottom: 10px;">
+                <b><a href="{% url get_film_reviews id %}" title="{% for i in reviews %} {{ i.user }} - {{ i.title|safe }} - {{ i.rate }} / 9{% if not forloop.last %},&#013;{% endif %}{% endfor %}">Рецензии</a></b>
+                </div>
+                {% endif %}
+                
+                <a href="{% url get_film_opinions id %}">мнения</a>
+                
+                {% if distributors %}
+                    <div style="margin-bottom: 10px;">
+                    <b>Дистрибьютор:</b> {% for i in distributors %}{{ i.name|safe }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                    </div>
+                {% endif %}
+                
+                {% if release %}
+                    <div style="margin-bottom: 10px;"><b>Дата релиза:</b> {{ release|date:'j E Y' }}
+                    </div>
+                {% endif %}
+                
+                {% if sound_copy %}
+                    <div style="margin-bottom: 10px;"><b>Копий:</b> {% for i in sound_copy %}{{ i.num }} - {{ i.name }}{% if not forloop.last %}, {% endif %}{% endfor %}
+                    </div>
+                {% endif %}
+                
+                {% if budget %}
+                    <div style="margin-bottom: 10px;"><b>Бюджет:</b> {{ budget }}
+                    </div>
+                {% endif %}
+                
+                {% if money.ru or money.usa %}
+                <div><b>Сборы:</b> <a href="{% url get_film_boxoffice id %}">{% if money.usa %}США: {{ money.usa }}{% if money.ru %}, {% endif %}{% endif %}{% if money.ru %}Россия: {{ money.ru }}{% endif %}</a></div>
+                {% endif %}
+            </div>
+
+        </div>
+   
+    </div>
+</div>
+
+{% if not city_name %}
+<div id="in_descript2">
+    <form action="{% url set_coord %}" method='post'>{% csrf_token %}
+        <b>Укажите Ваше местоположение: </b><br /><br />
+        <select name="countries" id="sub_country2">
+        {% for i in countries_list %}
+        <option value="{{ i.id }}"{% if i.id == country %} selected{% endif %}>{{ i.name }}</option>
+        {% endfor %}
+        </select>
+        <select name="cities" id="sub_city2">
+        {% for i in cities %}
+            <option value="{{ i.key }}" id="{{ i.code }}"></option>
+        {% endfor %}
+        </select>
+        <input type="submit" value="Выбрать" />
+        <input type="hidden" value="{{ request.path }}" name="next" />
+    </form>
+</div>
+{% endif %}
+
+{% endblock %}

@@ -1,0 +1,16 @@
+{% extends "base_vlada.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{% trans 'Авторизация' %}{% endblock %}
+{% block content %}
+    {% vlada_top_menu %}
+    <div class="block-auth-through-openid">
+        {% base_user_openid message %}
+        {% base_user_email %}
+        {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au'  and request.current_site.domain != 'imiagroup.com.au' %}
+        {% base_user_lj %}
+        {% endif %}
+    </div>
+<div class="clear"></div>
+
+{% endblock %}

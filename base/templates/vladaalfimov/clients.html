@@ -1,0 +1,170 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+{% block script %}
+<link rel="stylesheet" href="{{ STATIC_URL }}base/css/datepicker.css" type="text/css" media="screen" />
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('input[name="date_from"], input[name="date_to"]').datepicker({
+            altFormat: "yy-mm-dd",
+            dateFormat: 'yy-mm-dd',
+            changeMonth: true,
+            changeYear: true,
+            firstDay: 1
+        });
+
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+
+    {% vlada_top_menu %}
+    {% vlada_tools_menu %}
+
+ 
+<div class="art-postcontent-width">
+    <form action="" method="POST">{% csrf_token %}
+    <b>Name: </b>
+    <select name="char" onchange="this.form.submit();">
+        {% for i in alphabet_filter %}
+        <option value="{{ i }}"{% if i == char %} selected{% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+    <b>Date: </b>
+    <input type="text" value="{{ date_from }}" name="date_from" size="9" /><b>&#8211;</b><input type="text" value="{{ date_to }}" name="date_to" size="9" />
+    <input type="submit" value="OK" name="date_filter" />
+    <b>Note search: </b>
+    <input type="text" value="{{ note_srch }}" name="note_srch" /><input type="submit" value="Search" name="note_filter" />
+    </form>
+    
+    <form action="" method="POST" style="float: left; margin-right: 6px;">{% csrf_token %}
+    <b>Code: </b>
+    <select name="code" onchange="this.form.submit();">
+        {% for i in codes %}
+        <option value="{{ i }}"{% if i == code %} selected{% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+    </form>
+    
+    <form action="" method="POST" style="float: left; margin-right: 6px;">{% csrf_token %}
+    <b>Status: </b>
+    <select name="status" onchange="this.form.submit();">
+        {% for k, v in agree_filter.items %}
+        <option value="{{ k }}"{% if k == agree %} selected{% endif %}>{{ v.0 }}</option>
+        {% endfor %}
+    </select>
+    </form>
+    
+    <form action="" method="POST">{% csrf_token %}
+    <b>Tags: </b>
+    <select name="tags" onchange="this.form.submit();">
+        {% for i in tags %}
+        <option value="{{ i }}"{% if i == tag %} selected{% endif %}>{{ i }}</option>
+        {% endfor %}
+    </select>
+    </form>
+    
+    
+        <form action="{% url letsget_clients_del %}" method="POST" id="form_del_client">{% csrf_token %}
+        <table class="panel_list">
+            <th><input type="checkbox" name="checker_all" /></th><th>Name</th><th>Date</th><th>Note 1</th><th>Note 2</th><th>Tag</th>
+            {% for i in clients %}
+                <tr{% if i.extra.3 == 'True' %} style="background: #FFF0B2;"{% endif %}{% if i.extra.3 == 'False' %} style="background: #FFCCCC;"{% endif %}>
+                    <td>
+                    <div><input type="checkbox" name="checker" value="{{ i.id }}" /></div>
+                    </td>
+                    <td>
+                        <div><a href="{% if i.type == 'org' %}{% url orgs i.obj_id %}{% else %}{% url profile i.obj_id %}{% endif %}" title="{{ i.contact }}" target="_blank">{{ i.name }}</a></div>
+                    </td>
+                    <td>
+                        <div id="note0__{{ i.id }}" class="letsget_edit_notes">{{ i.date|date:'d-b-Y' }}</div>
+                    </td>
+                    <td>
+                        <div id="note1__{{ i.id }}" class="letsget_edit_notes">{{ i.extra.1 }}</div>
+                    </td>
+                    <td>
+                        <div id="note2__{{ i.id }}" class="letsget_edit_notes">{{ i.extra.2 }}</div>
+                    </td>
+                    <td>
+                        <div id="tag__{{ i.id }}" class="letsget_edit_notes">{{ i.tag }}</div>
+                    </td>
+                </tr>
+            {% endfor %}
+        </table>
+        
+        <br />
+    
+        {% if clients %}
+        <input type="button" value="Remove selected from Clients List" onclick="if(confirm('Are you sure?')){$('#form_del_client').submit();}"/> | 
+        {% endif %}
+        <input type="button" onclick="$.fancybox.open($('.create_clients_and_orgs').show());" value="Create New Clients / Organizations" /> | 
+        {% if clients %}
+        <input type="button" value="Send Invitation" name="invite" onclick="invite_files(true);" />
+        {% endif %}
+    </form>
+
+    <br />
+
+    <div class="create_clients_and_orgs" style="display: none; width: 550px;">
+        
+            <b>Create New Client:</b><br />
+            {% comment %}
+            Enter user e-mail:
+            <input type="text" value="" name="new_email" />
+            <input type="button" value="Create" onclick="get_user_by_email(false)" class="get_user_by_email"/>
+            
+            <div class="exist_users" style="display: none;">
+                <b>Maybe user already exist?</b>
+                <br />
+                <span></span>
+                <br />
+                <input type="button" value="No, create new user" onclick="get_user_by_email(true)" class="create_user_by_email"/>
+            </div>
+            
+            <div class="news_users" style="display: none;">
+                <br />
+                User created: 
+                <span></span>
+            </div>
+            {% endcomment %}
+            
+            
+        Client phone:
+        <input type="text" value="" name="new_phone" />
+        Tag:
+        <input type="text" value="drum" name="new_client_tag" size="10" />
+        <input type="button" value="Create" onclick="get_user_by_phone()" class="get_user_by_phone"/>
+        <span class="get_user_by_phone_wrng"></span>
+        <br />
+        
+        <div class="exist_users" style="display: none;">
+            <b></b>
+            <br />
+        </div>
+        
+        <br />
+        <div class="separator_line"></div>
+        <br />
+        <b>Create New Organization:</b><br />
+        Org. name:
+        <input type="text" value="" name="new_org" />
+        Tag:
+        <input type="text" value="drum" name="new_org_tag" size="10" />
+        <input type="button" value="Create" onclick="get_org_by_name()" class="get_org_by_name"/>
+        <span class="get_org_by_name_wrng"></span>
+        <br />
+    </div>
+    
+    
+</div>
+
+<div class="clear"></div>
+
+    <div class="letsget_edit_note_bl" style="display: none;">
+        <input type="text" value="" size="30" style="" class="letsget_edit_note_val" />
+        <input type="button" value="OK" class="letsget_edit_note_btn" />
+    </div>
+    
+{% endblock %}

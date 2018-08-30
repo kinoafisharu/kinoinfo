@@ -1,0 +1,13 @@
+
+<data>
+    <hall id="1" name="Большой"/>
+    <hall id="2" name="Малый"/>
+    <hall id="3" name="Красный"/>
+    <hall id="4" name="Синий"/>
+    <hall id="5" name="Digital Cinema"/>
+    <hall id="6" name="зал №1"/>
+    <hall id="7" name="зал №2"/>
+    <hall id="8" name="зал №3"/>
+    <hall id="9" name="зал №4"/>
+    <hall id="10" name="Зеленый"/>
+</data>

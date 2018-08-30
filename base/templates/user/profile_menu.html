@@ -1,0 +1,109 @@
+{% load i18n %}
+{% load base_tags %}
+
+<div class="art-posttree-width">
+    {% if not request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+    <div id="accordion">
+
+        {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+            {% for k, v in org_menu.items %}
+                {% if k != 'about' %}
+                    {% if not v.private or v.private and card.is_my_profile %}
+                        <h5 class="method-category" id="{{ card.profile.user_id }}_section{{ k }}"><p>{{ v.title }}</p>{% if card.is_my_profile and request.user.is_superuser %}<a class="org_menu_title_edit" private="{% if v.private %}1{% else %}0{% endif %}">edit</a>{% endif %}</h5>
+                        <div class="method-list">
+                            <ul class="{{ card.profile.user_id }}_section{{ k }}">
+                            {% for i in v.sub %}
+                            <li><a href="{% if i.type == '2' %}{% url profile_gallery card.profile.user_id i.id %}{% else %}{% url profile_view card.profile.user_id i.id %}{% endif %}" id="link_menu__{{ k }}">{{ i.name }}</a></li>
+                            {% endfor %}
+                            </ul>
+                            {% if card.is_my_profile and request.user.is_superuser %}
+                            <a class="org_edit_menu" id="{{ card.profile.user_id }}__{{ k }}"><b>edit page links</b></a>
+                            {% endif %}
+                        </div>
+                    {% endif %}
+                {% endif %}
+            {% endfor %}
+        {% endif %}
+
+        <h5 class="method-category" id="about_section" class="aboutus_menu"><p>{% trans 'Обо мне' %}</p></h5>
+    {% endif %}
+
+        <div class="method-list">
+            <ul class="{{ card.profile.user_id }}_sectionabout">
+                <li>
+                    <a href="{% url profile card.profile.user_id %}">{% trans 'Моя визитка' %}</a>
+                </li>
+                {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+                    <li>
+                        <a href="{% url profile_recommend card.profile.user_id %}">Мои рекомендации</a>
+                    </li>
+                    {% endif %}
+                    {% if card.is_my_profile or request.user.is_superuser or request.is_admin %}
+                    <li>
+                        <a href="{% url profile_accounts card.profile.user_id %}">{% trans 'Мои аккаунты' %}</a>
+                    </li>
+                    {% if request.user.is_superuser %}
+                    <li>
+                        <a href="{% url profile_job card.profile.user_id %}">{% trans 'Моя работа' %}</a>
+                    </li>
+                    {% endif %}
+                {% endif %}
+            </ul>
+        </div>
+        
+
+        {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+
+            {% if card.is_my_profile or request.user.is_superuser %}
+            <h5 class="method-category" id="section_tools"><p>Мои инструменты</p></h5>
+            <div class="method-list">
+                <ul>
+                    <li><a href="{% url profile_adv card.profile.user_id %}">Управление рекламой</a></li>
+                    {% if 'Букер' in card.groups %}
+                    <li><a href="{% url profile_booking_settings card.profile.user_id %}">Настройки букинга</a></li>
+                    {% endif %}
+                    {% if request.user.is_superuser %}<li><a onclick="org_addmenu_bl();">Add Menu</a></li>{% endif %}
+                </ul>
+
+                {% if request.user.is_superuser %}
+                <br />
+                <div class="org_addmenu_bl_fields org_fields">
+                    Название меню<br />
+                    <input type="text" id="{{ card.profile.user_id }}" class="org_addmenu_title" size="30"/>
+                    <br /><br />
+                    <input type="checkbox" class="org_addmenu_private" /> Видно только мне
+                    <br /><br />
+                    <input type="button" class="org_addmenu" id="" value="Сохранить"/>
+                    <input type="button" value="Отмена" class="org_addmenu_bl_cancel_btn" onclick="obj_cancel(this);"/>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            
+        {% endif %}
+        
+    {% if not request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+    </div>
+    {% endif %}
+    
+    
+    {% if card.is_my_profile and request.user.is_superuser %}
+    <form action="" method="post">{% csrf_token %}
+        <div class="organization_menu_fields org_fields">
+        <b></b>
+        <br /><br />
+        <span id="org_menu_inputs"></span>
+        <input type="hidden" value="" name="organization_id" />
+        <input type="hidden" value="" name="menu_id" />
+        <span class="submenu_new" title="Add More"></span>
+        <br />
+        <input type="button" value="Save" class="org_menu_accept_btn" />
+        <input type="button" value="Cancel" class="organization_menu_cancel_btn" />
+        </div>
+    </form>
+    {% endif %}
+    
+    {% left_banner_user card.profile.user_id card.is_my_profile '' lb %}
+
+</div>
+

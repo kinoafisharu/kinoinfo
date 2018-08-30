@@ -1,0 +1,48 @@
+{% load base_tags %}
+
+<div class="art-posttree-width">
+
+    <noindex>
+    <h5 class="method-category" id="{{ user_id }}_section{{ k }}"><p>Мой профиль</p></h5>
+    <div class="method-list">
+        <ul>
+            <li>
+                {% if request.acc_list.acc %}
+                <a href="{% url profile %}" id="user_full_name" rel="nofollow">{{ request.fio }}</a>
+                {% else %}
+                <a href="{% url login %}" rel="nofollow">Авторизоваться</a>
+                {% endif %}
+            </li>
+            <li>
+                <a class="select_mycity">
+                {{ request.current_user_city }}
+                </a>
+            </li>
+            <li>
+                <a href="{% url profile %}" target="_blank" rel="nofollow">
+                На Вашем счету {{ request.mymoney }} руб.
+                </a>
+            </li>
+            <li>
+                <div id="show_modal">
+                <a class="feedback" id="modal" href="#in_modal" rel="nofollow">
+                Обратная связь
+                </a>
+                </div>
+                <div id="in_modal"></div>
+            </li>
+        </ul>
+    </div>
+    </noindex>
+
+    <h5 class="method-category" id="person_section01"><p>Узнать о персоне</p></h5>
+    <div class="method-list">
+        <ul>
+            <li>
+                <a href="{% url get_person person_id %}">Визитка</a>
+            </li>
+        </ul>
+    </div>
+
+</div>
+

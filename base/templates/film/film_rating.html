@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Оценки зрителей на {{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - {{ request.current_site.name }}{% endblock %}
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">фильм</span> <a href="{% url get_film id %}">{{ name_ru|safe }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">оценки зрителей</span></b>
+</h1>
+
+{% film_menu id menu film_editor %}
+
+
+<div class="art-postcontent-width">
+
+	{% if imdb_rate %}
+	<div class="rating_container">
+    	<b>IMDb</b>
+    	<span>{% if imdb_rate %}{{ imdb_rate }}{% else %}0,0{% endif %} / 10</span>
+    	<p>голосов: {{ imdb_votes }}</p>
+    	<p><a href="http://www.imdb.com/title/tt{{ imdb_id }}/" target="_blank">Оставить свой голос</a></p>
+	</div>
+	{% endif %}
+
+	{% if afisha_rate %}
+	<div class="rating_container">
+	    <b>Kinoafisha</b>
+	    <span>{{ afisha_rate }} / 9</span>
+	    <p>голосов: {{ afisha_votes }}</p>
+    </div>
+    {% endif %}
+
+    {% if rotten_rate %}
+	<div class="rating_container">
+	    <b>RottenTomatoes</b>
+	    <span>{{ rotten_rate }} / 10</span>
+	    <p>голосов: {{ rotten_votes }}</p>
+    </div>
+    {% endif %}
+
+    {% if reviewers_rate %}
+	<div class="rating_container">
+	    <b>Рецензенты</b>
+	    <span>{{ reviewers_rate }} / 9</span>
+	    <p>голосов: {{ reviewers_votes }}</p>
+	    <p><a onclick="$('.feedback').click();">Написать рецензию +200 руб</a></p>
+    </div>
+    {% endif %}
+
+    {% if opinions_rate %}
+	<div class="rating_container">
+	    <b>Отзывы</b>
+	    <span>{{ opinions_rate }} / 5</span>
+	    <p>голосов: {{ opinions_votes }}</p>
+	    <p><a href="{% url get_film_opinions id %}">Оставить отзыв +3 руб</a></p>
+    </div>
+    {% endif %}
+
+</div>
+
+
+
+{% endblock %}

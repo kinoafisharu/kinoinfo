@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - Персоны - {{ request.current_site.name }}{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+    });
+    </script>
+{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">фильм</span> <a href="{% url get_film kid %}">{{ name_ru|safe }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">Персоны</span></b>
+</h1>
+
+{% film_menu kid menu film_editor %}
+
+
+<div class="art-postcontent-width">
+
+    <div class="scroll_list">
+    <table class="modern_tbl">
+        <th>Имя</th><th>Тип</th><th>Статус</th><th></th><th></th>
+        {% for i in data.directors %}
+            <tr id="tr_{{ i.relation_id }}">
+            <td><div><a href="{% url get_person i.id %}">{% for j in i.name %}{{ j.name }}{% if not forloop.last %} / {% endif %}{% endfor %}</a></div></td>
+            <td><div class="film_person_rel_t" id="{{ i.type }}">{{ i.type_name }}</div></td>
+            <td><div class="film_person_rel_s" id="{{ i.status }}">{{ i.status_name }}</div></td>
+            <td><div class="film_person_rel_edit edit_btn"/></div></td>
+            <td><div class="film_person_rel_del delete_btn"></div></td>
+            </tr>
+        {% endfor %}
+        {% for i in data.actors %}
+            <tr id="tr_{{ i.relation_id }}">
+            <td><div><a href="{% url get_person i.id %}">{% for j in i.name %}{{ j.name }}{% if not forloop.last %} / {% endif %}{% endfor %}</a></div></td>
+            <td><div class="film_person_rel_t" id="{{ i.type }}">{{ i.type_name }}</div></td>
+            <td><div class="film_person_rel_s" id="{{ i.status }}">{{ i.status_name }}</div></td>
+            <td><div class="film_person_rel_edit edit_btn"/></div></td>
+            <td><div class="film_person_rel_del delete_btn"></div></td>
+            </tr>
+        {% endfor %}
+        {% for i in data.other_person %}
+            <tr id="tr_{{ i.relation_id }}">
+            <td><div><a href="{% url get_person i.id %}">{% for j in i.name %}{{ j.name }}{% if not forloop.last %} / {% endif %}{% endfor %}</a></div></td>
+            <td><div class="film_person_rel_t" id="{{ i.type }}">{{ i.type_name }}</div></td>
+            <td><div class="film_person_rel_s" id="{{ i.status }}">{{ i.status_name }}</div></td>
+            <td><div class="film_person_rel_edit edit_btn"/></div></td>
+            <td><div class="film_person_rel_del delete_btn"></div></td>
+            </tr>
+        {% endfor %}
+    </table>
+    <br />
+    <input type="button" value="Добавить связь" class="film_person_rel_add" onclick="$.fancybox($('.film_person_rel_add_bl').show())" style="float: right;" />
+    
+
+    {% if request.user.is_superuser %}
+    <div class="film_person_rel_bl" style="display: none; font-size: 12px; width: 200px;">
+        Тип персоны: <br />
+        <select class="film_person_rel_type">
+            {% for i in person_types %}
+            <option value="{{ i.id }}">{{ i.name }}</option>
+            {% endfor %}
+        </select>
+        <br /><br />
+        Статус персоны: <br />
+        <select class="film_person_rel_status">
+            {% for i in person_status %}
+            <option value="{{ i.id }}">{{ i.name }}</option>
+            {% endfor %}
+        </select>
+        <br />
+        <br />
+        <input type="hidden" value="" class="film_person_rel_id"/>
+        <input type="button" value="Сохранить" class="film_person_rel_btn"/>
+    </div>
+
+
+    <div class="film_person_rel_add_bl" style="display: none; font-size: 12px; width: 400px;">
+        <input class="radio_checker" type="radio" name="nof_data" value="0" style="display: none;" checked />
+        Имя персоны: <br />
+        <input type="text" id="get_data_name" value="" style="width: 220px;"/>
+        <input type="button" onclick="get_data('person')" value="Найти" /><br /><br />
+        <hr /><br />
+        Результат поиска:<br />
+        <select name="data" id="data_select">
+            <option value="">пусто</option>
+        </select>
+        <br />
+        <br />
+        <div>
+            Тип персоны: <br />
+            <select class="film_person_rel_add_type">
+                {% for i in person_types %}
+                <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+            </select>
+            <br /><br />
+            Статус персоны: <br />
+            <select class="film_person_rel_add_status">
+                {% for i in person_status %}
+                <option value="{{ i.id }}">{{ i.name }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br />
+        <input type="hidden" value="{{ id }}" class="film_id"/>
+        <input type="button" value="Связать фильм с найденной персоной" class="film_person_rel_add_btn"/>
+    </div>
+
+    {% endif %}
+    </div>
+</div>
+
+
+
+{% endblock %}

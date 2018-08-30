@@ -1,0 +1,99 @@
+{% load base_tags static %}
+{% load dajaxice_templatetags %}
+{% load i18n %}
+{% get_static_prefix as STATIC_URL %}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <meta name="description" content="{% block description %}{% endblock %}">
+    <meta name="viewport" content="width=device-width">
+    {% if request.current_site.domain == 'vladaalfimovdesign.com.au' %}
+    <meta name='yandex-verification' content='722d330abbcca305' />
+    {% endif %}
+    <title>{% block title %}Main{% endblock %}</title>
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/vlada_style.css" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-1.8.3.min.js"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery-ui-1.9.2.custom.min.js"></script>
+    <script src="{{ STATIC_URL }}base/dajaxice/dajaxice.core.js" type="text/javascript" charset="utf-8"></script>
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/script.js"></script>
+    {% if user.is_superuser or request.is_admin %}
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/adm.js"></script>
+    {% endif %}
+    {% block script %}{% endblock %}
+    
+    {% if request.noob %}  
+    <script src="https://api-maps.yandex.ru/2.0/?load=package.standard&lang=ru-RU" type="text/javascript"></script>
+    <script type="text/javascript">
+        ymaps.ready(ya_init);
+        function ya_init(){
+            var geo = ymaps.geolocation
+            Dajaxice.user_registration.user_reg(function(){}, {
+                'app_name': navigator.appName,
+                'platform': navigator.platform,
+                'display': screen.width+"x"+screen.height,
+                'geo_co': geo.country,
+                'geo_ci': geo.city,
+            })
+        }
+    </script>
+    {% endif %}
+    
+    
+    {% if request.current_site.domain == 'imiagroup.com.au' %}
+    <style>
+        .body{ 
+            background-color: #c9b49c;
+            background-repeat: repeat-y;
+            background-attachment: scroll;
+            background-position: top center;
+            }
+        .content-main{ background: rgba(255, 255, 255, 0.7); }
+        .art-content{ background: none; }
+    </style>
+    {% endif %}
+</head>
+
+<body class="body" style="background-image: url('{% if branding %}{{ branding }}{% else %}{{ request.bg_img }}{% endif %}');">
+        
+    <div class="art-main">
+
+        <!--центральный баннер для шапки-->
+        <div id="show_modal">
+            <a class="branding_place" id="modal" href="#in_modal">
+            {% if request.current_site.domain == 'vladaalfimovdesign.com.au ' %}
+            <span>Vlada Alfimov Design</span>
+            <p><em>Click Here For A Free Quote</em></p>
+            {% endif %}
+            </a>
+        </div>
+        <div id="in_modal"></div>
+        <!--конец центрального баннера для шапки-->
+        
+        <div class="content-main">
+            <!--блок контента-->
+            <div class="art-content">
+                {% block content %}{% endblock %}
+            </div>
+            <!--конец блока контента-->
+            
+            <div class="footer">
+                {% if request.user.is_superuser or request.is_admin %}
+                <ul>
+                    <li><a href="{% url change_background %}">{% trans 'Фон' %}</a></li>
+                    <li><a href="{% url letsget_calendar %}">{% trans 'Мои инструменты' %}</a></li>
+                </ul>
+                {% endif %}
+                <div class="footer__content-main__text">
+                    Powered by <b><a href="http://www.kinoafisha.ru/user/profile/7518740/" target="_blank">ИП Михаил Иванов</a></b> &copy;
+                    {% if request.current_site.domain == 'pm-prepare.com' %}2016{% else %}2014{% endif %}
+                </div>
+            </div>
+            
+        </div>
+
+    </div>
+</body>
+</html>

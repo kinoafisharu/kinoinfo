@@ -1,0 +1,20 @@
+<data>
+    <api_title>
+        Film trailers
+    </api_title>
+
+    <api_decription>
+        Метод возвращает трейлеры к фильмам
+    </api_decription>
+    
+    <api_example>film_trailers/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/film_trailers/?id=29133<br />
+        http://kinoinfo.ru/api/film_trailers/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>нет</api_response_details>
+
+    <!--<api_response>film_trailers.txt</api_response>-->
+</data>

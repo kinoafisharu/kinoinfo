@@ -1,0 +1,18 @@
+{% load i18n %}
+<h3>{% trans "Авторизуйтесь используя один из сервисов" %}: </h3>
+{% if message %}<br /><div class="login_message">{{ message }}</div>{% endif %}
+<br />
+<form action="{% url oauth %}" method="post">{% csrf_token %}
+    <input type="submit" class="mailru_button" name="mailru_button" value="" />
+    <input type="submit" class="twitter_button" name="twitter_button" value="" />
+    <input type="submit" class="google_button" name="google_button" value="" />
+    <input type="submit" class="facebook_button" name="facebook_button" value="" />
+    <input type="submit" class="vkontakte_button" name="vkontakte_button" value="" />
+</form>
+<form action="{% url openid %}" method="post">{% csrf_token %}
+    <input type="submit" class="yandex_button" name="yandex_button" value="" /> 
+    {% comment %}
+    <input type="submit" class="myopenid_button" name="myopenid_button" value="" />
+    {% endcomment %}
+</form>
+

@@ -1,0 +1,58 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% load i18n %}
+
+{% block title %}{% if offers.status == 11 or offers.status == 12 %}{{ offers.offer.organizationtags.name }} - {% endif %}{{ news.title }}{% endblock %}
+
+{% block description %}{{ description }}{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".fancybox").fancybox();
+});
+</script>
+{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+    {% organization_menu_mobile offers.org.uni_slug offers.offers_tags offers.advert_tags offers.is_editor branding %}
+
+<div class="art-postcontent-width">
+    <h1>{% if offers.status == 11 or offers.status == 12 %}{% if offers.offer %}{{ offers.offer.organizationtags.name }} - {% endif %}{% endif %}{{ news.title }}</h1>
+
+    <div class="film_info-main" style="background: #F2F2F2;">
+    <div class="news">
+
+        <div id="news_poster">
+            {% if video %}
+            <div class="trailer">{{ video|safe }}</div>
+            {% else %}
+                {% if news.img %}
+                <div class="news__img">
+                    <a class="fancybox" href="/upload{{ news.img }}"><img src="/upload{{ news.img }}" /></a>
+                </div>
+                {% endif %}
+            {% endif %}
+        </div>
+        
+        <b>{% trans 'Автор' %}: </b>
+        {% if autor.show == '1' %}
+        <a href="{% if request.current_site.domain == 'vsetiinter.net' %}http://ya.vsetiinter.net/user/profile/{{ autor.id }}/{% else %}{% url profile autor.id %}{% endif %}" target="_blank" rel="nofollow">{% if autor.fio %}{{ autor.fio }}{% else %}{{ autor.short_name }}{% endif %}</a>
+        {% else %}
+        {% if autor.fio %}{{ autor.fio }}{% else %}{{ autor.short_name }}{% endif %}
+        {% endif %}
+        
+        <span class="pub_date">{{ news.dtime|date:"j E Y H:i" }}</span>
+        
+        <div class="news_text">
+        {{ news.text|safe }}
+        </div>
+        
+    </div>
+    </div>
+    <div style="clear: both;"></div>
+
+</div>
+
+{% endblock %}

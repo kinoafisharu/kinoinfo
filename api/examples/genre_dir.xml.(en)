@@ -1,0 +1,19 @@
+<data>
+    <api_title>
+        Genre
+    </api_title>
+
+    <api_decription>
+        The method returns all genres
+    </api_decription>
+    
+    <api_example>genre_dir/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/genre_dir/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>no</api_response_details>
+
+    <!--<api_response>genre_dir.txt</api_response>-->
+</data>

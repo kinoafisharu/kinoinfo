@@ -1,0 +1,15 @@
+{% extends "umrunet_base.html" %}
+{% load umrunet_tags %}
+{% block title %}Авторизация{% endblock %}
+{% block content %}
+
+    <h1 class="content-header"><a href="{% url login %}">Авторизация</a></h1>
+    <div class="block-auth-through-openid">
+        {% umrunet_user_openid message %}
+        {% umrunet_user_email %}
+        {% umrunet_user_lj %}
+    </div>
+<div class="clear"></div>
+<br />
+<a href="{% url main %}">На главную</a>
+{% endblock %}

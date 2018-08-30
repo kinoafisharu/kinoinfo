@@ -1,0 +1,88 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% load i18n %}
+
+{% block title %}{% endblock %}
+
+{% block script %}
+    <script type="text/javascript">
+        var maxLength = $('.comments_block-new textarea').attr('maxlength')
+        $('.comments_block-new textarea').keyup(function(){
+            var curLength = $('.comments_block-new textarea').val().length
+            if($(this).val().length >= maxLength){
+                $(this).val($(this).val().substr(0, maxLength))
+            }
+            var remaning = maxLength - curLength
+            if(remaning < 0){
+                remaning = 0
+            }
+            $('#char_count').html('({% trans "осталось символов" %}: ' + remaning + ')')
+        });
+    </script>
+{% endblock %}
+
+
+{% block content %}
+
+    {% vlada_top_menu %}
+    {% vlada_left_menu vid %}
+
+
+<div class="art-postcontent-width">
+
+    <div class="article">
+
+        <h2>{% trans 'Проект' %} "{{ project.name }}"</h2>
+
+        <br />
+
+        <div class="txt_wrapper">
+            <b>{% trans 'Задание' %}:</b>
+            <br /><br />
+
+            {% if news.title %}
+            {{ news.title }}
+            {% endif %}
+
+            {% if news.text %}
+            <br /><br />
+            <em>{{ news.text|safe }}</em>
+            {% endif %}
+        </div>
+
+        <noindex>
+            <div class="comments_block">
+                <div><b>{% trans 'Комментарии' %}:</b><a class="comments_block-add_link" onclick="comments_add();">{% trans 'Добавить' %}</a></div>
+                <div class="comments_block-content">
+                    {{ data|safe }}
+                </div>
+                <div class="comments_block-new">
+                    {% trans 'Новый комментарий' %}: <span id="char_count"></span><br />
+                    <textarea maxlength="1000"></textarea>
+                    <br />
+
+                    <div{% if comments_subscribed %} style="display: none;"{% endif %}>
+                    <input type="checkbox" class="comments_subscribe" checked="checked" /> {% trans 'Уведомлять об ответах на комментарий' %}
+                    <div class="comments_subscribe-bl" {% if email_exist %}style="display: none;"{% endif %}>
+                        E-Mail <input type="text" value="" placeholder="{% trans 'Введите Ваш E-Mail' %}" id="comments_subscribe_form-email" {% if email_exist %}email-exist="1"{% else %}email-exist="0"{% endif %} /> <span id="comments_subscribe-msg"></span>
+                    </div>
+                    <br />
+                    </div>
+
+                    <br />
+                    <input type="hidden" value="{{ news.id }}" class="comments_block-id"/>
+                    <input type="hidden" value="0" class="comments_block-new-answer"/>
+                    <input type="button" value="{% trans 'Отправить' %}" class="comments_block-new-btn"/>
+                    <input type="button" value="{% trans 'Отмена' %}" class="comments_block-new-cancel"/>
+                    <div class="loader"></div>
+                </div>
+            </div>
+        </noindex>
+
+
+    </div>
+
+</div>
+
+<div class="clear"></div>
+{% endblock %}

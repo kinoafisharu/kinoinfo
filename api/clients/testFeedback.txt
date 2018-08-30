@@ -1,0 +1,1399 @@
+name is present, no 404
+kinoinfo.ru
+name is present, no 404
+kinoinfo.ru
+name is present, no 404
+kinoinfo.ru
+dajaxice_functions.is_callable
+kinoinfo.ru
+dajaxice_functions.is_callable
+kinoinfo.ru
+{}
+kinoinfo.ru
+{"msg":"777777777777777 777777777777777777777","emailval":"","get_url":"http://kinoinfo.ru/","resend":false}
+kinoinfo.ru
+{}
+kinoinfo.ru
+{"msg":"12332123212334321","emailval":"","get_url":"http://kinoinfo.ru/","resend":false}
+kinoinfo.ru
+{}
+kinoinfo.ru
+{'msg': u'3 3 3 3 3 3 3 3 3 3 3 3 3 3', 'get_url': u'http://kinoinfo.ru/', 'emailval': u'', 'resend': False}
+kinoinfo.ru
+{'ckid': 18, 'fkid': 38017}
+kinoinfo.ru
+{}
+kinoinfo.ru
+{'msg': u'44444444444444 5555555555555555v 666666666666666666666666666w', 'get_url': u'http://kinoinfo.ru/', 'emailval': u'', 'resend': False}
+kinoinfo.ru
+{}
+kinoinfo.ru
+{'msg': u'55555555555555555 5555555555555555 55555555555555555', 'get_url': u'http://kinoinfo.ru/', 'emailval': u'', 'resend': False}
+except in function.call 
+letsgetrhythm.com.aukinoinfo.ru
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+letsgetrhythm.com.auletsgetrhythm.com.aukinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'555555555555555555555555555555555555555555555555555555555555555555555555555555555555', 'get_url': u'http://kinoinfo.ru/', 'emailval': u'', 'resend': False}
+except in function.call 
+kinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'111111111111111111111111111111111111111111111111111111111111 1', 'get_url': u'http://kinoinfo.ru/', 'emailval': u'', 'resend': False}
+except in function.call 
+kinoinfo.ru
+kinoinfo.ru
+kinoinfo.ru
+kinoinfo.ru
+kinoinfo.ru
+kinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'zzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzzz', 'get_url': u'http://kinoinfo.ru/', 'emailval': u'', 'resend': False}
+except in function.call 
+kinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'xxxxxxxxx xxxxxxxxxxxxxxxxxxxx', 'get_url': u'http://kinoinfo.ru/', 'emailval': u'', 'resend': False}
+except in function.call 
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoinfo.ru
+release_parser.get_film
+{'id': 38823, 'val': 0}
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'sdvasddddddddddddddddddddddddddddddddddddddd', 'get_url': u'http://kinoinfo.ru/api/api_users/#show_messenger', 'emailval': u'', 'resend': False}
+except in function.call 
+kinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'3333333333333333333333333333333333333333333333333333333333333333', 'get_url': u'http://kinoinfo.ru/api/', 'emailval': u'', 'resend': False}
+except in function.call 
+letsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.aukinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'jmmmmmmmmmmmmmmmmmmmmm n ', 'get_url': u'http://kinoinfo.ru/api/', 'emailval': u'', 'resend': False}
+letsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.aukinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'mnbbbbbbbbbbbbbbbbbbmnbmnvn', 'get_url': u'http://kinoinfo.ru/api/', 'emailval': u'', 'resend': False}
+kinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'11111111111111111111111111111111111111111111111', 'get_url': u'http://kinoinfo.ru/api/', 'emailval': u'', 'resend': False}
+letsgetrhythm.com.auletsgetrhythm.com.auletsgetrhythm.com.au
+feedback.feedback_user_request
+{}
+letsgetrhythm.com.au
+feedback.send_user_message
+{'msg': u'mmmmmmmmmmmmmmmmmmmmmmmmmmmmmmmm', 'get_url': u'http://letsgetrhythm.com.au/#show_messenger', 'emailval': u'', 'resend': False}
+kinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'3525235235', 'get_url': u'http://kinoinfo.ru/api/', 'emailval': u'', 'resend': False}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u043c\u0435\u043b\u043e\u0435', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0423\u043a\u0440\u0430\u0438\u043d\u0430', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoinfo.ru
+release_parser.get_film
+{'id': 37402, 'val': 1}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoinfo.ru
+release_parser.get_film_schedule
+{'ckid': 1439, 'fkid': 38126}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1024x768'}
+except in function.call 
+letsgetrhythm.com.au
+letsgetrhythm.invoice_gen
+{'files': [], 'tmpl': 0, 'arr': [u'483'], 'name': u'invoice', 'cl': False, 'validate': True, 'txt': u''}
+letsgetrhythm.com.au
+letsgetrhythm.invoice_gen
+{'files': [], 'tmpl': 0, 'arr': [u'483'], 'name': u'invoice', 'cl': False, 'validate': False, 'txt': u''}
+kinoinfo.ru
+release_parser.get_film
+{'id': 37348, 'val': 0}
+kinoinfo.ru
+user_registration.get_messenger
+{}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u0440\u0430\u0442\u043e\u0432', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1600x900'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0442\u0443\u043f\u0438\u043d\u043e', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1200x675'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0422\u0431\u0438\u043b\u0438\u0441\u0438', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0413\u0440\u0443\u0437\u0438\u044f', 'display': u'1440x900'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0438\u0435\u0432', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0423\u043a\u0440\u0430\u0438\u043d\u0430', 'display': u'1920x1080'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041d\u0438\u0436\u043d\u0438\u0439 \u041d\u043e\u0432\u0433\u043e\u0440\u043e\u0434', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041e\u0440\u0435\u043d\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x1024'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041d\u0438\u0436\u043d\u0438\u0439 \u041d\u043e\u0432\u0433\u043e\u0440\u043e\u0434', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0410\u0448\u0445\u0430\u0431\u0430\u0434', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0422\u0443\u0440\u043a\u043c\u0435\u043d\u0438\u0441\u0442\u0430\u043d', 'display': u'412x732'}
+kinoinfo.ru
+film.limits_edit
+{'limit': u'18', 'kid': u'38730'}
+kinoinfo.ru
+film.slides_poster_edit
+{'status': 2, 'kid': u'38730'}
+kinoinfo.ru
+film.imdb_search2
+{'kid': u'38730', 'name': u'All the Money in the World', 'imdb_id': 5294550, 'year': 2017}
+kinoinfo.ru
+film.exp_film
+{'country': [u'1'], 'distr': [], 'imdb_rate': u'7.3', 'budget': u'', 'person': [u'10228', u'10353', u'10255'], 'imdb_votes': u'1735', 'names': [u'14723'], 'kid': u'38730', 'year': u'2017', 'genre': [u'9', u'12', u'28'], 'imdb': u'5294550', 'runtime': u'132', 'limit': u'18', 'pk': u'', 'release': []}
+kinoinfo.ru
+film.imdb_search2
+{'kid': u'39010', 'name': u'Slumber', 'imdb_id': 4865022, 'year': 2018}
+kinoinfo.ru
+film.limits_edit
+{'limit': u'18', 'kid': u'39010'}
+kinoinfo.ru
+film.imdb_search2
+{'kid': u'38110', 'name': u'Chernovik', 'imdb_id': 6270596, 'year': 2018}
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1024x768'}
+except in function.call 
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+except in function.call 
+kinoinfo.ru
+base.adv_adv_click
+{'id': u'182'}
+kinoafisha.ru
+user_registration.bpost_comments
+{'id': 83291}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0427\u0435\u0431\u043e\u043a\u0441\u0430\u0440\u044b', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x720'}
+kinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoinfo.ru
+feedback.send_user_message
+{'msg': u'\u0442\u0435\u0441\u0442', 'get_url': u'http://kinoinfo.ru/kinoafisha/admin/nof/films/mailru_nof_film/', 'emailval': u'', 'resend': False}
+except in function.call 
+kinoinfo.ru
+release_parser.get_film_schedule
+{'ckid': 11, 'fkid': 37355}
+kinoinfo.ru
+release_parser.get_film
+{'id': 3724, 'val': 1}
+kinoafisha.ru
+base.adv_adv_click
+{'id': u'181'}
+kinoinfo.ru
+release_parser.get_film
+{'id': 34948, 'val': 0}
+kinoinfo.ru
+release_parser.get_film
+{'id': 38914, 'val': 0}
+kinoinfo.ru
+release_parser.get_film
+{'id': 38826, 'val': 0}
+kinoinfo.ru
+release_parser.get_film
+{'id': 39291, 'val': 0}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041d\u0438\u0436\u043d\u0438\u0439 \u041d\u043e\u0432\u0433\u043e\u0440\u043e\u0434', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+kinoinfo.ru
+release_parser.get_film_schedule
+{'ckid': 222, 'fkid': 37891}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041f\u0435\u0440\u043c\u044c', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1600x900'}
+kinoinfo.ru
+release_parser.get_film_schedule
+{'ckid': 11, 'fkid': 38470}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1093x615'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x568'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u0438\u043d\u0441\u043a', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u044c', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0423\u043b\u044c\u044f\u043d\u043e\u0432\u0441\u043a', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041b\u0430\u0441-\u0412\u0435\u0433\u0430\u0441', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0421\u0428\u0410', 'display': u'1920x1080'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0418\u0440\u043a\u0443\u0442\u0441\u043a', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x568'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0420\u043e\u0441\u0442\u043e\u0432-\u043d\u0430-\u0414\u043e\u043d\u0443', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoinfo.ru
+film.imdb_search
+{'exact': u'false', 'val': u'\u0427\u0443\u0434\u043e-\u042e\u0434\u043e', 'more': True}
+kinoinfo.ru
+film.sound_copy_edit
+{'data': [u'4;800'], 'kid': u'38958'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0438\u0435\u0432', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0423\u043a\u0440\u0430\u0438\u043d\u0430', 'display': u'1920x1080'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'2560x1440'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0411\u0443\u0444\u0444\u0430\u043b\u043e', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0421\u0428\u0410', 'display': u'1024x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x720'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x720'}
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u041a\u0430\u043d\u0430\u0434\u0430', 'display': u'1536x864'}
+except in function.call 
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041d\u0438\u0436\u043d\u0435\u0432\u0430\u0440\u0442\u043e\u0432\u0441\u043a', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1024x768'}
+kinoafisha.ru
+user_registration.get_countries_cities
+{}
+kinoafisha.ru
+person.country_city
+{'country': u'2', 'id': u'0', 'city': u'4'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1440x900'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u0440\u0430\u0442\u043e\u0432', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x768'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0412\u0435\u043d\u0430', 'platform': u'Win64', 'app_name': u'Netscape', 'geo_co': u'\u0410\u0432\u0441\u0442\u0440\u0438\u044f', 'display': u'1536x864'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0410\u0448\u0431\u0435\u0440\u043d', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0421\u0428\u0410', 'display': u'1024x768'}
+kinoinfo.ru
+film.slides_poster_edit
+{'status': 2, 'kid': u'39178'}
+kinoinfo.ru
+film.get_film_runtime
+{'id': u'39178', 'val': u'100'}
+kinoinfo.ru
+film.imdb_search
+{'exact': u'false', 'val': u'\u0420\u0443\u0431\u0435\u0436', 'more': True}
+kinoinfo.ru
+film.imdb_search
+{'exact': u'false', 'val': u'\u0420\u0443\u0431\u0435\u0436', 'more': True}
+kinoinfo.ru
+film.imdb_search2
+{'kid': u'39178', 'name': u'\u0420\u0443\u0431\u0435\u0436', 'imdb_id': u'7776936', 'year': u'2017'}
+kinoinfo.ru
+film.exp_film
+{'country': [u'2'], 'distr': [], 'imdb_rate': u'', 'budget': u'', 'person': [u'11154'], 'imdb_votes': 0, 'names': [u'16150'], 'kid': u'39178', 'year': u'2018', 'genre': [u'3', u'7', u'25'], 'imdb': u'7776936', 'runtime': u'', 'limit': u'12', 'pk': u'', 'release': []}
+kinoinfo.ru
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'iPad', 'app_name': u'Netscape', 'geo_co': u'\u0428\u0432\u0435\u0446\u0438\u044f', 'display': u'768x1024'}
+except in function.call 
+kinoinfo.ru
+film.slides_poster_edit
+{'status': 2, 'kid': u'38333'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041b\u044c\u0432\u043e\u0432', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0423\u043a\u0440\u0430\u0438\u043d\u0430', 'display': u'1680x1050'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x1024'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x1024'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041d\u0438\u0436\u043d\u0438\u0439 \u041d\u043e\u0432\u0433\u043e\u0440\u043e\u0434', 'platform': u'Linux i686', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'640x360'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1200'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041d\u043e\u0433\u0438\u043d\u0441\u043a', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041d\u0438\u0436\u043d\u0438\u0439 \u041d\u043e\u0432\u0433\u043e\u0440\u043e\u0434', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0433\u0438\u043b\u0451\u0432', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u044c', 'display': u'1366x768'}
+kinoinfo.ru
+release_parser.get_film_schedule
+{'ckid': 684, 'fkid': 33728}
+kinoafisha.ru
+user_registration.bpost_comments
+{'id': 83079}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0410\u043a\u0442\u043e\u0431\u0435', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u041a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d', 'display': u'1360x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041f\u0435\u0440\u043c\u044c', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoinfo.ru
+release_parser.get_film
+{'id': 4786, 'val': 1}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'iPod touch', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x568'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+kinoinfo.ru
+release_parser.get_film
+{'id': 29050, 'val': 1}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+except in function.call 
+kinoafisha.ru
+base.adv_adv_click
+{'id': u'181'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0438\u0435\u0432', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0423\u043a\u0440\u0430\u0438\u043d\u0430', 'display': u'1680x1050'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u043d\u0430\u0441\u0442\u044b\u0440\u0438\u0449\u0435', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0423\u043a\u0440\u0430\u0438\u043d\u0430', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u043d\u0430\u0441\u0442\u044b\u0440\u0438\u0449\u0435', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0423\u043a\u0440\u0430\u0438\u043d\u0430', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041f\u0435\u0440\u0435\u0441\u043b\u0430\u0432\u043b\u044c-\u0417\u0430\u043b\u0435\u0441\u0441\u043a\u0438\u0439', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0412\u043e\u0440\u043e\u043d\u0435\u0436', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0427\u0435\u043b\u044f\u0431\u0438\u043d\u0441\u043a', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x800'}
+kinoinfo.ru
+release_parser.get_film
+{'id': 31685, 'val': 0}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0427\u0435\u043b\u044f\u0431\u0438\u043d\u0441\u043a', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x800'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0411\u0430\u043b\u0430\u0448\u0438\u0445\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0427\u0435\u0431\u043e\u043a\u0441\u0430\u0440\u044b', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0422\u043e\u043b\u044c\u044f\u0442\u0442\u0438', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0414\u043c\u0438\u0442\u0440\u043e\u0432', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0443\u043a\u0445\u043e\u0442\u0445\u0430\u0439', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0422\u0430\u0438\u043b\u0430\u043d\u0434', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0436\u0430\u0439\u0441\u043a', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0418\u0432\u0430\u043d\u0442\u0435\u0435\u0432\u043a\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x1024'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041e\u0440\u0435\u043d\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x960'}
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1440x900'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0427\u0438\u0442\u0430', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoinfo.ru
+user_registration.user_reg
+{'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0422\u0443\u0440\u043a\u043c\u0435\u043d\u0438\u0441\u0442\u0430\u043d', 'display': u'1920x1080'}
+except in function.call 
+kinoinfo.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0418\u0441\u0442\u0440\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoinfo.ru
+feedback.feedback_user_request
+{}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0440\u0430\u0441\u043d\u043e\u0434\u0430\u0440', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x800'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0430\u0437\u0430\u043d\u044c', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x568'}
+kinoafisha.ru
+user_registration.get_countries_cities
+{}
+kinoafisha.ru
+person.country_city
+{'country': u'2', 'id': u'0', 'city': u'192'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0420\u043e\u0441\u0442\u043e\u0432-\u043d\u0430-\u0414\u043e\u043d\u0443', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x800'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1680x1050'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x720'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0413\u0440\u043e\u0437\u043d\u044b\u0439', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0425\u0438\u043c\u043a\u0438', 'platform': u'MacIntel', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1280x800'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041f\u043e\u0434\u043e\u043b\u044c\u0441\u043a', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1536x864'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041d\u0438\u0436\u043d\u0438\u0439 \u041d\u043e\u0432\u0433\u043e\u0440\u043e\u0434', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1440x900'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+letsgetrhythm.com.au
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u041a\u0438\u0442\u0430\u0439', 'display': u'1024x768'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0422\u0430\u0433\u0430\u043d\u0440\u043e\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1093x614'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x568'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0442\u0430\u0440\u0430\u044f \u0420\u0443\u0441\u0441\u0430', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+kinoafisha.ru
+user_registration.get_countries_cities
+{}
+kinoafisha.ru
+person.country_city
+{'country': u'2', 'id': u'0', 'city': u'201'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0435\u043c\u0435\u0440\u043e\u0432\u043e', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u043e\u0441\u0442\u0430\u043d\u0430\u0439', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u041a\u0430\u0437\u0430\u0445\u0441\u0442\u0430\u043d', 'display': u'800x600'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.get_countries_cities
+{}
+kinoafisha.ru
+person.country_city
+{'country': u'2', 'id': u'0', 'city': u'1'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Linux aarch64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0423\u0445\u0442\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0423\u043b\u0430\u043d-\u0423\u0434\u044d', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x572'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0412\u0430\u0440\u0448\u0430\u0432\u0430', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u041f\u043e\u043b\u044c\u0448\u0430', 'display': u'320x534'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0440\u0430\u0441\u043d\u043e\u044f\u0440\u0441\u043a', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0422\u044e\u043c\u0435\u043d\u044c', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0438\u0435\u0432', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0423\u043a\u0440\u0430\u0438\u043d\u0430', 'display': u'1600x900'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0440\u0430\u0441\u043d\u043e\u0434\u0430\u0440', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x570'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041b\u0438\u043f\u0435\u0446\u043a', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'414x736'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u0440\u0430\u0442\u043e\u0432', 'platform': u'Linux aarch64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+except in function.call 
+kinoafisha.ru
+user_registration.get_countries_cities
+{}
+kinoafisha.ru
+person.country_city
+{'country': u'2', 'id': u'0', 'city': u'8'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+letsgetrhythm.com.au
+feedback.feedback_user_request
+{}
+letsgetrhythm.com.au
+feedback.feedback_user_request
+{}
+letsgetrhythm.com.au
+feedback.send_user_message
+{'msg': u'after mail repairs', 'get_url': u'http://letsgetrhythm.com.au/', 'emailval': u'', 'resend': False}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0413\u043e\u043c\u0435\u043b\u044c', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u044c', 'display': u'320x568'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041f\u043e\u0434\u043e\u043b\u044c\u0441\u043a', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1536x864'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u0438\u043d\u0441\u043a', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0411\u0435\u043b\u0430\u0440\u0443\u0441\u044c', 'display': u'360x592'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'MacIntel', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1920x1080'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041d\u0430\u0431\u0435\u0440\u0435\u0436\u043d\u044b\u0435 \u0427\u0435\u043b\u043d\u044b', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x568'}
+kinoafisha.ru
+user_registration.get_countries_cities
+{}
+kinoafisha.ru
+person.country_city
+{'country': u'2', 'id': u'0', 'city': u'4'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041f\u0435\u043d\u0437\u0430', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.get_countries_cities
+{}
+kinoafisha.ru
+person.country_city
+{'country': u'2', 'id': u'0', 'city': u'4'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0420\u043e\u0441\u0442\u043e\u0432-\u043d\u0430-\u0414\u043e\u043d\u0443', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u0430\u0445\u0430\u0447\u043a\u0430\u043b\u0430', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'375x667'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0442\u0430\u043c\u0431\u0443\u043b', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0422\u0443\u0440\u0446\u0438\u044f', 'display': u'1366x768'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0412\u043e\u0440\u043e\u043d\u0435\u0436', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1680x1050'}
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043c\u0430\u0440\u0430', 'platform': u'Linux armv7l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x570'}
+kinoafisha.ru
+release_parser.get_film
+{'id': 37402, 'val': 1}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0421\u0430\u043d\u043a\u0442-\u041f\u0435\u0442\u0435\u0440\u0431\u0443\u0440\u0433', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'414x736'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041a\u0430\u043b\u0443\u0433\u0430', 'platform': u'Linux armv8l', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'360x640'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u0412\u043e\u043b\u044f', 'platform': u'Win32', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'1440x900'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'geo_ci': u'\u041c\u043e\u0441\u043a\u0432\u0430', 'platform': u'iPhone', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x568'}
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 
+kinoafisha.ru
+user_registration.user_reg
+{'platform': u'Linux x86_64', 'app_name': u'Netscape', 'geo_co': u'\u0420\u043e\u0441\u0441\u0438\u044f', 'display': u'320x460'}
+except in function.call 

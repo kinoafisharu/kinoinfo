@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block title %}Главная{% endblock %}
+{% block sape_links %}
+    {% load linkexchange_tags %}
+    {{ linkexchange_blocks.0|safe }}
+    {{ linkexchange_blocks.1|safe }}
+{% endblock %}
+{% block content %}
+{% load base_tags %}
+
+
+
+    
+    {% if user.is_superuser %}
+    <a href="{% url main_api %}">API</a>
+    <br />
+    <a href="{% url release_main %}">Релизы</a>
+    <br />
+    <a href="{% url schedule_main %}">Сеансы</a>
+    <br />
+    {% endif %}
+
+
+    
+{% endblock %}

@@ -1,0 +1,43 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Запись: Киноафиша</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+<div style="clear: both;"></div>
+
+<table class="panel_list">  
+    <th>Запуск</th><th>Источник</th><th>Экспорт</th>
+    {% for i in p.object_list %}
+    <tr>
+        <td>
+        {% if i.cron %}
+            <div style="color: #5C9D5C;">CRON</div>
+        {% else %}
+            <div style="color: #D63333;">Ручн.</div>
+        {% endif %}
+        </td>
+        
+        <td><div>{{ i.source }}</div></td>
+        
+        <td>
+            <div>
+            {% for j in i.links %}
+                
+                {% if 'Лог' in j.0 %}(<a href="/releases/{{ j.1 }}/">{{ j.0 }}</a>){% else %}{% if j.1 == 'kinoafisha_release_update' or j.1 == 'runtime_copy_to_kinoafisha' or j.1 == 'kinoafisha_cinemaplex_release_update' %}<a href="/releases/{{ j.1 }}/">{{ j.0 }}</a>{% else %}<a href="/releases/cron/{{ j.1 }}/">{{ j.0 }}</a>{% endif %}{% endif %}{% if not forloop.last %},{% endif %}
+                    
+                
+            {% endfor %}
+            </div>
+        </td>
+        
+    </tr>
+    {% endfor %}
+ 
+</table>
+
+                
+{% endblock %}

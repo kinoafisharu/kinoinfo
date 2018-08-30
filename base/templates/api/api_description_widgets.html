@@ -1,0 +1,15 @@
+{% extends "api/api_main.html" %}
+{% block info %}
+    <h2>{{ api_title }}</h2>
+    <p>{{ api_decription }}</p>
+    <h4>{% if lang == 'en' %}Example{% else %}Пример{% endif %}</h4>
+    {{ api_example.0|safe}} {{ api_example.1|safe}}
+    <div style="float: left; width: 250px;">
+        <h4>{% if lang == 'en' %}Options{% else %}Параметры{% endif %}</h4>
+        <p>{{ api_param|safe }}</p>
+    </div>
+    <div>
+        <h4>{% if lang == 'en' %}Code{% else %}Код{% endif %}</h4>
+        <textarea cols="60" rows="3">{{ api_example.0 }}</textarea>
+    </div>
+{% endblock %}

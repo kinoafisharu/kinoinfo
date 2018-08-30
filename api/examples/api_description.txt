@@ -1,0 +1,7 @@
+<p><span style="font-size: large;" data-mce-mark="1"><strong>API сайта Киноафиша России предназначен для получения клиентами информации о фильмах, идущих в кинотеатрах на территории России.</strong></span></p>
+<p>Информация должна быть использована для работы пользовательских Приложений и Сервисов.</p>
+<p>Формат информации по умолчанию: xml. Для получения данных в формате JSON необходимо добавить параметр в запрос, например: <br /><a href="../../api/city_dir/?format=json" target="_blank">http:/kinoinfo.ru/api/city_dir/?format=json</a> или получить дамп, например: <a href="../../api/download/city_dir/?format=json" target="_blank">http://kinoinfo.ru/api/download/city_dir/?format=json</a></p>
+<p>Пользователи, не имеющие статуса клиента API, могут просмотреть детальную информацию о всех методах API, но в ограниченном количестве (10 записей).</p>
+<p>Чтобы стать клиентом API для получения любого объёма данных, нужно отправить на мейл <a href="mailto:kinoafisharu@gmail.com" target="_blank">kinoafisharu@gmail.com</a> описание проекта или приложения, в котором будут использоваться данные. Данные будут предоставляться за согласованную с Вами оплату (от $50 в год).</p>
+<p>Все отзывы, мнения, замечания и предложения пишите на мейл <a href="mailto:kinoafisharu@gmail.com" target="_blank">kinoafisharu@gmail.com</a>.&nbsp;</p>
+<p>&nbsp;</p>

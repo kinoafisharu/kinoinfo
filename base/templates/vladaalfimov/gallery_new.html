@@ -1,0 +1,115 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% load i18n %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block script %}
+<script type="text/javascript">
+    $(document).ready(function(){
+        $(".fancybox").fancybox();
+
+        {% if user.is_superuser or request.is_admin %}
+        var maxLength = $('textarea[name="photo_description"]').attr('maxlength')
+        $('textarea[name="photo_description"]').keyup(function(){
+            var curLength = $('textarea[name="photo_description"]').val().length
+            if($(this).val().length >= maxLength){
+                $(this).val($(this).val().substr(0, maxLength))
+            }
+            var remaning = maxLength - curLength
+            if(remaning < 0){
+                remaning = 0
+            }
+            $('#char_count').html('(remaining characters: ' + remaning + ')')
+        });
+        {% endif %}
+    });
+</script>
+{% endblock %}
+
+{% block content %}
+
+
+    {% vlada_top_menu %}
+    {% vlada_left_menu vid %}
+
+
+<div class="art-postcontent-width">
+    {% if user.is_superuser or request.is_admin %}
+        <div class="edit_btns">
+        {% if count == 0 and not id %}
+        <span class="change_page_type edit_btn" onclick="$.fancybox.open($('.page_types_choice').show());">{% trans 'Тип страницы' %}</span>
+        {% endif %}
+        <span class="add_photos edit_btn">{% trans 'Добавить фото' %}</span>
+        </div>
+    {% endif %}
+    
+    {% if user.is_superuser or request.is_admin %}
+    <div class="organization_slides org_fields">
+        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+        <label for="id_slides">{% trans 'File' %}:</label> <input type="file" name="slides" id="id_slides" multiple />
+        <br /><br />
+        <input type="submit" value="{% trans 'Сохранить' %}" class="organization_slides_accept_btn" name="photo_add" />
+        <input type="button" value="{% trans 'Отмена' %}" class="organization_slides_cancel_btn" />
+        </form>
+    </div>
+    {% endif %}
+    
+    <div class="gallery">
+        
+        {% for i in photos %}
+            <div class="g_photo_el" id="g{{ i.id }}" {% if i.flash %}style="width: 92%; min-height: 50px;"{% endif %}>
+                {% if i.flash %}
+                <object width="100%" type="application/x-shockwave-flash" data="/upload{{ i.file }}"><param name="movie" value="/upload{{ i.file }}" /><param name="wmode" value="window"/></object>
+                {% else %}
+                <a class="fancybox" rel="group" href="/upload{{ i.file }}"><img src="/upload{{ i.file }}" /></a>
+                {% endif%}
+
+                {% if user.is_superuser or request.is_admin %}
+                <span id="{{ i.id }}" class="g_photo_del" title="{% trans 'Удалить фото' %}"></span>
+                <span id="{{ i.id }}" class="g_photo_edit" title="{% trans 'Ред.заголовок и описание' %}"></span>
+                {% endif %}
+                <div class="g_photo_title">{% if i.title %}{{ i.title }}{% endif %}</div>
+                {% if i.description %}
+                <p class="g_photo_description">{{ i.description }}</p>
+                {% endif %}
+
+                {% if i.flash %}<a href="/upload{{ i.file }}" style="float: right; clear: both;">открыть оригинал</a>{% endif%}
+            </div>
+            {% if forloop.last %}
+            <div style="display: inline-block; height: 20px; width: 250px;"></div>
+            {% endif %}
+        {% endfor %}
+        
+    </div>
+    <div class="clear"></div>
+    
+    {% if user.is_superuser or request.is_admin %}
+        <div class="photo_edit_form">
+            <form action="" method="post">{% csrf_token %}
+                <b>{% trans 'Заголовок' %}:</b><br />
+                <input type="text" value="" name="photo_title" size="50" maxlength="60" style="width: 390px;"/>
+                <br /><br /><b>{% trans 'Описание' %}:</b> <span id="char_count"></span><br />
+                <textarea name="photo_description" maxlength="500" style="width: 400px; height: 70px;"/></textarea>
+                <br /><br />
+                <input type="hidden" value="" name="photo_id" />
+                <input type="button" value="{% trans 'Сохранить' %}" class="gallery_photo_edit" />
+                <br /><br />
+            </form>
+        </div>
+    
+        {% if not page_type or count == 0 %}
+        <form action="{% url change_page_type vid %}" method="post" class="page_types_choice" style="display: none;">{% csrf_token %}
+            <b>{% trans 'Укажите тип страницы' %}: </b>
+            <select name="page_type">
+            {% for i in page_types %}
+            <option value="{{ i.0 }}"{% if page_type == i.0 %} selected{% endif %}>{{ i.1 }}</option>
+            {% endfor %}
+            </select>
+            <input type="submit" value="{% trans 'Выбрать' %}" />
+        </form>
+        {% endif %}
+    {% endif %}
+    
+</div>
+
+{% endblock %}

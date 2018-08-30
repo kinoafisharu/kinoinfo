@@ -1,0 +1,23 @@
+<data>
+    <api_title>
+        Releases UA 
+    </api_title>
+
+    <api_decription>
+        The method returns releases in Ukraine
+    </api_decription>
+    
+    <api_example>releases_ua/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/releases_ua/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>no</api_response_details>
+
+    <api_dev><![CDATA[
+        https://github.com/ofc76/kinoinfo-api/blob/master/api/views.py  ->   dump_releases_ua( )<br />
+    ]]></api_dev>
+
+    <!--<api_response>theater.txt</api_response>-->
+</data>

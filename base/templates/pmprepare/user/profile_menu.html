@@ -1,0 +1,29 @@
+{% load i18n %}
+{% load base_tags %}
+
+<div class="art-posttree-width">
+
+    <div class="method-list">
+        <ul class="{{ user_id }}_sectionabout">
+            <li>
+                <a href="{% url profile user_id %}">
+                {% if is_my_profile %}{% trans 'Моя визитка' %}{% else %}{% trans 'Визитка' %}{% endif %}
+                </a>
+            </li>
+            {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
+            <li>
+                <a href="{% url profile_recommend user_id %}">
+                Мои рекомендации
+                </a>
+            </li>
+            {% endif %}
+            {% if is_my_profile or request.user.is_superuser or request.is_admin %}
+            <li>
+                <a href="{% url profile_accounts user_id %}">{% if is_my_profile %}{% trans 'Мои аккаунты' %}{% else %}{% trans 'Аккаунты' %}{% endif %}</a>
+            </li>
+            {% endif %}
+        </ul>
+    </div>
+
+</div>
+

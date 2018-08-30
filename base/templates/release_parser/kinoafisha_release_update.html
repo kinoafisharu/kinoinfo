@@ -1,0 +1,44 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% block info %}
+{% load base_tags %}
+<h3 class="art-postheader">Обновление дат релизов на киноафише</h3>
+    <form action="" method="post">{% csrf_token %}
+        <table class="panel_list">
+        <th></th><th>Фильм</th><th>Дата киноафиши</th><th>Дата источника</th>
+        {% for i in p.object_list %}
+            <tr>
+            <td><div><input type="checkbox" name="checker" value="{{ i.id }}" /></div></td>
+            <td><div><a href="{% url get_film i.id %}" target="_blank">{{ i.name_ru|safe }} / {{ i.name_en|safe }}</a></div></td>
+            <td><div style="color: {{ i.color }};">{% if i.old %}{{ i.old|date:"j E Y" }}{% else %}{{ i.old }}{% endif %}</div></td>
+            <td><div style="color: {{ i.color }};">{% if i.sid %}<a href="http://www.kinometro.ru/release/card/id/{{ i.sid }}" target="_blank">{% endif %}{% if i.new %}{{ i.new|date:"j E Y" }}{% else %}{{ i.new }}{% endif %}{% if i.sid %}</a>{% endif %}</div></td>
+            </tr>
+        {% endfor %}
+        </table>
+
+        <br />
+        
+        <div class="pagination">
+            {% if p.has_previous or p.has_next %}
+            <span class="step-links">
+                {% if p.has_previous %}
+                    <a href="?page=1">первая</a> | 
+                    <a href="?page={{ p.previous_page_number }}">назад</a>
+                {% endif %}
+                <span class="current">
+                    {{ p.number }} из {{ p.paginator.num_pages }} стр.
+                </span>
+                {% if p.has_next %}
+                    <a href="?page={{ p.next_page_number }}">вперед</a> |
+                    <a href="?page={{ p.paginator.num_pages }}">последняя</a>
+                {% endif %}
+            </span>
+            {% endif %}
+
+            
+            {% if p.object_list %}
+                <input type="submit" value="Сохранить" style="float: right;" />
+            {% endif %}
+        
+        </div>
+    </form>
+{% endblock %}

@@ -1,0 +1,102 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Ненайденные фильмы: {{ count }}</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+    <div style="clear: both;"></div>
+
+    <form action="{% url admin_films_nof_v2 dump %}" method='post'>{% csrf_token %}
+        
+        <table class="panel_list">  
+    
+            <th></th><th>Название</th>
+            
+            
+            {% for i in p.object_list %}
+                <tr>
+                    <td><div><input class="radio_checker" type="radio" name="nof_data" value="{{ i.id }}" id="{{ i.name }}" /></div></td>
+                    <td><div title="{{ i.name }}" id="film__{{ i.id }}" class="show_f_details">
+                    {% if i.url %}<a href="{{ i.url }}" target="_blank">{% endif %}{{ i.name }}{% if i.url %}</a>{% endif %}
+                    </div>
+                    </td>
+                    <div class="film__{{ i.id }}" style="display: none; position: absolute; right: 0; width: 300px; boder: 1px solid; padding: 5px; background: #FFF;">
+                    <img src="{{ i.img }}" style="float: left; padding: 4px;"/>
+                    <b>Аль.название: </b><br />{% if i.alt %}{{ i.alt }}{% endif %}
+                    <br /><br />
+                    <b>Год: </b><br />{% if i.year %}{{ i.year }}{% endif %}
+                    <br /><br />
+                    <b>Режиссер: </b><br />{% if i.director %}{{ i.director }}{% endif %}
+                    </div>
+                    
+                    {% if dump == 'yovideo_nof_film1' %}
+                        <td><div><a href="#" id="{{ i.name }}" alt="true" class="imdb_search">Точный<a></div></td>
+                        <td><div><a href="#" id="{{ i.name }}" alt="false" class="imdb_search">Расшир.<a></div></td>
+                    {% endif %}
+                    
+                </tr>
+            {% endfor %}
+        </table>
+
+        <br />
+        
+        
+        <input type="text" id="get_data_name" value="" />
+        <input type="button" onclick="get_data('film')" value="Найти" />
+        <select name="film" id="data_select">
+            <option value="">пусто</option>
+        </select>
+        <br /><br />
+        <input type="submit" id="rel" name="rel" value="Добавить название в альтернативные" />
+        <input type="submit" id="kid_sid" name="kid_sid" value="Связать фильм источника с фильмом на киноафише" />
+        <input type="submit" id="ignore" name="ignore" value="Игнорировать" />
+    </form>
+    <br />
+    <input type="button" value="IMDb поиск" class="imdb_search" alt="true" />
+    <input type="button" value="IMDb расширенный поиск" class="imdb_search" alt="false" />
+    
+    
+        <div class="exp_film_block">
+            <span></span>
+            <div class="exp_f">
+            <div style="float: left;">
+                <div class="exp_title"><b>Названия</b><p></p></div>
+                <div class="exp_country"><b>Страны</b><p></p></div>
+                <div class="exp_genre"><b>Жанры</b><p></p></div>
+                <div class="exp_year"><b>Год</b><p></p></div>
+                <div class="exp_limit"><b>Ограничение</b><p></p></div>
+                <div class="exp_runtime"><b>Продолжительность</b><p></p></div>
+                <div class="exp_budget"><b>Бюджет</b><p></p></div>
+            </div>
+            
+            <div style="float: left; margin-left: 40px;">
+                <div class="exp_person"><b>Персоны</b><p></p></div>
+                <div class="exp_imdb"><b>IMDb</b><p></p></div>
+                {% comment %}<div class="exp_release"><b>Релизы</b><p></p></div>{% endcomment %}
+                <div class="exp_distr"><b>Дистрибьюторы</b><p></p></div>
+                <div class="exp_poster"><b>Постер</b><p></p></div>
+            </div>
+            
+            <div style="clear: both;"></div>
+            <input type="button" value="Сохранить" class="exp_go" />
+            </div>
+            
+            <div class="cntry_block">
+            <select name="cntry" style="display: none;">
+            {% for i in countries %}
+                <option value="{{ i.id }}"{% if i.id == 1 %} selected{% endif %}>{{ i.name }}</option>
+            {% endfor %}
+            </select>
+            </div>
+            
+            <div class="lmts_block">
+            <select name="lmts" style="display: none;">
+            {% for i in limits %}
+                <option value="{{ i }}"{% if i == 13 %} selected{% endif %}>+{{ i }}</option>
+            {% endfor %}
+            </select>
+            </div>
+        </div>
+{% endblock %}

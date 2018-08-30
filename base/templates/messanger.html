@@ -1,0 +1,65 @@
+{% load i18n %}
+
+    <div id="show_modal">
+        <a class="messenger_pre_show upper-menu__control-links__autorization" id="mes_modal" href="#show_messenger"></a>
+    </div>
+    
+    
+    <div id="show_messenger">
+        <div class="messanger_nav">
+            <input type="button" value="{% trans 'Все диалоги' %}" id="messanger_nav__exist_dialog" class="link_btn" />
+            <input type="button" value="{% trans 'Создание нового диалога' %}" id="messanger_nav__new_dialog" class="link_btn" />
+        </div>
+        <div class="messanger_content"></div>
+    </div>
+
+    <div class="message_recipients_fields_container">
+        <div class="message_recipients_fields" style="display: none;">
+            {% comment %}
+            {% trans 'Поиск собеседников' %}:
+            <input type="text" class="search_recipient" value="" size="50" />
+            <input type="button" class="search_people_btn link_btn" id="recipient" value="{% trans 'Поиск' %}" />
+            <div class="search_people_result recipient_result" style="display: none;">
+            </div>
+            
+            <div class="message_create">
+                <b>{% trans 'Получатели' %}:</b>
+                <span class="message_recipients"></span>
+                <br />
+                <textarea class="messenger__txt"></textarea>
+                <br />
+                <div class="message_send_warning"></div>
+                <input type="button" class="message_send link_btn" value="{% trans 'Отправить' %}" />
+                <input type="hidden" class="message_dialog" value="" />
+            </div>
+            {% endcomment %}
+
+            <div class="message_create">
+                <b>{% trans 'Получатели' %}:</b>
+                <span class="message_recipients"></span>
+                <br />
+                <textarea class="messenger__txt"></textarea>
+                <br />
+                <div class="message_send_warning"></div>
+                <div style="margin-top: 10px;">
+                    <input type="checkbox" checked class="message_send_one_dialog" /> Создать общий диалог для всех получателей
+                </div>
+                <input type="button" class="message_send link_btn" value="{% trans 'Отправить' %}" />
+                <input type="hidden" class="message_dialog" value="" />
+            </div>
+
+        </div>
+    </div>
+
+    <div class="messanger_textarea_container">
+    <div class="messanger_textarea">
+        <textarea class="messenger__txt__dialog"></textarea>
+        <br />
+        <div class="message_send_warning"></div>
+        <input type="button" class="message_send__dialog link_btn" value="{% trans 'Отправить' %}" />
+        <input type="hidden" class="message_dialog__dialog" value="" />
+    </div>
+    </div>
+
+    
+    

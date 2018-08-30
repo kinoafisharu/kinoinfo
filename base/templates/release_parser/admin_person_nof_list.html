@@ -1,0 +1,43 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Ненайденные персоны: {{ count }}</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+
+    <form action="{% url admin_person_nof dump %}" method='post'>{% csrf_token %}
+    
+        <table class="panel_list">  
+    
+            <th></th><th>Имя</th><th>Инфо</th>
+            {% for i in p.object_list %}
+                <tr>
+                    <td><div><input class="radio_checker" type="radio" name="nof_data" value="{{ i.key }}" id="{{ i.name }}" /></div></td>
+                    <td><div>{{ i.name }}</div></td>
+                    <td><div>
+                    {% if dump == 'kinoteatrua_nof_person' %}
+                    <a href="http://kino-teatr.ua/ru/main/person/person_id/{{ i.code }}.phtml" target="_blank">Источник</a>
+                    {% endif %}
+                    {% if dump == 'imdb_nof_person' %}
+                    <a href="http://www.imdb.com/name/nm{{ i.code }}/" target="_blank">Источник</a>
+                    {% endif %}
+                    </div></td>
+                    
+                </tr>
+            {% endfor %}
+        </table>
+
+        <br />
+
+        <input type="text" id="get_data_name" value="" />
+        <input type="button" onclick="get_data('person')" value="Найти" />
+        <select name="data" id="data_select">
+            <option value="">пусто</option>
+        </select>
+        <br /><br />
+        <input type="submit" id="rel" name="rel" value="Добавить название в альтернативные" />
+        <input type="submit" id="kid_sid" name="kid_sid" value="Связать персону источника с персоной на киноафише" />
+    </form>
+
+{% endblock %}

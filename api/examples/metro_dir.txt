@@ -1,0 +1,13 @@
+
+<data>
+    <metro id="1" name="Теплый Стан"/>
+    <metro id="2" name="Шаболовская"/>
+    <metro id="3" name="Киевская"/>
+    <metro id="4" name="Варшавская"/>
+    <metro id="5" name="Бабушкинская"/>
+    <metro id="6" name="Южная"/>
+    <metro id="7" name="Войковская"/>
+    <metro id="8" name="Отрадное"/>
+    <metro id="9" name="Сходненская"/>
+    <metro id="10" name="Баррикадная"/>
+</data>

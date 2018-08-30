@@ -1,0 +1,42 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+{% block info %}
+<h3 class="art-postheader" style="float: left;">Идентифицированные фильмы исчтоников</h3>
+<div style="float: right;">
+{% base_pagination p page %}
+</div>
+<div style="clear: both;"></div>
+
+<form action="" method='post'>{% csrf_token %}
+    Первая буква названия: 
+    <select onchange="this.form.submit();" name="char">
+    {% for i in alphabet_filter %}
+        <option value="{{ i }}" {% if char == i %}selected{% endif %}>{{ i }}</option>
+    {% endfor %}
+    </select>
+    
+    <input class="radio_checker" type="radio" value="*" style="display: none;" checked />
+    
+    <table class="panel_list">  
+        <th></th><th>Фильм источника</th><th>Связан с</th>
+        {% for i in p.object_list %}
+            <tr>
+            <td><div><input type="checkbox" name="checker" value="{{ i.kf.id }}" /></div></td>
+            <td><div>{{ i.kf.name }}</div></td>
+            <td><div>{{ i.af.name }} ({{ i.af.film_id.year }})</div></td>
+            </tr>
+        {% endfor %}
+    </table>
+    
+    <input type="text" id="get_data_name" value="" />
+    <input type="button" onclick="get_data('film')" value="Найти" />
+    <select name="film" id="data_select">
+        <option value="">пусто</option>
+    </select>
+    
+    <br /><br />
+    
+    <input type="submit" id="kid_sid" name="kid_sid" value="Разорвать связь и связать с найденным фильмом" />
+</form>
+
+{% endblock %}

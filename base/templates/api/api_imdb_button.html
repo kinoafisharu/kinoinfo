@@ -1,0 +1,52 @@
+{% extends "api/api_main.html" %}
+{% block info %}
+
+
+<div class="art-postcontent-width ">
+    <div class="art-postcontent">
+        <br />
+        <form action="" method="post">{% csrf_token %}
+{% if lang == 'en' %}
+            Enter URL to film page in IMDb or in Kinoafisha.ru<br /><br />
+            <input type="input" value="" name="url" size="50" />
+            <input type="button" value="Create button" name="create" onclick="$(this).prop('disabled', true);$(this).after('Moment...');$(this).parent().submit();"/> <p><span style="color: red;">{{ warning }}</span></p>
+            <br />
+            <br />
+            
+            <div class="example_bl">
+                <b>Example:</b><br />
+                http://www.imdb.com/title/tt1219342/<br />
+                <span>or</span><br />
+                http://kinoafisha.ru/?id1=5313&status=1<br />
+                <span>or</span><br />
+                http://kinoafisha.ru/film/5313/<br />
+            </div>
+{% else %}
+            Введите URL на страницу фильма на IMDb или на Kinoafisha.ru<br /><br />
+            <input type="input" value="" name="url" size="50" />
+            <input type="button" value="Создать кнопку" name="create" onclick="$(this).prop('disabled', true);$(this).after('Секундочку...');$(this).parent().submit();"/> <p><span style="color: red;">{{ warning }}</span></p>
+            <br />
+            <br />
+            
+            <div class="example_bl">
+                <b>Пример:</b><br />
+                http://www.imdb.com/title/tt1219342/<br />
+                <span>или</span><br />
+                http://kinoafisha.ru/?id1=5313&status=1<br />
+                <span>или</span><br />
+                http://kinoafisha.ru/film/5313/<br />
+            </div>
+{% endif %}
+        </form>
+        
+        {% if not warning and img %}
+        <br />
+        <div>
+            <img src="{{ img.path }}" style="float: left;" />
+            <textarea style="margin-left: 10px; height: 35px; width: 350px; font-size: 12px;" onclick="$(this).focus(); $(this).select();">{{ img.code }}</textarea>
+        </div>
+        {% endif %}
+        
+    </div>
+</div>
+{% endblock %}

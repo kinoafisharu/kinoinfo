@@ -1,0 +1,19 @@
+<data>
+    <api_title>
+        Theater
+    </api_title>
+
+    <api_decription>
+        The method returns information about cinemas
+    </api_decription>
+    
+    <api_example>theater/</api_example>
+
+    <api_param><![CDATA[
+        http://kinoinfo.ru/api/theater/?format=json<br />
+    ]]></api_param>
+
+    <api_response_details>no</api_response_details>
+
+    <!--<api_response>theater.txt</api_response>-->
+</data>

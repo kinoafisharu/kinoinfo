@@ -1,0 +1,108 @@
+{% extends "kua_base.html" %}
+{% load i18n %}
+{% block title %}{% trans "Профиль пользователя" %}{% endblock %}
+{% if subscription %}
+    {% block script %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}base/css/fancybox/jquery.fancybox.css?v=2.1.4" type="text/css" media="screen" />
+    <script type="text/javascript" src="{{ STATIC_URL }}base/js/jquery.fancybox.pack.js?v=2.1.4"></script>
+    <script type="text/javascript">
+    $(document).ready(function(){
+        $('.subscription_release').click();
+    });
+    </script>
+    {% endblock %}
+{% endif %}
+{% block content %}
+    <h1 class="content-header"><a href="{% url profile %}">{% trans "Профиль пользователя" %}</a></h1>
+    
+        {% if p_count > 0 %}
+        <div class="user_card">
+            <div class="user_card_details">
+                <b>{% trans "ФИО" %}:</b>
+                {% if card.name %}{{ card.name }}{% else %}{% trans "Нет" %}{% endif %}
+                <b>{% trans "Пол" %}:</b>
+                {% if card.sex %}
+                    {% if card.sex == 1 %}{% trans "М" %}{% else %}Ж{% endif %}
+                {% else %}
+                    {% trans "Нет" %}
+                {% endif %}
+                <b>{% trans "Дата рожд." %}:</b>
+                {% if card.born %}{{ card.born|date:"d.m.Y" }}{% else %}{% trans "Нет" %}{% endif %}
+                <b>E-mail:</b>
+                {% if card.email %}{{ card.email }}{% else %}{% trans "Нет" %}{% endif %}
+                <b>{% trans "Страна" %}:</b>
+                {% if card.country %}{{ card.country.name }}{% else %}{% trans "Нет" %}{% endif %}
+                <b>{% trans "Город" %}:</b>
+                {% if card.city %}{{ card.city.name }}{% else %}{% trans "Нет" %}{% endif %}
+                <span>
+                    <b>Счет:</b>
+                    {{ card.money }} руб.
+                </span>
+                <a class="edit-usercard" href="{% url user_details %}" title="{% trans 'Редактировать визитку' %}"></a>
+            </div>
+        </div>
+        {% endif %}
+
+        {% if subscription %}
+            <div class="subs" id="{{ subscription }}" style="display: none;"><div class="subscription_release"></div></div>
+            <a id="various3" href="#inline3"></a>
+            <div id="inline3">
+                <form action="{% url email_auth_send %}" method="post" id="sub_e">{% csrf_token %}
+                </form>
+            </div>
+        {% endif %}
+        
+        <div class="profile">
+        <h3>{% trans "Подключенные аккаунты" %}</h3>
+        {% for i in p_accounts %}
+            <form action="" method="post">{% csrf_token %}
+                <div class="profile-account">
+                    <div class="profile-account-avatar">
+                        {% if i.obj.avatar %}
+                            <img src="/upload/profiles/{{ user.obj.get_profile.folder }}/{{ i.obj.avatar }}" />
+                        {% else %}
+                            <span>{% trans "нет аватара" %}</span>
+                        {% endif %}
+                    </div>
+                    <div class="profile-account-info">
+                        <p>{{ i.obj.login }}</p>
+                        {% if i.obj.validation_code %}
+                            <span style="color: red;">Не подтвержден!</span>
+                            <br />
+                            Для подтверждения адреса необходимо пройти по ссылке указанной в письме.
+                        {% else %}
+                            {% if i.obj.nickname %}<p>{{ i.obj.nickname }}</p>{% endif %}
+                            {% if i.obj.fullname %}<p>{{ i.obj.fullname }}</p>{% endif %}
+                            {% if i.obj.born %}<p>{{ i.obj.born }}</p>{% endif %}
+                            {% if i.obj.male %}
+                            <p>{% if i.obj.male == 1 %}{% trans "М" %}{% endif %}{% if i.obj.male == 2 %}Ж{% endif %}</p>
+                            {% endif %}
+                        {% endif %}
+                    </div>
+                    
+                    <div class="profile-account-delete">
+                    {% if p_count > 1 %}
+                        <input type="hidden" name="account" value="{{ i.obj.id }}" />
+                        <input type="submit" value="&#215;" title="{% trans 'Удалить' %}" />
+                    {% endif %}
+                    </div>
+                </div>
+                
+            </form>
+        {% endfor %}
+        </div>
+        
+  
+    
+    <div class="profile_message">
+        {% if p_count < 1 %}
+            <p>{% trans "У вас еще нет подключенных аккаунтов!" %}</p>
+            <p>{% trans "Для сохранения настроек и доступа к ним при следующих визитах необходимо" %} <a href="{% url login %}">{% trans "авторизоваться" %}</a></p>
+
+        {% else %}
+            <a href="{% url login %}">{% trans "Подключить еще аккаунты" %}</a>
+        {% endif %}
+    </div>
+    <br />
+    <a href="{% url main %}">{% trans "На главную" %}</a>
+{% endblock %}

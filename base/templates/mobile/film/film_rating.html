@@ -1,0 +1,33 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - оценки зрителей{% endblock %}
+
+{% block content %}
+    {% mobile_header %}
+
+    {% film_menu_mobile id menu film_editor %}
+
+<div class="art-postcontent-width">
+	<h1><a href="{% url get_film id %}">{{ name_ru|safe }}</a> - Оценки зрителей</h1>
+
+	<div style="margin-bottom: 10px;">
+    <b>IMDb rate:</b> {% if imdb_rate %}{{ imdb_rate }}{% else %}0,0{% endif %}
+	</div>
+
+    <div style="margin-bottom: 10px;">
+    <b>IMDb votes:</b> {{ imdb_votes }}
+    </div>
+
+    <div style="margin-bottom: 10px;">
+    <b>Kinoafisha rate:</b> {{ afisha_rate }}
+    </div>
+
+    <div style="margin-bottom: 10px;">
+    <b>Kinoafisha votes:</b> {{ afisha_votes }}
+    </div>
+    
+</div>
+
+
+
+{% endblock %}

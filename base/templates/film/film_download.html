@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Скачать {{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - {{ request.current_site.name }}{% endblock %}
+
+{% block content %}
+
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ request.current_site.name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">фильм</span> <a href="{% url get_film id %}">{{ name_ru|safe }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">скачать</span></b>
+</h1>
+
+{% film_menu id menu film_editor %}
+
+
+<div class="art-postcontent-width">
+
+	{% if user.is_superuser %}
+		<input type="button" onclick="$('.organization_txt').show();" value="Добавить торрент-файл" style="margin-bottom: 10px;" />
+		<br />
+		{% if errors %}
+			{% for i in errors %}
+			<div style="color: red; margin-bottom: 10px;">{{ i }}</div>
+			{% endfor %}
+		{% endif %}
+		<div class="organization_txt org_fields" style="margin-bottom: 10px;{% if q %} display: block;{% endif %}">
+	        <form action="" method="post" enctype="multipart/form-data">{% csrf_token %}
+	        	Файл: <br />
+	            <input type="file" name="files" id="id_files" style="margin-bottom: 10px;" /><br />
+	            Качество: <br />
+	            <select name="quality_avg" style="margin-bottom: 10px;">
+	            	{% for i in quality_avg %}
+	            	<option value="{{ i.0 }}" {% if q %}{% if q == i.0 %}selected{% endif %}{% else %}{% if i.0 == '1' %}selected{% endif %}{% endif %}>{{ i.1 }}</option>
+	            	{% endfor %}
+	            </select>
+	            <br />
+	            <input type="submit" value="Загрузить" />
+	            <input type="button" value="Отмена" class="organization_txt_cancel_btn" />
+	        </form>
+	    </div>
+	{% endif %}
+
+	
+
+	<b>Torrent файлы:</b>
+	<br />
+	{% if torrents or topics %}
+	<table class="modern_tbl">
+		<tr>
+			<th>Ссылка</th>
+			<th>Качество</th>
+			{% if user.is_superuser %}<th></th>{% endif %}
+		</tr>
+		{% for i in torrents %}
+		<tr>
+			<td><a onclick="get_torrent_file({{ i.id }})">Скачать</a></td>
+			<td>{{ i.get_quality_avg_display }}</td>
+			{% if user.is_superuser %}<td><a href="{% url film_torrent_delete id 2 i.id %}" onclick="">Удалить</a></td>{% endif %}
+		</tr>
+		{% endfor %}
+		{% for i in topics %}
+			<tr>
+				<td colspan="2"><a href="http://rutracker.org/forum/viewtopic.php?t={{ i.source_id }}" target="_blank" rel="nofollow">{{ i.name }}</a></td>
+				{% if user.is_superuser %}<td><a href="{% url film_torrent_delete id 1 i.id %}">Удалить</a></td>{% endif %}
+			</tr>
+    	{% endfor %}
+	</table>
+	{% else %}
+	нет
+	{% endif %}
+
+</div>
+
+
+
+{% endblock %}

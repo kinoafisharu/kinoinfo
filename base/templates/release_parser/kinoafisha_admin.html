@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Админ панель Киноафиша{% endblock %}
+{% block content %}
+{% load base_tags %}
+
+<h1 class="content-header">Админ панель Киноафиша</h1>
+{% kinoafisha_admin_menu %}
+<div class="art-postcontent-width">
+    <div class="art-postcontent">
+        {% block info %}
+        {% endblock %}
+    </div>
+</div>
+
+{% endblock %}

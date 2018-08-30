@@ -1,0 +1,49 @@
+{% extends "list_2.html" %}
+{% block content %}
+<div class="art-postcontent-width">
+    <h2 class="art-postheader">Сеансы</h2>
+    <a href="{% url main_kai %}">Назад</a><br /><br />
+    <form action="" method='post'>{% csrf_token %}
+        <select name="city" onchange="document.forms[0].submit()">
+            <option value="">------</option>
+            {% for c in city %}
+                {% for cn in c.name.all %}
+                    {% if cn.status == 1 %}
+                        {% if city_id == c.id %}
+                            <option value="{{ c.id }}" selected >{{ cn }}</option>
+                        {% else %}
+                            <option value="{{ c.id }}">{{ cn }}</option>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </select>
+        {% if cinema %}
+        <select name="cinema" onchange="document.forms[0].submit()">
+            <option value="">------</option>
+            {% for cinema in cinema %}
+                {% for ci in cinema.name.all %}
+                    {% if ci.status == 1 %}
+                        {% if cinema_id == cinema.id %}
+                            <option value="{{ cinema.id }}" selected>{{ ci }}</option>
+                        {% else %}
+                            <option value="{{ cinema.id }}">{{ ci }}</option>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </select>
+        {% endif %}
+    </form><br />
+    {% for i in schedule %}
+        
+        <div style="width:300px; height:16px; float:left;">
+        {% ifchanged %}{{ i.demonstration.name }}{% endifchanged %}
+        </div>
+        <div style="width:300px; height:16px; float:left;">
+        {{ i.demonstration.time|date:"d E H:i" }}
+        </div>
+    {% endfor %}
+
+</div>
+{% endblock %}

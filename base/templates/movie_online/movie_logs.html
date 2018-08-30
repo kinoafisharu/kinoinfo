@@ -1,0 +1,15 @@
+{% extends "release_parser/kinoafisha_admin.html" %}
+{% load base_tags %}
+
+{% block info %}
+<h1 class="art-postheader">Логи </h1>
+{% autoescape off %}
+<div id="log_textarea">{{ text }}</div>
+
+{% endautoescape %}
+
+
+{% endblock %}
+
+
+

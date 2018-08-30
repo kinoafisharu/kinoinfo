@@ -1,0 +1,53 @@
+{% extends "base_vlada.html" %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block content %}
+
+{% if current_site.domain == 'vladaalfimovdesign.com.au' %}
+    {% vlada_top_menu %}
+    {% vlada_tools_menu %}
+{% endif %}
+
+
+<div class="art-postcontent-width">
+    <form action="" method="POST">{% csrf_token %}
+    
+        <table>
+            <th>Icon</th><th>URL (with http://)</th><th>Show</th>
+            <tr>
+                <td><div><img src="{{ STATIC_URL }}base/images/vlada/facebook-3-48.png" width="32" /></div></td>
+                <td><div><input type="text" name="fb_url" size="50" value="{% if not data.fb_url %}http://{% endif %}{{ data.fb_url }}" /></div></td>
+                <td><div><input type="checkbox" name="fb_vis" {% if data.fb_vis %}checked{% endif %} /></div></td>
+            </tr>
+            <tr>
+                <td><div><img src="{{ STATIC_URL }}base/images/vlada/instagram-3-48.png" width="32"/></div></td>
+                <td><div><input type="text" name="inst_url" size="50" value="{% if not data.inst_url %}http://{% endif %}{{ data.inst_url }}" /></div></td>
+                <td><div><input type="checkbox" name="inst_vis" {% if data.inst_vis %}checked{% endif %} /></div></td>
+            </tr>
+            <tr>
+                <td><div><img src="{{ STATIC_URL }}base/images/vlada/twitter-3-48.png" width="32"/></div></td>
+                <td><div><input type="text" name="tw_url" size="50" value="{% if not data.tw_url %}http://{% endif %}{{ data.tw_url }}" /></div></td>
+                <td><div><input type="checkbox" name="tw_vis" {% if data.tw_vis %}checked{% endif %} /></div></td>
+            </tr>
+            <tr>
+                <td><div><img src="{{ STATIC_URL }}base/images/vlada/pinterest-3-48.png" width="32"/></div></td>
+                <td><div><input type="text" name="pin_url" size="50" value="{% if not data.pin_url %}http://{% endif %}{{ data.pin_url }}" /></div></td>
+                <td><div><input type="checkbox" name="pin_vis" {% if data.pin_vis %}checked{% endif %} /></div></td>
+            </tr>
+            <tr>
+                <td><div><img src="{{ STATIC_URL }}base/images/vlada/google-plus-3-48.png" width="32"/></div></td>
+                <td><div><input type="text" name="goo_url" size="50" value="{% if not data.goo_url %}http://{% endif %}{{ data.goo_url }}" /></div></td>
+                <td><div><input type="checkbox" name="goo_vis" {% if data.goo_vis %}checked{% endif %} /></div></td>
+            </tr>
+        </table>
+        
+        <br />
+        
+        <input type="submit" value="Save" />
+        
+    </form>
+</div>
+
+<div class="clear"></div>
+{% endblock %}

@@ -1,0 +1,69 @@
+{% extends "mobile/base.html" %}
+{% load base_tags %}
+
+{% block title %}{{ name_ru|safe }} / {{ name_en|safe }} ({{ year }}) - экономика фильма{% endblock %}
+
+
+{% block content %}
+    {% mobile_header %}
+
+    {% film_menu_mobile id menu film_editor %}
+
+
+<div class="art-postcontent-width">
+    <h1><a href="{% url get_film id %}">{{ name_ru|safe }}</a> - Экономика фильма</h1>
+
+    <br />
+
+    <b>Сборы в </b>
+    {% if money.usa.all %}<b class="gathering_usa selected">США</b>{% if money.ru.all %},{% endif %}{% endif %}
+    {% if money.ru.all %}
+    <b class="gathering_ru{% if not money.usa.all %} selected{% endif %}">России</b>
+    {% endif %}
+
+    <br /><br />
+
+    {% if money.usa.all %}
+    <div class="stat_block_usa">
+        <div class="statistics" id="out_money_usa"></div>
+        <div>
+        <b>Общие сборы</b> $ {{ money.usa.total }}
+        
+        <table class="modern_tbl" style="width: 210px; margin-top: 10px;">
+            <th>Уикенд</th><th>Топ-10</th>
+            {% for i in money.usa.all %}
+            <tr>
+                <td><div>{{ i.0 }}</div></td>
+                <td><div>{{ i.2 }}</div></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+    {% endif %}
+    
+    {% if money.ru.all %}
+    <div class="stat_block_ru"{% if money.usa.all %} style="display: none;"{% endif %}>
+        <div class="statistics" id="out_money_ru"></div>
+        <div>
+        <b>Общие сборы</b> $ {{ money.ru.total }}
+        
+        <table class="modern_tbl" style="width: 210px; margin-top: 10px;">
+            <th>Уикенд</th><th>Топ-10</th>
+            {% for i in money.ru.all %}
+            <tr>
+                <td><div>{{ i.0 }}</div></td>
+                <td><div>{{ i.2 }}</div></td>
+            </tr>
+            {% endfor %}
+        </table>
+        </div>
+    </div>
+    {% endif %}
+
+    
+</div>
+
+
+
+{% endblock %}

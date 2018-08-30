@@ -1,0 +1,8 @@
+<div class="tags_cloud">
+    {% if request.user.is_superuser %}<a href="{% url admin_seo_mainpage %}">Управление SEO</a><br />{% endif %}
+    {% for i in request.seo_data.tags %}
+    <a href="{{i.link}}">
+    <span style="font-size: {{ i.size }}px; color:black;">{{ i.name }}</span>
+    </a>    
+{% endfor %}
+</div>

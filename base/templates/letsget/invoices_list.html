@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+{% block script %}
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        var scroll_h = ($(window).height() / 100) * 58
+        $('.scroll_list').css('height', scroll_h + 'px')
+        
+        var fullsc = $.cookie("fullscreen")
+        if(fullsc && fullsc != 'null'){
+            fullscreen('.art-postcontent-width')
+        }
+    });
+</script>
+{% endblock %}
+        
+{% block content %}
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ site_name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">{{ title }}</span></b>
+</h1>
+
+{% if current_site.domain == 'vladaalfimovdesign.com.au' %}
+    {% vlada_menu slug %}
+{% endif %}
+{% if current_site.domain == 'letsgetrhythm.com.au' or current_site.domain == 'vsetiinter.net' %}
+    {% letsget_menu slug %}
+{% endif %}
+ 
+<div class="art-postcontent-width">
+    <form action="" method="post" id="form">{% csrf_token %}
+    <div class="scroll_list" style="margin-bottom: 10px;">      
+        <table class="panel_list auto_fat">
+            <th><input type="checkbox" name="checker_all" /></th>
+            <th>Event</th>
+            <th>Date</th>
+            <th>Time</th>
+            <th>Place</th>
+            <th>Code-Num</th>
+            <th>PDF</th>
+            <th>Sum</th>
+            <th>Paid</th>
+            {% for i in events %}
+                <tr>
+                    <td><div><input type="checkbox" name="checker" value="{{ i.obj.id }}" /></div></td>
+                    <td><div>{{ i.obj.event_name }}</div></td>
+                    <td><div>{{ i.obj.dtime|date:'d-b-Y' }}</div></td>
+                    <td><div>{{ i.obj.dtime|date:'H:i' }}</div></td>
+                    <td><div>{{ i.obj.client.organization.name }}</div></td>
+                    <td><div><a href="{% url letsget_calendar %}?ev={{ i.obj.id }}" target="_blank">{{ i.obj.bcr_code }}-{{ i.obj.bcr }}</a></div></td>
+                    <td><div><a href="/upload/invoices_pdf_tmp/{{ i.obj.pdf }}">download</a></div></td>
+                    <td><div>${{ i.total }}</div></td>
+                    <td><div>{% if i.obj.paid %}<span style="color: green;">Yes{% else %}<span style="color: red;">No{% endif %}</span></div></td>
+                </tr>
+            {% endfor %}
+        </table>
+    </div>
+    
+    <input type="submit" value="Selected Invoices Are Paid" name="paid_btn"/> | 
+    <input type="submit" value="Selected Invoices Are NOT Paid" name="not_paid_btn"/> 
+    <input type="button" value="Send Reminder Email For Selected" class="send_reminder_email" style="float: right;"/> 
+    </form>
+    
+    
+    <select name="paid_filter" class="past_filter" form="form" onchange="this.form.submit();">
+        
+        {% for k, v in paid_filter.items %}
+        <option value="{{ k }}"{% if k == paid_select %} selected{% endif %}>{{ v }}</option>
+        {% endfor %}
+    </select>
+    
+    <div class="fullscreen_btn" onclick="fullscreen('.art-postcontent-width')"></div>
+    
+
+</div>
+
+
+{% endblock %}

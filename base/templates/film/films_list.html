@@ -1,0 +1,44 @@
+{% extends "base.html" %}
+{% load base_tags %}
+{% block title %}Фильмы {{ year }} года - {{ request.current_site.name }}{% endblock %}
+
+
+
+{% block content %}
+
+<h1 class="content-header">Фильмы {{ year }} года</h1>
+
+<div class="art-posttree-width">
+    <div class="films_years">
+    {% for i in years %}
+        <a href="{% url get_film_list i %}">{{ i }}</a> 
+    {% endfor %}
+    </div>
+    
+
+    {% comment %}
+    {% if request.current_site.domain == 'kinoafisha.ru' %}
+    <div style="font-size: 10px; color: #888; margin-top: 15px;">
+    Деловая доска объявлений <a href="http://www.board.com.ua/" target="_blank">www.board.com.ua</a>
+    <div class="separator_line"></div>
+    Find out <a href="http://open4u.co.uk/categories/banks.html" target="_blank">Opening times of Banks in UK</a>
+    </div>
+    {% endif %}
+    {% endcomment %}
+    
+
+</div>
+
+<div class="art-postcontent-width">
+    <div class="scroll_list">
+    {% for i in films %}
+        <a href="http://kinoinfo.ru/film/{{ i.id }}/">{% if i.name_ru %}{{ i.name_ru|safe }}{% endif %}{% if i.name_ru and i.name_en %} / {% endif %}{% if i.name_en %}{{ i.name_en|safe }}{% endif %}</a><br />
+    {% empty %}
+        У нас нет фильмов {{ year }} года. Укажите, пожалуйста, другой год. 
+    {% endfor %}
+    </div>
+</div>
+
+
+
+{% endblock %}

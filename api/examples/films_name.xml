@@ -1,0 +1,33 @@
+<data>
+    <api_title>
+        FilmsName
+    </api_title>
+
+    <api_decription>
+        Метод возвращает все названия фильмов
+    </api_decription>
+    
+    <api_example>films_name/</api_example>
+
+    <api_param>нет</api_param>
+
+    <api_response_details><![CDATA[
+    http://kinoinfo.ru/api/films_name/?format=json<br />
+    <br />
+    type:<br/>
+        1 - оригинал названия,
+        2 - русское название,
+        3 - международное название
+    <br/>
+    <br/>
+    status:<br/>
+        1 - утвержденное,
+        2 - временное,
+        5 - альтернативное
+    <br/>
+    <br/>
+    slug - название в нижнем регистре, очищенное от пробелов и знаков препинания
+    ]]></api_response_details>
+
+    <!--<api_response>films_name.txt</api_response>-->
+</data>

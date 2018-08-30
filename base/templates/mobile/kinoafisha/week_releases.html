@@ -1,0 +1,332 @@
+{% extends "mobile/base.html" %}
+
+{% block title %}{{ request.current_site.name }}:
+    {% if release %}
+        {{ page_title }}
+    {% endif %}
+    {% if online %}
+        Пять случайных фильмов
+    {% endif %}
+    {% if best %}
+        Лучшее сегодня в кинотеатрах
+    {% endif %}
+    {% if soon %}
+        Скоро на экранах {% if fr %}Франции{% else %}России{% endif %}
+    {% endif %}
+{% endblock %}
+
+{% load base_tags %}
+
+{% block keywords %}{{ request.seo_data.keywords }}{% endblock %}
+{% block description %}{{ request.seo_data.description }}{% endblock %}
+
+{% block script %}
+
+<script type="text/javascript">
+$(document).ready(function(){
+    $(".fancybox").fancybox();
+});
+</script>
+{% endblock %}
+
+
+{% block content %}
+
+{% mobile_header %}
+
+{% kinoafisha_main_menu_mobile %}
+
+<div class="art-postcontent-width">
+    <h1>
+    {% if release %}
+        {{ page_title }}
+    {% endif %}
+    {% if online %}
+        Пять случайных фильмов
+    {% endif %}
+    {% if best %}
+        <a class="select_mycity">{{ request.current_user_city }}</a> - Лучшее сегодня в кинотеатрах
+    {% endif %}
+    {% if soon %}
+        Скоро на экранах {% if fr %}Франции{% else %}России{% endif %}
+    {% endif %}
+    </h1>
+
+    {% if release %}
+        <div id="top">
+            <div id="film_description"{% if descript_top %}style="margin-bottom: 20px;"{% endif %}>
+                {% if descript_top %}
+                    {{ descript_top|safe }}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+    
+        {% for i in data %}
+        <div id="film_info" class="film_info-main" style="background: {% if forloop.counter|divisibleby:'2' %}#EBEBEB;{% else %}#F2F2F2;{% endif %}">
+            
+            <div id="persons_top_line">
+            {% if i.persons.actors %}
+                {% for j in i.persons.actors|slice:":3" %}
+                    <a href="{% url get_person j.id %}" target="_blank">
+                    {% if j.poster %}<img src="{{ j.poster }}" id="img_under"/>{% endif %}
+                    {{ j.name }}
+                    </a>{% if not forloop.last %}, {% endif %}
+                {% endfor %}
+                в фильме
+            {% else %}
+                {% if i.persons.directors %}Фильм{% endif %}
+            {% endif %}
+            
+            {% for j in i.persons.directors %}
+                <a href="{% url get_person j.id %}" target="_blank">
+                {% if j.poster %}<img src="{{ j.poster }}" id="img_under"/>{% endif %}
+                {{ j.name }}
+                </a>{% if not forloop.last %}, {% endif %}
+            {% endfor %}
+            </div>
+
+            <h2 id="film_name"><a href="http://m.kinoinfo.ru/film/{{ i.id }}/" >{% if i.name_ru %}{{ i.name_ru|safe }}{% else %}{{ i.name_en|safe}}{% endif %}</a></h2>
+
+            <div id="film_details">
+                <span>
+                {% for v in i.countries %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},
+                </span>
+                <span>
+                {% for v in i.genres %}{{ v }}{% if not forloop.last %}/{% endif %}{% endfor %},
+                </span>
+                <span>
+                {% if i.runtime %}{{ i.runtime }} мин.{% endif %}
+                </span>
+            </div>
+
+            <div id="film_description">
+            {% if i.descript %}
+                {% if i.descript_cut %}
+                    {{ i.descript_cut|safe }}
+                    <a id="descript" onclick="$.fancybox.open($(this).next());">[подробнее]</a>
+                    <div id="in_descript">
+                        <div style="padding-right: 15px;">
+                        {{ i.descript|safe }}
+                        </div>
+                    </div>
+                {% else %}
+                    {{ i.descript|safe }}
+                {% endif %}
+            {% else %}
+            Нет описания
+            {% endif %}
+            </div>
+            
+            <br /><br />
+
+            {% poster_with_likes_mobile i.id i.rating.rate i.rating.show_imdb i.rating.rotten i.rating.show_ir i.likes.likes_cinema i.likes.likes_home i.likes.likes_recommend i.likes.dislikes_seen i.likes.dislikes_recommend i.likes.count_likes i.likes.count_dislikes i.limit i.posters 'small_pstr' i.tickets %}
+
+            <div class="trailer_slides">
+            
+                <div id="film_trailers">
+                    <div class="trailer"{% if online %} style="height: 230px;"{% endif %}>
+                    {% if i.trailer %}
+                        {% if online %}
+                            {{ i.trailer|safe }}
+                        {% else %}
+                        <div class="youtube_wrapper">
+                            <img src="{{ i.trailer_img }}" width="250" height="150" id="yt_{{ i.trailer_id }}">
+                            <div></div>
+                        </div>
+                        {% endif %}
+                    {% else %}
+                        Нет трейлера
+                    {% endif %}
+                    </div>
+                </div>
+
+                {% if not online %}
+                <div id="film_slides">
+                {% for s in i.slides %}
+                    <div class="slide">{% if s.0 %}<a class="fancybox" rel="group_{{ i.id }}" href="{{ s.0 }}"><img class="fancy_slide" src="{{ s.1 }}" /></a>{% else %}Нет слайда{% endif %}</div>
+                {% endfor %}
+                </div>
+                {% endif %}
+            </div>
+            
+
+            <div class="fopinions_block">
+                <a onclick="get_film_opinions({{ i.id }}{% if not i.opinions.count %}, 1{% endif %});" class="fopinions">
+                {% if i.opinions.count %}
+                    <span>Отзывы зрителей ({{ i.opinions.count }})</span><br>
+                    <span style="font-size: 12px">средняя оценка {{ i.opinions.avg }} из 5.0</span>
+                    {% if i.opinions.my_opinion %}
+                        <br><span>(Ваша отзыв учтён)</span>
+                    {% endif %}
+                {% else %}
+                    <span>Добавить отзыв</span>
+                    <span></span>
+                {% endif %}
+                </a>
+                <br />
+                {% if i.opinions.my_rate %}
+                <div class="fopinions_rate">
+                    <span>Ваша оценка: {{ i.opinions.my_rate }}</span>
+                </div>
+                {% else %}
+                <a onclick="get_film_opinions({{ i.id }}, 2);" class="fopinions_rate">
+                    <span>Оценить фильм</span>
+                </a>
+                {% endif %}
+            </div>
+
+
+            {% if release %}
+                <div id="{{ i.id }}">
+                    <div id="film_description"{% if i.descript_after %}style="margin-bottom: 20px;"{% endif %}>
+                        {% if i.descript_after %}
+                            {{ i.descript_after|safe }}
+                        {% endif %}
+                    </div>
+                </div>
+            {% endif %}
+            
+
+            {% if best or release %}
+                {% if best %}
+                    {% if i.cinemas %}
+                        <h3 style="margin-top: 10px;">В кинотеатрах:</h3>
+                        <select class="film_cinemas_schedules_v2" id="select__{{ i.id }}">
+                        {% for j in i.cinemas %}
+                            <option value="{% for s in j.schedules %}{{ s|date:'H:i' }}{% if not forloop.last %}, {% endif %}{% endfor %}">{{ j.name|safe }}</option>
+                        {% endfor %}
+                        </select>
+
+                        <div id="times__{{ i.id }}" class="film_schedules_block">
+                        {% for s in i.cinemas.0.schedules %}
+                            <b>{{ s|date:'H:i' }}{% if not forloop.last %}, {% endif %}</b>
+                        {% endfor %}
+                        </div>
+                    {% endif %}
+                {% else %}
+                    {% if i.cinemas %}
+                        <h3 style="margin-top: 10px;">В кинотеатрах:</h3>
+                        <select class="film_cinemas_schedules_v4" id="select__{{ i.id }}">
+                        {% for j in i.cinemas %}
+                            <option value="{{ j.id }}">{{ j.name|safe }}</option>
+                        {% endfor %}
+                        </select>
+
+                        <span id="dates__{{ i.id }}">
+                        {% for j in i.cinemas %}
+                            <select {% if not forloop.first %}style="display: none;"{% endif %} class="film_cinemas_schedules_v5" id="select__{{ i.id }}__{{ j.id }}">
+                            {% for s in j.schedules %}
+                                <option value='{{ s.dtime|date:"j" }}'>{{ s.dtime|date:"j b" }}</option>
+                            {% endfor %}
+                            </select>
+                        {% endfor %}
+                        </span>
+
+                        <div id="times__{{ i.id }}" class="film_schedules_block">
+                        {% for j in i.cinemas %}
+                            <span {% if not forloop.first %}style="display: none;"{% endif %} id="times__{{ i.id }}__{{ j.id }}">
+                                {% for s in j.schedules %}
+                                <span {% if not forloop.first %}style="display: none;"{% endif %} id='times__{{ i.id }}__{{ j.id }}__{{ s.dtime|date:"j" }}'>
+                                    {% for t in s.time %}
+                                        <b>{{ t|date:"H:i" }}</b>{% if not forloop.last %},{% endif %}
+                                    {% endfor %}
+                                </span>
+                                {% endfor %}
+                            </span>
+                        {% endfor %}
+                        </div>
+                        <br /><br />
+                    {% endif %}
+
+                    {% for r in i.reviews %}
+                    <div class="film-review-mini">
+                        <div class="review_avatar">
+                        {% if r.avatar %}
+                            <img src="{{ r.avatar }}" />
+                        {% endif %}
+                        </div>
+                
+                        <p style="color: #666; margin-bottom: 5px;">{{ r.user_firstname }} {{ r.user_lastname }}</p>
+                        <p style="color: #666;">Оценка: {{ r.rate }}</p>
+                        
+                        <div class="film-review-mini_txt">
+                            <p style="font-weight: bold; color: #444;">{{ r.title|safe }}</p>
+                            
+                            {% if r.txt_cut %}
+                                {{ r.txt_cut }}
+                                <a id="descript" href="#in_descript" onclick="$.fancybox.open($(this).next());">[подробнее]</a>
+                                <div id="in_descript">
+                                    <div style="padding-right: 15px;">
+                                    {{ r.txt|safe }}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <p>{{ r.txt|safe }}</p>
+                            {% endif %}
+                        </div>
+                    </div>
+                    {% endfor %}
+
+                {% endif %}
+            {% else %}
+                {% for r in i.reviews %}
+                <div class="film-review-mini">   
+                    <div class="review_avatar">
+                    {% if r.avatar %}
+                        <img src="{{ r.avatar }}" />
+                    {% endif %}
+                    </div>
+            
+                    <p style="color: #666; margin-bottom: 5px;">{{ r.user_firstname }} {{ r.user_lastname }}</p>
+                    <p style="color: #666;">Оценка: {{ r.rate }}</p>
+                    
+                    <div class="film-review-mini_txt">
+                        <p style="font-weight: bold; color: #444;">{{ r.title|safe }}</p>
+                        
+                        {% if r.txt_cut %}
+                            {{ r.txt_cut }}
+                            <a id="descript" href="#in_descript" onclick="$.fancybox.open($(this).next());">[подробнее]</a>
+                            <div id="in_descript">
+                                <div style="padding-right: 15px;">
+                                {{ r.txt|safe }}
+                                </div>
+                            </div>
+                        {% else %}
+                            <p>{{ r.txt|safe }}</p>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% endif %}
+
+
+            
+
+        </div>
+    {% empty %}
+        {% if best %}
+        <br />
+        К сожалению, сегодня в городе <b>{{ request.current_user_city }}</b> нет хороших фильмов в прокате
+        {% endif %}
+
+    {% endfor %}
+    
+    {% if release %}
+        <div id="bottom">
+            <div id="film_description"{% if descript_bottom %}style="margin-bottom: 20px;"{% endif %}>
+                {% if descript_bottom %}
+                    {{ descript_bottom|safe }}
+                {% endif %}
+            </div>
+        </div>
+    {% endif %}
+        
+
+</div>
+
+<script id="kh_script" type="text/javascript" src="http://load.kinohod.ru/static/js/widget/v4/boxoffice.js?apikey={{ kinohod_key }}"></script>
+
+<script type="text/javascript" src="http://s2.kassa.rl0.ru/widget/js/ticketmanager.js"></script>
+
+{% endblock %}

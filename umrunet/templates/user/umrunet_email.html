@@ -1,0 +1,11 @@
+<form action="{% url email_auth_send %}" method="post">{% csrf_token %}
+    <div class="email_button">
+        <p>Ваш e-mail</p>
+        <div class="hidden_input">
+            <input type="text" name="email_auth" />
+            <br />
+            <input type="submit" value="Авторизоваться" />
+        </div>
+    </div>
+</form>
+

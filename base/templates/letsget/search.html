@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load base_tags %}
+{% block title %}{{ title }}{% endblock %}
+{% block script %}
+<script type="text/javascript">
+$(document).ready(function(){
+    var scroll_h = ($(window).height() / 100) * 60
+    $('.scroll_list').css('height', scroll_h + 'px')
+    $(".art-search__title-search").click()
+});
+</script>
+{% endblock %}
+
+{% block content %}
+<h1 class="content-header">
+    <b id="navigation_bar"><a href="{% url main %}">{{ site_name }}</a></b> - 
+    <b id="navigation_bar"><span class="small_film_name">{{ title }}</span></b>
+</h1>
+
+{% if current_site.domain == 'vladaalfimovdesign.com.au' %}
+    {% vlada_menu slug %}
+{% endif %}
+{% if current_site.domain == 'letsgetrhythm.com.au' %}
+    {% letsget_menu slug %}
+{% endif %}
+
+<div class="art-postcontent-width">
+    {% if query %}
+        {% if count %}
+        <h3>{% trans 'Найдено' %} {{ count }} {% trans 'по запросу' %} "{{ query|striptags }}"</h3>
+        <br />
+        <div class="scroll_list">
+        {% for i in news_data %}
+            <div class="short_news">
+                <h2><a href="{% url letsget_view_post i.vid i.id %}">{% if i.news_title %}{{ i.news_title }}{% else %}{{ i.sub_title }}{% endif %}</a></h2>
+                {{ i.description }}
+                <span>{{ i.dtime|date:"j E" }}</span>
+            </div>
+        {% endfor %}
+        </div>
+        {% else %}
+        <h3>{% trans 'Ничего нет по запросу' %} - "{{ query|striptags }}". {{ msg }}</h3>
+        {% endif %}
+    {% else %}
+        <h3>{% trans 'Вы ничего не указали в строке поиска' %}!</h3>
+    {% endif %}
+
+</div>
+
+
+
+{% endblock %}

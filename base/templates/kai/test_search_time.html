@@ -1,0 +1,17 @@
+{% extends "list_2.html" %}
+{% block content %}
+<div class="art-postcontent-width">
+    <h2 class="art-postheader">Поиск названия фильма (2012) в БД</h2>
+    <a href="{% url main_kai %}">Назад</a><br /><br />
+    <form action="" method="get">{% csrf_token %}
+        Искать в старой БД {% if ch %}<input name="db" type="checkbox" checked="checked" />{% else %}<input name="db" type="checkbox" />{% endif %}
+        <input type="text" name="q" value='{{ q }}' />
+        <input type="submit" value="Искать" />
+    </form>
+        <br />
+        <p>{{ msg }}</p>
+        <br />
+        <br />
+        время: {{ runtime }}
+</div>
+{% endblock %}
