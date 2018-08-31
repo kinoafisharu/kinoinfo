@@ -79,7 +79,7 @@ def get_imdb_film_list():
                     
             xml += '</date>'
     ids = ';'.join(set(ids))
-    xml = '<data><ids value="%s">%s</ids></data>' % (ids, xml)
+    xml = '<data><ids value="%s">%s</ids></data>' % (ids, xml)time
 
     create_dump_file('%s_film_list' % source.dump, settings.API_DUMP_PATH, xml)
     cron_success('html', source.dump, 'films_list', 'Список релизов')
@@ -183,7 +183,7 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
             # дата релиза
             if not release:
                 url_release = '%sreleaseinfo' % url
-                time.sleep(2.5)
+                time.sleep(1.5)
                 req_release = opener.open(urllib2.Request(url_release))
                 if req_release.getcode() == 200:
                     data_release = BeautifulSoup(req_release.read(), from_encoding="utf-8")
@@ -438,7 +438,7 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
 
         distributors = []
         url2 = '%scompanycredits' % url
-        time.sleep(2.5)
+        time.sleep(1.5)
         req2 = opener.open(urllib2.Request(url2))
         if req2.getcode() == 200:
             data2 = BeautifulSoup(req2.read(), from_encoding="utf-8")
@@ -477,7 +477,7 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
         
         poster_obj = None
         if poster:
-            time.sleep(2.5)
+            time.sleep(1.5)
             poster_obj = get_imdb_poster(poster, poster_name)
 
         person_list = []
@@ -864,7 +864,7 @@ def get_imdb_data(xml, is_dump, country_id=1, ids=[], upd=False, film_kid=None):
                 break
 
                         
-        time.sleep(2.5)
+        time.sleep(1.5)
 
     #RelationFP.objects.filter(films__imdb_id=None).delete()
     #Films.objects.filter(imdb_id=None).delete()
