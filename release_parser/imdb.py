@@ -183,7 +183,7 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
             # дата релиза
             if not release:
                 url_release = '%sreleaseinfo' % url
-                time.sleep(0.3)
+                time.sleep(0.9)
                 req_release = opener.open(urllib2.Request(url_release))
                 if req_release.getcode() == 200:
                     data_release = BeautifulSoup(req_release.read(), from_encoding="utf-8")
