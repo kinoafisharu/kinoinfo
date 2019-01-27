@@ -256,12 +256,21 @@ def get_film_year(request, id, val):
 
 
 @dajaxice_register
-def get_film_name(request, id, val):
-    #try:
+def get_film_name(request, id, val, type=2):
+    """
+        Allows to edit film name from ajax request from admin panel
+
+    :param request:
+    :param id: film_id
+    :param val: new film name
+    :param type: type of film name (for ru is 2, for en is 1)
+    :return: None
+    """
+
     film_editor = is_film_editor(request)
     if film_editor:
         if val:
-            film = FilmsName.objects.using('afisha').only("name").filter(type=2, status=1, film_id__id=id)
+            film = FilmsName.objects.using('afisha').only("name").filter(type=type, status=1, film_id__id=id)
             slug_name = low(del_separator(val.encode('utf-8')))
             if film:
                 act = None
@@ -289,21 +298,19 @@ def get_film_name(request, id, val):
                 film_obj = Film.objects.using('afisha').get(pk=id)
                 
                 try:
-                    films_name_create(film_obj, val.encode('utf-8'), 2, 1, slug_name)
+                    films_name_create(film_obj, val.encode('utf-8'), type, 1, slug_name)
                 except db.backend.Database._mysql.OperationalError:
                     name = val.encode('ascii', 'xmlcharrefreplace')
-                    films_name_create(film_obj, name, 2, 1, slug_name)
+                    films_name_create(film_obj, name, type, 1, slug_name)
                     
                 cache.delete_many(['get_film__%s' % id, 'film__%s__fdata' % id])
 
-                actions_logger(5, id, request.profile, '1') # фильм Название
+                actions_logger(5, id, request.profile, '1')  # фильм Название
                 
             return simplejson.dumps({'status': True, 'content': val})
     else:
         return simplejson.dumps({'status': False})
-    #except Exception as e:
-    #    open('errors.txt','a').write('%s * (%s)' % (dir(e), e.args))
-    
+
     
 def exp_film_data(id):
     film = Films.objects.select_related('budget').filter(imdb_id=int(id))
