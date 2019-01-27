@@ -103,6 +103,15 @@ function set_user_city(){
                 <input type="button" value="Отмена" class="film_name_en_cancel_btn" onclick="obj_cancel(this);" />
                 <span class="name_en_err"></span>
             </div>
+
+            <div class="film_imdb_link_fields org_fields">
+                <b>ID IMDB</b><br />
+                <input type="text" value="{{ imdb_link }}" size="50" class="film_imdb_link_field" />
+                <br />
+                <input type="button" value="Сохранить" class="film_imdb_accept_btn" />
+                <input type="button" value="Отмена" class="film_imdb_cancel_btn" onclick="obj_cancel(this);" />
+                <span class="film_imdb_link_err"></span>
+            </div>
             {% endif %}
             
             <div id="persons_top_line">
@@ -125,9 +134,10 @@ function set_user_city(){
 
             
             <h2 id="film_name" itemprop="name">{% if film_editor %}<span class="film_name org_hover" title="Редактировать" onclick="obj_edit(this);">{% endif %}{{ name_ru|safe }}{% if film_editor %}</span>{% endif %} 
-            <span{% if film_editor %} class="film_year org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>({{ year }})</span>
+            <span>{% if film_editor %} class="film_year org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>({{ year }})</span>
             
-            {% if film_editor %}<span class="film_name_en">{% endif %}
+            {% if film_editor %}<span class="film_name_en org_hover" title="Редактировать имя на английском" onclick="obj_edit(this);"></span>{% endif %}
+            {% if film_editor %}<span class="film_imdb_link org_hover" title="Редактировать IMDB ID" onclick="obj_edit(this);"></span> {% endif %}
             <p><a href="http://www.imdb.com/title/tt{{ imdb_link }}" target="_blank" class="film_name_en_url">{{ name_en|safe }}</a>{% if film_editor %} | <a onclick="imdb_search('{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}', {{ year }}, 'false'{% if name_en_imdb %}, {{ name_en_imdb }}{% endif %});">обновить слой IMDb</a>{% if name_en_imdb %} | <a onclick="imdb_rel_edit({{ name_en_imdb }}, '{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}');" title="Редактировать связь"><span class="edit_mark"></span></a>{% endif %}{% endif %}</p>{% if film_editor %}</span>{% endif %}</h2>
             
             {% if film_editor %}

@@ -1239,7 +1239,18 @@ $(document).delegate('.film_name_en_accept_btn', 'click', function(){
     }
 })
 
-// todo add delegate for film_id_accept_btn
+
+$(document).delegate('.film_imdb_link_accept_btn', 'click', function(){
+    var filmId = $('.film_id').attr('id');
+    var newIMDbID = $('.film_imdb_link_field').val();
+
+    if(val){
+        Dajaxice.film.update_film_imdb_id(false, {'film_id': filmId, 'imdb_id': newIMDbID}); // todo test it
+        $('.film_imdb_link_fields').hide();
+    } else {
+        $('.film_imdb_link_err').html('Введите ID');
+    }
+})
 
 /* end Film */
 
