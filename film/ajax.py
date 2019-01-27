@@ -311,7 +311,29 @@ def get_film_name(request, id, val, type=2):
     else:
         return simplejson.dumps({'status': False})
 
-    
+
+@dajaxice_register
+def update_film_imdb_id(request, film_id, imdb_id):
+    film_editor = is_film_editor(request)
+
+    if not film_editor:
+        return simplejson.dumps({'status':False, 'reason': 'u are not film editor'})
+
+    try:
+        film = Film.objects.get(id=film_id)
+    except Film.DoesNotExist as e:
+        return simplejson.dumps({'status': False, 'reason': str(e)})
+
+    try:
+        imdb_id_int = int(imdb_id)
+    except Exception as e:
+        return simplejson.dumps({'status': False, 'reason': str(e)})
+
+    film.idalldvd = imdb_id_int
+    film.save()
+    return simplejson.dumps({'status': True, 'content': imdb_id_int})
+
+
 def exp_film_data(id):
     film = Films.objects.select_related('budget').filter(imdb_id=int(id))
     count = film.count()
