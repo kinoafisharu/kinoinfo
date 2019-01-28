@@ -9,7 +9,7 @@ admin.autodiscover()
 dajaxice_autodiscover()
 
 urlpatterns = patterns('',
-    # сервисное меню
+    # сервисное меню ПОРА УДАЛЯТЬ ЭТОТ САЙТ
     url(r'^$', 'umrunet.views.homepage', name='main'),
 
     
