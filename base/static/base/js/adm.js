@@ -1237,7 +1237,7 @@ $(document).delegate('.film_name_en_accept_btn', 'click', function(){
     } else {
         $('.name_en_err').html('Введите название');
     }
-})
+});
 
 
 $(document).delegate('.film_imdb_link_accept_btn', 'click', function(){
@@ -1250,7 +1250,7 @@ $(document).delegate('.film_imdb_link_accept_btn', 'click', function(){
     } else {
         $('.film_imdb_link_err').html('Введите ID');
     }
-})
+});
 
 /* end Film */
 
