@@ -1229,7 +1229,7 @@ $(document).delegate('.film_name_en_accept_btn', 'click', function(){
     var filmId = $('.film_id').attr('id');
     var newFilmNameEn = $('.film_name_en_field').val();
 
-    if(val){
+    if(newFilmNameEn){
         Dajaxice.film.get_film_name(false, {'id': filmId, 'val': newFilmNameEn, 'type': 1});
         // todo test it (idk what is type)
         $('.film_name_en_fields').hide();
@@ -1244,7 +1244,7 @@ $(document).delegate('.film_imdb_link_accept_btn', 'click', function(){
     var filmId = $('.film_id').attr('id');
     var newIMDbID = $('.film_imdb_link_field').val();
 
-    if(val){
+    if(newIMDbID){
         Dajaxice.film.update_film_imdb_id(false, {'film_id': filmId, 'imdb_id': newIMDbID}); // todo test it
         $('.film_imdb_link_fields').hide();
     } else {
