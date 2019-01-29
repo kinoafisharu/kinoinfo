@@ -324,7 +324,7 @@ def update_film_imdb_id(request, film_id, imdb_id):
     except Exception as e:   # todo add more info about exception
         return simplejson.dumps({'status': False, 'reason': str(e)})
 
-    try:
+    try:    
         imdb_id_int = int(imdb_id)
     except Exception as e:
         return simplejson.dumps({'status': False, 'reason': str(e)})

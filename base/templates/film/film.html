@@ -152,13 +152,13 @@ function set_user_city(){
             <div id="kid" style="display: none;">{{ id }}</div>
             
             <b id="film_details">
-                <span{% if film_editor %} class="film_countries org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>
+                <span>{% if film_editor %} class="film_countries org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>
                 {% for k, v in countries.items %}{{ v }}{% if not forloop.last %} / {% endif %}{% empty %}{% if film_editor %}<span style="font-weight: normal;">страна</span>{% endif %}{% endfor %},
                 </span>
-                <span{% if film_editor %} class="film_genres org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %} itemprop="genre">
+                <span>{% if film_editor %} class="film_genres org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %} itemprop="genre">
                 {% for k, v in genres.items %}{{ v }}{% if not forloop.last %} / {% endif %}{% empty %}{% if film_editor %}<span style="font-weight: normal;">жанр</span>{% endif %}{% endfor %},
                 </span>
-                <span{% if film_editor %} class="film_runtime org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %} itemprop="duration">
+                <span>{% if film_editor %} class="film_runtime org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %} itemprop="duration">
                 {% if runtime %}{{ runtime }} мин.{% else %}{% if film_editor %}<span style="font-weight: normal;">продолжит.{% endif %}</span>{% endif %}
                 </span>
             </b>
