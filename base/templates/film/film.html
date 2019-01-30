@@ -137,7 +137,7 @@ function set_user_city(){
             <span {% if film_editor %} class="film_year org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>({{ year }})</span>
 
             {% if film_editor %}<span class="film_name_en org_hover" title="Редактировать имя на английском" onclick="obj_edit(this);">Редактировать имя на английском: {{ name_en|safe }}</span>{% endif %}
-            {% if film_editor %}<span class="film_imdb_link org_hover" title="Редактировать IMDB ID" onclick="obj_edit(this);">Редактировать IMDB ID: {{ <imdb_link></imdb_link> }}</span> {% endif %}
+            {% if film_editor %}<span class="film_imdb_link org_hover" title="Редактировать IMDB ID" onclick="obj_edit(this);">Редактировать IMDB ID: {{ imdb_link }}</span> {% endif %}
             <p><a href="http://www.imdb.com/title/tt{{ imdb_link }}" target="_blank" class="film_name_en_url">{{ name_en|safe }}</a>{% if film_editor %} | <a onclick="imdb_search('{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}', {{ year }}, 'false'{% if name_en_imdb %}, {{ name_en_imdb }}{% endif %});">обновить слой IMDb</a>{% if name_en_imdb %} | <a onclick="imdb_rel_edit({{ name_en_imdb }}, '{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}');" title="Редактировать связь"><span class="edit_mark"></span></a>{% endif %}{% endif %}</p>{% if film_editor %}</span>{% endif %}</h2>
 
             {% if film_editor %}
