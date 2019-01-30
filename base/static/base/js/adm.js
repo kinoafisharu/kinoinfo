@@ -1225,12 +1225,16 @@ $(document).delegate('.film_name_accept_btn', 'click', function(){
     }
 });
 
+function debug_request(data){
+    console.log(data);
+}
+
 $(document).delegate('.film_name_en_accept_btn', 'click', function(){
     var filmId = $('.film_id').attr('id');
     var newFilmNameEn = $('.film_name_en_field').val();
 
     if(newFilmNameEn){
-        Dajaxice.film.get_film_name(false, {'id': filmId, 'val': newFilmNameEn, 'type': 1});
+        Dajaxice.film.get_film_name(debug_request, {'id': filmId, 'val': newFilmNameEn, 'type': 1});
         // todo test it (idk what is type)
         $('.film_name_en_fields').hide();
         $('.film_name_en').html(newFilmNameEn).show();
@@ -1240,12 +1244,12 @@ $(document).delegate('.film_name_en_accept_btn', 'click', function(){
 });
 
 
-$(document).delegate('.film_imdb_link_accept_btn', 'click', function(){
+$(document).delegate('.film_imdb_accept_btn', 'click', function(){
     var filmId = $('.film_id').attr('id');
     var newIMDbID = $('.film_imdb_link_field').val();
 
     if(newIMDbID){
-        Dajaxice.film.update_film_imdb_id(false, {'film_id': filmId, 'imdb_id': newIMDbID}); // todo test it
+        Dajaxice.film.update_film_imdb_id(debug_request, {'film_id': filmId, 'imdb_id': newIMDbID}); // todo test it
         $('.film_imdb_link_fields').hide();
     } else {
         $('.film_imdb_link_err').html('Введите ID');
