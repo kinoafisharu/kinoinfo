@@ -1234,7 +1234,7 @@ $(document).delegate('.film_name_en_accept_btn', 'click', function(){
     var newFilmNameEn = $('.film_name_en_field').val();
 
     if(newFilmNameEn){
-        Dajaxice.film.get_film_name(debug_request, {'id': filmId, 'val': newFilmNameEn, 'type': 1});
+        Dajaxice.film.get_film_name(debug_request, {'id': filmId, 'val': newFilmNameEn, 'film_name_type': 1});
         // todo test it (idk what is type)
         $('.film_name_en_fields').hide();
         $('.film_name_en').html(newFilmNameEn).show();
