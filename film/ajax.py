@@ -307,8 +307,8 @@ def get_film_name(request, id, val, film_name_type=2):
                 actions_logger(5, id, request.profile, '1')  # фильм Название
                 
             return simplejson.dumps({'status': True, 'content': val,
-                                     "film_name_type": film_name_type,
-                                     "type_film_name_type": type(film_name_type),
+                                     "film_name_type": str(film_name_type),
+                                     "type_film_name_type": str(type(film_name_type)),
                                      "film_id": id})
     else:
         return simplejson.dumps({'status': False})
