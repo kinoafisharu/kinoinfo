@@ -297,19 +297,19 @@ def get_film_name(request, id, val, film_name_type=2):
                 film_obj = Film.objects.using('afisha').get(pk=id)
                 
                 try:
-                    films_name_create(film_obj, val.encode('utf-8'), film_name_type, 1, slug_name)
+                    _, is_created = films_name_create(film_obj, val.encode('utf-8'), film_name_type, 1, slug_name)
                 except db.backend.Database._mysql.OperationalError:
                     name = val.encode('ascii', 'xmlcharrefreplace')
-                    films_name_create(film_obj, name, film_name_type, 1, slug_name)
+                    _, is_created = films_name_create(film_obj, name, film_name_type, 1, slug_name)
                     
                 cache.delete_many(['get_film__%s' % id, 'film__%s__fdata' % id])
 
                 actions_logger(5, id, request.profile, '1')  # фильм Название
+                return simplejson.dumps({'status': True, 'is_created': is_created})
                 
             return simplejson.dumps({'status': True, 'content': val,
-                                     "film_name_type": film_name_type,
-                                     "type_film_name_type": type(film_name_type),
-                                     "film_id": id})
+                                     'film_name_type': str(film_name_type),
+                                     'film_id': id})
     else:
         return simplejson.dumps({'status': False})
 
