@@ -70,12 +70,12 @@ def get_youtube_video_player(video, width, height):
 
 def films_name_create(film_obj, name, ntype, status, slug):
     name_obj, name_created = FilmsName.objects.using('afisha').get_or_create(
-        film_id = film_obj,
-        name = name.strip(),
-        type = ntype,
-        status = status,
-        slug = slug,
-        defaults = {
+        film_id=film_obj,
+        name=name.strip(),
+        type=ntype,
+        status=status,
+        slug=slug,
+        defaults={
             'film_id': film_obj,
             'name': name.strip(),
             'type': ntype,
