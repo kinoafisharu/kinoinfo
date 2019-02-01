@@ -255,6 +255,38 @@ def get_film_year(request, id, val):
     #    open('errors.txt','a').write('%s * (%s)' % (dir(e), e.args))
 
 
+@never_cache
+@dajaxice_register
+def update_film_imdb_id(request, film_id, imdb_id):
+    """
+
+        Allows to edit film imdb id (for links)
+
+    :param request: wsgi request data
+    :param film_id: film_id where it has to update
+    :param imdb_id: new imdb_id
+    :return:
+    """
+    film_editor = is_film_editor(request)
+
+    if not film_editor:
+        return simplejson.dumps({'status':False, 'reason': 'u are not film editor'})
+
+    try:
+        film = Film.objects.get(id=film_id)
+    except Exception as e:   # todo add more info about exception
+        return simplejson.dumps({'status': False, 'reason': str(e)})
+
+    try:
+        imdb_id_int = int(imdb_id)
+    except Exception as e:
+        return simplejson.dumps({'status': False, 'reason': str(e)})
+
+    film.idalldvd = imdb_id_int
+    film.save()
+    return simplejson.dumps({'status': True, 'content': imdb_id_int})
+
+
 @dajaxice_register
 def get_film_name(request, id, val, film_name_type=2):
     """
@@ -285,55 +317,31 @@ def get_film_name(request, id, val, film_name_type=2):
                     except db.backend.Database._mysql.OperationalError:
                         if i.name != val.encode('ascii', 'xmlcharrefreplace'):
                             act = '2' if val else '3'
-                            
+
                         i.name = val.encode('ascii', 'xmlcharrefreplace')
                         i.slug = slug_name
                         i.save()
 
-                cache.delete_many(['get_film__%s' % id, 'film__%s__fdata' % id])
+                # cache.delete_many(['get_film__%s' % id, 'film__%s__fdata' % id])
 
                 actions_logger(5, id, request.profile, act) # фильм Название
             else:
                 film_obj = Film.objects.using('afisha').get(pk=id)
-                
+
                 try:
                     _, is_created = films_name_create(film_obj, val.encode('utf-8'), film_name_type, 1, slug_name)
                 except db.backend.Database._mysql.OperationalError:
                     name = val.encode('ascii', 'xmlcharrefreplace')
                     _, is_created = films_name_create(film_obj, name, film_name_type, 1, slug_name)
-                    
-                cache.delete_many(['get_film__%s' % id, 'film__%s__fdata' % id])
 
                 actions_logger(5, id, request.profile, '1')  # фильм Название
-                return simplejson.dumps({'status': True, 'is_created': is_created})
-                
+
+            cache.delete_many(['get_film__%s' % id, 'film__%s__fdata' % id])
             return simplejson.dumps({'status': True, 'content': val,
                                      'film_name_type': str(film_name_type),
                                      'film_id': id})
     else:
         return simplejson.dumps({'status': False})
-
-
-@dajaxice_register
-def update_film_imdb_id(request, film_id, imdb_id):
-    film_editor = is_film_editor(request)
-
-    if not film_editor:
-        return simplejson.dumps({'status':False, 'reason': 'u are not film editor'})
-
-    try:
-        film = Film.objects.get(id=film_id)
-    except Exception as e:   # todo add more info about exception
-        return simplejson.dumps({'status': False, 'reason': str(e)})
-
-    try:    
-        imdb_id_int = int(imdb_id)
-    except Exception as e:
-        return simplejson.dumps({'status': False, 'reason': str(e)})
-
-    film.idalldvd = imdb_id_int
-    film.save()
-    return simplejson.dumps({'status': True, 'content': imdb_id_int})
 
 
 def exp_film_data(id):
