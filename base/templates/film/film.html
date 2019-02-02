@@ -140,10 +140,10 @@ function set_user_city(){
 
 
             {% if film_editor %}
-            <p>
+            <div>
                 <span class="film_name_en org_hover" title="Редактировать имя на английском" onclick="obj_edit(this);">{{ name_en|safe|default:"Редактировать имя на английском" }}</span>
                 <span class="film_imdb_link org_hover" title="Редактировать IMDB ID" onclick="obj_edit(this);">Редактировать IMDB ID: {{ imdb_link }}</span>
-            </p>
+            </div>
             {% endif %}
 
             {% if film_editor %}
@@ -487,7 +487,7 @@ function set_user_city(){
                     {% if film_editor %}
                     <a class="film_budget" title="{{ budget }}">бюджет</a>
                     {% else %}
-                    <span class="nolink" title="{{ budget }}">бюджет</a>
+                    <span class="nolink" title="{{ budget }}">бюджет</span>
                     {% endif %}
                 {% else %}
                     {% if film_editor %}
