@@ -132,11 +132,27 @@ function set_user_city(){
             {% endif %}
            </div>
 
+            {% if film_editor %}
+                <h2 id="film_name" itemprop="name"><span class="film_name org_hover" title="Редактировать" onclick="obj_edit(this);">{{ name_ru|safe }}</span>
+                <span class="film_year org_hover" title="Редактировать" onclick="obj_edit(this);">({{ year }})</span>
+                    <p>
+                        <a href="http://www.imdb.com/title/tt{{ imdb_link }}" target="_blank" class="film_name_en_url">{{ name_en|safe }}</a> |
+                        <a onclick="imdb_search('{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}', {{ year }}, 'false'{% if name_en_imdb %}, {{ name_en_imdb }}{% endif %});">обновить слой IMDb</a>
+                        {% if name_en_imdb %} | <a onclick="imdb_rel_edit({{ name_en_imdb }}, '{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}');" title="Редактировать связь"><span class="edit_mark"></span></a>{% endif %}
+                    </p>
+                </h2>
+            {% else %}
+                <h2 id="film_name" itemprop="name">{{ name_ru|safe }}
+                    <span>{{ year }}</span>
+                    <p>
+                        <a href="http://www.imdb.com/title/tt{{ imdb_link }}" target="_blank" class="film_name_en_url">{{ name_en|safe }}</a>
+                    </p>
+                </h2>
+            {% endif %}
+                {# <h2 id="film_name" itemprop="name">{% if film_editor %}<span class="film_name org_hover" title="Редактировать" onclick="obj_edit(this);">{% endif %}{{ name_ru|safe }}{% if film_editor %}</span>{% endif %}-->
+                <!--<span {% if film_editor %} class="film_year org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>({{ year }})</span>-->
 
-            <h2 id="film_name" itemprop="name">{% if film_editor %}<span class="film_name org_hover" title="Редактировать" onclick="obj_edit(this);">{% endif %}{{ name_ru|safe }}{% if film_editor %}</span>{% endif %}
-                <span {% if film_editor %} class="film_year org_hover" title="Редактировать" onclick="obj_edit(this);"{% endif %}>({{ year }})</span>
-
-            <p><a href="http://www.imdb.com/title/tt{{ imdb_link }}" target="_blank" class="film_name_en_url">{{ name_en|safe }}</a>{% if film_editor %} | <a onclick="imdb_search('{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}', {{ year }}, 'false'{% if name_en_imdb %}, {{ name_en_imdb }}{% endif %});">обновить слой IMDb</a>{% if name_en_imdb %} | <a onclick="imdb_rel_edit({{ name_en_imdb }}, '{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}');" title="Редактировать связь"><span class="edit_mark"></span></a>{% endif %}{% endif %}</p>{% if film_editor %}</span>{% endif %}</h2>
+                <p><a href="http://www.imdb.com/title/tt{{ imdb_link }}" target="_blank" class="film_name_en_url">{{ name_en|safe }}</a>{% if film_editor %} | <a onclick="imdb_search('{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}', {{ year }}, 'false'{% if name_en_imdb %}, {{ name_en_imdb }}{% endif %});">обновить слой IMDb</a>{% if name_en_imdb %} | <a onclick="imdb_rel_edit({{ name_en_imdb }}, '{% if name_en_query %}{{ name_en_query }}{% else %}{{ name_ru_query }}{% endif %}');" title="Редактировать связь"><span class="edit_mark"></span></a>{% endif %}{% endif %}</p>{% if film_editor %}</span>{% endif %}</h2> #}
 
 
             {% if film_editor %}
