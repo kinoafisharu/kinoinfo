@@ -255,7 +255,6 @@ def get_film_year(request, id, val):
     #    open('errors.txt','a').write('%s * (%s)' % (dir(e), e.args))
 
 
-@never_cache
 @dajaxice_register
 def update_film_imdb_id(request, film_id, imdb_id):
     """
