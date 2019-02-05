@@ -323,7 +323,7 @@ def update_film_imdb_id(request, film_id, imdb_id):
 
     try:
         film = Film.objects.get(id=film_id)
-    except Exception as e:   # todo add more info about exception
+    except Exception as e:
         return simplejson.dumps({'status': False, 'reason': str(e)})
 
     try:    
