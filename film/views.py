@@ -1751,7 +1751,7 @@ def film_create(request, id):
 
 
 
-def film_create_new_func(name, year, lang, create=True):
+def film_create_new_func(name, year, lang, create=True, imDB=None):
     new_id = Film.objects.using('afisha').latest('id').id + 1
     
     try:
@@ -1762,7 +1762,7 @@ def film_create_new_func(name, year, lang, create=True):
             runtime = None,
             limits = None,
             comment = None,
-            imdb = None,
+            imdb = imDB,
             imdb_votes = 0,
             date = None,
             company_id = 0,
@@ -1819,8 +1819,9 @@ def film_create_new(request):
             name = request.POST.get('new_name').strip()
             year = request.POST.get('new_year').strip()
             lang = request.POST.get('new_lang')
+            imdb = request.POST.get('im_db').strip()
             if year and name:
-                film_obj = film_create_new_func(name, year, lang)
+                film_obj = film_create_new_func(name, year, lang, imDB=imdb)
 
                 profile = request.profile
                 actions_logger(5, film_obj.id, profile, '1') # фильм Название
