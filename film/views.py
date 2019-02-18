@@ -1760,12 +1760,12 @@ def film_create_new_func(name, year, lang, create=True, imDB=None):
                 imDB=None
         film_obj = Film.objects.using('afisha').create(
             id = new_id,
-            idalldvd = None,
+            idalldvd = imDB,
             year = year,
             runtime = None,
             limits = None,
             comment = None,
-            imdb = imDB,
+            imdb = None,
             imdb_votes = 0,
             date = None,
             company_id = 0,
