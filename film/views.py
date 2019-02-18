@@ -1756,7 +1756,7 @@ def film_create_new_func(name, year, lang, create=True, imDB=None):
     
     try:
         if not(imDB is None):
-            if imDB.len < 1:
+            if len(imDB) < 1:
                 imDB=None
         film_obj = Film.objects.using('afisha').create(
             id = new_id,
