@@ -1781,7 +1781,7 @@ def film_create_new_func(name, year, lang, create=True, imDB=None):
             name = '',
             datelastupd = datetime.datetime.now(),
         )
-
+        #Films.imdb_id - вторая бд должно быть = Film.idalldvd = imDB
         FilmExtData.objects.using('afisha').create(
             id = new_id,
             rate1 = 0,
