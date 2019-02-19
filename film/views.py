@@ -1781,31 +1781,7 @@ def film_create_new_func(name, year, lang, create=True, imDB=None):
             name = '',
             datelastupd = datetime.datetime.now(),
         )
-        #Films.imdb_id - вторая бд должно быть = Film.idalldvd = imDB
-        #Films.kid указывает на Film.id
-        #https://github.com/kinoafisharu/kinoinfo/blob/199b3ecfd496286aa96e3701a0b8f387f5a67f53/base/models.py#L183 - models definition
-        Films.objects.create(
-            name = '', 
-            creators = None, 
-            release = None, 
-            country = None, 
-            genre = None, 
-            year = year,
-            note = None, 
-            type = None, 
-            runtime = None, 
-            rated = None, 
-            budget = None, 
-            production = None, 
-            imdb_id = imDB, 
-            imdb_rate = None, 
-            imdb_votes = None, 
-            kid = new_id, 
-            distributor = None, 
-            images = None, 
-            generated = None, 
-            generated_dtime = None, 
-        )
+
         FilmExtData.objects.using('afisha').create(
             id = new_id,
             rate1 = 0,
