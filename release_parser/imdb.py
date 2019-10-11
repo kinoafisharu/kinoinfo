@@ -1,7 +1,7 @@
 ﻿#-*- coding: utf-8 -*- 
 import urllib
 import urllib2
-import httplib2time
+# import httplib2time
 import re
 import datetime
 import time
@@ -79,7 +79,7 @@ def get_imdb_film_list():
                     
             xml += '</date>'
     ids = ';'.join(set(ids))
-    xml = '<data><ids value="%s">%s</ids></data>' % (ids, xml)time
+    xml = '<data><ids value="%s">%s</ids></data>' % (ids, xml)  # time
 
     create_dump_file('%s_film_list' % source.dump, settings.API_DUMP_PATH, xml)
     cron_success('html', source.dump, 'films_list', 'Список релизов')
