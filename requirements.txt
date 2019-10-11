@@ -23,5 +23,6 @@ requests-cache==0.4.13
 South==0.7.3
 Unidecode==0.4.14
 dj-database-url==0.4.2
+django-environ==0.4.5
 gunicorn
 gevent
