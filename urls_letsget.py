@@ -6,12 +6,13 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
 from base.feeds import NewsFeed
+from urls_kinoafisha import robots_file
 
 dajaxice_autodiscover()
 
 urlpatterns = patterns('',
     url(r'^rss/news/$', NewsFeed(), name='rss_news'),
-
+    url(r'^robots\.txt$', robots_file, name="robots_file"),
     url(r'^', include('letsgetrhythm.urls')),
     
     url(r'^search/$', 'letsgetrhythm.views.searching_text', name='search'),
