@@ -47,11 +47,11 @@ USE_I18N = True
 
 USE_L10N = True
 
-MEDIA_ROOT = '/public/kinoinfo.ru/upload'
+MEDIA_ROOT = rel('upload/')
 
 MEDIA_URL = '/upload/'
 
-STATIC_ROOT = '/public/kinoinfo.ru/static'
+STATIC_ROOT = rel('static/')
 
 STATIC_URL = '/static/'
 
