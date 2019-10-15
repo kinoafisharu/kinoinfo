@@ -3,6 +3,7 @@ from django.conf import settings
 from django.conf.urls.defaults import include, patterns, url
 from django.contrib import admin
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from django.http import HttpResponse
 from django.views.generic.simple import redirect_to
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
@@ -11,7 +12,16 @@ from base.feeds import FilmsFeed, ArticlesFeed, ReleasesFeed
 admin.autodiscover()
 dajaxice_autodiscover()
 
+
+def robots_file(*args, **kwargs):
+    response = HttpResponse(mimetype="text/plain")
+    # response['Cache-Control'] = 'no-cache'
+    response['Content-Type'] = "User-Agent: *\nDisallow: /"
+    return response
+
+
 urlpatterns = patterns('',
+    url(r'^robots\.txt$', robots_file, name="robots_file"),
     url(r'^wf/$', redirect_to, {'url': 'http://forums.vsetiinter.net/women/'}),
 
     url(r'^$', 'slideblok.views.week_releases', {'rtype': 'future'}, name='main'),
