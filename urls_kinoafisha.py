@@ -14,9 +14,8 @@ dajaxice_autodiscover()
 
 
 def robots_file(*args, **kwargs):
-    response = HttpResponse(mimetype="text/plain")
-    # response['Cache-Control'] = 'no-cache'
-    response['Content-Type'] = "User-Agent: *\nDisallow: /"
+    response = HttpResponse("User-Agent: *\nDisallow: /", mimetype="text/plain")
+
     return response
 
 

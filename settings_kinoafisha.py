@@ -11,7 +11,7 @@ logging.config.fileConfig(
 )
 '''
 
-DEBUG = False
+DEBUG = True
 #DEBUG = True
 #TEMPLATE_DEBUG = DEBUG
 

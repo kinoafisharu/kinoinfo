@@ -11,6 +11,8 @@ DEBUG = True
 env = environ.Env()
 env.read_env('.env')
 
+ALLOWED_HOSTS = ['*']
+
 # TEMPLATE_DEBUG = DEBUG
 
 def rel(*x):
@@ -80,9 +82,9 @@ USE_I18N = True
 
 USE_L10N = True
 
-MEDIA_ROOT = rel('uploads/')
+MEDIA_ROOT = rel('upload/')
 
-MEDIA_URL = '/uploads/'
+MEDIA_URL = '/upload/'
 
 STATIC_ROOT = rel('static/')
 
