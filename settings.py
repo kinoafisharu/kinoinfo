@@ -198,7 +198,8 @@ INSTALLED_APPS = (
     'forums',
     'music',
     'linkanoid',
-    'pmprepare'
+    'pmprepare',
+    'storages'
 )
 
 API_EX_PATH = rel('api/examples')
@@ -351,6 +352,12 @@ LOGGING = {
     }
 }
 
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto.S3BotoStorage'
+
+AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
+AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
+AWS_STORAGE_BUCKET_NAME = 'kinoinfo'
+AWS_S3_HOST = 's3.eu-central-1.amazonaws.com'
 # logging.config.fileConfig(
 #    rel('sape/logging.cfg'),
 #    {'basedir': rel('sape/')}
