@@ -1,4 +1,5 @@
 #-*- coding: utf-8 -*-
+import collections
 import operator
 import datetime
 import time
@@ -1177,10 +1178,56 @@ def reviews_func(request, id):
 
     reviews_dict = []
 
+    all_ids = [i.autor.id for i in p.object_list]
+    data_persons = collections.defaultdict(list)
+    for o in Person.objects.filter(profile__pk__in=all_ids).values(
+        'id',
+        'city',
+        'country',
+        'profile',
+        'profile__pk',
+        'profile__kid',
+        'profile__user',
+        'profile__phone',
+        'profile__folder',
+        'profile__show_profile',
+        'profile__user__last_name',
+        'profile__user__first_name',
+        'profile__user__date_joined',
+        'profile__user__is_superuser',
+    ):
+        data_persons[o['profile__pk']].append(o)
+    data_cities = collections.defaultdict(list)
+    for o in NameCity.objects.filter(city__person__profile__pk__in=all_ids, status=1).values(
+        'name',
+        'city',
+        'city__person__profile__pk',
+    ):
+        data_cities[o['city__person__profile__pk']].append(o)
+    data_accs = collections.defaultdict(list)
+    for o in Accounts.objects.filter(profile__pk__in=all_ids).values(
+        'login',
+        'avatar',
+        'profile',
+        'fullname',
+        'nickname',
+        'profile__pk',
+    ):
+        data_accs[o['profile__pk']].append(o)
+    data_names = collections.defaultdict(list)
+    for o in NamePerson.objects.filter(person__profile__pk__in=all_ids, status=1).order_by('id').values(
+        'name',
+        'person__profile',
+        'person__profile__pk',
+    ):
+        data_names[o['person__profile__pk']].append(o)
+
     for i in p.object_list:
-        autor = org_peoples([i.autor])
+        autor = org_peoples([i.autor], data_persons, data_cities, data_accs, data_names)
+        # autor = org_peoples([i.autor])
+
         if autor:
-            autor = org_peoples([i.autor])[0]
+            autor = autor[0]
             if i.autor_nick == 1:
                 if i.autor.user.first_name:
                     autor['fio'] = i.autor.user.first_name
@@ -1193,13 +1240,14 @@ def reviews_func(request, id):
 
         description = cut_description(i.text, True, 80)
 
-        reviews_dict.append({'title': i.title, 'user': autor, 'date': i.dtime, 'kinoinfo': False, 'film_id': i.extra, 'film_name': film_name, 'id': i.id, 'obj': i, 'text': i.text, 'description': description})
-
+        reviews_dict.append({'title': i.title, 'user': autor, 'date': i.dtime, 'kinoinfo': False, 'film_id': i.extra,
+                             'film_name': film_name, 'id': i.id, 'obj': i, 'text': i.text, 'description': description})
     tmplt = 'kinoafisha/reviews.html'
     if request.subdomain == 'm' and request.current_site.domain == 'kinoafisha.ru':
         tmplt = 'mobile/kinoafisha/reviews.html'
 
-    return render_to_response(tmplt, {'news_data': reviews_dict, 'p': p, 'page': page, 'id': id}, context_instance=RequestContext(request))
+    return render_to_response(tmplt, {'news_data': reviews_dict, 'p': p, 'page': page, 'id': id},
+                              context_instance=RequestContext(request))
 
 
 @never_cache

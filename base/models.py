@@ -151,7 +151,7 @@ class Distributors(models.Model):
     '''
     iid = models.BigIntegerField(verbose_name='Идентификатор прокатчика на imdb', blank=True, null=True)
     kid = models.BigIntegerField(verbose_name='Идентификатор прокатчика на киноафише', blank=True, null=True)
-    name = models.ManyToManyField(NameDistributors, verbose_name='Название')
+    name = models.ManyToManyField(NameDistributors, verbose_name='Название', related_name='distributors')
     country = models.ForeignKey(Country, verbose_name='Страна', blank=True, null=True)
     #film = models.ManyToManyField(Films, verbose_name='Фильм', blank=True, null=True)
     usa = models.BooleanField(verbose_name='США', default=False)
@@ -668,7 +668,7 @@ class BoxOffice(models.Model):
     source_obj = models.ForeignKey(ImportSources, verbose_name='Источник')
     name = models.CharField(max_length=256, verbose_name='Название фильма у источника')
     kid = models.IntegerField(verbose_name='KID фильма', db_index=True)
-    distributor = models.ManyToManyField(Distributors, verbose_name='Дистрибьютор')
+    distributor = models.ManyToManyField(Distributors, verbose_name='Дистрибьютор', related_name='box_office')
     screens = models.IntegerField(verbose_name='Кол-во экранов', null=True)
     date_from = models.DateField(verbose_name='Дата начала', null=True)
     date_to = models.DateField(verbose_name='Дата окончания', null=True)
@@ -1030,7 +1030,7 @@ class Background(models.Model):
     date_adding = models.DateTimeField(auto_now_add=True, editable=False)
     site = models.ForeignKey(DjangoSite, editable=False)
     subdomain = models.CharField(max_length=128, editable=False, verbose_name='Субдомен', null=True)
-    
+
 
 class Post(models.Model):
     title = models.CharField(max_length=128, verbose_name='Заголовок', blank=True, null=True)
