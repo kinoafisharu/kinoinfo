@@ -2360,23 +2360,34 @@ def boxoffice_func(request, country, admin=False):
             distributor = request.session.get('filter_boxoffice__distributor')
         
     box = BoxOffice.objects.filter(**filter).order_by('-week_sum')
-    
+
+    distributors_data = Distributors.objects.filter(box_office__id__in=[o.id for o in box], name__status=1)
+    distributors_id = [o.id for o in distributors_data]
+
+    box_to_distributors = collections.defaultdict(list)
+    for o in distributors_data.values('box_office__id', 'id', 'kid'):
+        box_to_distributors[o['box_office__id']].append(o)
+
+    name_distributors = collections.defaultdict(list)
+    for o in NameDistributors.objects.filter(
+                distributors__id__in=distributors_id, status=1).values('distributors__id', 'id', 'name'):
+        name_distributors[o['distributors__id']].append(o)
+
     distributor_filter = []
     distributors = {}
     distributors_names = {}
     kid = []
+
     for i in box:
         kid.append(i.kid)
-        distrib = ''
-        for distr in i.distributor.all():
-            for dname in distr.name.filter(status=1):
-                if distrib:
-                    distrib += ' / '
-                distrib += dname.name
-                distributors[distr.kid] = {'id': distr.id, 'kid': distr.kid, 'name': dname.name}
-                if distributor and distributor != 'all' and distributor == distr.kid:
+        distrib = []
+        for distr in box_to_distributors[i.id]:
+            for dname in name_distributors[distr['id']]:
+                distrib.append(dname['name'])
+                distributors[distr['kid']] = {'id': distr['id'], 'kid': distr['kid'], 'name': dname['name']}
+                if distributor and distributor != 'all' and distributor == distr['kid']:
                     distributor_filter.append(i.id)
-            distributors_names[i.id] = distrib 
+            distributors_names[i.id] = ' / '.join(distrib)
 
     films = FilmsName.objects.using('afisha').filter(film_id__id__in=set(kid), status=1, type=2)
     films_dict = {}
