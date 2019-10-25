@@ -742,7 +742,7 @@ def clients(request):
     clients = LetsGetClients.objects.select_related('organization','profile').filter(**filter)
 
     profiles = [i.profile for i in clients if i.profile]
-    pclients = org_peoples(profiles, True)
+    pclients = org_peoples(profiles, dic=True)
     
     clients_list = []
     

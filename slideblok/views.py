@@ -1179,7 +1179,6 @@ def reviews_func(request, id):
     reviews_dict = []
 
     all_ids = [i.autor.id for i in p.object_list]
-
     data_persons = collections.defaultdict(list)
     for o in Person.objects.filter(profile__pk__in=all_ids).values(
         'id',
@@ -1198,7 +1197,6 @@ def reviews_func(request, id):
         'profile__user__is_superuser',
     ):
         data_persons[o['profile__pk']].append(o)
-
     data_cities = collections.defaultdict(list)
     for o in NameCity.objects.filter(city__person__profile__pk__in=all_ids, status=1).values(
         'name',
@@ -1206,7 +1204,6 @@ def reviews_func(request, id):
         'city__person__profile__pk',
     ):
         data_cities[o['city__person__profile__pk']].append(o)
-
     data_accs = collections.defaultdict(list)
     for o in Accounts.objects.filter(profile__pk__in=all_ids).values(
         'login',
@@ -1217,7 +1214,6 @@ def reviews_func(request, id):
         'profile__pk',
     ):
         data_accs[o['profile__pk']].append(o)
-
     data_names = collections.defaultdict(list)
     for o in NamePerson.objects.filter(person__profile__pk__in=all_ids, status=1).order_by('id').values(
         'name',
@@ -1793,7 +1789,7 @@ def opinions(request):
         else:
             films_dict[i['film_id']]['name_ru'] = i['name'].strip()
 
-    authors_dict = org_peoples(set(authors), True)
+    authors_dict = org_peoples(set(authors), dic=True)
     films = set(films)
 
     source_films = {}

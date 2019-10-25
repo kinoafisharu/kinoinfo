@@ -814,7 +814,7 @@ def add_background_adm(request):
                         profiles.append(i.profile)
                         clicks[i.dtime.date()].append({'profile': i.profile.user_id, 'dtime': i.dtime})
                     
-                    peoples = org_peoples(set(profiles), True)
+                    peoples = org_peoples(set(profiles), dic=True)
                     
                     for k, v in clicks.iteritems():
                         for i in v:
@@ -1146,7 +1146,7 @@ def add_adv_block(request, id, anchor, url, txt, budget, country, city, style, t
                     profiles.append(i.profile)
                     clicks[i.dtime.date()].append({'profile': i.profile.user_id, 'dtime': i.dtime})
 
-                peoples = org_peoples(set(profiles), True)
+                peoples = org_peoples(set(profiles), dic=True)
 
                 for k, v in clicks.iteritems():
                     for i in v:
@@ -1599,7 +1599,7 @@ def get_my_blocks(request, btype=1, admin=False):
         '''
 
 
-        peoples = org_peoples(set(profiles), True)
+        peoples = org_peoples(set(profiles), dic=True)
         
         for item in (clicks, views):
             for banner, value in item.iteritems():
@@ -2293,7 +2293,7 @@ def get_adv_item_clicks(request, id):
             clicks[item_date].append({'profile': uid, 'dtime': i.dtime})
         
 
-        peoples = org_peoples(set(profiles), True)
+        peoples = org_peoples(set(profiles), dic=True)
 
 
         html = u'''

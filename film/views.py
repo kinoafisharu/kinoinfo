@@ -422,7 +422,7 @@ def get_film_func(request, id):
         reviews_dict = []
         kinoinfo_reviews = News.objects.select_related('autor').filter(visible=True, reader_type='14', extra=id)
         authors = [i.autor for i in kinoinfo_reviews]
-        authors_dict = org_peoples(authors, True)
+        authors_dict = org_peoples(authors, dic=True)
         
         for i in kinoinfo_reviews:
             v = kinoinfo_film_vote_dict.get(i.autor)
@@ -870,7 +870,7 @@ def get_film_reviews(request, id):
     kinoinfo_reviews = News.objects.select_related('autor').filter(visible=True, reader_type='14', extra=id)
 
     authors = [i.autor for i in kinoinfo_reviews]
-    authors_dict = org_peoples(authors, True)
+    authors_dict = org_peoples(authors, dic=True)
     
     for i in kinoinfo_reviews:
         v = kinoinfo_film_vote_dict.get(i.autor)
@@ -1363,7 +1363,7 @@ def get_film_opinions(request, id):
         'message', 'message__autor').filter(kid=id, message__visible=True)
 
     authors = set([i.message.autor for i in filmsnews])
-    authors_dict = org_peoples(authors, True)
+    authors_dict = org_peoples(authors, dic=True)
 
     source = ImportSources.objects.get(url='http://www.kino.ru/')
     try:

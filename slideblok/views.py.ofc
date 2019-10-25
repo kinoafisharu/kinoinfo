@@ -1736,7 +1736,7 @@ def opinions(request):
         else:
             films_dict[i['film_id']]['name_ru'] = i['name'].strip()
 
-    authors_dict = org_peoples(set(authors), True)
+    authors_dict = org_peoples(set(authors), dic=True)
     films = set(films)
 
     source_films = {}

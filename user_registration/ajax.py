@@ -374,7 +374,7 @@ def get_messenger(request):
                     users.append(i['message__autor'])
 
                 profiles = Profile.objects.filter(pk__in=users)
-                peoples = org_peoples(profiles, True)
+                peoples = org_peoples(profiles, dic=True)
 
                 dialogs_data = {}
                 for i in readers:
@@ -544,7 +544,7 @@ def get_messages_func(request, id):
     messages_temp = []
 
     profiles = [i.autor for i in readers]
-    peoples = org_peoples(profiles, True)
+    peoples = org_peoples(profiles, dic=True)
 
     for i in readers:
         user = peoples.get(i.autor.user_id, {})
@@ -1402,7 +1402,7 @@ def bpost_comments_gen(id, current_site, access, project_page=False):
     
     q = dict(zip([i.id for i in q], q))
     
-    peoples = org_peoples(profiles, True)
+    peoples = org_peoples(profiles, dic=True)
     
     parent_map = defaultdict(list)
 

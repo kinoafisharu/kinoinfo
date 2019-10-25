@@ -1965,7 +1965,7 @@ def profile_adv_details(request, id, adv):
 
         data = collections.OrderedDict(sorted(data.items(), reverse=True))
 
-        peoples = org_peoples(set(profiles), True)
+        peoples = org_peoples(set(profiles), dic=True)
 
         for key_date, value_list in data.iteritems():
             for i in value_list['data']:
@@ -2186,7 +2186,7 @@ def adv_report_users_func(profile, adv):
     profiles_ids = list(SiteBannersClicks.objects.filter(banner=banner).values_list('profile', flat=True))
     profiles = Profile.objects.select_related('user').filter(pk__in=profiles_ids)
 
-    peoples = org_peoples(profiles, True)
+    peoples = org_peoples(profiles, dic=True)
 
     for i in profiles:
         peoples[i.user_id]['main_email'] = i.user.email
@@ -2882,7 +2882,7 @@ def profile_subscribers(request, id, vid):
     subscribers = SubscriberUser.objects.filter(obj=vid, type='1')
 
     profiles = [i.profile for i in subscribers]
-    peoples = org_peoples(profiles, True)
+    peoples = org_peoples(profiles, dic=True)
 
     data = []
     for i in subscribers:
@@ -2930,7 +2930,7 @@ def profile_subscribers_log(request, id, vid):
 
     profiles = set([i.user.profile for i in tmp if i.user])
 
-    peoples = org_peoples(profiles, True)
+    peoples = org_peoples(profiles, dic=True)
 
     data = []
     for i in tmp:
@@ -3588,7 +3588,7 @@ def subscriber_blog_sender():
         authors_profiles.append(i.autor)
 
     # Авторы блогов
-    authors = org_peoples(set(authors_profiles), True)
+    authors = org_peoples(set(authors_profiles), dic=True)
 
     # Структура {блог: [{'ид', заголовок', 'текст', 'автор'}, {'ид', 'заголовок', 'текст', 'автор'}]}
     for k, v in objects.iteritems():
@@ -3733,7 +3733,7 @@ def subscriber_comments_sender():
 
     # Авторы ответов
     authors_profiles = list(Profile.objects.filter(pk__in=authors_profiles))
-    authors = org_peoples(set(authors_profiles), True)
+    authors = org_peoples(set(authors_profiles), dic=True)
 
     # Юзеры подписанные на эти комменты
     users = SubscriberUser.objects.select_related('profile', 'profile__user').filter(type=stype, obj__in=objects.keys())
@@ -3903,7 +3903,7 @@ def subscriber_comments_author_blog_sender():
 
     # Авторы ответов
     authors_profiles = list(Profile.objects.filter(pk__in=authors_profiles))
-    authors = org_peoples(set(authors_profiles), True)
+    authors = org_peoples(set(authors_profiles), dic=True)
 
     # Юзеры подписанные на эти комменты
     users = SubscriberUser.objects.select_related('profile', 'profile__user').\
