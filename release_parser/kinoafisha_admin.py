@@ -3481,7 +3481,7 @@ def source_opinions_set_rate(request):
         films[i.film_id_id] = i.name
 
     authors = set([i.message.autor for i in filmsnews])
-    authors_dict = org_peoples(authors, True)
+    authors_dict = org_peoples(authors, dic=True)
 
     opinions_list = []
     for i in filmsnews:
@@ -3651,7 +3651,7 @@ def admin_adv_statistics(request):
     clicks = clicks['data']
     views = views['data']
 
-    peoples = org_peoples(set(profiles), True)
+    peoples = org_peoples(set(profiles), dic=True)
 
     for item in (clicks, views):
         for banner, value in item.iteritems():
@@ -3752,7 +3752,7 @@ def user_nicknames(request):
     for i in Profile.objects.select_related('person').filter(auth_status=True, person__pk__gt=0, kid__gt=0):
         profiles_dict[i.kid] = i
 
-    peoples = org_peoples(profiles_dict.values(), True)
+    peoples = org_peoples(profiles_dict.values(), dic=True)
 
     users = RegisteredUsers.objects.using('afisha').filter(pk__in=profiles_dict.keys())
 
@@ -3794,7 +3794,7 @@ def user_nicknames_doubles(request):
     for i in Profile.objects.select_related('person').filter(person__pk__gt=0).exclude(user__first_name=''):
         profiles_dict[i.kid] = i
 
-    peoples = org_peoples(profiles_dict.values(), True)
+    peoples = org_peoples(profiles_dict.values(), dic=True)
 
     doubles = {}
     for i in peoples.values():

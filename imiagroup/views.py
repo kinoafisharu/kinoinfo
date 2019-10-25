@@ -125,7 +125,7 @@ def imiagroup_projects(request):
     admins = sorted(admins, key=operator.itemgetter('name'))
     
     members = Profile.objects.filter(auth_status=True)
-    members = org_peoples(members, True)
+    members = org_peoples(members, dic=True)
 
     data = []
     for i in Projects.objects.filter(**filter):
@@ -326,7 +326,7 @@ def imiagroup_project_budget(request, id):
         
         admins = list(Profile.objects.filter(user__is_superuser=True))
         members = obj.members.all()
-        all_members = org_peoples(set(list(members) + admins), True)
+        all_members = org_peoples(set(list(members) + admins), dic=True)
 
         cur = currency_rate.get(obj.currency, 1) # кол-во рублей за 1 ...
         
@@ -561,7 +561,7 @@ def question_answer(request, tag=None, qtype=None):
             answers[i['parent__questionanswer']] = 0
         answers[i['parent__questionanswer']] += 1
 
-    peoples = org_peoples(set(profiles), True)
+    peoples = org_peoples(set(profiles), dic=True)
 
     tags_list = set(list(NewsTags.objects.filter(news__reader_type='22').values_list('name', flat=True)))
 
@@ -638,7 +638,7 @@ def question(request, id):
         profiles = list(profiles)
         profiles.append(question.autor)
         
-    peoples = org_peoples(profiles, True)
+    peoples = org_peoples(profiles, dic=True)
 
     question_tags = set([i.name for i in question.tags.all()])
     question_author = peoples.get(question.autor.user_id)
@@ -697,7 +697,7 @@ def question_answer_admin(request):
     for i in list(News.objects.filter(translation_for__in=ids).values('translation_for', 'language__code')):
         translation[i['translation_for']][i['language__code']] = True
 
-    peoples = org_peoples(set(profiles), True)
+    peoples = org_peoples(set(profiles), dic=True)
 
     tags_list = set(list(NewsTags.objects.filter(news__reader_type='22').values_list('name', flat=True)))
 
@@ -782,7 +782,7 @@ def answers_admin(request):
     for i in list(News.objects.filter(translation_for__in=ids, reader_type='23').values('translation_for', 'language__code')):
         translation[i['translation_for']][i['language__code']] = True
 
-    peoples = org_peoples(set(profiles), True)
+    peoples = org_peoples(set(profiles), dic=True)
 
 
     data = []
