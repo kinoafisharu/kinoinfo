@@ -1377,7 +1377,7 @@ def get_film_details_data(id, mobile=False):
     reviews_dict = {}
     kinoinfo_reviews = News.objects.select_related('autor').filter(visible=True, reader_type='14', extra=id)
     authors = [i.autor for i in kinoinfo_reviews]
-    authors_dict = org_peoples(authors, True)
+    authors_dict = org_peoples(authors, dic=True)
     
     for i in kinoinfo_reviews:
         v = kinoinfo_film_vote_dict.get(i.autor, '')
@@ -1780,7 +1780,7 @@ def get_film_opinions(request, id, show, oid=False):
             filmsnews = NewsFilms.objects.select_related('message', 'message__autor').filter(kid=id, message__visible=True).exclude(Q(message__text=None) | Q(message__text=''))
             
             authors = set([i.message.autor for i in filmsnews])
-            authors_dict = org_peoples(authors, True)
+            authors_dict = org_peoples(authors, dic=True)
 
             try:
                 source_film = SourceFilms.objects.get(kid=id, source_obj__url='http://www.kino.ru/')

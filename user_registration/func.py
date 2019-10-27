@@ -77,34 +77,64 @@ def is_linkanoid_user(request):
             result = True
     except: pass
     return result
-    
-def org_peoples(peoples, dic=False):
-    listt = []
+
+
+def org_peoples(peoples, persons=None, name_city=None, accounts=None, name_person=None, dic=False):
     dictt = {}
-    
+
     ids = [i.id for i in peoples]
-    
-    persons = list(Person.objects.filter(profile__pk__in=ids).values('id', 'profile__kid', 'city', 'country', 'profile', 'profile__user', 'profile__user__first_name', 'profile__user__date_joined', 'profile__folder', 'profile__phone', 'profile__show_profile', 'profile__user__is_superuser', 'profile__user__last_name'))
+
     persons_dict = {}
-    for i in persons:
-        persons_dict[i['profile']] = i
-    
     cities_dict = {}
-    for i in list(NameCity.objects.filter(city__person__profile__pk__in=ids, status=1).values('city', 'name')):
-        cities_dict[i['city']] = i['name']
-    
-    accs = list(Accounts.objects.filter(profile__pk__in=ids).values('avatar', 'fullname', 'nickname', 'login', 'profile'))
     accs_dict = {}
-    for i in accs:
-        if accs_dict.get(i['profile']):
-            accs_dict[i['profile']].append(i)
-        else:
-            accs_dict[i['profile']] = [i]
-    
-    names = list(NamePerson.objects.filter(person__profile__pk__in=ids, status=1).order_by('id').values('person__profile', 'name'))
     names_dict = {}
-    for i in names:
-        names_dict[i['person__profile']] = i['name']
+
+    # optimization for 'review' page. Reduced the number of queries to the database
+    for id in ids:
+        if persons:
+            for i in persons[id]:
+                persons_dict[i['profile']] = i
+
+        if name_city:
+            for i in name_city[id]:
+                cities_dict[i['city']] = i['name']
+
+        if accounts:
+            for i in accounts[id]:
+                if accs_dict.get(i['profile']):
+                    accs_dict[i['profile']].append(i)
+                else:
+                    accs_dict[i['profile']] = [i]
+
+        if name_person:
+            for i in name_person[id]:
+                names_dict[i['person__profile']] = i['name']
+
+    if not persons:
+        persons = list(Person.objects.filter(profile__pk__in=ids).values('id', 'profile__kid', 'city', 'country', 'profile', 'profile__user', 'profile__user__first_name', 'profile__user__date_joined', 'profile__folder', 'profile__phone', 'profile__show_profile', 'profile__user__is_superuser', 'profile__user__last_name'))
+        persons_dict = {}
+        for i in persons:
+            persons_dict[i['profile']] = i
+
+    if not name_city:
+        cities_dict = {}
+        for i in list(NameCity.objects.filter(city__person__profile__pk__in=ids, status=1).values('city', 'name')):
+            cities_dict[i['city']] = i['name']
+
+    if not accounts:
+        accs = list(Accounts.objects.filter(profile__pk__in=ids).values('avatar', 'fullname', 'nickname', 'login', 'profile'))
+        accs_dict = {}
+        for i in accs:
+            if accs_dict.get(i['profile']):
+                accs_dict[i['profile']].append(i)
+            else:
+                accs_dict[i['profile']] = [i]
+
+    if not name_person:
+        names = list(NamePerson.objects.filter(person__profile__pk__in=ids, status=1).order_by('id').values('person__profile', 'name'))
+        names_dict = {}
+        for i in names:
+            names_dict[i['person__profile']] = i['name']
     
     
     for i in peoples:

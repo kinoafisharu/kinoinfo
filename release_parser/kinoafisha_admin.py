@@ -2360,23 +2360,34 @@ def boxoffice_func(request, country, admin=False):
             distributor = request.session.get('filter_boxoffice__distributor')
         
     box = BoxOffice.objects.filter(**filter).order_by('-week_sum')
-    
+
+    distributors_data = Distributors.objects.filter(box_office__id__in=[o.id for o in box], name__status=1)
+    distributors_id = [o.id for o in distributors_data]
+
+    box_to_distributors = collections.defaultdict(list)
+    for o in distributors_data.values('box_office__id', 'id', 'kid'):
+        box_to_distributors[o['box_office__id']].append(o)
+
+    name_distributors = collections.defaultdict(list)
+    for o in NameDistributors.objects.filter(
+                distributors__id__in=distributors_id, status=1).values('distributors__id', 'id', 'name'):
+        name_distributors[o['distributors__id']].append(o)
+
     distributor_filter = []
     distributors = {}
     distributors_names = {}
     kid = []
+
     for i in box:
         kid.append(i.kid)
-        distrib = ''
-        for distr in i.distributor.all():
-            for dname in distr.name.filter(status=1):
-                if distrib:
-                    distrib += ' / '
-                distrib += dname.name
-                distributors[distr.kid] = {'id': distr.id, 'kid': distr.kid, 'name': dname.name}
-                if distributor and distributor != 'all' and distributor == distr.kid:
+        distrib = []
+        for distr in box_to_distributors[i.id]:
+            for dname in name_distributors[distr['id']]:
+                distrib.append(dname['name'])
+                distributors[distr['kid']] = {'id': distr['id'], 'kid': distr['kid'], 'name': dname['name']}
+                if distributor and distributor != 'all' and distributor == distr['kid']:
                     distributor_filter.append(i.id)
-            distributors_names[i.id] = distrib 
+            distributors_names[i.id] = ' / '.join(distrib)
 
     films = FilmsName.objects.using('afisha').filter(film_id__id__in=set(kid), status=1, type=2)
     films_dict = {}
@@ -3470,7 +3481,7 @@ def source_opinions_set_rate(request):
         films[i.film_id_id] = i.name
 
     authors = set([i.message.autor for i in filmsnews])
-    authors_dict = org_peoples(authors, True)
+    authors_dict = org_peoples(authors, dic=True)
 
     opinions_list = []
     for i in filmsnews:
@@ -3640,7 +3651,7 @@ def admin_adv_statistics(request):
     clicks = clicks['data']
     views = views['data']
 
-    peoples = org_peoples(set(profiles), True)
+    peoples = org_peoples(set(profiles), dic=True)
 
     for item in (clicks, views):
         for banner, value in item.iteritems():
@@ -3741,7 +3752,7 @@ def user_nicknames(request):
     for i in Profile.objects.select_related('person').filter(auth_status=True, person__pk__gt=0, kid__gt=0):
         profiles_dict[i.kid] = i
 
-    peoples = org_peoples(profiles_dict.values(), True)
+    peoples = org_peoples(profiles_dict.values(), dic=True)
 
     users = RegisteredUsers.objects.using('afisha').filter(pk__in=profiles_dict.keys())
 
@@ -3783,7 +3794,7 @@ def user_nicknames_doubles(request):
     for i in Profile.objects.select_related('person').filter(person__pk__gt=0).exclude(user__first_name=''):
         profiles_dict[i.kid] = i
 
-    peoples = org_peoples(profiles_dict.values(), True)
+    peoples = org_peoples(profiles_dict.values(), dic=True)
 
     doubles = {}
     for i in peoples.values():
