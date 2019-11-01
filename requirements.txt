@@ -15,7 +15,7 @@ django-validated-file==2.0.1
 dnspython==1.12.0
 et-xmlfile==1.0.1
 eyeD3==0.7.11
-Flask==0.12.1
+Flask==1.0
 geoip2==2.1.0
 google-api-python-client==1.6.2
 html5lib==0.95
