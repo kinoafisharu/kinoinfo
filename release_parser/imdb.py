@@ -1,12 +1,13 @@
 ﻿#-*- coding: utf-8 -*- 
 import urllib
 import urllib2
-# import httplib2time
+import httplib2
 import re
 import datetime
 import time
 import cookielib
 import operator
+import requests
 
 from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.core.urlresolvers import reverse
@@ -79,7 +80,7 @@ def get_imdb_film_list():
                     
             xml += '</date>'
     ids = ';'.join(set(ids))
-    xml = '<data><ids value="%s">%s</ids></data>' % (ids, xml)  # time
+    xml = '<data><ids value="%s">%s</ids></data>' % (ids, xml)
 
     create_dump_file('%s_film_list' % source.dump, settings.API_DUMP_PATH, xml)
     cron_success('html', source.dump, 'films_list', 'Список релизов')
@@ -108,7 +109,6 @@ def get_imdb_poster(url, name):
 
 
 def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, genres_data, persons_data, productions, distr_objs, film_object, films, language, distr_nof_data, data_nof_persons, nof_distr, nof_persons, release_format, country_id, release):
-
     limits = {
         'G': 0,
         'PG': 6,
@@ -121,14 +121,14 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
     opener = give_me_cookie()
     url = '%stitle/tt%s/' % (source.url, imdb)
     try:
-        req = opener.open(urllib2.Request(url))
+        #req = opener.open(urllib2.Request(url))
+	req = requests.get(url)
     except urllib2.HTTPError:
         req = None
-
     film_obj = None
-    if req:
-        data = BeautifulSoup(req.read(), from_encoding="utf-8")
-
+    if req.status_code == 200:
+        data = BeautifulSoup(req.text, 'html.parser')
+        
         #open('imdb.html','w').write(str(data))
 
         imdb = long(imdb)
@@ -143,7 +143,8 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
         if not is_dump:
             # название
             if new_interface:
-                fname = data.find('h1', itemprop="name")
+                #fname = data.find('h1', itemprop="name")
+                fname = data.find('div', {'class': "title_block"}).find('h1')
                 try:
                     fname.find('span').extract()
                 except AttributeError: pass
@@ -167,6 +168,7 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                     if year:
                         year = re.findall(r'\d{4}', year[0].strip())
                         fyear = year[0] if year else fyear
+                open('errors.txt','a').write('point2')
             else:
                 year = h1.find('span', {'class': 'nobr'})
                 if year:
@@ -183,10 +185,10 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
             # дата релиза
             if not release:
                 url_release = '%sreleaseinfo' % url
-                time.sleep(1.5)
-                req_release = opener.open(urllib2.Request(url_release))
-                if req_release.getcode() == 200:
-                    data_release = BeautifulSoup(req_release.read(), from_encoding="utf-8")
+                time.sleep(2)
+                req_release = requests.get(url_release)
+                if req_release.status_code == 200:
+                    data_release = BeautifulSoup(req_release.text, 'html.parser')
 
                     table = data_release.find('table', id='release_dates')
                     if table:
@@ -201,8 +203,6 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                                     td_month = get_month_en(low(td_month.encode('utf-8')))
                                     release = datetime.date(int(td_year), int(td_month), int(td_day))
                                 except ValueError: pass
-
-        
         # постер
         if new_interface:
             poster = data.find('div', {'class': 'poster'})
@@ -210,11 +210,12 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
             poster = data.find('td', id="img_primary")
             if poster:
                 poster = poster.find('div', {'class': 'image'})
-
         if poster:
             if new_interface:
-                poster = poster.find('img', itemprop="image").get('src').split('@._')[0]
+                #poster = poster.find('img', itemprop="image").get('src').split('@._')[0]
+                poster = poster.find('img').get('src').split('@._')[0]
             else:
+            
                 poster = poster.find('img').get('src').split('@._')[0]
 
             poster += '@._V1_SX640_SY720_.jpg'
@@ -227,21 +228,21 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
             images.append(poster_name.decode('utf-8'))
         else:
             poster = None
-        
         # ограничения
         if new_interface:
             title_block = data.find('div', {'class': "title_block"})
 
-            limit = title_block.find('meta', itemprop="contentRating")
-            if limit:
-                limit = limit.get('content').encode('utf-8')
-                limit = limits.get(limit)
+	    limit = title_block.find('div', {'class': 'subtext'})
+	    for key in limits.keys():
+		if limit.text.find(key) != -1:
+		    limit = limits.get(key)
+		    break
 
             genres_tmp = [gen.text.encode('utf-8') for gen in title_block.findAll('span', itemprop="genre")]
 
             div_details = data.find('div', id="titleDetails")
 
-            runtime = div_details.find('time', itemprop="duration")
+            runtime = div_details.find('time')
         else:
             div = data.find('div', {'class': "infobar"})
 
@@ -250,24 +251,24 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                 limit = limit.get('content').encode('utf-8')
                 limit = limits.get(limit)
 
-            genres_tmp = [gen.string.encode('utf-8') for gen in div.findAll('span', itemprop="genre")]
-        
+            #genres_tmp = [gen.string.encode('utf-8') for gen in div.findAll('span', itemprop="genre")]
+    	    for item in title_block.findAll('a'):
+    	        if item.attrs['href'].find('genre') != -1:
+    	                genres_tmp.append(item.text.encode('utf-8'))
+    	    
             runtime = div.find('time', itemprop="duration")
-
-
         if runtime:
             runtime = runtime.text.strip().encode('utf-8')
-            runtime = re.findall(r'\d+', runtime)[0]
-
+            runtime = int(re.findall(r'\d+', runtime)[0])
         # рейтинг
-        imdb_rate = data.find('span', itemprop="ratingValue")
+        imdb_rate = data.find('div', {'class': 'imdbRating'})
         imdb_votes = None
         if imdb_rate:
-            imdb_rate = float(imdb_rate.text.encode('utf-8'))
-            imdb_votes = data.find('span', itemprop="ratingCount")
-            imdb_votes = int(imdb_votes.text.encode('utf-8').replace(u' ', '').replace(u',', ''))
-        
-
+            #imdb_rate = float(imdb_rate.text.encode('utf-8'))
+            imdb_votes = int(imdb_rate.find('span', {'class': 'small'}).text.replace(',', ''))
+            imdb_rate = float(imdb_rate.find('div', {'class': 'ratingValue'}).find('strong').find('span').text)
+            #imdb_votes = data.find('span', itemprop="ratingCount")
+            #imdb_votes = int(imdb_votes.text.encode('utf-8').replace(u' ', '').replace(u',', ''))
         # жанры
         genres = []
         if len(genres_tmp) == 1 and genres_tmp[0] == 'Crime':
@@ -299,7 +300,6 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                 for genr in genres_tmp:
                     gen_obj = genres_data.get(genr)
                     genres.append(gen_obj)
-        
         else:
             for genr in genres_tmp:
                 gen_obj = genres_data.get(genr)
@@ -310,11 +310,11 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                 limit = 16
 
         note = None
-
         if new_interface:
             persons = []
             persons_block = data.find('div', {'class': "plot_summary_wrapper"})
-            for pb in persons_block.findAll('span', itemprop="director"):
+#            for pb in persons_block.findAll('span', itemprop="director"):
+	    for pb in persons_block.findAll('div', {'class': 'credit_summary_item'}):
                 pb_a = pb.find('a')
                 pb_name = pb_a.text.encode('utf-8').strip()
                 if pb_name:
@@ -322,8 +322,9 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                     pb_id = long(pb_id.replace('/name/nm', '').replace('/', ''))
                     persons.append({'name': pb_name, 'action': 3, 'status': 1, 'id': pb_id})
             
-            for pb in persons_block.findAll('span', itemprop="creator"):
-                pb_a = pb.find('a')
+            for pb in persons_block.findAll('div', {'class': 'credit_summary_item'}):
+#	     for pb in persons_block.findAll('div', {'class': 'credit_summary_item'}):
+		pb_a = pb.find('a')
                 pb_name = pb_a.text.encode('utf-8').strip()
                 if pb_name:
                     pb_type = pb_a.next_sibling
@@ -332,7 +333,8 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                         pb_id = long(pb_id.replace('/name/nm', '').replace('/', ''))
                         persons.append({'name': pb_name, 'action': 4, 'status': 1, 'id': pb_id})
 
-            for pb in persons_block.findAll('span', itemprop="actors"):
+#            for pb in persons_block.findAll('span', itemprop="actors"):
+	    for pb in persons_block.findAll('div', {'class': 'credit_summary_item'}):
                 pb_a = pb.find('a')
                 pb_name = pb_a.text.encode('utf-8').strip()
                 if pb_name:
@@ -435,13 +437,13 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                                 s_id = long(s_id.replace('/name/nm', '').replace('/',''))
                                 persons.append({'name': s_name, 'action': 1, 'status': 1, 'id': s_id})
 
-
         distributors = []
         url2 = '%scompanycredits' % url
         time.sleep(1.5)
-        req2 = opener.open(urllib2.Request(url2))
-        if req2.getcode() == 200:
-            data2 = BeautifulSoup(req2.read(), from_encoding="utf-8")
+        req2 = requests.get(url2)
+    	if req2.status_code == 200:
+            #data2 = BeautifulSoup(req2.read(), from_encoding="utf-8")
+            data2 = BeautifulSoup(req2.text, 'html.parser')
             distr_h4 = data2.find('h4', {'name': "distributors"})
             if distr_h4:
                 ul = distr_h4.find_next("ul")
@@ -461,7 +463,6 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                             distributors.append({'year': distr_year, 'name': distr_name})
 
         distr_data = []
-        
         if distributors:
             distributors = sorted(distributors, key=operator.itemgetter('year'))
             cur_year = distributors[0]['year']
@@ -474,7 +475,6 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                     else:
                         distr_nof_data += '<distributor value="%s" slug="%s" alt="%s"></distributor>' % (distrib['name'].replace('&', '&amp;'), distr_slug, None)
                         nof_distr.append(distrib['name'])
-        
         poster_obj = None
         if poster:
             time.sleep(1.5)
@@ -495,7 +495,6 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                     person_slug = low(del_separator(person_name))
                     data_nof_persons += '<person name="%s" slug="%s" code="%s" name_alt="" slug_alt=""></person>' % (person_name, person_slug, person_id)
                     nof_persons.append(pe['id'])
-        
         new = False
         if film_object:
             if not film_object['obj'].imdb_id:
@@ -575,7 +574,6 @@ def parse_imdb(main_data, count, source, imdb, is_dump, images, country_data, ge
                     
             film_object['obj'].name.add(name_obj)
             
-        
         for c in countries:
             if c:
                 if new:
@@ -864,7 +862,7 @@ def get_imdb_data(xml, is_dump, country_id=1, ids=[], upd=False, film_kid=None):
                 break
 
                         
-        time.sleep(1.5)
+        time.sleep(2)
 
     #RelationFP.objects.filter(films__imdb_id=None).delete()
     #Films.objects.filter(imdb_id=None).delete()
