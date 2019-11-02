@@ -100,13 +100,7 @@
     </script>
     {% endif %}
     
-    {% if request.current_site.domain == 'vladaalfimovdesign.com.au' %}
-    <style>
-    html a, html a:visited{color: #aa1e38 !important;}
-    </style>
-    {% endif %}
-
-
+   
 </head>
 
 <body>
@@ -200,7 +194,7 @@
         {% block header %}{% endblock %}
         <center>
             {% if request.current_site.domain == 'kinoafisha.ru' %}
-            <div class="logo_txt"><span>КИНОАФИША РОССИИ</span></div>
+            <div class="logo_txt"><span>КИНОАФИША</span></div>
             {% endif %}
             {% if not branding %}
                 {% if request.noindex %}<noindex>{% endif %}
@@ -243,7 +237,7 @@
             <div class="footer__content-main">
                 <div class="footer__border"></div>
 
-                {% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' or request.subdomain == 'yalta' or request.subdomain == 'orsk' %}
+                {% if request.current_site.domain == 'letsgetrhythm.com.au' or request.subdomain == 'yalta' or request.subdomain == 'orsk' %}
                 <div class="art-search">
                     <form action="{% url search %}" method="GET" class="art-search-form">
                         <input class="search-field" type="text" name="query" />
@@ -264,16 +258,7 @@
                 {% endif %}
                 
                 
-                {% if request.subdomain == 'music' %}
-                <div class="art-search">
-                    <form action="{% url search %}" method="GET" class="art-search-form">
-                        <input class="search-field" type="text" name="query" />
-                        <input name="filter" type="hidden" value="3" />
-                        <input class="search-button" type="submit" value="GO" />
-                    </form>
-                </div>
-                {% endif %}
-                
+                 
                 {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
                 <div class="art-search">
                     <form action="{% url search %}" method="GET" class="art-search-form">
@@ -293,7 +278,7 @@
                 </div>
                 
                 {% if request.subdomain != 'music' %}
-                <div class="footer__content-main__items"{% if request.current_site.domain == 'letsgetrhythm.com.au' or request.current_site.domain == 'vladaalfimovdesign.com.au' %} style="margin-top: 12px;"{% endif %}>
+                <div class="footer__content-main__items"{% if request.current_site.domain == 'letsgetrhythm.com.au' %} style="margin-top: 12px;"{% endif %}>
                 {% if request.current_site.domain != 'letsgetrhythm.com.au' and request.current_site.domain != 'vladaalfimovdesign.com.au' %}
 
                     <p class="footer-icons copy">
@@ -304,7 +289,7 @@
                                 Киноафиша России - одно из приложений, использующих базу {% if request.noindex %}<noindex>{% endif %}<a href="http://kinoinfo.ru/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Киноинфо</a>{% if request.noindex %}</noindex>{% endif %}.
                             {% endif %}
                         {% else %}
-                            Сделано в ИП Иванов М.Л., а именно: концепция - <a href="http://kinoinfo.ru/user/profile/80576/" target="_blank">Михаил Иванов</a>, программирование - <a href="https://plus.google.com/u/0/110631826052054330418/" target="_blank">Юрий Данилевский</a>
+                            Сделано в ИП Иванов М.Л.
                         {% endif %}
                     </p>
 
@@ -338,7 +323,7 @@
                         {% endif %}
                     
                 {% else %}
-                Powered by <b><a href="http://kinoinfo.ru/user/profile/80576/" target="_blank">ИП Михаил Иванов</a></b> &copy; 1999-2019
+                Powered by <b><a href="http://kinoinfo.ru/user/profile/80576/" target="_blank">ИП Михаил Иванов</a></b> &copy; 1999-{% now "Y" %}
                 {% endif %}
                 </div>
             </div>
