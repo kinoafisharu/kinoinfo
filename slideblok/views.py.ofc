@@ -872,7 +872,7 @@ def week_releases_func(request, rtype, mobile=False):
 @never_cache
 def week_releases(request, rtype):
 #by OFC76
-    file = open('/var/www/kinoinfo/data/www/testfile_WEEK.txt','w') 
+    file = open('/public/testfile_WEEK.txt','w') 
     file.write('Hello World') 
     file.close()
     REG_ID = re.compile(r'^\d+')
@@ -1316,7 +1316,7 @@ def old_boxoffice(request):
 @never_cache
 def schedules(request):
 #by OFC76
-    file = open('/var/www/kinoinfo/data/www/testfile_START.txt','w') 
+    file = open('/public/testfile_START.txt','w') 
     file.write('Hello World') 
     file.close()
     timer = time.time()
@@ -1342,7 +1342,7 @@ def schedules(request):
 
     city_id = request.current_user_city_id
 #by OFC76
-    file = open('/var/www/kinoinfo/data/www/testfile_CITY.txt','w') 
+    file = open('/public/testfile_CITY.txt','w') 
     file.write(str(city_id)) 
     file.close() 
  
@@ -1369,7 +1369,7 @@ def schedules(request):
 
     last_day = SourceSchedules.objects.filter(**filter).aggregate(Max('dtime')).get('dtime__max')
 #by OFC76
-    file = open('/var/www/kinoinfo/data/www/testfile_LastDAY.txt','a') 
+    file = open('/public/testfile_LastDAY.txt','a') 
     file.write(str(last_day))
     file.close()
     #last_day = None
@@ -1403,7 +1403,7 @@ def schedules(request):
 
     film_list = set(list(SourceSchedules.objects.filter(**filter).exclude(film__source_id=0).distinct('film__kid').values_list('film__kid', flat=True)))
 #by OFC76
-    file = open('/var/www/kinoinfo/data/www/testfile_LIST.txt','a') 
+    file = open('/public/testfile_LIST.txt','a') 
     xx = 0
     for i in film_list:
         file.write(xx)
@@ -1446,7 +1446,7 @@ def schedules(request):
 
     schedules = []
 #by OFC76
-    file = open('/var/www/kinoinfo/data/www/testfile.txt','w') 
+    file = open('/public/testfile.txt','w') 
     for i in film_list:
         file.write(i) 
     file.close() 
@@ -1491,7 +1491,7 @@ def schedules(request):
 
     timer = '%5.2f' % (time.time() - timer)
 #by OFC76
-    file = open('/var/www/kinoinfo/data/www/testfile_TIME.txt','w') 
+    file = open('/public/testfile_TIME.txt','w') 
     file.write(timer) 
     file.close() 
     tmplt = 'kinoafisha/schedules.html'
@@ -1736,7 +1736,7 @@ def opinions(request):
         else:
             films_dict[i['film_id']]['name_ru'] = i['name'].strip()
 
-    authors_dict = org_peoples(set(authors), dic=True)
+    authors_dict = org_peoples(set(authors), True)
     films = set(films)
 
     source_films = {}
