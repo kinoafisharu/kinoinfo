@@ -42,21 +42,19 @@
 {% if lang == 'en' %}
 The database contains up-to-date information on more than
 {% if request.noindex %}<noindex>{% endif %}
-<a href="{% url get_film_list 2015 %}" {% if request.noindex %}rel="nofollow"{% endif %}>35 thousand films</a>{% if request.noindex %}</noindex>{% endif %}.
+<a href="{% url get_film_list 2015 %}" {% if request.noindex %}rel="nofollow"{% endif %}>40 thousand films</a>{% if request.noindex %}</noindex>{% endif %}.
 Interaction with the base - through {% if request.noindex %}<noindex>{% endif %}<a href="http://kinoinfo.ru/api/" {% if request.noindex %}rel="nofollow"{% endif %}>API</a>{% if request.noindex %}</noindex>{% endif %}.
-Developers: {% if request.noindex %}<noindex>{% endif %}<a href="http://www.kinoafisha.ru/user/profile/7518740/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Mikhail Ivanov</a>{% if request.noindex %}</noindex>{% endif %}, 
-{% if request.noindex %}<noindex>{% endif %}<a href="https://plus.google.com/u/0/110631826052054330418/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Yuri Danilevsky</a>.{% if request.noindex %}</noindex>{% endif %}
-<br />(с) <a href="http://www.kinoafisha.ru/user/profile/3352746/" target="_blank">Sole Trader Bikmukhametov R.F.</a> 2014-{% now "Y" %}
+Developers: {% if request.noindex %}<noindex>{% endif %}<a href="http://www.kinoafisha.ru/user/profile/7518740/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Mikhail Ivanov</a>{% if request.noindex %}</noindex>{% endif %} 
+<br />(с) <a href="http://kinoinfo.ru/user/profile/80576/" target="_blank">Sole Trader Ivanov M.L.</a> 1999-{% now "Y" %}
 
   
 {% else %}
 База содержит актуальную информацию о более чем 
 {% if request.noindex %}<noindex>{% endif %}
-<a href="{% url get_film_list 2015 %}" {% if request.noindex %}rel="nofollow"{% endif %}>35 тысячах фильмов</a>{% if request.noindex %}</noindex>{% endif %}.
+<a href="{% url get_film_list 2015 %}" {% if request.noindex %}rel="nofollow"{% endif %}>40 тысячах фильмов</a>{% if request.noindex %}</noindex>{% endif %}.
 Взаимодействие с базой - через {% if request.noindex %}<noindex>{% endif %}<a href="http://kinoinfo.ru/api/" {% if request.noindex %}rel="nofollow"{% endif %}>API</a>{% if request.noindex %}</noindex>{% endif %}.
-Разработчики: {% if request.noindex %}<noindex>{% endif %}<a href="http://www.kinoafisha.ru/user/profile/7518740/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Михаил Иванов</a>{% if request.noindex %}</noindex>{% endif %}, 
-{% if request.noindex %}<noindex>{% endif %}<a href="https://plus.google.com/u/0/110631826052054330418/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Юрий Данилевский</a>.{% if request.noindex %}</noindex>{% endif %}
-<br />(с) <a href="http://www.kinoafisha.ru/user/profile/3352746/" target="_blank">ИП Биkмухаметов Р.Ф.</a> 2014-{% now "Y" %}
+Разработчики: {% if request.noindex %}<noindex>{% endif %}<a href="http://www.kinoafisha.ru/user/profile/7518740/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Михаил Иванов</a>{% if request.noindex %}</noindex>{% endif %} 
+<br />(с) <a href="http://kinoinfo.ru/user/profile/80576/" target="_blank">ИП Иванов М.Л.</a> 1999-{% now "Y" %}
 
 {% endif %}
 {% endblock multifooter02 %}
