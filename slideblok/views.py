@@ -1224,7 +1224,6 @@ def reviews_func(request, id):
 
     for i in p.object_list:
         autor = org_peoples([i.autor], data_persons, data_cities, data_accs, data_names)
-        # autor = org_peoples([i.autor])
 
         if autor:
             autor = autor[0]
