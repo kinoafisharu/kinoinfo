@@ -1,0 +1,84 @@
+extends ./base/base.pug
+
+block content
+    div.container-fluid
+        div(id="container")
+            div.page_content(style="right: 0px")
+                div.main-carousel(id="mainRow")
+                    div.carousel-cell
+                        img.rounded(src="../images/uploads/slider1.jpg" style="padding: 0px; margin-right: 0px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; width: 320px" height=520)
+                        div.title-in(style="margin-left: -10px; margin-bottom: 0px")
+                            div.wrapper-action-film(style="bottom: 320px")
+                                div(style="background-color: #ccae94b5; height: 60px; width: 80px")
+                                    a(href="#rate")
+                                        div(style="font-weight: bold; color: black; font-size: 240%; margin-right: 5px; text-align: center") 5
+                                p
+                                p(style="height: 60px; width: 80px; margin-left: 33px; padding-top: 10px")
+                                    a(href="#ticket")
+                                        svg(viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg")
+                                            ellipse(cx="100" cy="50" rx="100" ry="50" style="fill:yellow")
+                                            text(x="50%" y="50%" text-anchor="middle" stroke="#000000" stroke-width="2px" dy=".3em" font-size=35) Билеты
+                            div.wrapper-action-film(style="bottom: 170px")
+                                div(style="background-color: #ffffff45; height: 60px; width: 80px")
+                                    a(href="#like" style="text-decoration: none")
+                                        div(style="font-weight: bold; color: black; font-size: 240%; margin-right: 5px; text-align: center; padding-top: 0px") 14+
+                                p
+                                a(href="#description" style="margin: 0px; margin-left: 45px;")
+                                    img(src="../images/triangle.png" width=70 style="margin: 0px")
+                            div.wrapper-action-film(style="background-color: #ffffff45")
+                                a(href="#like" style="background-image: url(../images/svg/like.svg); background-repeat: no-repeat; margin: 1px; background-position: center")
+                                a(href="#like" style="background-image: url(../images/svg/like.svg); background-repeat: no-repeat; margin: 1px; background-position: center")
+                                a(href="#like" style="background-image: url(../images/svg/play.svg); background-repeat: no-repeat; margin: 1px; background-position: center")
+                    div.carousel-cell
+                        div.contain-description-film
+                            h3 Описание
+                            | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    div.carousel-cell
+                        div.contain-description-film
+                            p Страна: Япония\Великобритания
+                            p Жанр: Мелодрама
+                            p Длительность: 108 минут
+                            a.ticket-in-description(href="#ticket")
+                                svg(viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg")
+                                    ellipse(cx="100" cy="50" rx="100" ry="50" style="fill:yellow")
+                                    text(x="50%" y="50%" text-anchor="middle" stroke="#000000" stroke-width="2px" dy=".3em" font-size=35) Билеты
+
+                div.row(style="margin-left: -10px; margin-right: -10px; position: fixed; width: 1018px; display: none" id="mainRow2")
+                    img.rounded(src="../images/uploads/slider1.jpg" style="padding: 0px; margin-right: 0px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; width: 320px" height=520)
+                    div.title-in(style="margin-left: -10px; margin-bottom: 0px")
+                        div.wrapper-action-film(style="bottom: 320px")
+                            div(style="background-color: #ccae94b5; height: 60px; width: 80px")
+                                a(href="#rate")
+                                    div(style="font-weight: bold; color: black; font-size: 240%; margin-right: 5px; text-align: center") 5
+                            p
+                            p(style="height: 60px; width: 80px; margin-left: 33px; padding-top: 10px")
+                                a(href="#ticket")
+                                    svg(viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg")
+                                        ellipse(cx="100" cy="50" rx="100" ry="50" style="fill:yellow")
+                                        text(x="50%" y="50%" text-anchor="middle" stroke="#000000" stroke-width="2px" dy=".3em" font-size=35) Билеты
+                        div.wrapper-action-film(style="bottom: 170px")
+                            div(style="background-color: #ffffff45; height: 60px; width: 80px")
+                                a(href="#like" style="text-decoration: none")
+                                    div(style="font-weight: bold; color: black; font-size: 240%; margin-right: 5px; text-align: center; padding-top: 0px") 14+
+                            p
+                            a(href="#description" style="margin: 0px; margin-left: 45px;")
+                                img(src="../images/triangle.png" width=70 style="margin: 0px")
+
+                        div.wrapper-action-film(style="background-color: #ffffff45")
+                            a(href="#like" style="background-image: url(../images/svg/like.svg); background-repeat: no-repeat; margin: 1px; background-position: center")
+                            a(href="#like" style="background-image: url(../images/svg/like.svg); background-repeat: no-repeat; margin: 1px; background-position: center")
+                            a(href="#like" style="background-image: url(../images/svg/play.svg); background-repeat: no-repeat; margin: 1px; background-position: center")
+
+                    div
+                        div.contain-description-film
+                            h3 Описание
+                            | Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    div
+                        div.contain-description-film
+                            p Страна: Япония\Великобритания
+                            p Жанр: Мелодрама
+                            p Длительность: 108 минут
+                            a.ticket-in-description(href="#ticket")
+                                svg(viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg")
+                                    ellipse(cx="100" cy="50" rx="100" ry="50" style="fill:yellow")
+                                    text(x="50%" y="50%" text-anchor="middle" stroke="#000000" stroke-width="2px" dy=".3em" font-size=35) Билеты

@@ -1,0 +1,17 @@
+div.header-mobile(id="container-header")
+  div.fixed-top(id="header-select")
+    img.logo(src="../images/logo2.jpg")
+    button.hamburger-mobile(style="display: none; background-color: rgb(14, 33, 51)") &#9776;
+    div.header-column(id="row-header")
+      each val, index in ['Мдм-кино', 'Цена 200 руб', 'Сегодня']
+        select.select-color(style="height: 40px;")
+          option(value="range")= val
+          option(value="saab") B
+    button.cross-mobile(style="display: none") &#735;
+
+div.menu-mobile(style="display: none")
+  ul
+    each val in ['Москва', 'На Вашем счету 0.00 руб.', 'Обратная связь', 'Киноинфо', 'Сеансы', 'Скоро в кино', 'Смотреть он-лайн', '35 тысячах фильмов', 'API']
+      a(href="#")
+        li= val
+

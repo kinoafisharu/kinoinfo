@@ -1,0 +1,33 @@
+doctype html
+html(lang="ru")
+  head
+    title index
+    meta(name="description" content="description_seo")
+    meta(name="keywords" content="keywords_seo")
+    meta(charset="utf-8")
+    meta(name='viewport', content='width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover')
+    meta(name="format-detection" content="telephone=no")
+    link(rel="stylesheet" href='http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600')
+    link(rel="shortcut icon" href="/static/img/favikon.png" type="image/x-icon")
+    link(rel="stylesheet" type="text/css" href="../css/bootstrap.css")
+    link(rel="stylesheet" type="text/css" href="../css/bootstrap-grid.css")
+    link(rel="stylesheet" type="text/css" href="../css/film.css")
+    link(rel="stylesheet" href="../css/owl.carousel.css")
+    //link(rel="stylesheet" href="../css/owl.theme.default.min.css")
+    link(rel="stylesheet" href="https://unpkg.com/flickity@2.2.1/dist/flickity.css")
+
+  body(style="background-color: #014455; background: url('../images/uploads/slider-bg.jpg');background-position: center;")
+    include preloader
+    include header
+
+    block content
+
+    script(src="../js/jquery.js")
+    script(src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js")
+    //script(src="../js/owl.carousel.js")
+    script(src="https://unpkg.com/flickity@2.2.1/dist/flickity.pkgd.min.js")
+    script(type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js")
+    script(src="../js/main.js")
+    script(src="../js/preloader.js")
+
+
