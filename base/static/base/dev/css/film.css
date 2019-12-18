@@ -1,0 +1,321 @@
+#container{
+    position:absolute;
+    left:10px;
+    top:45px;
+    right:10px;
+    bottom:10px;
+    font-family:Arial, sans-serif;
+    color:#fff;
+}
+
+#container-header{
+    position:absolute;
+    left:0px;
+    top:0px;
+    right:0px;
+    bottom:10px;
+}
+.page_content {
+    background-color: rgba(28, 38, 48, 0.56);
+    /* width: 800px; */
+    width: 320px;
+    height: 515px;
+    -ms-transform-origin: top left;
+    -webkit-transform-origin: top left;
+    transform-origin: top left;
+    -webkit-transition: all 500ms ease-in-out !important;
+    transition: all 500ms ease-in-out !important;
+    position: absolute;
+}
+
+img{
+    float:left;
+    margin:20px;
+}
+
+.header-mobile{
+    width:100%;
+    background: #0e2133;
+    height:40px;
+    line-height:35px;
+    border-bottom:1px solid #0e2133;
+}
+.hamburger-mobile{
+    background:none;
+    position:absolute;
+    top:0;
+    right:0;
+    line-height:35px;
+    padding:5px 15px 0px 15px;
+    color:#999;
+    border:0;
+    font-size:1.4em;
+    font-weight:bold;
+    cursor:pointer;
+    outline:none;
+    z-index:10000000000000;
+}
+.cross-mobile{
+    background:none;
+    position:absolute;
+    top:0px;
+    right:0;
+    padding:5px 15px 0px 15px;
+    color:#999;
+    border:0;
+    font-size:3em;
+    line-height:45px;
+    font-weight:bold;
+    cursor:pointer;
+    outline:none;
+    z-index:10000000000000;
+}
+.menu-mobile{z-index:1000000; font-weight:bold; font-size:0.8em; width:100%; background:#0e2133;  position:absolute; text-align:center; font-size:12px; top: 37px}
+.menu-mobile ul {margin: 0; padding: 0; list-style-type: none; list-style-image: none;}
+.menu-mobile li {display: block;   padding:15px 0 15px 0; border-bottom: #031726 1px solid;}
+.menu-mobile li:hover{display: block;    background: #041725; padding:15px 0 15px 0; border-bottom:#0e2133 1px solid;}
+.menu-mobile ul li a { text-decoration:none;  margin: 0px; color:#666;}
+.menu-mobile ul li a:hover {  color: #666; text-decoration:none;}
+.menu-mobile a{text-decoration:none; color:#666;}
+.menu-mobile a:hover{text-decoration:none; color:#666;}
+
+.glyphicon-home{
+    color:white;
+    font-size:1.5em;
+    margin-top:5px;
+    margin:0 auto;
+}
+.header-mobile{display:inline-block; font-size:12px;}
+span{padding-left:20px;}
+a{color:#336699;}
+
+
+.title-in {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 30px;
+    margin-bottom: 65px;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+}
+
+
+.a-film-title {
+    font-size: 18px;
+    font-family: 'Dosis', sans-serif;
+    color: #e8e7e7;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.a-film-title:hover {
+    font-size: 18px;
+    font-family: 'Dosis', sans-serif;
+    color: #fffefe;
+    font-weight: bold;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.cate {
+    margin-bottom: 10px;
+}
+.cate span {
+    padding: 3px 5px;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+}
+.cate span a {
+    font-family: 'Dosis', sans-serif;
+    font-size: 12px;
+    color: #ffffff;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+.cate .blue {
+    background-color: #1692bb;
+}
+.cate .yell {
+    background-color: #f5b50a;
+}
+.cate .green {
+    background-color: #a6bb16;
+}
+.cate .orange {
+    background-color: #ec5a1a;
+}
+.wrapper-action-film {
+    display: grid;
+    width: 320px;
+    height: 60px;
+    position: relative;
+    margin-left: 10px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px;
+    background-repeat: repeat;
+}
+.wrapper-action-start {
+    display: grid;
+    width: 100%;
+    height: 5px;
+    position: absolute;
+    grid-template-columns: repeat(2, 1fr);
+    bottom: 500px;
+    grid-gap: 0px;
+}
+
+.select-color {
+    background-color: #0e2133;
+    border: 0px solid #0f2133;
+    color: white;
+    font-family: 'Nunito', sans-serif;
+    font-size: 12px;
+    text-transform: none;
+    -webkit-border-radius: 3px !important;
+    -moz-border-radius: 3px !important;
+    border-radius: 3px !important;
+    height: 20px;
+    /*width: 110px;*/
+    margin-right: 0px;
+    margin-left: 0px;
+    padding-right: 0px;
+}
+
+.logo {
+    width: 40px;
+    height: 40px;
+    margin: 0;
+    margin-left: 0px;
+    margin-top: 0px;
+}
+
+#preloader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #020d18;
+    /* change if the mask should have another color then white */
+    z-index: 99999;
+    text-align: center;
+    /* makes sure it stays on top */
+}
+#preloader img {
+    margin-top: 100px;
+}
+#status .span-loader {
+    position: absolute;
+    border-radius: 999px;
+}
+#status .span-loader:nth-child(1) {
+    border: 5px solid #dcf836;
+    border-top: 5px solid transparent;
+    width: 80px;
+    height: 80px;
+    left: 47%;
+    top: 37.5%;
+    animation: spin1 2s infinite linear;
+}
+#status .span-loader:nth-child(2) {
+    border: 5px solid #dd003f;
+    border-top: 5px solid transparent;
+    position: fixed;
+    height: 31px;
+    width: 31px;
+    left: 45%;
+    top: 40%;
+    z-index: 9999;
+    animation: spin2 1s infinite linear;
+    margin-left: 35px;
+}
+
+@keyframes spin1 {
+    0% {
+        transform: rotate(360deg);
+        opacity: 1;
+    }
+    50% {
+        transform: rotate(180deg);
+        opacity: 0.75;
+    }
+    100% {
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+}
+@keyframes spin2 {
+    0% {
+        transform: rotate(0deg);
+        opacity: 0.75;
+    }
+    50% {
+        transform: rotate(180deg);
+        opacity: 1;
+    }
+    100% {
+        transform: rotate(360deg);
+        opacity: 0.75;
+    }
+}
+
+.header-column {
+    display: grid;
+    height: 40px;
+    position: relative;
+    margin-left: 50px;
+    margin-right: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0px;
+    background-repeat: repeat;
+}
+
+.contain-description-film {
+    float: left;
+    width: 320px;
+    height: 520px;
+    padding-left: 30px;
+    padding-right: 30px;
+    padding-top: 30px;
+    background-color: rgba(28, 38, 48, 0.56);
+    text-align: center;
+}
+
+.carousel {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.carousel-cell {
+    width: 100%;
+    /*height: auto;*/
+    margin-left: 20px
+}
+
+.carousel-cell-img {
+    width: 100%;
+    /*height: auto;*/
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.flickity-viewport {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0px;
+}
+
+.ticket-in-description {
+    /*top: 200px;*/
+    top: 0px;
+    /*position: relative;*/
+}
+
+.row-description {
+    height: 70%;
+}
