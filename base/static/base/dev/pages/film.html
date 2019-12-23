@@ -1,5 +1,5 @@
 <!-- Шаблон фильма. Встраивается в шаблон base -->
-<!-- 1. Блок метаданных и настроек -->
+<!-- 1. Блок метаданных и настроек (перенести в base) -->
 <!DOCTYPE html>
 <html lang="ru">
   <head>
@@ -22,12 +22,13 @@
   </head>
 <!-- 2. Блок тела шаблона. Включает шапку-навиг. панель и тело шаблона Фильм -->
   <!-- 2.1. Подложка: задается ссылка на картинку подложки и цвет подложки -->
+  <!-- ?? подложка у страницы фильма своя? Если нет, то почему она здесь, а не в стилях? -->
   <body style="background-color: #014455; background: url('../images/uploads/slider-bg.jpg');
                background-position: center;">
   <!-- 2.2. Шапка: лого, три элемента фильтра, меню --> 
-    <!-- ?. раскрыть назначение этого див-блока -->
+    <!-- ?. раскрыть назначение этого див-блока (лого прописан ниже, тогда зачем?)-->
     <div id="preloader">
-      <!--img.logo(src="images/logo2.jpg" alt="" width="119" height="58")-->
+      <!--img.logo(src="images/logo2.jpg" alt="" width="119" height="58") это был параметр для лого? -->
       <img class="logo" src="" alt="" width="119" height="58">
       <div id="status"><span class="span-loader"></span><span class="span-loader"></span></div>
     </div>
@@ -66,7 +67,7 @@
           <li>API</li></a><a href="#">
       </ul>
     </div>
-<!-- 3. Тело шаблона Фильм (портретная ориентация) -->      
+<!-- 3. Тело шаблона Фильм (портретная ориентация). Как этот код сделать модулем и встроить? -->      
     <div class="container-fluid">
       <div id="container">
         <div class="page_content" style="right: 0px"> <!-- выравнивание влево? -->
@@ -123,9 +124,10 @@
                о width: 320px" height="520"> конец копипаста -->
           <div class="row" style="margin-left: -10px; margin-right: -10px; position: fixed; width: 1018px; display: none" 
                id="mainRow2">
-               <img class="rounded" src="http://posters.kinoafisha.ru/42/41177-003.jpg" 
+               <img class="rounded" src="http://posters.kinoafisha.ru/42/41177-003.jpg">
+               <!-- пробую убрать из класса rounded стиль для постера
                style="padding: 0px; margin-right: 0px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; 
-               width: 320px" height="520">
+               width: 320px" height="520" -->
             <!-- далее идет полный копипаст кода выше, заменить на модуль) -->
             <div class="title-in" style="margin-left: -10px; margin-bottom: 0px">
               <div class="wrapper-action-film" style="bottom: 320px">
