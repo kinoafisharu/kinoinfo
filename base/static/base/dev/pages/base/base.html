@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>index</title>
+    <meta name="description" content="description_seo">
+    <meta name="keywords" content="keywords_seo">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600">
+    <link rel="shortcut icon" href="/static/img/favikon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-grid.css">
+  </head>
+  <body style="background-color: #014455; background: url('../../images/uploads/slider-bg.jpg');background-position: center;">
+    <div class="login-wrapper" id="login-content">
+      <div class="login-content"><a class="close" href="#">x</a>
+        <h3>Войти</h3>
+        <form method="post" action="#">
+          <div class="row">
+            <label for="username">Ник:
+              <input type="text" name="username" id="username" placeholder="ваш ник" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <label for="password">Пароль:
+              <input type="password" name="password" id="password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <div class="remember">
+              <div>
+                <input type="checkbox" name="remember" value="Запомнить меня"><span>Запомнить меня</span>
+              </div><a href="#">Забыли пароль?</a>
+            </div>
+          </div>
+          <div class="row">
+            <button type="submit">Войти</button>
+          </div>
+          <div class="row">
+            <p>Или соц. сети</p>
+            <div class="social-btn-2"><a class="fb" href="#"><i class="ion-social-facebook"></i></a><a class="tw" href="#"><i class="ion-social-twitter"></i></a></div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="login-wrapper" id="signup-content">
+      <div class="login-content"><a class="close" href="#">x</a>
+        <h3>Регистрация</h3>
+        <form method="post" action="#">
+          <div class="row">
+            <label for="username-2">Ник:
+              <input type="text" name="username" id="username-2" placeholder="ван ник" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <label for="email-2">Почта:
+              <input type="password" name="email" id="email-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <label for="password-2">Пароль:
+              <input type="password" name="password" id="password-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <label for="repassword-2">
+              <re-type>Пароль:
+                <input type="password" name="password" id="repassword-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+              </re-type>
+            </label>
+          </div>
+          <div class="row">
+            <button type="submit">зарегестрироваться</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <header class="ht-header">
+      <div class="container">
+        <nav class="navbar navbar-default navbar-custom">
+          <div class="navbar-header logo">
+            <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span>
+              <div id="nav-icon1"><span></span><span></span><span></span></div>
+            </div><a href="#"><img class="logo" src="../../images/logo2.png"></a>
+          </div>
+          <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav flex-child-menu menu-left">
+              <li class="hidden"><a href="#page-top"></a></li>
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">Главная<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li><a href="#">Название</a></li>
+                  <li><a href="#">Название</a></li>
+                  <li><a href="#">Название</a></li>
+                  <li><a href="#">Название</a></li>
+                </ul>
+              </li>
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">Фильмы<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Фильмы<i class="ion-ios-arrow-forward"></i></a>
+                    <ul class="dropdown-menu level2">
+                      <li><a href="#">Фильмы</a></li>
+                      <li><a href="#">Фильмы</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Список фильмов</a></li>
+                  <li><a href="#">Список фильмов</a></li>
+                  <li class="it-last"><a href="#">Список фильмов</a></li>
+                </ul>
+              </li>
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">страницы<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li><a href="#">страница 1</a></li>
+                  <li><a href="#">страница 2</a></li>
+                  <li><a href="#">страница 3</a></li>
+                  <li class="it-last"><a href="#">Реклама</a></li>
+                </ul>
+              </li>
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">новости<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li><a href="#">блог</a></li>
+                  <li><a href="#">блог 1</a></li>
+                  <li class="it-last"><a href="#">блог 2</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav flex-child-menu menu-right">
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">Страницы<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li><a href="#">Реклама</a></li>
+                  <li><a href="#">Страница 1</a></li>
+                  <li class="it-last"><a href="#">Скоро будет</a></li>
+                </ul>
+              </li>
+              <li><a ref="#">Помощь</a></li>
+              <li class="loginLink"><a href="#">Войти</a></li>
+              <li class="btn signupLink"><a href="#">Зарегестрироваться</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="top-search" style="opacity: 0.65">
+          <select>
+            <option value="united">TV шоу</option>
+            <option value="saab">Разное</option>
+          </select>
+          <input type="text" placeholder="Поиск фильма, телешоу или знаменитости">
+        </div>
+      </div>
+    </header>
+    <script src="../../main.js/jquery.js"></script>
+  </body>
+</html>
