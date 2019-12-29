@@ -59,7 +59,7 @@ Unidecode==0.4.14
 uritemplate==3.0.0
 urllib3==1.22
 uWSGI==2.0.15
-Werkzeug==0.12.1
+Werkzeug==0.15.3
 
 # heroku
 dj-database-url==0.4.2
