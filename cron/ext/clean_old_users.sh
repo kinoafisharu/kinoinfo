@@ -3,7 +3,6 @@
 #
 DIR="/public/kinoinfo/cron"
 source /public/env/bin/activate
-cd /public/kinoinfo
 DX=`date`
 SX=`basename "$0"`
 echo $DX __ $SX >> $DIR/ext/cron.log 2>&1
