@@ -6,13 +6,11 @@ from django.contrib.staticfiles.urls import staticfiles_urlpatterns
 from dajaxice.core import dajaxice_autodiscover, dajaxice_config
 
 from base.feeds import FilmsFeed, ArticlesFeed, ReleasesFeed
-from urls_kinoafisha import robots_file
 
 admin.autodiscover()
 dajaxice_autodiscover()
 
 urlpatterns = patterns('',
-    url(r'^robots\.txt$', robots_file, name="robots_file"),
     url(r'^kb_data_sync/$', 'release_parser.kinobilety.main', name='kb_data_sync'),
     url(r'^yandex_35c18ae022681480.html$', 'base.views.yandex', name='yandex_kinoinfo'),
     
