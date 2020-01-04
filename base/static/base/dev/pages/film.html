@@ -1,4 +1,14 @@
-<!-- Шаблон фильма. Встраивается в шаблон base -->
+<!-- Дочерний шаблон: Фильм. Вызывает скелет base 
+{% extends "base.html" %}
+
+{% block title %}My amazing blog{% endblock %}
+
+{% block content %}
+{% for entry in blog_entries %}
+    <h2>{{ entry.title }}</h2>
+    <p>{{ entry.body }}</p>
+{% endfor %}
+{% endblock %} -->
 <!-- 1. Блок метаданных и настроек (перенести в base) -->
 <!DOCTYPE html>
 <html lang="ru">
