@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html lang="ru">
   <head>
-    <title>Киноафиша Ру: здесь вставить параметр с названиями фильма, годом и страной</title>
+    <title>{% block title %}Киноафиша Ру: здесь вставить параметр с названиями фильма, годом и страной{% endblock %}</title>
     <meta name="description" content="киноафиша моего города">
     <meta name="keywords" content="киноафиша, что посмотреть, кино, новинки">
     <meta charset="utf-8">
@@ -27,12 +27,15 @@
   <!-- 2.2. Шапка: лого, три элемента фильтра, меню --> 
     <!-- ?. раскрыть назначение этого див-блока (лого прописан ниже, тогда зачем?)-->
     <div id="preloader">
+      {% block preloader %}
       <!--img.logo(src="images/logo2.jpg" alt="" width="119" height="58") это был параметр для лого? -->
       <img class="logo" src="" alt="" width="119" height="58">
       <div id="status"><span class="span-loader"></span><span class="span-loader"></span></div>
+      {% endblock preloader %}
     </div>
     <!-- 2.2.1. лого и три фильтра -->
     <div class="header-mobile" id="container-header">
+      {% block container-header %}
       <div class="fixed-top" id="header-select"><img class="logo" src="../images/logo2.jpg">
         <button class="hamburger-mobile" style="display: none; background-color: rgb(14, 33, 51)">&#9776;</button>
         <div class="header-column" id="row-header">
@@ -51,9 +54,11 @@
         </div>
         <button class="cross-mobile" style="display: none">&#735;</button>
       </div>
+      {% endblock container-header %}
     </div>
     <!-- 2.2.2. меню -->
     <div class="menu-mobile" style="display: none">
+      {% block menu %}
       <ul><a href="#"> <!-- куда должен вести этот переход? -->
           <li>Москва</li></a><a href="#">
           <li>На Вашем счету 0.00 руб.</li></a><a href="#">
@@ -65,8 +70,9 @@
           <li>35 тысячах фильмов</li></a><a href="#">
           <li>API</li></a><a href="#">
       </ul>
+      {% endblock menu %}
     </div>
-<!-- 3. Тело шаблона Фильм (портретная ориентация). Как этот код сделать модулем и встроить? -->      
+<!-- 3. Тело шаблона Фильм (портретная ориентация).  разобратся в слоях дивов -->      
     <div class="container-fluid">
       <div id="container">
         <div class="page_content" style="right: 0px"> <!-- выравнивание влево? -->
