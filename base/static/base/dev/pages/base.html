@@ -1,0 +1,372 @@
+<!-- 1. Блок метаданных и настроек (base, из которого нужно вынести блок фильма) -->
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>{% block title %}Киноафиша Ру: базовый шаблон{% endblock %}</title>
+    <meta name="description" content="киноафиша моего города">
+    <meta name="keywords" content="киноафиша, что посмотреть, кино, новинки">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover">
+    <meta name="format-detection" content="telephone=no">
+    <!-- ?. раскрыть содержимое двух строк выше -->
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600">
+    <link rel="shortcut icon" href="/static/img/favikon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/bootstrap-grid.css">
+    <link rel="stylesheet" type="text/css" href="../css/film.css">
+    <link rel="stylesheet" href="../css/owl.carousel.css">
+    <!--link(rel="stylesheet" href="../css/owl.theme.default.min.css")-->
+    <!-- ?. пояснить причину закомментирования строки выше-->
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2.2.1/dist/flickity.css">
+  </head>
+<!-- 2. Блок тела шаблона. Включает шапку-навиг. панель и тело шаблона Фильм -->
+  <!-- 2.1. Подложка: задается ссылка на картинку подложки и цвет подложки -->
+  <!-- ?? подложка у страницы фильма своя? Если нет, то почему она здесь, а не в стилях? -->
+  <body style="background-color: #014455; background: url('../images/uploads/slider-bg.jpg');
+               background-position: center;">
+  <!-- 2.2. Шапка: лого, три элемента фильтра, меню --> 
+    <!-- ?. раскрыть назначение этого див-блока (лого прописан ниже, тогда зачем?)-->
+    <div id="preloader">
+      {% block preloader %}
+      <!--img.logo(src="images/logo2.jpg" alt="" width="119" height="58") это был параметр для лого? -->
+      <img class="logo" src="" alt="" width="119" height="58">
+      <div id="status"><span class="span-loader"></span><span class="span-loader"></span></div>
+      {% endblock preloader %}
+    </div>
+    <!-- 2.2.1. лого и три фильтра -->
+    <div class="header-mobile" id="container-header">
+      {% block container-header %}
+      <div class="fixed-top" id="header-select"><img class="logo" src="../images/logo2.jpg">
+        <button class="hamburger-mobile" style="display: none; background-color: rgb(14, 33, 51)">&#9776;</button>
+        <div class="header-column" id="row-header">
+          <select class="select-color" style="height: 40px;"><!-- ? почему класс называется выбор цвета? -->
+            <option value="range">МДМ-кино</option><!-- ? раскрыть назначение value -->
+            <option value="saab">Горизонт</option>
+          </select>
+          <select class="select-color" style="height: 40px;">
+            <option value="range">Цена до 200 руб</option>
+            <option value="saab">минимальная</option>
+          </select>
+          <select class="select-color" style="height: 40px;">
+            <option value="range">сегодня</option>
+            <option value="saab">завтра</option>
+          </select>
+        </div>
+        <button class="cross-mobile" style="display: none">&#735;</button>
+      </div>
+      {% endblock container-header %}
+    </div>
+    <!-- 2.2.2. меню -->
+    <div class="menu-mobile" style="display: none">
+      {% block menu %}
+      <ul><a href="#"> <!-- куда должен вести этот переход? -->
+          <li>Москва</li></a><a href="#">
+          <li>На Вашем счету 0.00 руб.</li></a><a href="#">
+          <li>Обратная связь</li></a><a href="#">
+          <li>Киноинфо</li></a><a href="#">
+          <li>Сеансы</li></a><a href="#">
+          <li>Скоро в кино</li></a><a href="#">
+          <li>Смотреть он-лайн</li></a><a href="#">
+          <li>35 тысячах фильмов</li></a><a href="#">
+          <li>API</li></a><a href="#">
+      </ul>
+      {% endblock menu %}
+    </div>
+<!-- 3. Тело шаблона Фильм (портретная ориентация).  разобратся в слоях дивов -->      
+    <div class="container-fluid">
+      <div id="container">
+        <div class="page_content" style="right: 0px"> <!-- выравнивание влево? -->
+          <div class="main-carousel" id="mainRow"> <!-- имя ида? -->
+            <!-- 3.1. Первый блок: постер. Вместо ссылки на постер должен быть параметр -->
+            <div class="carousel-cell"><img class="rounded" src="http://posters.kinoafisha.ru/42/41177-003.jpg" 
+                 style="padding: 0px; margin-right: 0px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; 
+                 width: 320px" height="520"> <!-- пропорции должны быть: 1:1.5 -->
+              <!-- 3.1.1. раскрыть назначение двух дивов ниже -->
+              <div class="title-in" style="margin-left: -10px; margin-bottom: 0px">
+                <div class="wrapper-action-film" style="bottom: 320px">
+                  <!-- 3.1.2. див-блок кнопки рейтинга фильма (в одном диве два элемента?)-->
+                  <div style="background-color: #ccae94b5; height: 60px; width: 70px"><a href="#rate">
+                      <div style="font-weight: bold; color: black; font-size: 240%; margin-right: 5px; 
+                                  text-align: center">5</div></a></div> <!-- вместо 5 - параметр -->
+                  <p></p> <!-- это зачем? -->
+                  <!-- 3.1.3. кнопка виджета билетов-->
+                  <p style="height: 60px; width: 80px; margin-left: 33px; padding-top: 10px"><a href="#ticket">
+                      <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                        <ellipse cx="100" cy="50" rx="100" ry="50" style="fill:yellow"></ellipse>
+                        <text x="50%" y="50%" text-anchor="middle" stroke="#000000" stroke-width="2px" dy=".3em" 
+                              font-size="35">Билеты</text>
+                      </svg></a></p>
+                </div>
+                <!-- 3.1.4. див-блок ограничения и доп.инфы -->
+                <div class="wrapper-action-film" style="bottom: 170px">
+                  <div style="background-color: #ffffff45; height: 60px; width: 80px"><a href="#like" 
+                                                                                         style="text-decoration: none">
+                        <div style="font-weight: bold; color: black; font-size: 240%; margin-right: 5px; 
+                                  text-align: center; padding-top: 0px">14+</div>
+                    </a></div>
+                  <!-- кнопка доп инфы -->
+                  <p></p><a href="#description" style="margin: 0px; margin-left: 45px;"><img src="../images/triangle.png"
+                                                       width="70" style="margin: 0px"></a>
+                </div>
+                <!-- 3.1.5. див-блок лайков и запуска плеера -->
+                <div class="wrapper-action-film" style="background-color: #ffffff45">
+                  <a href="#like" style="background-image: url(../images/svg/like.svg); background-repeat: no-repeat; 
+                     margin: 1px; background-position: center"></a>
+                  <a href="#dislike" style="background-image: url(../images/svg/like.svg); background-repeat: no-repeat; 
+                     margin: 1px; background-position: center"></a>
+                  <a href="#pleer" style="background-image: url(../images/svg/play.svg); background-repeat: no-repeat; 
+                     margin: 1px; background-position: center"></a>
+                </div>
+              </div>
+            </div>
+          </div>
+<!-- 4. Тело шаблона Фильм (альбомная ориентация) --> 
+          <!-- 4.1. див-блок постера (копипаст блока выше, заменить на модуль) -->
+          <!-- это копия блока выше: 3.1. Первый блок: постер. Помечаю буквой О одинаковые строки
+          <div class="carousel-cell">
+               о <img class="rounded" src="http://posters.kinoafisha.ru/42/41177-003.jpg" 
+               о style="padding: 0px; margin-right: 0px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; 
+               о width: 320px" height="520"> конец копипаста -->
+          <div class="row" style="margin-left: -10px; margin-right: -10px; position: fixed; width: 1018px; display: none" 
+               id="mainRow2">
+               <img class="rounded" src="http://posters.kinoafisha.ru/42/41177-003.jpg" 
+               style="padding: 0px; margin-right: 0px; margin-left: 0px; margin-bottom: 0px; margin-top: 0px; 
+               width: 347px" height="520" 
+            <!-- далее идет полный копипаст кода выше, заменить на модуль) -->
+            <div class="title-in" style="margin-left: -10px; margin-bottom: 0px">
+              <div class="wrapper-action-film" style="bottom: 320px">
+                <div style="background-color: #ccae94b5; height: 60px; width: 80px"><a href="#rate">
+                    <div style="font-weight: bold; color: black; font-size: 240%; margin-right: 5px; 
+                                text-align: center">5</div></a></div>
+                <p></p>
+                <p style="height: 60px; width: 80px; margin-left: 33px; padding-top: 10px"><a href="#ticket">
+                    <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg">
+                      <ellipse cx="100" cy="50" rx="100" ry="50" style="fill:yellow"></ellipse>
+                      <text x="50%" y="50%" text-anchor="middle" stroke="#000000" stroke-width="2px" dy=".3em" 
+                            font-size="35">Билеты</text>
+                    </svg></a></p>
+              </div>
+              <div class="wrapper-action-film" style="bottom: 170px">
+                <div style="background-color: #ffffff45; height: 60px; width: 80px"><a href="#like" 
+                                                                                       style="text-decoration: none">
+                    <div style="font-weight: bold; color: black; font-size: 240%; margin-right: 5px; text-align: center; 
+                                padding-top: 0px">14+</div></a></div>
+                <p></p><a href="#description" style="margin: 0px; margin-left: 45px;"><img src="../images/triangle.png" 
+                                                                                       width="70" style="margin: 0px"></a>
+              </div>
+              <div class="wrapper-action-film" style="background-color: #ffffff45"><a href="#like" 
+                   style="background-image: url(../images/svg/like.svg); background-repeat: no-repeat; margin: 1px; 
+                background-position: center"></a><a href="#like" style="background-image: url(../images/svg/like.svg); 
+                background-repeat: no-repeat; margin: 1px; background-position: center"></a><a href="#like" 
+                style="background-image: url(../images/svg/play.svg); background-repeat: no-repeat; margin: 1px; 
+                background-position: center"></a></div>
+            </div>
+            <!-- конец копипаста, далее код двух блоков для альбомной ориентации -->
+            <div>
+              <div class="contain-description-film">
+                Отвязный ярко-синий ежик Соник вместе с новообретенным – человеческим – лучшим другом Томом Вачовски 
+                знакомится со сложностями жизни на Земле и противостоит злодейскому доктору Роботнику, который хочет 
+                пленить Соника и использовать его безграничные суперсилы для завоевания мирового господства...
+              </div>
+            </div>
+            <div>
+              <div class="contain-description-film">
+                <p>страны: Япония \ США</p>
+                <p>жанры: анимационный \ приключения \ боевик</p>
+                <p>длительность: 108 минут</p>
+                <a class="ticket-in-description" href="#ticket">
+                  <svg viewBox="0 0 200 100" xmlns="http://www.w3.org/2000/svg"> 
+                  <ellipse cx="100" cy="50" rx="100" ry="50" style="fill:yellow"></ellipse>
+                  <text x="50%" y="50%" text-anchor="middle" stroke="#000000" 
+                        stroke-width="2px" dy=".3em" font-size="35">Билеты</text>
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="../js/jquery.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
+    <!--script(src="../js/owl.carousel.js")-->
+    <script src="https://unpkg.com/flickity@2.2.1/dist/flickity.pkgd.min.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/0.10.0/lodash.min.js"></script>
+    <script src="../js/main.js"></script>
+    <script src="../js/preloader.js"></script>
+  </body>
+</html>
+<!-- ниже сначала пример базового шаблона, потом старый base
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css" />
+    <title>{% block title %}My amazing site{% endblock %}</title>
+</head>
+<body>
+    <div id="sidebar">
+        {% block sidebar %}
+        <ul>
+            <li><a href="/">Home</a></li>
+            <li><a href="/blog/">Blog</a></li>
+        </ul>
+        {% endblock %}
+    </div>
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
+</body>
+</html>
+---------------------------------------------
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <title>index</title>
+    <meta name="description" content="description_seo">
+    <meta name="keywords" content="keywords_seo">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <meta name="format-detection" content="telephone=no">
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Dosis:400,700,500|Nunito:300,400,600">
+    <link rel="shortcut icon" href="/static/img/favikon.png" type="image/x-icon">
+    <link rel="stylesheet" type="text/css" href="../../css/bootstrap-grid.css">
+  </head>
+  <body style="background-color: #014455; background: url('../../images/uploads/slider-bg.jpg');background-position: center;">
+    <div class="login-wrapper" id="login-content">
+      <div class="login-content"><a class="close" href="#">x</a>
+        <h3>Войти</h3>
+        <form method="post" action="#">
+          <div class="row">
+            <label for="username">Ник:
+              <input type="text" name="username" id="username" placeholder="ваш ник" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <label for="password">Пароль:
+              <input type="password" name="password" id="password" placeholder="******" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <div class="remember">
+              <div>
+                <input type="checkbox" name="remember" value="Запомнить меня"><span>Запомнить меня</span>
+              </div><a href="#">Забыли пароль?</a>
+            </div>
+          </div>
+          <div class="row">
+            <button type="submit">Войти</button>
+          </div>
+          <div class="row">
+            <p>Или соц. сети</p>
+            <div class="social-btn-2"><a class="fb" href="#"><i class="ion-social-facebook"></i></a><a class="tw" href="#"><i class="ion-social-twitter"></i></a></div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="login-wrapper" id="signup-content">
+      <div class="login-content"><a class="close" href="#">x</a>
+        <h3>Регистрация</h3>
+        <form method="post" action="#">
+          <div class="row">
+            <label for="username-2">Ник:
+              <input type="text" name="username" id="username-2" placeholder="ван ник" pattern="^[a-zA-Z][a-zA-Z0-9-_\.]{8,20}$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <label for="email-2">Почта:
+              <input type="password" name="email" id="email-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <label for="password-2">Пароль:
+              <input type="password" name="password" id="password-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+            </label>
+          </div>
+          <div class="row">
+            <label for="repassword-2">
+              <re-type>Пароль:
+                <input type="password" name="password" id="repassword-2" placeholder="" pattern="(?=^.{8,}$)((?=.*\d)|(?=.*\W+))(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$" required="required">
+              </re-type>
+            </label>
+          </div>
+          <div class="row">
+            <button type="submit">зарегестрироваться</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <header class="ht-header">
+      <div class="container">
+        <nav class="navbar navbar-default navbar-custom">
+          <div class="navbar-header logo">
+            <div class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1"><span class="sr-only">Toggle navigation</span>
+              <div id="nav-icon1"><span></span><span></span><span></span></div>
+            </div><a href="#"><img class="logo" src="../../images/logo2.png"></a>
+          </div>
+          <div class="collapse navbar-collapse flex-parent" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav flex-child-menu menu-left">
+              <li class="hidden"><a href="#page-top"></a></li>
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown">Главная<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li><a href="#">Название</a></li>
+                  <li><a href="#">Название</a></li>
+                  <li><a href="#">Название</a></li>
+                  <li><a href="#">Название</a></li>
+                </ul>
+              </li>
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">Фильмы<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li class="dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown">Фильмы<i class="ion-ios-arrow-forward"></i></a>
+                    <ul class="dropdown-menu level2">
+                      <li><a href="#">Фильмы</a></li>
+                      <li><a href="#">Фильмы</a></li>
+                    </ul>
+                  </li>
+                  <li><a href="#">Список фильмов</a></li>
+                  <li><a href="#">Список фильмов</a></li>
+                  <li class="it-last"><a href="#">Список фильмов</a></li>
+                </ul>
+              </li>
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">страницы<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li><a href="#">страница 1</a></li>
+                  <li><a href="#">страница 2</a></li>
+                  <li><a href="#">страница 3</a></li>
+                  <li class="it-last"><a href="#">Реклама</a></li>
+                </ul>
+              </li>
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">новости<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li><a href="#">блог</a></li>
+                  <li><a href="#">блог 1</a></li>
+                  <li class="it-last"><a href="#">блог 2</a></li>
+                </ul>
+              </li>
+            </ul>
+            <ul class="nav navbar-nav flex-child-menu menu-right">
+              <li class="dropdown first"><a class="btn btn-default dropdown-toggle lv1" data-toggle="dropdown" data-hover="dropdown">Страницы<i class="fa fa-angle-down" aria-hidden="true"></i></a>
+                <ul class="dropdown-menu level1">
+                  <li><a href="#">Реклама</a></li>
+                  <li><a href="#">Страница 1</a></li>
+                  <li class="it-last"><a href="#">Скоро будет</a></li>
+                </ul>
+              </li>
+              <li><a ref="#">Помощь</a></li>
+              <li class="loginLink"><a href="#">Войти</a></li>
+              <li class="btn signupLink"><a href="#">Зарегестрироваться</a></li>
+            </ul>
+          </div>
+        </nav>
+        <div class="top-search" style="opacity: 0.65">
+          <select>
+            <option value="united">TV шоу</option>
+            <option value="saab">Разное</option>
+          </select>
+          <input type="text" placeholder="Поиск фильма, телешоу или знаменитости">
+        </div>
+      </div>
+    </header>
+    <script src="../../main.js/jquery.js"></script>
+  </body>
+</html>
+-->
