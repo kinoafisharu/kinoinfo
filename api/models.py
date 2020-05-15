@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from django.db import models
 
+# Модель описывает внешние объекты (файлы изображений, звука, видео)
 class Extres(models.Model):
     extresid = models.IntegerField(primary_key=True, db_column='ExtResID')
     mimetype = models.CharField(max_length=120, db_column='MimeType')
@@ -12,6 +13,7 @@ class Extres(models.Model):
         db_table = u'ExtRes'
         managed = False
 
+# модель связывает описание внешних объектов с типами и значениями       
 class Objxres(models.Model):
     objxresid = models.AutoField(primary_key=True, db_column='ObjXResID')
     extresid = models.ForeignKey(Extres, db_column='ExtResID', null=True, blank=True)
@@ -21,7 +23,7 @@ class Objxres(models.Model):
         db_table = u'ObjXRes'
         managed = False
 
-
+# Страны с Киноафиши
 class AfishaCountry(models.Model):
     name = models.CharField(max_length=150)
     name_en = models.CharField(max_length=150)
@@ -29,7 +31,7 @@ class AfishaCountry(models.Model):
         db_table = u'country'
         managed = False
 
-
+# города с Киноафиши
 class AfishaCity(models.Model):
     name = models.CharField(max_length=75, blank=True)
     name_en = models.CharField(max_length=150)
@@ -38,6 +40,7 @@ class AfishaCity(models.Model):
         db_table = u'city'
         managed = False
 
+# организации        
 class Company(models.Model):
     name = models.CharField(max_length=150)
     name_en = models.CharField(max_length=150)
@@ -45,6 +48,7 @@ class Company(models.Model):
         db_table = u'company'
         managed = False
 
+# жанры с Киноафиши        
 class AfishaGenre(models.Model):
     name = models.CharField(max_length=60, blank=True)
     name_en = models.CharField(max_length=60)
@@ -52,18 +56,21 @@ class AfishaGenre(models.Model):
         db_table = u'genre'
         managed = False
 
+# кинопрокатывающие сети        
 class Seti(models.Model):
     name = models.CharField(max_length=150, db_column='Name')
     class Meta:
         db_table = u'Seti'
         managed = False
 
+# станции метро        
 class AfishaMetro(models.Model):
     name = models.CharField(max_length=60, blank=True)
     class Meta:
         db_table = u'metro'
         managed = False
 
+# организации-кинодистрибьюторы        
 class Prokat(models.Model):
     name = models.CharField(max_length=50)
     address = models.CharField(max_length=511)
@@ -75,7 +82,8 @@ class Prokat(models.Model):
     class Meta:
         db_table = u'prokat'
         managed = False
-        
+
+# Фильмы (старая плохая модель Киноафиши)        
 class Film(models.Model):
     id = models.IntegerField(primary_key=True, db_column='id')
     name = models.CharField(max_length=300)
@@ -113,6 +121,7 @@ class Film(models.Model):
         db_table = u'film'
         managed = False
 
+# названия фильмов
 class FilmsName(models.Model):
     film_id = models.ForeignKey(Film, db_column='film_id')
     name = models.CharField(max_length=127)
@@ -124,6 +133,7 @@ class FilmsName(models.Model):
         db_table = u'films_name'
         managed = False
 
+# внешние данные (оценки и мнения) для фильма        
 class FilmExtData(models.Model):
     id = models.IntegerField(primary_key=True, db_column='id')
     rate1 = models.IntegerField()
@@ -136,12 +146,14 @@ class FilmExtData(models.Model):
         db_table = u'film_ext_data'
         managed = False
 
+# тип озвучания фильма        
 class FilmSoundType(models.Model):
     sound_type = models.CharField(max_length=63)
     class Meta:
         db_table = u'films_sound_type'
         managed = False
 
+# название звука внутри типа        
 class FilmSound(models.Model):
     film_id = models.ForeignKey(Film, db_column='film_id')
     type_sound = models.ForeignKey(FilmSoundType, db_column='type_sound')
@@ -150,6 +162,7 @@ class FilmSound(models.Model):
         db_table = u'films_sound'
         managed = False
 
+# оценки фильма от посетителей сайта        
 class FilmVotes(models.Model):
     rate_1 = models.IntegerField()
     rate_2 = models.IntegerField()
@@ -158,6 +171,7 @@ class FilmVotes(models.Model):
         db_table = u'films_votes'
         managed = False
 
+# кинотеатры        
 class Movie(models.Model):
     id = models.IntegerField(primary_key=True, db_column='id')
     name = models.CharField(max_length=150)
@@ -187,6 +201,7 @@ class Movie(models.Model):
         db_table = u'movie'
         managed = False
 
+# внешние (связанные) данные для кинотеатра (оценки и мнения)        
 class MovieExtData(models.Model):
     id = models.IntegerField(primary_key=True, db_column='id')
     rate1 = models.IntegerField()
@@ -199,7 +214,7 @@ class MovieExtData(models.Model):
         db_table = u'movie_ext_data'
         managed = False
     
-
+# ???
 class ImpLoad(models.Model):
     movie = models.ForeignKey(Movie, db_column='movie')
     source = models.IntegerField()
@@ -208,6 +223,7 @@ class ImpLoad(models.Model):
         db_table = u'imp_load'
         managed = False
 
+# названия залов кинотеатров        
 class AfishaHall(models.Model):
     id = models.IntegerField(primary_key=True, db_column='id')
     name = models.CharField(max_length=60)
@@ -215,6 +231,7 @@ class AfishaHall(models.Model):
         db_table = u'hall'
         managed = False
 
+        
 class AfishaHalls(models.Model):
     id_name = models.ForeignKey(AfishaHall, db_column='id_name', null=True)
     places = models.IntegerField()
