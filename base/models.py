@@ -65,6 +65,14 @@ class Interface(models.Model):
 
 
 class Likes(models.Model):
+    '''
+    1 - хочу посмотреть в кинотеатре
+    2 - хочу посмотреть дома
+    3 - смотрел, рекомендую
+    4 - не буду смотреть
+    5 - смотрел, не рекомендую
+    это значения поля evaluation
+    '''
     evaluation = models.IntegerField(verbose_name='Идентификатор оценки пользователя')
     film = models.IntegerField(verbose_name='KID', db_index=True)
     dtime = models.DateTimeField(auto_now_add=True, verbose_name='Дата время лайка', null=True)
@@ -235,7 +243,7 @@ class ImportSources(models.Model):
     """
     Источники информации
     """
-    url = models.URLField(max_length=256, verbose_name='url источника')
+    url = models.URLField(max_length=256, verbose_name='url источника')41339
     source = models.CharField(max_length=64, verbose_name='Название источника')
     code = models.IntegerField(verbose_name='Код источника', blank=True, null=True)
     dump = models.CharField(max_length=64, verbose_name='Название для дампов', null=True)
