@@ -109,15 +109,6 @@
     <!-- Yandex.Metrika counter --><script type="text/javascript"> (function (d, w, c) { (w[c] = w[c] || []).push(function() { try { w.yaCounter33495773 = new Ya.Metrika({ id:33495773, clickmap:true, trackLinks:true, accurateTrackBounce:true }); } catch(e) { } }); var n = d.getElementsByTagName("script")[0], s = d.createElement("script"), f = function () { n.parentNode.insertBefore(s, n); }; s.type = "text/javascript"; s.async = true; s.src = "https://mc.yandex.ru/metrika/watch.js"; if (w.opera == "[object Opera]") { d.addEventListener("DOMContentLoaded", f, false); } else { f(); } })(document, window, "yandex_metrika_callbacks");</script><noscript><div><img src="https://mc.yandex.ru/watch/33495773" style="position:absolute; left:-9999px;" alt="" /></div></noscript><!-- /Yandex.Metrika counter -->
     {% endif %}
 
-    {% if request.current_site.domain == 'kinoinfo.ru' or request.current_site.domain == 'kinoafisha.ru' %}
-        <!--LiveInternet counter--><script type="text/javascript"><!--
-        new Image().src = "//counter.yadro.ru/hit?r"+
-        escape(document.referrer)+((typeof(screen)=="undefined")?"":
-        ";s"+screen.width+"*"+screen.height+"*"+(screen.colorDepth?
-        screen.colorDepth:screen.pixelDepth))+";u"+escape(document.URL)+
-        ";"+Math.random();//--></script><!--/LiveInternet-->
-    {% endif %}
-
     <div class="art-main">
         {% block sys_info %}{% endblock %}
 
@@ -301,9 +292,7 @@
                         {% endif %}
                     </p>
 
-                    <div class="footer-icons metric">
-                    {% liveinternet_counter %}
-                    </div>
+                    
                 {% endif %}
                 </div>
                 {% endif %}
@@ -317,8 +306,8 @@
                          {% if request.noindex %}<noindex>{% endif %}
                          <a href="{% url get_film_list 2015 %}" {% if request.noindex %}rel="nofollow"{% endif %}>40 тысячах фильмов</a>{% if request.noindex %}</noindex>{% endif %}.
                          Взаимодействие с базой - через {% if request.noindex %}<noindex>{% endif %}<a href="http://kinoinfo.ru/api/" {% if request.noindex %}rel="nofollow"{% endif %}>API</a>{% if request.noindex %}</noindex>{% endif %}.
-                         Разработчики: {% if request.noindex %}<noindex>{% endif %}<a href="http://kinoinfo.ru/user/profile/80576/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Михаил Иванов</a>{% if request.noindex %}</noindex>{% endif %}, 
-                         {% if request.noindex %}<noindex>{% endif %}<a href="https://webguards.tech/ru/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>WebGuards</a>.{% if request.noindex %}</noindex>{% endif %}
+                         Разработчики: {% if request.noindex %}<noindex>{% endif %}<a href="http://kinoinfo.ru/user/profile/80576/" target="_blank" {% if request.noindex %}rel="nofollow"{% endif %}>Михаил Иванов</a>{% if request.noindex %}</noindex>{% endif %} 
+                         
                          <br />(с) <a href="http://kinoinfo.ru/user/profile/80576/" target="_blank">ИП Михаил Иванов</a> 1999-{% now "Y" %}
                          {% endblock multifooter02 %}
                         {% endif %}
